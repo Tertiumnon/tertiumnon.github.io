@@ -1,0 +1,64 @@
+[{
+    "id": 1,
+    "url": "kvartal2000.ru",
+    "title": "Агентство недвижимости \"Квартал 2000\"",
+    "year": 2008,
+    "description": "",
+    "image": "data/web-sites/2008_kvartal2000.png"
+}, {
+    "id": 2,
+    "url": "locman-kvartir.ru",
+    "title": "Лоцман Квартир - поисковик по недвижимости",
+    "year": 2008,
+    "description": "",
+    "image": "data/web-sites/2008_locman-kvartir.png"
+}, {
+    "id": 3,
+    "url": "kvartal2000.ru",
+    "title": "Агентство недвижимости \"Квартал 2000\"",
+    "year": 2009,
+    "description": "",
+    "image": "data/web-sites/2009_kvartal2000.png"
+}, {
+    "id": 4,
+    "url": "arsenal-sb.ru",
+    "title": "Арсенал-СБ - системы безопасности",
+    "year": 2011,
+    "description": "",
+    "image": "data/web-sites/2011_arsenal-sb.png"
+}, {
+    "id": 5,
+    "url": "alert-cctv.com",
+    "title": "ALERT CCTV - системы безопасности",
+    "year": 2012,
+    "description": "",
+    "image": "data/web-sites/2012_alert-cctv.png"
+}, {
+    "id": 6,
+    "url": "provision.ru",
+    "title": "PROvision - системы безопасности",
+    "year": 2012,
+    "description": "",
+    "image": "data/web-sites/2012_provision.png"
+}, {
+    "id": 7,
+    "url": "katerinafee-shop.com",
+    "title": "Katerinfee - брендовый магазин fashion-дизайнера",
+    "year": 2013,
+    "description": "",
+    "image": "data/web-sites/2013_katerinafee.png"
+}, {
+    "id": 8,
+    "url": "enso-photo.com",
+    "title": "Enso Photo - фотографии со смыслом - фотограф Владимир Кротенко",
+    "year": 2014,
+    "description": "",
+    "image": "data/web-sites/2014_enso-photo.png"
+}, {
+    "id": 9,
+    "url": "ya.ru",
+    "title": "Ya.ru - redesign",
+    "year": 2016,
+    "description": "",
+    "image": "data/web-sites/2016_ya.png"
+}]

@@ -1,0 +1,13 @@
+[{
+    "id": 1,
+    "title": "Yandex.browser",
+    "year": 2017,
+    "description": "",
+    "image": "data/desktop-apps/2017-browser.yandex.png"
+}, {
+    "id": 2,
+    "title": "Butterfly.browser",
+    "year": 2016,
+    "description": "",
+    "image": "data/desktop-apps/2016-browser.butterfly.png"
+}]

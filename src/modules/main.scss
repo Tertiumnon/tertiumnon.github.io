@@ -1,0 +1,25 @@
+.content {
+  height: 100%;
+  background-color: #272727;
+  width: 984px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cli {
+  .line {
+    &::before {
+      content: '>';
+      margin-right: 10px;
+    }
+    .command {
+      &[data-type="link"] {
+        color: white;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

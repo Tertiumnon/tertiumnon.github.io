@@ -1,0 +1,40 @@
+{
+  "name": "tertiumnon.github.io",
+  "version": "0.1.0",
+  "description": "Personal site",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "clean-webpack-plugin": "^1.0.0",
+    "css-loader": "^1.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.10.0",
+    "nodemon": "^1.18.6",
+    "sass": "^1.15.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.4"
+  },
+  "scripts": {
+    "start": "webpack-dev-server",
+    "watch": "webpack --watch",
+    "build": "webpack",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tertiumnon/tertiumnon.github.io.git"
+  },
+  "author": "Vitaliy Balabanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tertiumnon/tertiumnon.github.io/issues"
+  },
+  "homepage": "https://github.com/tertiumnon/tertiumnon.github.io#readme"
+}
