@@ -5,40 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch index.html",
+      "name": "ff launch :4200",
       "type": "firefox",
       "request": "launch",
-      "reAttach": true,
-      "file": "${workspaceFolder}/index.html"
-    },
-    {
-      "name": "Launch localhost",
-      "type": "firefox",
-      "request": "launch",
-      "reAttach": true,
-      "url": "http://localhost/index.html",
+      "url": "http://localhost:4200",
       "webRoot": "${workspaceFolder}"
     },
     {
-      "name": "Launch localhost:3000",
-      "type": "firefox",
+      "name": "chr launch :4200",
+      "type": "chrome",
       "request": "launch",
-      "reAttach": true,
-      "url": "http://localhost:3000/index.html",
+      "url": "http://localhost:4200",
       "webRoot": "${workspaceFolder}"
     },
-    {
-      "name": "Attach",
-      "type": "firefox",
-      "request": "attach"
-    },
-    {
-      "name": "Launch addon",
-      "type": "firefox",
-      "request": "launch",
-      "reAttach": true,
-      "addonType": "webExtension",
-      "addonPath": "${workspaceFolder}"
-    }
   ]
 }
