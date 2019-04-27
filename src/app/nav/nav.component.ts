@@ -8,7 +8,7 @@ import { Project } from '../project';
 const PROJECTS: Project[] = [
   {
     id: '1',
-    title: 'Kvartal2000',
+    title: 'Kvartal 2000',
     type: 'web-site',
     description: 'Realty Agency',
     image: '/assets/images/projects/kvartal2000-web/2008_kvartal2000.png',
@@ -19,7 +19,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: '2',
-    title: 'Kvartal2000',
+    title: 'Kvartal 2000',
     type: 'web-site',
     description: 'Realty Agency',
     image: '/assets/images/projects/kvartal2000-web/2009_kvartal2000.png',
@@ -30,7 +30,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: '1',
-    title: 'LocmanKvartir',
+    title: 'Locman Kvartir',
     type: 'web-site',
     description: 'Realty Search Engine',
     image: '/assets/images/projects/locman-kvartir-web/2008_locman-kvartir.png',
@@ -41,7 +41,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: '1',
-    title: 'ArsenalSB',
+    title: 'Arsenal SB',
     type: 'web-site',
     description: 'CCTV complany',
     image: '/assets/images/projects/arsenal-sb-web/2011_arsenal-sb.png',
