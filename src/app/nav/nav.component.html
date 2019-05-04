@@ -8,9 +8,10 @@
 
     <main>
       <div class="container">
-        <div fxLayout="row" fxLayoutGap="10px" gdGap="10px" gdColumns="auto auto auto">
+        <div fxLayout="row" fxLayoutGap="10px" gdGap="20px" gdColumns="32% 32% 32%">
           <div fxFlex *ngFor="let project of projects" class="card-item">
             <app-project-card
+              *ngIf="project.active"
               [title]="project.title"
               [year]="project.year"
               [type]="project.type"

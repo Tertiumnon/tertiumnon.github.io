@@ -11,10 +11,41 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   max-width: 980px;
 }
 
+.top-menu {
+  box-shadow: 0 1px 14px black;
+}
+
 main {
   background-color: #3b4148;
+  overflow: auto;
+  height: calc(100% - 120px);
+  border-top: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
 }
 
 main .container {
-  padding: 16px 0;
+  padding: 24px 0 0;
+}
+
+.mat-card.project-card {
+  box-shadow: 1px 1px 8px black;
+  border-radius: 3px;
+
+  &:hover {
+    box-shadow: 1px 1px 14px black;
+  }
+
+  .mat-card-header-text {
+    margin: 0 6px;
+  }
+
+  .mat-card-title {
+    font-family: 'Heebo', sans-serif;
+    text-transform: uppercase;
+  }
+
+  .mat-card-image {
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+  }
 }
