@@ -16,13 +16,17 @@ import { MatChipsModule } from '@angular/material/chips';
 import { NavComponent } from './nav/nav.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
+import { ProjectListComponent } from './project-list/project-list.component';
+import { TopMenuComponent } from './top-menu/top-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     ProjectsComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    ProjectListComponent,
+    TopMenuComponent
   ],
   imports: [
     BrowserModule,

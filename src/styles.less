@@ -11,10 +11,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   max-width: 980px;
 }
 
-.top-menu {
-  box-shadow: 0 1px 14px black;
-}
-
 main {
   background-color: #3b4148;
   overflow: auto;
@@ -27,25 +23,20 @@ main .container {
   padding: 24px 0 0;
 }
 
-.mat-card.project-card {
-  box-shadow: 1px 1px 8px black;
-  border-radius: 3px;
+.sidenav-container {
+  height: 100%;
+}
 
-  &:hover {
-    box-shadow: 1px 1px 14px black;
-  }
+.sidenav {
+  width: 200px;
+}
 
-  .mat-card-header-text {
-    margin: 0 6px;
-  }
+.sidenav .mat-toolbar {
+  background: inherit;
+}
 
-  .mat-card-title {
-    font-family: 'Heebo', sans-serif;
-    text-transform: uppercase;
-  }
-
-  .mat-card-image {
-    border-top: 1px solid #dadada;
-    border-bottom: 1px solid #dadada;
-  }
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
