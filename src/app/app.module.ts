@@ -8,7 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatButtonModule, MatCheckboxModule, MatToolbarModule,
-  MatSidenavModule, MatIconModule, MatListModule
+  MatSidenavModule, MatIconModule, MatListModule,
+  MatDialogModule
 } from '@angular/material';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -18,6 +19,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
+import { ProjectCardDialogComponent } from './project-card-dialog/project-card-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     ProjectsComponent,
     ProjectCardComponent,
     ProjectListComponent,
-    TopMenuComponent
+    TopMenuComponent,
+    ProjectCardDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +38,10 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     MatButtonModule,
     MatCheckboxModule,
     FlexLayoutModule,
+    MatDialogModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatIconModule, 
+    MatIconModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
@@ -46,6 +50,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
   exports: [
     MatButtonModule, MatCheckboxModule
   ],
+  entryComponents: [ ProjectCardDialogComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })
