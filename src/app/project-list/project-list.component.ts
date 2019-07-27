@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
+import { ProjectCardDialogComponent } from '../project-card-dialog/project-card-dialog.component';
 
 import PROJECTS from '../mock-projects';
 
@@ -11,10 +14,19 @@ export class ProjectListComponent implements OnInit {
 
   projects = PROJECTS;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   onSelect(project) {
     console.log(project);
+    const dialogRef = this.dialog.open(ProjectCardDialogComponent, {
+      width: '99%',
+      data: {title: project.title, image: project.image}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+
   }
 
   ngOnInit() {

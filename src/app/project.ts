@@ -4,6 +4,7 @@ export class Project {
   type: string;
   description: string;
   image: string;
+  imagePreview: string;
   link: string;
   year: number;
   categories: string[];
