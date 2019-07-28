@@ -122,7 +122,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: '4',
-    title: 'Yandex Browser',
+    title: 'Yandex App',
     type: 'web-browser',
     description: 'Web browser',
     imagePreview:
@@ -134,47 +134,47 @@ const PROJECTS: Project[] = [
     categories: ['design'],
     active: true
   },
-  {
-    id: '6',
-    title: 'JKH Service',
-    type: 'web-site',
-    description: 'Web-site for company',
-    imagePreview:
-      '/assets/images/projects/jkh-service-web/jkh-service-web-preview.png',
-    image: '/assets/images/projects/jkh-service-web/jkh-service-web.png',
-    link: '',
-    year: 2018,
-    categories: ['design'],
-    active: false
-  },
-  {
-    id: '7',
-    title: 'OCS Cheatsheets',
-    type: 'web-site',
-    description: 'Web-extension for Firefox for organizing bookmarks',
-    imagePreview:
-      '/assets/images/projects/bookmarks-manager-web-ext/bookmarks-manager-web-ext-preview.png',
-    image:
-      '/assets/images/projects/bookmarks-manager-web-ext/bookmarks-manager-web-ext.png',
-    link: 'https://addons.mozilla.org/en-US/firefox/addon/bookmarks-manager/',
-    year: 2017,
-    categories: ['design', 'coding'],
-    active: false
-  },
-  {
-    id: '5',
-    title: 'Bookmarks Manager',
-    type: 'Web-extension',
-    description: 'Web-extension for organizing bookmarks',
-    imagePreview:
-      '/assets/images/projects/bookmarks-manager-web-ext/bookmarks-manager-web-ext-preview.png',
-    image:
-      '/assets/images/projects/bookmarks-manager-web-ext/bookmarks-manager-web-ext.png',
-    link: 'https://addons.mozilla.org/en-US/firefox/addon/bookmarks-manager/',
-    year: 2019,
-    categories: ['design', 'coding'],
-    active: false
-  }
+  // {
+  //   id: '6',
+  //   title: 'JKH Service',
+  //   type: 'web-site',
+  //   description: 'Web-site for company',
+  //   imagePreview:
+  //     '/assets/images/projects/jkh-service-web/jkh-service-web-preview.png',
+  //   image: '/assets/images/projects/jkh-service-web/jkh-service-web.png',
+  //   link: '',
+  //   year: 2018,
+  //   categories: ['design'],
+  //   active: false
+  // },
+  // {
+  //   id: '7',
+  //   title: 'OCS Cheatsheets',
+  //   type: 'web-site',
+  //   description: 'Web-extension for Firefox for organizing bookmarks',
+  //   imagePreview:
+  //     '/assets/images/projects/bookmarks-manager-web-ext/bookmarks-manager-web-ext-preview.png',
+  //   image:
+  //     '/assets/images/projects/bookmarks-manager-web-ext/bookmarks-manager-web-ext.png',
+  //   link: 'https://addons.mozilla.org/en-US/firefox/addon/bookmarks-manager/',
+  //   year: 2017,
+  //   categories: ['design', 'coding'],
+  //   active: false
+  // },
+  // {
+  //   id: '5',
+  //   title: 'Bookmarks Manager',
+  //   type: 'Web-extension',
+  //   description: 'Web-extension for organizing bookmarks',
+  //   imagePreview:
+  //     '/assets/images/projects/bookmarks-manager-web-ext/bookmarks-manager-web-ext-preview.png',
+  //   image:
+  //     '/assets/images/projects/bookmarks-manager-web-ext/bookmarks-manager-web-ext.png',
+  //   link: 'https://addons.mozilla.org/en-US/firefox/addon/bookmarks-manager/',
+  //   year: 2019,
+  //   categories: ['design', 'coding'],
+  //   active: false
+  // }
 ];
 
 export default PROJECTS;
