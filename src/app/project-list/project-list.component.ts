@@ -14,10 +14,20 @@ export class ProjectListComponent implements OnInit {
 
   projects = PROJECTS;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) {
+    this.projects.sort((a, b) => {
+      if (a.year < b.year) {
+        return 1;
+      } else if (a.year > b.year) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+  }
 
   onSelect(project) {
-    console.log(project);
+    // console.log(project);
     const dialogRef = this.dialog.open(ProjectCardDialogComponent, {
       width: '99%',
       data: {title: project.title, image: project.image}
