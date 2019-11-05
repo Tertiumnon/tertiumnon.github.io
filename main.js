@@ -87,7 +87,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"project-control-panel\">\n  <div class=\"filters\">\n    <div class=\"filter filter-by-status hide\">\n      <label>Status</label>\n      <select\n        [(ngModel)]=\"filterByStatus\"\n        [ngStyle]=\"{ 'width.px': filterByStatusWidth }\"\n        (change)=\"onStatusChange()\"\n      >\n        <option *ngFor=\"let item of filterStatuses\" [value]=\"item.value\">\n          {{ item.viewValue }}\n        </option>\n      </select>\n    </div>\n    <div class=\"filter filter-by-type hide\">\n      <label>Type of Work</label>\n      <select\n        [(ngModel)]=\"filterByType\"\n        [ngStyle]=\"{ 'width.px': filterByTypeWidth }\"\n        (change)=\"onTypeChange()\"\n      >\n        <option *ngFor=\"let item of filterTypes\" [value]=\"item.value\">\n          {{ item.viewValue }}\n        </option>\n      </select>\n    </div>\n    <div class=\"filter sort-by-attr\">\n      <label>Sort by</label>\n      <select\n        [(ngModel)]=\"sortByAttr\"\n        [ngStyle]=\"{ 'width.px': sortByAttrWidth }\"\n        (change)=\"onAttrChange()\"\n      >\n        <option *ngFor=\"let item of sortAttrs\" [value]=\"item.value\">\n          {{ item.viewValue }}\n        </option>\n      </select>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"project-control-panel\">\n  <div class=\"filters\">\n    <div class=\"filter filter-by-status hide\">\n      <label>Status</label>\n      <select\n        [(ngModel)]=\"filterByStatus\"\n        [ngStyle]=\"{ 'width.px': filterByStatusWidth }\"\n        (change)=\"onStatusChange()\"\n      >\n        <option *ngFor=\"let item of filterStatuses\" [value]=\"item.value\">\n          {{ item.viewValue }}\n        </option>\n      </select>\n    </div>\n    <div class=\"filter filter-by-type\">\n      <label>Type of Work</label>\n      <select\n        [(ngModel)]=\"filterByType\"\n        [ngStyle]=\"{ 'width.px': filterByTypeWidth }\"\n        (change)=\"onTypeChange()\"\n      >\n        <option *ngFor=\"let item of filterTypes\" [value]=\"item.value\">\n          {{ item.viewValue }}\n        </option>\n      </select>\n    </div>\n    <div class=\"filter sort-by-attr\">\n      <label>Sort by</label>\n      <select\n        [(ngModel)]=\"sortByAttr\"\n        [ngStyle]=\"{ 'width.px': sortByAttrWidth }\"\n        (change)=\"onAttrChange()\"\n      >\n        <option *ngFor=\"let item of sortAttrs\" [value]=\"item.value\">\n          {{ item.viewValue }}\n        </option>\n      </select>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -100,7 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div\n  fxLayout=\"row\"\n  fxLayoutGap=\"10px\"\n  gdGap=\"20px\"\n  gdColumns=\"32% 32% 32%\"\n  >\n  <div\n    fxFlex\n    *ngFor=\"let project of projects\"\n    class=\"card-item\"\n    (click)=\"onSelect(project)\"\n  >\n    <app-project-card\n      *ngIf=\"project.visibility\"\n      [title]=\"project.title\"\n      [year]=\"project.year\"\n      [type]=\"project.type\"\n      [description]=\"project.description\"\n      [image]=\"project.imagePreview !== '' ? project.imagePreview : defaultImagePreview\"\n      [categories]=\"project.categories\"\n    ></app-project-card>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div\n  fxLayout=\"row\"\n  fxLayoutGap=\"10px\"\n  gdGap=\"20px\"\n  gdColumns=\"32% 32% 32%\"\n  >\n  <div\n    fxFlex\n    *ngFor=\"let project of projects\"\n    class=\"card-item\"\n    (click)=\"onSelect(project)\"\n    [ngClass]=\"project.visibility ? '' : 'hide'\"\n  >\n    <app-project-card\n      [title]=\"project.title\"\n      [year]=\"project.year\"\n      [type]=\"project.type\"\n      [description]=\"project.description\"\n      [image]=\"project.imagePreview !== '' ? project.imagePreview : defaultImagePreview\"\n      [categories]=\"project.categories\"\n    ></app-project-card>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -694,24 +694,41 @@ var HelpersComponent = /** @class */ (function () {
     HelpersComponent.filterBy = function (list, param, val) {
         var sParam;
         var sVal;
+        var newList = list.slice();
         if (param === 'status') {
             sParam = 'active';
             sVal = val === 'inactive' ? false : true;
-        }
-        var newList = list.slice();
-        newList.forEach(function (item) {
-            if (val === 'all') {
-                item.visibility = true;
-            }
-            else {
-                if (item[sParam] === sVal) {
+            newList.forEach(function (item) {
+                if (sVal === 'all') {
                     item.visibility = true;
                 }
                 else {
-                    item.visibility = false;
+                    if (item[sParam] === sVal) {
+                        item.visibility = true;
+                    }
+                    else {
+                        item.visibility = false;
+                    }
                 }
-            }
-        });
+            });
+        }
+        else if (param === 'type') {
+            sParam = 'categories';
+            sVal = val;
+            newList.forEach(function (item) {
+                if (sVal === 'all') {
+                    item.visibility = true;
+                }
+                else {
+                    if (item.categories.includes(sVal)) {
+                        item.visibility = true;
+                    }
+                    else {
+                        item.visibility = false;
+                    }
+                }
+            });
+        }
         return newList;
     };
     HelpersComponent.prototype.ngOnInit = function () {
@@ -815,13 +832,25 @@ var PROJECTS = [
         visibility: true
     },
     {
+        title: 'Katerinafee Shop',
+        type: 'Website',
+        description: 'Online shop for fashion designer',
+        imagePreview: '/assets/images/projects/katerinafee-web/2013-katerinafee-web-preview.png',
+        image: '/assets/images/projects/katerinafee-web/2013-katerinafee-web.png',
+        link: '',
+        year: 2013,
+        categories: ['design', 'layout'],
+        active: false,
+        visibility: true
+    },
+    {
         title: 'Katerinafee',
         type: 'Website',
         description: 'Website for fashion designer',
         imagePreview: '/assets/images/projects/katerinafee-web/2013-katerinafee-web-preview.png',
         image: '/assets/images/projects/katerinafee-web/2013-katerinafee-web.png',
-        link: '',
-        year: 2013,
+        link: 'http://www.katerinafee.com',
+        year: 2014,
         categories: ['design', 'layout'],
         active: false,
         visibility: true
@@ -880,7 +909,7 @@ var PROJECTS = [
         description: 'Cheatsheets for programmers',
         imagePreview: '',
         image: '',
-        link: 'https://addons.mozilla.org/en-US/firefox/addon/bookmarks-manager/',
+        link: 'http://cheatsheets.origin-creative-studio.com',
         year: 2017,
         categories: ['design', 'layout', 'coding'],
         active: false,
@@ -913,7 +942,7 @@ var PROJECTS = [
     {
         title: 'Tertium JS Snippets',
         type: 'App extension',
-        description: 'Visual Studio Code extension for JavasScript autocompletion',
+        description: 'Visual Studio Code extension for JavaScript autocompletion',
         imagePreview: '',
         image: '',
         link: 'https://marketplace.visualstudio.com/items?itemName=vittertiumnon.tertium-js-snippets',
@@ -923,7 +952,7 @@ var PROJECTS = [
         visibility: true
     },
     {
-        title: 'TASS-Wiki',
+        title: 'TASS Wiki',
         type: 'Website',
         description: 'Information agency documentation platform',
         imagePreview: '',
@@ -935,7 +964,7 @@ var PROJECTS = [
         visibility: true
     },
     {
-        title: 'TASS-HRSTAT',
+        title: 'TASS HRStat',
         type: 'Website',
         description: 'Information agency productivity statistics website',
         imagePreview: '',
@@ -947,7 +976,7 @@ var PROJECTS = [
         visibility: true
     },
     {
-        title: 'JSON-all-to-one',
+        title: 'JSON All to One',
         type: 'NodeJS package',
         description: 'NodeJS script for concatenation JSON files',
         imagePreview: '',
@@ -959,7 +988,7 @@ var PROJECTS = [
         visibility: true
     },
     {
-        title: 'JSON-to-SQL-script',
+        title: 'JSON to SQL script',
         type: 'NodeJS package',
         description: 'NodeJS script for creation SQL script from JSON file',
         imagePreview: '',
@@ -1090,7 +1119,7 @@ var OrderByPipe = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".project-card-dialog-header {\n  margin-bottom: 10px;\n  text-transform: uppercase;\n}\n.project-card-dialog-image {\n  margin: 0 -8px -4px 0;\n  width: calc(100% + 24px);\n}\n.project-card-dialog-content {\n  border-width: 4px 0;\n  display: block;\n  margin: 0 -24px;\n  padding: 0 24px 0 0;\n  max-height: 65vh;\n  overflow-y: auto;\n  overflow-x: hidden;\n  border-style: solid;\n  border-color: #e6e6e6;\n}\n.project-card-dialog-description {\n  margin-top: 16px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJvamVjdC1jYXJkLWRpYWxvZy9EOi9SZXBvc2l0b3JpZXMvdGVydGl1bW5vbi53ZWIvc3JjL2FwcC9wcm9qZWN0LWNhcmQtZGlhbG9nL3Byb2plY3QtY2FyZC1kaWFsb2cuY29tcG9uZW50Lmxlc3MiLCJzcmMvYXBwL3Byb2plY3QtY2FyZC1kaWFsb2cvcHJvamVjdC1jYXJkLWRpYWxvZy5jb21wb25lbnQubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG1CQUFBO0VBQ0EseUJBQUE7QUNDRjtBREVBO0VBQ0UscUJBQUE7RUFDQSx3QkFBQTtBQ0FGO0FER0E7RUFDRSxtQkFBQTtFQUNBLGNBQUE7RUFDQSxlQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtFQUNBLHFCQUFBO0FDREY7QURJQTtFQUNFLGdCQUFBO0FDRkYiLCJmaWxlIjoic3JjL2FwcC9wcm9qZWN0LWNhcmQtZGlhbG9nL3Byb2plY3QtY2FyZC1kaWFsb2cuY29tcG9uZW50Lmxlc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucHJvamVjdC1jYXJkLWRpYWxvZy1oZWFkZXIge1xuICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xufVxuXG4ucHJvamVjdC1jYXJkLWRpYWxvZy1pbWFnZSB7XG4gIG1hcmdpbjogMCAtOHB4IC00cHggMDtcbiAgd2lkdGg6IGNhbGMoMTAwJSArIDI0cHgpO1xufVxuXG4ucHJvamVjdC1jYXJkLWRpYWxvZy1jb250ZW50IHtcbiAgYm9yZGVyLXdpZHRoOiA0cHggMDtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbjogMCAtMjRweDtcbiAgcGFkZGluZzogMCAyNHB4IDAgMDtcbiAgbWF4LWhlaWdodDogNjV2aDtcbiAgb3ZlcmZsb3cteTogYXV0bztcbiAgb3ZlcmZsb3cteDogaGlkZGVuO1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICBib3JkZXItY29sb3I6I2U2ZTZlNjtcbn1cblxuLnByb2plY3QtY2FyZC1kaWFsb2ctZGVzY3JpcHRpb24ge1xuICBtYXJnaW4tdG9wOiAxNnB4O1xufVxuIiwiLnByb2plY3QtY2FyZC1kaWFsb2ctaGVhZGVyIHtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbn1cbi5wcm9qZWN0LWNhcmQtZGlhbG9nLWltYWdlIHtcbiAgbWFyZ2luOiAwIC04cHggLTRweCAwO1xuICB3aWR0aDogY2FsYygxMDAlICsgMjRweCk7XG59XG4ucHJvamVjdC1jYXJkLWRpYWxvZy1jb250ZW50IHtcbiAgYm9yZGVyLXdpZHRoOiA0cHggMDtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbjogMCAtMjRweDtcbiAgcGFkZGluZzogMCAyNHB4IDAgMDtcbiAgbWF4LWhlaWdodDogNjV2aDtcbiAgb3ZlcmZsb3cteTogYXV0bztcbiAgb3ZlcmZsb3cteDogaGlkZGVuO1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICBib3JkZXItY29sb3I6ICNlNmU2ZTY7XG59XG4ucHJvamVjdC1jYXJkLWRpYWxvZy1kZXNjcmlwdGlvbiB7XG4gIG1hcmdpbi10b3A6IDE2cHg7XG59XG4iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".project-card-dialog-header {\n  margin-bottom: 10px;\n}\n.project-card-dialog-image {\n  margin: 0 -8px -4px 0;\n  width: calc(100% + 24px);\n}\n.project-card-dialog-content {\n  border-width: 4px 0;\n  display: block;\n  margin: 0 -24px;\n  padding: 0 24px 0 0;\n  max-height: 65vh;\n  overflow-y: auto;\n  overflow-x: hidden;\n  border-style: solid;\n  border-color: #e6e6e6;\n}\n.project-card-dialog-description {\n  margin-top: 16px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJvamVjdC1jYXJkLWRpYWxvZy9EOi9SZXBvc2l0b3JpZXMvdGVydGl1bW5vbi53ZWIvc3JjL2FwcC9wcm9qZWN0LWNhcmQtZGlhbG9nL3Byb2plY3QtY2FyZC1kaWFsb2cuY29tcG9uZW50Lmxlc3MiLCJzcmMvYXBwL3Byb2plY3QtY2FyZC1kaWFsb2cvcHJvamVjdC1jYXJkLWRpYWxvZy5jb21wb25lbnQubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG1CQUFBO0FDQ0Y7QURFQTtFQUNFLHFCQUFBO0VBQ0Esd0JBQUE7QUNBRjtBREdBO0VBQ0UsbUJBQUE7RUFDQSxjQUFBO0VBQ0EsZUFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxxQkFBQTtBQ0RGO0FESUE7RUFDRSxnQkFBQTtBQ0ZGIiwiZmlsZSI6InNyYy9hcHAvcHJvamVjdC1jYXJkLWRpYWxvZy9wcm9qZWN0LWNhcmQtZGlhbG9nLmNvbXBvbmVudC5sZXNzIiwic291cmNlc0NvbnRlbnQiOlsiLnByb2plY3QtY2FyZC1kaWFsb2ctaGVhZGVyIHtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbn1cblxuLnByb2plY3QtY2FyZC1kaWFsb2ctaW1hZ2Uge1xuICBtYXJnaW46IDAgLThweCAtNHB4IDA7XG4gIHdpZHRoOiBjYWxjKDEwMCUgKyAyNHB4KTtcbn1cblxuLnByb2plY3QtY2FyZC1kaWFsb2ctY29udGVudCB7XG4gIGJvcmRlci13aWR0aDogNHB4IDA7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBtYXJnaW46IDAgLTI0cHg7XG4gIHBhZGRpbmc6IDAgMjRweCAwIDA7XG4gIG1heC1oZWlnaHQ6IDY1dmg7XG4gIG92ZXJmbG93LXk6IGF1dG87XG4gIG92ZXJmbG93LXg6IGhpZGRlbjtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgYm9yZGVyLWNvbG9yOiNlNmU2ZTY7XG59XG5cbi5wcm9qZWN0LWNhcmQtZGlhbG9nLWRlc2NyaXB0aW9uIHtcbiAgbWFyZ2luLXRvcDogMTZweDtcbn1cbiIsIi5wcm9qZWN0LWNhcmQtZGlhbG9nLWhlYWRlciB7XG4gIG1hcmdpbi1ib3R0b206IDEwcHg7XG59XG4ucHJvamVjdC1jYXJkLWRpYWxvZy1pbWFnZSB7XG4gIG1hcmdpbjogMCAtOHB4IC00cHggMDtcbiAgd2lkdGg6IGNhbGMoMTAwJSArIDI0cHgpO1xufVxuLnByb2plY3QtY2FyZC1kaWFsb2ctY29udGVudCB7XG4gIGJvcmRlci13aWR0aDogNHB4IDA7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBtYXJnaW46IDAgLTI0cHg7XG4gIHBhZGRpbmc6IDAgMjRweCAwIDA7XG4gIG1heC1oZWlnaHQ6IDY1dmg7XG4gIG92ZXJmbG93LXk6IGF1dG87XG4gIG92ZXJmbG93LXg6IGhpZGRlbjtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgYm9yZGVyLWNvbG9yOiAjZTZlNmU2O1xufVxuLnByb2plY3QtY2FyZC1kaWFsb2ctZGVzY3JpcHRpb24ge1xuICBtYXJnaW4tdG9wOiAxNnB4O1xufVxuIl19 */");
 
 /***/ }),
 
@@ -1249,7 +1278,7 @@ var ProjectControlPanelComponent = /** @class */ (function () {
         this.filterTypes = [
             { value: 'all', viewValue: 'All' },
             { value: 'design', viewValue: 'Design' },
-            { value: 're-design', viewValue: 'Re-Design' },
+            { value: 'concept-design', viewValue: 'Concept Design' },
             { value: 'coding', viewValue: 'Coding' },
             { value: 'layout', viewValue: 'Layout' },
         ];
@@ -1281,19 +1310,16 @@ var ProjectControlPanelComponent = /** @class */ (function () {
         return ProjectControlPanelComponent_1.getTextWidth(this.sortAttrs.filter(function (item) { return item.value === _this.sortByAttr; })[0].viewValue);
     };
     ProjectControlPanelComponent.prototype.onStatusChange = function () {
-        console.log('onStatusChange');
         var filterByStatus = this.filterByStatus;
         this.filterByStatusWidth = this.getFilterByStatusWidth();
         this.projectService.setState({ filterByStatus: filterByStatus });
     };
     ProjectControlPanelComponent.prototype.onTypeChange = function () {
-        console.log('onTypeChange');
         var filterByType = this.filterByType;
         this.filterByTypeWidth = this.getFilterByTypeWidth();
         this.projectService.setState({ filterByType: filterByType });
     };
     ProjectControlPanelComponent.prototype.onAttrChange = function () {
-        console.log('onAttrChange');
         var sortByAttr = this.sortByAttr;
         this.sortByAttrWidth = this.getSortByAttrWidth();
         this.projectService.setState({ sortByAttr: sortByAttr });
@@ -1482,9 +1508,15 @@ var ProjectService = /** @class */ (function () {
     function ProjectService() {
         this.projects = _mock_projects__WEBPACK_IMPORTED_MODULE_4__["default"];
         this.projects$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](_mock_projects__WEBPACK_IMPORTED_MODULE_4__["default"]);
+        this.state$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({
+            filterByStatus: 'all',
+            filterByType: 'all',
+            sortByAttr: 'year',
+        });
     }
     ProjectService.prototype.setState = function (state) {
         this.state = tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, this.state, state);
+        this.filterProjects();
         this.sortProjects();
     };
     ProjectService.prototype.getState = function () {
@@ -1494,7 +1526,7 @@ var ProjectService = /** @class */ (function () {
         return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this.projects);
     };
     ProjectService.prototype.filterProjects = function () {
-        this.projects$.next(_helpers_helpers_component__WEBPACK_IMPORTED_MODULE_3__["HelpersComponent"].filterBy(this.projects, 'status', this.state.filterByStatus));
+        this.projects$.next(_helpers_helpers_component__WEBPACK_IMPORTED_MODULE_3__["HelpersComponent"].filterBy(this.projects, 'type', this.state.filterByType));
     };
     ProjectService.prototype.sortProjects = function () {
         this.projects$.next(_helpers_helpers_component__WEBPACK_IMPORTED_MODULE_3__["HelpersComponent"].orderBy.apply(_helpers_helpers_component__WEBPACK_IMPORTED_MODULE_3__["HelpersComponent"], [this.projects].concat([this.state.sortByAttr])));
