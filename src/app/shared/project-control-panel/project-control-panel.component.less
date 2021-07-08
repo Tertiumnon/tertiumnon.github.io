@@ -1,0 +1,39 @@
+.hide-arrow-mixin {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+.project-control-panel {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 10px 10px;
+  color: #c4c4c4;
+  .filters {
+    display: flex;
+    .filter {
+      margin: 0 0 0 20px;
+      label {
+        display: inline-block;
+        font-size: .9em;
+        margin-right: 4px;
+      }
+      select {
+        display: inline-block;
+        background: none;
+        border: none;
+        color: white;
+        background-color: #3b4148;
+        font-size: .9em;
+        border-bottom: 1px dashed;
+        text-align: center;
+        cursor: pointer;
+        .hide-arrow-mixin;
+      }
+    }
+  }
+}
+

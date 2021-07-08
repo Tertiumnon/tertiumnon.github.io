@@ -1,0 +1,40 @@
+<div class="project-control-panel">
+  <div class="filters">
+    <div class="filter filter-by-status hide">
+      <label>Status</label>
+      <select
+        [(ngModel)]="filterByStatus"
+        [ngStyle]="{ 'width.px': filterByStatusWidth }"
+        (change)="onStatusChange()"
+      >
+        <option *ngFor="let item of filterStatuses" [value]="item.value">
+          {{ item.viewValue }}
+        </option>
+      </select>
+    </div>
+    <div class="filter filter-by-type">
+      <label>Type of Work</label>
+      <select
+        [(ngModel)]="filterByType"
+        [ngStyle]="{ 'width.px': filterByTypeWidth }"
+        (change)="onTypeChange()"
+      >
+        <option *ngFor="let item of filterTypes" [value]="item.value">
+          {{ item.viewValue }}
+        </option>
+      </select>
+    </div>
+    <div class="filter sort-by-attr">
+      <label>Sort by</label>
+      <select
+        [(ngModel)]="sortByAttrVal"
+        [ngStyle]="{ 'width.px': sortByAttrWidth }"
+        (change)="onAttrChange()"
+      >
+        <option *ngFor="let item of sortAttrs" [value]="item.value">
+          {{ item.viewValue }}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>

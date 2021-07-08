@@ -1,0 +1,132 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 980px;
+}
+
+main {
+  background-color: #3b4148;
+  overflow: auto;
+  height: calc(100% - 130px);
+  border-top: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+main .container {
+  padding: 10px 0;
+}
+
+.text-page {
+  color: white;
+
+  h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+  }
+
+  a {
+    color: white;
+  }
+}
+
+.sidenav-container {
+  height: 100%;
+  .mat-sidenav-content {
+    display: contents;
+  }
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* CARD */
+
+.mat-card.project-card {
+  border-radius: 0;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.95;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  .mat-card-header {
+    padding: 18px 20px 0;
+
+    mat-card-title {
+      text-transform: uppercase;
+      font-size: 1.1em;
+      font-family: Roboto,"Helvetica Neue",sans-serif;
+    }
+
+    mat-card-subtitle {
+      text-transform: lowercase;
+      font-size: 0.8em;
+      font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+    }
+
+    .mat-card-header-text {
+      margin: 0;
+    }
+  }
+
+  .preview {
+    position: relative;
+    overflow: hidden;
+
+    .mat-card-image {
+      border-top: 1px solid #dadada;
+      border-bottom: 1px solid #dadada;
+      margin-top: 0;
+      margin-bottom: -4px;
+    }
+
+    .description {
+      position: absolute;
+      font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+      top: 0;
+      padding: 14px 28px 14px 20px;
+      background-color: #131824c9;
+      width: calc(100% - 48px);
+      height: calc(100% - 28px);
+      color: #fff;
+      font-weight: 300;
+    }
+  }
+
+  .mat-card-content {
+    margin-top: 0px;
+    padding: 16px 14px;
+  }
+}
+
+/* HELPERS */
+
+.hide {
+  display: none;
+}

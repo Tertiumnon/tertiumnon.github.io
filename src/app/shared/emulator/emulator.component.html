@@ -1,0 +1,4 @@
+<div *ngFor="let line of lines; index as i" class="line">
+  <div class="number"><span>{{i}}</span></div>
+  <div class="text" [innerHTML]="line"></div>
+</div>

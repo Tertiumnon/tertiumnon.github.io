@@ -1,0 +1,15 @@
+<mat-card class="project-card">
+  <mat-card-header class="project-header">
+    <mat-card-title>{{ title }}</mat-card-title>
+    <mat-card-subtitle>{{ year }}, {{ type }}</mat-card-subtitle>
+  </mat-card-header>
+  <div class="preview">
+    <img mat-card-image [src]="image" />
+    <div class="description">{{ description }}</div>
+  </div>
+  <mat-card-content>
+    <mat-chip-list>
+      <mat-chip *ngFor="let category of categories">{{ category }}</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>
