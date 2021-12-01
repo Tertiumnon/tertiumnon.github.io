@@ -266,9 +266,9 @@ const PROJECTS: IProject[] = [
     visibility: true,
   },
   {
-    title: "Zip24 Service - Brewery equipment",
+    title: "Zip24 Service",
     type: "Website",
-    description: "",
+    description: "Brewery equipment",
     imagePreview: "",
     image: "",
     link: "https://zip24.ru",
