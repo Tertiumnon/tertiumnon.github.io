@@ -1,29 +1,27 @@
-import { Injectable } from '@angular/core';
-import { Observable, of, BehaviorSubject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable, of } from "rxjs";
 
-import { HelpersComponent } from '../helpers/helpers.component';
-
-import { IProject, State } from './project';
-import PROJECTS from '../../mock-projects';
+import PROJECTS from "../../mock-projects";
+import { HelpersComponent } from "../helpers/helpers.component";
+import { IProject, ProjectStatus, State } from "./project";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ProjectService {
-
   projects: IProject[] = PROJECTS;
-  projects$ = new BehaviorSubject<IProject[]>(PROJECTS);
+  projects$ = new BehaviorSubject<IProject[] | undefined>(PROJECTS);
   state: State = {};
   state$ = new BehaviorSubject<State>({
-    filterByStatus: 'all',
-    filterByType: 'all',
-    sortByAttrVal: 'year',
+    filterByStatus: ProjectStatus.Active,
+    filterByWorkType: "all",
+    sortByAttrVal: "year",
   });
 
   setState(state?: State): void {
     this.state = {
       ...this.state,
-      ...state
+      ...state,
     };
     this.filterProjects();
     this.sortProjects();
@@ -38,14 +36,12 @@ export class ProjectService {
   }
 
   filterProjects() {
-    this.projects$.next(
-      HelpersComponent.filterBy(this.projects, 'type', this.state.filterByType)
-      );
+    let projects = HelpersComponent.filterBy(this.projects, "status", this.state.filterByStatus);
+    projects = HelpersComponent.filterBy(projects, "workType", this.state.filterByWorkType);
+    this.projects$.next(projects);
   }
 
   sortProjects() {
-    this.projects$.next(
-      HelpersComponent.orderBy(this.projects, ...[this.state.sortByAttrVal])
-      );
+    this.projects$.next(HelpersComponent.orderBy(this.projects$.value, ...[this.state.sortByAttrVal]));
   }
 }

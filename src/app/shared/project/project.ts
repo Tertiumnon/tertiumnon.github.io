@@ -1,3 +1,8 @@
+export enum ProjectStatus {
+  Inactive = "0",
+  Active = "1",
+}
+
 export interface IProject {
   title: string;
   type: string;
@@ -6,13 +11,12 @@ export interface IProject {
   imagePreview: string;
   link: string;
   year: number;
-  categories: string[];
-  active: boolean;
-  visibility: boolean;
+  workTypes: string[];
+  status: ProjectStatus;
 }
 
 export interface State {
-  filterByStatus?: string;
-  filterByType?: string;
+  filterByStatus?: ProjectStatus;
+  filterByWorkType?: string;
   sortByAttrVal?: string;
 }
