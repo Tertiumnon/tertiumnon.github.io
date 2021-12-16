@@ -5,10 +5,10 @@ import { RouterModule } from "@angular/router";
 
 import { ProjectControlPanelModule } from "../../shared/project-control-panel/project-control-panel.module";
 import { ProjectListModule } from "../../shared/project-list/project-list.module";
-import { ProjectsComponent } from "./projects.component";
+import { PostMortemComponent } from "./post-mortem.component";
 
 @NgModule({
-  declarations: [ProjectsComponent],
+  declarations: [PostMortemComponent],
   imports: [
     CommonModule,
     ProjectControlPanelModule,
@@ -18,10 +18,10 @@ import { ProjectsComponent } from "./projects.component";
       {
         path: "",
         pathMatch: "full",
-        component: ProjectsComponent,
+        component: PostMortemComponent,
       },
     ]),
   ],
-  exports: [ProjectsComponent],
+  exports: [PostMortemComponent],
 })
-export class ProjectsModule {}
+export class PostMortemModule {}

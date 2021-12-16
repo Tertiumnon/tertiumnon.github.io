@@ -1,19 +1,18 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
-import PROJECTS from "../../mock-projects";
+import { PORTFOLIO_PROJECTS } from "../../mock-portfolios";
 import { HelpersComponent } from "../helpers/helpers.component";
-import { IProject, ProjectStatus, State } from "./project";
+import { IProject, State } from "./project";
 
 @Injectable({
   providedIn: "root",
 })
-export class ProjectService {
-  projects: IProject[] = PROJECTS;
-  projects$ = new BehaviorSubject<IProject[] | undefined>(PROJECTS);
+export class PortfolioProjectService {
+  projects: IProject[] = PORTFOLIO_PROJECTS;
+  projects$ = new BehaviorSubject<IProject[] | undefined>(PORTFOLIO_PROJECTS);
   state: State = {};
   state$ = new BehaviorSubject<State>({
-    filterByStatus: ProjectStatus.Active,
     filterByWorkType: "all",
     sortByAttrVal: "year",
   });
@@ -28,8 +27,7 @@ export class ProjectService {
   }
 
   filterProjects() {
-    let projects = HelpersComponent.filterBy(this.projects, "status", this.state.filterByStatus);
-    projects = HelpersComponent.filterBy(projects, "workType", this.state.filterByWorkType);
+    let projects = HelpersComponent.filterBy(this.projects, "workType", this.state.filterByWorkType);
     this.projects$.next(projects);
   }
 

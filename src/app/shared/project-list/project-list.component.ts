@@ -1,21 +1,19 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 
 import { ProjectCardDialogComponent } from "../project-card-dialog/project-card-dialog.component";
-import { IProject, State } from "../project/project";
-import { ProjectService } from "../project/project.service";
+import { IProject } from "../project/project";
 
 @Component({
   selector: "app-project-list",
   templateUrl: "./project-list.component.html",
   styleUrls: ["./project-list.component.less"],
 })
-export class ProjectListComponent implements OnInit {
-  projects: IProject[] = [];
-  state: State = {};
+export class ProjectListComponent {
   @Input() defaultImagePreview = "/assets/images/projects/default/default.png";
+  @Input() projects: IProject[] = [];
 
-  constructor(public dialog: MatDialog, private projectService: ProjectService) {}
+  constructor(public dialog: MatDialog) {}
 
   onSelect(project: IProject) {
     const dialogRef = this.dialog.open(ProjectCardDialogComponent, {
@@ -30,10 +28,5 @@ export class ProjectListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log("The dialog was closed");
     });
-  }
-
-  ngOnInit() {
-    this.projectService.projects$.subscribe((projects) => (this.projects = projects || []));
-    this.projectService.getState().subscribe((state) => (this.state = state));
   }
 }
