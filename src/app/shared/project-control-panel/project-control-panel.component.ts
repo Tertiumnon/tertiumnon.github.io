@@ -1,43 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { Select } from '../select/select';
-import { ProjectService } from '../project/project.service';
+import { Component, OnInit } from "@angular/core";
+
+import { ProjectStatus } from "../project/project";
+import { ProjectService } from "../project/project.service";
+import { Select } from "../select/select";
 
 @Component({
-  selector: 'app-project-control-panel',
-  templateUrl: './project-control-panel.component.html',
-  styleUrls: ['./project-control-panel.component.less'],
+  selector: "app-project-control-panel",
+  templateUrl: "./project-control-panel.component.html",
+  styleUrls: ["./project-control-panel.component.less"],
 })
 export class ProjectControlPanelComponent implements OnInit {
   filterStatuses: Select[] = [
-    { value: 'all', viewValue: 'All' },
-    { value: 'active', viewValue: 'Active' },
-    { value: 'inactive', viewValue: 'Inactive' },
+    { value: ProjectStatus.Active, viewValue: "Active" },
+    { value: ProjectStatus.Inactive, viewValue: "Inactive" },
   ];
-  filterByStatus: string = '';
+  filterByStatus: ProjectStatus = ProjectStatus.Active;
   filterByStatusWidth: number = 0;
 
   filterTypes: Select[] = [
-    { value: 'all', viewValue: 'All' },
-    { value: 'design', viewValue: 'Design' },
-    { value: 'concept', viewValue: 'Concept' },
-    { value: 'coding', viewValue: 'Coding' },
-    { value: 'layout', viewValue: 'Layout' },
+    { value: "all", viewValue: "All" },
+    { value: "design", viewValue: "Design" },
+    { value: "concept", viewValue: "Concept" },
+    { value: "coding", viewValue: "Coding" },
+    { value: "layout", viewValue: "Layout" },
   ];
-  filterByType: string = '';
-  filterByTypeWidth: number = 0;
+  filterByWorkType: string = "";
+  filterByWorkTypeWidth: number = 0;
 
   sortAttrs: Select[] = [
-    { value: 'year', viewValue: 'Year (newer)' },
-    { value: '-year', viewValue: 'Year (older)' },
+    { value: "year", viewValue: "Year (newer)" },
+    { value: "-year", viewValue: "Year (older)" },
   ];
-  sortByAttrVal: string = '';
+  sortByAttrVal: string = "";
   sortByAttrWidth: number = 0;
 
   constructor(private projectService: ProjectService) {}
 
   static getTextWidth(txt: string): number {
-    const span = document.createElement('span');
-    span.setAttribute('style', 'display: hidden;');
+    const span = document.createElement("span");
+    span.setAttribute("style", "display: hidden;");
     span.innerHTML = txt;
     document.body.appendChild(span);
     const res = span.offsetWidth;
@@ -47,23 +48,19 @@ export class ProjectControlPanelComponent implements OnInit {
 
   getFilterByStatusWidth(): number {
     return ProjectControlPanelComponent.getTextWidth(
-      this.filterStatuses.filter(
-        (item) => item.value === this.filterByStatus
-      )[0].viewValue
+      this.filterStatuses.filter((item) => item.value === this.filterByStatus)[0].viewValue
     );
   }
 
-  getFilterByTypeWidth(): number {
+  getfilterByWorkTypeWidth(): number {
     return ProjectControlPanelComponent.getTextWidth(
-      this.filterTypes.filter((item) => item.value === this.filterByType)[0]
-        .viewValue
+      this.filterTypes.filter((item) => item.value === this.filterByWorkType)[0].viewValue
     );
   }
 
   getSortByAttrWidth(): number {
     return ProjectControlPanelComponent.getTextWidth(
-      this.sortAttrs.filter((item) => item.value === this.sortByAttrVal)[0]
-        .viewValue
+      this.sortAttrs.filter((item) => item.value === this.sortByAttrVal)[0].viewValue
     );
   }
 
@@ -74,9 +71,9 @@ export class ProjectControlPanelComponent implements OnInit {
   }
 
   onTypeChange(): void {
-    const { filterByType } = this;
-    this.filterByTypeWidth = this.getFilterByTypeWidth();
-    this.projectService.setState({ filterByType });
+    const { filterByWorkType } = this;
+    this.filterByWorkTypeWidth = this.getfilterByWorkTypeWidth();
+    this.projectService.setState({ filterByWorkType });
   }
 
   onAttrChange(): void {
@@ -86,16 +83,16 @@ export class ProjectControlPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filterByStatus = 'all';
+    this.filterByStatus = ProjectStatus.Active;
     this.filterByStatusWidth = this.getFilterByStatusWidth();
-    this.filterByType = 'all';
-    this.filterByTypeWidth = this.getFilterByTypeWidth();
-    this.sortByAttrVal = 'year';
+    this.filterByWorkType = "all";
+    this.filterByWorkTypeWidth = this.getfilterByWorkTypeWidth();
+    this.sortByAttrVal = "year";
     this.sortByAttrWidth = this.getSortByAttrWidth();
     this.projectService.setState({
-      filterByStatus: 'all',
-      filterByType: 'all',
-      sortByAttrVal: 'year',
+      filterByStatus: this.filterByStatus,
+      filterByWorkType: this.filterByWorkType,
+      sortByAttrVal: this.sortByAttrVal,
     });
   }
 }

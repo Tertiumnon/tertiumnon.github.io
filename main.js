@@ -113,7 +113,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"project-control-panel\">\n  <div class=\"filters\">\n    <div class=\"filter filter-by-status hide\">\n      <label>Status</label>\n      <select\n        [(ngModel)]=\"filterByStatus\"\n        [ngStyle]=\"{ 'width.px': filterByStatusWidth }\"\n        (change)=\"onStatusChange()\"\n      >\n        <option *ngFor=\"let item of filterStatuses\" [value]=\"item.value\">\n          {{ item.viewValue }}\n        </option>\n      </select>\n    </div>\n    <div class=\"filter filter-by-type\">\n      <label>Type of Work</label>\n      <select\n        [(ngModel)]=\"filterByType\"\n        [ngStyle]=\"{ 'width.px': filterByTypeWidth }\"\n        (change)=\"onTypeChange()\"\n      >\n        <option *ngFor=\"let item of filterTypes\" [value]=\"item.value\">\n          {{ item.viewValue }}\n        </option>\n      </select>\n    </div>\n    <div class=\"filter sort-by-attr\">\n      <label>Sort by</label>\n      <select\n        [(ngModel)]=\"sortByAttr\"\n        [ngStyle]=\"{ 'width.px': sortByAttrWidth }\"\n        (change)=\"onAttrChange()\"\n      >\n        <option *ngFor=\"let item of sortAttrs\" [value]=\"item.value\">\n          {{ item.viewValue }}\n        </option>\n      </select>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"project-control-panel\">\n  <div class=\"filters\">\n    <div class=\"filter filter-by-status hide\">\n      <label>Status</label>\n      <select\n        [(ngModel)]=\"filterByStatus\"\n        [ngStyle]=\"{ 'width.px': filterByStatusWidth }\"\n        (change)=\"onStatusChange()\"\n      >\n        <option *ngFor=\"let item of filterStatuses\" [value]=\"item.value\">\n          {{ item.viewValue }}\n        </option>\n      </select>\n    </div>\n    <div class=\"filter filter-by-type\">\n      <label>Type of Work</label>\n      <select\n        [(ngModel)]=\"filterByWorkType\"\n        [ngStyle]=\"{ 'width.px': filterByWorkTypeWidth }\"\n        (change)=\"onTypeChange()\"\n      >\n        <option *ngFor=\"let item of filterTypes\" [value]=\"item.value\">\n          {{ item.viewValue }}\n        </option>\n      </select>\n    </div>\n    <div class=\"filter sort-by-attr\">\n      <label>Sort by</label>\n      <select\n        [(ngModel)]=\"sortByAttr\"\n        [ngStyle]=\"{ 'width.px': sortByAttrWidth }\"\n        (change)=\"onAttrChange()\"\n      >\n        <option *ngFor=\"let item of sortAttrs\" [value]=\"item.value\">\n          {{ item.viewValue }}\n        </option>\n      </select>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -1435,9 +1435,9 @@ var ProjectControlPanelComponent = /** @class */ (function () {
         var _this = this;
         return ProjectControlPanelComponent_1.getTextWidth(this.filterStatuses.filter(function (item) { return item.value === _this.filterByStatus; })[0].viewValue);
     };
-    ProjectControlPanelComponent.prototype.getFilterByTypeWidth = function () {
+    ProjectControlPanelComponent.prototype.getfilterByWorkTypeWidth = function () {
         var _this = this;
-        return ProjectControlPanelComponent_1.getTextWidth(this.filterTypes.filter(function (item) { return item.value === _this.filterByType; })[0].viewValue);
+        return ProjectControlPanelComponent_1.getTextWidth(this.filterTypes.filter(function (item) { return item.value === _this.filterByWorkType; })[0].viewValue);
     };
     ProjectControlPanelComponent.prototype.getSortByAttrWidth = function () {
         var _this = this;
@@ -1449,9 +1449,9 @@ var ProjectControlPanelComponent = /** @class */ (function () {
         this.projectService.setState({ filterByStatus: filterByStatus });
     };
     ProjectControlPanelComponent.prototype.onTypeChange = function () {
-        var filterByType = this.filterByType;
-        this.filterByTypeWidth = this.getFilterByTypeWidth();
-        this.projectService.setState({ filterByType: filterByType });
+        var filterByWorkType = this.filterByWorkType;
+        this.filterByWorkTypeWidth = this.getfilterByWorkTypeWidth();
+        this.projectService.setState({ filterByWorkType: filterByWorkType });
     };
     ProjectControlPanelComponent.prototype.onAttrChange = function () {
         var sortByAttr = this.sortByAttr;
@@ -1461,13 +1461,13 @@ var ProjectControlPanelComponent = /** @class */ (function () {
     ProjectControlPanelComponent.prototype.ngOnInit = function () {
         this.filterByStatus = 'all';
         this.filterByStatusWidth = this.getFilterByStatusWidth();
-        this.filterByType = 'all';
-        this.filterByTypeWidth = this.getFilterByTypeWidth();
+        this.filterByWorkType = 'all';
+        this.filterByWorkTypeWidth = this.getfilterByWorkTypeWidth();
         this.sortByAttr = 'year';
         this.sortByAttrWidth = this.getSortByAttrWidth();
         this.projectService.setState({
             filterByStatus: 'all',
-            filterByType: 'all',
+            filterByWorkType: 'all',
             sortByAttr: 'year',
         });
     };
@@ -1644,7 +1644,7 @@ var ProjectService = /** @class */ (function () {
         this.projects$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](_mock_projects__WEBPACK_IMPORTED_MODULE_4__["default"]);
         this.state$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({
             filterByStatus: 'all',
-            filterByType: 'all',
+            filterByWorkType: 'all',
             sortByAttr: 'year',
         });
     }
@@ -1660,7 +1660,7 @@ var ProjectService = /** @class */ (function () {
         return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this.projects);
     };
     ProjectService.prototype.filterProjects = function () {
-        this.projects$.next(_helpers_helpers_component__WEBPACK_IMPORTED_MODULE_3__["HelpersComponent"].filterBy(this.projects, 'type', this.state.filterByType));
+        this.projects$.next(_helpers_helpers_component__WEBPACK_IMPORTED_MODULE_3__["HelpersComponent"].filterBy(this.projects, 'type', this.state.filterByWorkType));
     };
     ProjectService.prototype.sortProjects = function () {
         this.projects$.next(_helpers_helpers_component__WEBPACK_IMPORTED_MODULE_3__["HelpersComponent"].orderBy.apply(_helpers_helpers_component__WEBPACK_IMPORTED_MODULE_3__["HelpersComponent"], [this.projects].concat([this.state.sortByAttr])));
