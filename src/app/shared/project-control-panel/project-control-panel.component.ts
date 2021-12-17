@@ -22,7 +22,6 @@ export class ProjectControlPanelComponent implements OnInit {
   filterTypes: Select[] = [
     { value: "all", viewValue: "All" },
     { value: "design", viewValue: "Design" },
-    { value: "concept", viewValue: "Concept" },
     { value: "coding", viewValue: "Coding" },
     { value: "layout", viewValue: "Layout" },
   ];
@@ -43,7 +42,7 @@ export class ProjectControlPanelComponent implements OnInit {
     span.setAttribute("style", "display: hidden;");
     span.innerHTML = txt;
     document.body.appendChild(span);
-    const res = span.offsetWidth;
+    const res = span.offsetWidth + 1;
     span.remove();
     return res;
   }
