@@ -101,17 +101,6 @@ export const PORTFOLIO_PROJECTS: IProject[] = [
     status: ProjectStatus.Inactive,
   },
   {
-    title: "JKH Service",
-    type: "Website",
-    description: "Landing website for a building company",
-    imagePreview: "",
-    image: "",
-    link: "",
-    year: 2018,
-    workTypes: ["design"],
-    status: ProjectStatus.Inactive,
-  },
-  {
     title: "TASS Wiki",
     type: "Website",
     description: "Information agency wiki website",

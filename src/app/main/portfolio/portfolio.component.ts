@@ -4,11 +4,11 @@ import { PortfolioProjectService } from "../../shared/project/portfolio-project.
 import { IProject } from "../../shared/project/project";
 
 @Component({
-  selector: "app-post-mortem",
-  templateUrl: "./post-mortem.component.html",
-  styleUrls: ["./post-mortem.component.less"],
+  selector: "app-portfolio",
+  templateUrl: "./portfolio.component.html",
+  styleUrls: ["./portfolio.component.less"],
 })
-export class PostMortemComponent implements OnInit {
+export class PortfolioComponent implements OnInit {
   projects: IProject[] = [];
 
   constructor(private projectService: PortfolioProjectService) {}

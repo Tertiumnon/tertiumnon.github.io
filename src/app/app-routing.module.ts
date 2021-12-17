@@ -11,12 +11,12 @@ const routes: Routes = [
     loadChildren: () => import("./main/projects/projects.module").then((m) => m.ProjectsModule),
   },
   {
-    path: "post-mortem",
-    loadChildren: () => import("./main/post-mortem/post-mortem.module").then((m) => m.PostMortemModule),
+    path: "portfolio",
+    loadChildren: () => import("./main/portfolio/portfolio.module").then((m) => m.PortfolioModule),
   },
   {
-    path: "contacts",
-    loadChildren: () => import("./main/contacts/contacts.module").then((m) => m.ContactsModule),
+    path: "about",
+    loadChildren: () => import("./main/about/about.module").then((m) => m.AboutModule),
   },
   { path: "**", redirectTo: "" },
 ];

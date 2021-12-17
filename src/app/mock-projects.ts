@@ -40,7 +40,7 @@ const PROJECTS: IProject[] = [
     description: "Visual Studio Code extension for JavaScript autocompletion",
     imagePreview: "",
     image: "",
-    link: "https://marketplace.visualstudio.com/items?itemName=vittertiumnon.tertium-js-snippets",
+    link: "https://marketplace.visualstudio.com/items?itemName=tertiumnon.tertium-js-snippets",
     year: 2019,
     workTypes: ["coding"],
     status: ProjectStatus.Active,

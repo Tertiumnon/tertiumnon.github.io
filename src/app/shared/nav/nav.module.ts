@@ -1,15 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NavComponent } from './nav.component';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
 
+import { NavComponent } from "./nav.component";
 
 @NgModule({
   declarations: [NavComponent],
-  imports: [
-    CommonModule,
-    RouterModule
-  ],
-  exports: [NavComponent]
+  imports: [CommonModule, RouterModule],
+  exports: [NavComponent],
 })
-export class NavModule { }
+export class NavModule {}
