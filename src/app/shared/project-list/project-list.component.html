@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutGap="10px" gdGap="20px" gdColumns="32% 32% 32%">
+<div fxLayout="row" fxLayoutGap="10px" gdGap="20px" gdColumns="32% 32% 32%" class="project-list">
   <div fxFlex *ngFor="let project of projects" class="card-item" (click)="onSelect(project)">
     <app-project-card
       [title]="project.title"

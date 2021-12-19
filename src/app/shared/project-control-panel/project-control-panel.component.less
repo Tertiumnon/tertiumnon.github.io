@@ -2,6 +2,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+
   &::-ms-expand {
     display: none;
   }
@@ -11,29 +12,37 @@
   display: flex;
   justify-content: flex-end;
   margin: 0 10px 10px;
-  color: #c4c4c4;
+  color: var(--text-color);
+
   .filters {
     display: flex;
+
     .filter {
       margin: 0 0 0 20px;
+
       label {
         display: inline-block;
         font-size: .9em;
         margin-right: 4px;
       }
+
       select {
+        .hide-arrow-mixin;
+        
         display: inline-block;
-        background: none;
         border: none;
-        color: white;
-        background-color: #0000;
-        font-size: .9em;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        font-family: 'VT323', monospace;
+        font-size: 0.9em;
         border-bottom: 1px dashed;
         text-align: center;
         cursor: pointer;
-        .hide-arrow-mixin;
+
+        &:hover {
+          background-color: var(--bg-color);
+        }
       }
     }
   }
 }
-

@@ -1,5 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { interval } from "rxjs";
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { interval, Subscription } from "rxjs";
 import { scan } from "rxjs/operators";
 
 import { markForRemoval, updateDrops, updateMatrix } from "./matrix";
@@ -10,11 +10,12 @@ import { render } from "./matrix-renderer";
   templateUrl: "./matrix.component.html",
   styleUrls: ["./matrix.component.less"],
 })
-export class MatrixComponent implements OnInit {
-  @ViewChild("matrixElementRef") matrixElement: ElementRef<HTMLElement> | undefined = undefined;
+export class MatrixComponent implements OnInit, OnDestroy {
+  @ViewChild("matrixElementRef") matrixElement?: ElementRef<HTMLElement>;
+  matrix$?: Subscription;
 
   ngOnInit(): void {
-    interval(300)
+    this.matrix$ = interval(300)
       .pipe(
         scan<number, any[]>((matrix) => {
           if (!this.matrixElement) throw new Error("Matrix element doesn't exist");
@@ -22,5 +23,9 @@ export class MatrixComponent implements OnInit {
         }, [])
       )
       .subscribe(render);
+  }
+
+  ngOnDestroy(): void {
+    this.matrix$?.unsubscribe();
   }
 }

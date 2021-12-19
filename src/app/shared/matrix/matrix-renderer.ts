@@ -3,7 +3,7 @@ const createElem = (drop: { x: string; y: string; d: any[] }) => {
   elem.style.position = "absolute";
   elem.style.marginTop = drop.x + "px";
   elem.style.marginLeft = drop.y + "px";
-  elem.style.fontSize = "12px";
+  elem.style.fontSize = "18px";
   elem.innerHTML = drop.d.reduce((acc: string, c: string) => (acc += "<br/>" + c), "");
   elem.style["color"] = `rgb(21, ${100 + drop.d.length * 10}, 21)`;
   return elem;

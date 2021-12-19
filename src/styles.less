@@ -2,13 +2,25 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+:root {
+  --text-color: #f6edff;
+  --bg-color: #32304d;
+}
+
 html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  // font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'VT323', monospace;
+  font-size: 22px;
+}
+
+select {
+  font-family: 'VT323', monospace;
 }
 
 .container {
@@ -31,10 +43,10 @@ main .container {
 }
 
 .text-page {
-  color: white;
+  color: var(--text-color);
 
   h1 {
-    font-family: "Roboto", sans-serif;
+    font-family: 'VT323', monospace;
     font-weight: normal;
     text-transform: uppercase;
   }
@@ -67,6 +79,14 @@ main .container {
 
 /* CARD */
 
+.mat-card {
+  font-family: 'VT323', monospace;
+
+  .mat-standard-chip {
+    border-radius: 0;
+  }
+}
+
 .mat-card.project-card {
   border-radius: 0;
   cursor: pointer;
@@ -83,13 +103,13 @@ main .container {
     mat-card-title {
       text-transform: uppercase;
       font-size: 1.1em;
-      font-family: Roboto,"Helvetica Neue",sans-serif;
+      font-family: 'VT323', monospace;
     }
 
     mat-card-subtitle {
       text-transform: lowercase;
       font-size: 0.8em;
-      font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+      font-family: 'VT323', monospace;
     }
 
     .mat-card-header-text {
@@ -110,7 +130,7 @@ main .container {
 
     .description {
       position: absolute;
-      font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+      font-family: 'VT323', monospace;
       top: 0;
       padding: 14px 28px 14px 20px;
       background-color: #1c1b3edb;

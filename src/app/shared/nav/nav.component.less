@@ -10,9 +10,22 @@ nav {
     font-size: 0.9em;
     text-decoration: none;
     cursor: pointer;
+    outline: none;
 
     &.active {
-      text-decoration: underline;
+      position: relative;
+
+      &::before {
+        content: "[";
+        position: absolute;
+        left: -0.3em;
+      }
+
+      &::after {
+        content: "]";
+        position: absolute;
+        right: -0.3em;
+      }
     }
   }
 }
