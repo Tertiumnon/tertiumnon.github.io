@@ -1,24 +1,18 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-export interface DialogData {
-  title: string;
-  image: string;
-  link: string;
-  description: string;
-}
+import { ProjectCardDialog } from './project-card-dialog';
 
 @Component({
   selector: 'app-project-card-dialog',
   templateUrl: './project-card-dialog.component.html',
-  styleUrls: ['./project-card-dialog.component.less']
+  styleUrls: ['./project-card-dialog.component.less'],
 })
 export class ProjectCardDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<ProjectCardDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    ) {
-    }
+    private dialogRef: MatDialogRef<ProjectCardDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: ProjectCardDialog
+  ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
