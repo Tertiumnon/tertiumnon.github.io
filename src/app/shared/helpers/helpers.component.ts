@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 
-import { IProject } from "../project/project";
+import { IProject } from "../../entities/project/project.interface";
 
 @Component({
   selector: "app-helpers",

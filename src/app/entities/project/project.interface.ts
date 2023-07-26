@@ -15,7 +15,7 @@ export interface IProject {
   status: ProjectStatus;
 }
 
-export interface State {
+export interface IState {
   filterByStatus?: ProjectStatus;
   filterByWorkType?: string;
   sortByAttrVal?: string;

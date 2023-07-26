@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { ProjectCardDialogComponent } from '../project-card-dialog/project-card-dialog.component';
-import { IProject } from '../project/project';
+import { IProject } from '../../entities/project/project.interface';
 
 @Component({
   selector: 'app-project-list',

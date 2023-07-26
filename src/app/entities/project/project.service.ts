@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
-import PROJECTS from "../../mock-projects";
-import { HelpersComponent } from "../helpers/helpers.component";
-import { IProject, ProjectStatus, State } from "./project";
+import PROJECTS from "../../entities/project/project.mock";
+import { HelpersComponent } from "../../shared/helpers/helpers.component";
+import { IProject, ProjectStatus, IState } from "./project.interface";
 
 @Injectable({
   providedIn: "root",
@@ -11,14 +11,14 @@ import { IProject, ProjectStatus, State } from "./project";
 export class ProjectService {
   projects: IProject[] = PROJECTS;
   projects$ = new BehaviorSubject<IProject[] | undefined>(PROJECTS);
-  state: State = {};
-  state$ = new BehaviorSubject<State>({
+  state: IState = {};
+  state$ = new BehaviorSubject<IState>({
     filterByStatus: ProjectStatus.Active,
     filterByWorkType: "all",
     sortByAttrVal: "year",
   });
 
-  setState(state?: State): void {
+  setState(state?: IState): void {
     this.state = {
       ...this.state,
       ...state,
