@@ -2,8 +2,8 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
-import { EmulatorModule } from "../../shared/emulator/emulator.module";
-import { MatrixModule } from "../../shared/matrix/matrix.module";
+import { EmulatorModule } from "../../components/emulator/emulator.module";
+import { MatrixModule } from "../../components/matrix/matrix.module";
 import { IndexComponent } from "./index.component";
 
 @NgModule({

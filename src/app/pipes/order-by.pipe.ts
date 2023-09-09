@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { HelpersComponent } from '../helpers/helpers.component';
+import { HelpersComponent } from '../components/helpers/helpers.component';
 
 @Pipe({
   name: 'orderBy'

@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
 import { RouterModule } from '@angular/router';
 
-import { ProjectControlPanelModule } from '../../shared/project-control-panel/project-control-panel.module';
-import { ProjectListModule } from '../../shared/project-list/project-list.module';
+import { ProjectControlPanelModule } from '../../components/project-control-panel/project-control-panel.module';
+import { ProjectListModule } from '../../components/project-list/project-list.module';
 import { ProjectsComponent } from './projects.component';
 
 @NgModule({

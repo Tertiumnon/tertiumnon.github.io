@@ -5,17 +5,17 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./main/index/index.module').then((m) => m.IndexModule),
+      import('./pages/index/index.module').then((m) => m.IndexModule),
   },
   {
     path: 'projects',
     loadChildren: () =>
-      import('./main/projects/projects.module').then((m) => m.ProjectsModule),
+      import('./pages/projects/projects.module').then((m) => m.ProjectsModule),
   },
   {
     path: 'about',
     loadChildren: () =>
-      import('./main/about/about.module').then((m) => m.AboutModule),
+      import('./pages/about/about.module').then((m) => m.AboutModule),
   },
   { path: '**', redirectTo: '' },
 ];

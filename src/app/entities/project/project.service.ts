@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
 import PROJECTS from "../../entities/project/project.mock";
-import { HelpersComponent } from "../../shared/helpers/helpers.component";
+import { HelpersComponent } from "../../components/helpers/helpers.component";
 import { IProject, ProjectStatus, IState } from "./project.interface";
 
 @Injectable({
