@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 
 import { ProjectListComponent } from './project-list.component';
 
@@ -12,10 +11,6 @@ describe('ProjectListComponent', () => {
       TestBed.configureTestingModule({
         declarations: [ProjectListComponent],
         providers: [
-          {
-            provide: MatDialog,
-            useValue: {},
-          }
         ]
       }).compileComponents();
     })

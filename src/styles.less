@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --text-color: #f6edff;
@@ -14,9 +16,9 @@ body {
 
 body {
   margin: 0;
-  // font-family: Roboto, "Helvetica Neue", sans-serif;
   font-family: 'VT323', monospace;
-  font-size: 22px;
+  font-size: 20px;
+  color: white;
 }
 
 select {
@@ -29,123 +31,19 @@ select {
   max-width: 980px;
 }
 
-main {
-  background-color: #32304d;
-  overflow: auto;
-  height: calc(100% - 130px);
-  border-top: 1px solid #e4e4e4;
-  border-bottom: 1px solid #e4e4e4;
-}
+// .text-page {
+//   color: var(--text-color);
 
-main .container {
-  padding: 10px 0;
-  height: calc(100% - 20px);
-}
+//   h1 {
+//     font-family: 'VT323', monospace;
+//     font-weight: normal;
+//     text-transform: uppercase;
+//   }
 
-.text-page {
-  color: var(--text-color);
-
-  h1 {
-    font-family: 'VT323', monospace;
-    font-weight: normal;
-    text-transform: uppercase;
-  }
-
-  a {
-    color: white;
-  }
-}
-
-.sidenav-container {
-  height: 100%;
-  .mat-sidenav-content {
-    display: contents;
-  }
-}
-
-.sidenav {
-  width: 200px;
-}
-
-.sidenav .mat-toolbar {
-  background: inherit;
-}
-
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-/* CARD */
-
-.mat-card {
-  font-family: 'VT323', monospace;
-
-  .mat-standard-chip {
-    border-radius: 0;
-  }
-}
-
-.mat-card.project-card {
-  border-radius: 0;
-  cursor: pointer;
-  padding: 0;
-  opacity: 0.95;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  .mat-card-header {
-    padding: 18px 20px 0;
-
-    mat-card-title {
-      text-transform: uppercase;
-      font-size: 1.1em;
-      font-family: 'VT323', monospace;
-    }
-
-    mat-card-subtitle {
-      text-transform: lowercase;
-      font-size: 0.8em;
-      font-family: 'VT323', monospace;
-    }
-
-    .mat-card-header-text {
-      margin: 0;
-    }
-  }
-
-  .preview {
-    position: relative;
-    overflow: hidden;
-
-    .mat-card-image {
-      border-top: 1px solid #dadada;
-      border-bottom: 1px solid #dadada;
-      margin-top: 0;
-      margin-bottom: -4px;
-    }
-
-    .description {
-      position: absolute;
-      font-family: 'VT323', monospace;
-      top: 0;
-      padding: 14px 28px 14px 20px;
-      background-color: #1c1b3edb;
-      width: calc(100% - 48px);
-      height: calc(100% - 28px);
-      color: #fff;
-      font-weight: 300;
-    }
-  }
-
-  .mat-card-content {
-    margin-top: 0px;
-    padding: 16px 14px;
-  }
-}
+//   a {
+//     color: white;
+//   }
+// }
 
 /* HELPERS */
 

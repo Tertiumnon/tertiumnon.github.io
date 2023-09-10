@@ -1,12 +1,9 @@
-<div class="project-list">
-  <div *ngFor="let project of projects" class="card-item" (click)="onSelect(project)">
-    <app-project-card
-      [title]="project.title"
-      [year]="project.year"
-      [type]="project.type"
+<div class="flex flex-wrap">
+  <div *ngFor="let project of projects"
+    class="w-full sm:w-1/2 lg:w-1/3 flex justify-content-center">
+    <app-project-card [title]="project.title" [year]="project.year" [type]="project.type"
       [description]="project.description"
       [image]="project.imagePreview !== '' ? project.imagePreview : defaultImagePreview"
-      [categories]="project.workTypes"
-    ></app-project-card>
+      [categories]="project.workTypes" (click)="onProjectClick(project)" class="m-2"></app-project-card>
   </div>
 </div>

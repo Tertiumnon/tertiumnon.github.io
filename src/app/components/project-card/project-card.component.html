@@ -1,15 +1,13 @@
-<mat-card class="project-card">
-  <mat-card-header class="project-header">
-    <mat-card-title>{{ title }}</mat-card-title>
-    <mat-card-subtitle>{{ year }}, {{ type }}</mat-card-subtitle>
-  </mat-card-header>
-  <div class="preview">
-    <img mat-card-image [src]="image" />
-    <div class="description">{{ description }}</div>
+<div class="bg-white min-h-96 w-full h-full project-card">
+  <div class="py-4 px-6 text-black header">
+    <div class="project-card-title">{{ title }}</div>
+    <div class="-mt-1 text-lg">{{ type }}</div>
   </div>
-  <mat-card-content>
-    <mat-chip-list>
-      <mat-chip *ngFor="let category of categories">{{ category }}</mat-chip>
-    </mat-chip-list>
-  </mat-card-content>
-</mat-card>
+  <div class="h-36 body">
+    <img project-card-image [src]="image" />
+    <div class="w-full text-white text-lg h-56 description">{{ description }}</div>
+  </div>
+  <div class="py-4 px-6 text-black text-lg footer">
+    {{ year }}
+  </div>
+</div>

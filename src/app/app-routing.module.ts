@@ -13,6 +13,11 @@ const routes: Routes = [
       import('./pages/projects/projects.module').then((m) => m.ProjectsModule),
   },
   {
+    path: 'projects/:id',
+    loadChildren: () =>
+      import('./pages/project/project.module').then((m) => m.ProjectModule),
+  },
+  {
     path: 'about',
     loadChildren: () =>
       import('./pages/about/about.module').then((m) => m.AboutModule),

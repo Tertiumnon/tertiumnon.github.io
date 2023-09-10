@@ -1,0 +1,16 @@
+<ng-container *ngIf="project">
+  <h1 mat-dialog-title class="project-card-dialog-header">{{ project.title }}</h1>
+  <div *ngIf="project.image !== ''" mat-dialog-content class="project-card-dialog-content">
+    <img project-card-image class="project-card-dialog-image" [src]="project.image" />
+  </div>
+  <div mat-dialog-content class="project-card-dialog-description">
+    {{ project.description }}
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+    <a *ngIf="project.link !== ''" mat-button [href]="project.link" target="_blank">
+      Link
+    </a>
+  </div>
+
+</ng-container>

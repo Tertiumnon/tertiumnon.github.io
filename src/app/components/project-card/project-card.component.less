@@ -1,8 +1,40 @@
-.mat-chip.mat-standard-chip {
-  font-size: small;
-  padding: 12px 11px;
-  min-height: 24px;
-  color: grey;
-  background-color: #efefef !important;
-  font-weight: normal;
+.project-card {
+  opacity: 0.95;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  .header {
+    .project-card-title {
+      text-transform: uppercase;
+      font-family: 'VT323', monospace;
+    }
+  }
+
+  .body {
+    position: relative;
+    overflow: hidden;
+
+    .project-card-image {
+      border-top: 1px solid #dadada;
+      border-bottom: 1px solid #dadada;
+      margin-top: 0;
+      margin-bottom: -4px;
+    }
+
+    .description {
+      position: absolute;
+      font-family: 'VT323', monospace;
+      top: 0;
+      padding: 14px 28px 14px 20px;
+      background-color: #1c1b3edb;
+      font-weight: 300;
+    }
+  }
+
+  .project-card-content {
+    margin-top: 0px;
+    padding: 16px 14px;
+  }
 }

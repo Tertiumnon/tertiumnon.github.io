@@ -1,9 +1,12 @@
+import { Params } from "@angular/router";
+
 export enum ProjectStatus {
   Inactive = "0",
   Active = "1",
 }
 
-export interface IProject {
+export interface IProject extends Params {
+  name: string;
   title: string;
   type: string;
   description: string;

@@ -1,39 +1,33 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-
-import PROJECTS from "../../entities/project/project.mock";
-import { HelpersComponent } from "../../components/helpers/helpers.component";
-import { IProject, ProjectStatus, IState } from "./project.interface";
+import { Injectable } from '@angular/core';
+import PROJECT_ITEMS from './project.mock';
+import { IProject } from './project.interface';
+import { FilterOperator, IApiRequestFindParams } from '../../core/api/api-request-find.interface';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root'
 })
 export class ProjectService {
-  projects: IProject[] = PROJECTS;
-  projects$ = new BehaviorSubject<IProject[] | undefined>(PROJECTS);
-  state: IState = {};
-  state$ = new BehaviorSubject<IState>({
-    filterByStatus: ProjectStatus.Active,
-    filterByWorkType: "all",
-    sortByAttrVal: "year",
-  });
-
-  setState(state?: IState): void {
-    this.state = {
-      ...this.state,
-      ...state,
-    };
-    this.filterProjects();
-    this.sortProjects();
+  find(params: IApiRequestFindParams): IProject[] {
+    const { filters } = params;
+    let projects = [...PROJECT_ITEMS];
+    if (filters.length) {
+      filters.forEach((filter) => {
+        projects = projects.filter((project) => project[filter.name] === filter.value)
+      })
+    }
+    return projects;
   }
 
-  filterProjects() {
-    let projects = HelpersComponent.filterBy(this.projects, "status", this.state.filterByStatus);
-    projects = HelpersComponent.filterBy(projects, "workType", this.state.filterByWorkType);
-    this.projects$.next(projects);
-  }
-
-  sortProjects() {
-    this.projects$.next(HelpersComponent.orderBy(this.projects$.value, ...[this.state.sortByAttrVal]));
+  get(name: string): IProject | null {
+    const projects = this.find({
+      filters: [
+        {
+          name: 'name',
+          operator: FilterOperator.Equal,
+          value: name
+        }
+      ]
+    });
+    return projects.length ? projects[0] : null;
   }
 }

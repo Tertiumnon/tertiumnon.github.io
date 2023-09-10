@@ -1,17 +1,9 @@
-<div class="project-control-panel">
+<div class="sticky top-0 z-10 project-control-panel">
   <div class="filters">
     <div *ngIf="isStatusFilterVisible" class="filter filter-by-status">
       <label>Status</label>
       <select [(ngModel)]="filterByStatus" [ngStyle]="{ 'width.px': filterByStatusWidth }" (change)="onStatusChange()">
         <option *ngFor="let item of filterStatuses" [value]="item.value">
-          {{ item.viewValue }}
-        </option>
-      </select>
-    </div>
-    <div class="filter filter-by-type">
-      <label>Type of Work</label>
-      <select [(ngModel)]="filterByWorkType" [ngStyle]="{ 'width.px': filterByWorkTypeWidth }" (change)="onTypeChange()">
-        <option *ngFor="let item of filterTypes" [value]="item.value">
           {{ item.viewValue }}
         </option>
       </select>

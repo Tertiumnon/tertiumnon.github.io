@@ -1,9 +1,10 @@
 import { IProject, ProjectStatus } from './project.interface';
 
-const PROJECTS: IProject[] = [
+const PROJECT_ITEMS: IProject[] = [
   {
+    name: 'cheatsheets',
     title: 'Cheatsheets',
-    type: 'Website',
+    type: 'Knowledge base',
     description: 'Cheatsheets for programmers',
     imagePreview: '',
     image: '',
@@ -13,6 +14,7 @@ const PROJECTS: IProject[] = [
     status: ProjectStatus.Active,
   },
   {
+    name: 'send-text-to-form',
     title: 'Send Text To Form',
     type: 'Web extension',
     description: 'Chrome extension for sending text to form on any page',
@@ -25,6 +27,7 @@ const PROJECTS: IProject[] = [
     status: ProjectStatus.Inactive,
   },
   {
+    name: 'mw-deploy',
     title: 'MediaWiki Deploy',
     type: 'NodeJS application',
     description: 'NodeJS application for deploying MediaWiki pages',
@@ -36,6 +39,7 @@ const PROJECTS: IProject[] = [
     status: ProjectStatus.Inactive,
   },
   {
+    name: 'bookmarks-manager',
     title: 'Bookmarks Manager',
     type: 'Web extension',
     description: 'Firefox extension for bookmarks organizing',
@@ -47,6 +51,7 @@ const PROJECTS: IProject[] = [
     status: ProjectStatus.Active,
   },
   {
+    name: 'tertium-js-snippets',
     title: 'Tertium JS Snippets',
     type: 'App extension',
     description: 'Visual Studio Code extension for JavaScript autocompletion',
@@ -58,7 +63,8 @@ const PROJECTS: IProject[] = [
     status: ProjectStatus.Active,
   },
   {
-    title: 'json-all-to-one',
+    name: 'json-all-to-one',
+    title: 'JSON All to One',
     type: 'NodeJS package',
     description: 'NodeJS script for JSON files concatenation',
     imagePreview: '',
@@ -69,7 +75,8 @@ const PROJECTS: IProject[] = [
     status: ProjectStatus.Inactive,
   },
   {
-    title: 'json-to-sql',
+    name: 'json-to-sql',
+    title: 'JSON to SQL',
     type: 'NodeJS package',
     description: 'NodeJS script that creates SQL script from JSON file',
     imagePreview: '',
@@ -80,6 +87,7 @@ const PROJECTS: IProject[] = [
     status: ProjectStatus.Inactive,
   },
   {
+    name: 'tertium-countries',
     title: '@tertium/countries',
     type: 'NodeJS package',
     description: 'NodeJS module for country codes',
@@ -91,6 +99,7 @@ const PROJECTS: IProject[] = [
     status: ProjectStatus.Active,
   },
   {
+    name: 'tertium-icons',
     title: 'Tertium Icons',
     type: 'NodeJS package',
     description: 'SVG and font icons',
@@ -102,6 +111,7 @@ const PROJECTS: IProject[] = [
     status: ProjectStatus.Inactive,
   },
   {
+    name: 'senior-pomodoro',
     title: 'Senior Pomodoro',
     type: 'Desktop application',
     description: 'Pomodoro timer for coders',
@@ -114,4 +124,4 @@ const PROJECTS: IProject[] = [
   },
 ];
 
-export default PROJECTS;
+export default PROJECT_ITEMS;

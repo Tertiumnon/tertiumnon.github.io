@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 import { IProject } from '../../entities/project/project.interface';
-import { ProjectService } from '../../entities/project/project.service';
+import { ProjectsService } from './projects.service';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.less'],
 })
 export class ProjectsComponent implements OnInit {
   projects: IProject[] = [];
 
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectsService) {}
 
   ngOnInit(): void {
     this.projectService.projects$.subscribe(
