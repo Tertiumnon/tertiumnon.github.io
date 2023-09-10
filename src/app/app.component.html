@@ -1,15 +1,9 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav-content>
+<app-header></app-header>
 
-    <app-top-menu></app-top-menu>
+<main>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</main>
 
-    <main>
-      <div class="container">
-        <router-outlet></router-outlet>
-      </div>
-    </main>
-
-    <app-footer></app-footer>
-
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<app-footer></app-footer>

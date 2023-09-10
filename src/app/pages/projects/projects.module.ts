@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
 import { RouterModule } from '@angular/router';
 
 import { ProjectControlPanelModule } from '../../components/project-control-panel/project-control-panel.module';
 import { ProjectListModule } from '../../components/project-list/project-list.module';
 import { ProjectsComponent } from './projects.component';
+import { ProjectService } from '../../entities/project/project.service';
 
 @NgModule({
   declarations: [ProjectsComponent],
@@ -13,7 +13,6 @@ import { ProjectsComponent } from './projects.component';
     CommonModule,
     ProjectControlPanelModule,
     ProjectListModule,
-    MatDialogModule,
     RouterModule.forChild([
       {
         path: '',
@@ -23,5 +22,6 @@ import { ProjectsComponent } from './projects.component';
     ]),
   ],
   exports: [ProjectsComponent],
+  providers: [ProjectService]
 })
-export class ProjectsModule {}
+export class ProjectsModule { }

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { Select } from '../select/select';
 import { ProjectStatus } from '../../entities/project/project.interface';
-import { ProjectService } from '../../entities/project/project.service';
+import { ProjectsService } from '../../pages/projects/projects.service';
 
 @Component({
   selector: 'app-project-control-panel',
@@ -35,8 +35,8 @@ export class ProjectControlPanelComponent implements OnInit {
   sortByAttrWidth: number = 0;
 
   constructor(
-    private projectService: ProjectService,
-    private ProjectService: ProjectService
+    private projectService: ProjectsService,
+    private ProjectsService: ProjectsService
   ) {}
 
   static getTextWidth(txt: string): number {
@@ -75,21 +75,21 @@ export class ProjectControlPanelComponent implements OnInit {
     const { filterByStatus } = this;
     this.filterByStatusWidth = this.getFilterByStatusWidth();
     this.projectService.setState({ filterByStatus });
-    this.ProjectService.setState({ filterByStatus });
+    this.ProjectsService.setState({ filterByStatus });
   }
 
   onTypeChange(): void {
     const { filterByWorkType } = this;
     this.filterByWorkTypeWidth = this.getFilterByWorkTypeWidth();
     this.projectService.setState({ filterByWorkType });
-    this.ProjectService.setState({ filterByWorkType });
+    this.ProjectsService.setState({ filterByWorkType });
   }
 
   onAttrChange(): void {
     const { sortByAttrVal } = this;
     this.sortByAttrWidth = this.getSortByAttrWidth();
     this.projectService.setState({ sortByAttrVal });
-    this.ProjectService.setState({ sortByAttrVal });
+    this.ProjectsService.setState({ sortByAttrVal });
   }
 
   ngOnInit() {
@@ -104,7 +104,7 @@ export class ProjectControlPanelComponent implements OnInit {
       filterByWorkType: this.filterByWorkType,
       sortByAttrVal: this.sortByAttrVal,
     });
-    this.ProjectService.setState({
+    this.ProjectsService.setState({
       filterByStatus: this.filterByStatus,
       filterByWorkType: this.filterByWorkType,
       sortByAttrVal: this.sortByAttrVal,
