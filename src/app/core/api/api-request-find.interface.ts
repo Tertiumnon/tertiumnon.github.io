@@ -1,12 +1,4 @@
-export enum FilterOperator {
-  Equal = 'eq',
-}
-
-export interface IFilter {
-  name: string;
-  operator: FilterOperator;
-  value: string | string[] | number | number[];
-}
+import { IFilter } from "../filter/filter.interface";
 
 export interface IApiRequestFindParams {
   filters: IFilter[];

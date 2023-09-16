@@ -9,7 +9,7 @@
       </select>
     </div>
     <div class="filter sort-by-attr">
-      <label>Sort by</label>
+      <label>Sort by Release</label>
       <select [(ngModel)]="sortByAttrVal" [ngStyle]="{ 'width.px': sortByAttrWidth }" (change)="onAttrChange()">
         <option *ngFor="let item of sortAttrs" [value]="item.value">
           {{ item.viewValue }}

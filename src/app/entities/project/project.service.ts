@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import PROJECT_ITEMS from './project.mock';
 import { IProject } from './project.interface';
-import { FilterOperator, IApiRequestFindParams } from '../../core/api/api-request-find.interface';
+import { IApiRequestFindParams } from '../../core/api/api-request-find.interface';
+import { FilterOperator } from '../../core/filter/filter.interface';
 
 @Injectable({
   providedIn: 'root'
