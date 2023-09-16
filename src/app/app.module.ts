@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { FooterModule } from './components/footer/footer.module';
 import { HelpersComponent } from './components/helpers/helpers.component';
 import { OrderByPipe } from './pipes/order-by.pipe';
-import { ProjectModule } from './pages/project/project.module';
 import { HeaderModule } from './components/header/header.module';
 
 @NgModule({
@@ -16,7 +15,6 @@ import { HeaderModule } from './components/header/header.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ProjectModule,
     HeaderModule,
     FooterModule,
   ],

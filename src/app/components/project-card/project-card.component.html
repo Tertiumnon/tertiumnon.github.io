@@ -1,13 +1,14 @@
-<div class="bg-white min-h-96 w-full h-full project-card">
+<div *ngIf="project" class="bg-white min-h-96 w-full h-full project-card">
   <div class="py-4 px-6 text-black header">
-    <div class="project-card-title">{{ title }}</div>
-    <div class="-mt-1 text-lg">{{ type }}</div>
+    <div class="project-card-title">{{ project.title }}</div>
+    <div class="-mt-1 text-lg">{{ project.type }}</div>
   </div>
   <div class="h-36 body">
-    <img project-card-image [src]="image" />
-    <div class="w-full text-white text-lg h-56 description">{{ description }}</div>
+    <img project-card-image [src]="project.image" />
+    <div class="w-full text-white text-lg h-56 description">{{ project.description }}</div>
   </div>
-  <div class="py-4 px-6 text-black text-lg footer">
-    {{ year }}
+  <div class="flex place-content-between gap-3 py-4 px-6 text-black text-lg footer">
+    <span>{{ project.year }}</span>
+    <span *ngIf="project.link" class="mt-0.5"><a [href]="project.link" target="_blank">&#x260D;</a></span>
   </div>
 </div>

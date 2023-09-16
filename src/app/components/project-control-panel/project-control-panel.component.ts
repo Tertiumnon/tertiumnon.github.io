@@ -10,13 +10,13 @@ import { ProjectsService } from '../../pages/projects/projects.service';
   styleUrls: ['./project-control-panel.component.less'],
 })
 export class ProjectControlPanelComponent implements OnInit {
-  @Input() isStatusFilterVisible: boolean = true;
+  @Input() isStatusFilterVisible = true;
   filterStatuses: Select[] = [
     { value: ProjectStatus.Active, viewValue: 'Active' },
     { value: ProjectStatus.Inactive, viewValue: 'Inactive' },
   ];
   filterByStatus: ProjectStatus = ProjectStatus.Active;
-  filterByStatusWidth: number = 0;
+  filterByStatusWidth = 0;
 
   filterTypes: Select[] = [
     { value: 'all', viewValue: 'All' },
@@ -24,15 +24,15 @@ export class ProjectControlPanelComponent implements OnInit {
     { value: 'coding', viewValue: 'Coding' },
     { value: 'layout', viewValue: 'Layout' },
   ];
-  filterByWorkType: string = '';
-  filterByWorkTypeWidth: number = 0;
+  filterByWorkType = '';
+  filterByWorkTypeWidth = 0;
 
   sortAttrs: Select[] = [
     { value: 'year', viewValue: 'Year (newer)' },
     { value: '-year', viewValue: 'Year (older)' },
   ];
-  sortByAttrVal: string = '';
-  sortByAttrWidth: number = 0;
+  sortByAttrVal = '';
+  sortByAttrWidth = 0;
 
   constructor(
     private projectService: ProjectsService,

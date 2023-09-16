@@ -14,7 +14,6 @@ export interface IProject extends Params {
   imagePreview: string;
   link: string;
   year: number;
-  workTypes: string[];
   status: ProjectStatus;
 }
 

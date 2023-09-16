@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IProject } from '../../entities/project/project.interface';
 
 @Component({
   selector: 'app-project-card',
@@ -6,10 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./project-card.component.less']
 })
 export class ProjectCardComponent {
-  @Input() title = '';
-  @Input() year = 0;
-  @Input() image = '';
-  @Input() type = '';
-  @Input() categories: string[] = [];
-  @Input() description = '';
+  @Input() project?: IProject;
 }
