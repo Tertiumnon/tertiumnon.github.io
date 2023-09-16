@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import { FooterModule } from './components/footer/footer.module';
 import { HelpersComponent } from './components/helpers/helpers.component';
 import { OrderByPipe } from './pipes/order-by.pipe';
-import { ProjectModule } from './pages/project/project.module';
 import { HeaderModule } from './components/header/header.module';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [AppComponent, OrderByPipe, HelpersComponent],
@@ -16,7 +16,7 @@ import { HeaderModule } from './components/header/header.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ProjectModule,
+    MarkdownModule.forRoot(),
     HeaderModule,
     FooterModule,
   ],

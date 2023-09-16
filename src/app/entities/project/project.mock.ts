@@ -8,9 +8,8 @@ const PROJECT_ITEMS: IProject[] = [
     description: 'Cheatsheets for programmers',
     imagePreview: '',
     image: '',
-    link: 'http://cheatsheets.origin-creative-studio.com',
+    link: 'https://github.com/Tertiumnon/cheatsheets',
     year: 2017,
-    workTypes: ['design', 'layout', 'coding'],
     status: ProjectStatus.Active,
   },
   {
@@ -23,7 +22,6 @@ const PROJECT_ITEMS: IProject[] = [
       '/assets/images/projects/send-text-to-form-web-ext/2017-send-text-to-form-web-ext.png',
     link: 'https://chrome.google.com/webstore/detail/send-text-to-form/oapmpchdbmlmblgeambfmcmmoalbgooi',
     year: 2017,
-    workTypes: ['design', 'layout', 'coding'],
     status: ProjectStatus.Inactive,
   },
   {
@@ -35,7 +33,6 @@ const PROJECT_ITEMS: IProject[] = [
     image: '',
     link: 'https://github.com/Tertiumnon/mw-deploy',
     year: 2017,
-    workTypes: ['coding'],
     status: ProjectStatus.Inactive,
   },
   {
@@ -47,7 +44,6 @@ const PROJECT_ITEMS: IProject[] = [
     image: '',
     link: 'https://addons.mozilla.org/en-US/firefox/addon/bookmarks-manager/',
     year: 2017,
-    workTypes: ['design', 'layout', 'coding'],
     status: ProjectStatus.Active,
   },
   {
@@ -59,7 +55,6 @@ const PROJECT_ITEMS: IProject[] = [
     image: '',
     link: 'https://marketplace.visualstudio.com/items?itemName=tertiumnon.tertium-js-snippets',
     year: 2019,
-    workTypes: ['coding'],
     status: ProjectStatus.Active,
   },
   {
@@ -71,7 +66,6 @@ const PROJECT_ITEMS: IProject[] = [
     image: '',
     link: 'https://www.npmjs.com/package/json-all-to-one',
     year: 2019,
-    workTypes: ['coding'],
     status: ProjectStatus.Inactive,
   },
   {
@@ -83,7 +77,6 @@ const PROJECT_ITEMS: IProject[] = [
     image: '',
     link: 'https://www.npmjs.com/package/json-to-sql-script',
     year: 2019,
-    workTypes: ['coding'],
     status: ProjectStatus.Inactive,
   },
   {
@@ -95,7 +88,6 @@ const PROJECT_ITEMS: IProject[] = [
     image: '',
     link: 'https://www.npmjs.com/package/@tertium/countries',
     year: 2021,
-    workTypes: ['coding'],
     status: ProjectStatus.Active,
   },
   {
@@ -107,7 +99,6 @@ const PROJECT_ITEMS: IProject[] = [
     image: '',
     link: 'https://www.npmjs.com/package/tertium.icons',
     year: 2017,
-    workTypes: ['design', 'coding'],
     status: ProjectStatus.Inactive,
   },
   {
@@ -119,7 +110,6 @@ const PROJECT_ITEMS: IProject[] = [
     image: '',
     link: '',
     year: 2020,
-    workTypes: ['design', 'coding', 'desktop'],
     status: ProjectStatus.Active,
   },
 ];
