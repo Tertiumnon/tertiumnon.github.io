@@ -3,7 +3,6 @@ import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
 import { EmulatorModule } from "../../components/emulator/emulator.module";
-import { MatrixModule } from "../../components/matrix/matrix.module";
 import { IndexComponent } from "./index.component";
 
 @NgModule({
@@ -11,7 +10,6 @@ import { IndexComponent } from "./index.component";
   imports: [
     CommonModule,
     EmulatorModule,
-    MatrixModule,
     RouterModule.forChild([
       {
         path: "",

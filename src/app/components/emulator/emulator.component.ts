@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-emulator',
@@ -6,12 +6,6 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./emulator.component.less'],
   encapsulation: ViewEncapsulation.None,
 })
-export class EmulatorComponent implements OnInit {
+export class EmulatorComponent {
   @Input() lines: string[] = [];
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
