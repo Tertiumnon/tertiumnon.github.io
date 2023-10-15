@@ -5,10 +5,13 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:gh": "ng build --output-path docs --base-href /",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "deploy": "ng build --output-path docs --base-href /",
-    "lint": "ng lint"
+    "test": "ng test --browsers ChromeHeadless --watch=false",
+    "lint": "ng lint",
+    "lint:fix": "eslint --fix --ext .ts ./src",
+    "release:minor": "npm --no-git-tag-version version minor && npm run build:gh && git --all && git commit -m \"finish release\" && git flow release finish",
+    "release:major": "npm --no-git-tag-version version major && npm run build:gh && git --all && git commit -m \"finish release\" && git flow release finish"
   },
   "private": true,
   "dependencies": {
@@ -44,6 +47,7 @@
     "@typescript-eslint/parser": "^5.59.2",
     "autoprefixer": "^10.4.15",
     "eslint": "^8.39.0",
+    "husky": "^8.0.3",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.2",
     "karma-chrome-launcher": "~3.1.0",

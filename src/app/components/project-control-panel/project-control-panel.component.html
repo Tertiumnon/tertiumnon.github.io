@@ -3,7 +3,11 @@
     <div class="filters">
       <div *ngIf="isStatusFilterVisible" class="filter filter-by-status">
         <label>Status</label>
-        <select [(ngModel)]="filterByStatus" [ngStyle]="{ 'width.px': filterByStatusWidth }" (change)="onStatusChange()">
+        <select
+          [(ngModel)]="filterByStatus"
+          [ngStyle]="{ 'width.px': filterByStatusWidth }"
+          (change)="onStatusChange()"
+        >
           <option *ngFor="let item of filterStatuses" [value]="item.value">
             {{ item.viewValue }}
           </option>
@@ -11,7 +15,11 @@
       </div>
       <div class="filter sort-by-attr">
         <label>Sort by Release</label>
-        <select [(ngModel)]="sortByAttrVal" [ngStyle]="{ 'width.px': sortByAttrWidth }" (change)="onAttrChange()">
+        <select
+          [(ngModel)]="sortByAttrVal"
+          [ngStyle]="{ 'width.px': sortByAttrWidth }"
+          (change)="onAttrChange()"
+        >
           <option *ngFor="let item of sortAttrs" [value]="item.value">
             {{ item.viewValue }}
           </option>

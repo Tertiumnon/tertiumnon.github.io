@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component } from "@angular/core";
 
 import { IProject } from "../../entities/project/project.interface";
@@ -25,7 +26,7 @@ export class HelpersComponent {
   }
 
   static filterBy(projectList: any, param: string, value: string | undefined) {
-    let newProjectList = [...projectList] as IProject[];
+    const newProjectList = [...projectList] as IProject[];
     if (!value || value === "all") return projectList;
     switch (param) {
       case "status":
