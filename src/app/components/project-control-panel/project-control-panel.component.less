@@ -1,3 +1,8 @@
+.project-control-panel-wrapper {
+  background-color: var(--bg-color);
+  filter: opacity(0.85);
+}
+
 .hide-arrow-mixin {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -11,8 +16,6 @@
 .project-control-panel {
   display: flex;
   justify-content: flex-end;
-  color: var(--text-color);
-  background-color: var(--bg-color);
 
   .filters {
     display: flex;
@@ -34,6 +37,7 @@
         border: none;
         color: var(--text-color);
         background-color: var(--bg-color);
+        filter: opacity(0.85);
         font-family: 'VT323', monospace;
         font-size: 0.9em;
         border-bottom: 1px dashed;
