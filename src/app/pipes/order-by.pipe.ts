@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { HelpersComponent } from '../components/helpers/helpers.component';
@@ -6,9 +7,7 @@ import { HelpersComponent } from '../components/helpers/helpers.component';
   name: 'orderBy'
 })
 export class OrderByPipe implements PipeTransform {
-
   transform(value: any, ...args: any[]): any {
     return HelpersComponent.orderBy(value, ...args);
   }
-
 }
