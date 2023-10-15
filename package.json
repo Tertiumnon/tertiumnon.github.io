@@ -1,6 +1,6 @@
 {
   "name": "tertiumnon-github-io",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,8 +10,8 @@
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "lint": "ng lint",
     "lint:fix": "eslint --fix --ext .ts ./src",
-    "release:minor": "npm --no-git-tag-version version minor && npm run build:gh && git --all && git commit -m \"finish release\" && git flow release finish",
-    "release:major": "npm --no-git-tag-version version major && npm run build:gh && git --all && git commit -m \"finish release\" && git flow release finish"
+    "release:minor": "npm --no-git-tag-version version minor && npm run build:gh && git add --all && git commit -m \"finish release\" && git flow release finish",
+    "release:major": "npm --no-git-tag-version version major && npm run build:gh && git add --all && git commit -m \"finish release\" && git flow release finish"
   },
   "private": true,
   "dependencies": {
