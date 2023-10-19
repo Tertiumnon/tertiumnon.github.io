@@ -1,6 +1,6 @@
 {
   "name": "tertiumnon.github.io",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +10,7 @@
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "lint": "ng lint",
     "lint:fix": "eslint --fix --ext .ts ./src",
-    "release:patch": "npm --no-git-tag-version version patch && npm run build:gh && git add --all && git commit --amend -C HEAD && git flow bugfix finish",
+    "release:hotfix": "npm --no-git-tag-version version patch && npm run build:gh && git add --all && git commit --amend -C HEAD && git flow hotfix finish",
     "release:minor": "npm --no-git-tag-version version minor && npm run build:gh && git add --all && git commit --amend -C HEAD && git flow release finish",
     "release:major": "npm --no-git-tag-version version major && npm run build:gh && git add --all && git commit --amend -C HEAD && git flow release finish"
   },
