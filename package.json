@@ -1,11 +1,11 @@
 {
   "name": "tertiumnon.github.io",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:gh": "ng build --output-path docs --base-href /tertiumnon.github.io/",
+    "build:gh": "ng build --output-path docs --base-href /",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "lint": "ng lint",
