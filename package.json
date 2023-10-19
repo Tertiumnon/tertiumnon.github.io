@@ -10,9 +10,9 @@
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "lint": "ng lint",
     "lint:fix": "eslint --fix --ext .ts ./src",
-    "release:hotfix": "npm --no-git-tag-version version patch && npm run build:gh && git add --all && git commit -m \"release:hotfix\" && git flow hotfix finish",
-    "release:minor": "npm --no-git-tag-version version minor && npm run build:gh && git add --all && git commit -m \"release:minor\" && git flow release finish",
-    "release:major": "npm --no-git-tag-version version major && npm run build:gh && git add --all && git commit -m \"release:major\" && git flow release finish"
+    "release:hotfix": "npm run build:gh && git add --all && git commit -m \"release:hotfix\" && npm version patch && git push && git checkout develop && git rebase origin/master && git push",
+    "release:minor": "npm run build:gh && git add --all && git commit -m \"release:minor\" && npm version minor && git push && git checkout master && git merge develop && git push --all",
+    "release:major": "npm run build:gh && git add --all && git commit -m \"release:major\" && npm version major && git push && git checkout master && git merge develop && git push --all"
   },
   "private": true,
   "dependencies": {
