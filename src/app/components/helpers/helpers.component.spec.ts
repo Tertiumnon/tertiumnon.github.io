@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { HelpersComponent } from './helpers.component';
+import { HelpersComponent } from "./helpers.component";
 
-describe('HelpersComponent', () => {
+describe("HelpersComponent", () => {
   let component: HelpersComponent;
   let fixture: ComponentFixture<HelpersComponent>;
 
@@ -10,7 +10,7 @@ describe('HelpersComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ HelpersComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('HelpersComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

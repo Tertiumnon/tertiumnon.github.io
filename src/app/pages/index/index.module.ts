@@ -9,7 +9,6 @@ import { IndexComponent } from "./index.component";
   declarations: [IndexComponent],
   imports: [
     CommonModule,
-    EmulatorModule,
     RouterModule.forChild([
       {
         path: "",
@@ -17,6 +16,7 @@ import { IndexComponent } from "./index.component";
         component: IndexComponent,
       },
     ]),
+    EmulatorModule,
   ],
   exports: [IndexComponent],
 })

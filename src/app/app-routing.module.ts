@@ -1,18 +1,23 @@
-import { NgModule } from '@angular/core';
-import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { ExtraOptions, RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     loadChildren: () =>
-      import('./pages/index/index.module').then((m) => m.IndexModule),
+      import("./pages/index/index.module").then((m) => m.IndexModule),
   },
   {
-    path: 'projects',
+    path: "about",
     loadChildren: () =>
-      import('./pages/projects/projects.module').then((m) => m.ProjectsModule),
+      import("./pages/about/about.module").then((m) => m.AboutModule),
   },
-  { path: '**', redirectTo: '' },
+  {
+    path: "projects",
+    loadChildren: () =>
+      import("./pages/projects/projects.module").then((m) => m.ProjectsModule),
+  },
+  { path: "**", redirectTo: "" },
 ];
 
 const routerOptions: ExtraOptions = {

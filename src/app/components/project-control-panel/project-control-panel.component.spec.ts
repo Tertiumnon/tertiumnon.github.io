@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { ProjectControlPanelComponent } from './project-control-panel.component';
-import { FormsModule } from '@angular/forms';
+import { ProjectControlPanelComponent } from "./project-control-panel.component";
+import { FormsModule } from "@angular/forms";
 
-describe('ControlPanelComponent', () => {
+describe("ControlPanelComponent", () => {
   let component: ProjectControlPanelComponent;
   let fixture: ComponentFixture<ProjectControlPanelComponent>;
 
@@ -12,7 +12,7 @@ describe('ControlPanelComponent', () => {
       declarations: [ ProjectControlPanelComponent ],
       imports: [FormsModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe('ControlPanelComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

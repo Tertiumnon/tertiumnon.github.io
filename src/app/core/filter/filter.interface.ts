@@ -1,5 +1,5 @@
 export enum FilterOperator {
-  Equal = 'eq',
+  Equal = "eq",
 }
 
 export interface IFilter {

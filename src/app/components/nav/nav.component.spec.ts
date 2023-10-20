@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 
-import { NavComponent } from './nav.component';
+import { NavComponent } from "./nav.component";
 
-describe('NavComponent', () => {
+describe("NavComponent", () => {
   let component: NavComponent;
   let fixture: ComponentFixture<NavComponent>;
 
@@ -22,7 +22,7 @@ describe('NavComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should compile', () => {
+  it("should compile", () => {
     expect(component).toBeTruthy();
   });
 });

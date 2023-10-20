@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
 
-import { ProjectCardComponent } from './project-card.component';
+import { ProjectCardComponent } from "./project-card.component";
 
 @NgModule({
   declarations: [ProjectCardComponent],

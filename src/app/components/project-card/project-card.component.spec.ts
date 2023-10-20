@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { ProjectCardComponent } from './project-card.component';
+import { ProjectCardComponent } from "./project-card.component";
 
-describe('ProjectCardComponent', () => {
+describe("ProjectCardComponent", () => {
   let component: ProjectCardComponent;
   let fixture: ComponentFixture<ProjectCardComponent>;
 
@@ -10,7 +10,7 @@ describe('ProjectCardComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ProjectCardComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('ProjectCardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { EmulatorComponent } from './emulator.component';
+import { EmulatorComponent } from "./emulator.component";
 
-describe('EmulatorComponent', () => {
+describe("EmulatorComponent", () => {
   let component: EmulatorComponent;
   let fixture: ComponentFixture<EmulatorComponent>;
 
@@ -10,7 +10,7 @@ describe('EmulatorComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ EmulatorComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('EmulatorComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

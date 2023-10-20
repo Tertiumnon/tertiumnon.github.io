@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { IProject } from '../../entities/project/project.interface';
-import { ProjectsService } from './projects.service';
+import { IProject } from "../../entities/project/project.interface";
+import { ProjectsService } from "./projects.service";
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
+  selector: "app-projects",
+  templateUrl: "./projects.component.html",
 })
 export class ProjectsComponent implements OnInit {
   projects: IProject[] = [];

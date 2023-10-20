@@ -29,12 +29,12 @@ export class HelpersComponent {
     const newProjectList = [...projectList] as IProject[];
     if (!value || value === "all") return projectList;
     switch (param) {
-      case "status":
-        return newProjectList.filter((project) => project.status === value);
-      case "workType":
-        return newProjectList.filter((project) => project.workTypes.includes(value));
-      default:
-        break;
+    case "status":
+      return newProjectList.filter((project) => project.status === value);
+    case "workType":
+      return newProjectList.filter((project) => project.workTypes.includes(value));
+    default:
+      break;
     }
   }
 }

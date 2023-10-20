@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
 
-import { NavModule } from '../nav/nav.module';
-import { HeaderComponent } from './header.component';
+import { NavModule } from "../nav/nav.module";
+import { HeaderComponent } from "./header.component";
 
 @NgModule({
   declarations: [HeaderComponent],

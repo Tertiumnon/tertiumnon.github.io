@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { QuotationComponent } from './quotation.component';
+import { QuotationComponent } from "./quotation.component";
 
-describe('QuotationComponent', () => {
+describe("QuotationComponent", () => {
   let component: QuotationComponent;
   let fixture: ComponentFixture<QuotationComponent>;
 
@@ -10,7 +10,7 @@ describe('QuotationComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ QuotationComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('QuotationComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

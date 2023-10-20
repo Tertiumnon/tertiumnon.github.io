@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import PROJECT_ITEMS from './project.mock';
-import { IProject } from './project.interface';
-import { IApiRequestFindParams } from '../../core/api/api-request-find.interface';
-import { FilterOperator } from '../../core/filter/filter.interface';
+import { Injectable } from "@angular/core";
+import PROJECT_ITEMS from "./project.mock";
+import { IProject } from "./project.interface";
+import { IApiRequestFindParams } from "../../core/api/api-request-find.interface";
+import { FilterOperator } from "../../core/filter/filter.interface";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ProjectService {
   find(params: IApiRequestFindParams): IProject[] {
@@ -13,8 +13,8 @@ export class ProjectService {
     let projects = [...PROJECT_ITEMS];
     if (filters.length) {
       filters.forEach((filter) => {
-        projects = projects.filter((project) => project[filter.name] === filter.value)
-      })
+        projects = projects.filter((project) => project[filter.name] === filter.value);
+      });
     }
     return projects;
   }
@@ -23,7 +23,7 @@ export class ProjectService {
     const projects = this.find({
       filters: [
         {
-          name: 'name',
+          name: "name",
           operator: FilterOperator.Equal,
           value: name
         }
