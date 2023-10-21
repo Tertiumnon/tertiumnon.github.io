@@ -1,0 +1,14 @@
+<div class="flex dropdown">
+  <div class="mr-2 label">{{ label }}</div>
+  <div class="option-list" [ngStyle]="{'width.em': width}" (click)="toggle()">
+    <div class="option selected">{{ selectedOption || placeholder }}</div>
+    <div
+      *ngFor="let option of options"
+      class="px-2 option"
+      [class.hidden]="!isOpened || option === selectedOption"
+      (click)="onOptionClick(option)"
+    >
+      {{ option }}
+    </div>
+  </div>
+</div>

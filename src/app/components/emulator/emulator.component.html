@@ -1,7 +1,7 @@
-<div *ngIf="isCliEnabled" class="sticky top-4 cli-input">
-  <input [(ngModel)]="command" type="text" name="cli" class="pl-5 pr-2" (keydown.enter)="onEnter()" placeholder="help()" />
+<div *ngIf="isCliEnabled$ | async" class="sticky top-4 cli-input">
+  <input [(ngModel)]="command" type="text" name="cli" class="pl-5 pr-2" (keydown.enter)="onEnter()" placeholder="help" />
 </div>
-<div *ngFor="let line of lines; index as i" class="line">
+<div *ngFor="let line of (lines$ | async); index as i" class="line">
   <div class="flex mr-2 number"><span>{{i}}</span></div>
   <div class="text" [innerHTML]="line"></div>
 </div>

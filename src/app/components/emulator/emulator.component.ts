@@ -1,29 +1,33 @@
-import { Component, Input, ViewEncapsulation } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { EmulatorService } from "./emulator.service";
 
 @Component({
   selector: "app-emulator",
   templateUrl: "./emulator.component.html",
   styleUrls: ["./emulator.component.less"],
   encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+  ]
 })
-export class EmulatorComponent {
-  @Input() lines: string[] = [];
-  @Input() isCliEnabled = false;
+export class EmulatorComponent implements OnInit {
+  lines$ = this.emulatorService.lines;
+  isCliEnabled$ = this.emulatorService.isCliEnabled$;
   command = "";
 
+  constructor(private emulatorService: EmulatorService) {}
+
+  ngOnInit(): void {
+    this.emulatorService.command$.subscribe((command) => {
+      this.command = command;
+    });
+  }
+
   onEnter(): void {
-    const {command} = this;
-    this.lines.push(command);
-    switch (command) {
-      case "help()":
-        this.lines = [
-          "clear() will clear all lines"
-        ];
-        break;
-      case "clear()":
-        this.lines = [];
-        break;
-      }
-    this.command = "";
+    this.emulatorService.enter(this.command);
   }
 }

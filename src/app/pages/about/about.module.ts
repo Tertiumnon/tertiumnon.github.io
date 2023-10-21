@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { AboutComponent } from "./about.component";
-import { EmulatorModule } from "../../components/emulator/emulator.module";
 import { RouterModule } from "@angular/router";
 
 
@@ -19,7 +18,6 @@ import { RouterModule } from "@angular/router";
         component: AboutComponent,
       },
     ]),
-    EmulatorModule,
   ],
   exports: [
     AboutComponent

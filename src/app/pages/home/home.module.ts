@@ -2,22 +2,20 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
-import { EmulatorModule } from "../../components/emulator/emulator.module";
-import { IndexComponent } from "./index.component";
+import { HomeComponent } from "./home.component";
 
 @NgModule({
-  declarations: [IndexComponent],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
         path: "",
         pathMatch: "full",
-        component: IndexComponent,
+        component: HomeComponent,
       },
     ]),
-    EmulatorModule,
   ],
-  exports: [IndexComponent],
+  exports: [HomeComponent],
 })
-export class IndexModule {}
+export class HomeModule {}

@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: () =>
-      import("./pages/index/index.module").then((m) => m.IndexModule),
+      import("./pages/home/home.module").then((m) => m.HomeModule),
   },
   {
     path: "about",

@@ -8,6 +8,7 @@ import { FooterModule } from "./components/footer/footer.module";
 import { HelpersComponent } from "./components/helpers/helpers.component";
 import { OrderByPipe } from "./pipes/order-by.pipe";
 import { HeaderModule } from "./components/header/header.module";
+import { EmulatorComponent } from "./components/emulator/emulator.component";
 
 @NgModule({
   declarations: [AppComponent, OrderByPipe, HelpersComponent],
@@ -17,6 +18,7 @@ import { HeaderModule } from "./components/header/header.module";
     BrowserAnimationsModule,
     HeaderModule,
     FooterModule,
+    EmulatorComponent,
   ],
   exports: [],
   providers: [],

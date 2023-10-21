@@ -10,7 +10,13 @@
       "reAttach": true,
       "name": "Launch ff:4200",
       "url": "http://localhost:4200",
-      "webRoot": "${workspaceFolder}"
+      "webRoot": "${workspaceFolder}",
+      "pathMappings": [
+        {
+          "url": "webpack:///src",
+          "path": "${workspaceFolder}/src"
+        }
+      ]
     }
   ]
 }

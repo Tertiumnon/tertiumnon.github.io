@@ -2,16 +2,16 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
-import { ProjectControlPanelModule } from "../../components/project-control-panel/project-control-panel.module";
 import { ProjectListModule } from "../../components/project-list/project-list.module";
 import { ProjectsComponent } from "./projects.component";
 import { ProjectService } from "../../entities/project/project.service";
+import { ProjectControlPanelComponent } from "../../components/project-control-panel/project-control-panel.component";
 
 @NgModule({
   declarations: [ProjectsComponent],
   imports: [
     CommonModule,
-    ProjectControlPanelModule,
+    ProjectControlPanelComponent,
     ProjectListModule,
     RouterModule.forChild([
       {
