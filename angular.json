@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "tertiumnon-github-io:build:production"
+              "buildTarget": "tertiumnon-github-io:build:production"
             },
             "development": {
-              "browserTarget": "tertiumnon-github-io:build:development"
+              "buildTarget": "tertiumnon-github-io:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tertiumnon-github-io:build"
+            "buildTarget": "tertiumnon-github-io:build"
           }
         },
         "test": {
@@ -119,6 +119,7 @@
   "cli": {
     "schematicCollections": [
       "@angular-eslint/schematics"
-    ]
+    ],
+    "analytics": false
   }
 }
