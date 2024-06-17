@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-export const routes: Routes = [
+export const APP_ROUTES: Routes = [
 	{
 		path: "",
 		loadComponent: () => import("./pages/home/home.component").then((m) => m.HomeComponent),
@@ -14,12 +14,16 @@ export const routes: Routes = [
 		path: "software",
 		loadComponent: () => import("./pages/software/software.component").then((m) => m.SoftwareComponent),
 	},
+	{
+		path: "life",
+		loadComponent: () => import("./pages/life/life.component").then((m) => m.LifeComponent),
+	},
 	{ path: "**", redirectTo: "" },
 ];
 
 @NgModule({
 	imports: [
-		RouterModule.forRoot(routes, {
+		RouterModule.forRoot(APP_ROUTES, {
 			useHash: true,
 		}),
 	],

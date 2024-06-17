@@ -8,8 +8,6 @@
     "build:gh": "ng build --output-path docs --base-href /",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --browsers ChromeHeadless --watch=false",
-    "lint": "eslint --ext .ts,.html .",
-    "lint:fix": "eslint --ext .ts,.html . --fix",
     "release:hotfix:finish": "npm version patch && npm run build:gh && git add --all && git commit --amend -C HEAD && git push && git push --tags && git checkout develop && git rebase origin/master && git push && git checkout master",
     "release:minor:finish": "npm version minor && npm run build:gh && git add --all && git commit --amend -C HEAD && git push && git checkout master && git merge develop && git push && git push --tags && git checkout develop",
     "release:major:finish": "npm version major && npm run build:gh && git add --all && git commit --amend -C HEAD && git push && git checkout master && git merge develop && git push && git push --tags && git checkout develop"
@@ -17,7 +15,6 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.0.3",
-    "@angular/cdk": "^16.2.4",
     "@angular/common": "^18.0.3",
     "@angular/compiler": "^18.0.3",
     "@angular/core": "^18.0.3",
@@ -41,7 +38,7 @@
     "@types/jasmine": "~3.6.0",
     "@types/node": "^18.17.15",
     "autoprefixer": "^10.4.15",
-    "husky": "^8.0.3",
+    "eslint": "^9.3.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.2",
     "karma-chrome-launcher": "~3.1.0",
