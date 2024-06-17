@@ -4,9 +4,10 @@ import { Component } from "@angular/core";
 import { IProject } from "../../entities/project/project.interface";
 
 @Component({
-  selector: "app-helpers",
-  templateUrl: "./helpers.component.html",
-  styleUrls: ["./helpers.component.less"],
+    selector: "app-helpers",
+    templateUrl: "./helpers.component.html",
+    styleUrls: ["./helpers.component.less"],
+    standalone: true,
 })
 export class HelpersComponent {
   static orderBy(list: any, ...args: any[]) {

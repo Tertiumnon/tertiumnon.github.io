@@ -9,10 +9,9 @@ describe("ProjectListComponent", () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [ProjectListComponent],
-        providers: [
-        ]
-      }).compileComponents();
+    imports: [ProjectListComponent],
+    providers: []
+}).compileComponents();
     })
   );
 

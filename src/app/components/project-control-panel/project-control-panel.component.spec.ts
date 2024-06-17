@@ -9,9 +9,8 @@ describe("ControlPanelComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProjectControlPanelComponent ],
-      imports: [FormsModule]
-    })
+    imports: [FormsModule, ProjectControlPanelComponent]
+})
       .compileComponents();
   }));
 

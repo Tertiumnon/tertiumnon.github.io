@@ -8,7 +8,7 @@ import { IProject, ProjectStatus, IState } from "../../entities/project/project.
 @Injectable({
   providedIn: "root",
 })
-export class ProjectsService {
+export class SoftwareService {
   projects: IProject[] = PROJECT_ITEMS;
   projects$ = new BehaviorSubject<IProject[] | undefined>(PROJECT_ITEMS);
   state: IState = {};

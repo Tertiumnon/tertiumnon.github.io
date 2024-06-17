@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 
 import { ProjectStatus } from "../../entities/project/project.interface";
-import { ProjectsService } from "../../pages/projects/projects.service";
+import { SoftwareService } from "../../pages/software/software.service";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { DropdownComponent } from "../dropdown/dropdown.component";
@@ -24,7 +24,7 @@ export class ProjectControlPanelComponent implements OnInit {
   releaseMap = {[this.releaseOptions[0]]: "year", [this.releaseOptions[1]]: "-year"};
 
   constructor(
-    private projectService: ProjectsService,
+    private projectService: SoftwareService,
   ) {}
 
   static getTextWidth(txt: string): number {
