@@ -3,7 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 export const APP_ROUTES: Routes = [
 	{
-		path: "",
+		path: "index",
 		loadComponent: () => import("./pages/home/home.component").then((m) => m.HomeComponent),
 	},
 	{
@@ -18,7 +18,16 @@ export const APP_ROUTES: Routes = [
 		path: "life",
 		loadComponent: () => import("./pages/life/life.component").then((m) => m.LifeComponent),
 	},
-	{ path: "**", redirectTo: "" },
+	{
+		path: "favorite",
+		loadComponent: () => import("./pages/favorite/favorite.component").then((m) => m.FavoriteComponent),
+	},
+	{
+		path: "favorite/books",
+		loadComponent: () =>
+			import("./pages/favorite-books/favorite-books.component").then((m) => m.FavoriteBooksComponent),
+	},
+	{ path: "**", redirectTo: "index" },
 ];
 
 @NgModule({

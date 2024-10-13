@@ -1,11 +1,11 @@
-<div class="container mx-auto flex place-content-between h-16 px-4">
+<div class="container mx-auto flex place-content-between h-16">
   <div class="flex items-center gap-5">
     <div class="logo">
-      <a routerLink="/" class="text-black uppercase logo">&#64;Tertiumnon</a>
+      <a routerLinkActive="active" [routerLink]="['index']" class="text-black uppercase">&#64;Tertiumnon</a>
     </div>
     <app-nav></app-nav>
   </div>
   <div class="flex items-center">
-    <a routerLink="/about" class="text-right leading-4 about">Datur</a>
+    <a routerLinkActive="active" [routerLink]="['about']" class="text-right leading-4 about">About</a>
   </div>
 </div>

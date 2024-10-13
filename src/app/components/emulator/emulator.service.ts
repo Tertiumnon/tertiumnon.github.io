@@ -44,7 +44,7 @@ export class EmulatorService {
           "clear -> clear all lines",
           "home -> navigate to home",
           "about -> navigate to about",
-          "projects -> navigate to projects",
+          "software -> navigate to software",
         ];
         break;
       case "clear":
@@ -58,9 +58,9 @@ export class EmulatorService {
         this.lines = [];
         this.router.navigate(["about"], {skipLocationChange: true});
         break;
-      case "projects":
+      case "software":
         this.lines = [];
-        this.router.navigate(["projects"], {skipLocationChange: true});
+        this.router.navigate(["software"], {skipLocationChange: true});
         break;
     }
     this.command$.next("");
