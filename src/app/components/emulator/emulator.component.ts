@@ -16,10 +16,13 @@ import { EmulatorService } from "./emulator.service";
 })
 export class EmulatorComponent implements OnInit {
   lines$ = this.emulatorService.lines;
+  isVisible$ = this.emulatorService.isVisible$;
   isCliEnabled$ = this.emulatorService.isCliEnabled$;
   command = "";
 
-  constructor(private emulatorService: EmulatorService) {}
+  constructor(
+    private emulatorService: EmulatorService
+  ) {}
 
   ngOnInit(): void {
     this.emulatorService.command$.subscribe((command) => {

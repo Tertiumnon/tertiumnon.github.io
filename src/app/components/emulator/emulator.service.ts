@@ -7,12 +7,17 @@ import { BehaviorSubject, Observable } from "rxjs";
 })
 export class EmulatorService {
   private _lines$ = new BehaviorSubject<string[]>([]);
+  public isVisible$ = new BehaviorSubject<boolean>(false);
   public isCliEnabled$ = new BehaviorSubject<boolean>(true);
   public command$ = new BehaviorSubject<string>("");
 
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) this.clear();
+    });
+
+    this._lines$.subscribe((lines) => {
+      this.isVisible$.next(lines.length > 0);
     });
   }
 

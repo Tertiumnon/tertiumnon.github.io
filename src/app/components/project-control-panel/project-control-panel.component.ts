@@ -46,7 +46,7 @@ export class ProjectControlPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.onStatusChange(this.status);
     this.onReleaseChange(this.release);
+    this.onStatusChange(this.status);
   }
 }
