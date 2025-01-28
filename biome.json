@@ -12,7 +12,9 @@
 			"unsafeParameterDecoratorsEnabled": true
 		},
 		"formatter": {
-			"quoteStyle": "double"
+			"quoteStyle": "double",
+			"indentWidth": 2,
+			"indentStyle": "space"
 		}
 	},
 	"linter": {
