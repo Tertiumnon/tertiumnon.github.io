@@ -1,0 +1,54 @@
+<app-content>
+  <h1>What Time</h1>
+  <h2>Now</h2>
+  <p>{{ date() }}</p>
+  <p>ISO: {{ isoDate() }}</p>
+  <p>
+    Time: {{ date() | date: "YYYY-MM-dd HH:mm:ss" }} ({{ timeScv.timezone() }})
+  </p>
+  <h2>Timezone Converter</h2>
+  <div class="flex gap-1 pb-2">
+    <div>
+      <input
+        type="date"
+        name="date"
+        [formControl]="dateCtrl"
+      />
+    </div>
+    <div>
+      <input type="time" name="time" [formControl]="timeCtrl" />
+    </div>
+    <select name="timezone" [formControl]="timezoneCtrl">
+      <option *ngFor="let tz of timeScv.timezones()" [value]="tz">
+        {{ tz }}
+      </option>
+    </select>
+  </div>
+  <div class="flex gap-1">
+    <div>
+      <input
+        type="date"
+        name="calculatedDate"
+        [formControl]="calculatedDateCtrl"
+        readonly
+        class="w-32"
+      />
+    </div>
+    <div>
+      <input
+        type="time"
+        name="calculatedTime"
+        [formControl]="calculatedTimeCtrl"
+        readonly
+      />
+    </div>
+    <select name="calculatedTimezone" [formControl]="calculatedTimezoneCtrl">
+      <option *ngFor="let tz of timeScv.timezones()" [value]="tz">
+        {{ tz }}
+      </option>
+    </select>
+    <button type="button" class="btn" (click)="onConvertBtnClick()">
+      Convert
+    </button>
+  </div>
+</app-content>

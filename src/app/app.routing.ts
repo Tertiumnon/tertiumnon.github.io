@@ -15,6 +15,10 @@ export const APP_ROUTES: Routes = [
 		loadComponent: () => import("./pages/software/software.component").then((m) => m.SoftwareComponent),
 	},
 	{
+		path: "tools/what-time",
+		loadComponent: () => import("./pages/what-time/what-time.component").then((m) => m.WhatTimeComponent),
+	},
+	{
 		path: "life",
 		loadComponent: () => import("./pages/life/life.component").then((m) => m.LifeComponent),
 	},
