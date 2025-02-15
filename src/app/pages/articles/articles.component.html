@@ -1,0 +1,8 @@
+<app-content>
+  <h1>Articles</h1>
+  @for (article of articleList(); track $index) {
+  <div>
+    <a [routerLink]="article.link">{{ article.title }}</a>
+  </div>
+  }
+</app-content>
