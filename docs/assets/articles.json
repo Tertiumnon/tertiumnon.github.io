@@ -1,0 +1,114 @@
+[
+  {
+    "title": "Карьера программиста после 30",
+    "link": "/articles/career/programming-after-30-ru",
+    "language": "ru",
+    "tags": [
+      "career"
+    ]
+  },
+  {
+    "title": "Breakpoints",
+    "link": "/articles/design/breakpoints",
+    "language": "en",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "title": "API",
+    "link": "/articles/development/api",
+    "language": "en",
+    "tags": [
+      "development"
+    ]
+  },
+  {
+    "title": "Classes and methods",
+    "link": "/articles/development/classes-and-methods",
+    "language": "en",
+    "tags": [
+      "development"
+    ]
+  },
+  {
+    "title": "Сущность",
+    "link": "/articles/development/entity-ru",
+    "language": "ru",
+    "tags": [
+      "development"
+    ]
+  },
+  {
+    "title": "Объём кода в файле",
+    "link": "/articles/development/file-code-length-ru",
+    "language": "ru",
+    "tags": [
+      "development"
+    ]
+  },
+  {
+    "title": "Naming for variables, methods and classes",
+    "link": "/articles/development/naming-ru",
+    "language": "ru",
+    "tags": [
+      "development"
+    ]
+  },
+  {
+    "title": "Кавычки",
+    "link": "/articles/development/quotes-ru",
+    "language": "ru",
+    "tags": [
+      "development"
+    ]
+  },
+  {
+    "title": "Рефакторинг",
+    "link": "/articles/development/refactoring-ru",
+    "language": "ru",
+    "tags": [
+      "development"
+    ]
+  },
+  {
+    "title": "Coding Books",
+    "link": "/articles/education/books",
+    "language": "en",
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "Coding Courses",
+    "link": "/articles/education/courses",
+    "language": "en",
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "Coding Interviews",
+    "link": "/articles/education/interviews",
+    "language": "en",
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "Coding Roadmaps",
+    "link": "/articles/education/roadmaps",
+    "language": "en",
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "title": "Agile, Kanban, Scrum - главное простыми словами",
+    "link": "/articles/management/agile-kanban-scrum-ru",
+    "language": "ru",
+    "tags": [
+      "management"
+    ]
+  }
+]
