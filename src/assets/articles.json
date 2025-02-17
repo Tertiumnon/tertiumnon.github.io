@@ -8,67 +8,11 @@
     ]
   },
   {
-    "title": "Breakpoints",
-    "link": "/articles/design/breakpoints",
-    "language": "en",
+    "title": "Дизайн",
+    "link": "/articles/design/design-ru",
+    "language": "ru",
     "tags": [
       "design"
-    ]
-  },
-  {
-    "title": "API",
-    "link": "/articles/development/api",
-    "language": "en",
-    "tags": [
-      "development"
-    ]
-  },
-  {
-    "title": "Classes and methods",
-    "link": "/articles/development/classes-and-methods",
-    "language": "en",
-    "tags": [
-      "development"
-    ]
-  },
-  {
-    "title": "Сущность",
-    "link": "/articles/development/entity-ru",
-    "language": "ru",
-    "tags": [
-      "development"
-    ]
-  },
-  {
-    "title": "Объём кода в файле",
-    "link": "/articles/development/file-code-length-ru",
-    "language": "ru",
-    "tags": [
-      "development"
-    ]
-  },
-  {
-    "title": "Naming for variables, methods and classes",
-    "link": "/articles/development/naming-ru",
-    "language": "ru",
-    "tags": [
-      "development"
-    ]
-  },
-  {
-    "title": "Кавычки",
-    "link": "/articles/development/quotes-ru",
-    "language": "ru",
-    "tags": [
-      "development"
-    ]
-  },
-  {
-    "title": "Рефакторинг",
-    "link": "/articles/development/refactoring-ru",
-    "language": "ru",
-    "tags": [
-      "development"
     ]
   },
   {
@@ -109,6 +53,54 @@
     "language": "ru",
     "tags": [
       "management"
+    ]
+  },
+  {
+    "title": "Classes and methods",
+    "link": "/articles/programming/classes-and-methods",
+    "language": "en",
+    "tags": [
+      "programming"
+    ]
+  },
+  {
+    "title": "Сущность",
+    "link": "/articles/programming/entity-ru",
+    "language": "ru",
+    "tags": [
+      "programming"
+    ]
+  },
+  {
+    "title": "Объём кода в файле",
+    "link": "/articles/programming/file-code-length-ru",
+    "language": "ru",
+    "tags": [
+      "programming"
+    ]
+  },
+  {
+    "title": "Naming for variables, methods and classes",
+    "link": "/articles/programming/naming-ru",
+    "language": "ru",
+    "tags": [
+      "programming"
+    ]
+  },
+  {
+    "title": "Кавычки",
+    "link": "/articles/programming/quotes-ru",
+    "language": "ru",
+    "tags": [
+      "programming"
+    ]
+  },
+  {
+    "title": "Рефакторинг",
+    "link": "/articles/programming/refactoring-ru",
+    "language": "ru",
+    "tags": [
+      "programming"
     ]
   }
 ]
