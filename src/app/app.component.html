@@ -1,6 +1,8 @@
 <app-header></app-header>
 
-<main [class.content]="!($isHomePage | async)">
+<div class="bg" [class.content]="!($isHomePage | async)"></div>
+
+<main>
   <app-emulator></app-emulator>
   <router-outlet></router-outlet>
 </main>

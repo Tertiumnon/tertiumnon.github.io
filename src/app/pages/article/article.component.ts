@@ -19,7 +19,6 @@ export class ArticleComponent {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
-      console.log(params);
       this.articleService.get(params as ArticleGetParams).subscribe((response) => {
         this.data.set(response);
       });

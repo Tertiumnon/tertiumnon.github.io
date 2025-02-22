@@ -52,9 +52,7 @@ export class WhatTimeComponent {
 
   onConvertBtnClick() {
     const dateStr = (this.dateCtrl.value?.toString() || "");
-    console.log(dateStr)
     let newDate = this.timeScv.convertToTimezone(new Date(dateStr), this.timezoneCtrl.value || "");
-    console.log(newDate)
     const dateArr = (this.dateCtrl.value?.toString() || "").split("-");
     newDate.setFullYear(Number(dateArr[0]));
     newDate.setMonth(Number(dateArr[1]) - 1);
