@@ -2,7 +2,7 @@
   <input [(ngModel)]="command" type="text" name="cli" class="pl-5 pr-2" (keydown.enter)="onEnter()" placeholder="help" />
 </div> -->
 <div *ngIf="isVisible$ | async" class="emulator">
-  <div class="content">
+  <div class="container-fluid content">
     <div *ngFor="let line of (lines$ | async); index as i" class="line">
       <div class="flex mr-2 number"><span>{{i}}</span></div>
       <div class="text" [innerHTML]="line"></div>

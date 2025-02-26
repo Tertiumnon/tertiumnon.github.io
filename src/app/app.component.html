@@ -1,10 +1,12 @@
-<app-header></app-header>
+<div [ngClass]="themeService.theme()">
+  <app-header></app-header>
 
-<div class="bg" [class.blur]="!($isHomePage | async)"></div>
+  <div class="bg" [class.bg-blur]="!(isHomePage$ | async)"></div>
 
-<main>
-  <app-emulator></app-emulator>
-  <router-outlet></router-outlet>
-</main>
+  <main>
+    <app-emulator></app-emulator>
+    <router-outlet></router-outlet>
+  </main>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+</div>
