@@ -8,7 +8,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: "about",
-    loadComponent: () => import("./pages/about/about.component").then((m) => m.AboutComponent),
+    loadComponent: () => import("./pages/contact/contact.component").then((m) => m.ContactComponent),
   },
   {
     path: "software",
