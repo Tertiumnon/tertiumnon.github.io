@@ -192,21 +192,21 @@ function findUserByName(name: string) {
 function getAppUser(): User {}
 ```
 
-#### Use "set" word, if you want to set value for something
+### Use "set" word, if you want to set value for something
 
 ```ts
 function setAppUser(user: User): void {}
 ```
 
-#### Use "find" word, if you want to find something, using filters, but you're not sure about the result
+### Use "find" word, if you want to find something, using filters, but you're not sure about the result
 
 ```ts
 function findUser(filters: Filter[]): User | null {}
 ```
 
-### Classes naming
+## Classes naming
 
-#### Use can use reductions for common keywords in classes names
+### Use can use reductions for common keywords in classes names
 
 ```text
 UserController -> UserCtrl
