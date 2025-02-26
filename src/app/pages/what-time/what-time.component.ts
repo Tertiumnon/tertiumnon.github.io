@@ -2,13 +2,12 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, input, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { interval } from 'rxjs';
-import { ContentComponent } from '../../components/content/content.component';
 import { TimeService } from '../../components/time/time.service';
 
 @Component({
   selector: 'app-what-time',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ContentComponent, DatePipe],
+  imports: [CommonModule, ReactiveFormsModule, DatePipe],
   templateUrl: './what-time.component.html',
   styleUrl: './what-time.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,

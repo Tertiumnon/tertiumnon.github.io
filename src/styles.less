@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "./styles-fonts";
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -20,15 +19,66 @@ body {
 body {
   margin: 0;
   font-family: 'VT323', monospace;
-  font-size: 21px;
+  font-size: 20px;
   color: white;
 }
 
+h1, h2, h3, h4 {
+  margin-top: 0.6em;
+  margin-bottom: 0.4em;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 1.7em;
+  text-transform: uppercase;
+  line-height: normal;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.3em;
+}
+
+h4 {
+  font-size: 1.1em;
+}
+
+p {
+  margin: 0.8rem 0;
+  line-height: 1.2;
+}
+
+input,
+select {
+  color: black;
+}
+
+select {
+  font-family: 'VT323', monospace;
+}
+
+/* Containers */
+
 main,
 code {
-  // font-family: "Handjet", serif;
   font-family: "Roboto Mono", serif;
   font-size: 0.9em;
+}
+
+.content {
+  margin: var(--content-mt) auto;
+  padding: 1% 3% 1em;
+  width: 96%;
+  max-width: 960px;
+  background-color: rgb(112 26 117 / 0.95);
+  border-radius: 12px;
+  --tw-contrast: contrast(.75);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 pre {
@@ -42,33 +92,4 @@ pre {
   code {
     font-size: 0.9em;
   }
-}
-
-h1 {
-  font-size: 1.8em;
-  font-weight: bold;
-  text-transform: uppercase;
-  line-height: normal;
-  margin-bottom: 0.4em;
-}
-
-h2 {
-  margin-top: 0.2em;
-  margin-bottom: 0.2em;
-  font-size: 1.4em;
-  font-weight: bold;
-}
-
-p {
-  margin: 0.8rem 0;
-  line-height: 1.3;
-}
-
-input,
-select {
-  color: black;
-}
-
-select {
-  font-family: 'VT323', monospace;
 }
