@@ -1,8 +1,8 @@
 <!-- <div *ngIf="isCliEnabled$ | async" class="sticky top-4 cli-input">
   <input [(ngModel)]="command" type="text" name="cli" class="pl-5 pr-2" (keydown.enter)="onEnter()" placeholder="help" />
 </div> -->
-<div *ngIf="isVisible$ | async" class="emulator">
-  <div class="container-fluid content">
+<div *ngIf="isVisible$ | async" class="container-fluid emulator">
+  <div class="content">
     <div *ngFor="let line of (lines$ | async); index as i" class="line">
       <div class="flex mr-2 number"><span>{{i}}</span></div>
       <div class="text" [innerHTML]="line"></div>
