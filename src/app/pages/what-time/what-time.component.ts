@@ -1,5 +1,12 @@
 import { CommonModule, DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { interval } from 'rxjs';
 import { ContentComponent } from '../../components/content/content.component';
@@ -14,60 +21,74 @@ import { TimeService } from '../../components/time/time.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WhatTimeComponent {
+  TimeService = TimeService;
   cdr = inject(ChangeDetectorRef);
-  timeScv = inject(TimeService);
   // now
   date = signal(new Date());
   isoDate = signal(new Date().toISOString());
-  timezone = input();
+  timeZone = input();
   // date converter
-  dateCtrl = new FormControl(this.formatDateTimeToDate(Date.now()));
-  timeCtrl = new FormControl("11:00");
-  timezoneCtrl = new FormControl(this.timeScv.timezone());
-  calculatedDateCtrl = new FormControl();
-  calculatedTimeCtrl = new FormControl();
-  calculatedTimezoneCtrl = new FormControl(this.timeScv.timezone());
+  initDt = signal(TimeService.createDt({ h: 11 }));
+  initDateCtrl = new FormControl(
+    TimeService.formatToIsoDate(this.initDt().getTime()),
+  );
+  initTimeCtrl = new FormControl(
+    TimeService.formatToIsoTime(this.initDt().getTime()),
+  );
+  initTzCtrl = new FormControl(TimeService.timeZone());
+  initTzOffset = signal(0);
+  computedDateCtrl = new FormControl();
+  computedTimeCtrl = new FormControl();
+  computedTzCtrl = new FormControl(this.initTzCtrl);
   // interval
   interval$ = interval(1000);
   intervalSub = this.interval$.subscribe(this.setTime.bind(this));
 
-  setTime() {
-    this.date.set(new Date());
-    this.isoDate.set(new Date().toISOString());
-    this.cdr.detectChanges();
-  }
-
-  formatDateTimeToDate(date: number) {
-    return new DatePipe('en-US').transform(date, 'YYYY-MM-dd');
-  }
-
-  formatDateTimeToTime(date: number) {
-    return new DatePipe('en-US').transform(date, 'HH:mm');
-  }
-
-  setCalculatedDateTime(date: number) {
-    this.calculatedDateCtrl.setValue(this.formatDateTimeToDate(date));
-    this.calculatedTimeCtrl.setValue(this.formatDateTimeToTime(date));
-  }
-
-  onConvertBtnClick() {
-    const dateStr = (this.dateCtrl.value?.toString() || "");
-    console.log(dateStr)
-    let newDate = this.timeScv.convertToTimezone(new Date(dateStr), this.timezoneCtrl.value || "");
-    console.log(newDate)
-    const dateArr = (this.dateCtrl.value?.toString() || "").split("-");
-    newDate.setFullYear(Number(dateArr[0]));
-    newDate.setMonth(Number(dateArr[1]) - 1);
-    newDate.setDate(Number(dateArr[2]));
-    const timeStr = this.timeCtrl.value?.toString() || "";
-    newDate.setHours(Number(timeStr.slice(0, 2)));
-    newDate.setMinutes(Number(timeStr.slice(3, 5)));
-    newDate.setSeconds(0);
-    newDate = this.timeScv.convertToTimezone(newDate, this.calculatedTimezoneCtrl.value || "");
-    this.setCalculatedDateTime(newDate.getTime());
+  ngOnInit() {
+    console.log(this.initDt());
+    this.initTzCtrl.valueChanges.subscribe(this.changeInitTz.bind(this));
   }
 
   ngOnDestroy() {
     this.intervalSub.unsubscribe();
+  }
+
+  setTime() {
+    this.date.set(new Date());
+    this.isoDate.set(new Date().toISOString());
+  }
+
+  changeInitTz(tz: string | null) {
+    if (!tz) return;
+    this.initDt.set(TimeService.convertTimeZone(this.initDt(), tz));
+    console.log(this.initDt());
+  }
+
+  setComputedDateTime(date: number) {
+    // this.computedDateCtrl.setValue(this.formatDateTimeToDate(date));
+    // this.computedTimeCtrl.setValue(this.formatDateTimeToTime(date));
+  }
+
+  onConvertBtnClick() {
+    // const dateStr = this.initDateCtrl.value?.toString() || '';
+    // console.log(dateStr);
+    // let newDate = this.timeScv.convertTimeZone(
+    //   new Date(dateStr),
+    //   this.initTzCtrl.value || '',
+    // );
+    // console.log(newDate);
+    // const dateArr = (this.initDateCtrl.value?.toString() || '').split('-');
+    // newDate.setFullYear(Number(dateArr[0]));
+    // newDate.setMonth(Number(dateArr[1]) - 1);
+    // newDate.setDate(Number(dateArr[2]));
+    // const timeStr = this.initTimeCtrl.value?.toString() || '';
+    // newDate.setHours(Number(timeStr.slice(0, 2)));
+    // newDate.setMinutes(Number(timeStr.slice(3, 5)));
+    // newDate.setSeconds(0);
+    // newDate = this.timeScv.convertTimeZone(
+    //   newDate,
+    //   this.computedTzCtrl.value || '',
+    // );
+    // this.setComputedDateTime(newDate.getTime());
   }
 }
