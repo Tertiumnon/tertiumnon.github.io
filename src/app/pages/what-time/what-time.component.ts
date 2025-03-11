@@ -9,13 +9,12 @@ import {
 } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { interval } from 'rxjs';
-import { ContentComponent } from '../../components/content/content.component';
 import { TimeService } from '../../components/time/time.service';
 
 @Component({
   selector: 'app-what-time',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ContentComponent, DatePipe],
+  imports: [CommonModule, ReactiveFormsModule, DatePipe],
   templateUrl: './what-time.component.html',
   styleUrl: './what-time.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -70,25 +69,25 @@ export class WhatTimeComponent {
   }
 
   onConvertBtnClick() {
-    // const dateStr = this.initDateCtrl.value?.toString() || '';
+    // const dateStr = this.dateCtrl.value?.toString() || '';
     // console.log(dateStr);
-    // let newDate = this.timeScv.convertTimeZone(
+    // let newDate = this.timeScv.convertToTimezone(
     //   new Date(dateStr),
-    //   this.initTzCtrl.value || '',
+    //   this.timezoneCtrl.value || '',
     // );
     // console.log(newDate);
-    // const dateArr = (this.initDateCtrl.value?.toString() || '').split('-');
+    // const dateArr = (this.dateCtrl.value?.toString() || '').split('-');
     // newDate.setFullYear(Number(dateArr[0]));
     // newDate.setMonth(Number(dateArr[1]) - 1);
     // newDate.setDate(Number(dateArr[2]));
-    // const timeStr = this.initTimeCtrl.value?.toString() || '';
+    // const timeStr = this.timeCtrl.value?.toString() || '';
     // newDate.setHours(Number(timeStr.slice(0, 2)));
     // newDate.setMinutes(Number(timeStr.slice(3, 5)));
     // newDate.setSeconds(0);
-    // newDate = this.timeScv.convertTimeZone(
+    // newDate = this.timeScv.convertToTimezone(
     //   newDate,
-    //   this.computedTzCtrl.value || '',
+    //   this.calculatedTimezoneCtrl.value || '',
     // );
-    // this.setComputedDateTime(newDate.getTime());
+    // this.setCalculatedDateTime(newDate.getTime());
   }
 }

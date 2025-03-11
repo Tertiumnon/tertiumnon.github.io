@@ -1,14 +1,18 @@
 .project-card {
   opacity: 0.9;
-  font-size: larger;
+  background-color: white;
+  box-shadow: var(--box-shadow);
 
   &:hover {
-    opacity: 1;
+    box-shadow: var(--box-shadow--hover);
   }
 
   .header {
     .project-card-title {
       text-transform: uppercase;
+      height: 2rem;
+      overflow: hidden;
+      word-break: break-all;
     }
   }
 

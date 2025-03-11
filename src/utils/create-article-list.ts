@@ -46,15 +46,15 @@ export const getArticleList = async (path: string): Promise<Article[]> => {
     const fileName = file.name;
     const filePath = `${path}/${fileName}`;
     if (!file.isDirectory() && fileIsMd(fileName)) {
-      const fileStat = await fs.stat(filePath);
       const title = await getArticleTitle(filePath);
       articleList.push({
         title,
-        link: filePath.slice(4),
-        createdAt: fileStat.mtime.toISOString(),
-        updatedAt: fileStat.atime.toISOString(),
+        link: `/${filePath.split("/").slice(2).join("/")}`.replace(".md", ""),
         language: articleIsRu(fileName) ? "ru" : "en",
-        tags: [],
+        tags: filePath
+          .split("/")
+          .slice(0, -1)
+          .filter((p) => !["src", "assets", "articles"].includes(p)),
       });
     }
   }

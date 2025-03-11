@@ -1,22 +1,22 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: "app-dropdown",
+  selector: 'app-dropdown',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: "./dropdown.component.html",
-  styleUrls: ["./dropdown.component.less"],
+  templateUrl: './dropdown.component.html',
+  styleUrls: ['./dropdown.component.less'],
 })
 export class DropdownComponent implements OnInit {
-  @Input() label = "";
-  @Input() placeholder = "<Select>";
-  @Input() selectedOption = "";
+  @Input() label = '';
+  @Input() placeholder = '<Select>';
+  @Input() selectedOption = '';
   @Input() options: string[] = [];
   @Output() selectedOptionChange = new EventEmitter<string>();
   isOpened = false;
-  width = "";
+  width = '';
 
   ngOnInit(): void {
     this.width = this.getWidth();
@@ -32,6 +32,15 @@ export class DropdownComponent implements OnInit {
   }
 
   getWidth(): string {
-    return `${this.options.reduce((acc, option) => (acc = option.length > acc.length ? option : acc)).length / 2}`;
+    return `${
+      this.options.reduce(
+        (acc, option) => {
+          if (option.length > acc.length) {
+            acc = option;
+          }
+          return acc;
+        }
+      ).length * 0.75
+    }`;
   }
 }

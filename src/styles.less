@@ -5,8 +5,15 @@
 @import "tailwindcss/utilities";
 
 :root {
+  --content-mt: 1em;
   --text-color: #f6edff;
-  --bg-color: #300075;
+  --box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  --box-shadow--hover: 0 0 10px rgba(0, 0, 0, 0.8);
+  --CoderTheme-bg-color: #2f365e;
+  --CoderTheme-bg-color--dark: #1e3255b2;
+  --CoderTheme-bg-color--light: #444175;
+  --HoneyPieTheme-bg-color--dark: #642e4db5;
+  --HoneyPieTheme-bg-color--light: #8e396b;
 }
 
 html,
@@ -17,22 +24,157 @@ body {
 body {
   margin: 0;
   font-family: 'VT323', monospace;
-  font-size: 21px;
+  font-size: 20px;
   color: white;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.6em;
+  margin-bottom: 0.4em;
+  font-weight: bold;
+  line-height: 1.2;
+  font-family: "Roboto Mono", serif;
+  // font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
 h1 {
-  font-size: 2rem;
+  margin-top: 0.2em;
+  font-size: 1.8em;
+  font-family: "Roboto Mono", serif;
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.5em;
 }
 
-input, select {
+h3 {
+  font-size: 1.2em;
+}
+
+p {
+  margin: 0.8rem 0;
+  line-height: 1.5;
+}
+
+.text-link {
+  text-decoration: underline;
+}
+
+input,
+select {
   color: black;
 }
 
 select {
   font-family: 'VT323', monospace;
+  background: none;
+}
+
+/* Containers */
+
+code {
+  font-family: "Roboto Mono", serif;
+  font-size: 0.9em;
+}
+
+.bg {
+  position: fixed;
+  width: 100%;
+  padding-top: 64px;
+  height: calc(100vh - 32px);
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding-top: 64px;
+  padding-bottom: 32px;
+  font-family: "Roboto Mono", serif;
+}
+
+.container-fluid {
+  margin: 0 auto;
+  padding: 0 1%;
+  width: 96%;
+  max-width: 960px;
+}
+
+.content {
+  margin: var(--content-mt) auto;
+  padding: 1em 3%;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 18px;
+}
+
+pre {
+  overflow-y: auto;
+  background-color: #00000048;
+  padding: 0.6rem 1rem;
+  margin: 0.4em 0;
+  line-height: normal;
+  border-radius: 12px;
+
+  code {
+    font-size: 0.9em;
+  }
+}
+
+/* Themes */
+
+.CoderTheme {
+  .bg {
+    background-color: var(--CoderTheme-bg-color);
+  }
+
+  .project-control-panel {
+    background-color: var(--CoderTheme-bg-color--dark);
+  }
+
+  .project-card .description,
+  .option:not(.selected) {
+    background-color: var(--CoderTheme-bg-color--light);
+  }
+
+  .content {
+    background-color: var(--CoderTheme-bg-color--light);
+  }
+}
+
+.HoneyPieTheme {
+  .bg {
+    background-image: url("/assets/images/honey-pie.png");
+
+    &.bg-blur {
+      filter: blur(5px);
+    }
+  }
+
+  .project-control-panel {
+    background-color: var(--HoneyPieTheme-bg-color--dark);
+  }
+
+  .project-card .description,
+  .option:not(.selected) {
+    background-color: var(--HoneyPieTheme-bg-color--light);
+  }
+
+  .content {
+    background-color: var(--HoneyPieTheme-bg-color--light);
+  }
 }

@@ -1,25 +1,34 @@
-<div class="container h-8">
-  <div class="social-links">
-    <!-- <a
-      href="https://github.com/tertiumnon"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <fa-icon [icon]="['fab', 'github']"></fa-icon>
-    </a>
-    <a
-      href="https://leetcode.com/tertiumnon"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <fa-icon [icon]="['fab', 'leetcode']"></fa-icon>
-    </a>
-    <a
-      href="https://www.hackerrank.com/tertiumnon"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <fa-icon [icon]="['fab', 'hackerrank']"></fa-icon>
-    </a> -->
+<div class="footer">
+  <div class="container-fluid flex justify-between items-center">
+    <div class="social-links">
+      <!-- <a
+        href="https://github.com/tertiumnon"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <fa-icon [icon]="['fab', 'github']"></fa-icon>
+      </a>
+      <a
+        href="https://leetcode.com/tertiumnon"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <fa-icon [icon]="['fab', 'leetcode']"></fa-icon>
+      </a>
+      <a
+        href="https://www.hackerrank.com/tertiumnon"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <fa-icon [icon]="['fab', 'hackerrank']"></fa-icon>
+      </a> -->
+    </div>
+    <div class="theme-switch">
+      <select name="" id="" [formControl]="themeCtrl">
+        @for (theme of themeService.themes; track $index) {
+          <option [value]="theme">{{theme}}</option>
+        }
+      </select>
+    </div>
   </div>
 </div>
