@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
-import PROJECT_ITEMS from "../../entities/project/project.mock";
 import { HelpersComponent } from "../../components/helpers/helpers.component";
-import { IProject, ProjectStatus, IState } from "../../entities/project/project.interface";
+import { IProject, IState, ProjectStatus } from "../../entities/project/project.interface";
+import PROJECT_ITEMS from "../../entities/project/project.mock";
 
 @Injectable({
   providedIn: "root",

@@ -1,12 +1,12 @@
 .article-list {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  .article {
-    margin-bottom: 0.4em;
+	.article {
+		margin-bottom: 0.4em;
 
-    a {
-      text-decoration: underline;
-    }
-  }
+		a {
+			text-decoration: underline;
+		}
+	}
 }

@@ -8,9 +8,8 @@ describe("HelpersComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [HelpersComponent]
-})
-      .compileComponents();
+      imports: [HelpersComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

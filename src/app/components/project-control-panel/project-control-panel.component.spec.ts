@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { ProjectControlPanelComponent } from "./project-control-panel.component";
 import { FormsModule } from "@angular/forms";
+import { ProjectControlPanelComponent } from "./project-control-panel.component";
 
 describe("ControlPanelComponent", () => {
   let component: ProjectControlPanelComponent;
@@ -9,9 +9,8 @@ describe("ControlPanelComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    imports: [FormsModule, ProjectControlPanelComponent]
-})
-      .compileComponents();
+      imports: [FormsModule, ProjectControlPanelComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

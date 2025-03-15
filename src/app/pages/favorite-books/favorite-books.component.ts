@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-favorite-books',
+  selector: "app-favorite-books",
   standalone: true,
   imports: [],
-  templateUrl: './favorite-books.component.html',
-  styleUrl: './favorite-books.component.less'
+  templateUrl: "./favorite-books.component.html",
+  styleUrl: "./favorite-books.component.less",
 })
-export class FavoriteBooksComponent {
-
-}
+export class FavoriteBooksComponent {}

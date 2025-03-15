@@ -32,7 +32,8 @@ const age = 30;
 const getUserNames = async () => {
   const result = [];
   const response = await fetch('/users');
-  if (response) result = response.data.map(user => user.name);
+  const users = await response.json();
+  if (response) result = users.data.map(user => user.name);
   return result;
 }
 ```

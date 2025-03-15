@@ -23,7 +23,11 @@
 			"recommended": true,
 			"style": {
 				"useImportType": "off"
-			}
+			},
+			"suspicious": {
+        "noDuplicateTestHooks": "off",
+				"noExplicitAny": "off"
+      }
 		}
 	}
 }

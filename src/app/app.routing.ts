@@ -27,6 +27,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: "tools/what-time",
+    title: "What Time",
     loadComponent: () => import("./pages/what-time/what-time.component").then((m) => m.WhatTimeComponent),
   },
   {

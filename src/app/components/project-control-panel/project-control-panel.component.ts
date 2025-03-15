@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from "@angular/core";
 
-import { ProjectStatus } from "../../entities/project/project.interface";
-import { SoftwareService } from "../../pages/software/software.service";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import { ProjectStatus } from "../../entities/project/project.interface";
+import { SoftwareService } from "../../pages/software/software.service";
 import { DropdownComponent } from "../dropdown/dropdown.component";
 
 @Component({
@@ -18,14 +18,12 @@ export class ProjectControlPanelComponent implements OnInit {
   // status
   status = ProjectStatus.Active.toString();
   statusOptions = Object.values(ProjectStatus);
-  // 
+  //
   release = "Year (newer)";
   releaseOptions = ["Year (newer)", "Year (older)"];
-  releaseMap = {[this.releaseOptions[0]]: "year", [this.releaseOptions[1]]: "-year"};
+  releaseMap = { [this.releaseOptions[0]]: "year", [this.releaseOptions[1]]: "-year" };
 
-  constructor(
-    private projectService: SoftwareService,
-  ) {}
+  constructor(private projectService: SoftwareService) {}
 
   static getTextWidth(txt: string): number {
     const span = document.createElement("span");
