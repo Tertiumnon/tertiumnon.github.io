@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
-import { HelpersComponent } from "../../components/helpers/helpers.component";
+import { ProjectControlPanelService } from "../../components/project-control-panel/project-control-panel.service";
 import { IProject, IState, ProjectStatus } from "../../entities/project/project.interface";
 import PROJECT_ITEMS from "../../entities/project/project.mock";
 
@@ -28,12 +28,12 @@ export class SoftwareService {
   }
 
   filterProjects() {
-    let projects = HelpersComponent.filterBy(this.projects, "status", this.state.filterByStatus);
-    projects = HelpersComponent.filterBy(projects, "workType", this.state.filterByWorkType);
+    let projects = ProjectControlPanelService.filterBy(this.projects, "status", this.state.filterByStatus);
+    projects = ProjectControlPanelService.filterBy(projects, "workType", this.state.filterByWorkType);
     this.projects$.next(projects);
   }
 
   sortProjects() {
-    this.projects$.next(HelpersComponent.orderBy(this.projects$.value, ...[this.state.sortByAttrVal]));
+    this.projects$.next(ProjectControlPanelService.orderBy(this.projects$.value, ...[this.state.sortByAttrVal]));
   }
 }

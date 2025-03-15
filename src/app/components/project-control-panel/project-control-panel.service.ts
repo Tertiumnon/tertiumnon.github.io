@@ -1,14 +1,10 @@
-import { Component } from "@angular/core";
+import { Injectable } from "@angular/core";
 
-import { IProject } from "../../entities/project/project.interface";
-
-@Component({
-  selector: "app-helpers",
-  templateUrl: "./helpers.component.html",
-  styleUrls: ["./helpers.component.less"],
-  standalone: true,
+@Injectable({
+  providedIn: "root",
 })
-export class HelpersComponent {
+// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
+export class ProjectControlPanelService {
   static orderBy(list: any, ...args: any[]) {
     const direction = args[0][0];
     const column = direction === "-" ? args[0].slice(1) : args[0];
@@ -25,7 +21,7 @@ export class HelpersComponent {
     return newList;
   }
 
-  filterBy(projectList: any, param: string, value: string | undefined) {
+  static filterBy(projectList: any, param: string, value: string | undefined) {
     const newProjectList = [...projectList] as IProject[];
     if (!value || value === "all") return projectList;
     switch (param) {
