@@ -8,9 +8,8 @@ describe("EmulatorComponent", () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [EmulatorComponent]
-})
-      .compileComponents();
+      imports: [EmulatorComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

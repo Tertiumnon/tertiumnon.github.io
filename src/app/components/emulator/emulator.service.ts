@@ -3,7 +3,7 @@ import { NavigationEnd, Router } from "@angular/router";
 import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class EmulatorService {
   private _lines$ = new BehaviorSubject<string[]>([]);
@@ -57,15 +57,15 @@ export class EmulatorService {
         break;
       case "home":
         this.lines = [];
-        this.router.navigate([""], {skipLocationChange: true});
+        this.router.navigate([""], { skipLocationChange: true });
         break;
       case "about":
         this.lines = [];
-        this.router.navigate(["about"], {skipLocationChange: true});
+        this.router.navigate(["about"], { skipLocationChange: true });
         break;
       case "software":
         this.lines = [];
-        this.router.navigate(["software"], {skipLocationChange: true});
+        this.router.navigate(["software"], { skipLocationChange: true });
         break;
     }
     this.command$.next("");

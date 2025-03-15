@@ -1,15 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component } from "@angular/core";
-
+import { Injectable } from "@angular/core";
 import { IProject } from "../../entities/project/project.interface";
 
-@Component({
-    selector: "app-helpers",
-    templateUrl: "./helpers.component.html",
-    styleUrls: ["./helpers.component.less"],
-    standalone: true,
+@Injectable({
+  providedIn: "root",
 })
-export class HelpersComponent {
+// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
+export class ProjectControlPanelService {
   static orderBy(list: any, ...args: any[]) {
     const direction = args[0][0];
     const column = direction === "-" ? args[0].slice(1) : args[0];
@@ -17,11 +13,11 @@ export class HelpersComponent {
     newList.sort((a: any, b: any) => {
       if (a[column] < b[column]) {
         return direction === "-" ? -1 : 1;
-      } else if (a[column] > b[column]) {
-        return direction === "-" ? 1 : -1;
-      } else {
-        return 0;
       }
+      if (a[column] > b[column]) {
+        return direction === "-" ? 1 : -1;
+      }
+      return 0;
     });
     return newList;
   }
@@ -30,12 +26,12 @@ export class HelpersComponent {
     const newProjectList = [...projectList] as IProject[];
     if (!value || value === "all") return projectList;
     switch (param) {
-    case "status":
-      return newProjectList.filter((project) => project.status === value);
-    case "workType":
-      return newProjectList.filter((project) => project.workTypes.includes(value));
-    default:
-      break;
+      case "status":
+        return newProjectList.filter((project) => project.status === value);
+      case "workType":
+        return newProjectList.filter((project) => project.workTypes.includes(value));
+      default:
+        break;
     }
   }
 }

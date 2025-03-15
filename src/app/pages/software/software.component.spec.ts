@@ -6,13 +6,11 @@ describe("SoftwareComponent", () => {
   let component: SoftwareComponent;
   let fixture: ComponentFixture<SoftwareComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-    imports: [SoftwareComponent],
-}).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [SoftwareComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SoftwareComponent);

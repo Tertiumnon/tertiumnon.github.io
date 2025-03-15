@@ -8,7 +8,7 @@ describe("DropdownComponent", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [DropdownComponent]
+      imports: [DropdownComponent],
     });
     fixture = TestBed.createComponent(DropdownComponent);
     component = fixture.componentInstance;

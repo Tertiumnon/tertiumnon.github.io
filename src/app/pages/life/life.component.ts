@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-life',
+  selector: "app-life",
   standalone: true,
   imports: [],
-  templateUrl: './life.component.html',
-  styleUrl: './life.component.less'
+  templateUrl: "./life.component.html",
+  styleUrl: "./life.component.less",
 })
-export class LifeComponent {
-
-}
+export class LifeComponent {}

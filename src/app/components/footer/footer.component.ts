@@ -1,8 +1,8 @@
-import { Component, inject } from "@angular/core";
-import { ThemeService } from "../theme/theme.service";
 import { CommonModule } from "@angular/common";
+import { Component, inject } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { Theme } from "../theme/theme";
+import { ThemeService } from "../theme/theme.service";
 
 @Component({
   selector: "app-footer",

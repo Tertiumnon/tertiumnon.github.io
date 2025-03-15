@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-tools',
+  selector: "app-tools",
   standalone: true,
   imports: [],
-  templateUrl: './tools.component.html',
-  styleUrl: './tools.component.less'
+  templateUrl: "./tools.component.html",
+  styleUrl: "./tools.component.less",
 })
-export class ToolsComponent {
-
-}
+export class ToolsComponent {}

@@ -1,14 +1,14 @@
-import { Component, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { Article } from '../../entities/article/article';
-import { ArticleService } from '../../entities/article/article.service';
+import { Component, inject, signal } from "@angular/core";
+import { RouterLink } from "@angular/router";
+import { Article } from "../../entities/article/article";
+import { ArticleService } from "../../entities/article/article.service";
 
 @Component({
-  selector: 'app-articles',
+  selector: "app-articles",
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './articles.component.html',
-  styleUrl: './articles.component.css',
+  templateUrl: "./articles.component.html",
+  styleUrl: "./articles.component.css",
 })
 export class ArticlesComponent {
   articleService = inject(ArticleService);

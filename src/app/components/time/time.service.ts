@@ -32,10 +32,6 @@ export class TimeService {
   }
 
   static convertTimeZone(dt: Date, timeZone: string) {
-    const tzOffset = dt.getTimezoneOffset();
-    // var os = new Date()
-    // os = os.getTimezoneOffset();
-    // var d = new Date((dt + (os * 60 * 1000)));
     return new Date(dt.toLocaleString("en-US", { timeZone }));
   }
 }

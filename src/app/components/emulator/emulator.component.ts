@@ -9,10 +9,7 @@ import { EmulatorService } from "./emulator.service";
   styleUrls: ["./emulator.component.less"],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-  ]
+  imports: [CommonModule, FormsModule],
 })
 export class EmulatorComponent implements OnInit {
   lines$ = this.emulatorService.lines;
@@ -20,9 +17,7 @@ export class EmulatorComponent implements OnInit {
   isCliEnabled$ = this.emulatorService.isCliEnabled$;
   command = "";
 
-  constructor(
-    private emulatorService: EmulatorService
-  ) {}
+  constructor(private emulatorService: EmulatorService) {}
 
   ngOnInit(): void {
     this.emulatorService.command$.subscribe((command) => {

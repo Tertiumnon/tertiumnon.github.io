@@ -4,11 +4,11 @@
   <p>{{ date() }}</p>
   <p>ISO: {{ isoDate() }}</p>
   <p>
-    Time: {{ date() | date: "YYYY-MM-dd HH:mm:ss" }} ({{
+    Time: {{ date() | date : "YYYY-MM-dd HH:mm:ss" }} ({{
       TimeService.timeZone()
     }})
   </p>
-  <h2>Date timeZone Converter</h2>
+  <h2>Date Time Zone Converter</h2>
   <div class="flex gap-1 pb-2">
     <div>
       <input type="date" name="date" [formControl]="initDateCtrl" />
@@ -16,37 +16,34 @@
     <div>
       <input type="time" name="time" [formControl]="initTimeCtrl" />
     </div>
-    <select name="timeZone" [formControl]="initTzCtrl">
+    <select name="timeZone" [formControl]="initTimeZoneCtrl">
       <option *ngFor="let tz of TimeService.timeZones()" [value]="tz">
         {{ tz }}
       </option>
     </select>
   </div>
   <div class="flex gap-1">
+    <div>=></div>
     <div>
       <input
         type="date"
-        name="computedDate"
-        [formControl]="computedDateCtrl"
+        name="convertedDate"
+        [formControl]="convertedDateCtrl"
         readonly
-        class="w-32"
       />
     </div>
     <div>
       <input
         type="time"
-        name="computedTime"
-        [formControl]="computedTimeCtrl"
+        name="convertedTime"
+        [formControl]="convertedTimeCtrl"
         readonly
       />
     </div>
-    <select name="computedtimeZone" [formControl]="computedTzCtrl">
+    <select name="convertedTimeZone" [formControl]="convertedTimeZoneCtrl">
       <option *ngFor="let tz of TimeService.timeZones()" [value]="tz">
         {{ tz }}
       </option>
     </select>
-    <button type="button" class="btn" (click)="onConvertBtnClick()">
-      Convert
-    </button>
   </div>
 </div>

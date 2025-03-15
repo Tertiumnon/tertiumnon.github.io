@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { EmulatorService } from "../../components/emulator/emulator.service";
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
+  selector: "app-contact",
+  templateUrl: "./contact.component.html",
   standalone: true,
 })
 export class ContactComponent {
