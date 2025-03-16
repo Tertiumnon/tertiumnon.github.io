@@ -8,7 +8,7 @@ const PROJECT_ITEMS: IProject[] = [
     description: "Web tool for showing time.",
     imagePreview: "",
     image: "",
-    link: "/tools/what-time",
+    link: "/#/tools/what-time",
     year: 2025,
     status: ProjectStatus.Active,
   },
