@@ -9,8 +9,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "lint:fix": "biome check --write ./src",
-    "release:hotfix:finish": "bun chlpr utils/release-hotfix.sh",
-    "release:minor:finish": "bun chlpr utils/release-hotfix.sh",
+    "release:hotfix:finish": "chlpr utils/release-hotfix.sh",
+    "release:minor:finish": "chlpr utils/release-hotfix.sh",
     "release:major:finish": "npm version major && npm run build:gh && git add --all && git commit --amend -C HEAD && git push && git checkout master && git merge develop && git push && git push --tags && git checkout develop"
   },
   "private": true,
