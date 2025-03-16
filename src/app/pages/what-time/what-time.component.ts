@@ -56,7 +56,7 @@ export class WhatTimeComponent {
     dt.setMonth(Number(date.slice(5, 7)) - 1);
     dt.setDate(Number(date.slice(8, 10)));
     this.initDateTime.set(dt);
-    if (this.convertedTimeZoneCtrl.value) this.updateConvertedDateTime();
+    if (this.convertedDateTime()) this.updateConvertedDateTime();
   }
 
   onInitTimeChange(time: string | null) {
@@ -65,7 +65,7 @@ export class WhatTimeComponent {
     dt.setHours(Number(time.slice(0, 2)));
     dt.setMinutes(Number(time.slice(3, 5)));
     this.initDateTime.set(dt);
-    if (this.convertedTimeZoneCtrl.value) this.updateConvertedDateTime();
+    if (this.convertedDateTime()) this.updateConvertedDateTime();
   }
 
   onInitTimeZoneChange(tz: string | null) {
@@ -74,7 +74,7 @@ export class WhatTimeComponent {
     const time = this.initDateTime().getTime();
     this.initDateCtrl.setValue(TimeService.formatToIsoDate(time));
     this.initTimeCtrl.setValue(TimeService.formatToIsoTime(time));
-    if (this.convertedTimeZoneCtrl.value) this.updateConvertedDateTime();
+    if (this.convertedDateTime()) this.updateConvertedDateTime();
   }
 
   updateConvertedDateTime() {
