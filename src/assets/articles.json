@@ -1,32 +1,50 @@
 [
-	{
-		"title": "Карьера программиста после 30",
-		"link": "/articles/career/programming-after-30-ru",
-		"language": "ru",
-		"tags": ["career"]
-	},
-	{
-		"title": "Дизайн",
-		"link": "/articles/design/design-ru",
-		"language": "ru",
-		"tags": ["design"]
-	},
-	{
-		"title": "Agile, Kanban, Scrum - главное простыми словами",
-		"link": "/articles/management/agile-kanban-scrum-ru",
-		"language": "ru",
-		"tags": ["management"]
-	},
-	{
-		"title": "Именование переменных, объектов/классов, методов и файлов",
-		"link": "/articles/programming/naming-ru",
-		"language": "ru",
-		"tags": ["programming"]
-	},
-	{
-		"title": "Рефакторинг",
-		"link": "/articles/programming/refactoring-ru",
-		"language": "ru",
-		"tags": ["programming"]
-	}
+  {
+    "title": "Карьера программиста после 30",
+    "link": "/articles/career/programming-after-30-ru",
+    "language": "ru",
+    "tags": [
+      "career"
+    ]
+  },
+  {
+    "title": "Дизайн",
+    "link": "/articles/design/design-ru",
+    "language": "ru",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "title": "Agile, Kanban, Scrum - главное простыми словами",
+    "link": "/articles/management/agile-kanban-scrum-ru",
+    "language": "ru",
+    "tags": [
+      "management"
+    ]
+  },
+  {
+    "title": "Именование переменных, объектов/классов, методов и файлов",
+    "link": "/articles/programming/naming-ru",
+    "language": "ru",
+    "tags": [
+      "programming"
+    ]
+  },
+  {
+    "title": "Рефакторинг",
+    "link": "/articles/programming/refactoring-ru",
+    "language": "ru",
+    "tags": [
+      "programming"
+    ]
+  },
+  {
+    "title": "Минимум книг, которые нужно прочитать начинающему или продолжающему свою кривую обучения программисту",
+    "link": "/articles/programming/the-minimum-of-books-ru",
+    "language": "ru",
+    "tags": [
+      "programming"
+    ]
+  }
 ]
