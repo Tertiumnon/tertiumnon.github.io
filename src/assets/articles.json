@@ -32,6 +32,14 @@
     ]
   },
   {
+    "title": "Cooking with TypeScript enums",
+    "link": "/articles/programming/cooking-with-ts-enums",
+    "language": "en",
+    "tags": [
+      "programming"
+    ]
+  },
+  {
     "title": "Именование переменных, объектов/классов, методов и файлов",
     "link": "/articles/programming/naming-ru",
     "language": "ru",
