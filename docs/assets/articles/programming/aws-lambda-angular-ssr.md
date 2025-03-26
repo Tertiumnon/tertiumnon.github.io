@@ -26,5 +26,6 @@ The best place for storing static content is S3 bucket, so you need to place "as
 
 - [AWS Lambda](https://aws.amazon.com/lambda/edge/)
 - [Dynamically Route Viewer Requests to Any Origin Using Lambda@Edge](https://aws.amazon.com/blogs/networking-and-content-delivery/dynamically-route-viewer-requests-to-any-origin-using-lambdaedge/)
+- [Serverless Server Side Rendering with Angular on AWS Lambda@Edge](https://dev.to/eelayoubi/serverless-server-side-rendering-with-angular-on-aws-lambda-edge-57g5)
 - [Deploy an Angular SSR (Server-Side Rendering) app on AWS for SEO optimization](https://www.linkedin.com/pulse/deploy-angular-ssr-server-side-rendering-app-aws-seo-davide-fruci-jfitf/)
 - [NPM package "aws-serverless-express-edge"](https://www.npmjs.com/package/aws-serverless-express-edge)
