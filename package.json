@@ -10,9 +10,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "lint:fix": "biome check --write ./src",
-    "release:hotfix:finish": "npm run build:articles && npm run build:gh && git add --all && git commit -m \"release build\" && npm version patch && git push && git push --tags && git checkout develop && git rebase origin/master && git push && git checkout master",
-    "release:minor:finish": "npm run build:articles && npm run build:gh && git add --all && git commit -m \"release build\" && npm version minor && git push -f && git checkout master && git merge develop && git push && git push --tags && git checkout develop",
-    "release:major:finish": "npm run build:articles && npm run build:gh && git add --all && git commit -m \"release build\" && npm version major && git push -f && git checkout master && git merge develop && git push && git push --tags && git checkout develop"
+    "release:hotfix": "npm run build:articles && npm run build:gh && git add --all && git commit -m \"release build\" && npm version patch && git push && git push --tags && git checkout develop && git rebase origin/master && git push && git checkout master",
+    "release:minor": "npm run build:articles && npm run build:gh && git add --all && git commit -m \"release build\" && npm version minor && git push -f && git checkout master && git merge develop && git push && git push --tags && git checkout develop",
+    "release:major": "npm run build:articles && npm run build:gh && git add --all && git commit -m \"release build\" && npm version major && git push -f && git checkout master && git merge develop && git push && git push --tags && git checkout develop"
   },
   "private": true,
   "dependencies": {
