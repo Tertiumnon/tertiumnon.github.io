@@ -12,7 +12,7 @@ enum Role {
 }
 ```
 
-And we have a good news here - we can use string values in TypeScript! For instance, C# enums can't work work with string values.
+And we have a good news here - we can use string values in TypeScript! For instance, C# enums can't work with string values.
 
 ```ts
 enum UserRole {
