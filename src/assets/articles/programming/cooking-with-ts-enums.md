@@ -146,6 +146,6 @@ const options = Object.entries(UserRole).map(arr => ({label: arr[0], value: arr[
 
 TypeScript `enums` is not a "bad" feature.
 
-In some case it's confusing but only if you don't understand how to works with that.
+In some case it's confusing but only if you don't understand how to work with that.
 
 This is convenient if you want to create related data structures.
