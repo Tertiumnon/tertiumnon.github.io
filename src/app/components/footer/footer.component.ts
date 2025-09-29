@@ -5,11 +5,10 @@ import { Theme } from "../theme/theme";
 import { ThemeService } from "../theme/theme.service";
 
 @Component({
-  selector: "app-footer",
-  templateUrl: "./footer.component.html",
-  styleUrls: ["./footer.component.less"],
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+    selector: "app-footer",
+    templateUrl: "./footer.component.html",
+    styleUrls: ["./footer.component.less"],
+    imports: [CommonModule, ReactiveFormsModule]
 })
 export class FooterComponent {
   themeService = inject(ThemeService);

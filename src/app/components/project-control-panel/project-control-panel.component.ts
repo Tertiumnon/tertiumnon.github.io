@@ -7,11 +7,10 @@ import { SoftwareService } from "../../pages/software/software.service";
 import { DropdownComponent } from "../dropdown/dropdown.component";
 
 @Component({
-  selector: "app-project-control-panel",
-  templateUrl: "./project-control-panel.component.html",
-  styleUrls: ["./project-control-panel.component.less"],
-  standalone: true,
-  imports: [CommonModule, FormsModule, DropdownComponent],
+    selector: "app-project-control-panel",
+    templateUrl: "./project-control-panel.component.html",
+    styleUrls: ["./project-control-panel.component.less"],
+    imports: [CommonModule, FormsModule, DropdownComponent]
 })
 export class ProjectControlPanelComponent implements OnInit {
   @Input() isStatusFilterVisible = true;

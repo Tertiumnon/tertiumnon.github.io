@@ -7,10 +7,9 @@ import { IProject } from "../../entities/project/project.interface";
 import { SoftwareService } from "./software.service";
 
 @Component({
-  selector: "app-software",
-  templateUrl: "./software.component.html",
-  standalone: true,
-  imports: [CommonModule, ProjectListComponent, ProjectControlPanelComponent],
+    selector: "app-software",
+    templateUrl: "./software.component.html",
+    imports: [CommonModule, ProjectListComponent, ProjectControlPanelComponent]
 })
 export class SoftwareComponent implements OnInit {
   projects: IProject[] = [];

@@ -1,10 +1,9 @@
 import { Component } from "@angular/core";
 
 @Component({
-  selector: "app-book-list",
-  standalone: true,
-  imports: [],
-  templateUrl: "./book-list.component.html",
-  styleUrl: "./book-list.component.less",
+    selector: "app-book-list",
+    imports: [],
+    templateUrl: "./book-list.component.html",
+    styleUrl: "./book-list.component.less"
 })
 export class BookListComponent {}

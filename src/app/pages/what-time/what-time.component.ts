@@ -5,12 +5,11 @@ import { interval } from "rxjs";
 import { TimeService } from "../../components/time/time.service";
 
 @Component({
-  selector: "app-what-time",
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, DatePipe],
-  templateUrl: "./what-time.component.html",
-  styleUrl: "./what-time.component.less",
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: "app-what-time",
+    imports: [CommonModule, ReactiveFormsModule, DatePipe],
+    templateUrl: "./what-time.component.html",
+    styleUrl: "./what-time.component.less",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WhatTimeComponent {
   TimeService = TimeService;

@@ -4,12 +4,11 @@ import { FormsModule } from "@angular/forms";
 import { EmulatorService } from "./emulator.service";
 
 @Component({
-  selector: "app-emulator",
-  templateUrl: "./emulator.component.html",
-  styleUrls: ["./emulator.component.less"],
-  encapsulation: ViewEncapsulation.None,
-  standalone: true,
-  imports: [CommonModule, FormsModule],
+    selector: "app-emulator",
+    templateUrl: "./emulator.component.html",
+    styleUrls: ["./emulator.component.less"],
+    encapsulation: ViewEncapsulation.None,
+    imports: [CommonModule, FormsModule]
 })
 export class EmulatorComponent implements OnInit {
   lines$ = this.emulatorService.lines;

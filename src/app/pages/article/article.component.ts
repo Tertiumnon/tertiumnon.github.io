@@ -5,11 +5,10 @@ import { ArticleGetParams } from "../../entities/article/article";
 import { ArticleService } from "../../entities/article/article.service";
 
 @Component({
-  selector: "app-article",
-  standalone: true,
-  imports: [MdContentComponent],
-  templateUrl: "./article.component.html",
-  styleUrl: "./article.component.less",
+    selector: "app-article",
+    imports: [MdContentComponent],
+    templateUrl: "./article.component.html",
+    styleUrl: "./article.component.less"
 })
 export class ArticleComponent {
   activatedRoute = inject(ActivatedRoute);
