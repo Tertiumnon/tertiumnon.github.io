@@ -24,18 +24,11 @@
 					"options": {
 						"outputPath": "dist/tertiumnon-github-io",
 						"index": "src/index.html",
-						"polyfills": [
-							"src/polyfills.ts"
-						],
+						"polyfills": ["src/polyfills.ts"],
 						"tsConfig": "tsconfig.app.json",
 						"inlineStyleLanguage": "less",
-						"assets": [
-							"src/favicon.ico",
-							"src/assets"
-						],
-						"styles": [
-							"src/styles.less"
-						],
+						"assets": ["src/favicon.ico", "src/assets"],
+						"styles": ["src/styles.less"],
 						"scripts": [],
 						"browser": "src/main.ts"
 					},
@@ -92,19 +85,12 @@
 					"builder": "@angular/build:karma",
 					"options": {
 						"main": "src/test.ts",
-						"polyfills": [
-							"src/polyfills.ts"
-						],
+						"polyfills": ["src/polyfills.ts"],
 						"tsConfig": "tsconfig.spec.json",
 						"karmaConfig": "karma.conf.js",
 						"inlineStyleLanguage": "less",
-						"assets": [
-							"src/favicon.ico",
-							"src/assets"
-						],
-						"styles": [
-							"src/styles.less"
-						],
+						"assets": ["src/favicon.ico", "src/assets"],
+						"styles": ["src/styles.less"],
 						"scripts": []
 					}
 				}
