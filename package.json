@@ -10,10 +10,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "lint:fix": "biome check --write ./src",
-    "release": "node_modules/@tertium/js/scripts/release.js",
-    "release:hotfix": "npm run build:articles && npm run build:gh && npm run release -- hotfix",
-    "release:minor": "npm run build:articles && npm run build:gh && npm run release -- minor",
-    "release:major": "npm run build:articles && npm run build:gh && npm run release -- major"
+    "release": "bun node_modules/@tertium/js/scripts/release.js",
+    "release:hotfix": "bun run build:articles && npm run build:gh && npm run release -- hotfix",
+    "release:minor": "bun run build:articles && npm run build:gh && npm run release -- minor",
+    "release:major": "bun run build:articles && npm run build:gh && npm run release -- major"
   },
   "private": true,
   "dependencies": {
