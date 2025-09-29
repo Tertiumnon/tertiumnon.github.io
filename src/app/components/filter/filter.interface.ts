@@ -1,9 +1,9 @@
 export enum FilterOperator {
-  Equal = "eq",
+	Equal = "eq",
 }
 
 export interface IFilter {
-  name: string;
-  operator: FilterOperator;
-  value: string | string[] | number | number[];
+	name: string;
+	operator: FilterOperator;
+	value: string | string[] | number | number[];
 }

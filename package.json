@@ -9,7 +9,7 @@
     "build:gh": "ng build --output-path docs --base-href /",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --browsers ChromeHeadless --watch=false",
-    "lint:fix": "biome check --write ./src",
+    "lint:fix": "bunx rome format --write src && bunx rome check src --apply",
     "save:build:content": "git add --all && git commit -m 'save builded content'",
     "release": "bun node_modules/@tertium/js/scripts/release.js",
     "release:hotfix": "bun run build:articles && npm run build:gh && bun run save:build:content && npm run release -- hotfix",
@@ -29,11 +29,10 @@
     "@tertium/js": "^0.15.1",
     "rxjs": "~6.6.0",
     "marked": "^5.1.0",
-  "highlight.js": "^11.8.0",
+    "highlight.js": "^11.8.0",
     "ts-node": "^10.9.2",
     "tslib": "^2.2.0",
-    "update": "^0.7.4",
-    "zone.js": "~0.15.1"
+    "update": "^0.7.4"
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.2003.3",
@@ -42,7 +41,6 @@
     "@angular/build": "^20.3.3",
     "@angular/cli": "^20.3.3",
     "@angular/compiler-cli": "^20.3.2",
-    "@biomejs/biome": "1.9.4",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^18.17.15",
     "autoprefixer": "^10.4.15",
@@ -58,7 +56,6 @@
     "typescript": "^5.8.3"
   },
   "trustedDependencies": [
-    "@biomejs/biome",
     "@parcel/watcher"
   ]
 }

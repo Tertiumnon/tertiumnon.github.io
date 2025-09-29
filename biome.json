@@ -25,9 +25,9 @@
 				"useImportType": "off"
 			},
 			"suspicious": {
-        "noDuplicateTestHooks": "off",
+				"noDuplicateTestHooks": "off",
 				"noExplicitAny": "off"
-      }
+			}
 		}
 	}
 }

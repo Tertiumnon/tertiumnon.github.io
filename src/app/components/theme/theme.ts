@@ -1,4 +1,4 @@
 export enum Theme {
-  Coder = "CoderTheme",
-  HoneyPie = "HoneyPieTheme",
+	Coder = "CoderTheme",
+	HoneyPie = "HoneyPieTheme",
 }

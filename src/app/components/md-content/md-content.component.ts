@@ -27,21 +27,46 @@ export class MdContentComponent {
 
   ngOnChanges() {
     if (this.data) {
-      // Configure marked to highlight code blocks using highlight.js
+      // Use the modern marked API without deprecated options.
+      // Create a default Renderer so helper methods like renderer.text exist,
+      // then override only the code method to use highlight.js.
+      // Use non-deprecated options to avoid console warnings.
+      // Note: cast to any because types may not expose Renderer constructor in ESM build.
+      // Create a Renderer constructor in a typesafe-ish way (avoid explicit any type annotation).
+      const RendererCtor =
+        (marked as unknown as { Renderer?: new () => unknown }).Renderer ??
+        (marked as unknown as { renderer?: new () => unknown }).renderer ??
+        class {};
+      // @ts-ignore - the Renderer type is dynamic in ESM builds
+      const renderer = new RendererCtor();
+
+      // Provide the code method as an arrow function to satisfy lint rules.
+      // @ts-ignore - dynamic method assignment
+      renderer.code = (code: string, infostring: string | undefined) => {
+        const lang = (infostring || '').trim().split(/\s+/)[0];
+        try {
+          if (lang && hljs.getLanguage(lang)) {
+            return `<pre><code class="hljs language-${lang}">${
+              hljs.highlight(code, { language: lang }).value
+            }</code></pre>`;
+          }
+          return `<pre><code class="hljs">${
+            hljs.highlightAuto(code).value
+          }</code></pre>`;
+        } catch (e) {
+          return `<pre><code>${code}</code></pre>`;
+        }
+      };
+
       const raw = marked.parse(this.data || '', {
+        renderer,
         gfm: true,
         breaks: true,
-        highlight: (code: string, lang?: string) => {
-          try {
-            if (lang && hljs.getLanguage(lang)) {
-              return hljs.highlight(code, { language: lang }).value;
-            }
-            return hljs.highlightAuto(code).value;
-          } catch (e) {
-            return code;
-          }
-        }
+        // disable deprecated behaviors from marked 5
+        mangle: false,
+        headerIds: false,
       });
+
       this.htmlData = this.sanitizer.bypassSecurityTrustHtml(raw);
     } else {
       this.htmlData = '';

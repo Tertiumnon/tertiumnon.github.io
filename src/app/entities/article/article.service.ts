@@ -3,17 +3,21 @@ import { Injectable, inject } from "@angular/core";
 import { Article, ArticleGetParams } from "./article";
 
 @Injectable({
-  providedIn: "root",
+	providedIn: "root",
 })
 export class ArticleService {
-  httpClient = inject(HttpClient);
+	httpClient = inject(HttpClient);
 
-  getAll() {
-    return this.httpClient.get<Article[]>("assets/articles.json", { responseType: "json" });
-  }
+	getAll() {
+		return this.httpClient.get<Article[]>("assets/articles.json", {
+			responseType: "json",
+		});
+	}
 
-  get(params: ArticleGetParams) {
-    const { category, name } = params;
-    return this.httpClient.get(`assets/articles/${category}/${name}.md`, { responseType: "text" });
-  }
+	get(params: ArticleGetParams) {
+		const { category, name } = params;
+		return this.httpClient.get(`assets/articles/${category}/${name}.md`, {
+			responseType: "text",
+		});
+	}
 }

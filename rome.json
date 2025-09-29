@@ -1,0 +1,11 @@
+{
+	"linter": {
+		"enabled": true
+	},
+	"formatter": {
+		"enabled": true
+	},
+	"files": {
+		"ignore": ["docs/**", "dist/**", "node_modules/**", ".git/**"]
+	}
+}

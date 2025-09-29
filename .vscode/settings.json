@@ -1,21 +1,21 @@
 {
-  "files.exclude": {
-    "index.html": true,
-    "assets": true,
-    "main.js*": true,
-    "polyfills*": true,
-    "runtime.js*": true,
-    "styles.js*": true,
-    "vendor.js*": true
-  },
-  "cSpell.words": [
-    "Datur",
-    "ghpages",
-    "Grocking",
-    "habr",
-    "hackerrank",
-    "Joomla",
-    "leetcode",
-    "linebreak"
-  ]
+	"files.exclude": {
+		"index.html": true,
+		"assets": true,
+		"main.js*": true,
+		"polyfills*": true,
+		"runtime.js*": true,
+		"styles.js*": true,
+		"vendor.js*": true
+	},
+	"cSpell.words": [
+		"Datur",
+		"ghpages",
+		"Grocking",
+		"habr",
+		"hackerrank",
+		"Joomla",
+		"leetcode",
+		"linebreak"
+	]
 }

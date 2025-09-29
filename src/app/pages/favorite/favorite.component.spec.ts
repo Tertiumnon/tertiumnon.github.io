@@ -3,20 +3,20 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { FavoriteComponent } from "./favorite.component";
 
 describe("FavoriteComponent", () => {
-  let component: FavoriteComponent;
-  let fixture: ComponentFixture<FavoriteComponent>;
+	let component: FavoriteComponent;
+	let fixture: ComponentFixture<FavoriteComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [FavoriteComponent],
-    }).compileComponents();
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
+			imports: [FavoriteComponent],
+		}).compileComponents();
 
-    fixture = TestBed.createComponent(FavoriteComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+		fixture = TestBed.createComponent(FavoriteComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it("should create", () => {
-    expect(component).toBeTruthy();
-  });
+	it("should create", () => {
+		expect(component).toBeTruthy();
+	});
 });

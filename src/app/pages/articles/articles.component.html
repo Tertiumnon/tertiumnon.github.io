@@ -3,11 +3,9 @@
     <h1>Articles</h1>
 
     <div class="article-list">
-      @for (article of articleList(); track $index) {
-      <div class="article">
+      <div *ngFor="let article of articleList(); index as i" class="article">
         <a [routerLink]="article.link">{{ article.title }}</a>
       </div>
-      }
     </div>
   </div>
 </div>

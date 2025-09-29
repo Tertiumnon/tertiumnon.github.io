@@ -1,5 +1,5 @@
 export interface IQuotation {
-  text: string;
-  author: string;
-  source: string;
+	text: string;
+	author: string;
+	source: string;
 }

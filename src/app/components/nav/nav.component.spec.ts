@@ -4,22 +4,22 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { NavComponent } from "./nav.component";
 
 describe("NavComponent", () => {
-  let component: NavComponent;
-  let fixture: ComponentFixture<NavComponent>;
+	let component: NavComponent;
+	let fixture: ComponentFixture<NavComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, NavComponent],
-    }).compileComponents();
-  }));
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			imports: [NoopAnimationsModule, NavComponent],
+		}).compileComponents();
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NavComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(NavComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it("should compile", () => {
-    expect(component).toBeTruthy();
-  });
+	it("should compile", () => {
+		expect(component).toBeTruthy();
+	});
 });

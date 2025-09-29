@@ -7,17 +7,18 @@ import { IProject } from "../../entities/project/project.interface";
 import { SoftwareService } from "./software.service";
 
 @Component({
-    selector: "app-software",
-    templateUrl: "./software.component.html",
-    imports: [CommonModule, ProjectListComponent, ProjectControlPanelComponent]
+	selector: "app-software",
+	templateUrl: "./software.component.html",
+	imports: [CommonModule, ProjectListComponent, ProjectControlPanelComponent],
 })
 export class SoftwareComponent implements OnInit {
-  projects: IProject[] = [];
+	projects: IProject[] = [];
 
-  constructor(private projectService: SoftwareService) {}
+	constructor(private projectService: SoftwareService) {}
 
-  ngOnInit(): void {
-    // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
-    this.projectService.projects$.subscribe((projects) => (this.projects = projects || []));
-  }
+	ngOnInit(): void {
+		this.projectService.projects$.subscribe((projects) => {
+			this.projects = projects || [];
+		});
+	}
 }

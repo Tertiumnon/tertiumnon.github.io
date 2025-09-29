@@ -3,22 +3,22 @@ import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { SoftwareComponent } from "./software.component";
 
 describe("SoftwareComponent", () => {
-  let component: SoftwareComponent;
-  let fixture: ComponentFixture<SoftwareComponent>;
+	let component: SoftwareComponent;
+	let fixture: ComponentFixture<SoftwareComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [SoftwareComponent],
-    }).compileComponents();
-  }));
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			imports: [SoftwareComponent],
+		}).compileComponents();
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SoftwareComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(SoftwareComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it("should create", () => {
-    expect(component).toBeTruthy();
-  });
+	it("should create", () => {
+		expect(component).toBeTruthy();
+	});
 });

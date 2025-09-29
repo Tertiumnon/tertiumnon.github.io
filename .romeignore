@@ -1,0 +1,13 @@
+docs/
+docs/**
+docs/*
+node_modules/
+dist/
+.git/
+ .vscode/
+ .angular/
+ .angular/**
+ tsconfig.app.json
+ tsconfig.spec.json
+ vendor.js
+ *.map

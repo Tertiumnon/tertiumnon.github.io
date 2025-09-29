@@ -1,11 +1,11 @@
 export interface ArticleGetParams {
-  category: string;
-  name: string;
+	category: string;
+	name: string;
 }
 
 export interface Article {
-  title: string;
-  link: string;
-  language: "en" | "ru";
-  tags: string[];
+	title: string;
+	link: string;
+	language: "en" | "ru";
+	tags: string[];
 }

@@ -1,0 +1,2 @@
+rules:
+  - Use Bun instead of Node.js for better performance and efficiency.
