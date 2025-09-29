@@ -10,6 +10,7 @@ import { SoftwareService } from "./software.service";
 	selector: "app-software",
 	templateUrl: "./software.component.html",
 	imports: [CommonModule, ProjectListComponent, ProjectControlPanelComponent],
+	standalone: true,
 })
 export class SoftwareComponent implements OnInit {
 	projects: IProject[] = [];

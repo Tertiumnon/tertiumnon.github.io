@@ -17,6 +17,7 @@ import { TimeService } from "../../components/time/time.service";
 	templateUrl: "./what-time.component.html",
 	styleUrl: "./what-time.component.less",
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	standalone: true,
 })
 export class WhatTimeComponent {
 	TimeService = TimeService;
