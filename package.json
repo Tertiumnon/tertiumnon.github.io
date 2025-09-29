@@ -28,7 +28,7 @@
     "@angular/router": "^20.3.2",
     "@tertium/js": "^0.15.1",
     "rxjs": "~6.6.0",
-    "showdown": "^2.1.0",
+  "marked": "^6.1.2",
     "ts-node": "^10.9.2",
     "tslib": "^2.2.0",
     "update": "^0.7.4",
@@ -44,7 +44,7 @@
     "@biomejs/biome": "1.9.4",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^18.17.15",
-    "@types/showdown": "^2.0.6",
+    
     "autoprefixer": "^10.4.15",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.2",

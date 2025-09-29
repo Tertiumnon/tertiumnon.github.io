@@ -1,22 +1,24 @@
 import { Component, Input } from "@angular/core";
-import * as showdown from "showdown";
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { marked } from 'marked';
 
 @Component({
-    selector: "app-md-content",
-    imports: [],
-    templateUrl: "./md-content.component.html",
-    styleUrl: "./md-content.component.less"
+  selector: "app-md-content",
+  templateUrl: "./md-content.component.html",
+  styleUrl: "./md-content.component.less"
 })
 export class MdContentComponent {
   @Input() data = "";
-  htmlData = "";
-  converter: showdown.Converter | undefined;
+  htmlData: SafeHtml = "";
 
-  ngOnInit() {
-    this.converter = new showdown.Converter();
-  }
+  constructor(private sanitizer: DomSanitizer) {}
 
   ngOnChanges() {
-    if (this.data) this.htmlData = this.converter?.makeHtml(this.data) || "";
+    if (this.data) {
+      const raw = marked.parse(this.data || '');
+      this.htmlData = this.sanitizer.bypassSecurityTrustHtml(raw);
+    } else {
+      this.htmlData = '';
+    }
   }
 }
