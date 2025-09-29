@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:articles": "bun ./src/utils/create-article-list.ts",
-    "build:gh": "ng build --output-path docs --base-href /",
+    "build:gh": "ng build --output-path docs/browser --base-href /",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "lint:fix": "bunx rome format --write src && bunx rome check src --apply",

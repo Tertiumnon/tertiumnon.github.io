@@ -22,9 +22,7 @@
 				"build": {
 					"builder": "@angular/build:application",
 					"options": {
-						"outputPath": {
-							"base": "dist/tertiumnon-github-io"
-						},
+						"outputPath": "dist/tertiumnon-github-io",
 						"index": "src/index.html",
 						"polyfills": [
 							"src/polyfills.ts"
