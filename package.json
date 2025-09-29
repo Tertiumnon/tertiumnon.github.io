@@ -28,7 +28,7 @@
     "@angular/router": "^20.3.2",
     "@tertium/js": "^0.15.1",
     "rxjs": "~6.6.0",
-  "marked": "^6.1.2",
+  "marked": "^5.1.0",
     "ts-node": "^10.9.2",
     "tslib": "^2.2.0",
     "update": "^0.7.4",
