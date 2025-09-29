@@ -10,11 +10,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "lint:fix": "bunx rome format --write src && bunx rome check src --apply",
-    "save:build:content": "git add --all && git commit -m 'save builded content'",
     "release": "bun node_modules/@tertium/js/scripts/release.js",
-    "release:hotfix": "bun run build:articles && npm run build:gh && bun run save:build:content && npm run release -- hotfix",
-    "release:minor": "bun run build:articles && npm run build:gh && bun run save:build:content && npm run release -- minor",
-    "release:major": "bun run build:articles && npm run build:gh && bun run save:build:content && npm run release -- major"
+    "release:hotfix": "npm run release -- hotfix",
+    "release:minor": "npm run release -- minor",
+    "release:major": "npm run release -- major"
   },
   "private": true,
   "dependencies": {
