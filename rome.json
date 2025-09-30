@@ -6,6 +6,11 @@
 		"enabled": true
 	},
 	"files": {
-		"ignore": ["docs/**", "dist/**", "node_modules/**", ".git/**"]
+		"ignore": [
+			"docs/**",
+			"dist/**",
+			"node_modules/**",
+			".git/**"
+		]
 	}
 }
