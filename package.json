@@ -10,10 +10,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "lint:fix": "bunx rome format --write src && bunx rome check src --apply",
-    "release": "bun ./scripts/release.ts",
-    "release:hotfix": "bun run release hotfix",
-    "release:minor": "bun run release minor",
-    "release:major": "bun run release major"
+    "release": "bun node_modules/@tertium/js/scripts/release.js",
+    "release:hotfix": "bun run release -- hotfix",
+    "release:minor": "bun run release -- minor",
+    "release:major": "bun run release -- major"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +25,7 @@
     "@angular/platform-browser": "^20.3.2",
     "@angular/platform-browser-dynamic": "^20.3.2",
     "@angular/router": "^20.3.2",
+    "@tertium/js": "^0.16.0",
     "rxjs": "~6.6.0",
     "marked": "^5.1.0",
     "highlight.js": "^11.8.0",
