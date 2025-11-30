@@ -24,6 +24,12 @@
 		"tags": ["programming"]
 	},
 	{
+		"title": "Bun — Fast JavaScript Runtime and All-in-One Toolkit",
+		"link": "/articles/programming/bun-en",
+		"language": "en",
+		"tags": ["programming"]
+	},
+	{
 		"title": "Bun — быстрый JavaScript-рантайм и инструментальная экосистема",
 		"link": "/articles/programming/bun-ru",
 		"language": "ru",
