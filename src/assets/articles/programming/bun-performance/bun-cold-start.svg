@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200" viewBox="0 0 600 200">
+  <style>
+    .label { font: 14px sans-serif; fill: #333; }
+    .bar-bun { fill: #1f77b4; }
+    .bar-node24 { fill: #d62728; }
+  </style>
+  <rect x="100" y="50" width="120" height="110" class="bar-node24" rx="6"></rect>
+  <rect x="300" y="90" width="120" height="70" class="bar-bun" rx="6"></rect>
+  <style>
+    .label { font: 14px sans-serif; fill: #333; }
+    .label-inside { font: 14px sans-serif; fill: #fff; text-anchor: middle; }
+    .bar-bun { fill: #1f77b4; }
+    .bar-node24 { fill: #d62728; }
+  </style>
+  <text x="160" y="105" class="label-inside">120</text>
+  <text x="360" y="105" class="label-inside">70</text>
+  <text x="20" y="20" class="label">Cold Start (ms) — меньше лучше</text>
+</svg>

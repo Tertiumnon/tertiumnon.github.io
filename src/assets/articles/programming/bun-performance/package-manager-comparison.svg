@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="280" viewBox="0 0 700 280">
+  <style>
+    .label { font: 12px sans-serif; fill: #333; }
+    .label-inside { font: 12px sans-serif; fill: #fff; text-anchor: middle; font-weight: bold; }
+    .label-scenario { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+    .bar-npm { fill: #c0392b; }
+    .bar-yarn { fill: #2c8ebb; }
+    .bar-pnpm { fill: #8e44ad; }
+    .bar-bun { fill: #1f77b4; }
+  </style>
+
+  <!-- Title -->
+  <text x="20" y="20" class="label" style="font-size: 14px; font-weight: bold;">Сравнение менеджеров пакетов (сек) — меньше лучше</text>
+
+  <!-- Scenario 1: Clean install -->
+  <g>
+    <text x="90" y="260" class="label-scenario">Чистая</text>
+    <text x="90" y="273" class="label-scenario">установка</text>
+    <!-- npm: 45s -->
+    <rect x="25" y="50" width="28" height="180" class="bar-npm" rx="4"></rect>
+    <text x="39" y="145" class="label-inside">45</text>
+    <!-- yarn: 32s -->
+    <rect x="58" y="94" width="28" height="136" class="bar-yarn" rx="4"></rect>
+    <text x="72" y="167" class="label-inside">32</text>
+    <!-- pnpm: 18s -->
+    <rect x="91" y="122" width="28" height="108" class="bar-pnpm" rx="4"></rect>
+    <text x="105" y="181" class="label-inside">18</text>
+    <!-- bun: 8s -->
+    <rect x="124" y="182" width="28" height="48" class="bar-bun" rx="4"></rect>
+    <text x="138" y="211" class="label-inside">8</text>
+  </g>
+
+  <!-- Scenario 2: With cache -->
+  <g>
+    <text x="235" y="260" class="label-scenario">С кэшем</text>
+    <text x="235" y="273" class="label-scenario">(повторная)</text>
+    <!-- npm: 22s -->
+    <rect x="170" y="142" width="28" height="88" class="bar-npm" rx="4"></rect>
+    <text x="184" y="191" class="label-inside">22</text>
+    <!-- yarn: 15s -->
+    <rect x="203" y="170" width="28" height="60" class="bar-yarn" rx="4"></rect>
+    <text x="217" y="205" class="label-inside">15</text>
+    <!-- pnpm: 7s -->
+    <rect x="236" y="202" width="28" height="28" class="bar-pnpm" rx="4"></rect>
+    <text x="250" y="221" class="label-inside">7</text>
+    <!-- bun: 3s -->
+    <rect x="269" y="218" width="28" height="12" class="bar-bun" rx="4"></rect>
+    <text x="283" y="227" class="label-inside">3</text>
+  </g>
+
+  <!-- Scenario 3: Monorepo -->
+  <g>
+    <text x="380" y="260" class="label-scenario">Монорепо</text>
+    <text x="380" y="273" class="label-scenario">(~50 пакетов)</text>
+    <!-- npm: 120s -->
+    <rect x="315" y="30" width="28" height="200" class="bar-npm" rx="4"></rect>
+    <text x="329" y="135" class="label-inside">120</text>
+    <!-- yarn: 45s -->
+    <rect x="348" y="110" width="28" height="120" class="bar-yarn" rx="4"></rect>
+    <text x="362" y="175" class="label-inside">45</text>
+    <!-- pnpm: 25s -->
+    <rect x="381" y="130" width="28" height="100" class="bar-pnpm" rx="4"></rect>
+    <text x="395" y="185" class="label-inside">25</text>
+    <!-- bun: 15s -->
+    <rect x="414" y="170" width="28" height="60" class="bar-bun" rx="4"></rect>
+    <text x="428" y="205" class="label-inside">15</text>
+  </g>
+
+  <!-- Scenario 4: CI (frozen lockfile) -->
+  <g>
+    <text x="520" y="260" class="label-scenario">CI с lockfile</text>
+    <text x="520" y="273" class="label-scenario">(frozen)</text>
+    <!-- npm: 28s -->
+    <rect x="455" y="118" width="28" height="112" class="bar-npm" rx="4"></rect>
+    <text x="469" y="179" class="label-inside">28</text>
+    <!-- yarn: 20s -->
+    <rect x="488" y="150" width="28" height="80" class="bar-yarn" rx="4"></rect>
+    <text x="502" y="195" class="label-inside">20</text>
+    <!-- pnpm: 12s -->
+    <rect x="521" y="182" width="28" height="48" class="bar-pnpm" rx="4"></rect>
+    <text x="535" y="211" class="label-inside">12</text>
+    <!-- bun: 5s -->
+    <rect x="554" y="210" width="28" height="20" class="bar-bun" rx="4"></rect>
+    <text x="568" y="224" class="label-inside">5</text>
+  </g>
+
+  <!-- Scenario 5: Update -->
+  <g>
+    <text x="655" y="260" class="label-scenario">Обновление</text>
+    <text x="655" y="273" class="label-scenario">зависимостей</text>
+    <!-- npm: 35s -->
+    <rect x="590" y="90" width="28" height="140" class="bar-npm" rx="4"></rect>
+    <text x="604" y="165" class="label-inside">35</text>
+    <!-- yarn: 26s -->
+    <rect x="623" y="126" width="28" height="104" class="bar-yarn" rx="4"></rect>
+    <text x="637" y="183" class="label-inside">26</text>
+    <!-- pnpm: 14s -->
+    <rect x="656" y="174" width="28" height="56" class="bar-pnpm" rx="4"></rect>
+    <text x="670" y="207" class="label-inside">14</text>
+    <!-- bun: 6s -->
+    <rect x="689" y="206" width="28" height="24" class="bar-bun" rx="4"></rect>
+    <text x="703" y="223" class="label-inside">6</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(20, 245)">
+    <rect x="0" y="0" width="15" height="15" class="bar-npm" rx="2"></rect>
+    <text x="20" y="12" class="label">npm v10</text>
+
+    <rect x="85" y="0" width="15" height="15" class="bar-yarn" rx="2"></rect>
+    <text x="105" y="12" class="label">yarn v4</text>
+
+    <rect x="175" y="0" width="15" height="15" class="bar-pnpm" rx="2"></rect>
+    <text x="195" y="12" class="label">pnpm v10</text>
+
+    <rect x="270" y="0" width="15" height="15" class="bar-bun" rx="2"></rect>
+    <text x="290" y="12" class="label">bun v1.2</text>
+  </g>
+
+  <!-- Baseline -->
+  <line x1="15" y1="230" x2="730" y2="230" stroke="#ddd" stroke-width="1"/>
+</svg>

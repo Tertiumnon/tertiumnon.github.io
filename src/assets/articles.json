@@ -24,6 +24,12 @@
 		"tags": ["programming"]
 	},
 	{
+		"title": "Bun — быстрый JavaScript-рантайм и инструментальная экосистема",
+		"link": "/articles/programming/bun-ru",
+		"language": "ru",
+		"tags": ["programming"]
+	},
+	{
 		"title": "Cooking with TypeScript enums",
 		"link": "/articles/programming/cooking-with-ts-enums",
 		"language": "en",

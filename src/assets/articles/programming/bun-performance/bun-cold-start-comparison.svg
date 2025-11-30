@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="240" viewBox="0 0 700 240">
+  <style>
+    .label { font: 14px sans-serif; fill: #333; }
+    .label-inside { font: 14px sans-serif; fill: #fff; text-anchor: middle; }
+    /* color mapping: orange=Node20, yellow=Node22, red=Node24 */
+    .bar-node24 { fill: #d62728; }
+    .bar-node22 { fill: #ffbb66; }
+    .bar-node20 { fill: #ff7f0e; }
+    .bar-deno { fill: #2ca02c; }
+    .bar-bun { fill: #1f77b4; }
+  </style>
+  <!-- baseline at y=210, height in px ~= ms -->
+  <!-- Node versions: v20 ~25ms, v22 ~23ms (improved), v24 ~26ms (regression) -->
+  <!-- Deno 2.x ~22ms, Bun ~2ms (micro-benchmarks only) -->
+  <rect x="100" y="135" width="80" height="75" class="bar-node20" rx="6"></rect>
+  <rect x="220" y="141" width="80" height="69" class="bar-node22" rx="6"></rect>
+  <rect x="340" y="132" width="80" height="78" class="bar-node24" rx="6"></rect>
+  <rect x="460" y="144" width="80" height="66" class="bar-deno" rx="6"></rect>
+  <rect x="580" y="204" width="80" height="6" class="bar-bun" rx="6"></rect>
+  <text x="140" y="173" class="label-inside">25</text>
+  <text x="260" y="176" class="label-inside">23</text>
+  <text x="380" y="171" class="label-inside">26</text>
+  <text x="500" y="177" class="label-inside">22</text>
+  <text x="620" y="207" class="label-inside">2</text>
+  <text x="20" y="20" class="label">Cold Start (ms) — меньше лучше</text>
+</svg>
