@@ -50,6 +50,10 @@ function main() {
 	// If Angular emitted a nested browser folder, flatten it.
 	flattenBrowserDir(docsDir);
 
+	// Create .nojekyll to disable Jekyll processing on GitHub Pages
+	const nojekyllPath = path.join(docsDir, ".nojekyll");
+	fs.writeFileSync(nojekyllPath, "");
+
 	console.log("Build complete. Output location:", docsDir);
 }
 
