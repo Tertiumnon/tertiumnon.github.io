@@ -5,7 +5,10 @@
       "Bash(Remove-Item -Recurse -Force \"scripts/benchmarks\")",
       "Bash(rm:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(bun remove:*)",
+      "Bash(git revert:*)",
+      "Bash(bun install:*)"
     ],
     "deny": [],
     "ask": []
