@@ -11,9 +11,9 @@
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "lint:fix": "bunx rome format --write src && bunx rome check src --apply",
     "release": "bun node_modules/@tertium/js/scripts/release.js",
-    "release:hotfix": "bun run release -- hotfix",
-    "release:minor": "bun run release -- minor",
-    "release:major": "bun run release -- major"
+    "release:patch": "bun run release patch",
+    "release:minor": "bun run release minor",
+    "release:major": "bun run release major"
   },
   "private": true,
   "dependencies": {
