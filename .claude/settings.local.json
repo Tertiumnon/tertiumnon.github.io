@@ -8,7 +8,9 @@
       "Bash(git commit:*)",
       "Bash(bun remove:*)",
       "Bash(git revert:*)",
-      "Bash(bun install:*)"
+      "Bash(bun install:*)",
+      "Bash(bun add:*)",
+      "Bash(bun run:*)"
     ],
     "deny": [],
     "ask": []
