@@ -10,7 +10,10 @@
       "Bash(git revert:*)",
       "Bash(bun install:*)",
       "Bash(bun add:*)",
-      "Bash(bun run:*)"
+      "Bash(bun run:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(git push)"
     ],
     "deny": [],
     "ask": []
