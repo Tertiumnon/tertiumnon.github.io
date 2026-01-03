@@ -8,7 +8,7 @@ import { ALLOWED_ROUTES } from "./nav.constant";
 	selector: "app-nav",
 	standalone: true,
 	templateUrl: "./nav.component.html",
-	styleUrls: ["./nav.component.less"],
+	styleUrls: ["./nav.component.css"],
 	imports: [CommonModule, RouterLink, RouterLinkActive],
 })
 export class NavComponent {

@@ -2,8 +2,8 @@
   height: 1.5rem;
   border-bottom: 1px dashed;
   cursor: pointer;
+}
 
-  .option {
-    text-align: center;
-  }
+.option-list .option {
+  text-align: center;
 }

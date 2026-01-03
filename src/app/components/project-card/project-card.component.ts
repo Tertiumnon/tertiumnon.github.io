@@ -4,7 +4,7 @@ import { IProject } from "../../entities/project/project.interface";
 @Component({
 	selector: "app-project-card",
 	templateUrl: "./project-card.component.html",
-	styleUrls: ["./project-card.component.less"],
+	styleUrls: ["./project-card.component.css"],
 	standalone: true,
 })
 export class ProjectCardComponent {

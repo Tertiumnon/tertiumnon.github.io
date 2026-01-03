@@ -6,6 +6,6 @@ import { CommonModule } from "@angular/common";
 	standalone: true,
 	imports: [CommonModule],
 	templateUrl: "./tools.component.html",
-	styleUrl: "./tools.component.less",
+	styleUrl: "./tools.component.css",
 })
 export class ToolsComponent {}

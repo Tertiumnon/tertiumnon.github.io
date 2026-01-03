@@ -7,20 +7,19 @@
   box-shadow: 0 0 8px #666;
 }
 
-
 .social-links {
   font-size: 1.6em;
   margin: 2px 20px;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+}
 
-  a {
-    color: #666;
-    padding: 4px;
+.social-links a {
+  color: #666;
+  padding: 4px;
+}
 
-    &:hover {
-      color: #333;
-    }
-  }
+.social-links a:hover {
+  color: #333;
 }

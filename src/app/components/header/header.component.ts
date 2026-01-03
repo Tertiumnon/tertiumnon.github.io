@@ -5,7 +5,7 @@ import { NavComponent } from "../nav/nav.component";
 @Component({
 	selector: "app-header",
 	templateUrl: "./header.component.html",
-	styleUrls: ["./header.component.less"],
+	styleUrls: ["./header.component.css"],
 	standalone: true,
 	imports: [RouterLink, NavComponent, RouterLinkActive],
 })

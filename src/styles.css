@@ -1,3 +1,4 @@
+/* Converted from styles.css */
 /* You can add global styles to this file, and also import other style files */
 
 /* Tailwind: import the compiled CSS from the package for the new build system */
@@ -41,7 +42,6 @@ h4 {
   font-weight: bold;
   line-height: 1.2;
   font-family: "Roboto Mono", serif;
-  // font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: bold;
   font-style: normal;
@@ -76,7 +76,6 @@ select {
   color: black;
   padding: 0.2em 0.4em;
   border-radius: 8px;
-  // margin-right: -8px;
 }
 
 .btn {
@@ -143,10 +142,10 @@ pre {
   margin: 0.4em 0;
   line-height: normal;
   border-radius: 12px;
+}
 
-  code {
-    font-size: 0.9em;
-  }
+pre code {
+  font-size: 0.9em;
 }
 
 /* Tables */
@@ -180,46 +179,42 @@ tr:hover {
 
 /* Themes */
 
-.CoderTheme {
-  .bg {
-    background-color: var(--CoderTheme-bg-color);
-  }
-
-  .project-control-panel {
-    background-color: var(--CoderTheme-bg-color--dark);
-  }
-
-  .project-card .description,
-  .option:not(.selected) {
-    background-color: var(--CoderTheme-bg-color--light);
-  }
-
-  .content {
-    background-color: var(--CoderTheme-bg-color--light);
-  }
+.CoderTheme .bg {
+  background-color: var(--CoderTheme-bg-color);
 }
 
-.HoneyPieTheme {
-  .bg {
-    background-image: url("/assets/images/honey-pie.png");
+.CoderTheme .project-control-panel {
+  background-color: var(--CoderTheme-bg-color--dark);
+}
 
-    &.bg-blur {
-      filter: blur(5px);
-    }
-  }
+.CoderTheme .project-card .description,
+.option:not(.selected) {
+  background-color: var(--CoderTheme-bg-color--light);
+}
 
-  .project-control-panel {
-    background-color: var(--HoneyPieTheme-bg-color--dark);
-  }
+.CoderTheme .content {
+  background-color: var(--CoderTheme-bg-color--light);
+}
 
-  .project-card .description,
-  .option:not(.selected) {
-    background-color: var(--HoneyPieTheme-bg-color--light);
-  }
+.HoneyPieTheme .bg {
+  background-image: url("/assets/images/honey-pie.png");
+}
 
-  .content {
-    background-color: var(--HoneyPieTheme-bg-color--light);
-  }
+.HoneyPieTheme .bg.bg-blur {
+  filter: blur(5px);
+}
+
+.HoneyPieTheme .project-control-panel {
+  background-color: var(--HoneyPieTheme-bg-color--dark);
+}
+
+.HoneyPieTheme .project-card .description,
+.option:not(.selected) {
+  background-color: var(--HoneyPieTheme-bg-color--light);
+}
+
+.HoneyPieTheme .content {
+  background-color: var(--HoneyPieTheme-bg-color--light);
 }
 
 @media screen and (min-width: 768px) {

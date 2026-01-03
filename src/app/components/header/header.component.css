@@ -10,14 +10,14 @@
   font-size: 1.4em;
   text-decoration: none;
   margin-top: -1px;
+}
 
-  a {
-    cursor: pointer;
+.logo a {
+  cursor: pointer;
+}
 
-    &.active {
-      text-decoration: underline;
-    }
-  }
+.logo a.active {
+  text-decoration: underline;
 }
 
 .about {
@@ -26,12 +26,12 @@
   font-weight: lighter;
   text-transform: uppercase;
   text-decoration: none;
+}
 
-  &:hover {
-    color: darken(#bbb, 20%);
-  }
+.about:hover {
+  color: #969696;
+}
 
-  &.active {
-    text-decoration: underline;
-  }
+.about.active {
+  text-decoration: underline;
 }

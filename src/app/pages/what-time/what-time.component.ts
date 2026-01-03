@@ -15,7 +15,7 @@ import { TimeService } from "../../components/time/time.service";
 	selector: "app-what-time",
 	imports: [CommonModule, ReactiveFormsModule, DatePipe],
 	templateUrl: "./what-time.component.html",
-	styleUrl: "./what-time.component.less",
+	styleUrl: "./what-time.component.css",
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
 })

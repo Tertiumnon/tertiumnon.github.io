@@ -4,7 +4,7 @@ import { CommonModule } from "@angular/common";
 @Component({
 	selector: "app-quotation",
 	templateUrl: "./quotation.component.html",
-	styleUrls: ["./quotation.component.less"],
+	styleUrls: ["./quotation.component.css"],
 	standalone: true,
 	imports: [CommonModule],
 })

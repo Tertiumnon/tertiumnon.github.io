@@ -9,7 +9,7 @@ import { DropdownComponent } from "../dropdown/dropdown.component";
 @Component({
 	selector: "app-project-control-panel",
 	templateUrl: "./project-control-panel.component.html",
-	styleUrls: ["./project-control-panel.component.less"],
+	styleUrls: ["./project-control-panel.component.css"],
 	standalone: true,
 	imports: [CommonModule, FormsModule, DropdownComponent],
 })

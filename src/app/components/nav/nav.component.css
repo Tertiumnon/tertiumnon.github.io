@@ -1,0 +1,36 @@
+nav {
+  align-items: center;
+}
+
+nav a {
+  margin-right: 1rem;
+  font-weight: lighter;
+  color: #444;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  margin-top: 0.05em;
+}
+
+nav a > .icon {
+  font-size: 0.9em;
+  margin-top: 0.2em;
+}
+
+nav a.active {
+  position: relative;
+}
+
+nav a.active::before {
+  content: "[";
+  position: absolute;
+  left: -0.3em;
+}
+
+nav a.active::after {
+  content: "]";
+  position: absolute;
+  right: -0.3em;
+}

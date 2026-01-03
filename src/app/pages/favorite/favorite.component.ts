@@ -6,6 +6,6 @@ import { CommonModule } from "@angular/common";
 	standalone: true,
 	imports: [CommonModule],
 	templateUrl: "./favorite.component.html",
-	styleUrl: "./favorite.component.less",
+	styleUrl: "./favorite.component.css",
 })
 export class FavoriteComponent {}

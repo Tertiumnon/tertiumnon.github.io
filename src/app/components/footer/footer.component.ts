@@ -7,7 +7,7 @@ import { ThemeService } from "../theme/theme.service";
 @Component({
 	selector: "app-footer",
 	templateUrl: "./footer.component.html",
-	styleUrls: ["./footer.component.less"],
+	styleUrls: ["./footer.component.css"],
 	standalone: true,
 	imports: [CommonModule, ReactiveFormsModule],
 })

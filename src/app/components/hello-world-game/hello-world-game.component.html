@@ -1,0 +1,21 @@
+<div class="hello-game">
+	<h2>Hello World Game</h2>
+
+	<div class="controls">
+		<label>
+			Имя:
+			<input type="text" (input)="name = $any($event.target).value" [value]="name" placeholder="Ваше имя" />
+		</label>
+	</div>
+
+	<p *ngIf="name">Привет, {{ name }}!</p>
+
+	<p>Счёт: {{ score }} / {{ target }}</p>
+
+	<div class="buttons">
+		<button (click)="increment()" [disabled]="won">Нажать</button>
+		<button (click)="reset()">Сброс</button>
+	</div>
+
+	<p *ngIf="won" class="win">Поздравляю, {{ name || 'игрок' }} — вы достигли цели!</p>
+</div>

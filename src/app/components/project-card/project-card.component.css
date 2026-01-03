@@ -1,0 +1,39 @@
+.project-card {
+  opacity: 0.9;
+  background-color: white;
+  box-shadow: var(--box-shadow);
+}
+
+.project-card:hover {
+  box-shadow: var(--box-shadow--hover);
+}
+
+.project-card .header .project-card-title {
+  text-transform: uppercase;
+  height: 2rem;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.project-card .body {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card .body .project-card-image {
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+  margin-top: 0;
+  margin-bottom: -4px;
+}
+
+.project-card .body .description {
+  position: absolute;
+  top: 0;
+  padding: 14px 28px 14px 20px;
+}
+
+.project-card .project-card-content {
+  margin-top: 0px;
+  padding: 16px 14px;
+}

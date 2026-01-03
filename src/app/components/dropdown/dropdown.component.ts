@@ -7,7 +7,7 @@ import { FormsModule } from "@angular/forms";
 	standalone: true,
 	imports: [CommonModule, FormsModule],
 	templateUrl: "./dropdown.component.html",
-	styleUrls: ["./dropdown.component.less"],
+	styleUrls: ["./dropdown.component.css"],
 })
 export class DropdownComponent {
 	@Input() label = "";

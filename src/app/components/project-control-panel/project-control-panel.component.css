@@ -1,0 +1,44 @@
+.project-control-panel {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-content: center;
+  font-size: 0.8em;
+  height: 2rem;
+  z-index: 1;
+}
+
+.project-control-panel .filters {
+  display: flex;
+}
+
+.project-control-panel .filters .filter {
+  margin: 0 0 0 20px;
+}
+
+.project-control-panel .filters .filter label {
+  display: inline-block;
+  font-size: 0.9em;
+  margin-right: 4px;
+}
+
+.project-control-panel .filters .filter select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.project-control-panel .filters .filter select::-ms-expand {
+  display: none;
+}
+
+.project-control-panel .filters .filter select {
+  display: inline-block;
+  height: 1.3em;
+  cursor: pointer;
+  border: none;
+  color: var(--text-color);
+  font-size: 0.9em;
+  text-align: center;
+}

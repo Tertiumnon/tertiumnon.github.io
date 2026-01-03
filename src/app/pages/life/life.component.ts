@@ -6,6 +6,6 @@ import { CommonModule } from "@angular/common";
 	standalone: true,
 	imports: [CommonModule],
 	templateUrl: "./life.component.html",
-	styleUrl: "./life.component.less",
+	styleUrl: "./life.component.css",
 })
 export class LifeComponent {}

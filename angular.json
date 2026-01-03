@@ -7,7 +7,7 @@
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:component": {
-					"style": "less",
+					"style": "css",
 					"standalone": true
 				},
 				"@schematics/angular:application": {
@@ -26,9 +26,9 @@
 						"index": "src/index.html",
 						"polyfills": ["src/polyfills.ts"],
 						"tsConfig": "tsconfig.app.json",
-						"inlineStyleLanguage": "less",
+								"inlineStyleLanguage": "css",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/styles.less"],
+								"styles": ["src/styles.css"],
 						"scripts": [],
 						"browser": "src/main.ts"
 					},
@@ -88,9 +88,9 @@
 						"polyfills": ["src/polyfills.ts"],
 						"tsConfig": "tsconfig.spec.json",
 						"karmaConfig": "karma.conf.js",
-						"inlineStyleLanguage": "less",
+						"inlineStyleLanguage": "css",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/styles.less"],
+						"styles": ["src/styles.css"],
 						"scripts": []
 					}
 				}

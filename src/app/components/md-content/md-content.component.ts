@@ -16,7 +16,7 @@ hljs.registerLanguage("json", json);
 @Component({
 	selector: "app-md-content",
 	templateUrl: "./md-content.component.html",
-	styleUrl: "./md-content.component.less",
+	styleUrl: "./md-content.component.css",
 	standalone: true,
 })
 export class MdContentComponent {

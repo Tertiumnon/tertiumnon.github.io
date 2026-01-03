@@ -9,7 +9,7 @@ import { ArticleService } from "../../entities/article/article.service";
 	standalone: true,
 	imports: [MdContentComponent],
 	templateUrl: "./article.component.html",
-	styleUrl: "./article.component.less",
+	styleUrl: "./article.component.css",
 })
 export class ArticleComponent {
 	activatedRoute = inject(ActivatedRoute);

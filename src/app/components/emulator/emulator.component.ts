@@ -6,7 +6,7 @@ import { EmulatorService } from "./emulator.service";
 @Component({
 	selector: "app-emulator",
 	templateUrl: "./emulator.component.html",
-	styleUrls: ["./emulator.component.less"],
+	styleUrls: ["./emulator.component.css"],
 	encapsulation: ViewEncapsulation.None,
 	standalone: true,
 	imports: [CommonModule, FormsModule],
