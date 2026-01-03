@@ -24,7 +24,7 @@
 		"tags": ["programming"]
 	},
 	{
-		"title": "Bun — Fast JavaScript Runtime and All-in-One Toolkit",
+		"title": "Bun — A Fast JavaScript Runtime and Tooling Ecosystem",
 		"link": "/articles/programming/bun-en",
 		"language": "en",
 		"tags": ["programming"]
@@ -39,12 +39,6 @@
 		"title": "Cooking with TypeScript enums",
 		"link": "/articles/programming/cooking-with-ts-enums",
 		"language": "en",
-		"tags": ["programming"]
-	},
-	{
-		"title": "Именование переменных, объектов/классов, методов и файлов",
-		"link": "/articles/programming/naming-ru",
-		"language": "ru",
 		"tags": ["programming"]
 	},
 	{
