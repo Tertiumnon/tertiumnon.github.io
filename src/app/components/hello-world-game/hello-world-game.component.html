@@ -1,21 +1,67 @@
-<div class="hello-game">
-	<h2>Hello World Game</h2>
 
-	<div class="controls">
-		<label>
-			Имя:
-			<input type="text" (input)="name = $any($event.target).value" [value]="name" placeholder="Ваше имя" />
-		</label>
-	</div>
+<div class="hello-world">
+		<div class="bricks grid" *ngIf="cells.length"
+			 [style.position]="'relative'"
+			 [style.width.px]="getContainerCols() * (cellSize + gap)"
+			 [style.height.px]="getContainerRows() * (cellSize + gap)"
+	 		 [style.backgroundSize]="(cellSize + gap) + 'px ' + (cellSize + gap) + 'px'"
+	 		 [style.backgroundPosition]="'0 0, 0 0'">
+			<div class="grid-inner">
+				<div class="grid-row" *ngFor="let r of rowRange">
+					<ng-container *ngFor="let c of colRange">
+						<ng-container *ngIf="cellAt(c, r) as cell">
+							<div class="cell"
+								[class.enabled]="cell.isEnabled"
+								[attr.data-enabled]="cell.isEnabled"
+								[style.width.px]="cellSize"
+								[style.height.px]="cellSize"
+								[style.margin-right.px]="gap"
+								[style.margin-bottom.px]="gap"
+								[style.background]="cell.isEnabled ? (cell.color || '#000') : 'transparent'">
+								</div>
+						</ng-container>
+					</ng-container>
+				</div>
+			</div>
 
-	<p *ngIf="name">Привет, {{ name }}!</p>
+			<!-- tank overlay: span full field so tank can move across entire grid -->
+			<div class="tank-overlay"
+				[style.left.px]="0"
+				[style.top.px]="0"
+				[style.width.px]="getContainerCols() * (cellSize + gap)"
+				[style.height.px]="getContainerRows() * (cellSize + gap)">
+				<div *ngFor="let b of getTankBricks()"
+					class="tank-brick"
+					[style.left.px]="b.containerCol * (cellSize + gap)"
+					[style.top.px]="b.containerRow * (cellSize + gap)"
+					[style.width.px]="cellSize"
+					[style.height.px]="cellSize"
+					[style.background]="b.color"></div>
+			</div>
 
-	<p>Счёт: {{ score }} / {{ target }}</p>
+			<!-- bullets overlay -->
+			<div class="bullet-overlay"
+				[style.left.px]="0"
+				[style.top.px]="0"
+				[style.width.px]="getContainerCols() * (cellSize + gap)"
+				[style.height.px]="getContainerRows() * (cellSize + gap)">
+				<div *ngFor="let bl of bullets"
+					class="bullet"
+					[style.left.px]="bl.col * (cellSize + gap)"
+					[style.top.px]="bl.row * (cellSize + gap)"
+					[style.width.px]="cellSize"
+					[style.height.px]="cellSize"></div>
+			</div>
+		</div>
 
-	<div class="buttons">
-		<button (click)="increment()" [disabled]="won">Нажать</button>
-		<button (click)="reset()">Сброс</button>
-	</div>
-
-	<p *ngIf="won" class="win">Поздравляю, {{ name || 'игрок' }} — вы достигли цели!</p>
+		<!-- controls -->
+		<div class="tank-controls">
+			<button (click)="shoot()">S</button>
+			<button (click)="moveUp()">↑</button>
+			<div>
+				<button (click)="moveLeft()">←</button>
+				<button (click)="moveRight()">→</button>
+			</div>
+			<button (click)="moveDown()">↓</button>
+		</div>
 </div>
