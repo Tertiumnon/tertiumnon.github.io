@@ -21,8 +21,8 @@ export class HelloWorldGameComponent {
 	startCol = 0;
 	startRow = 0;
 	// tank state (grid coords)
-	tank = { col: 0, row: 0, color: '#ff3b30' };
-	initialTank = { col: 0, row: 0, color: '#ff3b30' };
+	tank = { col: 0, row: 0, color: "#ff3b30" };
+	initialTank = { col: 0, row: 0, color: "#ff3b30" };
 
 	// bullets: each bullet is a single-cell projectile moving up
 	bullets: { col: number; row: number }[] = [];
@@ -50,7 +50,11 @@ export class HelloWorldGameComponent {
 	generatePhrase() {
 		const containerCols = this.getContainerCols();
 		const containerRows = this.getContainerRows();
-		const layout = this.svc.layout(this.phrase || "", containerCols, containerRows);
+		const layout = this.svc.layout(
+			this.phrase || "",
+			containerCols,
+			containerRows,
+		);
 		this.cells = layout.cells || [];
 		this.startCol = layout.startCol || 0;
 		this.startRow = layout.startRow || 0;
@@ -73,7 +77,11 @@ export class HelloWorldGameComponent {
 
 	moveDown() {
 		const newRow = Math.min(this.getContainerRows() - 3, this.tank.row + 1);
-		const downTank = this.svc.tankCellsAt(this.tank.col, newRow, this.tank.color);
+		const downTank = this.svc.tankCellsAt(
+			this.tank.col,
+			newRow,
+			this.tank.color,
+		);
 		if (this.svc.isTankOverlappingPhrase(this.cells, downTank)) {
 			this.resetTankToInitial();
 			return;
@@ -83,7 +91,11 @@ export class HelloWorldGameComponent {
 
 	moveLeft() {
 		const newCol = Math.max(1, this.tank.col - 1);
-		const leftTank = this.svc.tankCellsAt(newCol, this.tank.row, this.tank.color);
+		const leftTank = this.svc.tankCellsAt(
+			newCol,
+			this.tank.row,
+			this.tank.color,
+		);
 		if (this.svc.isTankOverlappingPhrase(this.cells, leftTank)) {
 			this.resetTankToInitial();
 			return;
@@ -93,7 +105,11 @@ export class HelloWorldGameComponent {
 
 	moveRight() {
 		const newCol = Math.min(this.getContainerCols() - 2, this.tank.col + 1);
-		const rightTank = this.svc.tankCellsAt(newCol, this.tank.row, this.tank.color);
+		const rightTank = this.svc.tankCellsAt(
+			newCol,
+			this.tank.row,
+			this.tank.color,
+		);
 		if (this.svc.isTankOverlappingPhrase(this.cells, rightTank)) {
 			this.resetTankToInitial();
 			return;
@@ -121,7 +137,9 @@ export class HelloWorldGameComponent {
 			const nextBullets: { col: number; row: number }[] = [];
 			for (const b of this.bullets) {
 				// check collision at current position
-				const hit = this.cells.find((c) => c.isEnabled && c.col === b.col && c.row === b.row);
+				const hit = this.cells.find(
+					(c) => c.isEnabled && c.col === b.col && c.row === b.row,
+				);
 				if (hit) {
 					// disable the phrase cell
 					hit.isEnabled = false;
@@ -142,13 +160,15 @@ export class HelloWorldGameComponent {
 	}
 	// return tank bricks local positions relative to startCol/startRow
 	getTankBricks() {
-		const bricks = this.svc.tankCellsAt(this.tank.col, this.tank.row, this.tank.color).map((t) => ({
-			containerCol: t.col,
-			containerRow: t.row,
-			localCol: t.col - this.startCol,
-			localRow: t.row - this.startRow,
-			color: t.color || this.tank.color,
-		}));
+		const bricks = this.svc
+			.tankCellsAt(this.tank.col, this.tank.row, this.tank.color)
+			.map((t) => ({
+				containerCol: t.col,
+				containerRow: t.row,
+				localCol: t.col - this.startCol,
+				localRow: t.row - this.startRow,
+				color: t.color || this.tank.color,
+			}));
 		return bricks;
 	}
 
@@ -177,7 +197,7 @@ export class HelloWorldGameComponent {
 			this.usedCols,
 			this.usedRows,
 			this.tank.color,
-			'bottom-center'
+			"bottom-center",
 		);
 
 		this.tank.col = init.col;
@@ -197,52 +217,64 @@ export class HelloWorldGameComponent {
 	// return cell data at container grid coords (col, row)
 	cellAt(containerCol: number, containerRow: number): CellData | null {
 		// check tank first (tank uses container coords)
-		const tCells = this.svc.tankCellsAt(this.tank.col, this.tank.row, this.tank.color);
+		const tCells = this.svc.tankCellsAt(
+			this.tank.col,
+			this.tank.row,
+			this.tank.color,
+		);
 		for (const t of tCells) {
 			if (t.col === containerCol && t.row === containerRow) return t;
 		}
 
 		// cells are stored in container coords, find directly
-		const found = this.cells.find((c) => c.col === containerCol && c.row === containerRow && c.isEnabled);
-		if (found) return { col: containerCol, row: containerRow, isEnabled: true, color: found.color };
+		const found = this.cells.find(
+			(c) => c.col === containerCol && c.row === containerRow && c.isEnabled,
+		);
+		if (found)
+			return {
+				col: containerCol,
+				row: containerRow,
+				isEnabled: true,
+				color: found.color,
+			};
 		return { col: containerCol, row: containerRow, isEnabled: false };
 	}
 
 	// tank shape provided by service; no local getter needed
 
-	@HostListener('window:keydown', ['$event'])
+	@HostListener("window:keydown", ["$event"])
 	onKeyDown(event: KeyboardEvent) {
 		const k = event.key;
 
 		// Space (keyboard) => shoot
-		if (event.code === 'Space' || k === ' ' || k === 'Spacebar') {
+		if (event.code === "Space" || k === " " || k === "Spacebar") {
 			event.preventDefault();
 			this.shoot();
 			return;
 		}
 
 		switch (k) {
-			case 'ArrowUp':
-			case 'w':
-			case 'W':
+			case "ArrowUp":
+			case "w":
+			case "W":
 				event.preventDefault();
 				this.moveUp();
 				break;
-			case 'ArrowDown':
-			case 's':
-			case 'S':
+			case "ArrowDown":
+			case "s":
+			case "S":
 				event.preventDefault();
 				this.moveDown();
 				break;
-			case 'ArrowLeft':
-			case 'a':
-			case 'A':
+			case "ArrowLeft":
+			case "a":
+			case "A":
 				event.preventDefault();
 				this.moveLeft();
 				break;
-			case 'ArrowRight':
-			case 'd':
-			case 'D':
+			case "ArrowRight":
+			case "d":
+			case "D":
 				event.preventDefault();
 				this.moveRight();
 				break;

@@ -34,15 +34,15 @@ export class HelloWorldGameService {
 		let cursorCol = 0;
 
 		for (const rawCh of phrase) {
-			const ch = rawCh === ' ' ? ' ' : rawCh.toUpperCase();
+			const ch = rawCh === " " ? " " : rawCh.toUpperCase();
 
-			if (ch === ' ') {
+			if (ch === " ") {
 				// advance by one empty column (space)
 				cursorCol += charGapCols + 1;
 				continue;
 			}
 
-			const pattern = patterns[ch] || patterns['?'];
+			const pattern = patterns[ch] || patterns["?"];
 			const rows = pattern.length;
 			const cols = pattern[0].length;
 
@@ -53,11 +53,16 @@ export class HelloWorldGameService {
 			for (let r = 0; r < rows; r++) {
 				const row = pattern[r];
 				for (let c = 0; c < cols; c++) {
-					const isEnabled = row[c] === '1';
+					const isEnabled = row[c] === "1";
 					const col = cursorCol + c;
 					const rowIdx = r;
 
-					cells.push({ col, row: rowIdx, isEnabled, color: isEnabled ? color : undefined });
+					cells.push({
+						col,
+						row: rowIdx,
+						isEnabled,
+						color: isEnabled ? color : undefined,
+					});
 				}
 			}
 
@@ -74,7 +79,8 @@ export class HelloWorldGameService {
 	 */
 	layout(phrase: string, containerCols: number, containerRows: number) {
 		const raw = this.generate(phrase);
-		if (!raw || raw.length === 0) return { cells: [], startCol: 0, startRow: 0, usedCols: 0, usedRows: 0 };
+		if (!raw || raw.length === 0)
+			return { cells: [], startCol: 0, startRow: 0, usedCols: 0, usedRows: 0 };
 
 		let minCol = Infinity;
 		let minRow = Infinity;
@@ -88,7 +94,8 @@ export class HelloWorldGameService {
 			maxRow = Math.max(maxRow, c.row);
 		}
 
-		if (!isFinite(minCol)) return { cells: [], startCol: 0, startRow: 0, usedCols: 0, usedRows: 0 };
+		if (!isFinite(minCol))
+			return { cells: [], startCol: 0, startRow: 0, usedCols: 0, usedRows: 0 };
 
 		const usedCols = maxCol - minCol + 1;
 		const usedRows = maxRow - minRow + 1;
@@ -107,7 +114,7 @@ export class HelloWorldGameService {
 	}
 
 	/** Return the 3x3 tank cells (as CellData) for a center at (col,row) */
-	tankCellsAt(col: number, row: number, color = '#ff3b30'): CellData[] {
+	tankCellsAt(col: number, row: number, color = "#ff3b30"): CellData[] {
 		return [
 			{ col: col, row: row, isEnabled: true, color },
 			{ col: col - 1, row: row + 1, isEnabled: true, color },
@@ -122,13 +129,23 @@ export class HelloWorldGameService {
 	/** Check whether any of the provided tank cells overlap enabled phrase cells */
 	isTankOverlappingPhrase(cells: CellData[], tankCells: CellData[]): boolean {
 		for (const t of tankCells) {
-			if (cells.find((c) => c.isEnabled && c.col === t.col && c.row === t.row)) return true;
+			if (cells.find((c) => c.isEnabled && c.col === t.col && c.row === t.row))
+				return true;
 		}
 		return false;
 	}
 
 	/** Compute an initial tank position. mode: 'bottom-center' or 'inside-used' */
-	computeInitialTank(containerCols: number, containerRows: number, startCol: number, startRow: number, usedCols: number, usedRows: number, color = '#ff3b30', mode: 'bottom-center' | 'inside-used' = 'bottom-center') {
+	computeInitialTank(
+		containerCols: number,
+		containerRows: number,
+		startCol: number,
+		startRow: number,
+		usedCols: number,
+		usedRows: number,
+		color = "#ff3b30",
+		mode: "bottom-center" | "inside-used" = "bottom-center",
+	) {
 		const tMinCol = 1;
 		const tMaxCol = Math.max(tMinCol, containerCols - 2);
 		const tMinRow = 0;
@@ -136,7 +153,7 @@ export class HelloWorldGameService {
 
 		let desiredCol: number;
 		let desiredRow: number;
-		if (mode === 'inside-used' && usedCols > 0 && usedRows > 0) {
+		if (mode === "inside-used" && usedCols > 0 && usedRows > 0) {
 			desiredCol = startCol + Math.floor(usedCols / 2);
 			const verticalSpace = Math.max(0, usedRows - 3);
 			desiredRow = startRow + Math.floor(verticalSpace / 2);
