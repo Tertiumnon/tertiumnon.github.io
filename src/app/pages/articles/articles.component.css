@@ -8,9 +8,11 @@
 		flex-direction: column;
 
 		.article-date {
-			font-size: 0.85em;
-			color: var(--color-text-secondary, #666);
-			margin-bottom: 0.2em;
+			font-size: 0.75em;
+			color: white;
+			font-family: monospace;
+			margin-bottom: 0.3em;
+			opacity: 0.8;
 		}
 
 		a {

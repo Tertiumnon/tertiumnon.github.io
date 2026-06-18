@@ -18,19 +18,21 @@ export class ArticleComponent {
 	category = signal("");
 	articleName = signal("");
 	articleDirname = signal("");
+	articleDate = signal("");
 
 	ngOnInit() {
 		this.activatedRoute.params.subscribe((params) => {
 			this.category.set(params["category"]);
 			this.articleName.set(params["name"]);
 
-			// Get article details to extract dirname
+			// Get article details to extract dirname and date
 			this.articleService.getAll().subscribe((articles) => {
 				const article = articles.find(
 					(a: Article) => a.link.includes(`/${params["category"]}/${params["name"]}`)
 				);
 				if (article) {
 					this.articleDirname.set(article.dirname);
+					this.articleDate.set(article.publishedAt);
 				}
 			});
 
