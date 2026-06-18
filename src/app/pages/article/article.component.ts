@@ -1,5 +1,6 @@
 import { Component, inject, signal } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { CommonModule } from "@angular/common";
 import { MdContentComponent } from "../../components/md-content/md-content.component";
 import { Article, ArticleGetParams } from "../../entities/article/article";
 import { ArticleService } from "../../entities/article/article.service";
@@ -7,7 +8,7 @@ import { ArticleService } from "../../entities/article/article.service";
 @Component({
 	selector: "app-article",
 	standalone: true,
-	imports: [MdContentComponent],
+	imports: [CommonModule, MdContentComponent],
 	templateUrl: "./article.component.html",
 	styleUrl: "./article.component.css",
 })
