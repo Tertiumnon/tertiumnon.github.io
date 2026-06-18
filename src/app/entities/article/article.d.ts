@@ -14,4 +14,8 @@ export interface Article {
 	updatedAt?: string;
 	filename: string;
 	dirname: string;
+	source?: {
+		name: string;
+		url: string;
+	};
 }

@@ -7,9 +7,13 @@
       "career"
     ],
     "publishedAt": "2025-02-11",
-    "updatedAt": "2025-03-26",
     "filename": "index.ru.md",
-    "dirname": "2025-02-11--programming-after-30"
+    "dirname": "2025-02-11--programming-after-30",
+    "updatedAt": "2025-03-26",
+    "source": {
+      "name": "\"medium",
+      "url": "https://tertiumnon.medium.com/career-7b8d2f9c1a5b\""
+    }
   },
   {
     "title": "Хороший дизайн для вашего приложения",
@@ -19,9 +23,9 @@
       "design"
     ],
     "publishedAt": "2025-03-24",
-    "updatedAt": "2026-05-28",
     "filename": "index.ru.md",
-    "dirname": "2025-03-24--good-design-for-apps"
+    "dirname": "2025-03-24--good-design-for-apps",
+    "updatedAt": "2026-05-28"
   },
   {
     "title": "Hello Everyone, It's My First Post on Medium",
@@ -449,9 +453,9 @@
       "management"
     ],
     "publishedAt": "2025-02-11",
-    "updatedAt": "2025-02-15",
     "filename": "index.ru.md",
-    "dirname": "2025-02-11--agile-kanban-scrum"
+    "dirname": "2025-02-11--agile-kanban-scrum",
+    "updatedAt": "2025-02-15"
   },
   {
     "title": "JS: How to Decode HTML Entities",
@@ -505,9 +509,9 @@
       "programming"
     ],
     "publishedAt": "2025-02-11",
-    "updatedAt": "2026-05-28",
     "filename": "index.ru.md",
-    "dirname": "2025-02-11--refactoring"
+    "dirname": "2025-02-11--refactoring",
+    "updatedAt": "2026-05-28"
   },
   {
     "title": "You Can Thrive Without Using Redux",
@@ -528,9 +532,9 @@
       "programming"
     ],
     "publishedAt": "2025-03-20",
-    "updatedAt": "2025-03-26",
     "filename": "index.ru.md",
-    "dirname": "2025-03-20--the-minimum-of-books"
+    "dirname": "2025-03-20--the-minimum-of-books",
+    "updatedAt": "2025-03-26"
   },
   {
     "title": "Cooking with TypeScript enums",
@@ -552,7 +556,11 @@
     ],
     "publishedAt": "2025-03-26",
     "filename": "index.en.md",
-    "dirname": "2025-03-26--the-minimum-of-books"
+    "dirname": "2025-03-26--the-minimum-of-books",
+    "source": {
+      "name": "\"medium",
+      "url": "https://tertiumnon.medium.com/a-minimum-of-books-that-should-be-read-by-a-novice-or-experienced-programmer-8e9afd76fd6f\""
+    }
   },
   {
     "title": "Bun — A Fast JavaScript Runtime and Tooling Ecosystem",
@@ -562,9 +570,13 @@
       "programming"
     ],
     "publishedAt": "2025-11-30",
-    "updatedAt": "2025-12-20",
     "filename": "index.en.md",
-    "dirname": "2025-11-30--bun"
+    "dirname": "2025-11-30--bun",
+    "updatedAt": "2025-12-20",
+    "source": {
+      "name": "\"medium",
+      "url": "https://tertiumnon.medium.com/bun-7fbe61f45e2e\""
+    }
   },
   {
     "title": "Bun — быстрый JavaScript-рантайм и инструментальная экосистема",
@@ -574,9 +586,9 @@
       "programming"
     ],
     "publishedAt": "2025-11-30",
-    "updatedAt": "2025-12-06",
     "filename": "index.ru.md",
-    "dirname": "2025-11-30--bun"
+    "dirname": "2025-11-30--bun",
+    "updatedAt": "2025-12-06"
   },
   {
     "title": "5 копеек про ИИ в 2026: реальность после хайпа",

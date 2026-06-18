@@ -39,6 +39,7 @@ export const getArticleBaseName = (fileName: string): string => {
 interface Frontmatter {
 	publishedAt?: string;
 	updatedAt?: string;
+	source?: string;
 }
 
 export const parseFrontmatter = (content: string): Frontmatter => {
@@ -95,7 +96,7 @@ export const getArticleList = async (path: string): Promise<Article[]> => {
 					const lang = getArticleLang(fileName);
 					const baseName = getArticleBaseName(dirName);
 					const category = path.split("/").pop() ?? "";
-					articleList.push({
+					const article: any = {
 						title,
 						link: `/${lang}/articles/${category}/${baseName}`,
 						language: lang,
@@ -103,10 +104,25 @@ export const getArticleList = async (path: string): Promise<Article[]> => {
 							.split("/")
 							.filter((p) => !["src", "assets", "articles"].includes(p)),
 						publishedAt: fm.publishedAt ?? "",
-						...(fm.updatedAt ? { updatedAt: fm.updatedAt } : {}),
 						filename: fileName,
 						dirname: dirName,
-					});
+					};
+
+					if (fm.updatedAt) {
+						article.updatedAt = fm.updatedAt;
+					}
+
+					if (fm.source) {
+						const [name, url] = fm.source.split(": ");
+						if (name && url) {
+							article.source = {
+								name: name.trim(),
+								url: url.trim(),
+							};
+						}
+					}
+
+					articleList.push(article);
 				}
 			}
 		}

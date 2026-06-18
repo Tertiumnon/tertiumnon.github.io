@@ -1,6 +1,7 @@
 ---
 publishedAt: 2025-11-30
 updatedAt: 2025-12-20
+source: "medium: https://tertiumnon.medium.com/bun-7fbe61f45e2e"
 ---
 
 # Bun — A Fast JavaScript Runtime and Tooling Ecosystem
