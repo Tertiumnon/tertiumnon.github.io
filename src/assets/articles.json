@@ -20,6 +20,15 @@
     "updatedAt": "2026-05-28"
   },
   {
+    "title": "Adding SSH Keys (Git Bash on Windows)",
+    "link": "/en/articles/hacks/adding-ssh-keys-windows",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2018-05-16"
+  },
+  {
     "title": "Azure + Git (SSH) != LFS",
     "link": "/en/articles/hacks/azure-git-lfs",
     "language": "en",
@@ -38,6 +47,51 @@
     "publishedAt": "2022-03-30"
   },
   {
+    "title": "Bookmarks Manager for Firefox",
+    "link": "/en/articles/hacks/bookmarks-manager-firefox",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2017-07-10"
+  },
+  {
+    "title": "Bookmarks Manager: Release 0.1",
+    "link": "/en/articles/hacks/bookmarks-manager-release",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2020-03-28"
+  },
+  {
+    "title": "How to Change a Version of PHP (Ubuntu Example: PHP 5 → PHP 5.6)",
+    "link": "/en/articles/hacks/change-php-version",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2017-07-11"
+  },
+  {
+    "title": "Chrome: Letter \"T\" and Arial",
+    "link": "/en/articles/hacks/chrome-letter-t-arial",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2018-11-19"
+  },
+  {
+    "title": "English Language",
+    "link": "/en/articles/hacks/english-language",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2017-04-12"
+  },
+  {
     "title": "Firefox userChrome.css",
     "link": "/en/articles/hacks/firefox-userchrome",
     "language": "en",
@@ -45,6 +99,24 @@
       "hacks"
     ],
     "publishedAt": "2026-06-17"
+  },
+  {
+    "title": "Firefoxy :)",
+    "link": "/en/articles/hacks/firefoxy",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2017-04-20"
+  },
+  {
+    "title": "Your Cloud Firestore Database Has Insecure Rules",
+    "link": "/en/articles/hacks/firestore-insecure-rules",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2020-12-13"
   },
   {
     "title": "Git: RPC failed Error 413",
@@ -56,6 +128,60 @@
     "publishedAt": "2021-10-24"
   },
   {
+    "title": "Great \"Pomodoro\" App for Windows and Mac",
+    "link": "/en/articles/hacks/great-pomodoro-app",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2018-11-29"
+  },
+  {
+    "title": "Hello Everyone, It's My First Post on Medium",
+    "link": "/en/articles/hacks/hello-medium",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2017-01-30"
+  },
+  {
+    "title": "How to Activate Dark YouTube Theme",
+    "link": "/en/articles/hacks/how-to-activate-dark-youtube",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2017-05-24"
+  },
+  {
+    "title": "How to Organize Your Wallpapers",
+    "link": "/en/articles/hacks/how-to-organize-wallpapers",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2018-08-26"
+  },
+  {
+    "title": "Install NVM on Windows",
+    "link": "/en/articles/hacks/install-nvm-windows",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2018-05-16"
+  },
+  {
+    "title": "MediaWiki: Pywikibot Installation",
+    "link": "/en/articles/hacks/mediawiki-pywikibot",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2017-12-12"
+  },
+  {
     "title": "MS Edge: Managed by your organization",
     "link": "/en/articles/hacks/ms-edge-managed",
     "language": "en",
@@ -63,6 +189,123 @@
       "hacks"
     ],
     "publishedAt": "2024-05-06"
+  },
+  {
+    "title": "NodeJS: How to Refresh PM2 Instance",
+    "link": "/en/articles/hacks/nodejs-pm2-refresh",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2021-10-08"
+  },
+  {
+    "title": "Oh My Zsh Analogue for PowerShell",
+    "link": "/en/articles/hacks/oh-my-zsh-powershell",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2020-12-30"
+  },
+  {
+    "title": "PowerShell Core — Try This Windows Shell",
+    "link": "/en/articles/hacks/powershell-core-terminal",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2019-10-22"
+  },
+  {
+    "title": "Send Text To Form (Chrome Extension)",
+    "link": "/en/articles/hacks/send-text-to-form",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2017-04-23"
+  },
+  {
+    "title": "Sticker Pack for Telegram: FavoriteSerials",
+    "link": "/en/articles/hacks/telegram-sticker-favoriteserials",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2017-07-20"
+  },
+  {
+    "title": "Tertium JS Snippets: My New Visual Studio Code Extension",
+    "link": "/en/articles/hacks/tertium-js-snippets",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2019-10-22"
+  },
+  {
+    "title": "Tor as a Windows Service",
+    "link": "/en/articles/hacks/tor-windows-service",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2018-08-07"
+  },
+  {
+    "title": "Visual Studio 2019: LF Line Endings",
+    "link": "/en/articles/hacks/visual-studio-2019-lf",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2020-05-10"
+  },
+  {
+    "title": "VSCode: Error \"Extension host terminated unexpectedly\"",
+    "link": "/en/articles/hacks/vscode-extension-host-error",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2020-03-20"
+  },
+  {
+    "title": "How to: Visual Studio Code + XDebug (Remote)",
+    "link": "/en/articles/hacks/vscode-xdebug-remote",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2019-01-23"
+  },
+  {
+    "title": "Windows 11 — Specific Requirements: Some Details",
+    "link": "/en/articles/hacks/windows-11-requirements",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2021-06-28"
+  },
+  {
+    "title": "Windows: Error: listen EACCES: permission denied 0.0.0.0:{{PORT}}",
+    "link": "/en/articles/hacks/windows-eacces-error",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2020-07-16"
+  },
+  {
+    "title": "Windows: Free up some disk space on your SSD",
+    "link": "/en/articles/hacks/windows-free-disk-space",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2020-05-01"
   },
   {
     "title": "Windows + Git: Change crlf to lf",
@@ -83,6 +326,24 @@
     "publishedAt": "2022-09-14"
   },
   {
+    "title": "Windows: How to Set Sound Volume by Keyboard",
+    "link": "/en/articles/hacks/windows-sound-volume-keyboard",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2018-10-12"
+  },
+  {
+    "title": "If Your Windows Wakes up at Night",
+    "link": "/en/articles/hacks/windows-wakes-up-at-night",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2019-11-16"
+  },
+  {
     "title": "WSL2: Temporary failure resolving",
     "link": "/en/articles/hacks/wsl2-dns-resolving",
     "language": "en",
@@ -90,6 +351,15 @@
       "hacks"
     ],
     "publishedAt": "2022-07-03"
+  },
+  {
+    "title": "Your Categories",
+    "link": "/en/articles/hacks/your-categories",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2019-02-08"
   },
   {
     "title": "Agile, Kanban, Scrum - главное простыми словами",
@@ -148,6 +418,42 @@
       "programming"
     ],
     "publishedAt": "2025-03-26"
+  },
+  {
+    "title": "ExpressJS: Square Brackets in Query",
+    "link": "/en/articles/programming/expressjs-square-brackets",
+    "language": "en",
+    "tags": [
+      "programming"
+    ],
+    "publishedAt": "2021-06-22"
+  },
+  {
+    "title": "Frontend: Possible List Option Properties",
+    "link": "/en/articles/programming/frontend-list-option-properties",
+    "language": "en",
+    "tags": [
+      "programming"
+    ],
+    "publishedAt": "2021-06-23"
+  },
+  {
+    "title": "JS: How to Decode HTML Entities",
+    "link": "/en/articles/programming/js-decode-html-entities",
+    "language": "en",
+    "tags": [
+      "programming"
+    ],
+    "publishedAt": "2018-11-22"
+  },
+  {
+    "title": "JS: How to Validate Date",
+    "link": "/en/articles/programming/js-validate-date",
+    "language": "en",
+    "tags": [
+      "programming"
+    ],
+    "publishedAt": "2019-02-01"
   },
   {
     "title": "Рефакторинг",
