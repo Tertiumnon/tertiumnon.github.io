@@ -4,6 +4,7 @@
 
     <div class="article-list">
       <div *ngFor="let article of articleList(); index as i" class="article">
+        <div class="article-date">{{ article.publishedAt }}</div>
         <a [routerLink]="article.link">{{ article.title }}</a>
       </div>
     </div>

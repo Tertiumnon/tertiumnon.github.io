@@ -20,7 +20,12 @@ export class ArticlesComponent {
 		this.activatedRoute.params.subscribe((params) => {
 			const lang = params["lang"] ?? "en";
 			this.articleService.getAll().subscribe((response) => {
-				this.articleList.set(response.filter((a) => a.language === lang));
+				const filtered = response.filter((a: Article) => a.language === lang);
+				const sorted = filtered.sort(
+					(a: Article, b: Article) =>
+						new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+				);
+				this.articleList.set(sorted);
 			});
 		});
 	}
