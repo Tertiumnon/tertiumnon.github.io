@@ -15,9 +15,13 @@ export class ArticleComponent {
 	activatedRoute = inject(ActivatedRoute);
 	articleService = inject(ArticleService);
 	data = signal("");
+	category = signal("");
+	articleName = signal("");
 
 	ngOnInit() {
 		this.activatedRoute.params.subscribe((params) => {
+			this.category.set(params["category"]);
+			this.articleName.set(params["name"]);
 			this.articleService
 				.get(params as ArticleGetParams)
 				.subscribe((response) => {

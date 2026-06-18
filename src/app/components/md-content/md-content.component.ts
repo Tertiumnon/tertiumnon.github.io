@@ -21,6 +21,8 @@ hljs.registerLanguage("json", json);
 })
 export class MdContentComponent {
 	@Input() data = "";
+	@Input() category = "";
+	@Input() articleName = "";
 	htmlData: SafeHtml = "";
 
 	constructor(private sanitizer: DomSanitizer) {}
@@ -64,6 +66,16 @@ export class MdContentComponent {
 				} catch (e) {
 					return `<pre><code>${code}</code></pre>`;
 				}
+			};
+
+			// @ts-ignore - dynamic method assignment
+			renderer.image = (token: { href: string; title: string; text: string }) => {
+				let href = token.href;
+				if (this.category && this.articleName && !href.startsWith("http")) {
+					href = `/assets/articles/${this.category}/${this.articleName}/${href}`;
+				}
+				const title = token.title ? ` title="${token.title}"` : "";
+				return `<img src="${href}" alt="${token.text}"${title}>`;
 			};
 
 			const raw = marked.parse(markdown, {
