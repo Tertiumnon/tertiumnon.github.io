@@ -28,7 +28,7 @@ export const getArticleLang = (fileName: string): "en" | "ru" => {
 };
 
 export const getArticleBaseName = (fileName: string): string => {
-	return fileName.replace(/\.(ru|en)\.md$/, "");
+	return fileName.replace(/^\d{4}-\d{2}-\d{2}--/, "").replace(/\.(ru|en)\.md$/, "");
 };
 
 interface Frontmatter {
@@ -91,6 +91,7 @@ export const getArticleList = async (path: string): Promise<Article[]> => {
 					.filter((p) => !["src", "assets", "articles"].includes(p)),
 				publishedAt: fm.publishedAt ?? "",
 				...(fm.updatedAt ? { updatedAt: fm.updatedAt } : {}),
+				filename: fileName,
 			});
 		}
 	}

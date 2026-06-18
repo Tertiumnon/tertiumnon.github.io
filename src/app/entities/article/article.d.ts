@@ -2,6 +2,7 @@ export interface ArticleGetParams {
 	lang: string;
 	category: string;
 	name: string;
+	filename?: string;
 }
 
 export interface Article {
@@ -11,4 +12,5 @@ export interface Article {
 	tags: string[];
 	publishedAt: string;
 	updatedAt?: string;
+	filename: string;
 }
