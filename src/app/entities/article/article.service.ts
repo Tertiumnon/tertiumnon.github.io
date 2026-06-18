@@ -15,8 +15,8 @@ export class ArticleService {
 	}
 
 	get(params: ArticleGetParams) {
-		const { category, name } = params;
-		return this.httpClient.get(`assets/articles/${category}/${name}.md`, {
+		const { lang, category, name } = params;
+		return this.httpClient.get(`assets/articles/${category}/${name}.${lang}.md`, {
 			responseType: "text",
 		});
 	}

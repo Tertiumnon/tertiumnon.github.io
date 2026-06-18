@@ -1,3 +1,7 @@
+---
+publishedAt: 2025-03-26
+---
+
 # Cooking with TypeScript enums
 
 Periodically I hear that something wrong with TypeScript enums. But if you understand how it works - it's not an issue for you.

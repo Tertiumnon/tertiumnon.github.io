@@ -1,3 +1,7 @@
+---
+publishedAt: 2025-03-26
+---
+
 # A minimum of books that should be read by a novice or experienced programmer
 
 ## Introduction

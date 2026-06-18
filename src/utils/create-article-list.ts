@@ -1,6 +1,4 @@
-import { createReadStream } from "node:fs";
 import * as fs from "node:fs/promises";
-import * as readline from "node:readline";
 import { Article } from "../app/entities/article/article";
 
 const ARTICLE_LIST_DIR = "src/assets/articles";
@@ -22,18 +20,50 @@ export const createPathList = async (path: string): Promise<boolean> => {
 	return true;
 };
 
-export const fileIsMd = (fileName: string) => fileName.search(".md") !== -1;
+export const fileIsMd = (fileName: string) => fileName.endsWith(".md");
 
-export const articleIsRu = (fileName: string) => fileName.search("-ru") !== -1;
+export const getArticleLang = (fileName: string): "en" | "ru" => {
+	if (fileName.endsWith(".ru.md")) return "ru";
+	return "en";
+};
+
+export const getArticleBaseName = (fileName: string): string => {
+	return fileName.replace(/\.(ru|en)\.md$/, "");
+};
+
+interface Frontmatter {
+	publishedAt?: string;
+	updatedAt?: string;
+}
+
+export const parseFrontmatter = (content: string): Frontmatter => {
+	if (!content.startsWith("---")) return {};
+	const end = content.indexOf("\n---", 3);
+	if (end === -1) return {};
+	const block = content.slice(3, end).trim();
+	const result: Record<string, string> = {};
+	for (const line of block.split("\n")) {
+		const colon = line.indexOf(":");
+		if (colon === -1) continue;
+		const key = line.slice(0, colon).trim();
+		const value = line.slice(colon + 1).trim();
+		result[key] = value;
+	}
+	return result as Frontmatter;
+};
+
+export const stripFrontmatter = (content: string): string => {
+	if (!content.startsWith("---")) return content;
+	const end = content.indexOf("\n---", 3);
+	if (end === -1) return content;
+	return content.slice(end + 4).trimStart();
+};
 
 export const getArticleTitle = async (filePath: string): Promise<string> => {
-	const stream = createReadStream(`${filePath}`, { encoding: "utf-8" });
-	const rl = readline.createInterface({
-		input: stream,
-		crlfDelay: 1000,
-	});
-	for await (const line of rl) {
-		return line.slice(2);
+	const content = await fs.readFile(filePath, { encoding: "utf-8" });
+	const body = stripFrontmatter(content);
+	for (const line of body.split("\n")) {
+		if (line.startsWith("# ")) return line.slice(2).trim();
 	}
 	return "";
 };
@@ -46,15 +76,21 @@ export const getArticleList = async (path: string): Promise<Article[]> => {
 		const fileName = file.name;
 		const filePath = `${path}/${fileName}`;
 		if (!file.isDirectory() && fileIsMd(fileName)) {
+			const content = await fs.readFile(filePath, { encoding: "utf-8" });
+			const fm = parseFrontmatter(content);
 			const title = await getArticleTitle(filePath);
+			const lang = getArticleLang(fileName);
+			const baseName = getArticleBaseName(fileName);
+			const category = path.split("/").pop() ?? "";
 			articleList.push({
 				title,
-				link: `/${filePath.split("/").slice(2).join("/")}`.replace(".md", ""),
-				language: articleIsRu(fileName) ? "ru" : "en",
-				tags: filePath
+				link: `/${lang}/articles/${category}/${baseName}`,
+				language: lang,
+				tags: path
 					.split("/")
-					.slice(0, -1)
 					.filter((p) => !["src", "assets", "articles"].includes(p)),
+				publishedAt: fm.publishedAt ?? "",
+				...(fm.updatedAt ? { updatedAt: fm.updatedAt } : {}),
 			});
 		}
 	}

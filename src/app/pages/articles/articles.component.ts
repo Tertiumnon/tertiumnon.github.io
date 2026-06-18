@@ -1,5 +1,5 @@
 import { Component, inject, signal } from "@angular/core";
-import { RouterLink } from "@angular/router";
+import { ActivatedRoute, RouterLink } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { Article } from "../../entities/article/article";
 import { ArticleService } from "../../entities/article/article.service";
@@ -12,12 +12,16 @@ import { ArticleService } from "../../entities/article/article.service";
 	styleUrl: "./articles.component.css",
 })
 export class ArticlesComponent {
+	activatedRoute = inject(ActivatedRoute);
 	articleService = inject(ArticleService);
 	articleList = signal<Article[]>([]);
 
 	ngOnInit() {
-		this.articleService.getAll().subscribe((response) => {
-			this.articleList.set(response);
+		this.activatedRoute.params.subscribe((params) => {
+			const lang = params["lang"] ?? "en";
+			this.articleService.getAll().subscribe((response) => {
+				this.articleList.set(response.filter((a) => a.language === lang));
+			});
 		});
 	}
 }

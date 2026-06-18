@@ -1,3 +1,8 @@
+---
+publishedAt: 2025-03-24
+updatedAt: 2025-03-26
+---
+
 # Angular Universal (SSR) caching with AWS Lambda
 
 It's not obvious but Lambda creates containers for function running. And these containers exist only limited time. That's the reason why SSR suffers a fiasco with default Lambda behavior.

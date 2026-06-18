@@ -1,90 +1,118 @@
 [
   {
     "title": "Карьера программиста после 30",
-    "link": "/articles/career/programming-after-30-ru",
+    "link": "/ru/articles/career/programming-after-30",
     "language": "ru",
     "tags": [
       "career"
-    ]
+    ],
+    "publishedAt": "2025-02-11",
+    "updatedAt": "2025-03-26"
   },
   {
     "title": "Хороший дизайн для вашего приложения",
-    "link": "/articles/design/good-design-for-apps-ru",
+    "link": "/ru/articles/design/good-design-for-apps",
     "language": "ru",
     "tags": [
       "design"
-    ]
+    ],
+    "publishedAt": "2025-03-24",
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "title": "Firefox userChrome.css",
+    "link": "/en/articles/hacks/firefox-userchrome",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2026-06-17"
   },
   {
     "title": "Agile, Kanban, Scrum - главное простыми словами",
-    "link": "/articles/management/agile-kanban-scrum-ru",
+    "link": "/ru/articles/management/agile-kanban-scrum",
     "language": "ru",
     "tags": [
       "management"
-    ]
+    ],
+    "publishedAt": "2025-02-11",
+    "updatedAt": "2025-02-15"
   },
   {
     "title": "5 копеек про ИИ в 2026: реальность после хайпа",
-    "link": "/articles/programming/ai-2026-ru",
+    "link": "/ru/articles/programming/ai-2026",
     "language": "ru",
     "tags": [
       "programming"
-    ]
+    ],
+    "publishedAt": "2026-06-11"
   },
   {
     "title": "Angular Universal (SSR) caching with AWS Lambda",
-    "link": "/articles/programming/aws-lambda-angular-ssr",
+    "link": "/en/articles/programming/aws-lambda-angular-ssr",
     "language": "en",
     "tags": [
       "programming"
-    ]
+    ],
+    "publishedAt": "2025-03-24",
+    "updatedAt": "2025-03-26"
   },
   {
     "title": "Bun — A Fast JavaScript Runtime and Tooling Ecosystem",
-    "link": "/articles/programming/bun-en",
+    "link": "/en/articles/programming/bun",
     "language": "en",
     "tags": [
       "programming"
-    ]
+    ],
+    "publishedAt": "2025-11-30",
+    "updatedAt": "2025-12-20"
   },
   {
     "title": "Bun — быстрый JavaScript-рантайм и инструментальная экосистема",
-    "link": "/articles/programming/bun-ru",
+    "link": "/ru/articles/programming/bun",
     "language": "ru",
     "tags": [
       "programming"
-    ]
+    ],
+    "publishedAt": "2025-11-30",
+    "updatedAt": "2025-12-06"
   },
   {
     "title": "Cooking with TypeScript enums",
-    "link": "/articles/programming/cooking-with-ts-enums",
+    "link": "/en/articles/programming/cooking-with-ts-enums",
     "language": "en",
     "tags": [
       "programming"
-    ]
+    ],
+    "publishedAt": "2025-03-26"
   },
   {
     "title": "Рефакторинг",
-    "link": "/articles/programming/refactoring-ru",
+    "link": "/ru/articles/programming/refactoring",
     "language": "ru",
     "tags": [
       "programming"
-    ]
+    ],
+    "publishedAt": "2025-02-11",
+    "updatedAt": "2026-05-28"
   },
   {
     "title": "A minimum of books that should be read by a novice or experienced programmer",
-    "link": "/articles/programming/the-minimum-of-books-en",
+    "link": "/en/articles/programming/the-minimum-of-books",
     "language": "en",
     "tags": [
       "programming"
-    ]
+    ],
+    "publishedAt": "2025-03-26"
   },
   {
     "title": "Минимум книг, которые нужно прочитать начинающему или продолжающему свою кривую обучения программисту",
-    "link": "/articles/programming/the-minimum-of-books-ru",
+    "link": "/ru/articles/programming/the-minimum-of-books",
     "language": "ru",
     "tags": [
       "programming"
-    ]
+    ],
+    "publishedAt": "2025-03-20",
+    "updatedAt": "2025-03-26"
   }
 ]

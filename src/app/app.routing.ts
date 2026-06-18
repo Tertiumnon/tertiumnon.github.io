@@ -25,13 +25,19 @@ export const APP_ROUTES: Routes = [
 	{
 		path: "articles",
 		title: "Articles",
+		redirectTo: "en/articles",
+		pathMatch: "full",
+	},
+	{
+		path: ":lang/articles",
+		title: "Articles",
 		loadComponent: () =>
 			import("./pages/articles/articles.component").then(
 				(m) => m.ArticlesComponent,
 			),
 	},
 	{
-		path: "articles/:category/:name",
+		path: ":lang/articles/:category/:name",
 		title: "Article",
 		loadComponent: () =>
 			import("./pages/article/article.component").then(

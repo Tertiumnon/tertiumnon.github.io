@@ -1,4 +1,5 @@
 export interface ArticleGetParams {
+	lang: string;
 	category: string;
 	name: string;
 }
@@ -8,4 +9,6 @@ export interface Article {
 	link: string;
 	language: "en" | "ru";
 	tags: string[];
+	publishedAt: string;
+	updatedAt?: string;
 }

@@ -1,3 +1,8 @@
+---
+publishedAt: 2025-11-30
+updatedAt: 2025-12-20
+---
+
 # Bun — A Fast JavaScript Runtime and Tooling Ecosystem
 
 <img src="https://bun.sh/logo.svg" alt="Bun Logo" width="200" />

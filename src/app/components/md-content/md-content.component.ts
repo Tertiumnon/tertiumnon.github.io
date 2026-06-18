@@ -25,8 +25,16 @@ export class MdContentComponent {
 
 	constructor(private sanitizer: DomSanitizer) {}
 
+	private stripFrontmatter(md: string): string {
+		if (!md.startsWith("---")) return md;
+		const end = md.indexOf("\n---", 3);
+		if (end === -1) return md;
+		return md.slice(end + 4).replace(/^\s+/, "");
+	}
+
 	ngOnChanges() {
 		if (this.data) {
+			const markdown = this.stripFrontmatter(this.data);
 			// Use the modern marked API without deprecated options.
 			// Create a default Renderer so helper methods like renderer.text exist,
 			// then override only the code method to use highlight.js.
@@ -58,7 +66,7 @@ export class MdContentComponent {
 				}
 			};
 
-			const raw = marked.parse(this.data || "", {
+			const raw = marked.parse(markdown, {
 				renderer,
 				gfm: true,
 				breaks: true,

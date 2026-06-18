@@ -1,3 +1,8 @@
+---
+publishedAt: 2025-11-30
+updatedAt: 2025-12-06
+---
+
 # Bun — быстрый JavaScript-рантайм и инструментальная экосистема
 
 <img src="https://bun.sh/logo.svg" alt="Bun Logo" width="200" />

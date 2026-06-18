@@ -1,3 +1,7 @@
+---
+publishedAt: 2026-06-17
+---
+
 # Firefox userChrome.css
 
 Custom CSS for Firefox UI elements, loaded from the user's profile folder.
