@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { switchMap } from "rxjs";
+import { Observable } from "rxjs";
+import { switchMap } from "rxjs/operators";
 import { Article, ArticleGetParams } from "./article";
 
 @Injectable({
@@ -15,12 +16,12 @@ export class ArticleService {
 		});
 	}
 
-	get(params: ArticleGetParams) {
+	get(params: ArticleGetParams): Observable<string> {
 		const { lang, category, name } = params;
 		return this.getAll().pipe(
-			switchMap((articles) => {
+			switchMap((articles: Article[]) => {
 				const article = articles.find(
-					(a) => a.language === lang && a.link.includes(`/${category}/${name}`)
+					(a: Article) => a.language === lang && a.link.includes(`/${category}/${name}`)
 				);
 				const dirname = article?.dirname || name;
 				const filename = article?.filename || `index.${lang}.md`;

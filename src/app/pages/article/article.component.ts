@@ -1,7 +1,7 @@
 import { Component, inject, signal } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { MdContentComponent } from "../../components/md-content/md-content.component";
-import { ArticleGetParams } from "../../entities/article/article";
+import { Article, ArticleGetParams } from "../../entities/article/article";
 import { ArticleService } from "../../entities/article/article.service";
 
 @Component({
@@ -27,7 +27,7 @@ export class ArticleComponent {
 			// Get article details to extract dirname
 			this.articleService.getAll().subscribe((articles) => {
 				const article = articles.find(
-					(a) => a.link.includes(`/${params["category"]}/${params["name"]}`)
+					(a: Article) => a.link.includes(`/${params["category"]}/${params["name"]}`)
 				);
 				if (article) {
 					this.articleDirname.set(article.dirname);
@@ -36,7 +36,7 @@ export class ArticleComponent {
 
 			this.articleService
 				.get(params as ArticleGetParams)
-				.subscribe((response) => {
+				.subscribe((response: string) => {
 					this.data.set(response);
 				});
 		});

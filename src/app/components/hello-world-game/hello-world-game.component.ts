@@ -26,7 +26,7 @@ export class HelloWorldGameComponent {
 
 	// bullets: each bullet is a single-cell projectile moving up
 	bullets: { col: number; row: number }[] = [];
-	private bulletTimer: NodeJS.Timeout | null = null;
+	private bulletTimer: ReturnType<typeof setInterval> | undefined;
 
 	// fixed game area
 	containerWidth = 640;
@@ -131,7 +131,7 @@ export class HelloWorldGameComponent {
 		this.bulletTimer = setInterval(() => {
 			if (this.bullets.length === 0) {
 				clearInterval(this.bulletTimer);
-				this.bulletTimer = null;
+				this.bulletTimer = undefined;
 				return;
 			}
 			const nextBullets: { col: number; row: number }[] = [];
