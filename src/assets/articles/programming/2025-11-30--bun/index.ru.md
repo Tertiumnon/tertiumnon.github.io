@@ -213,7 +213,7 @@ bun test --watch
 
 _Цвета (слева направо):_ **оранжевый** — Node 20; **жёлтый** — Node 22; **красный** — Node 24; **зелёный** — Deno; **синий** — Bun.
 
-![Cold Start: Bun vs Node/Deno](img/bun-performance/bun-cold-start-comparison.svg)
+![Cold Start: Bun vs Node/Deno](img/bun-cold-start-comparison.svg)
 
 **Результаты:**
 
@@ -227,7 +227,7 @@ _Цвета (слева направо):_ **оранжевый** — Node 20; **
 
 ### Throughput (пропускная способность, req/s)
 
-![Throughput: Bun vs Node/Deno](img/bun-performance/bun-throughput-comparison.svg)
+![Throughput: Bun vs Node/Deno](img/bun-throughput-comparison.svg)
 
 **Результаты:**
 
@@ -240,7 +240,7 @@ _Цвета (слева направо):_ **оранжевый** — Node 20; **
 
 ### Memory Usage (MB)
 
-![Memory: Bun vs Node/Deno](img/bun-performance/bun-memory-comparison.svg)
+![Memory: Bun vs Node/Deno](img/bun-memory-comparison.svg)
 
 **⚠️ Важно: Память — наиболее противоречивая метрика (2025):**
 
@@ -268,7 +268,7 @@ _Цвета (слева направо):_ **оранжевый** — Node 20; **
 
 ### CPU Usage (% загрузки процессора)
 
-![CPU Usage: Bun vs Node/Deno](img/bun-performance/bun-cpu-comparison.svg)
+![CPU Usage: Bun vs Node/Deno](img/bun-cpu-comparison.svg)
 
 **Результаты под нагрузкой (HTTP-запросы):**
 

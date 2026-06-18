@@ -214,7 +214,7 @@ Data collected from simple HTTP server tests ("Hello World") and aggregated from
 
 _Colors (left to right):_ **orange** — Node 20; **yellow** — Node 22; **red** — Node 24; **green** — Deno; **blue** — Bun.
 
-![Cold Start: Bun vs Node/Deno](img/bun-performance/bun-cold-start-comparison.svg)
+![Cold Start: Bun vs Node/Deno](img/bun-cold-start-comparison.svg)
 
 **Results:**
 
@@ -228,7 +228,7 @@ _Colors (left to right):_ **orange** — Node 20; **yellow** — Node 22; **red*
 
 ### Throughput (Requests Per Second)
 
-![Throughput: Bun vs Node/Deno](img/bun-performance/bun-throughput-comparison.svg)
+![Throughput: Bun vs Node/Deno](img/bun-throughput-comparison.svg)
 
 **Results:**
 
@@ -241,7 +241,7 @@ _Colors (left to right):_ **orange** — Node 20; **yellow** — Node 22; **red*
 
 ### Memory Usage (MB)
 
-![Memory: Bun vs Node/Deno](img/bun-performance/bun-memory-comparison.svg)
+![Memory: Bun vs Node/Deno](img/bun-memory-comparison.svg)
 
 **⚠️ Important: Memory is the most contradictory metric (2025):**
 
@@ -269,7 +269,7 @@ Reports on Bun''s memory consumption differ significantly between synthetic benc
 
 ### CPU Usage (% Load)
 
-![CPU Usage: Bun vs Node/Deno](img/bun-performance/bun-cpu-comparison.svg)
+![CPU Usage: Bun vs Node/Deno](img/bun-cpu-comparison.svg)
 
 **Results under load (HTTP requests):**
 
