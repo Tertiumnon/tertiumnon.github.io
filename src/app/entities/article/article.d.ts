@@ -13,4 +13,5 @@ export interface Article {
 	publishedAt: string;
 	updatedAt?: string;
 	filename: string;
+	dirname: string;
 }

@@ -8,7 +8,8 @@
     ],
     "publishedAt": "2025-02-11",
     "updatedAt": "2025-03-26",
-    "filename": "2025-02-11--programming-after-30.ru.md"
+    "filename": "article.ru.md",
+    "dirname": "2025-02-11--programming-after-30"
   },
   {
     "title": "Хороший дизайн для вашего приложения",
@@ -19,7 +20,8 @@
     ],
     "publishedAt": "2025-03-24",
     "updatedAt": "2026-05-28",
-    "filename": "2025-03-24--good-design-for-apps.ru.md"
+    "filename": "article.ru.md",
+    "dirname": "2025-03-24--good-design-for-apps"
   },
   {
     "title": "Hello Everyone, It's My First Post on Medium",
@@ -29,7 +31,8 @@
       "hacks"
     ],
     "publishedAt": "2017-01-30",
-    "filename": "2017-01-30--hello-medium.en.md"
+    "filename": "article.en.md",
+    "dirname": "2017-01-30--hello-medium"
   },
   {
     "title": "English Language",
@@ -39,7 +42,8 @@
       "hacks"
     ],
     "publishedAt": "2017-04-12",
-    "filename": "2017-04-12--english-language.en.md"
+    "filename": "article.en.md",
+    "dirname": "2017-04-12--english-language"
   },
   {
     "title": "Firefoxy :)",
@@ -49,7 +53,8 @@
       "hacks"
     ],
     "publishedAt": "2017-04-20",
-    "filename": "2017-04-20--firefoxy.en.md"
+    "filename": "article.en.md",
+    "dirname": "2017-04-20--firefoxy"
   },
   {
     "title": "Send Text To Form (Chrome Extension)",
@@ -59,7 +64,8 @@
       "hacks"
     ],
     "publishedAt": "2017-04-23",
-    "filename": "2017-04-23--send-text-to-form.en.md"
+    "filename": "article.en.md",
+    "dirname": "2017-04-23--send-text-to-form"
   },
   {
     "title": "How to Activate Dark YouTube Theme",
@@ -69,7 +75,8 @@
       "hacks"
     ],
     "publishedAt": "2017-05-24",
-    "filename": "2017-05-24--how-to-activate-dark-youtube.en.md"
+    "filename": "article.en.md",
+    "dirname": "2017-05-24--how-to-activate-dark-youtube"
   },
   {
     "title": "Bookmarks Manager for Firefox",
@@ -79,7 +86,8 @@
       "hacks"
     ],
     "publishedAt": "2017-07-10",
-    "filename": "2017-07-10--bookmarks-manager-firefox.en.md"
+    "filename": "article.en.md",
+    "dirname": "2017-07-10--bookmarks-manager-firefox"
   },
   {
     "title": "How to Change a Version of PHP (Ubuntu Example: PHP 5 → PHP 5.6)",
@@ -89,7 +97,8 @@
       "hacks"
     ],
     "publishedAt": "2017-07-11",
-    "filename": "2017-07-11--change-php-version.en.md"
+    "filename": "article.en.md",
+    "dirname": "2017-07-11--change-php-version"
   },
   {
     "title": "Sticker Pack for Telegram: FavoriteSerials",
@@ -99,7 +108,8 @@
       "hacks"
     ],
     "publishedAt": "2017-07-20",
-    "filename": "2017-07-20--telegram-sticker-favoriteserials.en.md"
+    "filename": "article.en.md",
+    "dirname": "2017-07-20--telegram-sticker-favoriteserials"
   },
   {
     "title": "MediaWiki: Pywikibot Installation",
@@ -109,7 +119,8 @@
       "hacks"
     ],
     "publishedAt": "2017-12-12",
-    "filename": "2017-12-12--mediawiki-pywikibot.en.md"
+    "filename": "article.en.md",
+    "dirname": "2017-12-12--mediawiki-pywikibot"
   },
   {
     "title": "Adding SSH Keys (Git Bash on Windows)",
@@ -119,7 +130,8 @@
       "hacks"
     ],
     "publishedAt": "2018-05-16",
-    "filename": "2018-05-16--adding-ssh-keys-windows.en.md"
+    "filename": "article.en.md",
+    "dirname": "2018-05-16--adding-ssh-keys-windows"
   },
   {
     "title": "Install NVM on Windows",
@@ -129,7 +141,8 @@
       "hacks"
     ],
     "publishedAt": "2018-05-16",
-    "filename": "2018-05-16--install-nvm-windows.en.md"
+    "filename": "article.en.md",
+    "dirname": "2018-05-16--install-nvm-windows"
   },
   {
     "title": "Tor as a Windows Service",
@@ -139,7 +152,8 @@
       "hacks"
     ],
     "publishedAt": "2018-08-07",
-    "filename": "2018-08-07--tor-windows-service.en.md"
+    "filename": "article.en.md",
+    "dirname": "2018-08-07--tor-windows-service"
   },
   {
     "title": "How to Organize Your Wallpapers",
@@ -149,7 +163,8 @@
       "hacks"
     ],
     "publishedAt": "2018-08-26",
-    "filename": "2018-08-26--how-to-organize-wallpapers.en.md"
+    "filename": "article.en.md",
+    "dirname": "2018-08-26--how-to-organize-wallpapers"
   },
   {
     "title": "Windows: How to Set Sound Volume by Keyboard",
@@ -159,7 +174,8 @@
       "hacks"
     ],
     "publishedAt": "2018-10-12",
-    "filename": "2018-10-12--windows-sound-volume-keyboard.en.md"
+    "filename": "article.en.md",
+    "dirname": "2018-10-12--windows-sound-volume-keyboard"
   },
   {
     "title": "Chrome: Letter \"T\" and Arial",
@@ -169,7 +185,8 @@
       "hacks"
     ],
     "publishedAt": "2018-11-19",
-    "filename": "2018-11-19--chrome-letter-t-arial.en.md"
+    "filename": "article.en.md",
+    "dirname": "2018-11-19--chrome-letter-t-arial"
   },
   {
     "title": "Great \"Pomodoro\" App for Windows and Mac",
@@ -179,7 +196,8 @@
       "hacks"
     ],
     "publishedAt": "2018-11-29",
-    "filename": "2018-11-29--great-pomodoro-app.en.md"
+    "filename": "article.en.md",
+    "dirname": "2018-11-29--great-pomodoro-app"
   },
   {
     "title": "How to: Visual Studio Code + XDebug (Remote)",
@@ -189,7 +207,8 @@
       "hacks"
     ],
     "publishedAt": "2019-01-23",
-    "filename": "2019-01-23--vscode-xdebug-remote.en.md"
+    "filename": "article.en.md",
+    "dirname": "2019-01-23--vscode-xdebug-remote"
   },
   {
     "title": "Your Categories",
@@ -199,7 +218,8 @@
       "hacks"
     ],
     "publishedAt": "2019-02-08",
-    "filename": "2019-02-08--your-categories.en.md"
+    "filename": "article.en.md",
+    "dirname": "2019-02-08--your-categories"
   },
   {
     "title": "PowerShell Core — Try This Windows Shell",
@@ -209,7 +229,8 @@
       "hacks"
     ],
     "publishedAt": "2019-10-22",
-    "filename": "2019-10-22--powershell-core-terminal.en.md"
+    "filename": "article.en.md",
+    "dirname": "2019-10-22--powershell-core-terminal"
   },
   {
     "title": "Tertium JS Snippets: My New Visual Studio Code Extension",
@@ -219,7 +240,8 @@
       "hacks"
     ],
     "publishedAt": "2019-10-22",
-    "filename": "2019-10-22--tertium-js-snippets.en.md"
+    "filename": "article.en.md",
+    "dirname": "2019-10-22--tertium-js-snippets"
   },
   {
     "title": "If Your Windows Wakes up at Night",
@@ -229,7 +251,8 @@
       "hacks"
     ],
     "publishedAt": "2019-11-16",
-    "filename": "2019-11-16--windows-wakes-up-at-night.en.md"
+    "filename": "article.en.md",
+    "dirname": "2019-11-16--windows-wakes-up-at-night"
   },
   {
     "title": "VSCode: Error \"Extension host terminated unexpectedly\"",
@@ -239,7 +262,8 @@
       "hacks"
     ],
     "publishedAt": "2020-03-20",
-    "filename": "2020-03-20--vscode-extension-host-error.en.md"
+    "filename": "article.en.md",
+    "dirname": "2020-03-20--vscode-extension-host-error"
   },
   {
     "title": "Bookmarks Manager: Release 0.1",
@@ -249,7 +273,8 @@
       "hacks"
     ],
     "publishedAt": "2020-03-28",
-    "filename": "2020-03-28--bookmarks-manager-release.en.md"
+    "filename": "article.en.md",
+    "dirname": "2020-03-28--bookmarks-manager-release"
   },
   {
     "title": "Windows: Free up some disk space on your SSD",
@@ -259,7 +284,8 @@
       "hacks"
     ],
     "publishedAt": "2020-05-01",
-    "filename": "2020-05-01--windows-free-disk-space.en.md"
+    "filename": "article.en.md",
+    "dirname": "2020-05-01--windows-free-disk-space"
   },
   {
     "title": "Visual Studio 2019: LF Line Endings",
@@ -269,7 +295,8 @@
       "hacks"
     ],
     "publishedAt": "2020-05-10",
-    "filename": "2020-05-10--visual-studio-2019-lf.en.md"
+    "filename": "article.en.md",
+    "dirname": "2020-05-10--visual-studio-2019-lf"
   },
   {
     "title": "Windows: Error: listen EACCES: permission denied 0.0.0.0:{{PORT}}",
@@ -279,7 +306,8 @@
       "hacks"
     ],
     "publishedAt": "2020-07-16",
-    "filename": "2020-07-16--windows-eacces-error.en.md"
+    "filename": "article.en.md",
+    "dirname": "2020-07-16--windows-eacces-error"
   },
   {
     "title": "Your Cloud Firestore Database Has Insecure Rules",
@@ -289,7 +317,8 @@
       "hacks"
     ],
     "publishedAt": "2020-12-13",
-    "filename": "2020-12-13--firestore-insecure-rules.en.md"
+    "filename": "article.en.md",
+    "dirname": "2020-12-13--firestore-insecure-rules"
   },
   {
     "title": "Oh My Zsh Analogue for PowerShell",
@@ -299,7 +328,8 @@
       "hacks"
     ],
     "publishedAt": "2020-12-30",
-    "filename": "2020-12-30--oh-my-zsh-powershell.en.md"
+    "filename": "article.en.md",
+    "dirname": "2020-12-30--oh-my-zsh-powershell"
   },
   {
     "title": "Windows 11 — Specific Requirements: Some Details",
@@ -309,7 +339,8 @@
       "hacks"
     ],
     "publishedAt": "2021-06-28",
-    "filename": "2021-06-28--windows-11-requirements.en.md"
+    "filename": "article.en.md",
+    "dirname": "2021-06-28--windows-11-requirements"
   },
   {
     "title": "NodeJS: How to Refresh PM2 Instance",
@@ -319,7 +350,8 @@
       "hacks"
     ],
     "publishedAt": "2021-10-08",
-    "filename": "2021-10-08--nodejs-pm2-refresh.en.md"
+    "filename": "article.en.md",
+    "dirname": "2021-10-08--nodejs-pm2-refresh"
   },
   {
     "title": "Azure + Git (SSH) != LFS",
@@ -329,7 +361,8 @@
       "hacks"
     ],
     "publishedAt": "2021-10-24",
-    "filename": "2021-10-24--azure-git-lfs.en.md"
+    "filename": "article.en.md",
+    "dirname": "2021-10-24--azure-git-lfs"
   },
   {
     "title": "Git: RPC failed Error 413",
@@ -339,7 +372,8 @@
       "hacks"
     ],
     "publishedAt": "2021-10-24",
-    "filename": "2021-10-24--git-rpc-failed-413.en.md"
+    "filename": "article.en.md",
+    "dirname": "2021-10-24--git-rpc-failed-413"
   },
   {
     "title": "My Best IDE Font",
@@ -349,7 +383,8 @@
       "hacks"
     ],
     "publishedAt": "2022-03-30",
-    "filename": "2022-03-30--best-ide-font.en.md"
+    "filename": "article.en.md",
+    "dirname": "2022-03-30--best-ide-font"
   },
   {
     "title": "WSL2: Temporary failure resolving",
@@ -359,7 +394,8 @@
       "hacks"
     ],
     "publishedAt": "2022-07-03",
-    "filename": "2022-07-03--wsl2-dns-resolving.en.md"
+    "filename": "article.en.md",
+    "dirname": "2022-07-03--wsl2-dns-resolving"
   },
   {
     "title": "Windows + Git: Change crlf to lf",
@@ -369,7 +405,8 @@
       "hacks"
     ],
     "publishedAt": "2022-07-21",
-    "filename": "2022-07-21--windows-git-crlf-to-lf.en.md"
+    "filename": "article.en.md",
+    "dirname": "2022-07-21--windows-git-crlf-to-lf"
   },
   {
     "title": "Windows + Git: File permissions",
@@ -379,7 +416,8 @@
       "hacks"
     ],
     "publishedAt": "2022-09-14",
-    "filename": "2022-09-14--windows-git-file-permissions.en.md"
+    "filename": "article.en.md",
+    "dirname": "2022-09-14--windows-git-file-permissions"
   },
   {
     "title": "MS Edge: Managed by your organization",
@@ -389,7 +427,8 @@
       "hacks"
     ],
     "publishedAt": "2024-05-06",
-    "filename": "2024-05-06--ms-edge-managed.en.md"
+    "filename": "article.en.md",
+    "dirname": "2024-05-06--ms-edge-managed"
   },
   {
     "title": "Firefox userChrome.css",
@@ -399,7 +438,8 @@
       "hacks"
     ],
     "publishedAt": "2026-06-17",
-    "filename": "2026-06-17--firefox-userchrome.en.md"
+    "filename": "article.en.md",
+    "dirname": "2026-06-17--firefox-userchrome"
   },
   {
     "title": "Agile, Kanban, Scrum - главное простыми словами",
@@ -410,7 +450,8 @@
     ],
     "publishedAt": "2025-02-11",
     "updatedAt": "2025-02-15",
-    "filename": "2025-02-11--agile-kanban-scrum.ru.md"
+    "filename": "article.ru.md",
+    "dirname": "2025-02-11--agile-kanban-scrum"
   },
   {
     "title": "JS: How to Decode HTML Entities",
@@ -420,7 +461,8 @@
       "programming"
     ],
     "publishedAt": "2018-11-22",
-    "filename": "2018-11-22--js-decode-html-entities.en.md"
+    "filename": "article.en.md",
+    "dirname": "2018-11-22--js-decode-html-entities"
   },
   {
     "title": "JS: How to Validate Date",
@@ -430,7 +472,8 @@
       "programming"
     ],
     "publishedAt": "2019-02-01",
-    "filename": "2019-02-01--js-validate-date.en.md"
+    "filename": "article.en.md",
+    "dirname": "2019-02-01--js-validate-date"
   },
   {
     "title": "ExpressJS: Square Brackets in Query",
@@ -440,7 +483,8 @@
       "programming"
     ],
     "publishedAt": "2021-06-22",
-    "filename": "2021-06-22--expressjs-square-brackets.en.md"
+    "filename": "article.en.md",
+    "dirname": "2021-06-22--expressjs-square-brackets"
   },
   {
     "title": "Frontend: Possible List Option Properties",
@@ -450,7 +494,8 @@
       "programming"
     ],
     "publishedAt": "2021-06-23",
-    "filename": "2021-06-23--frontend-list-option-properties.en.md"
+    "filename": "article.en.md",
+    "dirname": "2021-06-23--frontend-list-option-properties"
   },
   {
     "title": "Рефакторинг",
@@ -461,7 +506,8 @@
     ],
     "publishedAt": "2025-02-11",
     "updatedAt": "2026-05-28",
-    "filename": "2025-02-11--refactoring.ru.md"
+    "filename": "article.ru.md",
+    "dirname": "2025-02-11--refactoring"
   },
   {
     "title": "You Can Thrive Without Using Redux",
@@ -471,7 +517,8 @@
       "programming"
     ],
     "publishedAt": "2025-03-12",
-    "filename": "2025-03-12--without-redux.en.md"
+    "filename": "article.en.md",
+    "dirname": "2025-03-12--without-redux"
   },
   {
     "title": "Минимум книг, которые нужно прочитать начинающему или продолжающему свою кривую обучения программисту",
@@ -482,18 +529,8 @@
     ],
     "publishedAt": "2025-03-20",
     "updatedAt": "2025-03-26",
-    "filename": "2025-03-20--the-minimum-of-books.ru.md"
-  },
-  {
-    "title": "Angular Universal (SSR) caching with AWS Lambda",
-    "link": "/en/articles/programming/aws-lambda-angular-ssr",
-    "language": "en",
-    "tags": [
-      "programming"
-    ],
-    "publishedAt": "2025-03-24",
-    "updatedAt": "2025-03-26",
-    "filename": "2025-03-24--aws-lambda-angular-ssr.en.md"
+    "filename": "article.ru.md",
+    "dirname": "2025-03-20--the-minimum-of-books"
   },
   {
     "title": "Cooking with TypeScript enums",
@@ -503,7 +540,8 @@
       "programming"
     ],
     "publishedAt": "2025-03-26",
-    "filename": "2025-03-26--cooking-with-ts-enums.en.md"
+    "filename": "article.en.md",
+    "dirname": "2025-03-26--cooking-with-ts-enums"
   },
   {
     "title": "A minimum of books that should be read by a novice or experienced programmer",
@@ -513,7 +551,8 @@
       "programming"
     ],
     "publishedAt": "2025-03-26",
-    "filename": "2025-03-26--the-minimum-of-books.en.md"
+    "filename": "article.en.md",
+    "dirname": "2025-03-26--the-minimum-of-books"
   },
   {
     "title": "Bun — A Fast JavaScript Runtime and Tooling Ecosystem",
@@ -524,7 +563,8 @@
     ],
     "publishedAt": "2025-11-30",
     "updatedAt": "2025-12-20",
-    "filename": "2025-11-30--bun.en.md"
+    "filename": "article.en.md",
+    "dirname": "2025-11-30--bun"
   },
   {
     "title": "Bun — быстрый JavaScript-рантайм и инструментальная экосистема",
@@ -535,7 +575,8 @@
     ],
     "publishedAt": "2025-11-30",
     "updatedAt": "2025-12-06",
-    "filename": "2025-11-30--bun.ru.md"
+    "filename": "article.ru.md",
+    "dirname": "2025-11-30--bun"
   },
   {
     "title": "5 копеек про ИИ в 2026: реальность после хайпа",
@@ -545,6 +586,7 @@
       "programming"
     ],
     "publishedAt": "2026-06-11",
-    "filename": "2026-06-11--ai-2026.ru.md"
+    "filename": "article.ru.md",
+    "dirname": "2026-06-11--ai-2026"
   }
 ]

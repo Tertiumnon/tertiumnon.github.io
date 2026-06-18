@@ -16,21 +16,18 @@ export class ArticleService {
 	}
 
 	get(params: ArticleGetParams) {
-		const { lang, category, name, filename } = params;
-		if (filename) {
-			return this.httpClient.get(`assets/articles/${category}/${filename}`, {
-				responseType: "text",
-			});
-		}
+		const { lang, category, name } = params;
 		return this.getAll().pipe(
 			switchMap((articles) => {
 				const article = articles.find(
 					(a) => a.language === lang && a.link.includes(`/${category}/${name}`)
 				);
-				const file = article?.filename || `${name}.${lang}.md`;
-				return this.httpClient.get(`assets/articles/${category}/${file}`, {
-					responseType: "text",
-				});
+				const dirname = article?.dirname || name;
+				const filename = article?.filename || `article.${lang}.md`;
+				return this.httpClient.get(
+					`assets/articles/${category}/${dirname}/${filename}`,
+					{ responseType: "text" }
+				);
 			})
 		);
 	}

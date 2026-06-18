@@ -8,13 +8,18 @@ const pathList: string[] = [];
 const articleList: Article[] = [];
 
 export const createPathList = async (path: string): Promise<boolean> => {
-	const files = await fs.readdir(path, { withFileTypes: true });
-	if (!files.length) throw new Error("No files in directory.");
-	for (const file of files) {
-		if (file.isDirectory()) {
-			const newPath = `${path}/${file.name}`;
-			pathList.push(newPath);
-			createPathList(newPath);
+	const entries = await fs.readdir(path, { withFileTypes: true });
+	for (const entry of entries) {
+		if (entry.isDirectory()) {
+			const newPath = `${path}/${entry.name}`;
+			// Only add category directories (those directly under ARTICLE_LIST_DIR)
+			if (newPath === `${ARTICLE_LIST_DIR}/career` ||
+				newPath === `${ARTICLE_LIST_DIR}/design` ||
+				newPath === `${ARTICLE_LIST_DIR}/management` ||
+				newPath === `${ARTICLE_LIST_DIR}/programming` ||
+				newPath === `${ARTICLE_LIST_DIR}/hacks`) {
+				pathList.push(newPath);
+			}
 		}
 	}
 	return true;
@@ -70,29 +75,40 @@ export const getArticleTitle = async (filePath: string): Promise<string> => {
 
 export const getArticleList = async (path: string): Promise<Article[]> => {
 	const articleList: Article[] = [];
-	const files = await fs.readdir(path, { withFileTypes: true });
-	if (!files.length) throw new Error("No files in directory.");
-	for (const file of files) {
-		const fileName = file.name;
-		const filePath = `${path}/${fileName}`;
-		if (!file.isDirectory() && fileIsMd(fileName)) {
-			const content = await fs.readFile(filePath, { encoding: "utf-8" });
-			const fm = parseFrontmatter(content);
-			const title = await getArticleTitle(filePath);
-			const lang = getArticleLang(fileName);
-			const baseName = getArticleBaseName(fileName);
-			const category = path.split("/").pop() ?? "";
-			articleList.push({
-				title,
-				link: `/${lang}/articles/${category}/${baseName}`,
-				language: lang,
-				tags: path
-					.split("/")
-					.filter((p) => !["src", "assets", "articles"].includes(p)),
-				publishedAt: fm.publishedAt ?? "",
-				...(fm.updatedAt ? { updatedAt: fm.updatedAt } : {}),
-				filename: fileName,
-			});
+	const entries = await fs.readdir(path, { withFileTypes: true });
+	if (!entries.length) throw new Error("No files in directory.");
+
+	for (const entry of entries) {
+		if (entry.isDirectory()) {
+			const dirName = entry.name;
+			const dirPath = `${path}/${dirName}`;
+
+			// Look for article.*.md files in subdirectories
+			const files = await fs.readdir(dirPath, { withFileTypes: true });
+			for (const file of files) {
+				const fileName = file.name;
+				if (!file.isDirectory() && fileName.match(/^article\.(en|ru)\.md$/)) {
+					const filePath = `${dirPath}/${fileName}`;
+					const content = await fs.readFile(filePath, { encoding: "utf-8" });
+					const fm = parseFrontmatter(content);
+					const title = await getArticleTitle(filePath);
+					const lang = getArticleLang(fileName);
+					const baseName = getArticleBaseName(dirName);
+					const category = path.split("/").pop() ?? "";
+					articleList.push({
+						title,
+						link: `/${lang}/articles/${category}/${baseName}`,
+						language: lang,
+						tags: path
+							.split("/")
+							.filter((p) => !["src", "assets", "articles"].includes(p)),
+						publishedAt: fm.publishedAt ?? "",
+						...(fm.updatedAt ? { updatedAt: fm.updatedAt } : {}),
+						filename: fileName,
+						dirname: dirName,
+					});
+				}
+			}
 		}
 	}
 	return articleList;
