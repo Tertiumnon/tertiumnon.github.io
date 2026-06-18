@@ -20,6 +20,24 @@
     "updatedAt": "2026-05-28"
   },
   {
+    "title": "Azure + Git (SSH) != LFS",
+    "link": "/en/articles/hacks/azure-git-lfs",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2021-10-24"
+  },
+  {
+    "title": "My Best IDE Font",
+    "link": "/en/articles/hacks/best-ide-font",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2022-03-30"
+  },
+  {
     "title": "Firefox userChrome.css",
     "link": "/en/articles/hacks/firefox-userchrome",
     "language": "en",
@@ -27,6 +45,51 @@
       "hacks"
     ],
     "publishedAt": "2026-06-17"
+  },
+  {
+    "title": "Git: RPC failed Error 413",
+    "link": "/en/articles/hacks/git-rpc-failed-413",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2021-10-24"
+  },
+  {
+    "title": "MS Edge: Managed by your organization",
+    "link": "/en/articles/hacks/ms-edge-managed",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2024-05-06"
+  },
+  {
+    "title": "Windows + Git: Change crlf to lf",
+    "link": "/en/articles/hacks/windows-git-crlf-to-lf",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2022-07-21"
+  },
+  {
+    "title": "Windows + Git: File permissions",
+    "link": "/en/articles/hacks/windows-git-file-permissions",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2022-09-14"
+  },
+  {
+    "title": "WSL2: Temporary failure resolving",
+    "link": "/en/articles/hacks/wsl2-dns-resolving",
+    "language": "en",
+    "tags": [
+      "hacks"
+    ],
+    "publishedAt": "2022-07-03"
   },
   {
     "title": "Agile, Kanban, Scrum - главное простыми словами",
@@ -114,5 +177,14 @@
     ],
     "publishedAt": "2025-03-20",
     "updatedAt": "2025-03-26"
+  },
+  {
+    "title": "You Can Thrive Without Using Redux",
+    "link": "/en/articles/programming/without-redux",
+    "language": "en",
+    "tags": [
+      "programming"
+    ],
+    "publishedAt": "2025-03-12"
   }
 ]
