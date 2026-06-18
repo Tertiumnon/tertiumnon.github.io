@@ -96,7 +96,7 @@ export const getArticleList = async (path: string): Promise<Article[]> => {
 					const lang = getArticleLang(fileName);
 					const baseName = getArticleBaseName(dirName);
 					const category = path.split("/").pop() ?? "";
-					const article: any = {
+					const articleData: Record<string, unknown> = {
 						title,
 						link: `/${lang}/articles/${category}/${baseName}`,
 						language: lang,
@@ -109,20 +109,20 @@ export const getArticleList = async (path: string): Promise<Article[]> => {
 					};
 
 					if (fm.updatedAt) {
-						article.updatedAt = fm.updatedAt;
+						articleData.updatedAt = fm.updatedAt;
 					}
 
 					if (fm.source) {
 						const [name, url] = fm.source.split(": ");
 						if (name && url) {
-							article.source = {
+							articleData.source = {
 								name: name.trim(),
 								url: url.trim(),
 							};
 						}
 					}
 
-					articleList.push(article);
+					articleList.push(articleData as unknown as Article);
 				}
 			}
 		}

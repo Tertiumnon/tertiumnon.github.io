@@ -26,7 +26,7 @@ export class HelloWorldGameComponent {
 
 	// bullets: each bullet is a single-cell projectile moving up
 	bullets: { col: number; row: number }[] = [];
-	private bulletTimer: any = null;
+	private bulletTimer: NodeJS.Timeout | null = null;
 
 	// fixed game area
 	containerWidth = 640;
