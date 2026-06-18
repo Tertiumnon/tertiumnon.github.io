@@ -8,7 +8,7 @@
     ],
     "publishedAt": "2025-02-11",
     "updatedAt": "2025-03-26",
-    "filename": "article.ru.md",
+    "filename": "index.ru.md",
     "dirname": "2025-02-11--programming-after-30"
   },
   {
@@ -20,7 +20,7 @@
     ],
     "publishedAt": "2025-03-24",
     "updatedAt": "2026-05-28",
-    "filename": "article.ru.md",
+    "filename": "index.ru.md",
     "dirname": "2025-03-24--good-design-for-apps"
   },
   {
@@ -31,7 +31,7 @@
       "hacks"
     ],
     "publishedAt": "2017-01-30",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2017-01-30--hello-medium"
   },
   {
@@ -42,7 +42,7 @@
       "hacks"
     ],
     "publishedAt": "2017-04-12",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2017-04-12--english-language"
   },
   {
@@ -53,7 +53,7 @@
       "hacks"
     ],
     "publishedAt": "2017-04-20",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2017-04-20--firefoxy"
   },
   {
@@ -64,7 +64,7 @@
       "hacks"
     ],
     "publishedAt": "2017-04-23",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2017-04-23--send-text-to-form"
   },
   {
@@ -75,7 +75,7 @@
       "hacks"
     ],
     "publishedAt": "2017-05-24",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2017-05-24--how-to-activate-dark-youtube"
   },
   {
@@ -86,7 +86,7 @@
       "hacks"
     ],
     "publishedAt": "2017-07-10",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2017-07-10--bookmarks-manager-firefox"
   },
   {
@@ -97,7 +97,7 @@
       "hacks"
     ],
     "publishedAt": "2017-07-11",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2017-07-11--change-php-version"
   },
   {
@@ -108,7 +108,7 @@
       "hacks"
     ],
     "publishedAt": "2017-07-20",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2017-07-20--telegram-sticker-favoriteserials"
   },
   {
@@ -119,7 +119,7 @@
       "hacks"
     ],
     "publishedAt": "2017-12-12",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2017-12-12--mediawiki-pywikibot"
   },
   {
@@ -130,7 +130,7 @@
       "hacks"
     ],
     "publishedAt": "2018-05-16",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2018-05-16--adding-ssh-keys-windows"
   },
   {
@@ -141,7 +141,7 @@
       "hacks"
     ],
     "publishedAt": "2018-05-16",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2018-05-16--install-nvm-windows"
   },
   {
@@ -152,7 +152,7 @@
       "hacks"
     ],
     "publishedAt": "2018-08-07",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2018-08-07--tor-windows-service"
   },
   {
@@ -163,7 +163,7 @@
       "hacks"
     ],
     "publishedAt": "2018-08-26",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2018-08-26--how-to-organize-wallpapers"
   },
   {
@@ -174,7 +174,7 @@
       "hacks"
     ],
     "publishedAt": "2018-10-12",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2018-10-12--windows-sound-volume-keyboard"
   },
   {
@@ -185,7 +185,7 @@
       "hacks"
     ],
     "publishedAt": "2018-11-19",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2018-11-19--chrome-letter-t-arial"
   },
   {
@@ -196,7 +196,7 @@
       "hacks"
     ],
     "publishedAt": "2018-11-29",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2018-11-29--great-pomodoro-app"
   },
   {
@@ -207,7 +207,7 @@
       "hacks"
     ],
     "publishedAt": "2019-01-23",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2019-01-23--vscode-xdebug-remote"
   },
   {
@@ -218,7 +218,7 @@
       "hacks"
     ],
     "publishedAt": "2019-02-08",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2019-02-08--your-categories"
   },
   {
@@ -229,7 +229,7 @@
       "hacks"
     ],
     "publishedAt": "2019-10-22",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2019-10-22--powershell-core-terminal"
   },
   {
@@ -240,7 +240,7 @@
       "hacks"
     ],
     "publishedAt": "2019-10-22",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2019-10-22--tertium-js-snippets"
   },
   {
@@ -251,7 +251,7 @@
       "hacks"
     ],
     "publishedAt": "2019-11-16",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2019-11-16--windows-wakes-up-at-night"
   },
   {
@@ -262,7 +262,7 @@
       "hacks"
     ],
     "publishedAt": "2020-03-20",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2020-03-20--vscode-extension-host-error"
   },
   {
@@ -273,7 +273,7 @@
       "hacks"
     ],
     "publishedAt": "2020-03-28",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2020-03-28--bookmarks-manager-release"
   },
   {
@@ -284,7 +284,7 @@
       "hacks"
     ],
     "publishedAt": "2020-05-01",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2020-05-01--windows-free-disk-space"
   },
   {
@@ -295,7 +295,7 @@
       "hacks"
     ],
     "publishedAt": "2020-05-10",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2020-05-10--visual-studio-2019-lf"
   },
   {
@@ -306,7 +306,7 @@
       "hacks"
     ],
     "publishedAt": "2020-07-16",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2020-07-16--windows-eacces-error"
   },
   {
@@ -317,7 +317,7 @@
       "hacks"
     ],
     "publishedAt": "2020-12-13",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2020-12-13--firestore-insecure-rules"
   },
   {
@@ -328,7 +328,7 @@
       "hacks"
     ],
     "publishedAt": "2020-12-30",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2020-12-30--oh-my-zsh-powershell"
   },
   {
@@ -339,7 +339,7 @@
       "hacks"
     ],
     "publishedAt": "2021-06-28",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2021-06-28--windows-11-requirements"
   },
   {
@@ -350,7 +350,7 @@
       "hacks"
     ],
     "publishedAt": "2021-10-08",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2021-10-08--nodejs-pm2-refresh"
   },
   {
@@ -361,7 +361,7 @@
       "hacks"
     ],
     "publishedAt": "2021-10-24",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2021-10-24--azure-git-lfs"
   },
   {
@@ -372,7 +372,7 @@
       "hacks"
     ],
     "publishedAt": "2021-10-24",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2021-10-24--git-rpc-failed-413"
   },
   {
@@ -383,7 +383,7 @@
       "hacks"
     ],
     "publishedAt": "2022-03-30",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2022-03-30--best-ide-font"
   },
   {
@@ -394,7 +394,7 @@
       "hacks"
     ],
     "publishedAt": "2022-07-03",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2022-07-03--wsl2-dns-resolving"
   },
   {
@@ -405,7 +405,7 @@
       "hacks"
     ],
     "publishedAt": "2022-07-21",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2022-07-21--windows-git-crlf-to-lf"
   },
   {
@@ -416,7 +416,7 @@
       "hacks"
     ],
     "publishedAt": "2022-09-14",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2022-09-14--windows-git-file-permissions"
   },
   {
@@ -427,7 +427,7 @@
       "hacks"
     ],
     "publishedAt": "2024-05-06",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2024-05-06--ms-edge-managed"
   },
   {
@@ -438,7 +438,7 @@
       "hacks"
     ],
     "publishedAt": "2026-06-17",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2026-06-17--firefox-userchrome"
   },
   {
@@ -450,7 +450,7 @@
     ],
     "publishedAt": "2025-02-11",
     "updatedAt": "2025-02-15",
-    "filename": "article.ru.md",
+    "filename": "index.ru.md",
     "dirname": "2025-02-11--agile-kanban-scrum"
   },
   {
@@ -461,7 +461,7 @@
       "programming"
     ],
     "publishedAt": "2018-11-22",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2018-11-22--js-decode-html-entities"
   },
   {
@@ -472,7 +472,7 @@
       "programming"
     ],
     "publishedAt": "2019-02-01",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2019-02-01--js-validate-date"
   },
   {
@@ -483,7 +483,7 @@
       "programming"
     ],
     "publishedAt": "2021-06-22",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2021-06-22--expressjs-square-brackets"
   },
   {
@@ -494,7 +494,7 @@
       "programming"
     ],
     "publishedAt": "2021-06-23",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2021-06-23--frontend-list-option-properties"
   },
   {
@@ -506,7 +506,7 @@
     ],
     "publishedAt": "2025-02-11",
     "updatedAt": "2026-05-28",
-    "filename": "article.ru.md",
+    "filename": "index.ru.md",
     "dirname": "2025-02-11--refactoring"
   },
   {
@@ -517,7 +517,7 @@
       "programming"
     ],
     "publishedAt": "2025-03-12",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2025-03-12--without-redux"
   },
   {
@@ -529,7 +529,7 @@
     ],
     "publishedAt": "2025-03-20",
     "updatedAt": "2025-03-26",
-    "filename": "article.ru.md",
+    "filename": "index.ru.md",
     "dirname": "2025-03-20--the-minimum-of-books"
   },
   {
@@ -540,7 +540,7 @@
       "programming"
     ],
     "publishedAt": "2025-03-26",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2025-03-26--cooking-with-ts-enums"
   },
   {
@@ -551,7 +551,7 @@
       "programming"
     ],
     "publishedAt": "2025-03-26",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2025-03-26--the-minimum-of-books"
   },
   {
@@ -563,7 +563,7 @@
     ],
     "publishedAt": "2025-11-30",
     "updatedAt": "2025-12-20",
-    "filename": "article.en.md",
+    "filename": "index.en.md",
     "dirname": "2025-11-30--bun"
   },
   {
@@ -575,7 +575,7 @@
     ],
     "publishedAt": "2025-11-30",
     "updatedAt": "2025-12-06",
-    "filename": "article.ru.md",
+    "filename": "index.ru.md",
     "dirname": "2025-11-30--bun"
   },
   {
@@ -586,7 +586,7 @@
       "programming"
     ],
     "publishedAt": "2026-06-11",
-    "filename": "article.ru.md",
+    "filename": "index.ru.md",
     "dirname": "2026-06-11--ai-2026"
   }
 ]

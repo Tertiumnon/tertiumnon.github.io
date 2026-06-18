@@ -23,7 +23,7 @@ export class ArticleService {
 					(a) => a.language === lang && a.link.includes(`/${category}/${name}`)
 				);
 				const dirname = article?.dirname || name;
-				const filename = article?.filename || `article.${lang}.md`;
+				const filename = article?.filename || `index.${lang}.md`;
 				return this.httpClient.get(
 					`assets/articles/${category}/${dirname}/${filename}`,
 					{ responseType: "text" }

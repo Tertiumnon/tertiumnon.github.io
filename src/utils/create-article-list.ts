@@ -87,7 +87,7 @@ export const getArticleList = async (path: string): Promise<Article[]> => {
 			const files = await fs.readdir(dirPath, { withFileTypes: true });
 			for (const file of files) {
 				const fileName = file.name;
-				if (!file.isDirectory() && fileName.match(/^article\.(en|ru)\.md$/)) {
+				if (!file.isDirectory() && fileName.match(/^index\.(en|ru)\.md$/)) {
 					const filePath = `${dirPath}/${fileName}`;
 					const content = await fs.readFile(filePath, { encoding: "utf-8" });
 					const fm = parseFrontmatter(content);
