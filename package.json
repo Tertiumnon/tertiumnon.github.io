@@ -10,6 +10,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "lint:fix": "bunx rome format --write src && bunx rome check src --apply",
+    "lint:ts:check": "bunx rome check src",
     "release": "bun node_modules/@tertium/js/scripts/release.js",
     "release:patch": "bun run release patch",
     "release:minor": "bun run release minor",
