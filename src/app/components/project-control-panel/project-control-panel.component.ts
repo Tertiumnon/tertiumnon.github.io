@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
 import { ProjectStatus } from "../../entities/project/project.interface";
 import { SoftwareService } from "../../pages/software/software.service";
 import { DropdownComponent } from "../dropdown/dropdown.component";
@@ -11,7 +10,7 @@ import { DropdownComponent } from "../dropdown/dropdown.component";
 	templateUrl: "./project-control-panel.component.html",
 	styleUrls: ["./project-control-panel.component.css"],
 	standalone: true,
-	imports: [CommonModule, FormsModule, DropdownComponent],
+	imports: [CommonModule, DropdownComponent],
 })
 export class ProjectControlPanelComponent implements OnInit {
 	@Input() isStatusFilterVisible = true;

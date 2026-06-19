@@ -7,3 +7,7 @@
 .option-list .option {
   text-align: center;
 }
+
+.option-list .option.hidden {
+  display: none;
+}

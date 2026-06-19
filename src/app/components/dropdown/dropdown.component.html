@@ -6,7 +6,7 @@
       *ngFor="let option of options"
       class="px-2 option"
       [class.hidden]="!isOpened || option === selectedOption"
-      (click)="onOptionClick(option)"
+      (click)="onOptionClick(option, $event)"
     >
       {{ option }}
     </div>

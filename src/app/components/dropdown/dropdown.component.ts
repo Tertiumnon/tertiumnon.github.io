@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 
 @Component({
@@ -21,8 +21,10 @@ export class DropdownComponent {
 		this.isOpened = !this.isOpened;
 	}
 
-	onOptionClick(selectedOption: string): void {
+	onOptionClick(selectedOption: string, $event: Event): void {
+		$event.stopPropagation();
 		this.selectedOption = selectedOption;
 		this.selectedOptionChange.emit(selectedOption);
+		this.isOpened = false;
 	}
 }

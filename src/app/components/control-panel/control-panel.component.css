@@ -1,0 +1,13 @@
+.control-panel {
+  margin-bottom: 2em;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-content: center;
+  height: 100%;
+}
+
+.control-panel .filters {
+  display: flex;
+  gap: 1rem;
+}

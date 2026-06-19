@@ -1,0 +1,50 @@
+h1 {
+	position: absolute;
+	right: 4%;
+	top: 105px;
+	margin: 0;
+	text-transform: uppercase;
+	font-family: "VT323", monospace;
+	font-size: 3em;
+}
+
+.categories {
+	display: flex;
+	flex-direction: column;
+	gap: 2em;
+}
+
+.category-section {
+	h2 {
+		margin-top: 0;
+		margin-bottom: 1em;
+		font-size: 1.3em;
+		color: white;
+	}
+}
+
+.post-list {
+	display: flex;
+	flex-direction: column;
+
+	.post {
+		margin-bottom: 0.6em;
+		display: flex;
+		flex-direction: row;
+		align-items: baseline;
+		gap: 0.8em;
+
+		.post-date {
+			font-size: 0.75em;
+			color: white;
+			font-family: monospace;
+			opacity: 0.8;
+			white-space: nowrap;
+			flex-shrink: 0;
+		}
+
+		a {
+			text-decoration: underline;
+		}
+	}
+}

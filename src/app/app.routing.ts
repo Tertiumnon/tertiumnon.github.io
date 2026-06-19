@@ -23,25 +23,25 @@ export const APP_ROUTES: Routes = [
 			),
 	},
 	{
-		path: "articles",
-		title: "Articles",
-		redirectTo: "en/articles",
+		path: "posts",
+		title: "Posts",
+		redirectTo: "en/posts",
 		pathMatch: "full",
 	},
 	{
-		path: ":lang/articles",
-		title: "Articles",
+		path: ":lang/posts",
+		title: "Posts",
 		loadComponent: () =>
-			import("./pages/articles/articles.component").then(
-				(m) => m.ArticlesComponent,
+			import("./pages/posts/posts.component").then(
+				(m) => m.PostsComponent,
 			),
 	},
 	{
-		path: ":lang/articles/:category/:name",
-		title: "Article",
+		path: ":lang/posts/:name",
+		title: "Post",
 		loadComponent: () =>
-			import("./pages/article/article.component").then(
-				(m) => m.ArticleComponent,
+			import("./pages/post/post.component").then(
+				(m) => m.PostComponent,
 			),
 	},
 	{

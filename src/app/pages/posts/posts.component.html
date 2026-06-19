@@ -1,0 +1,32 @@
+<app-page-loader [isLoading]="isLoading()"></app-page-loader>
+
+<app-post-control-panel
+  [categories]="categories()"
+  [selectedCategory]="selectedCategory()"
+  [onCategoryChange]="onCategoryChange.bind(this)"
+  [tags]="tags()"
+  [selectedTag]="selectedTag()"
+  [onTagChange]="onTagChange.bind(this)"
+></app-post-control-panel>
+
+<div class="container-fluid" style="margin-top: 40px;">
+  <div class="content">
+    <h1>Posts</h1>
+
+    <div class="categories">
+      @for (categoryGroup of categorizedPosts(); track categoryGroup[0]) {
+      <div class="category-section">
+        <h2>{{ categoryGroup[0] }}</h2>
+        <div class="post-list">
+          @for (article of categoryGroup[1]; track article.link) {
+          <div class="post">
+            <div class="post-date">{{ article.publishedAt }}</div>
+            <a [routerLink]="getPostLink(article.link)">{{ article.title }}</a>
+          </div>
+          }
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

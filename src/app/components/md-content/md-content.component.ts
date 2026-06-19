@@ -22,8 +22,11 @@ hljs.registerLanguage("json", json);
 export class MdContentComponent {
 	@Input() data = "";
 	@Input() category = "";
-	@Input() articleName = "";
-	@Input() articleDirname = "";
+	@Input() postName = "";
+	@Input() postDirname = "";
+	@Input() postDate = "";
+	@Input() lang = "en";
+	@Input() showBreadcrumb = false;
 	htmlData: SafeHtml = "";
 
 	constructor(private sanitizer: DomSanitizer) {}
@@ -70,16 +73,18 @@ export class MdContentComponent {
 			};
 
 			// @ts-ignore - dynamic method assignment
-			renderer.image = (token: { href: string; title: string; text: string }) => {
+			renderer.image = (token: { href?: string; title?: string; text?: string }) => {
+				if (!token?.href) return "";
 				let href = token.href;
-				if (this.category && this.articleDirname && !href.startsWith("http")) {
-					href = `/assets/articles/${this.category}/${this.articleDirname}/${href}`;
+				if (this.category && this.postDirname && !href.startsWith("http")) {
+					href = `/assets/posts/${this.postDirname}/${href}`;
 				}
 				const title = token.title ? ` title="${token.title}"` : "";
-				return `<img src="${href}" alt="${token.text}"${title}>`;
+				const alt = token.text || "";
+				return `<img src="${href}" alt="${alt}"${title}>`;
 			};
 
-			const raw = marked.parse(markdown, {
+			let raw = marked.parse(markdown, {
 				renderer,
 				gfm: true,
 				breaks: true,
@@ -87,6 +92,17 @@ export class MdContentComponent {
 				mangle: false,
 				headerIds: false,
 			});
+
+			if (this.postDate) {
+				const h1Start = raw.indexOf("<h1>");
+				if (h1Start !== -1) {
+					let dateHtml = `<div class="post-date">${this.postDate}</div>`;
+					if (this.showBreadcrumb) {
+						dateHtml = `<div class="post-meta"><span class="breadcrumb-group"><span class="breadcrumb-symbol">↑</span><a href="#/${this.lang}/posts" class="breadcrumb-link">Posts</a></span><span class="post-date">${this.postDate}</span></div>`;
+					}
+					raw = raw.slice(0, h1Start) + dateHtml + raw.slice(h1Start);
+				}
+			}
 
 			this.htmlData = this.sanitizer.bypassSecurityTrustHtml(raw);
 		} else {

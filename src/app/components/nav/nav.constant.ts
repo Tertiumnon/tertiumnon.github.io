@@ -1,1 +1,1 @@
-export const ALLOWED_ROUTES = ["software", "articles"];
+export const ALLOWED_ROUTES = ["software", ":lang/posts"];

@@ -1,5 +1,5 @@
 <nav class="flex">
-  @for (route of routes; track $index) {
+  @for (route of routes(); track $index) {
   <a routerLinkActive="active" [routerLink]="[route.path]">{{ route.title }}</a>
   }
 </nav>
