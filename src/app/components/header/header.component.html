@@ -1,23 +1,18 @@
 <div class="header">
   <div class="container-fluid flex place-content-between h-16">
     <div class="flex items-center gap-5">
+      <div class="progress-logo" (click)="onProgressBarClick()" [class.animating]="isAnimating()">
+        <div class="progress-bar--column" [class.animate]="isAnimating()"></div>
+        <div class="progress-bar--column" [class.animate]="isAnimating()"></div>
+        <div class="progress-bar--column" [class.animate]="isAnimating()"></div>
+      </div>
       <div class="logo">
-        <a
-          routerLinkActive="active"
-          [routerLink]="['index']"
-          class="text-black uppercase"
-          >&#64;Tertiumnon</a
-        >
+        <a routerLinkActive="active" [routerLink]="['index']" class="text-black uppercase">Tertiumnon</a>
       </div>
       <app-nav></app-nav>
     </div>
     <div class="flex items-center">
-      <a
-        routerLinkActive="active"
-        [routerLink]="['about']"
-        class="text-right leading-4 about"
-        >Contact</a
-      >
+      <a routerLinkActive="active" [routerLink]="['about']" class="text-right leading-4 about">Contact</a>
     </div>
   </div>
 </div>
