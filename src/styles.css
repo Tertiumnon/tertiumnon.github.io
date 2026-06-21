@@ -221,6 +221,10 @@ tr:hover {
   background-color: var(--HoneyPieTheme-bg-color--dark);
 }
 
+.HoneyPieTheme .post-control-panel {
+  background-color: var(--HoneyPieTheme-bg-color--dark);
+}
+
 .HoneyPieTheme .option-list {
   background-color: var(--HoneyPieTheme-bg-color--dark);
 }
