@@ -23,6 +23,20 @@ export const APP_ROUTES: Routes = [
 			),
 	},
 	{
+		path: "news",
+		title: "News",
+		redirectTo: "en/news",
+		pathMatch: "full",
+	},
+	{
+		path: ":lang/news",
+		title: "News",
+		loadComponent: () =>
+			import("./pages/news/news.component").then(
+				(m) => m.NewsComponent,
+			),
+	},
+	{
 		path: "posts",
 		title: "Posts",
 		redirectTo: "en/posts",

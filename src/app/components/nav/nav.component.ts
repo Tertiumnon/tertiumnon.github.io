@@ -18,7 +18,9 @@ export class NavComponent {
 		const lang = this.route.snapshot.params["lang"] || "en";
 		return APP_ROUTES.filter((r) => ALLOWED_ROUTES.includes(r.path || "")).map((r) => ({
 			...r,
-			path: r.path === ":lang/posts" ? `${lang}/posts` : r.path,
+			path: r.path === ":lang/posts" ? `${lang}/posts` :
+			      r.path === ":lang/news" ? `${lang}/news` :
+			      r.path,
 		}));
 	});
 
