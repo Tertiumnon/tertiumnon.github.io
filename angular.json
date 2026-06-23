@@ -80,19 +80,6 @@
 					"options": {
 						"buildTarget": "tertiumnon-github-io:build"
 					}
-				},
-				"test": {
-					"builder": "@angular/build:karma",
-					"options": {
-						"main": "src/test.ts",
-						"polyfills": ["src/polyfills.ts"],
-						"tsConfig": "tsconfig.spec.json",
-						"karmaConfig": "karma.conf.js",
-						"inlineStyleLanguage": "css",
-						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/styles.css"],
-						"scripts": []
-					}
 				}
 			}
 		}
