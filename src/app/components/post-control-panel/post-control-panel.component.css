@@ -9,9 +9,7 @@
   z-index: 1;
   top: var(--header-height);
   left: 0;
-  background: linear-gradient(180deg, var(--CoderTheme-bg-color) 0%, var(--CoderTheme-bg-color--dark) 100%);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--CoderTheme-bg-color--light);
 }
 
 .post-control-panel .filters {

@@ -11,19 +11,17 @@
 
 /* Message bubble/cloud style */
 .news-bubble {
-	background: linear-gradient(135deg, var(--CoderTheme-bg-color--light) 0%, var(--CoderTheme-bg-color) 100%);
-	opacity: 0.7;
-	border: 1px solid var(--CoderTheme-bg-color--light);
 	border-radius: 20px;
 	padding: 14px 20px;
 	word-wrap: break-word;
 	transition: all 0.2s ease;
 	position: relative;
+	opacity: 0.7;
+	border: 1px solid;
 }
 
 .news-bubble:hover {
 	opacity: 0.9;
-	border-color: var(--CoderTheme-bg-color--light);
 	box-shadow: var(--box-shadow);
 	transform: translateY(-1px);
 }
@@ -55,7 +53,6 @@
 .news-badge {
 	display: inline-block;
 	padding: 2px 8px;
-	background: var(--CoderTheme-bg-color--light);
 	border-radius: 10px;
 	color: var(--text-color);
 	font-size: 0.65rem;
@@ -68,7 +65,6 @@
 .news-project {
 	display: inline-block;
 	padding: 2px 8px;
-	background: var(--CoderTheme-bg-color--light);
 	border-radius: 10px;
 	color: var(--text-color);
 	font-size: 0.65rem;

@@ -191,7 +191,13 @@ tr:hover {
 }
 
 .CoderTheme .post-control-panel {
-  background-color: var(--CoderTheme-bg-color--dark);
+  background: linear-gradient(180deg, var(--CoderTheme-bg-color) 0%, var(--CoderTheme-bg-color--dark) 100%);
+  border-bottom: 1px solid var(--CoderTheme-bg-color--light);
+}
+
+.CoderTheme .news-control-panel {
+  background: linear-gradient(180deg, var(--CoderTheme-bg-color) 0%, var(--CoderTheme-bg-color--dark) 100%);
+  border-bottom: 1px solid var(--CoderTheme-bg-color--light);
 }
 
 .CoderTheme .option-list {
@@ -207,6 +213,20 @@ tr:hover {
   background-color: var(--CoderTheme-bg-color--light);
 }
 
+.CoderTheme .news-bubble {
+  background: linear-gradient(135deg, var(--CoderTheme-bg-color--light) 0%, var(--CoderTheme-bg-color) 100%);
+  border-color: var(--CoderTheme-bg-color--light);
+}
+
+.CoderTheme .news-bubble:hover {
+  border-color: var(--CoderTheme-bg-color--light);
+}
+
+.CoderTheme .news-badge,
+.CoderTheme .news-project {
+  background: var(--CoderTheme-bg-color--light);
+}
+
 .HoneyPieTheme .bg {
   background-image: url("/assets/images/honey-pie.png");
 }
@@ -220,7 +240,13 @@ tr:hover {
 }
 
 .HoneyPieTheme .post-control-panel {
-  background-color: var(--HoneyPieTheme-bg-color--dark);
+  background: linear-gradient(180deg, var(--HoneyPieTheme-bg-color--dark) 0%, var(--HoneyPieTheme-bg-color--dark) 100%);
+  border-bottom: 1px solid var(--HoneyPieTheme-bg-color--light);
+}
+
+.HoneyPieTheme .news-control-panel {
+  background: linear-gradient(180deg, var(--HoneyPieTheme-bg-color--dark) 0%, var(--HoneyPieTheme-bg-color--dark) 100%);
+  border-bottom: 1px solid var(--HoneyPieTheme-bg-color--light);
 }
 
 .HoneyPieTheme .option-list {
@@ -234,6 +260,20 @@ tr:hover {
 
 .HoneyPieTheme .content {
   background-color: var(--HoneyPieTheme-bg-color--light);
+}
+
+.HoneyPieTheme .news-bubble {
+  background: linear-gradient(135deg, var(--HoneyPieTheme-bg-color--light) 0%, var(--HoneyPieTheme-bg-color--dark) 100%);
+  border-color: var(--HoneyPieTheme-bg-color--light);
+}
+
+.HoneyPieTheme .news-bubble:hover {
+  border-color: var(--HoneyPieTheme-bg-color--light);
+}
+
+.HoneyPieTheme .news-badge,
+.HoneyPieTheme .news-project {
+  background: var(--HoneyPieTheme-bg-color--light);
 }
 
 @media screen and (min-width: 768px) {
