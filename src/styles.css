@@ -10,6 +10,9 @@
 @import "highlight.js/styles/github-dark.css";
 
 :root {
+  --header-height: 4rem;
+  --control-panel-height: 2.4rem;
+  --container-margin-top: calc(var(--control-panel-height) + 1rem);
   --content-mt: 1em;
   --text-color: #f6edff;
   --box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -37,33 +40,28 @@ h1,
 h2,
 h3,
 h4 {
-  margin-top: 1em;
-  margin-bottom: 0.6em;
+  margin-top: 0.4em;
+  margin-bottom: 0.8em;
   font-weight: bold;
   line-height: 1.2;
   font-family: "Roboto Mono", serif;
   font-optical-sizing: auto;
-  font-weight: bold;
   font-style: normal;
   font-variation-settings: "wdth" 100;
 }
 
 h1 {
-  margin-top: 0;
-  margin-bottom: 0.5em;
   font-size: 1.8em;
   font-family: "Roboto Mono", serif;
 }
 
 h2 {
   margin-top: 1em;
-  margin-bottom: 0.6em;
   font-size: 1.5em;
 }
 
 h3 {
   margin-top: 0.8em;
-  margin-bottom: 0.5em;
   font-size: 1.2em;
 }
 
@@ -115,7 +113,7 @@ code {
 main {
   display: flex;
   flex-direction: column;
-  padding-top: 64px;
+  padding-top: var(--header-height);
   padding-bottom: 32px;
   font-family: "Roboto Mono", serif;
 }

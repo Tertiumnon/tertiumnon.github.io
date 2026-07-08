@@ -1,6 +1,6 @@
 ---
 publishedAt: 2020-03-20
-categories: ["Browsers","Development Tools"]
+category: Browsers
 tags: ["Browser","Development","Extensions","IDE"]
 ---
 

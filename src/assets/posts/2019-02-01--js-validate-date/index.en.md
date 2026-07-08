@@ -1,6 +1,6 @@
 ---
 publishedAt: 2019-02-01
-categories: ["Programming"]
+category: Programming
 tags: ["JavaScript","Web Development"]
 ---
 

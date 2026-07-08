@@ -1,6 +1,6 @@
 ---
 publishedAt: 2017-05-24
-categories: ["Hacks"]
+category: Programming
 tags: ["Tips"]
 ---
 

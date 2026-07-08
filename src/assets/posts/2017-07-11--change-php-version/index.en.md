@@ -1,6 +1,6 @@
 ---
 publishedAt: 2017-07-11
-categories: ["Programming"]
+category: Programming
 tags: ["Backend","JavaScript","Server","Tools"]
 ---
 

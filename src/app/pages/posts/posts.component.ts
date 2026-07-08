@@ -38,7 +38,7 @@ export class PostsComponent {
 		return ["All", ...Array.from(allTags).sort()];
 	});
 
-	categorizedPosts = computed(() => {
+	sortedPosts = computed(() => {
 		let filtered = this.allPosts();
 
 		// Filter out articles without a category
@@ -54,18 +54,10 @@ export class PostsComponent {
 			);
 		}
 
-		const byCategory = new Map<string, Post[]>();
-
-		filtered.forEach((article) => {
-			const displayCategory = article.category.charAt(0).toUpperCase() + article.category.slice(1);
-			if (!byCategory.has(displayCategory)) {
-				byCategory.set(displayCategory, []);
-			}
-			byCategory.get(displayCategory)!.push(article);
-		});
-
-		const sorted = Array.from(byCategory.entries()).sort((a, b) => a[0].localeCompare(b[0]));
-		return sorted;
+		// Sort by date (newest first)
+		return filtered.sort(
+			(a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+		);
 	});
 
 	ngOnInit() {
@@ -95,5 +87,18 @@ export class PostsComponent {
 	getPostLink(link: string): (string | number)[] {
 		const segments = link.split('/').filter((s): s is string => s.length > 0);
 		return ['/', ...segments];
+	}
+
+	getCategoryDisplay(category: string): string {
+		const categoryMap: { [key: string]: string } = {
+			'Dev Tools': 'Dev Tools',
+			'OS': 'OS',
+			'Programming': 'Programming',
+			'Databases': 'Databases',
+			'Browsers': 'Browsers',
+			'Career': 'Career',
+			'Design': 'Design'
+		};
+		return categoryMap[category] || category;
 	}
 }

@@ -1,6 +1,6 @@
 ---
 publishedAt: 2021-10-24
-categories: ["Development Tools"]
+category: Dev Tools
 tags: ["DevOps","Git"]
 ---
 

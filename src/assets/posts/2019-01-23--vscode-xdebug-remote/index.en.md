@@ -1,6 +1,6 @@
 ---
 publishedAt: 2019-01-23
-categories: ["Development Tools"]
+category: Dev Tools
 tags: ["Development","IDE"]
 ---
 

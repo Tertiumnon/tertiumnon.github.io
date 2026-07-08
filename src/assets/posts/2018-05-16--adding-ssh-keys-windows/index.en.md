@@ -1,6 +1,6 @@
 ---
 publishedAt: 2018-05-16
-categories: ["Development Tools","System Administration"]
+category: Dev Tools
 tags: ["DevOps","Git","Terminal","Windows"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 publishedAt: 2025-03-24
 updatedAt: 2025-03-26
-categories: ["Programming"]
+category: Programming
 tags: ["Frontend","Web Development"]
 ---
 

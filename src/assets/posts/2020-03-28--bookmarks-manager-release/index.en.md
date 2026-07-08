@@ -1,6 +1,6 @@
 ---
 publishedAt: 2020-03-28
-categories: ["Learning"]
+category: Programming
 tags: ["Books","Education"]
 ---
 

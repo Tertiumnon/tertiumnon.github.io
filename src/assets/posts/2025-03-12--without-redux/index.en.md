@@ -1,6 +1,6 @@
 ---
 publishedAt: 2025-03-12
-categories: ["Design","Programming"]
+category: Design
 tags: ["Design","JavaScript","UX","Web Development"]
 ---
 

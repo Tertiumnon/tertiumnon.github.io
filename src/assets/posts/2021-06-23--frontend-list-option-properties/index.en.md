@@ -1,6 +1,6 @@
 ---
 publishedAt: 2021-06-23
-categories: ["Programming"]
+category: Programming
 tags: ["Frontend","Web Development"]
 ---
 

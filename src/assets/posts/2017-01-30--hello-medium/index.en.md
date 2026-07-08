@@ -1,7 +1,7 @@
 ---
 publishedAt: 2017-01-30
 isHidden: true
-categories: ["Hacks"]
+category: Programming
 tags: ["Tips"]
 ---
 

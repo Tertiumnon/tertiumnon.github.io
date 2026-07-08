@@ -1,7 +1,7 @@
 ---
 publishedAt: 2025-02-11
 updatedAt: 2025-02-15
-categories: ["Management"]
+category: Career
 tags: ["Agile","Project Management"]
 ---
 

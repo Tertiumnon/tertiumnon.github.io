@@ -5,8 +5,10 @@
   justify-content: flex-end;
   align-content: center;
   font-size: 0.8em;
-  height: 2rem;
+  height: var(--control-panel-height);
   z-index: 1;
+  top: var(--header-height);
+  left: 0;
 }
 
 .project-control-panel .filters {

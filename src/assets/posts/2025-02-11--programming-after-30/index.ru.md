@@ -1,7 +1,7 @@
 ---
 publishedAt: 2025-02-11
 updatedAt: 2025-03-26
-categories: ["Hacks"]
+category: Programming
 tags: ["Tips"]
 source: "medium: https://tertiumnon.medium.com/career-7b8d2f9c1a5b"
 ---

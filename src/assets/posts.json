@@ -3,7 +3,7 @@
     "title": "Hello Everyone, It's My First Post on Medium",
     "link": "/en/posts/2017-01-30--hello-medium",
     "language": "en",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -16,7 +16,7 @@
     "title": "English Language",
     "link": "/en/posts/2017-04-12--english-language",
     "language": "en",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -54,7 +54,7 @@
     "title": "How to Activate Dark YouTube Theme",
     "link": "/en/posts/2017-05-24--how-to-activate-dark-youtube",
     "language": "en",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -96,7 +96,7 @@
     "title": "Sticker Pack for Telegram: FavoriteSerials",
     "link": "/en/posts/2017-07-20--telegram-sticker-favoriteserials",
     "language": "en",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -108,7 +108,7 @@
     "title": "MediaWiki: Pywikibot Installation",
     "link": "/en/posts/2017-12-12--mediawiki-pywikibot",
     "language": "en",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -120,7 +120,7 @@
     "title": "Adding SSH Keys (Git Bash on Windows)",
     "link": "/en/posts/2018-05-16--adding-ssh-keys-windows",
     "language": "en",
-    "category": "Development Tools",
+    "category": "Dev Tools",
     "tags": [
       "DevOps",
       "Git",
@@ -135,7 +135,7 @@
     "title": "Install NVM on Windows",
     "link": "/en/posts/2018-05-16--install-nvm-windows",
     "language": "en",
-    "category": "System Administration",
+    "category": "OS",
     "tags": [
       "Terminal",
       "Windows"
@@ -148,7 +148,7 @@
     "title": "Tor as a Windows Service",
     "link": "/en/posts/2018-08-07--tor-windows-service",
     "language": "en",
-    "category": "System Administration",
+    "category": "OS",
     "tags": [
       "Terminal",
       "Windows"
@@ -161,7 +161,7 @@
     "title": "How to Organize Your Wallpapers",
     "link": "/en/posts/2018-08-26--how-to-organize-wallpapers",
     "language": "en",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -173,7 +173,7 @@
     "title": "Windows: How to Set Sound Volume by Keyboard",
     "link": "/en/posts/2018-10-12--windows-sound-volume-keyboard",
     "language": "en",
-    "category": "System Administration",
+    "category": "OS",
     "tags": [
       "Terminal",
       "Windows"
@@ -212,7 +212,7 @@
     "title": "Great \"Pomodoro\" App for Windows and Mac",
     "link": "/en/posts/2018-11-29--great-pomodoro-app",
     "language": "en",
-    "category": "System Administration",
+    "category": "OS",
     "tags": [
       "Terminal",
       "Windows"
@@ -225,7 +225,7 @@
     "title": "How to: Visual Studio Code + XDebug (Remote)",
     "link": "/en/posts/2019-01-23--vscode-xdebug-remote",
     "language": "en",
-    "category": "Development Tools",
+    "category": "Dev Tools",
     "tags": [
       "Development",
       "IDE"
@@ -251,7 +251,7 @@
     "title": "Your Categories",
     "link": "/en/posts/2019-02-08--your-categories",
     "language": "en",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -263,7 +263,7 @@
     "title": "PowerShell Core — Try This Windows Shell",
     "link": "/en/posts/2019-10-22--powershell-core-terminal",
     "language": "en",
-    "category": "System Administration",
+    "category": "OS",
     "tags": [
       "Terminal",
       "Windows"
@@ -291,7 +291,7 @@
     "title": "If Your Windows Wakes up at Night",
     "link": "/en/posts/2019-11-16--windows-wakes-up-at-night",
     "language": "en",
-    "category": "System Administration",
+    "category": "OS",
     "tags": [
       "Terminal",
       "Windows"
@@ -319,7 +319,7 @@
     "title": "Bookmarks Manager: Release 0.1",
     "link": "/en/posts/2020-03-28--bookmarks-manager-release",
     "language": "en",
-    "category": "Learning",
+    "category": "Programming",
     "tags": [
       "Books",
       "Education"
@@ -332,7 +332,7 @@
     "title": "Windows: Free up some disk space on your SSD",
     "link": "/en/posts/2020-05-01--windows-free-disk-space",
     "language": "en",
-    "category": "System Administration",
+    "category": "OS",
     "tags": [
       "Terminal",
       "Windows"
@@ -345,7 +345,7 @@
     "title": "Visual Studio 2019: LF Line Endings",
     "link": "/en/posts/2020-05-10--visual-studio-2019-lf",
     "language": "en",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -357,7 +357,7 @@
     "title": "Windows: Error: listen EACCES: permission denied 0.0.0.0:{{PORT}}",
     "link": "/en/posts/2020-07-16--windows-eacces-error",
     "language": "en",
-    "category": "System Administration",
+    "category": "OS",
     "tags": [
       "Terminal",
       "Windows"
@@ -370,7 +370,7 @@
     "title": "Your Cloud Firestore Database Has Insecure Rules",
     "link": "/en/posts/2020-12-13--firestore-insecure-rules",
     "language": "en",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -382,7 +382,7 @@
     "title": "Oh My Zsh Analogue for PowerShell",
     "link": "/en/posts/2020-12-30--oh-my-zsh-powershell",
     "language": "en",
-    "category": "System Administration",
+    "category": "OS",
     "tags": [
       "Terminal",
       "Windows"
@@ -457,7 +457,7 @@
     "title": "Azure + Git (SSH) != LFS",
     "link": "/en/posts/2021-10-24--azure-git-lfs",
     "language": "en",
-    "category": "Development Tools",
+    "category": "Dev Tools",
     "tags": [
       "DevOps",
       "Git"
@@ -470,7 +470,7 @@
     "title": "Git: RPC failed Error 413",
     "link": "/en/posts/2021-10-24--git-rpc-failed-413",
     "language": "en",
-    "category": "Development Tools",
+    "category": "Dev Tools",
     "tags": [
       "AI",
       "DevOps",
@@ -485,7 +485,7 @@
     "title": "My Best IDE Font",
     "link": "/en/posts/2022-03-30--best-ide-font",
     "language": "en",
-    "category": "Development Tools",
+    "category": "Dev Tools",
     "tags": [
       "Development",
       "IDE"
@@ -498,7 +498,7 @@
     "title": "WSL2: Temporary failure resolving",
     "link": "/en/posts/2022-07-03--wsl2-dns-resolving",
     "language": "en",
-    "category": "Technology",
+    "category": "OS",
     "tags": [
       "AI",
       "Technology"
@@ -511,7 +511,7 @@
     "title": "Windows + Git: Change crlf to lf",
     "link": "/en/posts/2022-07-21--windows-git-crlf-to-lf",
     "language": "en",
-    "category": "Development Tools",
+    "category": "Dev Tools",
     "tags": [
       "DevOps",
       "Git",
@@ -526,7 +526,7 @@
     "title": "Windows + Git: File permissions",
     "link": "/en/posts/2022-09-14--windows-git-file-permissions",
     "language": "en",
-    "category": "Development Tools",
+    "category": "Dev Tools",
     "tags": [
       "DevOps",
       "Git",
@@ -541,7 +541,7 @@
     "title": "MS Edge: Managed by your organization",
     "link": "/en/posts/2024-05-06--ms-edge-managed",
     "language": "en",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -553,7 +553,7 @@
     "title": "Agile, Kanban, Scrum - главное простыми словами",
     "link": "/ru/posts/2025-02-11--agile-kanban-scrum",
     "language": "ru",
-    "category": "Management",
+    "category": "Career",
     "tags": [
       "Agile",
       "Project Management"
@@ -567,7 +567,7 @@
     "title": "Карьера программиста после 30",
     "link": "/ru/posts/2025-02-11--programming-after-30",
     "language": "ru",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -584,7 +584,7 @@
     "title": "Рефакторинг",
     "link": "/ru/posts/2025-02-11--refactoring",
     "language": "ru",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -612,7 +612,7 @@
     "title": "Минимум книг, которые нужно прочитать начинающему или продолжающему свою кривую обучения программисту",
     "link": "/ru/posts/2025-03-20--the-minimum-of-books",
     "language": "ru",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -639,7 +639,7 @@
     "title": "Хороший дизайн для вашего приложения",
     "link": "/ru/posts/2025-03-24--good-design-for-apps",
     "language": "ru",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -715,10 +715,10 @@
     "updatedAt": "2025-12-06"
   },
   {
-    "title": "5 копеек про ИИ в 2026: реальность после хайпа",
+    "title": "ИИ: реальность после хайпа",
     "link": "/ru/posts/2026-06-11--ai-2026",
     "language": "ru",
-    "category": "Hacks",
+    "category": "Programming",
     "tags": [
       "Tips"
     ],
@@ -738,5 +738,17 @@
     "publishedAt": "2026-06-17",
     "filename": "index.en.md",
     "dirname": "2026-06-17--firefox-userchrome"
+  },
+  {
+    "title": "ИИ программирование в 2026: полная система",
+    "link": "/ru/posts/2026-07-08--ai-programming-2026",
+    "language": "ru",
+    "category": "Programming",
+    "tags": [
+      "Tips"
+    ],
+    "publishedAt": "2026-07-08",
+    "filename": "index.ru.md",
+    "dirname": "2026-07-08--ai-programming-2026"
   }
 ]

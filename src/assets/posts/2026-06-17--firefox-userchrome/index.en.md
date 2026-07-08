@@ -1,6 +1,6 @@
 ---
 publishedAt: 2026-06-17
-categories: ["Browsers"]
+category: Browsers
 tags: ["Browser","Extensions"]
 ---
 

@@ -1,6 +1,6 @@
 ---
 publishedAt: 2024-05-06
-categories: ["Hacks"]
+category: Programming
 tags: ["Tips"]
 ---
 

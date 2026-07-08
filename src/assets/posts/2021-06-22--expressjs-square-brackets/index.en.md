@@ -1,6 +1,6 @@
 ---
 publishedAt: 2021-06-22
-categories: ["Programming"]
+category: Programming
 tags: ["Backend","JavaScript","Server","Web Development"]
 ---
 

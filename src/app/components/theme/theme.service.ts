@@ -6,11 +6,9 @@ import { Theme } from "./theme";
 })
 export class ThemeService {
 	themes = Object.values(Theme);
-	theme = signal<string>("");
+	theme = signal<string>(typeof localStorage !== "undefined" ? localStorage.getItem("theme") || Theme.Coder : Theme.Coder);
 
-	constructor() {
-		this.theme.set(localStorage.getItem("theme") || Theme.Coder);
-	}
+	constructor() {}
 
 	setTheme(theme: Theme) {
 		this.theme.set(theme);

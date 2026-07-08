@@ -1,6 +1,6 @@
 ---
 publishedAt: 2026-07-08
-categories: ["Technology"]
+category: Programming
 tags: ["Tips"]
 ---
 

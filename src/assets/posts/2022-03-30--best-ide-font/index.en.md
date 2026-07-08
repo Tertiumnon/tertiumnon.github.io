@@ -1,6 +1,6 @@
 ---
 publishedAt: 2022-03-30
-categories: ["Development Tools"]
+category: Dev Tools
 tags: ["Development","IDE"]
 ---
 

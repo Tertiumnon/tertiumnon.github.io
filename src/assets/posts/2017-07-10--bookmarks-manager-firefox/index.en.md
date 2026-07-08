@@ -1,6 +1,6 @@
 ---
 publishedAt: 2017-07-10
-categories: ["Browsers","Learning"]
+category: Browsers
 tags: ["Books","Browser","Education","Extensions"]
 ---
 

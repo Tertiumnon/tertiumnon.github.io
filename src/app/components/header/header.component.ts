@@ -1,5 +1,5 @@
 import { Component, signal, inject } from "@angular/core";
-import { Router, NavigationStart, NavigationEnd, RouterLink, RouterLinkActive } from "@angular/router";
+import { Router, NavigationEnd, RouterLink, RouterLinkActive } from "@angular/router";
 import { NavComponent } from "../nav/nav.component";
 import { CommonModule } from "@angular/common";
 

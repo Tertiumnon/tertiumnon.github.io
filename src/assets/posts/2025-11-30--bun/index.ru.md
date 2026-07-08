@@ -1,7 +1,7 @@
 ---
 publishedAt: 2025-11-30
 updatedAt: 2025-12-06
-categories: ["Programming"]
+category: Programming
 tags: ["JavaScript","Tools","Web Development"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 publishedAt: 2025-03-20
 updatedAt: 2025-03-26
-categories: ["Hacks"]
+category: Programming
 tags: ["Tips"]
 ---
 

@@ -1,6 +1,6 @@
 ---
 publishedAt: 2021-06-28
-categories: ["Design","Programming","System Administration","Technology"]
+category: Design
 tags: ["AI","Design","JavaScript","Technology","Terminal","UX","Web Development","Windows"]
 ---
 

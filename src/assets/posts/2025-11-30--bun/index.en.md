@@ -1,7 +1,7 @@
 ---
 publishedAt: 2025-11-30
 updatedAt: 2025-12-20
-categories: ["Programming"]
+category: Programming
 tags: ["JavaScript","Tools","Web Development"]
 source: "medium: https://tertiumnon.medium.com/bun-7fbe61f45e2e"
 ---
@@ -12,9 +12,9 @@ source: "medium: https://tertiumnon.medium.com/bun-7fbe61f45e2e"
 
 > **For whom this article is:** For JavaScript/TypeScript developers seeking an alternative to Node.js with improved performance, built-in tools, and a simplified workflow.
 
-Bun is a modern JavaScript runtime and tooling suite that combines a runtime, package manager, bundler, and test runner. Bun''s primary goal is to provide developers with the fastest and simplest stack for working with JavaScript and TypeScript.
+Bun is a modern JavaScript runtime and tooling suite that combines a runtime, package manager, bundler, and test runner. Bun's primary goal is to provide developers with the fastest and simplest stack for working with JavaScript and TypeScript.
 
-In this article, we''ll explore Bun''s key features, demonstrate performance metrics for basic scenarios (HTTP server, cold start, memory, package installation), and discuss when to use it.
+In this article, we'll explore Bun's key features, demonstrate performance metrics for basic scenarios (HTTP server, cold start, memory, package installation), and discuss when to use it.
 
 ## Table of Contents
 
@@ -38,7 +38,7 @@ Bun is a project written in **Zig** and using **JavaScriptCore** (the JavaScript
 - 🛠️ **Built-in Tools** — integrated package manager, bundler, and tests
 - 🔄 **Compatibility** — most Node.js code can run on Bun with minimal changes
 
-### Bun''s Creator: Jarred Sumner
+### Bun's Creator: Jarred Sumner
 
 <img src="https://avatars.githubusercontent.com/u/709451?v=4" alt="Jarred Sumner" width="150" style="border-radius: 50%;" />
 
@@ -60,7 +60,7 @@ Sumner actively develops the Bun ecosystem, adding new capabilities: full-stack 
 - X (Twitter): [@jarredsumner](https://x.com/jarredsumner)
 - LinkedIn: [Jarred Sumner](https://www.linkedin.com/in/jarred-sumner-a8772425/)
 
-### Zig Language: Bun''s Foundation
+### Zig Language: Bun's Foundation
 
 <img src="https://raw.githubusercontent.com/ziglang/logo/master/zig-mark.svg" alt="Zig Language" width="150" />
 
@@ -247,13 +247,13 @@ _Colors (left to right):_ **orange** — Node 20; **yellow** — Node 22; **red*
 
 **⚠️ Important: Memory is the most contradictory metric (2025):**
 
-Reports on Bun''s memory consumption differ significantly between synthetic benchmarks and production use cases:
+Reports on Bun's memory consumption differ significantly between synthetic benchmarks and production use cases:
 
 **Synthetic Benchmarks (Micro):**
 
 - **Bun:** ~40-45 MB on a simple HTTP server
 - **Node.js v20/v22/v24 + npm v10.5-v10.9:** ~45-55 MB
-- Difference: **minimal or in Bun''s favor**
+- Difference: **minimal or in Bun's favor**
 
 **Production Scenarios (Real Applications, September 2025):**
 
@@ -517,7 +517,7 @@ One of the most comprehensive approaches to testing is the work of **Anton Putra
 2. **Bun excels with CLI tools** — fast startup, but in production with databases this advantage is less noticeable
 3. **Node.js is more stable in Kubernetes** — under sustained load, V8 shows more predictable behavior
 4. **Memory and CPU throttling** — crucial factors in containerized environments where Bun may perform worse
-5. **Ecosystem maturity wins** — many production-hardened libraries and patterns for Node.js provide advantages despite Bun''s novelty
+5. **Ecosystem maturity wins** — many production-hardened libraries and patterns for Node.js provide advantages despite Bun's novelty
 
 ### Production Use Cases and Practical Experience
 
@@ -534,7 +534,7 @@ One of the most comprehensive approaches to testing is the work of **Anton Putra
 
 ## Summary
 
-**Bun''s Strengths:**
+**Bun's Strengths:**
 
 - ⚡ Exceptional package installation speed (5-8× faster than npm)
 - 🚀 Fast application startup (cold start ~2ms in local tests)

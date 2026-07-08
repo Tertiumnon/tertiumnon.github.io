@@ -1,6 +1,6 @@
 ---
 publishedAt: 2025-03-26
-categories: ["Career","Learning"]
+category: Career
 tags: ["Books","Career","Education","Professional Growth"]
 source: "medium: https://tertiumnon.medium.com/a-minimum-of-books-that-should-be-read-by-a-novice-or-experienced-programmer-8e9afd76fd6f"
 ---

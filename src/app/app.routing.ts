@@ -15,14 +15,6 @@ export const APP_ROUTES: Routes = [
 			),
 	},
 	{
-		path: "software",
-		title: "Software",
-		loadComponent: () =>
-			import("./pages/software/software.component").then(
-				(m) => m.SoftwareComponent,
-			),
-	},
-	{
 		path: "news",
 		title: "News",
 		redirectTo: "en/news",
@@ -48,6 +40,14 @@ export const APP_ROUTES: Routes = [
 		loadComponent: () =>
 			import("./pages/posts/posts.component").then(
 				(m) => m.PostsComponent,
+			),
+	},
+	{
+		path: "software",
+		title: "Software",
+		loadComponent: () =>
+			import("./pages/software/software.component").then(
+				(m) => m.SoftwareComponent,
 			),
 	},
 	{

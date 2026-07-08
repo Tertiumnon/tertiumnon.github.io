@@ -1,6 +1,6 @@
 ---
 publishedAt: 2018-11-19
-categories: ["Browsers"]
+category: Browsers
 tags: ["Browser","Extensions"]
 ---
 

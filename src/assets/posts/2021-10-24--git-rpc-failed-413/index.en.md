@@ -1,6 +1,6 @@
 ---
 publishedAt: 2021-10-24
-categories: ["Development Tools","Technology"]
+category: Dev Tools
 tags: ["AI","DevOps","Git","Technology"]
 ---
 

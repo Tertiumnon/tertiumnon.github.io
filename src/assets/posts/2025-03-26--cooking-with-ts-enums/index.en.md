@@ -1,6 +1,6 @@
 ---
 publishedAt: 2025-03-26
-categories: ["Programming"]
+category: Programming
 tags: ["JavaScript","Web Development"]
 ---
 

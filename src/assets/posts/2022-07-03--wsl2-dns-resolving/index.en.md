@@ -1,6 +1,6 @@
 ---
 publishedAt: 2022-07-03
-categories: ["Technology"]
+category: OS
 tags: ["AI","Technology"]
 ---
 

@@ -1,6 +1,6 @@
 ---
 publishedAt: 2019-10-22
-categories: ["Browsers","Programming"]
+category: Browsers
 tags: ["Browser","Extensions","JavaScript","Web Development"]
 ---
 

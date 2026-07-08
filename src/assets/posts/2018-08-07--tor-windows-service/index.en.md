@@ -1,6 +1,6 @@
 ---
 publishedAt: 2018-08-07
-categories: ["System Administration"]
+category: OS
 tags: ["Terminal","Windows"]
 ---
 
