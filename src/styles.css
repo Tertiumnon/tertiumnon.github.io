@@ -70,10 +70,16 @@ p {
   line-height: 1.5;
 }
 
-ul,
+ul {
+  margin: 1em 0;
+  padding-left: 2em;
+  list-style: disc;
+}
+
 ol {
   margin: 1em 0;
   padding-left: 2em;
+  list-style: decimal;
 }
 
 li {
