@@ -1,6 +1,9 @@
 /* Converted from styles.css */
 /* You can add global styles to this file, and also import other style files */
 
+/* Google Fonts - Roboto with Russian support */
+@import "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap";
+
 /* Tailwind: import the compiled CSS from the package for the new build system */
 @import "tailwindcss/base.css";
 @import "tailwindcss/components.css";
@@ -31,8 +34,8 @@ body {
 
 body {
   margin: 0;
-  font-family: "VT323", monospace;
-  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
   color: white;
 }
 
@@ -40,7 +43,7 @@ h1,
 h2,
 h3,
 h4 {
-  margin-top: 0.4em;
+  margin-top: 1.2em;
   margin-bottom: 0.8em;
   font-weight: bold;
   line-height: 1.2;
