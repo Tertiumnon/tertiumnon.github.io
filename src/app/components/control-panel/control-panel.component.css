@@ -5,6 +5,7 @@
   justify-content: flex-end;
   align-content: center;
   height: 100%;
+  font-size: 1em;
 }
 
 .control-panel .filters {

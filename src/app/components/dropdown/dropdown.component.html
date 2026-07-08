@@ -4,7 +4,7 @@
     <div class="option selected">{{ selectedOption || placeholder }}</div>
     <div
       *ngFor="let option of options"
-      class="px-2 option"
+      class="px-4 p-1 option"
       [class.hidden]="!isOpened || option === selectedOption"
       (click)="onOptionClick(option, $event)"
     >

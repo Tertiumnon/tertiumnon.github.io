@@ -2,6 +2,8 @@
   opacity: 0.9;
   background-color: white;
   box-shadow: var(--box-shadow);
+  font-family: "Ubuntu Nerd Font", sans-serif;
+  font-size: 1.1em;
 }
 
 .project-card:hover {
@@ -10,9 +12,14 @@
 
 .project-card .header .project-card-title {
   text-transform: uppercase;
-  height: 2rem;
+  margin-top: 0.2em;
   overflow: hidden;
   word-break: break-all;
+  font-family: "Science Gothic", sans-serif;
+}
+
+.project-card .header .project-card-subtitle {
+  color: #666;
 }
 
 .project-card .body {

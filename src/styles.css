@@ -1,9 +1,6 @@
 /* Converted from styles.css */
 /* You can add global styles to this file, and also import other style files */
 
-/* Google Fonts - Roboto with Russian support */
-@import "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap";
-
 /* Tailwind: import the compiled CSS from the package for the new build system */
 @import "tailwindcss/base.css";
 @import "tailwindcss/components.css";
@@ -11,6 +8,30 @@
 
 /* Highlight.js theme */
 @import "highlight.js/styles/github-dark.css";
+
+/* Google Fonts - with Russian support */
+@import "https://fonts.googleapis.com/css2?family=VT323:wght@400&display=swap";
+
+/* Local fonts */
+@font-face {
+  font-family: "Ubuntu Nerd Font";
+  src: url("/assets/fonts/Ubuntu/UbuntuNerdFont-Regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu Nerd Font";
+  src: url("/assets/fonts/Ubuntu/UbuntuNerdFont-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Science Gothic";
+  src: url("/assets/fonts/Science_Gothic/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf")
+    format("truetype-variations");
+  font-weight: 100 900;
+  font-stretch: 75% 100%;
+}
 
 :root {
   --header-height: 4rem;
@@ -34,7 +55,7 @@ body {
 
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Ubuntu Nerd Font", sans-serif;
   font-size: 16px;
   color: white;
 }
@@ -47,15 +68,13 @@ h4 {
   margin-bottom: 0.8em;
   font-weight: bold;
   line-height: 1.2;
-  font-family: "Roboto Mono", serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
+  font-family: "Science Gothic", sans-serif;
 }
 
 h1 {
+  margin-top: 0.2em;
   font-size: 1.8em;
-  font-family: "Roboto Mono", serif;
+  font-family: "Science Gothic", sans-serif;
 }
 
 h2 {
@@ -94,6 +113,11 @@ li {
   text-decoration: underline;
 }
 
+nav,
+app-nav {
+  font-family: "VT323", monospace;
+}
+
 input,
 select {
   color: black;
@@ -116,7 +140,6 @@ select {
 /* Containers */
 
 code {
-  font-family: "Roboto Mono", serif;
   font-size: 0.9em;
 }
 
@@ -135,7 +158,6 @@ main {
   flex-direction: column;
   padding-top: var(--header-height);
   padding-bottom: 32px;
-  font-family: "Roboto Mono", serif;
 }
 
 .container-fluid {
@@ -150,7 +172,6 @@ main {
   padding: 1em 3%;
   border-radius: 12px;
   box-shadow: var(--box-shadow);
-  font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
@@ -189,7 +210,7 @@ td {
 th {
   background-color: rgba(0, 0, 0, 0.3);
   font-weight: bold;
-  font-family: "Roboto Mono", serif;
+  font-family: "VT323", monospace;
 }
 
 tr:nth-child(even) {
@@ -211,12 +232,20 @@ tr:hover {
 }
 
 .CoderTheme .post-control-panel {
-  background: linear-gradient(180deg, var(--CoderTheme-bg-color) 0%, var(--CoderTheme-bg-color--dark) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--CoderTheme-bg-color) 0%,
+    var(--CoderTheme-bg-color--dark) 100%
+  );
   border-bottom: 1px solid var(--CoderTheme-bg-color--light);
 }
 
 .CoderTheme .news-control-panel {
-  background: linear-gradient(180deg, var(--CoderTheme-bg-color) 0%, var(--CoderTheme-bg-color--dark) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--CoderTheme-bg-color) 0%,
+    var(--CoderTheme-bg-color--dark) 100%
+  );
   border-bottom: 1px solid var(--CoderTheme-bg-color--light);
 }
 
@@ -234,7 +263,11 @@ tr:hover {
 }
 
 .CoderTheme .news-bubble {
-  background: linear-gradient(135deg, var(--CoderTheme-bg-color--light) 0%, var(--CoderTheme-bg-color) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--CoderTheme-bg-color--light) 0%,
+    var(--CoderTheme-bg-color) 100%
+  );
   border-color: var(--CoderTheme-bg-color--light);
 }
 
@@ -260,12 +293,20 @@ tr:hover {
 }
 
 .HoneyPieTheme .post-control-panel {
-  background: linear-gradient(180deg, var(--HoneyPieTheme-bg-color--dark) 0%, var(--HoneyPieTheme-bg-color--dark) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--HoneyPieTheme-bg-color--dark) 0%,
+    var(--HoneyPieTheme-bg-color--dark) 100%
+  );
   border-bottom: 1px solid var(--HoneyPieTheme-bg-color--light);
 }
 
 .HoneyPieTheme .news-control-panel {
-  background: linear-gradient(180deg, var(--HoneyPieTheme-bg-color--dark) 0%, var(--HoneyPieTheme-bg-color--dark) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--HoneyPieTheme-bg-color--dark) 0%,
+    var(--HoneyPieTheme-bg-color--dark) 100%
+  );
   border-bottom: 1px solid var(--HoneyPieTheme-bg-color--light);
 }
 
@@ -283,7 +324,11 @@ tr:hover {
 }
 
 .HoneyPieTheme .news-bubble {
-  background: linear-gradient(135deg, var(--HoneyPieTheme-bg-color--light) 0%, var(--HoneyPieTheme-bg-color--dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--HoneyPieTheme-bg-color--light) 0%,
+    var(--HoneyPieTheme-bg-color--dark) 100%
+  );
   border-color: var(--HoneyPieTheme-bg-color--light);
 }
 

@@ -2,6 +2,7 @@
   height: 1.5rem;
   border-bottom: 1px dashed;
   cursor: pointer;
+  transition: box-shadow 0.2s ease;
 }
 
 .option-list .option {

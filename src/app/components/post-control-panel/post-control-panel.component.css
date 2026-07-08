@@ -4,7 +4,7 @@
   width: 100%;
   justify-content: flex-start;
   align-content: center;
-  font-size: 0.8em;
+  font-size: 1em;
   height: var(--control-panel-height);
   z-index: 1;
   top: var(--header-height);
@@ -22,7 +22,7 @@
 
 .post-control-panel .filters .filter label {
   display: inline-block;
-  font-size: 0.9em;
+  font-size: 1em;
   margin-right: 4px;
 }
 
@@ -42,6 +42,6 @@
   cursor: pointer;
   border: none;
   color: var(--text-color);
-  font-size: 0.9em;
+  font-size: 1em;
   text-align: center;
 }
