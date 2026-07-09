@@ -28,53 +28,16 @@ tags: ["Tips"]
 
 Существует несколько популярных подходов. Выберите один и следуйте ему. **ИИ не должен выбирать — вы выбираете.**
 
-**Domain Driven Design (DDD)** — организация по бизнес-доменам:
-```
-src/domains/{users,products,orders}/
-├── entities/          # User, Product entities
-├── services/          # UserService, ProductService
-├── repositories/      # UserRepository interface
-├── dtos/              # CreateUserDTO, UpdateUserDTO
-└── index.ts           # barrel export
-```
+Возможные архитектуры:
 
-Плюсы: логична для бизнеса, масштабируется, ИИ понимает "это для пользователей"
-Минусы: требует понимания домена
+1. **Domain Driven Design (DDD)** — организация по бизнес-доменам
+2. **Clean Architecture** — организация по слоям
+3. **Hexagonal Architecture** — организация по портам и адаптерам
+4. **Microservices Architecture** — независимые сервисы
+5. **Event-Driven Architecture** — событийно-ориентированная архитектура
+6. **Feature-based** — организация по функциональным фичам
 
-**Clean Architecture** — организация по слоям:
-```
-src/
-├── domain/            # Entity, interfaces (без зависимостей)
-├── application/       # Use Cases, Services
-├── infrastructure/    # DB, API, frameworks
-└── presentation/      # UI, HTTP endpoints
-```
-
-Плюсы: четкие слои, легко тестировать
-Минусы: нужно часто прыгать между папками
-
-**Feature-based** — организация по фичам:
-```
-src/features/{auth,payments,notifications}/
-├── auth.service.ts
-├── auth.controller.ts
-├── auth.module.ts
-└── auth.guard.ts
-```
-
-Плюсы: легко добавлять фичи, независимые фичи
-Минусы: может привести к дублированию кода
-
-**Hexagonal Architecture** — организация по портам и адаптерам:
-```
-src/{core,ports,adapters}/
-├── core/              # бизнес-логика
-├── ports/             # interfaces
-└── adapters/          # реализации (БД, API)
-```
-
-Плюсы: легко менять реализацию
-Минусы: может быть overengineering
+Полные описания, примеры и рекомендации смотрите в [документации архитектур](https://github.com/tertiumnon/tertium-cheatsheets/tree/main/pages/arhitectures).
 
 ### Явные правила структуры
 
