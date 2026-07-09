@@ -750,5 +750,20 @@
     "publishedAt": "2026-07-08",
     "filename": "index.ru.md",
     "dirname": "2026-07-08--ai-programming-2026"
+  },
+  {
+    "title": "Angular RxJS vs Signals in 2026",
+    "link": "/en/posts/2026-07-09--angular-rxjs-vs-signals",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Angular",
+      "Frontend",
+      "JavaScript",
+      "Web Development"
+    ],
+    "publishedAt": "2026-07-09",
+    "filename": "index.en.md",
+    "dirname": "2026-07-09--angular-rxjs-vs-signals"
   }
 ]
