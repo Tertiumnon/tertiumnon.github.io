@@ -1,6 +1,6 @@
 ---
 publishedAt: 2025-11-30
-updatedAt: 2025-12-20
+updatedAt: 2026-07-09
 category: Programming
 tags: ["JavaScript","Tools","Web Development"]
 source: "medium: https://tertiumnon.medium.com/bun-7fbe61f45e2e"
@@ -16,6 +16,62 @@ Bun is a modern JavaScript runtime and tooling suite that combines a runtime, pa
 
 In this article, we'll explore Bun's key features, demonstrate performance metrics for basic scenarios (HTTP server, cold start, memory, package installation), and discuss when to use it.
 
+---
+
+## Major Updates (2026)
+
+### Bun Acquired by Anthropic (December 2025)
+
+Bun was [acquired by Anthropic](https://bun.sh/blog/bun-is-joining-anthropic) in late 2025. Bun now powers **Claude Code**, **Claude Agent SDK**, and future AI coding products. This means Bun's stability is critical — if Bun breaks, Claude Code breaks.
+
+**Current statistics (July 2026):**
+- **91,885 GitHub stars**
+- **1.52 million weekly npm downloads**
+- Production users: **Figma, The New York Times, Intercom, Slack, Cursor**
+
+### Bun Rewritten in Rust (July 2026)
+
+The biggest news: [Bun is being rewritten from Zig to Rust](https://bun.sh/blog/bun-in-rust). This 11-day rewrite converted **1,448 .zig files** to Rust with **99.8% test compatibility**.
+
+**Why the switch?**
+
+The Zig codebase suffered from systematic memory safety bugs:
+- Use-after-free crashes from re-entrant JS callbacks
+- Double-free crashes in async operations
+- Memory leaks from forgotten `free()` calls
+- Race conditions with concurrent GC
+
+**Why Rust?**
+
+```rust
+// Zig: Must remember defer cleanup at every callsite
+fn foo(a: *TCPSocket) !void {
+  const b = try do_something_with_a(a);
+  defer b.deref();  // Easy to forget!
+}
+
+// Rust: Compiler enforces cleanup via Drop trait
+fn foo(a: &TcpSocket) -> Result<()> {
+  let b = do_something_with_a(a)?;
+  // Automatic cleanup when b goes out of scope
+}
+```
+
+Rust's borrow checker and `Drop` trait **enforce memory safety at compile time**, converting runtime crashes into compiler errors.
+
+### Latest Release: Bun v1.3.14 (May 2026)
+
+Key features:
+- **HTTP/3 (QUIC) support** in `Bun.serve()`
+- **Bun.Image** — built-in image processing API
+- **7x faster warm installs** with isolated linker's global store
+- Experimental HTTP/2 and HTTP/3 clients for `fetch()`
+- Rewritten `fs.watch()` on Linux and macOS
+- FreeBSD and Android builds
+- 92 bug fixes
+
+---
+
 ## Table of Contents
 
 - [What is Bun?](#what-is-bun)
@@ -29,7 +85,7 @@ In this article, we'll explore Bun's key features, demonstrate performance metri
 
 ## What is Bun?
 
-Bun is a project written in **Zig** and using **JavaScriptCore** (the JavaScript engine from WebKit). It positions itself as a fast replacement for Node.js and Deno, combining a package manager, bundler, transpiler, and test framework into a single binary.
+Bun is a project originally written in **Zig** and now **being rewritten in Rust** (as of July 2026), using **JavaScriptCore** (the JavaScript engine from WebKit). It positions itself as a fast replacement for Node.js and Deno, combining a package manager, bundler, transpiler, and test framework into a single binary.
 
 **Key advantages:**
 
@@ -50,9 +106,12 @@ Bun is a project written in **Zig** and using **JavaScriptCore** (the JavaScript
 - **July 5, 2022** — Bun 0.1 announcement
 - **August 2022** — $7M Seed funding round from Kleiner Perkins and Guillermo Rauch (Vercel)
 - **September 2023** — Bun 1.0 release
-- **2025** — over 5 million downloads per month, used at Anthropic (Claude Code CLI)
+- **January 2025** — Bun v1.2 with built-in Postgres client and S3 support
+- **October 2025** — Bun v1.3 with unified SQL API and Redis client
+- **December 2025** — Bun acquired by Anthropic
+- **July 2026** — Bun rewritten in Rust for improved stability
 
-Sumner actively develops the Bun ecosystem, adding new capabilities: full-stack dev server, SQL API, Redis support, and other tools for full-stack development.
+Sumner actively develops the Bun ecosystem, adding new capabilities: full-stack dev server, SQL API, Redis support, HTTP/3, and other tools for full-stack development.
 
 **Contacts:**
 
@@ -60,13 +119,15 @@ Sumner actively develops the Bun ecosystem, adding new capabilities: full-stack 
 - X (Twitter): [@jarredsumner](https://x.com/jarredsumner)
 - LinkedIn: [Jarred Sumner](https://www.linkedin.com/in/jarred-sumner-a8772425/)
 
-### Zig Language: Bun's Foundation
+### Zig Language: Bun's Original Foundation
 
 <img src="https://raw.githubusercontent.com/ziglang/logo/master/zig-mark.svg" alt="Zig Language" width="150" />
 
-**Zig** is a modern systems programming language created by **Andrew Kelley**. Bun is written in Zig for its performance, safety, and ease of C integration.
+**Zig** is a modern systems programming language created by **Andrew Kelley**. Bun was originally written in Zig for its performance, safety, and ease of C integration.
 
-**Why Zig was chosen for Bun:**
+> **Note:** As of July 2026, Bun is [being rewritten in Rust](https://bun.sh/blog/bun-in-rust) due to memory safety challenges when mixing garbage-collected JavaScript values with manually-managed Zig memory.
+
+**Why Zig was originally chosen for Bun:**
 
 - 🚀 **C-like Performance** — compiles to native code without runtime overhead
 - 🔒 **Memory Safety** — compile-time checks without garbage collection
@@ -106,6 +167,44 @@ This makes Zig ideal for systems programming where performance and predictabilit
 - [Andrew Kelley on GitHub](https://github.com/andrewrk)
 - [Andrew Kelley''s Personal Website](https://andrewkelley.me/)
 
+### Rust: Bun's New Foundation (2026)
+
+<img src="https://www.rust-lang.org/logos/rust-logo-512x512.png" alt="Rust Language" width="150" />
+
+In July 2026, Bun announced a major rewrite from Zig to **Rust**. The 11-day rewrite converted 1,448 .zig files to .rs files with 99.8% test compatibility.
+
+**Why Rust over Zig?**
+
+The core issue was mixing garbage-collected JavaScript values with manually-managed memory:
+
+| Problem | Zig Approach | Rust Solution |
+|---------|--------------|---------------|
+| Use-after-free | Style guide + code review | Compiler error via borrow checker |
+| Double-free | Runtime crash | Prevented at compile time |
+| Memory leaks | Manual `defer` at every site | Automatic via `Drop` trait |
+| Race conditions | Runtime detection | `Send`/`Sync` traits |
+
+**Sample bugs fixed by the Rust rewrite (from v1.3.14):**
+
+- Heap-use-after-free in `node:zlib` with async `.write()` on threadpool
+- Use-after-free in `node:http2` when callbacks triggered hashmap rehash
+- `UDPSocket.send()` crashes from `valueOf()` callbacks detaching ArrayBuffers
+- Memory leak in `fs.watch()` from reference count underflow
+
+**The Rewrite Process:**
+
+- **Duration:** 11 days (May 4-14, 2026)
+- **Commits:** 6,502 commits (peak: 695 commits/hour)
+- **Code:** ~1.1M lines generated and reviewed
+- **Tooling:** Claude Fable 5 with adversarial review system
+
+> "A large percentage of bugs from that list are use-after-free, double-free, and 'forgot to free' in an error path. In safe Rust, these are compiler errors." — Bun Blog
+
+**Links:**
+
+- [Rewriting Bun in Rust](https://bun.sh/blog/bun-in-rust)
+- [Official Rust Website](https://www.rust-lang.org/)
+
 ## Key Features
 
 | Command | Description | Node.js Alternative |
@@ -115,6 +214,91 @@ This makes Zig ideal for systems programming where performance and predictabilit
 | `bun build` | Bundler and minifier | `webpack` / `esbuild` |
 | `bun test` | Built-in test runner | `jest` / `vitest` |
 | `bun create` | Initialize projects from templates | `npm create` |
+
+### Built-in Database and Cloud APIs (2025-2026)
+
+Bun v1.2+ introduced built-in clients for common infrastructure:
+
+#### Bun.sql — Universal SQL Client
+
+```typescript
+import { sql } from "bun";
+
+// Connect to PostgreSQL
+const db = sql("postgres://user:pass@localhost/mydb");
+
+// Parameterized queries (safe from SQL injection)
+const users = await db`SELECT * FROM users WHERE age > ${18}`;
+
+// Transactions
+await db.transaction(async (tx) => {
+  await tx`INSERT INTO users (name) VALUES (${"Alice"})`;
+  await tx`UPDATE accounts SET balance = balance - 100`;
+});
+```
+
+#### Bun.redis — Built-in Redis Client
+
+```typescript
+import { redis } from "bun";
+
+const client = redis("redis://localhost:6379");
+
+await client.set("key", "value");
+const value = await client.get("key");
+
+// Pub/Sub
+await client.subscribe("channel", (message) => {
+  console.log("Received:", message);
+});
+```
+
+#### Bun.s3 — S3 Object Storage
+
+```typescript
+import { s3 } from "bun";
+
+const bucket = s3("my-bucket");
+
+// Upload
+await bucket.write("path/to/file.txt", "Hello, S3!");
+
+// Download
+const content = await bucket.file("path/to/file.txt").text();
+
+// Stream large files
+const stream = bucket.file("large-video.mp4").stream();
+```
+
+#### Bun.Image — Image Processing (v1.3.14+)
+
+```typescript
+import { Image } from "bun";
+
+// Load and manipulate images
+const img = await Image.load("photo.jpg");
+const resized = img.resize(800, 600);
+const webp = resized.encode("webp", { quality: 80 });
+
+await Bun.write("output.webp", webp);
+```
+
+#### HTTP/3 Server Support (v1.3.14+)
+
+```typescript
+Bun.serve({
+  port: 443,
+  tls: {
+    cert: Bun.file("cert.pem"),
+    key: Bun.file("key.pem"),
+  },
+  // Enable HTTP/3 (QUIC)
+  http3: true,
+  fetch(req) {
+    return new Response("Hello HTTP/3!");
+  },
+});
+```
 
 ### TypeScript: Built-in Support
 
@@ -200,17 +384,17 @@ Expected output:
 
 > **⚠️ Important:** Micro-benchmark results don''t always translate to real applications. In production scenarios, performance differences are often insignificant or even opposite to what synthetic tests show.
 
-Data collected from simple HTTP server tests ("Hello World") and aggregated from independent benchmarks in 2025. Results may vary significantly in real applications with databases, complex business logic, and dependencies.
+Data collected from simple HTTP server tests ("Hello World") and aggregated from independent benchmarks in 2025-2026. Results may vary significantly in real applications with databases, complex business logic, and dependencies.
 
 ---
 
-**Tested Versions:**
+**Tested Versions (2026):**
 
-- Node.js v24.x (Active LTS, released May 6, 2025) + npm v10.9.2
+- Node.js v24.x (Active LTS) + npm v10.9.2
 - Node.js v22.x (Maintenance LTS) + npm v10.8.2
 - Node.js v20.x (Maintenance LTS) + npm v10.5.0
-- Deno v2.1.14 (May 13, 2025)
-- Bun v1.2.17 (Jun 21, 2025)
+- Deno v2.x
+- Bun v1.3.14 (May 13, 2026) — Rust rewrite in progress
 
 ### Cold Start (Startup Time, ms)
 
@@ -475,7 +659,7 @@ Bun can run in AWS Lambda two ways:
 ### Minimal Dockerfile
 
 ```dockerfile
-FROM oven/bun:1.2.17
+FROM oven/bun:1.3.14
 COPY . /app
 WORKDIR /app
 RUN bun install
@@ -489,11 +673,20 @@ CMD ["bun", "run", "start"]
 ### Official Documentation
 
 - [Official Bun Website](https://bun.sh)
+- [Bun Blog](https://bun.sh/blog)
 - [GitHub: oven-sh/bun](https://github.com/oven-sh/bun)
 - [Official Deno Benchmarks](https://deno.com/benchmarks)
 - [Node.js Performance Working Group](https://github.com/nodejs/performance)
 
-### Current Benchmarks and Comparisons (2025)
+### Major Announcements (2025-2026)
+
+- [Rewriting Bun in Rust](https://bun.sh/blog/bun-in-rust) — Why and how Bun switched from Zig to Rust
+- [Bun is joining Anthropic](https://bun.sh/blog/bun-is-joining-anthropic) — Acquisition announcement
+- [Bun v1.3.14](https://bun.sh/blog/bun-v1.3.14) — HTTP/3, Bun.Image, and 92 fixes
+- [Bun v1.3](https://bun.sh/blog/bun-v1.3) — Unified SQL API, Redis client
+- [Bun v1.2](https://bun.sh/blog/bun-v1.2) — Postgres client, S3 support
+
+### Current Benchmarks and Comparisons (2025-2026)
 
 - [Bun vs Node.js 2025: Performance Comparison Guide - Strapi](https://strapi.io/blog/bun-vs-nodejs-performance-comparison-guide)
 - [Node vs Deno vs Bun: The Ultimate 2025 Performance Battle](https://junkangworld.com/blog/node-vs-deno-vs-bun-the-ultimate-2025-performance-battle)
@@ -534,13 +727,17 @@ One of the most comprehensive approaches to testing is the work of **Anton Putra
 
 ## Summary
 
-**Bun's Strengths:**
+**Bun's Strengths (2026):**
 
 - ⚡ Exceptional package installation speed (5-8× faster than npm)
 - 🚀 Fast application startup (cold start ~2ms in local tests)
 - 📦 Built-in tools: runtime, bundler, test runner, package manager
 - 🔄 TypeScript out of the box without additional setup
 - 🎯 Simple usage and minimal configuration
+- 🗄️ **NEW:** Built-in SQL, Redis, and S3 clients
+- 🌐 **NEW:** HTTP/3 (QUIC) server support
+- 🦀 **NEW:** Rust rewrite for improved stability and memory safety
+- 🤖 **NEW:** Backed by Anthropic — powers Claude Code
 
 **Weaknesses and Limitations:**
 
@@ -548,7 +745,7 @@ One of the most comprehensive approaches to testing is the work of **Anton Putra
 - ⚠️ Incompatibility with some native Node.js modules
 - 🔧 Requires rewriting code using `worker_threads`
 - 🌩️ Slow cold start in serverless environments (AWS Lambda)
-- 🔄 Rapid development with frequent breaking changes
+- 🔄 Active Rust migration — monitor releases for potential changes
 
 **Application Recommendations:**
 

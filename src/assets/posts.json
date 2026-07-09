@@ -687,13 +687,14 @@
     "category": "Programming",
     "tags": [
       "JavaScript",
+      "Rust",
       "Tools",
       "Web Development"
     ],
     "publishedAt": "2025-11-30",
     "filename": "index.en.md",
     "dirname": "2025-11-30--bun",
-    "updatedAt": "2025-12-20",
+    "updatedAt": "2026-07-09",
     "source": {
       "name": "\"medium",
       "url": "https://tertiumnon.medium.com/bun-7fbe61f45e2e\""
