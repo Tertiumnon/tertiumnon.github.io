@@ -6,7 +6,7 @@ tags: ["JavaScript","Tools","Web Development"]
 source: "medium: https://tertiumnon.medium.com/bun-7fbe61f45e2e"
 ---
 
-# Bun in 2025 — What It Is and How to Get Started
+# Bun in 2025
 
 <img src="https://bun.sh/logo.svg" alt="Bun Logo" width="200" />
 
@@ -15,8 +15,6 @@ source: "medium: https://tertiumnon.medium.com/bun-7fbe61f45e2e"
 Bun is a modern JavaScript runtime and tooling suite that combines a runtime, package manager, bundler, and test runner. Bun's primary goal is to provide developers with the fastest and simplest stack for working with JavaScript and TypeScript.
 
 In this article, we'll explore what Bun is, get to know its history, key features, and quick start.
-
-**For a complete performance analysis and recommendations for using Bun in production, see the article "[Bun in 2026](../2026-07-12--bun-2026/)".**
 
 ## Table of Contents
 

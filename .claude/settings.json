@@ -2,7 +2,33 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:bun.com)",
-      "WebFetch(domain:docs.cloud.google.com)"
+      "WebFetch(domain:docs.cloud.google.com)",
+      "WebFetch(domain:www.midjourney.com)",
+      "WebFetch(domain:runwayml.com)",
+      "WebFetch(domain:www.reddit.com)",
+      "WebFetch(domain:google.com)",
+      "WebFetch(domain:www.adobe.com)",
+      "WebFetch(domain:labs.withgoogle.com)",
+      "WebFetch(domain:pika.art)",
+      "WebFetch(domain:techcrunch.com)",
+      "WebFetch(domain:www.anthropic.com)",
+      "WebFetch(domain:www.cursor.com)",
+      "WebFetch(domain:code.visualstudio.com)",
+      "WebFetch(domain:www.jetbrains.com)",
+      "WebFetch(domain:github.blog)",
+      "WebFetch(domain:openai.com)",
+      "WebFetch(domain:www.theinformation.com)",
+      "WebFetch(domain:www.runwayml.com)",
+      "WebFetch(domain:www.meshy.ai)",
+      "WebFetch(domain:www.tripo3d.ai)",
+      "WebFetch(domain:www.blockadelabs.com)",
+      "WebFetch(domain:www.alibaba.com)",
+      "WebFetch(domain:www.huggingface.co)",
+      "WebFetch(domain:www.6pen.art)",
+      "WebFetch(domain:www.tencent.com)",
+      "WebFetch(domain:www.reuters.com)",
+      "WebFetch(domain:www.theverge.com)",
+      "WebFetch(domain:www.linkedin.com)"
     ]
   }
 }

@@ -5,15 +5,13 @@ category: Programming
 tags: ["JavaScript","Tools","Web Development","Performance"]
 ---
 
-# Bun in 2026 — Performance, Recommendations, and Cloud Platforms
+# Bun in 2026
 
 <img src="https://bun.sh/logo.svg" alt="Bun Logo" width="200" />
 
 > **For whom this article is:** For developers considering Bun for production use who want to understand performance metrics, when to use it, and how to deploy it on cloud platforms.
 
 After a successful launch in 2025, Bun continues to grow and improve. Current version v1.3.14 includes significant performance improvements and new APIs. In May 2026, a significant milestone occurred — Bun was completely rewritten in Rust using Claude Fable 5, releasing v1.4.0 with 128 bugs fixed. In this article, we'll examine real performance metrics, details of the Rust rewrite, comparisons with Node.js and Deno, and practical recommendations for production environments.
-
-**For an introduction and core features of Bun, see the article "[Bun in 2025](../2025-11-30--bun-2025/)".**
 
 ---
 
