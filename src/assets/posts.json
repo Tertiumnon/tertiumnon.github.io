@@ -819,5 +819,20 @@
     "filename": "index.ru.md",
     "dirname": "2026-07-12--bun-2026",
     "updatedAt": "2026-07-12"
+  },
+  {
+    "title": "Реализация Kanban и Scrum в Jira",
+    "link": "/ru/posts/2026-07-12--jira-kanban-scrum",
+    "language": "ru",
+    "category": "Career",
+    "tags": [
+      "Jira",
+      "Agile",
+      "Project Management"
+    ],
+    "publishedAt": "2026-07-12",
+    "filename": "index.ru.md",
+    "dirname": "2026-07-12--jira-kanban-scrum",
+    "updatedAt": "2026-07-12"
   }
 ]
