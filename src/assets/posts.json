@@ -659,7 +659,8 @@
     ],
     "publishedAt": "2025-03-26",
     "filename": "index.en.md",
-    "dirname": "2025-03-26--cooking-with-ts-enums"
+    "dirname": "2025-03-26--cooking-with-ts-enums",
+    "updatedAt": "2026-07-12"
   },
   {
     "title": "A minimum of books that should be read by a novice or experienced programmer",
@@ -681,28 +682,27 @@
     }
   },
   {
-    "title": "Bun — A Fast JavaScript Runtime and Tooling Ecosystem",
-    "link": "/en/posts/2025-11-30--bun",
+    "title": "Bun in 2025 — What It Is and How to Get Started",
+    "link": "/en/posts/2025-11-30--bun-2025",
     "language": "en",
     "category": "Programming",
     "tags": [
       "JavaScript",
-      "Rust",
       "Tools",
       "Web Development"
     ],
     "publishedAt": "2025-11-30",
     "filename": "index.en.md",
-    "dirname": "2025-11-30--bun",
-    "updatedAt": "2026-07-09",
+    "dirname": "2025-11-30--bun-2025",
+    "updatedAt": "2025-11-30",
     "source": {
       "name": "\"medium",
       "url": "https://tertiumnon.medium.com/bun-7fbe61f45e2e\""
     }
   },
   {
-    "title": "Bun — быстрый JavaScript-рантайм и инструментальная экосистема",
-    "link": "/ru/posts/2025-11-30--bun",
+    "title": "Bun в 2025 — что это и как начать",
+    "link": "/ru/posts/2025-11-30--bun-2025",
     "language": "ru",
     "category": "Programming",
     "tags": [
@@ -712,8 +712,8 @@
     ],
     "publishedAt": "2025-11-30",
     "filename": "index.ru.md",
-    "dirname": "2025-11-30--bun",
-    "updatedAt": "2025-12-06"
+    "dirname": "2025-11-30--bun-2025",
+    "updatedAt": "2025-11-30"
   },
   {
     "title": "ИИ: реальность после хайпа в 2026",
@@ -750,7 +750,8 @@
     ],
     "publishedAt": "2026-07-08",
     "filename": "index.ru.md",
-    "dirname": "2026-07-08--ai-programming-2026"
+    "dirname": "2026-07-08--ai-programming-2026",
+    "updatedAt": "2026-07-08"
   },
   {
     "title": "Angular RxJS vs Signals in 2026",
@@ -766,5 +767,37 @@
     "publishedAt": "2026-07-09",
     "filename": "index.en.md",
     "dirname": "2026-07-09--angular-rxjs-vs-signals"
+  },
+  {
+    "title": "Bun in 2026 — Performance, Recommendations, and Cloud Platforms",
+    "link": "/en/posts/2026-07-12--bun-2026",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "JavaScript",
+      "Tools",
+      "Web Development",
+      "Performance"
+    ],
+    "publishedAt": "2026-07-12",
+    "filename": "index.en.md",
+    "dirname": "2026-07-12--bun-2026",
+    "updatedAt": "2026-07-12"
+  },
+  {
+    "title": "Bun в 2026 — производительность, рекомендации и облачные платформы",
+    "link": "/ru/posts/2026-07-12--bun-2026",
+    "language": "ru",
+    "category": "Programming",
+    "tags": [
+      "JavaScript",
+      "Tools",
+      "Web Development",
+      "Performance"
+    ],
+    "publishedAt": "2026-07-12",
+    "filename": "index.ru.md",
+    "dirname": "2026-07-12--bun-2026",
+    "updatedAt": "2026-07-12"
   }
 ]
