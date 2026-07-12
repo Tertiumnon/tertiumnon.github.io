@@ -241,6 +241,5 @@ bun test --watch
 - Async stack traces
 - TC39 compliance improvements
 
----
 
 **Автор-составитель:** Виталий Балабанов
