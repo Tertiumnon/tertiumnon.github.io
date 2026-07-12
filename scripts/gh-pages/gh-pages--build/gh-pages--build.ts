@@ -64,7 +64,16 @@ function main(): void {
 	flattenBrowserDir(docsDir);
 
 	const nojekyllPath = path.join(docsDir, ".nojekyll");
-	fs.writeFileSync(nojekyllPath, "");
+	try {
+		fs.writeFileSync(nojekyllPath, "");
+		console.log("Created .nojekyll file at:", nojekyllPath);
+		if (!fs.existsSync(nojekyllPath)) {
+			throw new Error(".nojekyll file was not created successfully");
+		}
+	} catch (e) {
+		console.error("Failed to create .nojekyll file:", e);
+		process.exit(1);
+	}
 
 	console.log("Build complete. Output location:", docsDir);
 }
