@@ -25,24 +25,8 @@ function run(command: string, options?: RunOptions): string {
   return "";
 }
 
-async function copyDirRecursive(src: string, dest: string): Promise<void> {
-  await fs.mkdir(dest, { recursive: true });
-  const entries = await fs.readdir(src, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const srcPath = `${src}/${entry.name}`;
-    const destPath = `${dest}/${entry.name}`;
-
-    if (entry.isDirectory()) {
-      await copyDirRecursive(srcPath, destPath);
-    } else {
-      await fs.copyFile(srcPath, destPath);
-    }
-  }
-}
-
 async function deploy(): Promise<void> {
-  console.log("\n🚀 Deploying to GitHub Pages (gh-pages branch)...\n");
+  console.log("\n🚀 Deploying to GitHub Pages...\n");
 
   // CHECK 1: Verify we're on main branch
   const branch = run("git rev-parse --abbrev-ref HEAD", { silent: true });
@@ -92,70 +76,10 @@ async function deploy(): Promise<void> {
       exit(1);
     }
 
-    // STEP 3: Check if gh-pages branch exists
-    const ghPagesCheck = run("git rev-parse --verify gh-pages", { silent: true, ignoreFail: true });
-    const ghPagesExists = ghPagesCheck.length > 0;
-
-    // STEP 4: Switch to gh-pages branch
-    if (ghPagesExists) {
-      console.log("📤 Updating gh-pages branch...");
-      run("git checkout gh-pages");
-      run("git pull origin gh-pages");
-    } else {
-      console.log("📤 Creating gh-pages branch...");
-      run("git checkout --orphan gh-pages");
-    }
-
-    // STEP 5: Clean directory safely - only remove git-tracked files
-    console.log("🧹 Cleaning directory...");
-
-    // Remove all git-tracked files using git (safe)
-    const trackedFiles = run("git ls-files", { silent: true });
-    if (trackedFiles) {
-      run("git rm -rf . --quiet");
-    }
-
-    // Remove untracked files using git clean (safe)
-    run("git clean -fd --quiet");
-
-    // STEP 6: Copy docs
-    console.log("📋 Copying deployment files...");
-    await copyDirRecursive("docs", ".");
-
-    // CHECK 5: Verify index.html exists
-    try {
-      await fs.access("index.html");
-    } catch {
-      console.error("❌ Error: Deployment failed - index.html not found");
-      run("git checkout main", { silent: true, ignoreFail: true });
-      exit(1);
-    }
-
-    // STEP 7: Stage changes
-    console.log("📝 Staging changes...");
-    run("git add . --quiet");
-
-    // STEP 8: Commit and push
-    const changes = run("git status --porcelain", { silent: true });
-    if (changes) {
-      run('git commit -m "docs: deploy site" --quiet');
-      console.log("📤 Pushing to gh-pages...");
-      run("git push -u origin gh-pages");
-      console.log("✅ Deployed to gh-pages!");
-    } else {
-      console.log("✅ No changes to deploy.");
-    }
-
-    // STEP 9: Return to main branch
-    console.log("🔄 Returning to main branch...");
-    run("git checkout main");
-
-    // CHECK 6: Verify we're back on main
-    const finalBranch = run("git rev-parse --abbrev-ref HEAD", { silent: true });
-    if (finalBranch !== "main") {
-      console.error("❌ Error: Failed to return to main branch");
-      exit(1);
-    }
+    // STEP 3: Deploy using git subtree push
+    // This keeps us on main branch and pushes docs/ to gh-pages
+    console.log("📤 Pushing docs/ to gh-pages branch...");
+    run("git subtree push --prefix docs origin gh-pages");
 
     console.log("\n✨ Deployment complete!\n");
     console.log("📖 GitHub Pages is configured to use 'gh-pages' branch");
@@ -163,16 +87,6 @@ async function deploy(): Promise<void> {
   } catch (error) {
     console.error("❌ Deployment failed!");
     console.error(`Error: ${error}`);
-
-    // Try to return to main branch
-    console.error("🔄 Attempting to return to main...");
-    try {
-      run("git checkout main", { silent: true, ignoreFail: true });
-      console.error("✅ Returned to main branch");
-    } catch {
-      console.error("⚠️  Manual intervention may be needed");
-    }
-
     exit(1);
   }
 }
