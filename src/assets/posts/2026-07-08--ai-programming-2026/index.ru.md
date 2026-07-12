@@ -1,6 +1,6 @@
 ---
 publishedAt: 2026-07-08
-updatedAt: 2026-07-08
+updatedAt: 2026-07-12
 category: Programming
 tags: ["Tips"]
 ---
@@ -630,6 +630,199 @@ fun `discount price should calculate correctly`() {
 - Скрипты для рутины
 - Фичи ИИ (caching, skills)
 - Постоянное совершенствование
+
+---
+
+## Критическая тема: ИИ может удалить ваш git репозиторий и базу данных
+
+Это реальная проблема, которую часто не замечают при работе с ИИ. ИИ может **непреднамеренно** выполнить деструктивные команды:
+
+- `rm -rf .git` → удаление репозитория
+- `rm -rf /` → удаление файловой системы (на производстве это чаще `docker exec`)
+- `DROP TABLE users;` → удаление таблицы в БД
+- `DELETE FROM *` → удаление всех данных
+- Перезапись production переменных на development значения
+
+**Это случилось со мной.** Я попросил ИИ написать скрипт очистки, и он создал `rm -rf *` на gh-pages orphan ветке. Это привело к удалению `.git` директории, и репозиторий пришлось восстанавливать из облака.
+
+### Типичные сценарии, когда ИИ наносит ущерб
+
+1. **Скрипты миграции и очистки:** "напиши скрипт удаления старых файлов" → `rm -rf *` вместо `rm -rf src/old_files/`
+
+2. **Deployment скрипты:** "развёрнуть новую версию" → ИИ пишет команду которая останавливает production БД вместо staging
+
+3. **Тестовые данные:** "очисти тестовую БД" → ИИ очищает production БД (перепутал переменные окружения)
+
+4. **Управление зависимостями:** "удали неиспользуемый пакет" → ИИ удаляет критически важный пакет, который используется через `require()`
+
+5. **Миграции БД:** "добавь индекс" → ИИ пишет миграцию которая дропает таблицу вместо её модификации
+
+### Как противостоять
+
+#### 1. **Никогда не давайте ИИ прямой доступ к destructive командам**
+
+```bash
+# ❌ ПЛОХО: ИИ может написать опасную команду
+bun run clean  # ИИ пишет rm -rf внутри
+
+# ✅ ХОРОШО: Явный контроль
+bun run clean:dev      # удаляет только dev файлы
+bun run clean:tests    # удаляет только тестовые артефакты
+bun run db:reset:staging  # сброс ТОЛЬКО staging БД
+```
+
+#### 2. **Разделение окружений с жесткой защитой**
+
+```typescript
+// ✅ Правило: никогда не допускай production логики в dev скриптах
+const isProduction = process.env.NODE_ENV === 'production';
+const isDevelopment = process.env.NODE_ENV === 'development';
+
+if (isProduction) {
+  throw new Error("This script is for development only!");
+}
+
+// ✅ Сделай невозможным перепутать БД
+const dbConnection = {
+  host: process.env.DB_HOST,
+  name: process.env.DB_NAME,
+  // Никогда не используй hardcode! Только env variables
+};
+
+if (!process.env.DB_NAME) {
+  throw new Error("DB_NAME not set! Refusing to connect to unknown database");
+}
+```
+
+#### 3. **Белый список команд для ИИ**
+
+Напишите в `CLAUDE.md`:
+
+```markdown
+## Запрещённые команды
+
+ИИ НИКОГДА не должен использовать:
+- `rm -rf` без явной папки (только `rm -rf ./specific-folder/`)
+- `DROP TABLE`, `DROP DATABASE` без `IF EXISTS` проверки
+- `DELETE` без `WHERE` условия (только WHERE с определённым условием)
+- Прямые SQL запросы без параметризации
+- `git reset --hard`, `git push --force`
+- Команды с `sudo` (это разработка, не production!)
+
+Если ИИ пишет такие команды — всегда требуйте explicit review и объяснение.
+```
+
+#### 4. **Автоматическая защита в скриптах**
+
+```typescript
+// ✅ Убедитесь что скрипт знает что он делает
+async function deleteOldFiles(dir: string) {
+  // Явная защита
+  if (!dir.includes("temp") && !dir.includes("cache")) {
+    throw new Error(`Cannot delete from ${dir}! Only temp/ and cache/ allowed`);
+  }
+  
+  const files = await fs.readdir(dir);
+  
+  // Еще одна защита: не удалять слишком много
+  if (files.length > 10000) {
+    throw new Error("Too many files! This looks like a mistake");
+  }
+  
+  console.log(`Deleting ${files.length} files from ${dir}...`);
+  for (const file of files) {
+    await fs.unlink(path.join(dir, file));
+  }
+}
+```
+
+#### 5. **Приходит запрос на опасную операцию → потребуй план**
+
+Когда вы говорите ИИ:
+- "удали старую миграцию"
+- "почисти БД"
+- "переинициализируй сервер"
+
+Всегда требуйте:
+
+```
+Вы: "Удали миграции старше 2024 года"
+
+ИИ должен ответить:
+1. Какие именно файлы будут удалены (список)
+2. Какие таблицы затронет каждая миграция
+3. План отката если что-то пойдёт не так
+4. Явный запрос подтверждения перед удалением
+```
+
+#### 6. **Используйте git hooks для защиты**
+
+```bash
+# .githooks/pre-commit
+# Запретить коммитить опасные паттерны
+
+if grep -r "rm -rf /" . ; then
+  echo "❌ DANGEROUS: rm -rf / found!"
+  exit 1
+fi
+
+if grep -r "DROP TABLE" . ; then
+  echo "❌ DANGEROUS: SQL DROP without WHERE found!"
+  exit 1
+fi
+```
+
+#### 7. **CI/CD как барьер**
+
+```yaml
+# .github/workflows/safety-check.yml
+- name: Security checks
+  run: |
+    # Запретить опасные паттерны попадать в main
+    if grep -r "DROP DATABASE" src/migrations; then
+      echo "❌ Prevent destructive migrations"
+      exit 1
+    fi
+    
+    if grep -r "rm -rf /" scripts; then
+      echo "❌ Prevent destructive scripts"
+      exit 1
+    fi
+```
+
+#### 8. **Резервные копии — последний щит**
+
+Даже с правилами ошибки случаются. Убедитесь что есть резервная копия:
+
+```bash
+# Daily backup
+0 2 * * * /scripts/backup-database.sh
+0 3 * * * /scripts/backup-git.sh
+
+# Git commits все сохранены в облаке (GitHub, GitLab)
+# БД имеет автоматические снимки состояния (AWS RDS, managed services)
+```
+
+### Главное правило безопасности
+
+**Никогда не доверяйте ИИ с production без явного контроля.** 
+
+Этот список команд должен быть в вашем `CLAUDE.md`:
+
+```markdown
+## Команды которые ВСЕГДА требуют ручного review
+
+- Любой `rm`, `delete`, `drop`
+- Любой доступ к базе данных (даже на `test`)
+- Изменения переменных окружения
+- Изменения прав доступа
+- Создание новых сервисов или инфраструктуры
+- Изменения скриптов deploy и backup
+
+Правило: Если сомневаетесь — требуйте review.
+```
+
+---
 
 ### Главный совет
 
