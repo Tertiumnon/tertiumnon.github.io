@@ -75,11 +75,15 @@ async function deploy(): Promise<void> {
       exit(1);
     }
 
-    // STEP 3: Deploy using git subtree push
-    // This keeps us on main branch and pushes docs/ to gh-pages
-    // Use --force because gh-pages should only contain built docs
+    // STEP 3: Deploy using git push with subtree split
+    // Split docs/ into gh-pages branch (with -f to force push)
+    // Safe because gh-pages should ONLY contain built output, never manual edits
     console.log("📤 Pushing docs/ to gh-pages branch...");
-    run("git subtree push --prefix docs origin gh-pages --force");
+    const splitCommit = run("git subtree split --prefix docs HEAD", { silent: true });
+    if (!splitCommit) {
+      throw new Error("Failed to split docs subtree");
+    }
+    run(`git push -f origin ${splitCommit}:gh-pages`);
 
     console.log("\n✨ Deployment complete!\n");
     console.log("📖 GitHub Pages is configured to use 'gh-pages' branch");
