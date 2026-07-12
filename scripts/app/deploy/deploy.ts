@@ -41,46 +41,38 @@ async function copyDirRecursive(src: string, dest: string): Promise<void> {
   }
 }
 
-async function removeAll(dirPath: string): Promise<void> {
-  try {
-    const entries = await fs.readdir(dirPath, { withFileTypes: true });
-    for (const entry of entries) {
-      if (entry.name === ".git") continue;
-      const fullPath = `${dirPath}/${entry.name}`;
-      if (entry.isDirectory()) {
-        await fs.rm(fullPath, { recursive: true, force: true });
-      } else {
-        await fs.unlink(fullPath);
-      }
-    }
-  } catch {
-    // ignore errors
-  }
-}
-
 async function deploy(): Promise<void> {
   console.log("\n🚀 Deploying to GitHub Pages (gh-pages branch)...\n");
 
-  // Check if on main branch
+  // CHECK 1: Verify we're on main branch
   const branch = run("git rev-parse --abbrev-ref HEAD", { silent: true });
   if (branch !== "main") {
     console.error("❌ Error: Must be on 'main' branch to deploy");
     exit(1);
   }
 
-  // Check if working tree is clean
+  // CHECK 2: Verify working tree is clean
   const status = run("git status --porcelain", { silent: true });
   if (status) {
     console.error("❌ Error: Working tree has uncommitted changes. Commit first.");
     exit(1);
   }
 
+  // CHECK 3: Verify critical files exist
   try {
-    // Build articles
+    await fs.access("package.json");
+    await fs.access("src");
+  } catch {
+    console.error("❌ Error: Cannot access critical files");
+    exit(1);
+  }
+
+  try {
+    // STEP 1: Build articles
     console.log("📚 Building articles...");
     run("bun run post:list:create");
 
-    // Commit articles if changed
+    // Commit if changed
     const articlesStatus = run("git status --porcelain src/assets/posts.json", { silent: true });
     if (articlesStatus) {
       run("git add src/assets/posts.json");
@@ -88,33 +80,23 @@ async function deploy(): Promise<void> {
       run("git push");
     }
 
-    // Build site
+    // STEP 2: Build site
     console.log("🔨 Building site...");
     run("bun run gh:pages:build");
 
-    // Check if docs folder exists
-    const docsPath = "docs";
+    // CHECK 4: Verify docs folder exists after build
     try {
-      await fs.access(docsPath);
+      await fs.access("docs");
     } catch {
       console.error("❌ Error: docs folder not found after build");
       exit(1);
     }
 
-    // Save docs dir path before switching branches
-    const repoRoot = process.cwd();
-    const docsDir = `${repoRoot}/docs`;
+    // STEP 3: Check if gh-pages branch exists
+    const ghPagesCheck = run("git rev-parse --verify gh-pages", { silent: true, ignoreFail: true });
+    const ghPagesExists = ghPagesCheck.length > 0;
 
-    // Copy docs to temp location for safety
-    console.log("📁 Preparing deployment files...");
-    const tempDocsDir = `${repoRoot}/.deploy-temp`;
-    await fs.rm(tempDocsDir, { recursive: true, force: true });
-    await copyDirRecursive(docsDir, tempDocsDir);
-
-    // Check if gh-pages branch exists
-    const branchCheck = run("git rev-parse --verify gh-pages", { silent: true, ignoreFail: true });
-    const ghPagesExists = branchCheck.length > 0;
-
+    // STEP 4: Switch to gh-pages branch
     if (ghPagesExists) {
       console.log("📤 Updating gh-pages branch...");
       run("git checkout gh-pages");
@@ -122,36 +104,75 @@ async function deploy(): Promise<void> {
     } else {
       console.log("📤 Creating gh-pages branch...");
       run("git checkout --orphan gh-pages");
-      run("git rm -rf .");
     }
 
-    // Clear directory and copy docs back
-    await removeAll(repoRoot);
-    await copyDirRecursive(tempDocsDir, repoRoot);
-    await fs.rm(tempDocsDir, { recursive: true, force: true });
+    // STEP 5: Clean directory safely - only remove git-tracked files
+    console.log("🧹 Cleaning directory...");
 
-    run("git add .");
+    // Remove all git-tracked files using git (safe)
+    const trackedFiles = run("git ls-files", { silent: true });
+    if (trackedFiles) {
+      run("git rm -rf . --quiet");
+    }
 
-    // Only commit if there are changes
-    const docsStatus = run("git status --porcelain", { silent: true });
-    if (docsStatus) {
-      run('git commit -m "docs: deploy site"');
+    // Remove untracked files using git clean (safe)
+    run("git clean -fd --quiet");
+
+    // STEP 6: Copy docs
+    console.log("📋 Copying deployment files...");
+    await copyDirRecursive("docs", ".");
+
+    // CHECK 5: Verify index.html exists
+    try {
+      await fs.access("index.html");
+    } catch {
+      console.error("❌ Error: Deployment failed - index.html not found");
+      run("git checkout main", { silent: true, ignoreFail: true });
+      exit(1);
+    }
+
+    // STEP 7: Stage changes
+    console.log("📝 Staging changes...");
+    run("git add . --quiet");
+
+    // STEP 8: Commit and push
+    const changes = run("git status --porcelain", { silent: true });
+    if (changes) {
+      run('git commit -m "docs: deploy site" --quiet');
+      console.log("📤 Pushing to gh-pages...");
       run("git push -u origin gh-pages");
       console.log("✅ Deployed to gh-pages!");
     } else {
       console.log("✅ No changes to deploy.");
     }
 
-    // Return to main branch
+    // STEP 9: Return to main branch
     console.log("🔄 Returning to main branch...");
     run("git checkout main");
 
+    // CHECK 6: Verify we're back on main
+    const finalBranch = run("git rev-parse --abbrev-ref HEAD", { silent: true });
+    if (finalBranch !== "main") {
+      console.error("❌ Error: Failed to return to main branch");
+      exit(1);
+    }
+
     console.log("\n✨ Deployment complete!\n");
-    console.log("📖 Make sure GitHub Pages is configured to use 'gh-pages' branch");
+    console.log("📖 GitHub Pages is configured to use 'gh-pages' branch");
     console.log("   Settings → Pages → Build and deployment → Branch: gh-pages\n");
   } catch (error) {
-    console.error("❌ Deployment failed");
-    run("git checkout main", { silent: true });
+    console.error("❌ Deployment failed!");
+    console.error(`Error: ${error}`);
+
+    // Try to return to main branch
+    console.error("🔄 Attempting to return to main...");
+    try {
+      run("git checkout main", { silent: true, ignoreFail: true });
+      console.error("✅ Returned to main branch");
+    } catch {
+      console.error("⚠️  Manual intervention may be needed");
+    }
+
     exit(1);
   }
 }
