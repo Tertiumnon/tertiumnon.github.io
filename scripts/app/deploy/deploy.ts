@@ -101,6 +101,16 @@ async function deploy(): Promise<void> {
       exit(1);
     }
 
+    // Save docs dir path before switching branches
+    const repoRoot = process.cwd();
+    const docsDir = `${repoRoot}/docs`;
+
+    // Copy docs to temp location for safety
+    console.log("📁 Preparing deployment files...");
+    const tempDocsDir = `${repoRoot}/.deploy-temp`;
+    await fs.rm(tempDocsDir, { recursive: true, force: true });
+    await copyDirRecursive(docsDir, tempDocsDir);
+
     // Check if gh-pages branch exists
     const branchCheck = run("git rev-parse --verify gh-pages", { silent: true, ignoreFail: true });
     const ghPagesExists = branchCheck.length > 0;
@@ -115,12 +125,10 @@ async function deploy(): Promise<void> {
       run("git rm -rf .");
     }
 
-    // Copy docs to root
-    console.log("📁 Preparing deployment files...");
-    const repoRoot = process.cwd();
+    // Clear directory and copy docs back
     await removeAll(repoRoot);
-    const docsDir = `${repoRoot}/docs`;
-    await copyDirRecursive(docsDir, repoRoot);
+    await copyDirRecursive(tempDocsDir, repoRoot);
+    await fs.rm(tempDocsDir, { recursive: true, force: true });
 
     run("git add .");
 
