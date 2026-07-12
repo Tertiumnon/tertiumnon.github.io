@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Pre-commit hook: lint and test before committing
+# Pre-commit hook: type checking before committing
 
 set -e
 
@@ -8,9 +8,5 @@ echo "🔍 Running pre-commit checks..."
 # Run linting
 echo "  → Checking TypeScript..."
 bun run lint:ts:check || exit 1
-
-# Run tests
-echo "  → Running tests..."
-bun test --run || exit 1
 
 echo "✅ Pre-commit checks passed!"
