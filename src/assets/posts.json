@@ -718,16 +718,18 @@
   },
   {
     "title": "ИИ: реальность после хайпа в 2026",
-    "link": "/ru/posts/2026-06-11--ai-2026",
+    "link": "/ru/posts/2026-06-11--ai-hype-reality-2026",
     "language": "ru",
-    "category": "Programming",
+    "category": "Career",
     "tags": [
-      "AI",
-      "Review"
+      "Review",
+      "Business",
+      "AI"
     ],
     "publishedAt": "2026-06-11",
     "filename": "index.ru.md",
-    "dirname": "2026-06-11--ai-2026"
+    "dirname": "2026-06-11--ai-hype-reality-2026",
+    "updatedAt": "2026-07-12"
   },
   {
     "title": "Firefox userChrome.css",
@@ -770,6 +772,20 @@
     "publishedAt": "2026-07-09",
     "filename": "index.en.md",
     "dirname": "2026-07-09--angular-rxjs-vs-signals"
+  },
+  {
+    "title": "ИИ в 2026: полное техническое руководство",
+    "link": "/ru/posts/2026-07-12--ai-2026",
+    "language": "ru",
+    "category": "Programming",
+    "tags": [
+      "AI",
+      "Technical",
+      "Review"
+    ],
+    "publishedAt": "2026-07-12",
+    "filename": "index.ru.md",
+    "dirname": "2026-07-12--ai-2026"
   },
   {
     "title": "Bun in 2026 — Performance, Recommendations, and Cloud Platforms",
