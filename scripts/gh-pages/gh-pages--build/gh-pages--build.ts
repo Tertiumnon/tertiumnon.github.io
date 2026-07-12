@@ -38,7 +38,8 @@ function main(): void {
 		console.error("Failed to run ng build:", res.error);
 		process.exit(1);
 	}
-	if (res.status !== 0) process.exit(res.status);
+	const exitCode = res.status ?? 1;
+	if (exitCode !== 0) process.exit(exitCode);
 
 	flattenBrowserDir(docsDir);
 
