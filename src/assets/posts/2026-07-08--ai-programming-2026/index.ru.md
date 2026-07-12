@@ -1,5 +1,6 @@
 ---
 publishedAt: 2026-07-08
+updatedAt: 2026-07-08
 category: Programming
 tags: ["Tips"]
 ---
@@ -26,18 +27,130 @@ tags: ["Tips"]
 
 ### Выберите архитектурный подход
 
-Существует несколько популярных подходов. Выберите один и следуйте ему. **ИИ не должен выбирать — вы выбираете.**
+Существует несколько подходов. Выберите один и следуйте ему. **ИИ не должен выбирать — вы выбираете.** Выбор зависит от типа проекта и его сложности.
 
-Возможные архитектуры:
+#### Как выбрать?
 
-1. **Domain Driven Design (DDD)** — организация по бизнес-доменам
-2. **Clean Architecture** — организация по слоям
-3. **Hexagonal Architecture** — организация по портам и адаптерам
-4. **Microservices Architecture** — независимые сервисы
-5. **Event-Driven Architecture** — событийно-ориентированная архитектура
-6. **Feature-based** — организация по функциональным фичам
+**Для большинства проектов с ИИ: Feature-based или Clean Architecture** (легче контролировать AI).
+
+Возможные архитектуры и когда их использовать:
+
+**1. Feature-based** ⭐ (рекомендуется для AI-проектов)
+- **Структура:** `src/features/{feature_name}/{components,services,tests}`
+- **Когда использовать:** новые проекты, средние по сложности приложения, когда требования четкие
+- **Почему хорошо для ИИ:** 
+  - Структура очевидна из требований: "добавить фичу авторизация" → папка `features/auth`
+  - AI трудно нарушить архитектуру — каждая фича изолирована
+  - Спеки пишутся просто: "реализовать фичу X с компонентами A, B, C"
+  - Минимум контекста о доменах/бизнесе нужно
+- **Пример:** e-commerce = features/products, features/cart, features/checkout, features/auth
+
+**2. Clean Architecture** ⭐ (хорошо для ИИ)
+- **Структура:** слои `entities → use-cases → interface-adapters → frameworks`
+- **Когда использовать:** когда нужна высокая изолированность, сложная бизнес-логика
+- **Почему хорошо для ИИ:**
+  - Слои четко разделены, AI трудно их нарушить
+  - Типичный паттерн: controller → service → repository
+  - Зависимости направлены внутрь (контролируемо)
+  - Тесты пишутся четко: unit (entities), integration (use-cases)
+- **Минус:** требует больше кода, структура менее очевидна из требований
+
+**3. Domain Driven Design (DDD)**
+- **Структура:** `domains/{domain}/{entities,services,repositories,dtos}`
+- **Когда использовать:** большие корпоративные системы с четкими бизнес-доменами
+- **Почему требует осторожности с ИИ:**
+  - Требует глубокого понимания бизнес-логики и термином (bounded contexts, ubiquitous language)
+  - AI пишет "как средний программист" (не стратегически)
+  - DDD требует постоянного рефакторинга и пересмотра доменов
+  - Легче создать неправильные домены, которые потом переделывать
+  - Нужна опытная команда, которая направляет AI
+- **Когда может работать:** если у вас есть Product Owner или архитектор, который четко определяет домены
+
+**4. Hexagonal Architecture** (портов и адаптеров)
+- **Структура:** core → ports (interfaces) → adapters (реализация)
+- **Когда использовать:** когда нужна максимальная гибкость, частая смена деталей реализации
+- **Почему может быть сложна для ИИ:** требует понимания разницы между портом и адаптером, AI может их перепутать
+
+**5. Microservices Architecture**
+- **Когда использовать:** большие команды, разные сервисы развивают независимо
+- **Для AI:** сложно начинать с этого, лучше начать с Feature-based, потом разбить на микросервисы
+
+**6. Event-Driven Architecture**
+- **Когда использовать:** real-time системы, асинхронные процессы, много событий
+- **Для AI:** может быть сложна, требует понимания потока событий
+
+#### Рекомендация для начинающих
+
+Начните с **Feature-based**, если:
+- Проект новый
+- Требования понятные
+- Команда маленькая (1-5 людей)
+- Нужна скорость разработки
+
+Начните с **Clean Architecture**, если:
+- Нужна высокая тестируемость
+- Бизнес-логика сложная
+- Надо часто менять детали реализации
+
+Используйте **DDD** только если:
+- Вы уже использовали его раньше
+- У вас есть архитектор, который направляет команду
+- Домены четко определены в требованиях
 
 Полные описания, примеры и рекомендации смотрите в [документации архитектур](https://github.com/tertiumnon/tertium-cheatsheets/tree/main/pages/arhitectures).
+
+### Рекомендации для языков программирования
+
+**Важно:** ИИ работает по-разному на разных языках. Выбор языка влияет на скорость разработки и количество ошибок.
+
+**TypeScript/JavaScript** ⭐ (лучший для AI)
+- **Почему хорошо:** динамическая типизация позволяет ИИ быстро писать, но TypeScript strict mode ловит ошибки
+- **Риск:** если не включить strict mode, ИИ создаст много скрытых ошибок типов
+- **Совет:** используйте `"strict": true` в tsconfig.json обязательно
+- **Инструменты:** TypeScript strict mode + vitest для тестов
+
+**Python** ⭐ (хорошо для бизнес-логики и ML)
+- **Почему хорошо:** синтаксис простой, ИИ понимает его хорошо, быстрая разработка
+- **Риск:** runtime errors, динамическая типизация может привести к ошибкам
+- **Совет:** используйте `mypy` (static type checker) + type hints обязательно
+- **Совет:** пишите docstrings для функций (ИИ лучше понимает контекст)
+- **Инструменты:** mypy + pytest для тестов + pydantic для валидации
+- **Где использовать:** backend логика, ML/Data Science, скрипты
+
+**Go** (хорошо для backend и микросервисов)
+- **Почему хорошо:** строгая типизация, простой синтаксис, быстрая компиляция
+- **Риск:** ИИ может забыть проверки ошибок (`if err != nil`)
+- **Совет:** обязательны code review на все файлы (проверяйте обработку ошибок)
+- **Инструменты:** `golangci-lint` для контроля качества + testing пакет
+- **Где использовать:** backend, микросервисы, CLI инструменты
+
+**Rust** (высокие требования к контролю)
+- **Почему сложно для AI:** borrow checker, lifetime, трейты — требуют понимания
+- **Риск:** ИИ генерирует код, который не компилируется, много переделок
+- **Совет:** используйте только если опытны с Rust сами (нужно часто корректировать ИИ)
+- **Инструменты:** cargo clippy + cargo test
+- **Где использовать:** performance-critical код, системные программы, если безопасность критична
+
+**Java/Kotlin** (хорошо для больших приложений)
+- **Почему хорошо:** строгая типизация, явные интерфейсы помогают ИИ
+- **Риск:** многословие, ИИ может генерировать слишком много boilerplate
+- **Совет:** используйте Kotlin вместо Java (более лаконичный)
+- **Инструменты:** SonarQube для качества кода + JUnit для тестов
+- **Где использовать:** enterprise приложения, Android, большие backend системы
+
+**C#** (хорошо для .NET экосистемы)
+- **Почему хорошо:** похож на Java, но лаконичнее, strong tooling (Visual Studio)
+- **Риск:** null reference exceptions если не использовать nullable types
+- **Совет:** включите `<Nullable>enable</Nullable>` в csproj
+- **Инструменты:** Roslyn analyzers + xUnit для тестов
+- **Где использовать:** Windows backend, Unity games, enterprise .NET приложения
+
+#### Универсальные правила для всех языков
+
+1. **Используйте type checking:** статическая типизация или type hints (Python mypy, JS TypeScript)
+2. **Обязательны тесты:** 80%+ покрытие для всех языков
+3. **Linters и formatters:** каждый язык имеет свой (`eslint`, `black`, `golangci-lint`, `clippy`)
+4. **Обработка ошибок:** ИИ часто забывает, требуется code review
 
 ### Явные правила структуры
 
@@ -64,8 +177,9 @@ tags: ["Tips"]
 
 ### Dependency Injection — контроль скрытых зависимостей
 
-Используйте DI чтобы ИИ не создавал скрытые зависимости:
+Используйте DI чтобы ИИ не создавал скрытые зависимости. Применимо для всех языков:
 
+**TypeScript:**
 ```typescript
 // ❌ ИИ часто пишет так (скрытая зависимость)
 export class UserService {
@@ -86,7 +200,68 @@ export class UserService {
 }
 ```
 
-С DI ИИ не может скрывать зависимости. Они видны в конструкторе.
+**Python:**
+```python
+# ❌ Скрытая зависимость
+class UserService:
+    def __init__(self):
+        self.db = Database()  # Плохо!
+    
+    def create_user(self, name: str):
+        return self.db.query('INSERT INTO users...')
+
+# ✅ Явная зависимость
+class UserService:
+    def __init__(self, db: Database):  # Зависимость видна
+        self.db = db
+    
+    def create_user(self, name: str):
+        return self.db.query('INSERT INTO users...')
+```
+
+**Java:**
+```java
+// ❌ Скрытая зависимость
+public class UserService {
+    private Database db = new Database(); // Плохо!
+    
+    public User createUser(String name) {
+        return db.query("INSERT INTO users...");
+    }
+}
+
+// ✅ Явная зависимость (через конструктор или setter)
+public class UserService {
+    private Database db;
+    
+    public UserService(Database db) {  // Зависимость видна
+        this.db = db;
+    }
+    
+    public User createUser(String name) {
+        return db.query("INSERT INTO users...");
+    }
+}
+```
+
+**Go:**
+```go
+// ❌ Скрытая зависимость
+type UserService struct {
+    db *Database  // Если инициализируется внутри — плохо
+}
+
+// ✅ Явная зависимость
+type UserService struct {
+    db *Database
+}
+
+func NewUserService(db *Database) *UserService {  // Зависимость видна
+    return &UserService{db: db}
+}
+```
+
+**Правило:** С DI ИИ не может скрывать зависимости. Они явно видны в конструкторе/инициализаторе, что упрощает code review.
 
 ### Инструменты для контроля архитектуры
 
@@ -195,63 +370,178 @@ npx depcruise src --validate
 
 Когда ИИ пишет код, нужны **трёхслойные фильтры**.
 
-### Слой 1: TypeScript strict mode
+### Слой 1: Статическая типизация (Type Checking)
 
-**Первая линия защиты** — типизация. TypeScript в strict mode отловит ошибки типов до runtime:
+**Первая линия защиты** — типизация. Строгая типизация отловит ошибки до runtime. Зависит от вашего языка:
 
+**TypeScript (strict mode):**
 ```typescript
-// ИИ это сгенерирует — будет ошибка:
+// ❌ ИИ это сгенерирует — будет ошибка:
 function processUser(user: User) {
   return user.email.toUpperCase(); // Error: Object is possibly 'undefined'
 }
 
-// ИИ будет вынужден это исправить:
+// ✅ ИИ будет вынужден это исправить:
 function processUser(user: User) {
   return user.email?.toUpperCase() ?? 'NO_EMAIL';
 }
 ```
 
-**Strict mode TypeScript не позволяет ИИ лениться.** Это больше, чем просто проверка синтаксиса — это автоматическая валидация всей логики.
+Включите в `tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true
+  }
+}
+```
+
+**Python (mypy + type hints):**
+```python
+# ❌ Без type hints ИИ создаст ошибки:
+def process_user(user):
+    return user.email.upper()  # Может быть None, не проверено
+
+# ✅ С type hints + mypy проверит:
+from typing import Optional
+
+def process_user(user: User) -> str:
+    if user.email is None:
+        return 'NO_EMAIL'
+    return user.email.upper()
+```
+
+Включите `mypy` в проект:
+```bash
+mypy --strict src/
+```
+
+**Go (встроенная типизация):**
+```go
+// Go требует явных типов, ИИ не может это нарушить
+func ProcessUser(user User) string {
+    if user.Email == "" {
+        return "NO_EMAIL"
+    }
+    return strings.ToUpper(user.Email)
+}
+```
+
+**Java/Kotlin (опциональные типы):**
+```kotlin
+// ❌ Kotlin позволяет nullable типы:
+fun processUser(user: User): String {
+    return user.email.uppercase() // NPE если email null
+}
+
+// ✅ Правильно — явно с Optional:
+fun processUser(user: User): String {
+    return user.email?.uppercase() ?: "NO_EMAIL"
+}
+```
+
+**C# (nullable reference types):**
+```csharp
+// Включите в .csproj:
+<Nullable>enable</Nullable>
+
+// ИИ будет вынужден обработать null:
+public string ProcessUser(User user)
+{
+    return user.Email?.ToUpper() ?? "NO_EMAIL";
+}
+```
+
+**Универсальное правило:** Типизация не позволяет ИИ лениться. Это больше, чем проверка синтаксиса — это **автоматическая валидация всей логики**, независимо от языка.
 
 ### Слой 2: Тесты (80%+ покрытие)
 
-**Главный фильтр** — тесты. Даже если TypeScript не заметит, тесты отловят логические ошибки:
+**Главный фильтр** — тесты. Даже если type checking не заметит, тесты отловят логические ошибки. Работает для всех языков:
 
+**TypeScript/JavaScript:**
 ```typescript
-// ИИ может написать это и TypeScript не заметит:
+// ❌ ИИ может написать это и type checking не заметит:
 function discountPrice(price: number, percent: number): number {
   return price - (price * percent);  // Ошибка: не разделил на 100!
 }
 
-// Но тест сразу провалится:
+// ✅ Но тест сразу провалится:
 it('should calculate 10% discount correctly', () => {
   expect(discountPrice(100, 10)).toBe(90); // Fail!
 });
 ```
 
-Тесты ловят:
+**Python:**
+```python
+# ❌ ИИ может написать это:
+def discount_price(price: float, percent: float) -> float:
+    return price - (price * percent)  # Ошибка: не разделил на 100!
+
+# ✅ Тест отловит:
+def test_discount_price():
+    assert discount_price(100, 10) == 90  # Fail!
+```
+
+**Go:**
+```go
+// ❌ ИИ может написать это:
+func DiscountPrice(price float64, percent float64) float64 {
+    return price - (price * percent)  // Ошибка!
+}
+
+// ✅ Тест отловит:
+func TestDiscountPrice(t *testing.T) {
+    result := DiscountPrice(100, 10)
+    if result != 90 {
+        t.Errorf("expected 90, got %v", result)
+    }
+}
+```
+
+**Java/Kotlin:**
+```kotlin
+// ❌ ИИ может написать это:
+fun discountPrice(price: Double, percent: Double): Double {
+    return price - (price * percent)  // Ошибка!
+}
+
+// ✅ Тест отловит:
+@Test
+fun `discount price should calculate correctly`() {
+    assertEquals(90.0, discountPrice(100.0, 10.0))
+}
+```
+
+**Что ловят тесты:**
 - Граничные случаи (пустые массивы, нулевые значения, большие числа)
 - Состояния, которые не должны быть достижимы
 - Взаимодействие между компонентами
 - Race conditions и асинхронные ошибки
+- Логику, которую type checking не может проверить
 
 **Требования:**
 - **Unit-тесты**: 80%+ покрытия кода
 - **Integration-тесты**: критичные пути (авторизация, оплата, сохранение данных)
 - **Snapshot-тесты**: для UI компонентов
 
-Инструменты:
-- `vitest` для unit-тестов (быстрее, чем Jest)
-- `@angular/core/testing` для Angular компонентов
-- `npm run test -- --coverage` для анализа покрытия
+**Инструменты по языкам:**
+- **TypeScript/JavaScript:** vitest, Jest + `npm run test -- --coverage`
+- **Python:** pytest + `pytest --cov`
+- **Go:** testing пакет + `go test -cover`
+- **Java/Kotlin:** JUnit + `gradle test --info`
+- **C#:** xUnit + `dotnet test /p:CollectCoverage=true`
 
 ### Слой 3: Code review
 
 **Финальная человеческая проверка.** Проверьте:
 - Соответствие плану
-- Логические ошибки (которые не поймал TypeScript)
+- Логические ошибки (которые не поймала типизация и тесты)
 - Edge cases в тестах
 - Безопасность (нет ли уязвимостей)
+- Обработка ошибок (особенно важно для Go, Java)
 - Соответствие соглашениям проекта
 - Техдолг (не создал ли новые проблемы)
 
@@ -303,7 +593,7 @@ it('should calculate 10% discount correctly', () => {
 
 1. **Архитектура** — чёткая структура + dependency-cruiser
 2. **Research-Plan-Implement** — контроль перед кодированием
-3. **TypeScript strict** — автоматическая валидация типов
+3. **Типизация** — strict type checking (TypeScript, mypy, etc.)
 4. **Тесты 80%+** — фильтр логических ошибок
 5. **Code review** — финальная проверка
 6. **Скрипты для рутины** — экономия денег на повторных запросах
@@ -317,7 +607,10 @@ it('should calculate 10% discount correctly', () => {
 ### Как начать прямо сейчас
 
 **Неделя 1:**
-- Выберите архитектурный подход (рекомендую DDD)
+- Выберите архитектурный подход:
+  - **Для большинства:** Feature-based (проще контролировать AI)
+  - **Для сложной логики:** Clean Architecture
+  - **Для больших корпоративных систем:** DDD (требует опыта)
 - Опишите его в CLAUDE.md
 - Настройте dependency-cruiser
 
@@ -326,7 +619,11 @@ it('should calculate 10% discount correctly', () => {
 - Требуйте план перед кодированием
 
 **Неделя 3:**
-- TypeScript strict mode
+- Включите strict type checking для вашего языка:
+  - **TypeScript:** `"strict": true` в tsconfig.json
+  - **Python:** `mypy --strict` в CI
+  - **Go:** обязательно проверяйте ошибки
+  - **Java/Kotlin:** включите null-safety проверки
 - 80%+ покрытие тестами обязательно
 
 **Неделя 4+:**

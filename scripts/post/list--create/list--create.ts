@@ -1,5 +1,5 @@
 import * as fs from "node:fs/promises";
-import { Post } from "../app/entities/post/post";
+import { Post } from "../../../src/app/entities/post/post";
 
 const ARTICLE_LIST_DIR = "src/assets/posts";
 const ARTICLE_LIST_JSON = "src/assets/posts.json";

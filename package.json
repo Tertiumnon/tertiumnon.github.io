@@ -5,9 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:articles": "bun ./src/utils/create-article-list.ts",
-    "build:gh": "node ./scripts/build-gh.js",
-    "create:post": "bun ./scripts/post/create/create.ts",
+    "gh:pages:build": "bun ./scripts/gh-pages/gh-pages--build/gh-pages--build.ts",
+    "post:create": "bun ./scripts/post/create/create.ts",
+    "post:list:create": "bun ./scripts/post/list--create/list--create.ts",
+    "deploy": "bun ./scripts/app/deploy/deploy.ts",
     "watch": "ng build --watch --configuration development",
     "test": "vitest",
     "test:ui": "vitest --ui",
@@ -15,9 +16,9 @@
     "lint:fix": "bunx rome format --write src && bunx rome check src --apply",
     "lint:ts:check": "tsc --noEmit",
     "release": "bun node_modules/@tertium/js/scripts/release/release.ts",
-    "release:patch": "bun run release patch",
-    "release:minor": "bun run release minor",
-    "release:major": "bun run release major"
+    "release:patch": "bun run release patch && bun run deploy",
+    "release:minor": "bun run release minor && bun run deploy",
+    "release:major": "bun run release major && bun run deploy"
   },
   "private": true,
   "dependencies": {

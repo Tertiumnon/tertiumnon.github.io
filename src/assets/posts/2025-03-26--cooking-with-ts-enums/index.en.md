@@ -1,5 +1,6 @@
 ---
 publishedAt: 2025-03-26
+updatedAt: 2026-07-12
 category: Programming
 tags: ["JavaScript","Web Development"]
 ---
@@ -18,7 +19,7 @@ enum Role {
 }
 ```
 
-And we have a good news here - we can use string values in TypeScript! For instance, C# enums can't work with string values.
+And we have a good news here - we can use string values in TypeScript! Unlike C# enums which are limited to integral types by default.
 
 ```ts
 enum UserRole {
@@ -72,7 +73,7 @@ var role = enum_1.UserRole.Moderator;
 var roleType = "moderator";
 ```
 
-You see here that `enum` produce a variable with values but `type` don't. It means that `enum` don't repeat itself. It's an Object with properties.
+You see here that `enum` produces a variable with actual values, but `type` doesn't. The enum is compiled to a single object reference in the output, whereas the type is purely compile-time and doesn't exist at runtime. It's an Object with properties.
 
 Let's create a class - another TypeScript feature.
 
@@ -118,6 +119,7 @@ And this is a real problem here. Problem for those who don't understand some JS 
 ```ts
 // you will get a logically incorrect result
 const ROLES_VALUES = Object.values(UserRole); // ["Admin", "Moderator", 0, 1]
+// Note: numeric enums create both forward (name→value) and reverse (value→name) mappings
 ```
 
 This is the reason why **we always must use values for enums**.
@@ -127,6 +129,9 @@ This is the reason why **we always must use values for enums**.
 `Enums` can help you create arrays and objects that we might need in other parts of the project.
 
 ```ts
+// First, define the valid values
+const ROLE_VALUES = Object.values(UserRole).filter(v => typeof v === 'string');
+
 const isRoleValueCorrect = (value: UserRole) => ROLE_VALUES.includes(value);
 ```
 
@@ -152,6 +157,6 @@ const options = Object.entries(UserRole).map(arr => ({label: arr[0], value: arr[
 
 TypeScript `enums` is not a "bad" feature.
 
-In some case it's confusing but only if you don't understand how to work with that.
+In some cases it's confusing, but only if you don't understand how to work with them properly.
 
-This is convenient if you want to create related data structures.
+This is convenient if you want to create related data structures with built-in type safety and runtime values.

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="240" viewBox="0 0 700 240">
+  <style>
+    .label { font: 14px sans-serif; fill: #333; }
+    .label-inside { font: 14px sans-serif; fill: #fff; text-anchor: middle; }
+    /* color mapping: orange=Node20, yellow=Node22, red=Node24 */
+    .bar-node24 { fill: #d62728; }
+    .bar-node22 { fill: #ffbb66; }
+    .bar-node20 { fill: #ff7f0e; }
+    .bar-deno { fill: #2ca02c; }
+    .bar-bun { fill: #1f77b4; }
+  </style>
+  <!-- CPU Usage under load: Node20 ~48%, Node22 ~47%, Node24 ~50%, Deno ~42%, Bun ~38% -->
+  <!-- Scale: 2px per percent -->
+  <rect x="100" y="104" width="80" height="96" class="bar-node20" rx="6"></rect>
+  <rect x="220" y="106" width="80" height="94" class="bar-node22" rx="6"></rect>
+  <rect x="340" y="100" width="80" height="100" class="bar-node24" rx="6"></rect>
+  <rect x="460" y="116" width="80" height="84" class="bar-deno" rx="6"></rect>
+  <rect x="580" y="124" width="80" height="76" class="bar-bun" rx="6"></rect>
+  <text x="140" y="155" class="label-inside">48%</text>
+  <text x="260" y="155" class="label-inside">47%</text>
+  <text x="380" y="150" class="label-inside">50%</text>
+  <text x="500" y="160" class="label-inside">42%</text>
+  <text x="620" y="165" class="label-inside">38%</text>
+  <text x="20" y="20" class="label">CPU Usage (%) — меньше лучше</text>
+</svg>
