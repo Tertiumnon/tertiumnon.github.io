@@ -2,7 +2,7 @@
 publishedAt: 2025-03-24
 updatedAt: 2026-05-28
 category: Programming
-tags: ["Tips"]
+tags: ["Review"]
 ---
 
 # Хороший дизайн для вашего приложения

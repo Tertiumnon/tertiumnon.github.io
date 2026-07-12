@@ -2,7 +2,7 @@
 publishedAt: 2025-02-11
 updatedAt: 2026-05-28
 category: Programming
-tags: ["Tips"]
+tags: ["Review"]
 ---
 
 # Рефакторинг

@@ -555,6 +555,7 @@
     "language": "ru",
     "category": "Career",
     "tags": [
+      "Review",
       "Agile",
       "Project Management"
     ],
@@ -586,7 +587,7 @@
     "language": "ru",
     "category": "Programming",
     "tags": [
-      "Tips"
+      "Review"
     ],
     "publishedAt": "2025-02-11",
     "filename": "index.ru.md",
@@ -641,7 +642,7 @@
     "language": "ru",
     "category": "Programming",
     "tags": [
-      "Tips"
+      "Review"
     ],
     "publishedAt": "2025-03-24",
     "filename": "index.ru.md",
@@ -721,7 +722,8 @@
     "language": "ru",
     "category": "Programming",
     "tags": [
-      "Tips"
+      "AI",
+      "Review"
     ],
     "publishedAt": "2026-06-11",
     "filename": "index.ru.md",
@@ -746,12 +748,13 @@
     "language": "ru",
     "category": "Programming",
     "tags": [
-      "Tips"
+      "AI",
+      "Review"
     ],
     "publishedAt": "2026-07-08",
     "filename": "index.ru.md",
     "dirname": "2026-07-08--ai-programming-2026",
-    "updatedAt": "2026-07-08"
+    "updatedAt": "2026-07-12"
   },
   {
     "title": "Angular RxJS vs Signals in 2026",
@@ -790,6 +793,7 @@
     "language": "ru",
     "category": "Programming",
     "tags": [
+      "Review",
       "JavaScript",
       "Tools",
       "Web Development",

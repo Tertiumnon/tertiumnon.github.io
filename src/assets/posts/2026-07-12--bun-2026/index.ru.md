@@ -2,7 +2,7 @@
 publishedAt: 2026-07-12
 updatedAt: 2026-07-12
 category: Programming
-tags: ["JavaScript","Tools","Web Development","Performance"]
+tags: ["Review","JavaScript","Tools","Web Development","Performance"]
 ---
 
 # Bun в 2026 — производительность, рекомендации и облачные платформы

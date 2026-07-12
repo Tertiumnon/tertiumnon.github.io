@@ -2,7 +2,7 @@
 publishedAt: 2025-02-11
 updatedAt: 2025-02-15
 category: Career
-tags: ["Agile","Project Management"]
+tags: ["Review","Agile","Project Management"]
 ---
 
 # Agile, Kanban, Scrum - главное простыми словами
