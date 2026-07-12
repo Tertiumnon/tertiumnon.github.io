@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200" viewBox="0 0 600 200">
+  <rect x="100" y="40" width="120" height="120" class="bar-node24" rx="6"></rect>
+  <rect x="300" y="70" width="120" height="90" class="bar-bun" rx="6"></rect>
+  <style>
+    .label { font: 14px sans-serif; fill: #333; }
+    .label-inside { font: 14px sans-serif; fill: #fff; text-anchor: middle; }
+    .bar-bun { fill: #1f77b4; }
+    .bar-node24 { fill: #d62728; }
+  </style>
+  <text x="160" y="100" class="label-inside">150</text>
+  <text x="360" y="115" class="label-inside">90</text>
+  <text x="20" y="20" class="label">Memory (MB) — меньше лучше</text>
+</svg>

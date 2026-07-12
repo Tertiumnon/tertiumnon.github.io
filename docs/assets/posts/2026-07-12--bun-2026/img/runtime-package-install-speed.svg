@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="650" height="280" viewBox="0 0 650 280">
+  <style>
+    .label { font: 12px sans-serif; fill: #333; }
+    .label-inside { font: 12px sans-serif; fill: #fff; text-anchor: middle; font-weight: bold; }
+    .label-scenario { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+    .bar-node24 { fill: #d62728; }
+    .bar-node22 { fill: #ffbb66; }
+    .bar-node20 { fill: #ff7f0e; }
+    .bar-deno { fill: #2ca02c; }
+    .bar-bun { fill: #1f77b4; }
+  </style>
+
+  <!-- Title -->
+  <text x="20" y="20" class="label" style="font-size: 14px; font-weight: bold;">Время установки пакетов (сек) — встроенные менеджеры</text>
+
+  <!-- Scenario 1: Clean install (no cache) -->
+  <g>
+    <text x="90" y="260" class="label-scenario">Чистая установка</text>
+    <text x="90" y="273" class="label-scenario">(без кэша)</text>
+    <!-- Node 20: 45s (npm) -->
+    <rect x="25" y="50" width="28" height="180" class="bar-node20" rx="4"></rect>
+    <text x="39" y="145" class="label-inside">45</text>
+    <!-- Node 22: 42s (npm improved) -->
+    <rect x="58" y="62" width="28" height="168" class="bar-node22" rx="4"></rect>
+    <text x="72" y="151" class="label-inside">42</text>
+    <!-- Node 24: 44s (npm) -->
+    <rect x="91" y="54" width="28" height="176" class="bar-node24" rx="4"></rect>
+    <text x="105" y="147" class="label-inside">44</text>
+    <!-- Deno: 38s (built-in) -->
+    <rect x="124" y="78" width="28" height="152" class="bar-deno" rx="4"></rect>
+    <text x="138" y="159" class="label-inside">38</text>
+    <!-- Bun: 8s -->
+    <rect x="157" y="198" width="28" height="32" class="bar-bun" rx="4"></rect>
+    <text x="171" y="219" class="label-inside">8</text>
+  </g>
+
+  <!-- Scenario 2: With cache -->
+  <g>
+    <text x="260" y="260" class="label-scenario">С кэшем</text>
+    <text x="260" y="273" class="label-scenario">(повторная)</text>
+    <!-- Node 20: 22s -->
+    <rect x="195" y="142" width="28" height="88" class="bar-node20" rx="4"></rect>
+    <text x="209" y="191" class="label-inside">22</text>
+    <!-- Node 22: 19s -->
+    <rect x="228" y="154" width="28" height="76" class="bar-node22" rx="4"></rect>
+    <text x="242" y="197" class="label-inside">19</text>
+    <!-- Node 24: 21s -->
+    <rect x="261" y="146" width="28" height="84" class="bar-node24" rx="4"></rect>
+    <text x="275" y="193" class="label-inside">21</text>
+    <!-- Deno: 16s -->
+    <rect x="294" y="166" width="28" height="64" class="bar-deno" rx="4"></rect>
+    <text x="308" y="203" class="label-inside">16</text>
+    <!-- Bun: 3s -->
+    <rect x="327" y="218" width="28" height="12" class="bar-bun" rx="4"></rect>
+    <text x="341" y="227" class="label-inside">3</text>
+  </g>
+
+  <!-- Scenario 3: With lockfile (CI) -->
+  <g>
+    <text x="430" y="260" class="label-scenario">С lockfile</text>
+    <text x="430" y="273" class="label-scenario">(CI/production)</text>
+    <!-- Node 20: 28s -->
+    <rect x="365" y="118" width="28" height="112" class="bar-node20" rx="4"></rect>
+    <text x="379" y="179" class="label-inside">28</text>
+    <!-- Node 22: 26s -->
+    <rect x="398" y="126" width="28" height="104" class="bar-node22" rx="4"></rect>
+    <text x="412" y="183" class="label-inside">26</text>
+    <!-- Node 24: 27s -->
+    <rect x="431" y="122" width="28" height="108" class="bar-node24" rx="4"></rect>
+    <text x="445" y="181" class="label-inside">27</text>
+    <!-- Deno: 22s -->
+    <rect x="464" y="142" width="28" height="88" class="bar-deno" rx="4"></rect>
+    <text x="478" y="191" class="label-inside">22</text>
+    <!-- Bun: 5s -->
+    <rect x="497" y="210" width="28" height="20" class="bar-bun" rx="4"></rect>
+    <text x="511" y="224" class="label-inside">5</text>
+  </g>
+
+  <!-- Scenario 4: Monorepo (large) -->
+  <g>
+    <text x="600" y="260" class="label-scenario">Монорепо</text>
+    <text x="600" y="273" class="label-scenario">(~50 пакетов)</text>
+    <!-- Node 20: 120s -->
+    <rect x="535" y="30" width="28" height="200" class="bar-node20" rx="4"></rect>
+    <text x="549" y="135" class="label-inside">120</text>
+    <!-- Node 22: 110s -->
+    <rect x="568" y="50" width="28" height="180" class="bar-node22" rx="4"></rect>
+    <text x="582" y="145" class="label-inside">110</text>
+    <!-- Node 24: 115s -->
+    <rect x="601" y="40" width="28" height="190" class="bar-node24" rx="4"></rect>
+    <text x="615" y="140" class="label-inside">115</text>
+    <!-- Deno: 95s -->
+    <rect x="634" y="80" width="28" height="150" class="bar-deno" rx="4"></rect>
+    <text x="648" y="160" class="label-inside">95</text>
+    <!-- Bun: 15s -->
+    <rect x="667" y="170" width="28" height="60" class="bar-bun" rx="4"></rect>
+    <text x="681" y="205" class="label-inside">15</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(20, 245)">
+    <rect x="0" y="0" width="15" height="15" class="bar-node20" rx="2"></rect>
+    <text x="20" y="12" class="label">Node 20 (npm)</text>
+
+    <rect x="110" y="0" width="15" height="15" class="bar-node22" rx="2"></rect>
+    <text x="130" y="12" class="label">Node 22 (npm)</text>
+
+    <rect x="220" y="0" width="15" height="15" class="bar-node24" rx="2"></rect>
+    <text x="240" y="12" class="label">Node 24 (npm)</text>
+
+    <rect x="330" y="0" width="15" height="15" class="bar-deno" rx="2"></rect>
+    <text x="350" y="12" class="label">Deno (встр.)</text>
+
+    <rect x="440" y="0" width="15" height="15" class="bar-bun" rx="2"></rect>
+    <text x="460" y="12" class="label">Bun (встр.)</text>
+  </g>
+
+  <!-- Baseline -->
+  <line x1="15" y1="230" x2="705" y2="230" stroke="#ddd" stroke-width="1"/>
+</svg>
