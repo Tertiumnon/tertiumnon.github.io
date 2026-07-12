@@ -22,7 +22,6 @@ function run(command: string, options?: RunOptions): string {
     if (error instanceof Error) console.error(`Details: ${error.message}`);
     exit(1);
   }
-  return "";
 }
 
 async function deploy(): Promise<void> {
@@ -78,8 +77,9 @@ async function deploy(): Promise<void> {
 
     // STEP 3: Deploy using git subtree push
     // This keeps us on main branch and pushes docs/ to gh-pages
+    // Use --force because gh-pages should only contain built docs
     console.log("📤 Pushing docs/ to gh-pages branch...");
-    run("git subtree push --prefix docs origin gh-pages");
+    run("git subtree push --prefix docs origin gh-pages --force");
 
     console.log("\n✨ Deployment complete!\n");
     console.log("📖 GitHub Pages is configured to use 'gh-pages' branch");
