@@ -2,16 +2,59 @@ import { execSync } from "node:child_process";
 import { exit } from "node:process";
 import * as fs from "node:fs/promises";
 
-function run(command: string, options?: { silent?: boolean }): string {
+interface RunOptions {
+  silent?: boolean;
+  ignoreFail?: boolean;
+}
+
+function run(command: string, options?: RunOptions): string {
   try {
     if (!options?.silent) console.log(`> ${command}`);
-    return execSync(command, {
+    const result = execSync(command, {
       encoding: "utf-8",
-      stdio: options?.silent ? "pipe" : "inherit"
-    }).trim();
+      stdio: options?.silent ? "pipe" : "inherit",
+      shell: true
+    } as any);
+    return result ? result.trim() : "";
   } catch (error) {
+    if (options?.ignoreFail) return "";
     console.error(`❌ Error: ${command}`);
+    if (error instanceof Error) console.error(`Details: ${error.message}`);
     exit(1);
+  }
+  return "";
+}
+
+async function copyDirRecursive(src: string, dest: string): Promise<void> {
+  await fs.mkdir(dest, { recursive: true });
+  const entries = await fs.readdir(src, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const srcPath = `${src}/${entry.name}`;
+    const destPath = `${dest}/${entry.name}`;
+
+    if (entry.isDirectory()) {
+      await copyDirRecursive(srcPath, destPath);
+    } else {
+      await fs.copyFile(srcPath, destPath);
+    }
+  }
+}
+
+async function removeAll(dirPath: string): Promise<void> {
+  try {
+    const entries = await fs.readdir(dirPath, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.name === ".git") continue;
+      const fullPath = `${dirPath}/${entry.name}`;
+      if (entry.isDirectory()) {
+        await fs.rm(fullPath, { recursive: true, force: true });
+      } else {
+        await fs.unlink(fullPath);
+      }
+    }
+  } catch {
+    // ignore errors
   }
 }
 
@@ -37,6 +80,14 @@ async function deploy(): Promise<void> {
     console.log("📚 Building articles...");
     run("bun run post:list:create");
 
+    // Commit articles if changed
+    const articlesStatus = run("git status --porcelain src/assets/posts.json", { silent: true });
+    if (articlesStatus) {
+      run("git add src/assets/posts.json");
+      run('git commit -m "docs: regenerate article list"');
+      run("git push");
+    }
+
     // Build site
     console.log("🔨 Building site...");
     run("bun run gh:pages:build");
@@ -50,14 +101,9 @@ async function deploy(): Promise<void> {
       exit(1);
     }
 
-    // Get or create gh-pages branch
-    let ghPagesExists = false;
-    try {
-      run("git rev-parse --verify gh-pages", { silent: true });
-      ghPagesExists = true;
-    } catch {
-      ghPagesExists = false;
-    }
+    // Check if gh-pages branch exists
+    const branchCheck = run("git rev-parse --verify gh-pages", { silent: true, ignoreFail: true });
+    const ghPagesExists = branchCheck.length > 0;
 
     if (ghPagesExists) {
       console.log("📤 Updating gh-pages branch...");
@@ -69,16 +115,19 @@ async function deploy(): Promise<void> {
       run("git rm -rf .");
     }
 
-    // Copy docs to root and commit
+    // Copy docs to root
     console.log("📁 Preparing deployment files...");
-    run("rm -rf *", { silent: true });
-    run("cp -r ../docs/* .", { silent: true });
+    const repoRoot = process.cwd();
+    await removeAll(repoRoot);
+    const docsDir = `${repoRoot}/docs`;
+    await copyDirRecursive(docsDir, repoRoot);
+
     run("git add .");
 
     // Only commit if there are changes
     const docsStatus = run("git status --porcelain", { silent: true });
     if (docsStatus) {
-      run("git commit -m 'docs: deploy site'");
+      run('git commit -m "docs: deploy site"');
       run("git push -u origin gh-pages");
       console.log("✅ Deployed to gh-pages!");
     } else {
