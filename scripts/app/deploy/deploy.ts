@@ -25,7 +25,7 @@ function run(command: string, options?: RunOptions): string {
 }
 
 async function deploy(): Promise<void> {
-  console.log("\n🚀 Deploying to GitHub Pages...\n");
+  console.log("\n🚀 Deploying to GitHub Pages (main branch /docs)...\n");
 
   // CHECK 1: Verify we're on main branch
   const branch = run("git rev-parse --abbrev-ref HEAD", { silent: true });
@@ -60,7 +60,6 @@ async function deploy(): Promise<void> {
     if (articlesStatus) {
       run("git add src/assets/posts.json");
       run('git commit -m "docs: regenerate article list"');
-      run("git push");
     }
 
     // STEP 2: Build site
@@ -75,19 +74,31 @@ async function deploy(): Promise<void> {
       exit(1);
     }
 
-    // STEP 3: Deploy using git push with subtree split
-    // Split docs/ into gh-pages branch (with -f to force push)
-    // Safe because gh-pages should ONLY contain built output, never manual edits
-    console.log("📤 Pushing docs/ to gh-pages branch...");
-    const splitCommit = run("git subtree split --prefix docs HEAD", { silent: true });
-    if (!splitCommit) {
-      throw new Error("Failed to split docs subtree");
+    // CHECK 5: Verify index.html exists
+    try {
+      await fs.access("docs/index.html");
+    } catch {
+      console.error("❌ Error: docs/index.html not found after build");
+      exit(1);
     }
-    run(`git push -f origin ${splitCommit}:gh-pages`);
+
+    // STEP 3: Add docs to git and commit
+    console.log("📋 Committing docs to main branch...");
+    run("git add docs");
+
+    const docsStatus = run("git status --porcelain docs", { silent: true });
+    if (docsStatus) {
+      run('git commit -m "docs: build and deploy site"');
+      console.log("📤 Pushing to main...");
+      run("git push origin main");
+      console.log("✅ Deployed to main/docs!");
+    } else {
+      console.log("✅ No changes to deploy.");
+    }
 
     console.log("\n✨ Deployment complete!\n");
-    console.log("📖 GitHub Pages is configured to use 'gh-pages' branch");
-    console.log("   Settings → Pages → Build and deployment → Branch: gh-pages\n");
+    console.log("📖 GitHub Pages is configured to use /docs folder in main branch");
+    console.log("   Settings → Pages → Branch: main, Folder: /docs\n");
   } catch (error) {
     console.error("❌ Deployment failed!");
     console.error(`Error: ${error}`);
