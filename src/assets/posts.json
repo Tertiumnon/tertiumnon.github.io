@@ -560,14 +560,23 @@
     "updatedAt": "2025-11-30"
   },
   {
-    "title": "",
+    "title": "Bun in 2025",
     "link": "/en/posts/2025-11-30--bun-in-2025",
     "language": "en",
-    "category": "",
-    "tags": [],
-    "publishedAt": "",
+    "category": "Programming",
+    "tags": [
+      "JavaScript",
+      "Tools",
+      "Web Development"
+    ],
+    "publishedAt": "2025-11-30",
     "filename": "index.en.md",
-    "dirname": "2025-11-30--bun-in-2025"
+    "dirname": "2025-11-30--bun-in-2025",
+    "updatedAt": "2025-11-30",
+    "source": {
+      "name": "\"medium",
+      "url": "https://tertiumnon.medium.com/bun-7fbe61f45e2e\""
+    }
   },
   {
     "title": "Firefox userChrome.css",
@@ -686,14 +695,20 @@
     "dirname": "2021-06-23--frontend-possible-list-option-properties"
   },
   {
-    "title": "",
+    "title": "ИИ: реальность после хайпа в 2026",
     "link": "/ru/posts/2026-06-11--ai-reality-after-hype-2026",
     "language": "ru",
-    "category": "",
-    "tags": [],
-    "publishedAt": "",
+    "category": "Career",
+    "tags": [
+      "Review",
+      "Business",
+      "AI",
+      "Risk"
+    ],
+    "publishedAt": "2026-06-11",
     "filename": "index.ru.md",
-    "dirname": "2026-06-11--ai-reality-after-hype-2026"
+    "dirname": "2026-06-11--ai-reality-after-hype-2026",
+    "updatedAt": "2026-07-12"
   },
   {
     "title": "How to Change a Version of PHP (Ubuntu Example: PHP 5 → PHP 5.6)",
