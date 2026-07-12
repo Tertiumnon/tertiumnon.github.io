@@ -10,6 +10,21 @@ function rmrf(p: string): void {
 	}
 }
 
+function copyDirRecursive(src: string, dest: string): void {
+	if (!fs.existsSync(dest)) {
+		fs.mkdirSync(dest, { recursive: true });
+	}
+	for (const file of fs.readdirSync(src)) {
+		const srcPath = path.join(src, file);
+		const destPath = path.join(dest, file);
+		if (fs.statSync(srcPath).isDirectory()) {
+			copyDirRecursive(srcPath, destPath);
+		} else {
+			fs.copyFileSync(srcPath, destPath);
+		}
+	}
+}
+
 function flattenBrowserDir(docsDir: string): void {
 	const browserDir = path.join(docsDir, "browser");
 	if (!fs.existsSync(browserDir)) return;
@@ -19,7 +34,12 @@ function flattenBrowserDir(docsDir: string): void {
 		if (fs.existsSync(dest)) {
 			rmrf(dest);
 		}
-		fs.renameSync(src, dest);
+		// Copy instead of rename (safer on Windows)
+		if (fs.statSync(src).isDirectory()) {
+			copyDirRecursive(src, dest);
+		} else {
+			fs.copyFileSync(src, dest);
+		}
 	}
 	rmrf(browserDir);
 }
