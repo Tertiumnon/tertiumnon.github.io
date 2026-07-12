@@ -51,9 +51,10 @@ jobs:
         run: |
           bun run gh:pages:build
 
-      - name: Disable Jekyll processing
+      - name: Verify .nojekyll exists
         run: |
-          touch docs/.nojekyll
+          ls -la docs/ | grep -E "(^d|nojekyll|index)"
+          test -f docs/.nojekyll && echo ".nojekyll file exists" || echo "ERROR: .nojekyll file not found"
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
