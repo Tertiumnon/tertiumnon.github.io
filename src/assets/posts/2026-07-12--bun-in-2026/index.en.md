@@ -13,7 +13,6 @@ tags: ["JavaScript","Tools","Web Development","Performance"]
 
 After a successful launch in 2025, Bun continues to grow and improve. Current version v1.3.14 includes significant performance improvements and new APIs. In May 2026, a significant milestone occurred — Bun was completely rewritten in Rust using Claude Fable 5, releasing v1.4.0 with 128 bugs fixed. In this article, we'll examine real performance metrics, details of the Rust rewrite, comparisons with Node.js and Deno, and practical recommendations for production environments.
 
----
 
 ## Rewritten in Rust: How It Was Done (May 2026)
 
@@ -193,7 +192,6 @@ Improvement: 11× less! 🎯
   - Claude Code v2.1.181+: primary runtime
 - **Recommendation:** Migrate to v1.4.0 for production if on stable version
 
----
 
 ## New Bun Features in 2026
 
@@ -308,7 +306,6 @@ Result: single self-contained `.html` file, ready to run.
 - **Bun.sliceAnsi** (v1.3.11) — ANSI string handling
 - **Enhanced Bun.markdown** (v1.3.11) — better parsing and processing
 
----
 
 ## Table of Contents
 
@@ -325,7 +322,6 @@ Result: single self-contained `.html` file, ready to run.
 - [Cloud Providers](#nuances-of-using-with-popular-cloud-providers)
 - [Links and Resources](#links-and-resources)
 
----
 
 ## Performance Metrics
 
@@ -333,7 +329,6 @@ Result: single self-contained `.html` file, ready to run.
 
 Data collected from simple HTTP server tests ("Hello World") and aggregated from independent benchmarks in 2025. Results may vary significantly in real applications with databases, complex business logic, and dependencies.
 
----
 
 **Tested Versions (July 2026):**
 
@@ -421,7 +416,6 @@ Reports of Bun's memory consumption vary significantly between synthetic benchma
 
 **⚠️ Important:** In production with real databases and business logic, CPU differences may be less noticeable. It's recommended to test with your real code.
 
----
 
 ### Dependency Installation Speed
 
@@ -473,7 +467,6 @@ _Node.js v22 shows minor npm improvements. Deno is 15-20% faster than Node.js+np
 - **postinstall scripts** — can negate advantages of fast managers
 - **Manager version** — yarn v1 classic is 2-3× slower than v4 Berry
 
----
 
 ## Bun vs Deno: Key Differences
 
@@ -493,7 +486,6 @@ _Node.js v22 shows minor npm improvements. Deno is 15-20% faster than Node.js+np
 
 **Choose Deno if:** priority is security, HTTP performance, and greenfield projects
 
----
 
 ## 🔒 Security Comparison: Node.js vs Deno vs Bun
 
@@ -518,7 +510,6 @@ _Node.js v22 shows minor npm improvements. Deno is 15-20% faster than Node.js+np
 3. Minimize number of dependencies
 4. Check reputation of package authors
 
----
 
 ## TypeScript in 2026: Bun vs Node.js v26
 
@@ -630,7 +621,6 @@ node --experimental-strip-types app.ts  # ❌ Path aliases ignored
 - Polish Node.js compatibility for production
 - Test on CI for both (Bun and Node v26)
 
----
 
 ## When to Use Bun
 
@@ -759,7 +749,6 @@ p.stdin.write(JSON.stringify({data: 'hi'}));
 - **I/O tasks:** Prefer asynchronous/event-based approaches
 - **Node.js migration:** Rewrite `worker_threads` code for Web Worker API or use conditional detection: `if (typeof Bun !== 'undefined') ...`
 
----
 
 ## Running Bun as a Daemon: Process Managers
 
@@ -945,7 +934,6 @@ But for production, use PM2 or systemd for reliability guarantees.
 | **High load** | PM2 cluster mode | Multiple processes |
 | **Simple setup** | Systemd (Linux) | No dependencies |
 
----
 
 ## Bun in CI/CD: GitHub Actions
 
@@ -1213,7 +1201,6 @@ jobs:
 - Pin Bun version explicitly, don't rely on latest
 - Caching works best on Ubuntu (macOS slower)
 
----
 
 ## Example: Bun in AWS Lambda
 
@@ -1248,7 +1235,6 @@ CMD ["bun", "run", "start"]
 
 **Important:** In serverless environments, cold start with Bun may be slower than Node.js due to loading non-standard runtime.
 
----
 
 ## Nuances of Using with Popular Cloud Providers
 
@@ -1367,7 +1353,6 @@ CMD ["bun", "run", "start"]
 - Azure Functions without containers
 - Environments without Docker support
 
----
 
 ## Links and Resources
 
@@ -1425,7 +1410,6 @@ One of the most comprehensive testing approaches is **Anton Putra's** work ([ant
 - [GitHub: denosaurs/bench - Comparing HTTP frameworks](https://github.com/denosaurs/bench)
 - [GitHub: RafaelGSS/nodejs-bench-operations](https://github.com/RafaelGSS/nodejs-bench-operations)
 
----
 
 ## Summary
 
@@ -1454,10 +1438,8 @@ One of the most comprehensive testing approaches is **Anton Putra's** work ([ant
 - **Monorepos:** Dramatic improvement in package management speed
 - **Serverless/Edge:** Requires special attention to memory overhead — may be worse than Node.js
 
----
 
 **Disclaimer:** Data in this article is collected from public sources and independent benchmarks. Performance strongly depends on specific use case, application architecture, software versions, and hardware. It is recommended to conduct your own testing for your specific scenario.
 
----
 
 **Author-Compiler:** Vitaly Balananov
