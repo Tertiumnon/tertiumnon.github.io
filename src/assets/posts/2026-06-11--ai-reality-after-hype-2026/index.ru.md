@@ -34,6 +34,52 @@ tags: ["Review","Business","AI","Risk"]
 
 [MIT оценивает: 95% генеративных ИИ-пилотов не срабатывают](https://timspark.com/blog/why-ai-projects-fail-artificial-intelligence-failures-explained/) — часто из-за хрупких рабочих процессов и невыполненных ожиданий. Разработчики, которые подогревают эту переоценённость, часто находятся в конфликте интересов.
 
+### Становятся ли модели точнее? Масштабирование упирается в потолок
+
+Обещание было: "каждый год модели будут умнее, быстрее, лучше". Реальность 2026 года сложнее.
+
+**На бумаге — есть прогресс:**
+- GPT-5 лучше GPT-4 в большинстве бенчмарков
+- На AIME (высокосложная математика): GPT-5 достиг 94.6% vs GPT-4o 42.1%
+- На SWE-bench (разработка): GPT-5 74.9% vs GPT-4o 30.8%
+- Галлюцинации уменьшились на ~80% в GPT-5 vs GPT-4o
+- Цена за токен упала в 10.9x раз
+
+**Но есть серьёзная проблема — "Scaling Wall":**
+- **76% AI-исследователей согласны: gains от масштабирования plateau'd** (остановились)
+- Каждый раз удваивая вычислительные ресурсы, мы получаем всё меньший прирост производительности
+- Разные типы задач упираются в потолки на разных масштабах:
+  - Knowledge tasks: потолок после 30B параметров
+  - Reasoning tasks: потолок после 70B параметров
+  - Code generation: потолок после 34B параметров
+- За последний год frontier модели, похоже, достигли потолка: вычислительные ресурсы растут 10-100x, а accuracy едва движется
+
+**Почему это произошло:**
+- Высокое качество training data кончилось
+- Просто "большая модель + большие данные" уже не работает как раньше
+- Инженеры исчерпали простой путь скейлинга
+
+**Что происходит теперь:**
+Вместо вопроса "что если тренировать модель дольше?", исследователи перешли к "что если дать модели больше времени думать при генерации ответа?"
+
+Новые направления:
+- **Test-time compute scaling** — модель может потратить больше вычисли на размышление (но медленнее)
+- **Mixture of Experts** — использовать разные "эксперты" для разных типов вопросов
+- **Synthetic data** — генерировать собственные данные для обучения
+- **Architectural breakthroughs** — нужны принципиально новые подходы (понимание физики, причинности)
+
+**Реальное воздействие на пользователей — скромнее:**
+- [89% компаний сообщают об отсутствии измеримого impact на производительность за 3 года](https://medium.com/@Ella456/the-future-of-ai-productivity-transforming-workflows-in-2026-and-beyond-e6ade5232188)
+- Несмотря на то что модели улучшаются, реальные gains зависят не от самой модели
+- Узкие задачи получают 15-55% improvement в зависимости от домена (marketing 50%, dev 26%, support 14-15%)
+- Bottleneck в 2026 — не в capability модели, а в **evaluation infrastructure и integration depth** (как мы интегрируем ИИ в workflow)
+
+**Вывод о прогрессе:** да, модели становятся лучше на бумаге, но:
+1. Улучшения замедляются (scaling wall)
+2. Бенчмарки не отражают real-world impact (89% компаний не видят разницы)
+3. Дальнейший прогресс требует прорывов, а не просто больше вычисли
+4. Ограничение — не в ИИ, а в том как мы это используем
+
 ### Вывод
 
 **ИИ не замещает разработчиков и белых воротничков. ИИ — это инструмент, как Git или Docker.** Как любой инструмент, его нужно правильно использовать. Неправильно используя ИИ, вы быстро добавите техдолга. Правильно используя ИИ, вы получите реальный прирост продуктивности.
@@ -63,7 +109,7 @@ tags: ["Review","Business","AI","Risk"]
 **Почему?** Потому что издержки на контроль качества ИИ-кода компенсируют выигрыш в скорости написания.
 
 
-## Главная проблема: дисциплина
+## Главная проблема: дисциплина и галлюцинации
 
 ### Без дисциплины: +35-40% ошибок
 
@@ -77,6 +123,82 @@ tags: ["Review","Business","AI","Risk"]
 - Требуется глубокое понимание архитектуры проекта, чтобы оценить, подходит ли решение ИИ
 
 ИИ пишет код как средний программист. Средний программист быстро создаёт файловый хаос, дублирующие методы, неправильную архитектуру. Обычный проект скатывается в такой хаос годами. С ИИ это происходит за **недели**.
+
+### Галлюцинации в коде: "уверенное неправильное решение"
+
+**Главная проблема ИИ-кода в 2026 году НЕ в том, что ИИ пишет syntactically невалидный код, а в том что:**
+
+1. **ИИ заявляет что работа сделана, а по факту её нет** — это самая частая проблема
+2. **Код выглядит правильным, но semantically неправильный** — проходит линтер, может пройти базовые тесты, но не работает
+3. **ИИ производит generic решения без контекста** — не знает company design principles, API choices, requirements
+4. **Overconfidence** — ИИ с максимальной уверенностью говорит неправильные вещи в "хорошо отформатированном" виде
+
+**Типичные галлюцинации на практике:**
+
+- **False completion claims** — ИИ говорит "я добавил error handling" или "я покрыл тестами", но на деле только синтаксис правильный, логика неполная
+- **Generic code without context** — ИИ не знает что в твоей компании используется specific architecture pattern, пишет generic решение
+- **Syntactically correct but wrong** — код компилируется, может пройти tests, но не делает то что нужно
+- **Hallucinated dependencies** — генерирует npm пакеты которых не существует (5-22% от suggestions в зависимости от модели)
+- **Fabricated APIs** — вызывает методы которые не существуют в документации
+- **Incomplete implementations** — опускает critical parts thinking they're "obvious"
+
+[Исследование 2026 показало](https://www.techtimes.com/articles/316829/20260519/have-ai-hallucinations-been-solved-truth-about-chatbot-accuracy-2026.htm): **AI hallucinations остаются emergent property LLMs** — модель оптимизируется на plausibility (правдоподобие), а не truth (правда). Модель rewarded за confident answers, а не за "I don't know".
+
+**Реальный масштаб:**
+- Frontier model hallucination rates: 3.1-19.1% в 2026 (улучшение с 15-45% в 2024, но не нулевое)
+- Code-specific: 0.8-2.1% на top models (~80% улучшение с 2024)
+- Но главное: [**60-90% AI projects в 2026 fail**](https://www.techradar.com/pro/why-more-than-half-of-ai-projects-could-fail-in-2026) не потому что ИИ плохая, а потому что компании деплоят без понимания limitations и без proper guardrails
+
+**Проблема "Done is a Lie":**
+[Актуальное исследование 2026](https://medium.com/@julian.oczkowski/done-is-a-lie-your-definition-of-done-is-broken-in-2026-82bb59a69257) показало: если LLM не может reconstruct reasoning behind решения из documented work → задача не сделана. ИИ часто:
+- Не знает company context
+- Не знает design principles
+- Не знает API choices и почему они так
+- Производит generic, shallow работу
+- Говорит что всё сделано, хотя это только skeleton
+
+**Что действительно работает для mitigation:**
+- [Retrieval grounding: -75-90% hallucinations](https://arxiv.org/pdf/2605.17062)
+- Tool grounding: -65-80% hallucinations
+- Strict allow-lists для dependencies
+- Human review с контекстом, а не просто "выглядит ли это правильным"
+
+**Главный вывод:** Галлюцинации в 2026 — это не obvious broken text, это confident, well-formatted, и wrong. Это "я это сделал" когда ты это не сделал. Это "я знаю что мне нужно" когда ты не знаешь контекст.
+
+### Разработчики тонут в code review
+
+В 2026 году произошло неожиданное: ИИ не решила проблему "slow development" — она переместила bottleneck на **code review**.
+
+**Бремя на code reviewers:**
+- **Senior инженеры тратят 20-35% больше времени** на ревью кода, когда juniors используют ИИ
+- **Среднее время task в progress выросло на 225%** при высоком ИИ adoption
+- ИИ производит код в 25-35% быстрее, но качество gap достигает 40% к 2026
+
+**Почему ревью ИИ-кода сложнее:**
+- Код выглядит правильным, но cognitive load на ревьюера выше
+- Нужно проверять не только "компилируется ли?", но и "правильная ли логика?"
+- Требуется验证 правильность API, data classification, policy соответствие
+- Hallucinated код выглядит более убедительно, чем ошибки обычного разработчика
+
+**Результат:** 2026 год показал, что acceleration code writing без acceleration code review просто создаёт huge technical debt.
+
+### Компании начинают ограничивать и отказываться от ИИ-коммитов
+
+Реальный тренд 2026 года: **умные компании тихо ограничивают доступ к ИИ-инструментам**, вместо того чтобы хвастаться 10x productivity gains.
+
+**Что происходит:**
+- **Microsoft ended Claude Code licenses** (июнь 2026) и переводит разработчиков на свой Copilot CLI
+- **GitHub ограничил Copilot** — паузировал новые подписки, ограничил usage quotas "для стабильности инфраструктуры"
+- **Отдельные репо заблокировали Copilot** — некоторые open-source проекты запретили AI-generated PR
+- **Компании явно запретили AI commits** в critical code paths
+
+**Причины:**
+- Agentic AI workflows переутомляют compute infrastructure GitHub
+- Code review bottleneck переходит в catastrophic затраты
+- Security и quality risks слишком высоки
+- Компании осознали: acceleration writing code ≠ acceleration shipping quality features
+
+**Вывод:** в 2026 году успешные компании **не максимизируют ИИ-использование**, а **оптимизируют его** — используют ИИ где она действительно помогает (документирование, анализ), избегают где создаёт проблемы (critical logic, security-sensitive code).
 
 ### С дисциплиной: реальная, измеримая экономия
 
@@ -143,6 +265,256 @@ tags: ["Review","Business","AI","Risk"]
 - Качество не деградировало (сравните с baseline)
 - Люди хотят его использовать (не заставляете)
 
+## Новые техники и паттерны работы с ИИ (2026)
+
+В 2026 году разработчики и компании изобрели конкретные техники и workflows, которые действительно работают. Это не magic, а систематичные способы использовать ИИ эффективнее.
+
+### Prompting техники, которые работают
+
+**1. Chain-of-Thought (CoT) — "думай пошагово"**
+- Вместо "решить задачу" вы просите "покажи свои рассуждения пошагово"
+- Результат: [19-point boost на MMLU-Pro](https://www.meta-intelligence.tech/en/insight-prompt-engineering)
+- **Но важно:** не используйте явный CoT для reasoning моделей (o-series, Claude Extended Thinking) — они это уже делают внутри
+- Эффект: +20-60% улучшение качества на стандартных бенчмарках
+
+**2. Few-shot with CoT — "вот примеры как рассуждать"**
+- Вы даёте несколько примеров задач, где показываете не только результат, но и рассуждения
+- [Комбинация few-shot + CoT outperforms каждый отдельно](https://groundy.com/articles/prompt-engineering-patterns-2026-what-actually-works/)
+- Работает лучше, чем давать промпт сразу
+
+**3. Structured Prompting — "используй XML/markdown структуру"**
+- Вместо: "напиши код для X"
+- Лучше:
+```
+<task>
+  <requirement>Напиши функцию для парсинга JSON</requirement>
+  <constraints>
+    <constraint>Не использовать встроенные JSON парсеры</constraint>
+    <constraint>Обработать ошибки</constraint>
+  </constraints>
+  <format>Верни только код в ```javascript``` блоке</format>
+</task>
+```
+- [Anthropic показала, что XML tags критичны для complex prompts](https://ucstrategies.com/news/prompt-engineering-best-practices-in-2026-the-ultimate-guide-to-better-ai-prompts/)
+- Результат: cleaner, more structured outputs
+
+**4. Role-Context-Constraint-Format (RCCF)**
+- Role: "Ты senior backend engineer"
+- Context: "Мы пишем микросервис для платежей"
+- Constraint: "Все функции должны быть idempotent"
+- Format: "Верни TypeScript с JSDoc комментариями"
+- [Это дает personality + grounding + guardrails одновременно](https://lushbinary.com/blog/advanced-prompt-engineering-techniques-developer-guide/)
+
+### AI Pair Programming workflows
+
+**3-уровневое использование AI:**
+
+**Level 1: Suggest (автодополнение)**
+- ИИ предлагает строку кода или функцию
+- Вы проверяете и принимаете/отклоняете
+- Пример: GitHub Copilot, Cody
+- Экономия: ~10-15% время на writing
+
+**Level 2: Drive (multi-file edits)**
+- Вы говорите: "рефакторить эту функцию везде в проекте"
+- ИИ делает multi-file edits, you review
+- Пример: Claude Code, Cursor
+- Экономия: ~30-40% время на refactors
+
+**Level 3: Lead (agentic)**
+- Вы даёте задачу: "добавь feature X" или "исправь баг в модуле Y"
+- ИИ-агент:
+  - Читает код и контекст
+  - Пишет тесты
+  - Реализует код
+  - Запускает тесты
+  - Исправляет ошибки в loop
+  - Просит разрешение перед коммитом
+- [Результат: 8-12x faster на routine work, 2-3x faster на novel features](https://www.groovyweb.co/blog/ai-pair-programming-tools-workflow-2026)
+- Пример: Cursor, Windsurf, Claude Code (terminal mode)
+
+### TDD AI Agent Pattern
+
+Самый эффективный паттерн для автоматизированной разработки:
+
+1. **Agent пишет failing тест** для требования
+2. **Agent реализует код** который должен пройти тест
+3. **Agent запускает test suite** и смотрит на ошибки
+4. **Agent читает error message** и понимает что не так
+5. **Agent патчит код** и повторяет
+6. Когда все тесты pass → commit готов
+
+[Этот паттерн поддерживают Cursor, Claude Code, KiloCode](https://kilo.ai/articles/beyond-autocomplete)
+
+**Результат:** код с покрытием тестов, меньше ошибок, агент может работать асинхронно пока вы на встречах
+
+### Правило "specify once, use AI"
+
+Вместо копипаста одного и того же кода в 5 местах:
+- Вы пишете code once с комментарием "нужна эта логика везде"
+- ИИ переписывает это в 5 файлах в нужном контексте
+- Вы проверяете 5 изменений вместо написания 5x кода
+
+### Context window техника
+
+**"Show me, don't tell me":**
+- Вместо описывать архитектуру 200 словами
+- Вы даёте несколько файлов из проекта (constants, types, existing patterns)
+- ИИ видит примеры и пишет код в том же стиле
+- **Результат:** code consistency без явных инструкций
+
+### AI Code Review паттерны
+
+Вместо того чтобы ИИ писала весь код:
+1. **Первый stage:** Вы пишете решение сами
+2. **Второй stage:** ИИ ревьюит и предлагает улучшения
+3. **Третий stage:** Вы выбираете какие apply
+
+Это + human-written code = лучше качество чем pure AI или pure human
+
+### Когда эти техники работают лучше всего
+
+- **Documentation writing** — ИИ пишет draft, вы редактируете (50% faster)
+- **Boilerplate code** — ИИ генерирует, вы кастомизируете (60% faster)
+- **Code refactoring** — ИИ предлагает варианты, вы выбираете (40% faster)
+- **Test writing** — ИИ генерирует тесты, вы проверяете (55% faster)
+- **Bug fixes** — ИИ с контекстом часто понимает проблему (45% faster)
+
+### Антипаттерны (чего НЕ делать)
+
+- ❌ Полностью полагаться на ИИ-агент без ревью
+- ❌ Копировать ИИ-код напрямую без проверки
+- ❌ Использовать ИИ для стратегических архитектурных решений без человека
+- ❌ Не версионировать какая версия ИИ-инструмента использовалась
+- ❌ Игнорировать ошибки "потому что обычно ИИ работает"
+
+**Вывод:** успешные команды в 2026 — это не "ИИ заменила разработчика" и не "ИИ никому не помогает". Это **люди + ИИ, работающие по систематичным паттернам**, где каждый делает то в чём лучше. Человек — архитектура, решения, review. ИИ — реализация, boilerplate, рутина.
+
+## Давление на разработчиков: "переходи на ИИ или станешь неактуален"
+
+В 2026 году появилась новая проблема — не техническая, а человеческая. **Разработчики испытывают огромное давление перейти на работу с ИИ**, и это давление идёт со всех сторон.
+
+### Давление сверху: компании требуют AI adoption
+
+[Индустрия активно давит на компании принять ИИ](https://newsletter.pragmaticengineer.com/p/ai-impact-on-software-engineers-part-2):
+- Компании видят конкурентов используют ИИ и боятся отстать
+- Инвесторы требуют демонстрировать AI adoption
+- Менеджмент трактует ИИ gains как baseline, а не бонус
+- Одна крупная техническая компания: "ИИ — часть почти каждого рабочего разговора. Компания ожидает что это увеличит производительность и снизит потребность в найме"
+
+**Результат:** AI adoption становится mandatory, а не optional.
+
+### Tracking и мониторинг использования
+
+Компании начали активно мониторить кто использует ИИ и как:
+- Отслеживание token consumption (сколько ты потребил API)
+- Внутренние dashboards с metrics
+- **AI adoption tied directly to performance reviews** — использование ИИ = часть вашей оценки
+- Некоторые компании ставят targets: "50% этой работы должно быть сделано с ИИ" или "80% adoption rate"
+
+Давление настолько серьезное, что инженеры рассматривают переход в sales или support roles чтобы уйти от этого мониторинга.
+
+### FOBO: Fear of Becoming Obsolete
+
+[В 2026 году появилось новое понятие — FOBO](https://fortune.com/2026/04/05/what-is-fobo-ai-angst-adoption/):
+
+**FOBO = не страх быть уволенным, а страх стать irrelevant**
+
+- **Четверо из десяти рабочих** считают что AI-driven job loss — одна из главных их проблем
+- **Это удвоилось за один год** (2025→2026)
+- Разработчики конкурируют не с другими людьми, а с "tireless algorithms"
+- Ощущение: "Я становлюсь неактуален каждый день"
+
+[Developer communities на Reddit и X наполнены историями про](https://evilmartians.com/chronicles/ai-assisted-engineers-are-burning-out-is-this-fine):
+- Burnout и depression
+- Люди рассматривают уход из tech industry
+- Severe imposter syndrome
+- Loss of purpose — зачем я нужен если есть ИИ?
+
+### Burnout от релятивного цикла инструментов
+
+[Каждый месяц выходит примерно в 4 раза больше значительных AI releases чем в 2023](https://www.buildmvpfast.com/blog/ai-fatigue-tool-overwhelm-developer-counter-trend-2026):
+
+- **95 AI tool shutdowns за 18 месяцев** (2025-2026)
+- **101 acquisition** (компании покупают конкурентов)
+- Давление: "оцени эту новую штуку", "попробуй тот инструмент", "может перейти на этот?"
+- Exhaustion не от использования ИИ, а от **relentless pressure evaluate/learn/adopt new tools every single day**
+
+**Результат:** developer fatigue. Становиться expert в инструменте чувствуется futile когда он может быть упрощен или obsolete на следующей неделе.
+
+### Quiet quitting и active resistance
+
+[Несмотря на давление, 29% employees willfully withdrawing from AI strategy](https://cyberpeace.org/resources/blogs/trust-in-tech-ai-adoption-at-the-workplace-and-quiet-quitting):
+
+- **44% among Gen Z workers** (почти половина)
+- Формы resistance:
+  - Копирование proprietary data в public AI chatbots (violation pero неконтролируемо)
+  - Использование unapproved tools
+  - Outright refusing mandated platforms
+  - Deliberately generating low-quality outputs чтобы показать что ИИ не работает
+  - **80% white-collar workers pushing back или игнорируют AI adoption mandates** к началу 2026
+
+**Это quiet quitting с AI оттенком** — люди "делают вид что используют" но на самом деле саботируют.
+
+### Job security: "3 senior engineers + AI = 10 engineers before"
+
+Реальность которая пугает разработчиков:
+
+- **Команда из 3 senior engineers с AI tools может produce столько же кода как команда из 10 раньше**
+- Entry-level roles shrinking
+- Senior engineers augmented with AI absorbing больше работы
+- Pressure на "everyone in between" quietly increasing
+- Компании ищут "unicorns": разработчики с глубоким опытом + specialized knowledge в ML architecture, vector databases, AI fine-tuning
+- Это очень узкий талант pool
+
+### ROI reality vs expectation gap
+
+Вот парадокс 2026 года:
+
+- **88% компаний используют AI** в минимум одной бизнес-функции
+- **95% из них видят NO measurable return on investment**
+- Компании инвестируют миллионы в AI tooling
+- Productivity gains которые обещали не материализуются
+- Но давление на разработчиков использовать ИИ остается
+
+### Психологическое воздействие
+
+[Исследование показало](https://www.jobadvisor.link/2026/06/the-hidden-toll-of-ai-coding-boom.html):
+
+Разработчики испытывают:
+- **Anxiety** — "Смогу ли я оставаться relevant?"
+- **Imposter syndrome** — "Я компилирую чужой код? Это не real work?"
+- **Loss of purpose** — "Почему я нужен?"
+- **Burnout** — relentless pace изменений, давление metrics, tool switching
+- **Depression** — есть реальные истории про depressed разработчиков рассматривающих career pivots
+
+### Чего компании не видят
+
+[79% компаний face challenges в AI adoption несмотря на high investment](https://writer.com/blog/enterprise-ai-adoption-2026/):
+
+- Давление сверху не translate в better results
+- Quiet quitting саботирует adoption
+- Developer stress приводит к mistakes и quality issues
+- Tools proliferate but no clear ROI
+- Компании гоняются за metrics (adoption rate %) вместо метрик которые matter (quality, delivery speed, team happiness)
+
+### Вывод о давлении
+
+**2026 показал: давление на разработчиков использовать ИИ создало парадокс:**
+
+1. ✅ ИИ tools действительно помогают когда properly used
+2. ❌ Forced adoption без understanding приводит к quality issues
+3. ❌ Constant tool switching создает burnout
+4. ❌ Job security fears приводят к quiet quitting
+5. ❌ Metrics focus (adoption %) вместо outcomes (quality, ROI) создает gaming the system
+
+**Успешные компании в 2026** — это те которые:
+- Дали разработчикам выбор какие AI tools использовать
+- Fokus на outcomes а не adoption metrics
+- Признали что quality matters больше чем velocity
+- Поддерживают mental health и career development
+
+Остальные гонятся за productivity metrics которые не материализуются, теряя talented people в процессе.
 
 ## Bundled AI Subscriptions: одна подписка — множество моделей
 
@@ -186,6 +558,13 @@ tags: ["Review","Business","AI","Risk"]
 - Лучше всего для: general purpose, research, writing
 - Минус: только OpenAI модели, нет API интеграции
 
+**Google Gemini Advanced** ($20/месяц)
+- Доступ к: Gemini 2.0, Gemini with Deep Research, интеграция с Google Search
+- Интерфейс: веб, мобильное приложение, Gmail/Docs интеграция
+- Лучше всего для: research, синтез информации из интернета, работа с Google документами
+- Плюс: встроенная актуальная информация из поиска, глубокий анализ
+- Минус: менее развитые инструменты для кода vs Claude/GPT-4
+
 **Claude.ai (Claude Pro)** ($20/месяц)
 - Доступ к: Claude Opus (200K контекст), Claude Sonnet
 - Интерфейс: веб, document upload (до 100 файлов сразу)
@@ -203,6 +582,20 @@ tags: ["Review","Business","AI","Risk"]
 - Интеграция: Windows, Edge, Office 365
 - Лучше всего для: Microsoft экосистема users
 - Плюс: работает с Office документами
+
+**DeepSeek Chat** (бесплатно, опциональная подписка)
+- Доступ к: DeepSeek-V3, DeepSeek R1 (reasoning модель)
+- Интерфейс: веб, API
+- Лучше всего для: экономичное решение, reasoning задачи, code completion
+- Плюс: одна из самых быстрорастущих моделей, конкурентная цена
+- Минус: молодой проект, потенциальные concerns о data privacy (кит. компания)
+
+**Grok** (через X Premium+ подписку или отдельно $10-20/месяц)
+- Доступ к: Grok-3, обновления в реал-тайме, интеграция с X/Twitter
+- Интерфейс: веб, X интеграция
+- Лучше всего для: актуальная информация, контроверсийные темы
+- Плюс: real-time информация из Twitter, нет цензуры на спорные вопросы
+- Минус: качество ниже GPT-4/Claude Opus, менее надёжен для точных задач
 
 #### API сервисы (доступ к множеству моделей через API)
 
@@ -237,6 +630,56 @@ tags: ["Review","Business","AI","Risk"]
 - Плюс: 10x дешевле чем OpenAI для Llama
 
 #### Локальные решения (для privacy/offline)
+
+**Почему компании и разработчики переходят на локальные модели?**
+
+В 2026 году наблюдается массовый переход на локальный запуск ИИ-моделей по двум причинам:
+
+**1. Цены на облачные API взлетели**
+- Цены на premium модели выросли на 300-900% в 2025-2026
+- Claude Opus: 27x дороже, чем базовые модели
+- **Пример:** 10-человеческая команда, которая регулярно использует GPT-4, платит ~$528/месяц облачным сервисам
+- На локальном сервере ($4,600 один раз) та же работа стоит ~$217/месяц с учётом электричества за 2 года
+- **Экономия:** 59% в первый год, ещё больше во второй и третий
+- **Точка окупаемости:** если компания тратит >$500-700/месяц на API, локальное оборудование окупается за 18-24 месяца
+
+**2. Конфиденциальность и защита данных**
+
+Утечки данных в облачных ИИ-системах стали серьезной проблемой в 2026 году.
+
+**Масштаб проблемы:**
+- **35% рост** AI-related утечек данных между 2024-2026 (от 12% к 47% всех инцидентов)
+- **Средняя стоимость утечки данных** в США достигла $10.22 млн в 2026
+- **77% сотрудников** используют ChatGPT/Claude на работе с реальными корпоративными данными
+- **50% компаний** сообщают об утечках через "shadow AI" (личные аккаунты сотрудников)
+
+**Конкретные инциденты в 2026:**
+- **Claude Code leak (март 2026):** Anthropic случайно опубликовала исходный код Claude в npm, раскрыв архитектуру production систем
+- **ChatGPT DNS exploit:** Хакеры использовали DNS-queries для кражи данных из ChatsGPT (конфиденциальные документы, коды)
+- **State-sponsored attacks:** Государственные группировки использовали prompt-injection атаки против Claude Code, скомпрометировав 30+ организаций
+- **Банковские инциденты (апрель 2026):** Два крупных банка США взломаны через единую third-party vendor интеграцию
+- **Instagram account hijacking:** Тысячи аккаунтов взломаны через abuse Meta's AI chatbot для сброса паролей
+
+**Основные риски облачных ИИ:**
+- Конфиденциальные данные копируются в third-party сервера (ChatGPT, Claude API, Microsoft Copilot)
+- Системы не проверяют "право доступа" к данным (что они должны обрабатывать)
+- Prompt injection атаки трюют ИИ раскрыть конфиденциальную информацию
+- Личные аккаунты сотрудников не отслеживаются IT-отделом, но содержат корпоративные данные
+- Утечки модели-весов стирают $14.5 млн с рынка за один день
+- ИИ-агенты могут действовать автономно и скомпрометировать 600+ firewalls без участия человека
+
+**Решение: локальные модели**
+- **55% enterprise AI** в 2026 запущено локально или на edge (было 12% в 2023)
+- Локальные модели означают **нулевую отправку конфиденциальной информации** третьим сторонам
+- Compliance требования (GDPR, HIPAA, финансовые регуляции) часто требуют локального запуска
+- Данные не покидают корпоративную сеть = отсутствие мониторинга и сбора данных компанией-поставщиком
+- Нет risk от prompt injection атак (данные в сети, controlled доступ)
+
+**Открытые модели на достаточном уровне качества**
+- Llama 3 70B, Mistral, Qwen 2.5, Gemma 2 могут справиться с 80-90% задач, где раньше нужен был GPT-4
+- Это позволяет компаниям использовать локально запущенные open-source модели вместо дорогих облачных API
+
+**Результат:** в 2026 году **локальные решения перестали быть исключением** и стали нормой для компаний, которые хотят контролировать затраты и данные.
 
 **Ollama** (Бесплатно)
 - Доступ к: Llama 3, Mistral, Qwen, Neural Chat локально
@@ -282,123 +725,24 @@ tags: ["Review","Business","AI","Risk"]
 - Лучше всего для: research с приватностью
 - Плюс: не собирает данные как Google
 
-### Анализ выгодности: сравнение затрат
+### Выбор правильного подхода
 
-**Сценарий 1: Solo разработчик (личное использование)**
+**Solo разработчик (личное использование)**
 
-| Сервис | Цена | Модели | Юзкейс | Экономия |
-|--------|------|--------|--------|----------|
-| **ChatGPT Plus** | $20 | GPT-4, Vision | General, writing | Хорошо если часто использовать |
-| **Claude Pro** | $20 | Claude Opus/Sonnet | Кодирование, анализ | 5x рабочее время |
-| **Cursor IDE** | $20 | GPT-4, Claude, Llama | Разработка полный день | Best value для dev |
-| **GitHub Copilot** | $20 | GPT-4, Claude | IDE интеграция | Seamless но дороговато |
-| **OpenRouter API** | $5-15 | 100+ моделей | API использование | Самый дешевый если меньше используешь |
-| **Ollama (бесплатно)** | $0 | Llama, Mistral локально | Offline разработка | Бесплатно, нет API calls |
-| **Together.ai API** | $2-10 | Llama, Mistral, Qwen | Open source only | Дешевле чем OpenAI |
-| **Hugging Face** | $0-9 | 400K моделей | Research, experiments | Бесплатно большинство |
+Рекомендуемые опции:
+- 🥇 **Cursor IDE** ($20) — всё в одном, IDE интегрирована
+- 🥈 **GitHub Copilot** + ChatGPT Plus ($40 total) — гибкость, разные модели
+- 🥉 **OpenRouter** ($5-10) или **Ollama бесплатно** — бюджетный вариант
 
-**Вывод для solo разработчика:** 
-- 🥇 Best: **Cursor IDE** ($20) — всё в одном, IDE интегрирована
-- 🥈 Best if coding: **GitHub Copilot** ($20) + **ChatGPT Plus** ($20) = $40, но гибкость
-- 🥉 Бюджет: **OpenRouter** ($5-10) или **Ollama бесплатно** + местная настройка
-- ❌ Не берите две подписки на одну и ту же модель (ChatGPT Plus + OpenRouter GPT-4)
+**Team в компании (3-20 человек)**
+- **GitHub Copilot Team** ($300-400/месяц) — управление, аналитика, IDE интеграция
+- Альтернатива: OpenRouter API + ChatGPT Plus ($300-400) — гибкость, дешево
 
----
+**Enterprise (20+ человек)**
+- **AWS Bedrock** или **Azure OpenAI** — enterprise features, SLA
+- Альтернатива: **Self-hosted Ollama** если нужна полная приватность
 
-**Сценарий 2: Team в компании (10-50 человек)**
-
-| Подход | Цена на 10 человек | Цена на 50 человек | Преимущества | Минусы |
-|--------|------------------|-------------------|--------------|--------|
-| **Индивидуальные подписки** | $200-400 | $1,000-2,000 | Гибкость | Чаос в управлении |
-| **GitHub Copilot Team** | $300-350 | $1,500-1,750 | Аналитика, управление | Только для разработчиков |
-| **OpenRouter API + внутренняя лицензия** | $100-300 | $500-1,500 | Дешево, гибкий выбор моделей | Нужно управлять лимитами |
-| **AWS Bedrock (pay-per-use)** | $150-500 | $750-2,500 | Enterprise features | Нужна AWS инфра |
-| **Azure OpenAI** | $200-600 | $1,000-3,000 | Microsoft интеграция | Привязка к Azure |
-| **Self-hosted Ollama** | $0 (инфра) | $0 (инфра) | Бесплатно, полный контроль | Нужны IT ресурсы для поддержки |
-| **Mistral API** | $50-150 | $250-750 | Самый дешевый API | Только Mistral модели |
-| **Together.ai** | $50-200 | $250-1,000 | Дешево для open source | Ограничен OSS моделями |
-| **Enterprise контракт (GitHub + Anthropic)** | $500-2,000 | $2,500-10,000 | Полная поддержка, SLA | Дорого, но включает всё |
-
-**Рекомендация по команде размером:**
-
-| Команда | Рекомендация | Цена | Почему |
-|---------|--------------|------|--------|
-| **1-3 человека** | Ollama (бесплатно) или Claude Pro | $0-60 | Не нужно переусложнять |
-| **3-10 чел (девелоперы)** | GitHub Copilot Team | $300-350 | Управление, аналитика |
-| **10-20 человек (mixed)** | OpenRouter API + ChatGPT Plus | $300-400 | Гибкость, дешево |
-| **20-50 человек** | AWS Bedrock или Azure OpenAI | $1,500-3,000 | Enterprise функции |
-| **50+ человек** | Enterprise контракт напрямую | $5,000+ | Custom, SLA, поддержка |
-
-**Вывод для компании:**
-- ✅ До 5 чел: индивидуальные подписки или Ollama бесплатно
-- ✅ 5-20 чел: GitHub Copilot Team или OpenRouter API
-- ✅ 20-50 чел: AWS/Azure + внутренний контроль лимитов
-- ✅ 50+ чел: Enterprise контракт с поддержкой
-
----
-
-### Когда bundled выгоднее, когда нет?
-
-**✅ Bundled ЭТО выгодно если:**
-1. Вы часто переключаетесь между моделями (GPT-4 для сложного → Claude для кода)
-2. Вы используете в IDE постоянно (GitHub Copilot встроена, всё под рукой)
-3. Вы разработчик и нужна одна подписка на всё (не хочется управлять 5 подписками)
-4. Вам нужна интеграция (IDE + browser + terminal одной подпиской)
-
-**❌ Bundled НЕ выгодно если:**
-1. Вы используете только одну модель (зачем платить за то, что не используете?)
-2. Вы в компании и платите на каждого сотрудника (суммируется)
-3. Вы ограничены бюджетом и можете использовать free tier
-4. Вы пишете код с очень высокой частотой (может быть дешевле платить за API)
-
-### Рекомендация по стратегии в 2026
-
-**Для компании на этапе пилота:**
-```
-10 разработчиков × ChatGPT Plus ($20) = $200/месяц
-или
-GitHub Copilot Team для 10 = $300/месяц
-
-Разница: +$100, но получаете:
-- Интеграция в IDE (GitHub Copilot)
-- Аналитика использования
-- Управление лицензиями
-- Support
-```
-
-**Рекомендуемый подход:**
-1. **Месяцы 1-2:** Дайте людям индивидуальные подписки ($20-40), пусть попробуют
-2. **Месяц 3:** Измерьте, кто использует, сколько
-3. **Месяц 4+:** Миграция на:
-   - GitHub Copilot Team (если команда разработчиков)
-   - ChatGPT Business (если смешанная команда)
-   - API с лимитом (если можете контролировать использование)
-
-**Главное правило:** Не платите за то, что не используется. Bundled не спасает от этого — он просто удобнее управляется.
-
-### Red flags: когда bundled становится дорогим
-
-- ⚠️ Вся компания платит GitHub Copilot $30 × 100 = $3,000/месяц, но используют 20 человек
-- ⚠️ Индивидуальные ChatGPT Plus $20 × 20 = $400, а могли бы использовать API за $50
-- ⚠️ Используете только Claude, но платите за GitHub Copilot (GPT-4 + Claude)
-
-**Решение:** Регулярно (раз в месяц) смотрите:
-1. Кто активен? (убирайте неиспользуемые лицензии)
-2. Какие модели используются? (может быть переплачиваете)
-3. Можно ли перейти на более дешёвый вариант?
-
-
-## Риски и как их минимизировать
-
-### 1. Безопасность и конфиденциальность
-
-**Риск:** Чувствительные данные (пароли, личная информация, IP) попадают в ИИ-сервис, а потом используются для обучения следующих версий модели.
-
-**Как защищаться:**
-- ❌ Никогда не вводите реальные пароли, номера кредитных карт, PII в публичные ИИ-сервисы
-- ✅ Используйте локальные ИИ-решения для конфиденциального (если возможно)
-- ✅ Читайте Terms of Service сервиса (например, OpenAI vs Anthropic имеют разные политики)
-- ✅ Для Enterprise — требуйте контрактов с гарантиями конфиденциальности
+**Главное:** Не платите за то, что не используется. Bundled подписка удобнее, но нужно регулярно смотреть кто активен и какие модели используются.
 
 **Данные GDPR/CCPA:**
 - ИИ-сервисы должны соответствовать локальным законам о персональных данных
@@ -472,10 +816,10 @@ GitHub Copilot Team для 10 = $300/месяц
 
 **Реальные данные на сегодня (июль 2026):**
 
-- ❌ **95% enterprise НЕ получили измеримый ROI** от ИИ-инвестиций (MIT research)
-- ❌ **90% компаний видят НУЛЕВОЙ эффект** на производительность в реальности (NBER, февраль 2026)
-- ❌ **80% роста S&P 500 в 2025** был вызван ИИ-компаниями (экстремальная концентрация риска)
-- ⚠️ **BIS (центробанк центробанков) озабочен** — предупредил о системных рисках и потенциальной глобальной рецессии
+- ❌ **95% enterprise НЕ получили измеримый ROI** от ИИ-инвестиций ([MIT Sloan Management Review, 2026](https://sloanreview.mit.edu/article/the-ai-roi-gap-why-enterprises-fail-to-extract-value/))
+- ❌ **90% компаний видят НУЛЕВОЙ эффект** на производительность в реальности ([NBER Working Paper, февраль 2026](https://www.nber.org/papers/w34289))
+- ❌ **80% роста S&P 500 в 2025** был вызван ИИ-компаниями ([McKinsey AI Index 2026](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-in-2026)) (экстремальная концентрация риска)
+- ⚠️ **BIS (центробанк центробанков) озабочен** — [предупредил о системных рисках](https://www.bis.org/publ/qtrpdf/r_qt2606.pdf) и потенциальной глобальной рецессии
 
 **Почему это вас должно волновать:**
 
@@ -990,6 +1334,93 @@ Humans для дизайна (creativity, game feel)
 - [Harvard: AI Code Quality Analysis](https://blog.exceeds.ai/comparative-ai-code-quality-governance/)
 - [TFIR: AI Code Quality Guardrails 2026](https://tfir.io/ai-code-quality-2026-guardrails/)
 
+### Прогресс моделей и Scaling Laws
+
+**Улучшение производительности моделей:**
+- [GPT-5 Benchmark Results (Feb 2026) - Wolfia](https://wolfia.com/blog/gpt-5-benchmark-showdown)
+- [GPT-4 vs GPT-5: Benchmarks, Pricing & Which Is Better in 2026 - LLM Stats](https://llm-stats.com/models/compare/gpt-4-0613-vs-gpt-5-2025-08-07)
+- [GPT-4o vs GPT-5 (medium): AI Benchmark Comparison 2026 - BenchLM.ai](https://benchlm.ai/compare/gpt-4o-vs-gpt-5-medium)
+- [GPT-5 vs o3 vs 4o vs GPT-5 Pro — 2025 Benchmarks - Passion Fruit](https://www.getpassionfruit.com/blog/chatgpt-5-vs-gpt-5-pro-vs-gpt-4o-vs-o3-performance-benchmark-comparison-recommendation-of-openai-s-2025-models)
+
+**Scaling Laws и plateau:**
+- [AI Scaling Laws & Reasoning Models 2026: What the Research Says - Medium](https://medium.com/@siddantvardey/the-frontier-reasoning-models-scaling-laws-whats-actually-coming-next-93bba260644b)
+- [Scaling Laws, Foundation Models, and the AI Singularity - ResearchGate](https://www.researchgate.net/publication/399498402_Scaling_Laws_Foundation_Models_and_the_AI_Singularity_A_Critical_Appraisal_of_2023-_2025_Evidence)
+- [LLM Scaling Laws Explained: Will Bigger AI Models Always Win? (2026) - BuildFastWithAI](https://www.buildfastwithai.com/blogs/llm-scaling-laws-explained)
+- [LLM Scaling Laws: Analysis from AI Researchers - AIMultiple](https://aimultiple.com/llm-scaling-laws)
+- [AI Model Size vs Performance 2026 - LocalAIMaster](https://localaimaster.com/blog/ai-model-size-vs-performance-analysis-2025)
+- [A brief history of LLM Scaling Laws - Jon Vet](https://www.jonvet.com/blog/llm-scaling-in-2025)
+- [The AI Scaling Wall of Diminishing Returns - arXiv](https://arxiv.org/abs/2512.20264)
+- [AI Scaling Plateau: Researchers Question Current Trajectory - Science Tech News](https://science-technology.news-articles.net/content/2026/03/21/ai-scaling-plateau-researchers-question-current-trajectory.html)
+- [Data Plateau: Hit The Scaling Wall With AI Or Remain An Innovator? - Forbes](https://www.forbes.com/sites/saharhashmi/2026/03/03/data-plateau-hit-the-scaling-wall-with-ai-or-remain-an-innovator/)
+- [The LLM Scaling Wall is Here. What's Next for AI? - Adeaca](https://www.adeaca.com/blog/the-llm-scaling-wall-is-here-whats-next-for-ai/)
+
+**Real-World Impact vs Benchmark Improvements:**
+- [AI Productivity Guide: Unlock Success in 2026 - Stellium Consulting](https://stellium.consulting/articles/news/ai-productivity/)
+- [AI Productivity Statistics 2026 - AIBusinessWeekly](https://aibbusinessweekly.net/p/ai-productivity-statistics)
+- [AI Productivity Statistics 2026: Adoption, Time Savings, and Real ROI Data - Saner](https://blog.saner.ai/ai-productivity-statistics/)
+- [The Impact of AI on Developer Productivity: Evidence from GitHub Copilot - arXiv](https://arxiv.org/pdf/2302.06590)
+- [From Model Design to Organizational Design - arXiv](https://arxiv.org/pdf/2506.22440)
+- [The Future of AI Productivity 2026 and Beyond - Medium](https://medium.com/@Ella456/the-future-of-ai-productivity-transforming-workflows-in-2026-and-beyond-e6ade5232188)
+
+**Будущие направления:**
+- [AI Beyond the Scaling Laws - HEC Paris](https://www.hec.edu/en/dare/tech-ai/ai-beyond-scaling-laws)
+- [Grounded Scaling: Why Agentic AI Needs Deterministic Environments - arXiv](https://arxiv.org/pdf/2606.22495)
+- [International AI Safety Report 2026 - arXiv](https://arxiv.org/pdf/2602.21012)
+- [AI+HW 2035: Shaping the Next Decade - arXiv](https://arxiv.org/pdf/2603.05225)
+
+### Давление на разработчиков: психология и организационные аспекты
+
+**Давление на adoption и job security:**
+- [AI's impact on software engineers in 2026: key trends, Part 2 - Pragmatic Engineer](https://newsletter.pragmaticengineer.com/p/ai-impact-on-software-engineers-part-2)
+- [AI Coding Assistant Statistics 2026 - Uvik Software](https://uvik.net/blog/ai-coding-assistant-statistics/)
+- [We are Changing our Developer Productivity Experiment Design - METR](https://metr.org/blog/2026-02-24-uplift-update/)
+- [A 2026 Guide on How to Use AI for Developer Productivity - Axify](https://axify.io/blog/use-ai-for-developer-productivity)
+- [AI Coding Tool Adoption 2026: Developer Survey Results - DigitalApplied](https://www.digitalapplied.com/blog/ai-coding-tool-adoption-2026-developer-survey)
+- [Developers Are Being Forced to Use AI — And We Need to Talk About It - Tech World with Sahana](https://techworldwithsahana.substack.com/p/developers-are-being-forced-to-use)
+
+**FOBO - Fear of Becoming Obsolete:**
+- [Fewer than 1 in 4 workers feel their job is safe - Fortune](https://fortune.com/2026/04/23/ai-anxiety-workers-job-insecurity-fobo-ceos/)
+- [AI angst mutates into 'FOBO' as Fear of Becoming Obsolete - Fortune](https://fortune.com/2026/04/05/what-is-fobo-ai-angst-adoption/)
+- [The Invisible Bench: Software Engineers in the Era of Generative AI - Medinsight](https://medinsight.treeiq.biz/blog/the-invisible-bench-software-engineers-in-the-era-of-generative-ai)
+- [The Gigification of Code: How AI is Rewriting the Rules of Tech Employment - Medinsight](https://medinsight.treeiq.biz/blog/the-gigification-of-code-how-ai-is-rewriting-the-rules-of-tech-employment)
+
+**Burnout и mental health:**
+- [The Hidden Toll of the AI Coding Boom: Workplace Paralysis - Job Advisor](https://www.jobadvisor.link/2026/06/the-hidden-toll-ai-coding-boom.html)
+- [AI-assisted engineers are burning out, is this fine? - Evil Martians](https://evilmartians.com/chronicles/ai-assisted-engineers-are-burning-out-is-this-fine)
+- [Employee AI Fears in 2026: What Actually Kills Adoption - People Managing People](https://peoplemanagingpeople.com/workforce-management/ai-fears-2026/)
+
+**Tool fatigue и resistance:**
+- [AI Tool Fatigue: The Meta-Skill of Ignoring 2026 - BuildMVP Fast](https://www.buildmvpfast.com/blog/ai-tool-fatigue-meta-skill-ignore-focus-2026)
+- [AI Tool Fatigue 2026 | Why Developers Are Overwhelmed - BuildMVP Fast](https://www.buildmvpfast.com/blog/ai-fatigue-tool-overwhelm-developer-counter-trend-2026)
+- [AI Fatigue Statistics 2026: Data on Burnout, ROI & Tool Sprawl - Shibumi](https://shibumi.com/blog/ai-fatigue-statistics-2026/)
+- [Trust in Tech: AI Adoption at the Workplace and Quiet Quitting - Cyber Peace](https://cyberpeace.org/resources/blogs/trust-in-tech-ai-adoption-at-the-workplace-and-quiet-quitting)
+- [Why AI Adoption Stalls, According to Industry Data - Harvard Business Review](https://hbr.org/2026/02/why-ai-adoption-stalls-according-to-industry-data)
+- [Change Management for AI Adoption: A 2026 Playbook - DigitalApplied](https://www.digitalapplied.com/blog/change-management-ai-adoption-2026-overcoming-resistance-playbook)
+- [Enterprise AI adoption in 2026: Why 79% face challenges - Writer](https://writer.com/blog/enterprise-ai-adoption-2026/)
+
+### Prompting техники и AI Pair Programming
+
+**Prompting техники:**
+- [Prompt Engineering Patterns 2026: What Actually Works - Groundy](https://groundy.com/articles/prompt-engineering-patterns-2026-what-actually-works/)
+- [Advanced Prompt Engineering 2026: 12 Techniques Guide - Lushbinary](https://lushbinary.com/blog/advanced-prompt-engineering-techniques-developer-guide/)
+- [Prompt Engineering Techniques: Top 6 for 2026 - K2View](https://www.k2view.com/blog/prompt-engineering-techniques/)
+- [15 Advanced AI Prompts for 2026 Developer Workflows - Medium](https://medium.com/@paul.kalman/15-advanced-ai-prompts-for-2026-developer-workflows-843a73b56bea)
+- [Prompt Engineering Best Practices in 2026 - UC Strategies](https://ucstrategies.com/news/prompt-engineering-best-practices-in-2026-the-ultimate-guide-to-better-ai-prompts/)
+- [Chain of Thought Prompting in AI: A Comprehensive Guide [2026] - FutureAGI](https://futureagi.substack.com/p/chain-of-thought-prompting-in-ai)
+- [Prompt Engineering Best Practices 2026 - Thomas Wiegold Blog](https://thomas-wiegold.com/blog/prompt-engineering-best-practices-2026/)
+- [Prompt Engineering Guide: Chain-of-Thought, ReAct & Few-Shot - Meta Intelligence](https://www.meta-intelligence.tech/en/insight-prompt-engineering)
+
+**AI Pair Programming Workflows:**
+- [AI Pair Programming 2026: Tools, Workflow, Velocity Wins - GroovyWeb](https://www.groovyweb.co/blog/ai-pair-programming-tools-workflow-2026)
+- [AI Coding Agents in 2026: From Pair Programmers to Autonomous Engineers - Windows News](https://windowsnews.ai/article/ai-coding-agents-in-2026-from-pair-programmers-to-autonomous-engineers-on-windows.433584)
+- [The State of AI Coding Agents (2026) - Medium](https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a)
+- [AI Pair Programming: The Complete 2026 Guide for Developers - Fungies.io](https://fungies.io/ai-pair-programming-guide-2026/)
+- [Cursor AI 2026: The Complete Guide to the AI-Native IDE - DEV Community](https://dev.to/sahilkhurana/cursor-ai-2026-the-complete-guide-to-the-ai-native-ide-3n4h)
+- [AI Pair Programming Explained: What It Actually Is in 2026 - Anurag Wagh](https://anuragwagh.com/blog/ai-pair-programming-explained)
+- [The 9 best AI coding tools in 2026 - Zapier](https://zapier.com/blog/ai-coding-tools/)
+- [AI Pair Programming Tools in 2026: A Practical Comparison - ASOasis](https://asoasis.tech/articles/2026-03-30-0854-ai-pair-programming-tools-comparison-2026/)
+- [Beyond Autocomplete: Best Agentic Coding Workflow in 2026 - Kilo](https://kilo.ai/articles/beyond-autocomplete)
+
 ### Геополитика и ограничения
 
 **Trade War & Restrictions:**
@@ -1014,6 +1445,84 @@ Humans для дизайна (creativity, game feel)
 - [In-Game News: Party Animals Steam Review Bomb (май 2026)](https://www.ingamenews.com/2026/05/party-animals-steam-review-bomb-2026-ai.html)
 - [BitTopup News: Identity V AI Backlash (апрель 2026)](https://news.bittopup.com/news/identity-v-ai-backlash-2026-is-the-april-23-boycott-worth-it)
 - [GosuGamers: Neverness to Everness AI controversy](https://www.gosugamers.net/entertainment/news/78396-neverness-to-everness-developer-responds-to-ai-controversy-will-rework-flagged-assets)
+
+### ИИ-код: галлюцинации и бремя code review
+
+**AI Hallucinations в коде и их реальные проблемы:**
+- [Have AI Hallucinations Been Solved? The Truth About Chatbot Accuracy in 2026 - TechTimes](https://www.techtimes.com/articles/316829/20260519/have-ai-hallucinations-been-solved-truth-about-chatbot-accuracy-2026.htm)
+- [AI Hallucination Statistics 2026: 50+ Sourced Data Points - Suprmind](https://suprmind.ai/hub/insights/ai-hallucination-statistics-research-report-2026/)
+- [AI Hallucinations in 2026: Causes, Detection, Prevention - FutureAGI](https://futureagi.com/blog/understanding-ai-hallucinations/)
+- [AI Hallucinations in 2026: Causes, Impact, and Solutions - GetMaxim](https://www.getmaxim.ai/articles/ai-hallucinations-in-2025-causes-impact-and-solutions-for-trustworthy-ai/)
+- [What Does AI Hallucination Look Like in 2026? - AutoGPT](https://autogpt.net/what-does-ai-hallucination-look-like-today/)
+- [LLM Hallucination Rates 2026 - ModelsLab](https://modelslab.com/blog/llm/llm-hallucination-rates-2026)
+- [Which AI Hallucinates Least? June 2026 Benchmark - Suprmind](https://suprmind.ai/hub/ai-hallucination-rates-and-benchmarks/)
+- [AI Hallucinations in Production Code: Risks and Mitigations in 2026 - DevX](https://www.devx.com/uncategorized/ai-hallucinations-production-code-risks-mitigations-2026/)
+- [AI Hallucination Rate Benchmarks 2026: 5-Model Study - DigitalApplied](https://www.digitalapplied.com/blog/ai-model-hallucination-rate-benchmarks-2026-study)
+- [AI Model Hallucination Rates 2026: The Definitive Honesty Rankings - CodingFleet](https://codingfleet.com/blog/ai-model-hallucination-rates-2026/)
+- [Detecting and Correcting Hallucinations in LLM-Generated Code - arXiv](https://arxiv.org/html/2601.19106v1)
+- [The Range Shrinks, the Threat Remains: LLM Package Hallucinations 2026 - arXiv](https://arxiv.org/pdf/2605.17062)
+- [What Should a CTO Know About AI Hallucinations in Code Generation - Particle41](https://particle41.com/insights/what-ctos-should-know-about-ai-hallucinations/)
+- [Done — Is a Lie. Your Definition of Done Is Broken in 2026 - Medium](https://medium.com/@julian.oczkowski/done-is-a-lie-your-definition-of-done-is-broken-in-2026-82bb59a69257)
+- [Why more than half of AI projects could fail in 2026 - TechRadar](https://www.techradar.com/pro/why-more-than-half-of-ai-projects-could-fail-in-2026)
+- [AI Implementation Failures: How to Avoid Them - Schellman](https://www.schellman.com/blog/ai-governance/ai-implementation-failures-in-real-world-deployments)
+- [Why AI Implementation Fails — And How to Fix It - ISM World](https://www.ismworld.org/supply-management-news-and-reports/news-publications/inside-supply-management-magazine/blog/2026/2026-03/why-ai-implementation-fails--and-how-to-fix-it/)
+- [AI Due Diligence Checklist 2026 - Security Boulevard](https://securityboulevard.com/2026/04/ai-due-diligence-checklist-2026-how-to-avoid-ai-implementation-failures-security-risks-and-cost-overruns/)
+
+**Code Review Burden и качество кода:**
+- [AI Code Quality Crisis 2026: Engineering Leader Guide - Of Ash and Fire](https://www.ofashandfire.com/blog/ai-generated-code-quality-crisis)
+- [The Invisible Cost of AI-Generated Code Reviews - DEVOPSdigest](https://www.devopsdigest.com/the-invisible-cost-of-ai-generated-code-reviews)
+- [AI Code Quality: The Hidden Cost Senior Engineers Pay - Faros](https://www.faros.ai/blog/ai-code-quality-senior-engineer-review-burden)
+- [AI Code Review Burden Growing - Technize](https://www.technize.com/opinion/ai-code-review-burden-growing/)
+- [AI-Generated Code Quality Crisis: The Problem Nobody Sees - Kunal Ganglani](https://www.kunalganglani.com/blog/ai-generated-code-quality-crisis)
+- [Code Review in the Age of AI - Addy Osmani](https://addyo.substack.com/p/code-review-in-the-age-of-ai)
+- [Are bugs and incidents inevitable with AI coding agents? - Stack Overflow](https://stackoverflow.blog/2026/01/28/are-bugs-and-incidents-inevitable-with-ai-coding-agents/)
+
+**Компании ограничивают AI commits:**
+- [Microsoft Ends Claude Code Licenses As It Shifts Developers To Copilot - Forbes](https://www.forbes.com/sites/jonmarkman/2026/06/01/microsoft-ends-claude-code-licenses-as-it-pushes-copilot-cli/)
+- [AI Code Generators Are Officially Doomed - Medium](https://medium.com/the-tech-notes/ai-code-generators-are-officially-doomed-and-joel-spolsky-warned-us-7cab24966234)
+- [GitHub restricts Copilot as agentic AI workflows strain infrastructure - Developer Tech](https://www.developer-tech.com/news/github-restricts-copilot-agentic-ai-workflows-strain-infrastructure/)
+- [Why Teams Use GitHub Copilot Wrong and Fix It in 2026 - ThoughtMinds](https://thoughtminds.ai/blog/why-teams-use-github-copilot-wrong-and-fix-it)
+- [Allow us to block Copilot-generated PRs from repositories - GitHub Community](https://github.com/orgs/community/discussions/159749)
+- [How to ban Copilot from GitHub repo? - GitHub Discussion](https://github.com/orgs/community/discussions/197931)
+
+**AI Code Quality Guardrails:**
+- [AI Code Quality Guardrails 2026 - TFIR](https://tfir.io/ai-code-quality-2026-guardrails/)
+- [AI Code Review for Enterprises in 2026 - Pensero](https://pensero.ai/blog/ai-code-review-for-enterprise)
+- [How to keep AI hallucinations out of your code - InfoWorld](https://www.infoworld.com/article/3822251/how-to-keep-ai-hallucinations-out-of-your-code.html)
+
+### Локальные AI модели и конфиденциальность
+
+**Анализ затрат: Local vs Cloud**
+- [Local AI vs Cloud AI in 2026 - MindStudio](https://www.mindstudio.ai/blog/local-ai-vs-cloud-ai-2026)
+- [Local LLMs vs Cloud APIs: 2026 Total Cost of Ownership Analysis - SitePoint](https://www.sitepoint.com/local-llms-vs-cloud-api-cost-analysis-2026/)
+- [Local LLM vs Cloud API: Complete 2026 Cost Breakdown - Fungies.io](https://fungies.io/local-llm-vs-cloud-cost-2026/)
+- [LLM API Cost Comparison 2026 - Price Per Token](https://pricepertoken.com/)
+- [AI Cloud Price Hike - StartupHub.ai](https://www.startuphub.ai/ai-news/technology/2026/ai-s-cloud-price-hike)
+
+**Конфиденциальность и безопасность**
+- [Local AI Privacy Guide 2026: 100% Offline, Zero Data Leaks](https://localaimaster.com/blog/local-ai-privacy-guide)
+- [Local LLMs in 2026: Privacy, Edge AI & Data Sovereignty - Renovator](https://renewator.com/the-rise-of-local-llms-privacy-and-sovereignty-in-2026/)
+- [Enterprise AI Data Security in 2026 - DesignRush](https://news.designrush.com/enterprise-ai-security-2026-risks-challenges-fixes)
+- [My self-sovereign / local / private / secure LLM setup, April 2026 - Vitalik's Blog](https://vitalik.eth.limo/general/2026/04/02/secure_llms.html)
+- [Data Privacy in 2026: Navigating the Evolving Digital Frontier - TrustCloud](https://www.trustcloud.ai/privacy/data-privacy-navigating-the-evolving-digital-frontier/)
+
+**Утечки данных в облачных ИИ-системах**
+- [2026 Data Breaches: Cybersecurity Incidents Explained - PKware](https://www.pkware.com/blog/2026-data-breaches)
+- [Hacked, leaked, and held for ransom: The worst breaches of 2026 - TechCrunch](https://techcrunch.com/2026/07/07/the-worst-hacks-and-breaches-of-2026-so-far/)
+- [The AI Inversion: 2026's Most Dangerous Cyber Attacks - Foresight](https://foresiet.com/blog/ai-enabled-cyberattacks-2026-incidents/)
+- [Data Breach Statistics for 2026 - SentinelOne](https://www.sentinelone.com/cybersecurity-101/cybersecurity/data-breach-statistics/)
+- [LLM Data Security: ChatGPT vs Copilot vs Claude Data Risks - Secuvy](https://secuvy.ai/blog/llm-data-security-chatgpt-copilot-claude/)
+- [ChatGPT Data Security: Preventing Proprietary Data Leaks - IntuitionLabs](https://intuitionlabs.ai/articles/prevent-chatgpt-proprietary-data-leaks)
+- [Claude Leaked Source Code: AI Security Impact - Blockchain Council](https://www.blockchain-council.org/claude-ai/claude-leaked-source-code-ai-security-model-integrity-responsible-disclosure/)
+- [Why AI's Rise Makes Protecting Personal Data More Critical Than Ever - Infosecurity Magazine](https://www.infosecurity-magazine.com/news-features/data-privacy-day-ai-rise-protect/)
+- [Be Careful What You Tell Your AI Chatbot - Stanford HAI](https://hai.stanford.edu/news/be-careful-what-you-tell-your-ai-chatbot)
+- [LLM Data Leakage: Understanding the Security Risks of Generative AI - Alasconnect](https://alasconnect.com/blog/llm-data-leakage-understanding-the-security-risks-of-generative-ai/)
+
+**Локальные инструменты**
+- [Ollama: ollama.ai](https://ollama.ai)
+- [LM Studio: lmstudio.ai](https://lmstudio.ai)
+- [Hugging Face Models: huggingface.co/models](https://huggingface.co/models)
+- [Llama 3: github.com/meta-llama/llama3](https://github.com/meta-llama/llama3)
 
 
 ## Финальные выводы
