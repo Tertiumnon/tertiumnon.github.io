@@ -1,6 +1,6 @@
 {
   "name": "tertiumnon-github-io",
-  "version": "1.60.22",
+  "version": "1.60.23",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
