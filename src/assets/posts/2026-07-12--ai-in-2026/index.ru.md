@@ -535,9 +535,37 @@ Intel медленно наращивала присутствие на рынк
 - Но: Intel уже обещал поддержку через 2026-2027
 - **Риск невелик** если это не специализированная продакшн-система
 
+### Что РАБОТАЕТ с Intel Arc GPUs (2026)
+
+**✅ LLM Inference (основной use case):**
+- Ollama v0.17+ с SYCL backend — полная поддержка
+- llama.cpp (upstream) — стабилен
+- Llama 3 (8B, 13B, 70B) — полностью рабочет ([IPEX-LLM](https://github.com/intel/ipex-llm))
+- Mistral, Qwen, DeepSeek — работают хорошо
+- Может запустить: 671B DeepSeek V3/R1 или 235B Qwen3MoE на 1-2 Arc GPU
+
+**✅ Image Generation:**
+- Stable Diffusion 1.5, SDXL, Flux.1 — все работают
+- ControlNet, IP-Adapter, LoRA — без проблем
+- ComfyUI и Automatic1111 — встроена поддержка
+
+**✅ PyTorch Models:**
+- Стандартные PyTorch операции — полная поддержка
+- Intel Extension for PyTorch (XPU device) — стабилен
+- TensorFlow через Intel Extension — работает
+
+**⚠️ Что НЕ работает:**
+- ❌ CUDA-специфичные ядра (xformers attention)
+- ❌ TensorRT ускорение
+- ❌ Некоторые AnimateDiff temporal kernels
+- ❌ Любые библиотеки с жестким CUDA dependency
+- ❌ Новые архитектуры без SYCL поддержки (экспериментальные модели)
+
+**Важно:** Если модель построена на стандартных PyTorch операциях — работает. Если использует CUDA-specific kernels — не работает.
+
 ### Рекомендация: кто должен купить Intel Arc?
 
-**Реальная ситуация в июле 2026:** Intel Arc Pro успешно работает в production у Advantech (дефект-детекция на заводах), UXStream (web rendering + AI), и других компаний. Прошел "infant mortality phase" и стабилен для специфичных workloads. Однако — нужна компетентность.
+**Реальная ситуация в июле 2026:** Intel Arc Pro успешно работает в production у Advantech (дефект-детекция на заводах), UXStream (web rendering + AI), Gigapixel Media (Stable Diffusion), и других компаний. Прошел "infant mortality phase" и стабилен для специфичных workloads. Однако — нужна компетентность.
 
 | Кто | Вердикт | Почему |
 |-----|---------|--------|
