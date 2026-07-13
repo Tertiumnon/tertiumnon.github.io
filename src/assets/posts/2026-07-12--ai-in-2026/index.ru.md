@@ -461,39 +461,39 @@ Intel медленно наращивала присутствие на рынк
 
 **Важно:** Battlemage — это потребительские GPU для геймеров, не для профессиональной работы с AI. Память и архитектура не оптимизированы для ML.
 
-### Professional: Arc Pro B-Series (Q3 2025 — март 2026)
+### Professional: Arc Pro B-Series (сентябрь 2025 — март 2026)
 
-**Arc Pro B50 (16GB VRAM)** — Q3 2025
+**Arc Pro B50 (16GB VRAM)** — сентябрь 2025 (объявлено май 2025)
 - Компактный, low-power для workstations
 - 170 pTOPS, 224 GB/s bandwidth, 70W
 - Может быть объединена с другими B-серией
-- Цена: $349
+- Цена: $349 (launch MSRP, [TechPowerUp](https://www.techpowerup.com/340632/intel-arc-pro-b50-gpu-arrives-at-usd-349-for-small-form-factor-workstations))
 - Может запустить: Llama 3 13B (Float32) комфортно
 - **На рынке ~10 месяцев к июлю 2026**
 
-**Arc Pro B60 (24GB VRAM)** — Q3 2025
+**Arc Pro B60 (24GB VRAM)** — январь 2026 (объявлено май 2025, sampling июнь 2025)
 - Продвинутая для AI/ML workloads
 - 197 pTOPS, 456 GB/s bandwidth, 120-200W
 - Может запустить: Llama 3 70B (Int8), GPT-3 размер
-- Цена: $599-681 (зависит от AIB партнера)
+- Цена: $799 MSRP (январь 2026), $659.99 июль 2026 ([TechPowerUp](https://www.techpowerup.com/345471/sparkle-launches-intel-arc-pro-b60-24-gb-blower-and-48-gb-passive-gpus))
 - Две Arc Pro B60 = 48GB total (работают как одна карта)
-- **На рынке ~10 месяцев к июлю 2026**
+- **На рынке ~6 месяцев к июлю 2026**
 
-**Arc Pro B65 (32GB VRAM)** — март 2026
+**Arc Pro B65 (32GB VRAM)** — апрель 2026 (объявлено март 2026)
 - AI-focused, для растущих команд
 - 197 pTOPS, 608 GB/s bandwidth, 200W
 - Может запустить: большие модели с полной точностью (Float32)
-- Цена: $910
-- **НОВОЕ в 2026 году — всего 4 месяца на рынке**
+- Цена: $910 (ASRock вариант, [TechPowerUp](https://www.techpowerup.com/350251/intel-arc-pro-b65-now-available-in-us-for-usd-910))
+- **На рынке ~3 месяца к июлю 2026 — самая новая**
 
 **Arc Pro B70 (32GB VRAM)** ← ФЛАГМАН — март 2026
 - Высокопроизводительная рабочая станция
 - 367 pTOPS, 608 GB/s bandwidth, 160-290W
 - Производительность: близко к NVIDIA H100
-- Цена: $949 (vs $40k для NVIDIA H100)
+- Цена: $949 (launch, [Newegg/TechPowerUp](https://www.techpowerup.com/347710/intel-arc-pro-b70-shows-up-on-newegg-with-april-release-date-and-usd-949-99-price))
 - Может запустить: Llama 3 70B (Float32) + еще место
 - Три Arc Pro B70 = 96GB = мощнейшая рабочая станция
-- **НОВОЕ в 2026 году — всего 4 месяца на рынке**
+- **На рынке ~4 месяца к июлю 2026**
 
 **Что здесь реальное, что нет:**
 - ✅ Arc Pro B-series — первая серьезная конкуренция NVIDIA на профессиональном рынке за 10 лет
