@@ -1,6 +1,6 @@
 ---
 publishedAt: 2026-06-11
-updatedAt: 2026-07-12
+updatedAt: 2026-07-14
 category: Career
 tags: ["Review","Business","AI","Risk"]
 ---
@@ -528,6 +528,27 @@ tags: ["Review","Business","AI","Risk"]
 
 Вопрос: **Выгодна ли подписка вроде GitHub Copilot, которая даёт доступ к GPT-4, Claude и другим?**
 
+### Тренд 2026: массовый переход на usage-based billing
+
+Главное изменение в оплате ИИ-сервисов — **индустрия уходит от фиксированных подписок к оплате за фактическое использование** (usage-based / consumption-based billing).
+
+**Цифры тренда:**
+- Доля SaaS-компаний с каким-либо usage-based pricing выросла [с 30% в 2019 до ~85% к 2024](https://www.getmonetizely.com/blogs/the-2026-guide-to-saas-ai-and-agentic-pricing-models)
+- [77% крупнейших софтверных компаний](https://flexprice.io/blog/why-ai-companies-have-adopted-usage-based-pricing) уже включили consumption-based pricing в свои модели выручки
+- Рынок ПО для usage-based биллинга оценивается в $6.5 млрд в 2026 с прогнозом $15.3 млрд к 2032
+
+**Почему это происходит:**
+- У ИИ-компаний инфраструктурные затраты (GPU, инференс) растут [с 10% до 35-40% себестоимости](https://flexprice.io/blog/why-ai-companies-have-adopted-usage-based-pricing) при масштабировании — фиксированная цена $20/месяц не покрывает тяжёлых пользователей
+- Flat-подписка означает, что лёгкие пользователи субсидируют тяжёлых — вендорам это невыгодно
+
+**Что уже изменилось у ИИ-инструментов для кода:**
+- **GitHub Copilot** — [с 1 июня 2026 все планы перешли на usage-based billing с AI Credits](https://spectrumailab.com/blog/ai-coding-tools-pricing-compared-2026): Pro включает $15/месяц кредитов, Pro+ — $70, Max — $200
+- **Cursor** — заменил лимит в 500 fast-запросов на кредиты по ценам API; [тяжёлые пользователи стали платить $20-30 в день](https://joshmcdonald.medium.com/the-quiet-repricing-of-ai-coding-tools-afc90d427a84) вместо ~$100 в месяц
+- **Claude Code** — подписки Max ($100-200/месяц) с квотами 5x-20x, но [heavy users исчерпывают квоту Max 5x примерно за час работы](https://dev.to/oneinfer/cursor-and-claude-code-rate-limits-in-2026-the-shipping-wall-hidden-in-your-ai-coding-stack-2acc)
+- **Anthropic и Microsoft** — [переводят enterprise на consumption pricing](https://www.marketscale.com/industries/software-and-technology/anthropic-microsoft-and-gartner-signal-a-billing-model-reckoning-for-enterprise-saas-buyers): Claude Enterprise получил гранулярные spend-алерты, Microsoft Copilot Cowork тарифицируется по $0.01 за кредит
+
+**Итог для пользователя:** стандартом становится [гибридная модель](https://www.pymnts.com/news/artificial-intelligence/2026/ai-moves-saas-subscriptions-consumption/) — базовая подписка + доплата за превышение квоты. Эпоха «безлимита за $20» заканчивается: агентные workflow генерируют 8-12 API-вызовов на одну команду, и вендоры перекладывают эти затраты на пользователей. Планируя бюджет, считайте не количество мест, а ожидаемое потребление токенов.
+
 ### Примеры bundled сервисов в 2026
 
 #### IDE-интегрированные (встроены прямо в редактор)
@@ -539,10 +560,10 @@ tags: ["Review","Business","AI","Risk"]
 - Цена: $20-30 для Team версии на человека
 
 **Cursor IDE** ($20/месяц)
-- Доступ к: GPT-4, Claude Opus/Sonnet, локальный Llama 3
+- Доступ к: GPT, Claude Opus/Sonnet, Gemini и другие frontier модели
 - Встроено: полноценный IDE на основе VS Code
 - Лучше всего для: разработчики которые хотят одного инструмента
-- Плюс: может работать полностью offline
+- Минус: требует подключения к облаку; [в 2026 перешёл на кредитную модель](https://joshmcdonald.medium.com/the-quiet-repricing-of-ai-coding-tools-afc90d427a84) — тяжёлое использование выходит сильно дороже $20
 
 **JetBrains AI Assistant** (встроена в IDE)
 - Доступ к: Claude или GPT-4 (по выбору)
@@ -806,9 +827,9 @@ tags: ["Review","Business","AI","Risk"]
 
 В 2026 году есть фундаментальное несоответствие между инвестициями и реальной выручкой:
 
-- **Инвестиции в ИИ инфраструктуру:** $500+ миллиардов в год (Stargate, Azure, Google TPU, дата центры)
-- **Реальная выручка от потребительского ИИ:** $12-15 миллиардов в год
-- **Разница:** инвестиции в **40x раз больше** чем выручка
+- **Инвестиции в ИИ инфраструктуру:** [~$725 миллиардов capex четырёх hyperscalers только на 2026 год](https://valueaddvc.com/blog/ai-hyperscaler-capex-compared-why-microsoft-google-meta-and-amazon-are-all-spending-at-once) (Amazon ~$200B, Microsoft ~$190B, Google $175-185B, Meta $115-135B) — рост +77% к 2025
+- **Реальная выручка frontier-лабораторий:** [Anthropic ~$30 млрд ARR, OpenAI ~$25 млрд ARR (апрель 2026)](https://www.the-ai-corner.com/p/anthropic-30b-arr-passed-openai-revenue-2026); вся когорта pure-play AI вендоров — заметно меньше $100 млрд в год
+- **Разница:** инвестиции на порядок (~10x) больше чем выручка, при этом [OpenAI прогнозирует $14 млрд убытков на 2026](https://www.the-ai-corner.com/p/anthropic-30b-arr-passed-openai-revenue-2026) и сдвинул точку безубыточности к 2030
 
 Это значит что либо:
 1. Инвестиции окупятся через несколько лет (оптимистичный сценарий)
@@ -816,10 +837,9 @@ tags: ["Review","Business","AI","Risk"]
 
 **Реальные данные на сегодня (июль 2026):**
 
-- ❌ **95% enterprise НЕ получили измеримый ROI** от ИИ-инвестиций ([MIT Sloan Management Review, 2026](https://sloanreview.mit.edu/article/the-ai-roi-gap-why-enterprises-fail-to-extract-value/))
-- ❌ **90% компаний видят НУЛЕВОЙ эффект** на производительность в реальности ([NBER Working Paper, февраль 2026](https://www.nber.org/papers/w34289))
-- ❌ **80% роста S&P 500 в 2025** был вызван ИИ-компаниями ([McKinsey AI Index 2026](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-in-2026)) (экстремальная концентрация риска)
-- ⚠️ **BIS (центробанк центробанков) озабочен** — [предупредил о системных рисках](https://www.bis.org/publ/qtrpdf/r_qt2606.pdf) и потенциальной глобальной рецессии
+- ❌ **95% генеративных ИИ-пилотов не дают измеримого ROI** ([исследование MIT](https://timspark.com/blog/why-ai-projects-fail-artificial-intelligence-failures-explained/))
+- ❌ **89% компаний не видят измеримого эффекта** на производительность ([данные за 3 года наблюдений](https://medium.com/@Ella456/the-future-of-ai-productivity-transforming-workflows-in-2026-and-beyond-e6ade5232188))
+- ❌ **Экстремальная концентрация рынка:** [10 крупнейших акций США — рекордные 41% капитализации S&P 500](https://finance.yahoo.com/markets/article/ai-mania-is-fueling-bubble-like-concentration-in-the-sp-500-135754198.html), это на 14 процентных пунктов выше пика dot-com пузыря 2000 года; почти 50 центов с каждого доллара, вложенного в индекс, идут в AI-linked акции
 
 **Почему это вас должно волновать:**
 
@@ -876,22 +896,21 @@ tags: ["Review","Business","AI","Risk"]
 
 ### Масштабы инвестиций (2026)
 
-| Компания | Инвестиция за год | Общая инвестиция | Главный фокус |
-|----------|-------------------|------------------|---------------|
-| **OpenAI** | $30-50B | $100B+ | Stargate супер-центр ($100B проект) |
-| **Microsoft** | $10-20B | $50B+ | Распределённое облако (Azure) |
-| **Google** | $8-10B | $40B+ | TPU + собственные чипы |
-| **Meta** | $3-5B | $20B+ | Llama training + инфра |
-| **Amazon** | $5-8B | $30B+ | AWS инфраструктура |
-| **Deepseek (Китай)** | $3-5B | $15B+ | Национальный AI центр |
-| **Anthropic** | $0.5-1B | $3B+ | Облачные сервисы (AWS/GCP) |
+[Планы capex на 2026 год четырёх крупнейших hyperscalers](https://valueaddvc.com/blog/ai-hyperscaler-capex-compared-why-microsoft-google-meta-and-amazon-are-all-spending-at-once):
 
-**Итого:** $100+ миллиардов в год во всём мире. Это больше чем бюджет многих стран.
+| Компания | Capex 2025 | Capex 2026 (план) | Главный фокус |
+|----------|------------|-------------------|---------------|
+| **Amazon** | ~$100B | ~$200B (+100%) | AWS дата-центры, чипы Trainium, Bedrock |
+| **Microsoft** | ~$95B | ~$190B (+100%) | Azure + инфраструктура под OpenAI |
+| **Google** | ~$85B | $175-185B (+110%) | TPU + собственные чипы |
+| **Meta** | ~$70B | $115-135B (+80%) | Llama training + инфра |
 
-**Главное:** только три страны контролируют большую часть этой инфраструктуры:
-- 🇺🇸 **США** (OpenAI, Microsoft, Google, Meta) = ~65% от всех инвестиций
-- 🇨🇳 **Китай** (Deepseek, Alibaba) = ~20%
-- 🇪🇺 **Европа** (разрозненно) = ~10%
+**Итого:** ~$725 миллиардов только за 2026 год (против ~$410 млрд в 2025, рост +77%). Это больше чем бюджет многих стран. [CNBC отмечает](https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html), что совокупные ИИ-расходы Big Tech приближаются к $700 млрд и серьёзно бьют по свободному денежному потоку компаний. Деньги идут не только на GPU: земля, строительство, электрические мощности, сети.
+
+**Главное:** большую часть этой инфраструктуры контролируют компании нескольких стран:
+- 🇺🇸 **США** (Amazon, Microsoft, Google, Meta, OpenAI) — подавляющая доля инвестиций
+- 🇨🇳 **Китай** (Deepseek, Alibaba, Tencent) — второй блок, развивается на фоне санкций на GPU
+- 🇪🇺 **Европа** — разрозненные "суверенные" инициативы, доля невелика
 
 **Результат:** кто контролирует дата центры → контролирует ИИ индустрию.
 
@@ -900,8 +919,8 @@ tags: ["Review","Business","AI","Risk"]
 #### 1. **Дефицит электричества**
 
 - Большие AI дата центры потребляют столько же электричества как города на миллион жителей
-- Google's AI инфраструктура потребляет **5-10% всей электроэнергии США**
-- Власти **ограничивают** строительство новых центров (нет электричества)
+- [Дата-центры уже потребляют ~6% всей электроэнергии США](https://singularityhub.com/2026/05/22/data-centers-now-consume-6-of-electricity-in-the-us-and-the-backlash-has-begun/) (данные IDCA, май 2026) — и именно "AI-фабрики" дают основной прирост
+- Власти **ограничивают** строительство новых центров: например, [Data Center Alley в Северной Вирджинии ввёл мораторий на новые проекты до 2032 года](https://singularityhub.com/2026/05/22/data-centers-now-consume-6-of-electricity-in-the-us-and-the-backlash-has-begun/) из-за дефицита энергии
 - **Результат:** цены на электричество растут, этот cost передается в цены на AI услуги
 
 **Что это значит для вас:**
@@ -930,11 +949,12 @@ tags: ["Review","Business","AI","Risk"]
 
 #### 4. **Экологический backlash**
 
-- AI дата центры требуют охлаждение водой (огромный водозабор)
+- AI дата центры требуют охлаждение водой: [одна крупная площадка может потреблять воды как 6,500 домохозяйств](https://singularityhub.com/2026/05/22/data-centers-now-consume-6-of-electricity-in-the-us-and-the-backlash-has-begun/)
 - Выбросы CO2 от электричества (дата центр как маленькое государство)
 - Социальный конфликт: "зачем миру AI дата центры если это вредит планете?"
+- По данным IDCA, заметный политический pushback начинается, когда дата-центры достигают ~5% потребления электроэнергии страны — США этот порог уже прошли; в законодательные органы штатов внесены сотни ограничивающих законопроектов
 
-**Результат:** правительства начнут **ограничивать** строительство новых центров.
+**Результат:** правительства уже **ограничивают** строительство новых центров (мораторий в Северной Вирджинии — первый крупный прецедент).
 
 ### Что это значит для вашей компании?
 
@@ -1036,6 +1056,8 @@ tags: ["Review","Business","AI","Risk"]
 
 ### Реальные числа: сокращения в 2026
 
+[TechCrunch ведёт актуальный список всех крупных tech-сокращений 2026 года, где работодатели прямо ссылались на ИИ](https://techcrunch.com/2026/07/06/the-running-list-major-tech-layoffs-in-2026-where-employers-cited-ai/):
+
 | Компания | Дата | Сокращено | % workforce | Причина |
 |----------|------|-----------|-------------|---------|
 | Microsoft | 6 июля | 4,800 | 2.1% | AI changing work |
@@ -1047,9 +1069,9 @@ tags: ["Review","Business","AI","Risk"]
 | Block | 26 февраль | 4,000 | 50%! | AI-first restructuring |
 | Amazon | 28 январь | 16,000 | 9% | Corporate jobs |
 
-**ИТОГО за 2026:** ~**120,000 tech ролей** сокращено с AI как основной причиной
+**ИТОГО за 2026:** ~**120,000 tech ролей** сокращено (по трекеру Layoffs.fyi), при этом ИИ — самая часто называемая причина. Важная оговорка: часть компаний использует ИИ как удобное объяснение для сокращений, реальные причины которых — овернайм 2021-2022 и давление инвесторов ("AI washing").
 
-**Критический месяц:** май 2026 — 5 крупных компаний сокращили за одну неделю
+**Критический месяц:** май 2026 — 5 крупных компаний сокращили за одну неделю, это рекордный месяц за несколько лет
 
 ### Главное: что происходит
 
@@ -1135,15 +1157,16 @@ tags: ["Review","Business","AI","Risk"]
 
 ### США vs Китай: торговая война расширилась на ИИ
 
-[Financial Times (февраль 2026)](https://www.ft.com/content/ai-export-controls-2026) отмечает, что США ввели новые экспортные ограничения на передовые ИИ модели. [The Washington Post (апрель 2026)](https://www.washingtonpost.com/tech/2026/04/ai-restrictions-countries) сообщает о координированном давлении на компании вроде OpenAI и Anthropic.
+США последовательно ужесточают экспортный контроль на передовые GPU и давление на китайские ИИ-модели, Китай зеркально ограничивает западные сервисы.
 
 **Что произошло:**
 
-1. **Deepseek и китайские ИИ моделям запрещён доступ в некоторых странах:**
-   - США запретили финансирование и доступ (по CFIUS — Committee on Foreign Investment)
-   - Евросоюз рассматривает похожие меры
-   - Канада, Австралия, Япония внесли ограничения
-   - [Результат: Deepseek закрыл доступ из США некоторым функциям](https://reuters.com/technology/deepseek-restrictions-2026)
+1. **Deepseek и китайские ИИ ограничены в ряде стран:**
+   - [США: Министерство торговли, NASA и ВМФ запретили Deepseek на государственных устройствах](https://www.aljazeera.com/news/2025/2/6/which-countries-have-banned-deepseek-and-why), аналогичные запреты ввели десятки штатов
+   - [Южная Корея, Австралия и Тайвань запретили Deepseek на правительственных системах](https://www.aljazeera.com/news/2025/2/6/which-countries-have-banned-deepseek-and-why)
+   - Италия (регулятор по защите данных) ограничила обработку данных итальянских пользователей
+   - Основной аргумент: данные хранятся на серверах в Китае и потенциально доступны государству по китайскому закону о нацразведке
+   - Важно: для частных пользователей в США Deepseek формально не запрещён — ограничения касаются госсектора и регулируемых отраслей
 
 2. **Western моделям (OpenAI, Anthropic, Google) запретили доступ в Китае:**
    - ВСЕ западные ИИ заблокированы в Great Firewall Китая
@@ -1151,10 +1174,10 @@ tags: ["Review","Business","AI","Risk"]
    - Компании рискуют санкциями если поддерживают доступ
 
 3. **Европа: строжайшие требования на соответствие AI Act:**
-   - [Европейская Комиссия требует лицензирования для high-risk ИИ](https://european-commission.eu/ai-act-2026)
+   - Обязательства для провайдеров high-risk ИИ и моделей общего назначения (GPAI)
    - ИИ должны иметь "объясняемость" (transparency requirements)
-   - Штрафы до 10% от глобального дохода компании
-   - Результат: многие модели недоступны в Евросоюзе
+   - [Штрафы за запрещённые практики — до €35 млн или 7% глобального оборота](https://artificialintelligenceact.eu/article/99/), за остальные нарушения — до €15 млн или 3%
+   - Результат: часть моделей и функций выходит в Евросоюзе с задержкой или в урезанном виде
 
 4. **Россия и страны вне "западного блока":**
    - Блокировка OpenAI, Anthropic, Google (де-факто)
@@ -1165,14 +1188,14 @@ tags: ["Review","Business","AI","Risk"]
 
 | Модель | США | ЕС | Китай | Азия (не Китай) | Россия |
 |--------|-----|----|----|---|---|
-| **Deepseek** | ❌ Нет | ⚠️ Ограничено | ✅ Да | ✅ Да | ⚠️ VPN |
+| **Deepseek** | ⚠️ Запрещён в госсекторе | ⚠️ Ограничено | ✅ Да | ✅ Да | ⚠️ VPN |
 | **GPT-4** | ✅ Да | ✅ Да | ❌ Нет | ✅ Да | ⚠️ VPN |
 | **Claude** | ✅ Да | ✅ Да | ❌ Нет | ✅ Да | ⚠️ VPN |
 | **Llama 3** | ✅ Да | ✅ Да | ⚠️ VPN | ✅ Да | ✅ Да |
 
 ### Долгосрочный тренд: Балканизация ИИ
 
-[The Economist (июнь 2026)](https://www.economist.com/ai-balkanization) предупреждает о "Балканизации ИИ":
+Аналитики всё чаще говорят о "Балканизации ИИ":
 - Мир разделяется на блоки: **Western, Chinese, EU, rest-of-world**
 - Каждый блок развивает свои модели
 - Кроссбордовый доступ ограничивается
@@ -1189,13 +1212,13 @@ tags: ["Review","Business","AI","Risk"]
 
 **В США:**
 - Использование Deepseek может быть проблемой для регулируемых компаний (финтек, health-tech, defense)
-- CFIUS расследует использование китайских ИИ в defense-related проектах
-- **Вероятные штрафы:** до $1M за компании которые нарушают ограничения
+- Для госконтрактов и defense-проектов действуют прямые запреты на китайские ИИ-модели
+- Риск: расследования, потеря контрактов и репутационный ущерб
 
 **В Евросоюзе:**
-- Все ИИ должны соответствовать AI Act
+- Все ИИ должны соответствовать [AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
 - Требуется documentation о как работает модель
-- [Штрафы за violations: до 10% глобального дохода](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- [Штрафы за нарушения: до €35 млн или 7% глобального оборота](https://artificialintelligenceact.eu/article/99/)
 
 **В Китае:**
 - Использование western ИИ может быть незаконным
@@ -1424,14 +1447,11 @@ Humans для дизайна (creativity, game feel)
 ### Геополитика и ограничения
 
 **Trade War & Restrictions:**
-- [Financial Times: AI export controls (февраль 2026)](https://www.ft.com/content/ai-export-controls-2026)
-- [Washington Post: AI restrictions by country (апрель 2026)](https://www.washingtonpost.com/tech/2026/04/ai-restrictions-countries)
-- [The Economist: AI Balkanization (июнь 2026)](https://www.economist.com/ai-balkanization)
-- [Reuters: Deepseek restrictions (2026)](https://reuters.com/technology/deepseek-restrictions-2026)
+- [Al Jazeera: Which countries have banned DeepSeek and why (февраль 2025)](https://www.aljazeera.com/news/2025/2/6/which-countries-have-banned-deepseek-and-why)
 
 **EU Regulation:**
-- [European Commission AI Act 2026](https://european-commission.eu/ai-act-2026)
-- [EU Regulation Text: Fines up to 10% revenue](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- [EU AI Act, Article 99: Penalties (до €35 млн или 7% оборота)](https://artificialintelligenceact.eu/article/99/)
+- [Полный текст регламента EU AI Act (Regulation 2024/1689)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
 
 ### Game Development & AI Backlash
 
@@ -1523,6 +1543,36 @@ Humans для дизайна (creativity, game feel)
 - [LM Studio: lmstudio.ai](https://lmstudio.ai)
 - [Hugging Face Models: huggingface.co/models](https://huggingface.co/models)
 - [Llama 3: github.com/meta-llama/llama3](https://github.com/meta-llama/llama3)
+
+### Подписки и переход на usage-based billing
+
+**Тренд usage-based / consumption pricing:**
+- [Why AI Companies Have Adopted Usage Based Pricing - Flexprice](https://flexprice.io/blog/why-ai-companies-have-adopted-usage-based-pricing)
+- [The 2026 Guide to SaaS, AI, and Agentic Pricing Models - Monetizely](https://www.getmonetizely.com/blogs/the-2026-guide-to-saas-ai-and-agentic-pricing-models)
+- [AI Pushes SaaS Toward Usage-Based Pricing - PYMNTS](https://www.pymnts.com/news/artificial-intelligence/2026/ai-moves-saas-subscriptions-consumption/)
+- [Enterprise SaaS shifts to usage-based billing in 2026 - MarketScale](https://www.marketscale.com/industries/software-and-technology/anthropic-microsoft-and-gartner-signal-a-billing-model-reckoning-for-enterprise-saas-buyers)
+- [AI Pricing in 2026: SaaS pricing models that actually work - Valueships](https://www.valueships.com/post/ai-pricing-in-2026)
+- [2026 SaaS Pricing Trends Driving Up Enterprise Costs - Zylo](https://zylo.com/blog/saas-pricing-trends)
+
+**Тарифы ИИ-инструментов для кода:**
+- [AI Coding Tools Pricing 2026: Copilot vs Claude Code vs Codex vs Cursor - SpectrumAILab](https://spectrumailab.com/blog/ai-coding-tools-pricing-compared-2026)
+- [The Quiet Repricing of AI Coding Tools - Joshua McDonald, Medium](https://joshmcdonald.medium.com/the-quiet-repricing-of-ai-coding-tools-afc90d427a84)
+- [Cursor and Claude Code Rate Limits in 2026 - DEV Community](https://dev.to/oneinfer/cursor-and-claude-code-rate-limits-in-2026-the-shipping-wall-hidden-in-your-ai-coding-stack-2acc)
+- [AI Coding Tools Pricing 2026: 10 Compared - IJONIS](https://ijonis.com/en/ai-coding-tools-pricing)
+
+### Инфраструктура, инвестиции и рынок труда
+
+**Capex и AI bubble:**
+- [AI Hyperscaler Capex Compared: $725B в 2026 - ValueAdd VC](https://valueaddvc.com/blog/ai-hyperscaler-capex-compared-why-microsoft-google-meta-and-amazon-are-all-spending-at-once)
+- [Tech AI spending approaches $700 billion in 2026 - CNBC](https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html)
+- [Anthropic Passed OpenAI in Revenue: $30B ARR (апрель 2026) - The AI Corner](https://www.the-ai-corner.com/p/anthropic-30b-arr-passed-openai-revenue-2026)
+- [AI mania is fueling bubble-like concentration in the S&P 500 - Yahoo Finance](https://finance.yahoo.com/markets/article/ai-mania-is-fueling-bubble-like-concentration-in-the-sp-500-135754198.html)
+
+**Энергия и дата-центры:**
+- [Data Centers Now Consume 6% of US Electricity — and the Backlash Has Begun - SingularityHub](https://singularityhub.com/2026/05/22/data-centers-now-consume-6-of-electricity-in-the-us-and-the-backlash-has-begun/)
+
+**Рынок труда:**
+- [Every major tech layoff in 2026 that has name-checked AI - TechCrunch](https://techcrunch.com/2026/07/06/the-running-list-major-tech-layoffs-in-2026-where-employers-cited-ai/)
 
 
 ## Финальные выводы
