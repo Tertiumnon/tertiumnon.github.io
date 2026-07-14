@@ -29,8 +29,18 @@
       "WebFetch(domain:www.reuters.com)",
       "WebFetch(domain:www.theverge.com)",
       "WebFetch(domain:www.linkedin.com)",
-      "Bash(curl -s \"https://www.intel.com/content/www/us/en/products/docs/discrete-gpus/arc/workstations/b-series/overview.html\")",
-      "WebFetch(domain:www.intel.com)"
+      "WebFetch(domain:www.intel.com)",
+      "WebFetch(domain:www.cnbc.com)",
+      "WebFetch(domain:futurumgroup.com)",
+      "WebFetch(domain:valueaddvc.com)",
+      "WebFetch(domain:www.gartner.com)",
+      "WebFetch(domain:singularityhub.com)",
+      "WebFetch(domain:www.tomshardware.com)",
+      "WebFetch(domain:www.aljazeera.com)",
+      "WebFetch(domain:artificialintelligenceact.eu)",
+      "WebFetch(domain:www.lambdafin.com)",
+      "WebFetch(domain:www.the-ai-corner.com)",
+      "WebFetch(domain:finance.yahoo.com)"
     ]
   }
 }
