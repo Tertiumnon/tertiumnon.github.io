@@ -1,6 +1,6 @@
 ---
 publishedAt: 2025-11-30
-updatedAt: 2025-11-30
+updatedAt: 2026-07-17
 category: Programming
 tags: ["JavaScript","Tools","Web Development"]
 source: "medium: https://tertiumnon.medium.com/bun-7fbe61f45e2e"
@@ -115,7 +115,16 @@ This makes Zig ideal for systems programming where performance and predictabilit
 
 Bun **natively supports** running and bundling TypeScript files without a separate compilation step — you can write `.ts`/`.tsx` directly and run it through Bun.
 
-**Important:** Bun does NOT replace static type checking. For full type checking, use `tsc --noEmit` in CI. Bun provides a fast transpiler/bundler with support for most TypeScript syntax features and built-in sourcemaps.
+**Supported features:**
+- All standard type annotations, interfaces, type aliases
+- Enums, decorators, namespaces
+- JSX/TSX out of the box
+- Path aliases from `tsconfig.json` (`@app/*`, `@utils/*`)
+- Sourcemaps
+
+**Important:** Bun does NOT replace static type checking. For full type checking, use `tsc --noEmit` in CI.
+
+**Comparison with Node.js:** In 2024-2025, Node.js also started supporting TypeScript. [Node.js v22.6 (August 2024)](https://nodejs.org/learn/typescript/run-natively) added the `--experimental-strip-types` flag, and [Node.js v23 (October 2024)](https://nodejs.org/api/typescript.html) enabled it by default. However, Node.js uses "type stripping" — removing types without full transformation. Bun supports more features: JSX, path aliases, enums, namespaces work out of the box.
 
 ## Quick Start
 
@@ -240,6 +249,96 @@ Expected output:
 - Async stack traces
 - TC39 compliance improvements
 
----
+## Known Issues and Fixes
+
+Bun has come a long way from an experimental runtime to a production-ready tool. This section covers major compatibility issues that have been fixed, as well as current limitations.
+
+### Windows Support
+
+**Problem:** Before version 1.1, Bun was only available on Linux and macOS.
+
+**Solution:** [Bun 1.1 (April 2024)](https://bun.com/blog/bun-v1.1) added full support for Windows 10 and 11. A special `.bunx` format was implemented to work around Windows limitations with shebang scripts. `bun install` works 18x faster than yarn and 30x faster than npm on Windows.
+
+**Current status:** Full support. In [version 1.1.3](https://bun.sh/blog/bun-v1.1.3), `bun install` became 50% faster on Windows. In version 1.1.2, `fs.watch` was rewritten for Windows with improved performance and reliability.
+
+### Node.js API Compatibility
+
+**Problem:** Early versions of Bun supported a limited set of Node.js modules, causing incompatibility with popular npm packages.
+
+**Solution:** The Bun team began systematically running the Node.js test suite for every code change. [Bun 1.2 (January 2025)](https://bun.com/blog/bun-v1.2) fixed thousands of Node.js compatibility bugs:
+
+- **node:http2** — added HTTP/2 server support (previously only client worked), enabling gRPC servers
+- **node:dgram** — UDP socket implementation for packages like DataDog `dd-trace` and ClickHouse
+- **node:cluster** — multi-threaded HTTP server support across multiple CPUs
+- **node:zlib** — completely rewritten from JavaScript to native code, added Brotli support
+- **V8 C++ API** — unprecedented implementation of V8's public C++ API in JavaScriptCore, allowing packages like `cpu-features` to run without modification
+
+[Bun 1.3 (October 2025)](https://bun.com/blog/bun-v1.3) added 800+ more tests from the Node.js test suite and implemented support for `vm.SourceTextModule`, `vm.SyntheticModule`, and `node:test`.
+
+**Current status:** Over 90% of Node.js tests for core modules pass successfully.
+
+### HTTP Framework Issues
+
+**Problem:** Express and Fastify ran slower or with errors due to incomplete `node:http` implementation.
+
+**Solution:** [Bun 1.2](https://bun.com/blog/bun-v1.2) optimized `node:http`, making Express 3x faster than on Node.js. In [Bun 1.2.6 (March 2025)](https://bun.sh/blog/bun-v1.2.6.md), Express became 9% faster, Fastify — 5.4% faster.
+
+**Current status:** Express, Fastify, and Hono work without modifications. Hono on Bun shows up to 180K requests per second.
+
+### Async Stack Traces
+
+**Problem:** Stack traces in Bun didn't show async calls, making it difficult to debug async/await code.
+
+**Solution:** [Bun 1.3](https://bun.com/blog/bun-v1.3) added async stack traces — now the call stack includes the full chain of async operations. In [version 1.2.22 (September 2025)](https://bun.com/blog/bun-v1.2.22), bugs with truncated stack traces were fixed.
+
+**Current status:** Full async stack trace support for debugging.
+
+### Angular Support
+
+**Problem:** In early 2025, Angular CLI had compatibility issues with Bun: builds took too long, there were errors with Node.js runtime version detection.
+
+**Solution:** Improvements in [Bun 1.2](https://bun.com/blog/bun-v1.2) (node:http, node:vm) and [Bun 1.3](https://bun.com/blog/bun-v1.3) (vm.SourceTextModule, Node.js compatibility) fixed most issues. In the second half of 2025, Angular applications started working stably with Bun.
+
+**Current status:** Works. Although the [official support request](https://github.com/angular/angular-cli/issues/24490) in Angular CLI was closed, in practice `bun install` and `bun run` work with Angular projects.
+
+### Next.js and Other Frameworks
+
+**Problem:** Early versions of Bun had issues with Next.js dev server and some features.
+
+**Solution:** [Bun 1.3](https://bun.com/blog/bun-v1.3) fixed Next.js dev server crashes, CJS/ESM module resolution issues, and circular dependencies. [Vercel added native Bun Runtime support (October 2025)](https://bun.com/blog/vercel-adds-native-bun-support).
+
+**Current status:** Next.js works with Bun. Astro, SvelteKit, Remix, and Nuxt have integrated Bun-specific optimizations.
+
+### Native Modules (node-gyp, N-API)
+
+**Problem:** Packages with native C/C++ extensions (node-gyp) didn't work because they're compiled for V8, while Bun uses JavaScriptCore.
+
+**Current status:** Bun [implemented Node-API](https://bun.com/docs/runtime/nodejs-compat), allowing many native modules to run without recompilation. Popular packages like `better-sqlite3` work, though using the built-in `bun:sqlite` is recommended.
+
+**Remaining limitations:**
+- `bcrypt` — recommended to use `bcryptjs` or `Bun.password`
+- `canvas` — no full workaround
+- `argon2` — no native support
+- Packages with `binding.gyp` files may not work
+
+### Prisma and ORM
+
+**Problem:** Prisma used a Rust-based query engine that had compatibility issues with Bun and edge runtimes.
+
+**Solution:** Prisma 7 (November 2025) replaced the Rust engine with a TypeScript/WASM query compiler. [Prisma v7.2.0 (December 2025)](https://www.bytebase.com/blog/drizzle-vs-prisma/) added Bun-aware initialization.
+
+**Current status:** Prisma is fully compatible with Bun starting from v5.4 (generated client is pure JavaScript). Drizzle ORM works with Bun natively.
+
+### Compatibility Summary
+
+| Area | Status | Fix Version |
+|------|--------|-------------|
+| Windows | Full support | Bun 1.1 (April 2024) |
+| Node.js API (90%+) | Works | Bun 1.2 (January 2025) |
+| Express/Fastify/Hono | Works | Bun 1.2+ |
+| Next.js | Works | Bun 1.3 |
+| Async Stack Traces | Works | Bun 1.3 |
+| Angular | Works | Bun 1.2/1.3 (H2 2025) |
+| Native modules | Partial | Depends on package |
 
 **Author-Compiler:** Vitaly Balananov

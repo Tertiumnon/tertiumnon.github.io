@@ -5,9 +5,80 @@
     "language": "en",
     "category": "Announcements",
     "project": "Tertium",
-    "tags": ["News", "Update"],
+    "tags": [
+      "News",
+      "Update"
+    ],
     "publishedAt": "2026-06-23",
     "filename": "index.en.md",
     "dirname": "2026-06-23--welcome-to-news"
+  },
+  {
+    "title": "Bookmarks Manager for Firefox",
+    "link": "/en/news/2017-07-10--bookmarks-manager-for-firefox",
+    "language": "en",
+    "category": "Browsers",
+    "tags": [
+      "Books",
+      "Browser",
+      "Education",
+      "Extensions"
+    ],
+    "publishedAt": "2017-07-10",
+    "filename": "index.en.md",
+    "dirname": "2017-07-10--bookmarks-manager-for-firefox"
+  },
+  {
+    "title": "Send Text To Form (Chrome Extension)",
+    "link": "/en/news/2017-04-23--send-text-to-form-chrome-extension",
+    "language": "en",
+    "category": "Browsers",
+    "tags": [
+      "Browser",
+      "Extensions"
+    ],
+    "publishedAt": "2017-04-23",
+    "filename": "index.en.md",
+    "dirname": "2017-04-23--send-text-to-form-chrome-extension"
+  },
+  {
+    "title": "Bookmarks Manager: Release 0.1",
+    "link": "/en/news/2020-03-28--bookmarks-manager-release-01",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Books",
+      "Education"
+    ],
+    "publishedAt": "2020-03-28",
+    "filename": "index.en.md",
+    "dirname": "2020-03-28--bookmarks-manager-release-01"
+  },
+  {
+    "title": "Tertium JS Snippets: My New Visual Studio Code Extension",
+    "link": "/en/news/2019-10-22--tertium-js-snippets-my-new-visual-studio-code-extension",
+    "language": "en",
+    "category": "Browsers",
+    "tags": [
+      "Browser",
+      "Extensions",
+      "JavaScript",
+      "Web Development"
+    ],
+    "publishedAt": "2019-10-22",
+    "filename": "index.en.md",
+    "dirname": "2019-10-22--tertium-js-snippets-my-new-visual-studio-code-extension"
+  },
+  {
+    "title": "Sticker Pack for Telegram: FavoriteSerials",
+    "link": "/en/news/2017-07-20--sticker-pack-for-telegram-favoriteserials",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Tips"
+    ],
+    "publishedAt": "2017-07-20",
+    "filename": "index.en.md",
+    "dirname": "2017-07-20--sticker-pack-for-telegram-favoriteserials"
   }
 ]

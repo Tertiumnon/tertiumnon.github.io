@@ -1,5 +1,5 @@
 import { Component, inject, signal } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { MdContentComponent } from "../../components/md-content/md-content.component";
 import { PageLoaderComponent } from "../../components/page-loader/page-loader.component";
@@ -16,6 +16,7 @@ import { PostService } from "../../entities/post/post.service";
 export class PostComponent {
 	activatedRoute = inject(ActivatedRoute);
 	PostService = inject(PostService);
+	router = inject(Router);
 	data = signal("");
 	category = signal("");
 	postName = signal("");
@@ -52,6 +53,11 @@ export class PostComponent {
 							this.data.set(response);
 							this.isLoading.set(false);
 						});
+				} else {
+					// Post not found, redirect to 404 page with the attempted post name
+					this.router.navigate([`/${lang}/posts/404`], {
+						queryParams: { search: params["name"] }
+					});
 				}
 			});
 		});

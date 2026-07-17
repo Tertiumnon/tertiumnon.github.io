@@ -1,0 +1,35 @@
+<app-page-loader [isLoading]="isLoading()"></app-page-loader>
+
+<div class="container-fluid" style="margin-top: var(--container-margin-top);">
+  <div class="content">
+    <div class="post-404">
+      <div class="error-section">
+        <h1>404 - Post Not Found</h1>
+        <p class="error-message">The requested post could not be found.</p>
+      </div>
+
+      @if (similarPosts().length > 0) {
+      <div class="similar-posts-section">
+        <h2>Similar Posts</h2>
+        <p class="section-subtitle">Here are some posts you might be interested in:</p>
+
+        <div class="post-list">
+          @for (article of similarPosts(); track article.link) {
+          <div class="post">
+            <div class="post-date">{{ article.publishedAt }}</div>
+            <div class="post-category">
+              {{ getCategoryDisplay(article.category) }}
+            </div>
+            <a [routerLink]="getPostLink(article.link)">{{ article.title }}</a>
+          </div>
+          }
+        </div>
+      </div>
+      } @else {
+      <div class="no-similar-posts">
+        <p>No similar posts found. Browse all posts instead.</p>
+      </div>
+      }
+    </div>
+  </div>
+</div>

@@ -73,21 +73,6 @@
     "dirname": "2020-07-16--windows-error-listen-eacces-permission-denied-0000port"
   },
   {
-    "title": "Bookmarks Manager for Firefox",
-    "link": "/en/posts/2017-07-10--bookmarks-manager-for-firefox",
-    "language": "en",
-    "category": "Browsers",
-    "tags": [
-      "Books",
-      "Browser",
-      "Education",
-      "Extensions"
-    ],
-    "publishedAt": "2017-07-10",
-    "filename": "index.en.md",
-    "dirname": "2017-07-10--bookmarks-manager-for-firefox"
-  },
-  {
     "title": "Adding SSH Keys (Git Bash on Windows)",
     "link": "/en/posts/2018-05-16--adding-ssh-keys-git-bash-on-windows",
     "language": "en",
@@ -154,19 +139,6 @@
     "publishedAt": "2020-05-01",
     "filename": "index.en.md",
     "dirname": "2020-05-01--windows-free-up-some-disk-space-on-your-ssd"
-  },
-  {
-    "title": "Send Text To Form (Chrome Extension)",
-    "link": "/en/posts/2017-04-23--send-text-to-form-chrome-extension",
-    "language": "en",
-    "category": "Browsers",
-    "tags": [
-      "Browser",
-      "Extensions"
-    ],
-    "publishedAt": "2017-04-23",
-    "filename": "index.en.md",
-    "dirname": "2017-04-23--send-text-to-form-chrome-extension"
   },
   {
     "title": "ExpressJS: Square Brackets in Query",
@@ -741,19 +713,6 @@
     "dirname": "2026-07-09--angular-rxjs-vs-signals-in-2026"
   },
   {
-    "title": "Bookmarks Manager: Release 0.1",
-    "link": "/en/posts/2020-03-28--bookmarks-manager-release-01",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "Books",
-      "Education"
-    ],
-    "publishedAt": "2020-03-28",
-    "filename": "index.en.md",
-    "dirname": "2020-03-28--bookmarks-manager-release-01"
-  },
-  {
     "title": "Your Cloud Firestore Database Has Insecure Rules",
     "link": "/en/posts/2020-12-13--your-cloud-firestore-database-has-insecure-rules",
     "language": "en",
@@ -781,21 +740,6 @@
     "dirname": "2022-09-14--windows-git-file-permissions"
   },
   {
-    "title": "Tertium JS Snippets: My New Visual Studio Code Extension",
-    "link": "/en/posts/2019-10-22--tertium-js-snippets-my-new-visual-studio-code-extension",
-    "language": "en",
-    "category": "Browsers",
-    "tags": [
-      "Browser",
-      "Extensions",
-      "JavaScript",
-      "Web Development"
-    ],
-    "publishedAt": "2019-10-22",
-    "filename": "index.en.md",
-    "dirname": "2019-10-22--tertium-js-snippets-my-new-visual-studio-code-extension"
-  },
-  {
     "title": "Cooking with TypeScript enums",
     "link": "/en/posts/2025-03-26--cooking-with-typescript-enums",
     "language": "en",
@@ -808,18 +752,6 @@
     "filename": "index.en.md",
     "dirname": "2025-03-26--cooking-with-typescript-enums",
     "updatedAt": "2026-07-12"
-  },
-  {
-    "title": "Sticker Pack for Telegram: FavoriteSerials",
-    "link": "/en/posts/2017-07-20--sticker-pack-for-telegram-favoriteserials",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "Tips"
-    ],
-    "publishedAt": "2017-07-20",
-    "filename": "index.en.md",
-    "dirname": "2017-07-20--sticker-pack-for-telegram-favoriteserials"
   },
   {
     "title": "Agile, Kanban, Scrum - главное простыми словами",

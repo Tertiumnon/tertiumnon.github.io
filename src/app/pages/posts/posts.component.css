@@ -50,4 +50,19 @@
 			text-decoration: underline;
 		}
 	}
+
+	.no-posts-message {
+		padding: 2em 1em;
+		text-align: center;
+		color: #aaa;
+
+		p {
+			margin: 0.5em 0;
+			font-size: 1em;
+		}
+
+		strong {
+			color: white;
+		}
+	}
 }

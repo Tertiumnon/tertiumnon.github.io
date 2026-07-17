@@ -1,5 +1,5 @@
 import { Component, inject, signal, computed } from "@angular/core";
-import { ActivatedRoute, RouterLink } from "@angular/router";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { Post } from "../../entities/post/post";
 import { PostService } from "../../entities/post/post.service";
@@ -15,6 +15,7 @@ import { PostControlPanelComponent } from "../../components/post-control-panel/p
 })
 export class PostsComponent {
 	activatedRoute = inject(ActivatedRoute);
+	router = inject(Router);
 	PostService = inject(PostService);
 	allPosts = signal<Post[]>([]);
 	isLoading = signal(true);

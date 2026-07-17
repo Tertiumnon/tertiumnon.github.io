@@ -1,11 +1,44 @@
 ---
 publishedAt: 2026-07-08
-updatedAt: 2026-07-12
+updatedAt: 2026-07-17
 category: Programming
 tags: ["AI","Review"]
 ---
 
 # ИИ программирование в 2026
+
+## Содержание
+
+- [Преамбула](#преамбула)
+- [Часть I: Архитектура и настройка](#часть-i-архитектура-и-настройка)
+  - [Выберите архитектурный подход](#выберите-архитектурный-подход)
+  - [CLAUDE.md — инструкции для ИИ](#claudemd--инструкции-для-ии)
+  - [Dependency-cruiser — валидация архитектуры](#dependency-cruiser--валидация-архитектуры)
+- [Часть II: Технологии и инструменты](#часть-ii-технологии-и-инструменты)
+  - [TypeScript/JavaScript](#typescriptjavascript)
+  - [Python](#python)
+  - [Go](#go)
+  - [Rust](#rust)
+  - [Java/Kotlin](#javakotlin)
+  - [C#](#c)
+  - [Универсальные правила для всех языков](#универсальные-правила-для-всех-языков)
+- [Часть III: Процесс разработки](#часть-iii-процесс-разработки)
+  - [Research-Plan-Implement](#research-plan-implement)
+  - [Git workflow](#git-workflow)
+  - [Контекст и Workspace](#контекст-и-workspace)
+- [Часть IV: Контроль качества](#часть-iv-контроль-качества)
+  - [Code review](#code-review)
+  - [CI/CD интеграция](#cicd-интеграция)
+  - [Принципы тестирования](#принципы-тестирования)
+- [Часть V: Безопасность](#часть-v-безопасность)
+  - [Типичные сценарии ущерба](#типичные-сценарии-ущерба)
+  - [Стратегии защиты](#стратегии-защиты)
+  - [Резервные копии](#резервные-копии)
+- [Часть VI: Оптимизация](#часть-vi-оптимизация)
+  - [Скрипты вместо постоянных запросов](#скрипты-вместо-постоянных-запросов)
+  - [Фичи ИИ в 2026](#фичи-ии-в-2026)
+- [Выводы](#выводы)
+
 
 ## Преамбула
 
@@ -14,7 +47,7 @@ tags: ["AI","Review"]
 За год непрерывной работы с Claude Code я накопил систему, которая работает. Здесь я поделюсь ею. Эта статья — не общие советы. Это то, что даёт реальный результат: 2-3x прирост продуктивности без роста техдолга.
 
 
-## Часть I: Фундамент — архитектура проекта
+## Часть I: Архитектура и настройка
 
 Чёткое структурирование проекта по файлам, папкам и паттернам — это **главный ключ к контролю написания кода**. С ИИ потребность в этом выросла критически.
 
@@ -34,17 +67,17 @@ tags: ["AI","Review"]
 
 Возможные архитектуры и когда их использовать:
 
-**1. Feature-based** ⭐ (рекомендуется для AI-проектов)
+**1. Feature-based** (рекомендуется для AI-проектов)
 - **Структура:** `src/features/{feature_name}/{components,services,tests}`
 - **Когда использовать:** новые проекты, средние по сложности приложения, когда требования четкие
-- **Почему хорошо для ИИ:** 
+- **Почему хорошо для ИИ:**
   - Структура очевидна из требований: "добавить фичу авторизация" → папка `features/auth`
   - AI трудно нарушить архитектуру — каждая фича изолирована
   - Спеки пишутся просто: "реализовать фичу X с компонентами A, B, C"
   - Минимум контекста о доменах/бизнесе нужно
 - **Пример:** e-commerce = features/products, features/cart, features/checkout, features/auth
 
-**2. Clean Architecture** ⭐ (хорошо для ИИ)
+**2. Clean Architecture** (хорошо для ИИ)
 - **Структура:** слои `entities → use-cases → interface-adapters → frameworks`
 - **Когда использовать:** когда нужна высокая изолированность, сложная бизнес-логика
 - **Почему хорошо для ИИ:**
@@ -98,83 +131,7 @@ tags: ["AI","Review"]
 
 Полные описания, примеры и рекомендации смотрите в [документации архитектур](https://github.com/tertiumnon/tertium-cheatsheets/tree/main/pages/arhitectures).
 
-### Рекомендации для языков программирования
-
-**Важно:** ИИ работает по-разному на разных языках. Выбор языка влияет на скорость разработки и количество ошибок.
-
-**TypeScript/JavaScript** ⭐ (лучший для AI)
-- **Почему хорошо:** динамическая типизация позволяет ИИ быстро писать, но TypeScript strict mode ловит ошибки
-- **Риск:** если не включить strict mode, ИИ создаст много скрытых ошибок типов
-- **Совет:** используйте `"strict": true` в tsconfig.json обязательно
-- **Инструменты:** TypeScript strict mode + vitest для тестов
-
-**Python** ⭐ (хорошо для бизнес-логики и ML)
-- **Почему хорошо:** синтаксис простой, ИИ понимает его хорошо, быстрая разработка
-- **Риск:** runtime errors, динамическая типизация может привести к ошибкам
-- **Совет:** используйте `mypy` (static type checker) + type hints обязательно
-- **Совет:** пишите docstrings для функций (ИИ лучше понимает контекст)
-- **Инструменты:** mypy + pytest для тестов + pydantic для валидации
-- **Где использовать:** backend логика, ML/Data Science, скрипты
-
-**Go** (хорошо для backend и микросервисов)
-- **Почему хорошо:** строгая типизация, простой синтаксис, быстрая компиляция
-- **Риск:** ИИ может забыть проверки ошибок (`if err != nil`)
-- **Совет:** обязательны code review на все файлы (проверяйте обработку ошибок)
-- **Инструменты:** `golangci-lint` для контроля качества + testing пакет
-- **Где использовать:** backend, микросервисы, CLI инструменты
-
-**Rust** (высокие требования к контролю)
-- **Почему сложно для AI:** borrow checker, lifetime, трейты — требуют понимания
-- **Риск:** ИИ генерирует код, который не компилируется, много переделок
-- **Совет:** используйте только если опытны с Rust сами (нужно часто корректировать ИИ)
-- **Инструменты:** cargo clippy + cargo test
-- **Где использовать:** performance-critical код, системные программы, если безопасность критична
-
-**Java/Kotlin** (хорошо для больших приложений)
-- **Почему хорошо:** строгая типизация, явные интерфейсы помогают ИИ
-- **Риск:** многословие, ИИ может генерировать слишком много boilerplate
-- **Совет:** используйте Kotlin вместо Java (более лаконичный)
-- **Инструменты:** SonarQube для качества кода + JUnit для тестов
-- **Где использовать:** enterprise приложения, Android, большие backend системы
-
-**C#** (хорошо для .NET экосистемы)
-- **Почему хорошо:** похож на Java, но лаконичнее, strong tooling (Visual Studio)
-- **Риск:** null reference exceptions если не использовать nullable types
-- **Совет:** включите `<Nullable>enable</Nullable>` в csproj
-- **Инструменты:** Roslyn analyzers + xUnit для тестов
-- **Где использовать:** Windows backend, Unity games, enterprise .NET приложения
-
-#### Универсальные правила для всех языков
-
-1. **Используйте type checking:** статическая типизация или type hints (Python mypy, JS TypeScript)
-2. **Обязательны тесты:** 80%+ покрытие для всех языков
-3. **Linters и formatters:** каждый язык имеет свой (`eslint`, `black`, `golangci-lint`, `clippy`)
-4. **Обработка ошибок:** ИИ часто забывает, требуется code review
-
-### Явные правила структуры
-
-Напишите в `CLAUDE.md`:
-
-```markdown
-## Архитектура проекта
-
-Используем Domain Driven Design.
-
-### Правила:
-- Каждый домен имеет папку `domains/{domain}/`
-- Внутри: `entities/`, `services/`, `repositories/`, `dtos/`
-- Никогда не создавайте новые папки без одобрения
-- Если нужна новая папка — это сигнал нового домена
-- Никогда не дублируйте код между доменами
-- Максимум 500 строк на файл
-
-### Зависимости (dependency-cruiser):
-- Domain никогда не зависит от controllers
-- Utils не может зависеть от services
-- Repositories не пишут бизнес-логику
-```
-
-### CLAUDE.md — инструкции для ИИ (критически важно!)
+### CLAUDE.md — инструкции для ИИ
 
 Это одна из самых недооцененных вещей в работе с ИИ. **CLAUDE.md — это единственный файл, который вы пишете один раз, а ИИ читает его в каждом запросе.**
 
@@ -252,193 +209,7 @@ src/
 - Файл .test.ts рядом с исходным файлом
 - Используй `describe` и `it` блоки
 
-## 4. 🚫 Запрещённые команды
-
-ИИ НИКОГДА не должен выполнять эти команды без явного разрешения:
-
-```bash
-❌ rm -rf /
-❌ rm -rf .
-❌ rm -rf * (без указания конкретной папки)
-
-❌ DROP TABLE
-❌ DROP DATABASE
-❌ DELETE FROM (без WHERE условия)
-
-❌ git reset --hard
-❌ git push --force
-❌ git rebase -i
-
-❌ npm install -g
-❌ sudo [anything]
-```
-
-**Правило:** Если ИИ предлагает такую команду — всегда требуйте подробное объяснение.
-
-## 5. ⚠️ Операции требующие обязательного REVIEW
-
-Эти команды должны быть явно согласованы перед выполнением:
-
-- Любой `rm`, `delete`, `drop` (даже на test)
-- Изменения переменных окружения
-- Изменения скриптов deploy/backup
-- Изменения конфигурации БД
-- Изменения правил Git (commits, pushes)
-- Создание новых сервисов или инфраструктуры
-- Бизнес-логика, которая затрагивает данные пользователей
-
-**Правило:** Если сомневаешься — требуй review.
-
-## 6. Git соглашения
-
-### Commit message формат:
-```
-type: short description
-
-- More details if needed
-- Second point
-
-Co-Authored-By: Claude <noreply@anthropic.com>
-```
-
-### Типы (type):
-- `feat:` новая фича
-- `fix:` исправление баги
-- `docs:` документация
-- `refactor:` рефакторинг
-- `test:` добавление тестов
-- `ci:` CI/CD изменения
-
-### Правила:
-- Никогда не коммитьте в main без PR
-- PR должен пройти CI перед merge
-- Требуется одобрение перед merge (если есть code review)
-- Используй `git add [specific files]`, NOT `git add .`
-
-### ⭐ Паттерн: ИИ может коммитить много раз, потом объединить
-
-**Проблема:** ИИ часто коммитит после каждого небольшого изменения. Это приводит к 50+ коммитов на простую фичу.
-
-**Решение:** Разрешь ИИ коммитить часто (это помогает отслеживать прогресс), но в конце объедини коммиты.
-
-#### Как это работает
-
-**Во время разработки (рабочая ветка):**
-```bash
-# ИИ делает много маленьких коммитов
-feat: add user service
-fix: handle null case in user service
-test: add tests for user service
-refactor: improve error handling in user service
-docs: add documentation for user service
-```
-
-**В конце (перед PR):**
-```bash
-# Объедини все в один-два логичных коммита
-git rebase -i HEAD~5  # интерактивный rebase последних 5 коммитов
-```
-
-Выбери первый коммит как `pick`, остальные как `squash` (s):
-```
-pick feat: add user service
-s fix: handle null case in user service
-s test: add tests for user service
-s refactor: improve error handling
-s docs: add documentation
-```
-
-**Результат:** один коммит `feat: add user service` со всеми изменениями
-
-#### Когда использовать этот паттерн
-
-✅ **Используй:**
-- Для новых фич (объедини в 1 коммит)
-- Для багфиксов (1 коммит)
-- Для рефакторинга (1-2 коммита)
-
-❌ **НЕ используй:**
-- Для разных независимых фич (каждая должна быть отдельным коммитом)
-- Если уже pushed в remote (не делай rebase после push)
-
-#### Инструкция для ИИ в CLAUDE.md
-
-```markdown
-### Коммиты
-
-ИИ может коммитить часто (после каждого логического шага):
-- После добавления service
-- После написания тестов
-- После рефакторинга
-
-**Но перед PR:** объедини коммиты одной фичи в 1-2 коммита:
-```bash
-git rebase -i HEAD~N  # N = количество коммитов
-# Mark first as pick, rest as squash
-```
-
-Каждый коммит должен быть самодостаточным (проходит тесты).
-```
-
-#### Почему это хорошо
-
-- **Для разработки:** ИИ может отслеживать прогресс, коммитить шаг за шагом
-- **Для истории:** чистая история без 50 "fix typo" коммитов
-- **Для Code Review:** проще просматривать полностью готовую фичу, чем 50 маленьких PR
-- **Для Prompt Caching:** ИИ кеширует контекст, экономит деньги, работает быстрее
-
-## 7. Как писать код для этого проекта
-
-### Примеры ХОРОШЕГО кода:
-
-```typescript
-// ✅ Явные типы, явные зависимости,単一責任
-export class UserService {
-  constructor(private db: Database) {}
-  
-  async createUser(name: string): Promise<User> {
-    if (!name || name.length < 2) {
-      throw new Error("Invalid name");
-    }
-    return this.db.users.create({ name });
-  }
-}
-```
-
-```typescript
-// ✅ Простой компонент с явной логикой
-@Component({
-  selector: 'app-user-form',
-  standalone: true,
-  template: `<form (ngSubmit)="onSubmit()">...</form>`
-})
-export class UserFormComponent {
-  form = new FormGroup({ name: new FormControl('') });
-  
-  constructor(private service: UserService) {}
-  
-  onSubmit(): void {
-    this.service.createUser(this.form.value.name);
-  }
-}
-```
-
-### Примеры ПЛОХОГО кода:
-
-```typescript
-// ❌ Скрытые зависимости
-class UserService {
-  private db = new Database(); // Плохо!
-}
-
-// ❌ Слишком большая функция
-async function handleEverything() { /* 500 строк */ }
-
-// ❌ Нарушение архитектуры
-// компонент пишет прямо в БД вместо использования service
-```
-
-## 8. CI/CD и Deployment
+## 4. CI/CD и Deployment
 
 - Сборка: `bun run build`
 - Тесты: `bun test`
@@ -448,7 +219,7 @@ async function handleEverything() { /* 500 строк */ }
 
 Все скрипты находятся в `package.json`.
 
-## 9. Если что-то не ясно
+## 5. Если что-то не ясно
 
 Правило: **Требуй плана перед кодированием**
 
@@ -469,7 +240,7 @@ async function handleEverything() { /* 500 строк */ }
 Жди ответа перед кодированием.
 ```
 
-## 10. Главное правило
+## 6. Главное правило
 
 **Контроль > Скорость**
 
@@ -492,16 +263,107 @@ async function handleEverything() { /* 500 строк */ }
 
 **Совет:** Каждый раз когда ИИ ошибается по одной и той же причине — добавьте это правило в CLAUDE.md.
 
-### Dependency Injection — контроль скрытых зависимостей
+### Dependency-cruiser — валидация архитектуры
 
-Используйте DI чтобы ИИ не создавал скрытые зависимости. Применимо для всех языков:
+Используйте `dependency-cruiser` для валидации правил:
 
-**TypeScript:**
+```bash
+npm install -D dependency-cruiser
+npx depcruise src --validate
+```
+
+ИИ не сможет нарушить архитектуру — инструмент его остановит.
+
+Напишите правила в CLAUDE.md:
+
+```markdown
+## Архитектура проекта
+
+Используем Domain Driven Design.
+
+### Правила:
+- Каждый домен имеет папку `domains/{domain}/`
+- Внутри: `entities/`, `services/`, `repositories/`, `dtos/`
+- Никогда не создавайте новые папки без одобрения
+- Если нужна новая папка — это сигнал нового домена
+- Никогда не дублируйте код между доменами
+- Максимум 500 строк на файл
+
+### Зависимости (dependency-cruiser):
+- Domain никогда не зависит от controllers
+- Utils не может зависеть от services
+- Repositories не пишут бизнес-логику
+```
+
+
+## Часть II: Технологии и инструменты
+
+ИИ работает по-разному на разных языках. Выбор языка влияет на скорость разработки и количество ошибок. В этой части собраны все рекомендации по языкам: типизация, тестирование, линтеры и особенности работы с ИИ.
+
+### TypeScript/JavaScript
+
+**Лучший выбор для AI-разработки.**
+
+**Почему хорошо:** динамическая типизация позволяет ИИ быстро писать, но TypeScript strict mode ловит ошибки.
+
+**Риск:** если не включить strict mode, ИИ создаст много скрытых ошибок типов.
+
+#### Типизация (strict mode)
+
+Включите в `tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true
+  }
+}
+```
+
+```typescript
+// ❌ ИИ это сгенерирует — будет ошибка:
+function processUser(user: User) {
+  return user.email.toUpperCase(); // Error: Object is possibly 'undefined'
+}
+
+// ✅ ИИ будет вынужден это исправить:
+function processUser(user: User) {
+  return user.email?.toUpperCase() ?? 'NO_EMAIL';
+}
+```
+
+#### Тестирование
+
+**Инструменты:** Vitest (рекомендуется) или Jest
+
+```typescript
+// ❌ ИИ может написать это и type checking не заметит:
+function discountPrice(price: number, percent: number): number {
+  return price - (price * percent);  // Ошибка: не разделил на 100!
+}
+
+// ✅ Но тест сразу провалится:
+it('should calculate 10% discount correctly', () => {
+  expect(discountPrice(100, 10)).toBe(90); // Fail!
+});
+```
+
+Запуск с покрытием: `npm run test -- --coverage`
+
+#### Линтеры и форматтеры
+
+- ESLint или Rome для статического анализа
+- Prettier для форматирования
+
+#### Dependency Injection
+
 ```typescript
 // ❌ ИИ часто пишет так (скрытая зависимость)
 export class UserService {
   private db = new Database(); // Создание здесь — плохо!
-  
+
   async createUser(name: string) {
     return this.db.query('INSERT INTO users...');
   }
@@ -510,20 +372,117 @@ export class UserService {
 // ✅ Правильно — зависимость явна в конструкторе
 export class UserService {
   constructor(private db: Database) {}
-  
+
   async createUser(name: string) {
     return this.db.query('INSERT INTO users...');
   }
 }
 ```
 
-**Python:**
+#### Примеры хорошего и плохого кода
+
+```typescript
+// ✅ Явные типы, явные зависимости, единственная ответственность
+export class UserService {
+  constructor(private db: Database) {}
+
+  async createUser(name: string): Promise<User> {
+    if (!name || name.length < 2) {
+      throw new Error("Invalid name");
+    }
+    return this.db.users.create({ name });
+  }
+}
+```
+
+```typescript
+// ✅ Простой компонент с явной логикой
+@Component({
+  selector: 'app-user-form',
+  standalone: true,
+  template: `<form (ngSubmit)="onSubmit()">...</form>`
+})
+export class UserFormComponent {
+  form = new FormGroup({ name: new FormControl('') });
+
+  constructor(private service: UserService) {}
+
+  onSubmit(): void {
+    this.service.createUser(this.form.value.name);
+  }
+}
+```
+
+```typescript
+// ❌ Скрытые зависимости
+class UserService {
+  private db = new Database(); // Плохо!
+}
+
+// ❌ Слишком большая функция
+async function handleEverything() { /* 500 строк */ }
+
+// ❌ Нарушение архитектуры
+// компонент пишет прямо в БД вместо использования service
+```
+
+### Python
+
+**Хорошо для бизнес-логики и ML.**
+
+**Почему хорошо:** синтаксис простой, ИИ понимает его хорошо, быстрая разработка.
+
+**Риск:** runtime errors, динамическая типизация может привести к ошибкам.
+
+**Где использовать:** backend логика, ML/Data Science, скрипты.
+
+#### Типизация (mypy + type hints)
+
+```python
+# ❌ Без type hints ИИ создаст ошибки:
+def process_user(user):
+    return user.email.upper()  # Может быть None, не проверено
+
+# ✅ С type hints + mypy проверит:
+from typing import Optional
+
+def process_user(user: User) -> str:
+    if user.email is None:
+        return 'NO_EMAIL'
+    return user.email.upper()
+```
+
+Включите `mypy` в проект:
+```bash
+mypy --strict src/
+```
+
+**Совет:** пишите docstrings для функций (ИИ лучше понимает контекст).
+
+#### Тестирование
+
+**Инструменты:** pytest + pydantic для валидации
+
+```python
+# ❌ ИИ может написать это:
+def discount_price(price: float, percent: float) -> float:
+    return price - (price * percent)  # Ошибка: не разделил на 100!
+
+# ✅ Тест отловит:
+def test_discount_price():
+    assert discount_price(100, 10) == 90  # Fail!
+```
+
+Запуск с покрытием: `pytest --cov`
+
+#### Dependency Injection
+
 ```python
 # ❌ Скрытая зависимость
 class UserService:
     def __init__(self):
         self.db = Database()  # Плохо!
-    
+
     def create_user(self, name: str):
         return self.db.query('INSERT INTO users...')
 
@@ -531,37 +490,63 @@ class UserService:
 class UserService:
     def __init__(self, db: Database):  # Зависимость видна
         self.db = db
-    
+
     def create_user(self, name: str):
         return self.db.query('INSERT INTO users...')
 ```
 
-**Java:**
-```java
-// ❌ Скрытая зависимость
-public class UserService {
-    private Database db = new Database(); // Плохо!
-    
-    public User createUser(String name) {
-        return db.query("INSERT INTO users...");
+#### Линтеры и форматтеры
+
+- black для форматирования
+- flake8 или ruff для линтинга
+
+### Go
+
+**Хорошо для backend и микросервисов.**
+
+**Почему хорошо:** строгая типизация, простой синтаксис, быстрая компиляция.
+
+**Риск:** ИИ может забыть проверки ошибок (`if err != nil`).
+
+**Где использовать:** backend, микросервисы, CLI инструменты.
+
+#### Типизация (встроенная)
+
+```go
+// Go требует явных типов, ИИ не может это нарушить
+func ProcessUser(user User) string {
+    if user.Email == "" {
+        return "NO_EMAIL"
     }
+    return strings.ToUpper(user.Email)
+}
+```
+
+**Совет:** обязательны code review на все файлы (проверяйте обработку ошибок).
+
+#### Тестирование
+
+**Инструменты:** встроенный testing пакет
+
+```go
+// ❌ ИИ может написать это:
+func DiscountPrice(price float64, percent float64) float64 {
+    return price - (price * percent)  // Ошибка!
 }
 
-// ✅ Явная зависимость (через конструктор или setter)
-public class UserService {
-    private Database db;
-    
-    public UserService(Database db) {  // Зависимость видна
-        this.db = db;
-    }
-    
-    public User createUser(String name) {
-        return db.query("INSERT INTO users...");
+// ✅ Тест отловит:
+func TestDiscountPrice(t *testing.T) {
+    result := DiscountPrice(100, 10)
+    if result != 90 {
+        t.Errorf("expected 90, got %v", result)
     }
 }
 ```
 
-**Go:**
+Запуск с покрытием: `go test -cover`
+
+#### Dependency Injection
+
 ```go
 // ❌ Скрытая зависимость
 type UserService struct {
@@ -578,25 +563,151 @@ func NewUserService(db *Database) *UserService {  // Зависимость ви
 }
 ```
 
-**Правило:** С DI ИИ не может скрывать зависимости. Они явно видны в конструкторе/инициализаторе, что упрощает code review.
+#### Линтеры и форматтеры
 
-### Инструменты для контроля архитектуры
+- `golangci-lint` для контроля качества
 
-Используйте `dependency-cruiser` для валидации правил:
+### Rust
 
-```bash
-npm install -D dependency-cruiser
-npx depcruise src --validate
+**Высокие требования к контролю.**
+
+**Почему сложно для AI:** borrow checker, lifetime, трейты — требуют понимания.
+
+**Риск:** ИИ генерирует код, который не компилируется, много переделок.
+
+**Совет:** используйте только если опытны с Rust сами (нужно часто корректировать ИИ).
+
+**Где использовать:** performance-critical код, системные программы, если безопасность критична.
+
+#### Инструменты
+
+- `cargo clippy` для линтинга
+- `cargo test` для тестирования
+
+### Java/Kotlin
+
+**Хорошо для больших приложений.**
+
+**Почему хорошо:** строгая типизация, явные интерфейсы помогают ИИ.
+
+**Риск:** многословие, ИИ может генерировать слишком много boilerplate.
+
+**Совет:** используйте Kotlin вместо Java (более лаконичный).
+
+**Где использовать:** enterprise приложения, Android, большие backend системы.
+
+#### Типизация (опциональные типы)
+
+```kotlin
+// ❌ Kotlin позволяет nullable типы:
+fun processUser(user: User): String {
+    return user.email.uppercase() // NPE если email null
+}
+
+// ✅ Правильно — явно с Optional:
+fun processUser(user: User): String {
+    return user.email?.uppercase() ?: "NO_EMAIL"
+}
 ```
 
-ИИ не сможет нарушить архитектуру — инструмент его остановит.
+#### Тестирование
+
+**Инструменты:** JUnit
+
+```kotlin
+// ❌ ИИ может написать это:
+fun discountPrice(price: Double, percent: Double): Double {
+    return price - (price * percent)  // Ошибка!
+}
+
+// ✅ Тест отловит:
+@Test
+fun `discount price should calculate correctly`() {
+    assertEquals(90.0, discountPrice(100.0, 10.0))
+}
+```
+
+Запуск с покрытием: `gradle test --info`
+
+#### Dependency Injection
+
+```java
+// ❌ Скрытая зависимость
+public class UserService {
+    private Database db = new Database(); // Плохо!
+
+    public User createUser(String name) {
+        return db.query("INSERT INTO users...");
+    }
+}
+
+// ✅ Явная зависимость (через конструктор или setter)
+public class UserService {
+    private Database db;
+
+    public UserService(Database db) {  // Зависимость видна
+        this.db = db;
+    }
+
+    public User createUser(String name) {
+        return db.query("INSERT INTO users...");
+    }
+}
+```
+
+#### Линтеры и форматтеры
+
+- SonarQube для качества кода
+
+### C#
+
+**Хорошо для .NET экосистемы.**
+
+**Почему хорошо:** похож на Java, но лаконичнее, strong tooling (Visual Studio).
+
+**Риск:** null reference exceptions если не использовать nullable types.
+
+**Где использовать:** Windows backend, Unity games, enterprise .NET приложения.
+
+#### Типизация (nullable reference types)
+
+```csharp
+// Включите в .csproj:
+<Nullable>enable</Nullable>
+
+// ИИ будет вынужден обработать null:
+public string ProcessUser(User user)
+{
+    return user.Email?.ToUpper() ?? "NO_EMAIL";
+}
+```
+
+#### Тестирование
+
+**Инструменты:** xUnit
+
+Запуск с покрытием: `dotnet test /p:CollectCoverage=true`
+
+#### Линтеры и форматтеры
+
+- Roslyn analyzers
+
+### Универсальные правила для всех языков
+
+1. **Используйте type checking:** статическая типизация или type hints (Python mypy, JS TypeScript)
+2. **Обязательны тесты:** 80%+ покрытие для всех языков
+3. **Linters и formatters:** каждый язык имеет свой (`eslint`, `black`, `golangci-lint`, `clippy`)
+4. **Обработка ошибок:** ИИ часто забывает, требуется code review
+5. **Dependency Injection:** С DI ИИ не может скрывать зависимости. Они явно видны в конструкторе/инициализаторе, что упрощает code review
 
 
-## Часть II: Процесс — Research-Plan-Implement
+## Часть III: Процесс разработки
+
+### Research-Plan-Implement
 
 Перед тем как писать код, вы должны понимать что нужно делать. Используйте трёхэтапный процесс.
 
-### 1. Research — исследование
+#### 1. Research — исследование
 
 Сначала вы сами исследуете:
 - Какие файлы нужно изменить?
@@ -606,7 +717,7 @@ npx depcruise src --validate
 
 Запросите у ИИ помощь в поиске нужных файлов и понимании кода. На этом этапе ИИ просто читает и объясняет, не пишет.
 
-### 2. Plan — планирование
+#### 2. Plan — планирование
 
 Напишите подробный **письменный план** (или спецификацию):
 
@@ -639,24 +750,24 @@ npx depcruise src --validate
 ```typescript
 /**
  * Спецификация: NotificationService.send()
- * 
+ *
  * Входные данные:
  *   - userId: UUID (должен существовать)
  *   - message: string (max 500 chars)
- * 
+ *
  * Выходные данные:
  *   - Notification { id, userId, message, createdAt, status }
- * 
+ *
  * Правила бизнеса:
  *   - должно быть в очереди (не сразу отправляется)
  *   - retry при сетевой ошибке (макс 3 раза)
  *   - логирование всех попыток
- * 
+ *
  * Ошибки (должны быть обработаны):
  *   - InvalidUserError если userId не существует
  *   - MessageTooLongError если message > 500
  *   - QueueError если очередь недоступна
- * 
+ *
  * Тесты (обязательный минимум):
  *   - успешная отправка
  *   - ошибка при невалидном userId
@@ -667,7 +778,7 @@ npx depcruise src --validate
 
 **Ключевое правило: никогда не позволяйте ИИ писать код, пока не одобрите план.**
 
-### 3. Implement — реализация
+#### 3. Implement — реализация
 
 Только после одобрения плана запросите ИИ реализовать его:
 - Пишет код по плану
@@ -680,155 +791,289 @@ npx depcruise src --validate
 - Проще отловить проблемы на этапе планирования, чем после кодирования
 - Экономия времени на переделку неправильного подхода
 
+### Git workflow
 
-## Часть III: Контроль — типизация, тесты, архитектура
+#### Commit message формат
 
-Когда ИИ пишет код, нужны **трёхслойные фильтры**.
+```
+type: short description
 
-### Слой 1: Статическая типизация (Type Checking)
+- More details if needed
+- Second point
 
-**Первая линия защиты** — типизация. Строгая типизация отловит ошибки до runtime. Зависит от вашего языка:
-
-**TypeScript (strict mode):**
-```typescript
-// ❌ ИИ это сгенерирует — будет ошибка:
-function processUser(user: User) {
-  return user.email.toUpperCase(); // Error: Object is possibly 'undefined'
-}
-
-// ✅ ИИ будет вынужден это исправить:
-function processUser(user: User) {
-  return user.email?.toUpperCase() ?? 'NO_EMAIL';
-}
+Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
-Включите в `tsconfig.json`:
-```json
-{
-  "compilerOptions": {
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true
-  }
-}
-```
+#### Типы (type)
 
-**Python (mypy + type hints):**
-```python
-# ❌ Без type hints ИИ создаст ошибки:
-def process_user(user):
-    return user.email.upper()  # Может быть None, не проверено
+- `feat:` новая фича
+- `fix:` исправление баги
+- `docs:` документация
+- `refactor:` рефакторинг
+- `test:` добавление тестов
+- `ci:` CI/CD изменения
 
-# ✅ С type hints + mypy проверит:
-from typing import Optional
+#### Правила
 
-def process_user(user: User) -> str:
-    if user.email is None:
-        return 'NO_EMAIL'
-    return user.email.upper()
-```
+- Никогда не коммитьте в main без PR
+- PR должен пройти CI перед merge
+- Требуется одобрение перед merge (если есть code review)
+- Используй `git add [specific files]`, NOT `git add .`
 
-Включите `mypy` в проект:
+#### Паттерн: ИИ может коммитить много раз, потом объединить
+
+**Проблема:** ИИ часто коммитит после каждого небольшого изменения. Это приводит к 50+ коммитов на простую фичу.
+
+**Решение:** Разрешь ИИ коммитить часто (это помогает отслеживать прогресс), но в конце объедини коммиты.
+
+**Во время разработки (рабочая ветка):**
 ```bash
-mypy --strict src/
+# ИИ делает много маленьких коммитов
+feat: add user service
+fix: handle null case in user service
+test: add tests for user service
+refactor: improve error handling in user service
+docs: add documentation for user service
 ```
 
-**Go (встроенная типизация):**
-```go
-// Go требует явных типов, ИИ не может это нарушить
-func ProcessUser(user User) string {
-    if user.Email == "" {
-        return "NO_EMAIL"
-    }
-    return strings.ToUpper(user.Email)
-}
+**В конце (перед PR):**
+```bash
+# Объедини все в один-два логичных коммита
+git rebase -i HEAD~5  # интерактивный rebase последних 5 коммитов
 ```
 
-**Java/Kotlin (опциональные типы):**
-```kotlin
-// ❌ Kotlin позволяет nullable типы:
-fun processUser(user: User): String {
-    return user.email.uppercase() // NPE если email null
-}
-
-// ✅ Правильно — явно с Optional:
-fun processUser(user: User): String {
-    return user.email?.uppercase() ?: "NO_EMAIL"
-}
+Выбери первый коммит как `pick`, остальные как `squash` (s):
+```
+pick feat: add user service
+s fix: handle null case in user service
+s test: add tests for user service
+s refactor: improve error handling
+s docs: add documentation
 ```
 
-**C# (nullable reference types):**
-```csharp
-// Включите в .csproj:
-<Nullable>enable</Nullable>
+**Результат:** один коммит `feat: add user service` со всеми изменениями
 
-// ИИ будет вынужден обработать null:
-public string ProcessUser(User user)
-{
-    return user.Email?.ToUpper() ?? "NO_EMAIL";
-}
+#### Когда использовать этот паттерн
+
+**Используй:**
+- Для новых фич (объедини в 1 коммит)
+- Для багфиксов (1 коммит)
+- Для рефакторинга (1-2 коммита)
+
+**НЕ используй:**
+- Для разных независимых фич (каждая должна быть отдельным коммитом)
+- Если уже pushed в remote (не делай rebase после push)
+
+#### Инструкция для ИИ в CLAUDE.md
+
+```markdown
+### Коммиты
+
+ИИ может коммитить часто (после каждого логического шага):
+- После добавления service
+- После написания тестов
+- После рефакторинга
+
+**Но перед PR:** объедини коммиты одной фичи в 1-2 коммита:
+```bash
+git rebase -i HEAD~N  # N = количество коммитов
+# Mark first as pick, rest as squash
 ```
 
-**Универсальное правило:** Типизация не позволяет ИИ лениться. Это больше, чем проверка синтаксиса — это **автоматическая валидация всей логики**, независимо от языка.
-
-### Слой 2: Тесты (80%+ покрытие)
-
-**Главный фильтр** — тесты. Даже если type checking не заметит, тесты отловят логические ошибки. Работает для всех языков:
-
-**TypeScript/JavaScript:**
-```typescript
-// ❌ ИИ может написать это и type checking не заметит:
-function discountPrice(price: number, percent: number): number {
-  return price - (price * percent);  // Ошибка: не разделил на 100!
-}
-
-// ✅ Но тест сразу провалится:
-it('should calculate 10% discount correctly', () => {
-  expect(discountPrice(100, 10)).toBe(90); // Fail!
-});
+Каждый коммит должен быть самодостаточным (проходит тесты).
 ```
 
-**Python:**
-```python
-# ❌ ИИ может написать это:
-def discount_price(price: float, percent: float) -> float:
-    return price - (price * percent)  # Ошибка: не разделил на 100!
+#### Почему это хорошо
 
-# ✅ Тест отловит:
-def test_discount_price():
-    assert discount_price(100, 10) == 90  # Fail!
+- **Для разработки:** ИИ может отслеживать прогресс, коммитить шаг за шагом
+- **Для истории:** чистая история без 50 "fix typo" коммитов
+- **Для Code Review:** проще просматривать полностью готовую фичу, чем 50 маленьких PR
+- **Для Prompt Caching:** ИИ кеширует контекст, экономит деньги, работает быстрее
+
+### Контекст и Workspace
+
+#### Проблема выбора
+
+Когда вы работаете с ИИ, встаёт вопрос: **нужно ли создавать новую сессию для каждой задачи или лучше продолжить одну?**
+
+Ответ: **Зависит от типа работы.**
+
+#### Вариант 1: Один непрерывный контекст (Рекомендуется для проекта)
+
+**Когда использовать:** когда вы работаете над одним проектом целый день/неделю.
+
+**Как это работает:**
+- Открываете workspace проекта один раз
+- Используете одну сессию ИИ целый день
+- Все задачи идут в одном контексте: "добавь фичу X", потом "исправь баг Y", потом "добавь тесты Z"
+- ИИ видит весь проект, его архитектуру, соглашения, `CLAUDE.md`
+
+**Преимущества:**
+- **Контекст сохраняется** — ИИ помнит архитектуру, стиль, паттерны
+- **Prompt Caching** — `CLAUDE.md` и структура проекта кешируются (экономия денег и скорость)
+- **Меньше повторений** — не нужно каждый раз объяснять архитектуру
+- **Консистентность** — ИИ пишет код в одном стиле целый день
+- **Ошибки ловятся быстро** — если ИИ нарушил паттерн, вы видите это сразу
+
+**Недостатки:**
+- Контекстное окно растёт (но Prompt Caching помогает)
+- Если большой файл был обсуждён — остаётся в памяти
+
+**Рекомендация:** Используйте это для большинства случаев.
+
+#### Вариант 2: Новый контекст для каждой задачи
+
+**Когда использовать:** когда задачи полностью независимые или вы меняете проекты.
+
+**Как это работает:**
+- Вы закрываете предыдущую сессию
+- Для новой задачи открываете новый контекст
+- ИИ читает `CLAUDE.md`, смотрит затронутые файлы, и решает задачу
+
+**Преимущества:**
+- Чистый контекст (нет "мусора" от предыдущих задач)
+- Меньше контекстного окна (для больших проектов)
+- Каждая задача решается свежо
+
+**Недостатки:**
+- **Без Prompt Caching** — `CLAUDE.md` читается каждый раз (медленнее, дороже)
+- **Потеря контекста архитектуры** — нужно каждый раз напоминать
+- **Риск нарушения паттернов** — ИИ может забыть соглашения
+- **Больше ошибок** — нет "памяти" о том как вы делали прошлые фичи
+
+**Рекомендация:** Не рекомендуется. Используйте только если контекст действительно переполняется (редко с Prompt Caching).
+
+#### Лучшая практика: Гибридный подход
+
+**Используйте один контекст в течение дня**, но:
+
+1. **Каждый день — новая сессия** (вечером закрываете, утром открываете новую)
+   - Это очищает контекст, но `CLAUDE.md` всё равно кешируется
+
+2. **Если контекст стал слишком большим** — зафиксируйте прогресс коммитом и начните новую сессию
+   - `git commit` with descriptive message
+   - Закройте сессию
+   - Откройте новую с тем же workspace
+   - ИИ по-прежнему видит весь проект (через файлы), но контекст чистый
+
+3. **Между разными проектами** — всегда новая сессия
+   - Закрывайте предыдущий проект
+   - Открывайте новый workspace
+   - Новый контекст
+
+#### Workspace и Full-Stack разработка
+
+**Workspace** в Claude Code позволяет ИИ видеть весь проект одновременно.
+
+Когда вы открываете workspace полного стека (frontend + backend):
+
+```
+project/
+├── backend/           # Node.js + Express
+│   ├── src/
+│   ├── package.json
+│   └── .env
+├── frontend/          # Angular/React
+│   ├── src/
+│   ├── angular.json
+│   └── package.json
+├── CLAUDE.md          # Единые правила
+└── README.md
 ```
 
-**Go:**
-```go
-// ❌ ИИ может написать это:
-func DiscountPrice(price float64, percent float64) float64 {
-    return price - (price * percent)  // Ошибка!
-}
+**Что ИИ видит и может делать:**
 
-// ✅ Тест отловит:
-func TestDiscountPrice(t *testing.T) {
-    result := DiscountPrice(100, 10)
-    if result != 90 {
-        t.Errorf("expected 90, got %v", result)
-    }
-}
+1. **Видит архитектуру обеих сторон** — backend структуру И frontend структуру
+2. **Может менять backend и frontend в одной задаче** — "добавь поле user.role в БД, в API endpoint, и покажи его в профиле"
+3. **Консистентность между слоями** — ИИ может проверить что типы совпадают: backend возвращает `User{ id, name, role }`, frontend ожидает то же
+4. **Видит конфигурацию обеих** — tsconfig, package.json, build scripts
+
+**Преимущества для full-stack:**
+- Одна задача = полный цикл (DB → API → UI)
+- Меньше ошибок типов между слоями
+- ИИ может проверить что backend и frontend согласованы
+
+**Пример: добавить новый API endpoint с full-stack контекстом**
+
+```
+Вы: "Добавь поле 'premium' в user профиль. Backend: добавь в БД,
+создай миграцию, добавь в API. Frontend: покажи это поле в UI"
+
+ИИ видит:
+- Backend: структура User entity, repository, controller
+- Frontend: структура User interface, component, service
+- CLAUDE.md: как писать код для обеих сторон
+- Может сделать всё за один запрос
 ```
 
-**Java/Kotlin:**
-```kotlin
-// ❌ ИИ может написать это:
-fun discountPrice(price: Double, percent: Double): Double {
-    return price - (price * percent)  // Ошибка!
-}
+#### Когда НЕ использовать workspace для full-stack
 
-// ✅ Тест отловит:
-@Test
-fun `discount price should calculate correctly`() {
-    assertEquals(90.0, discountPrice(100.0, 10.0))
-}
+- **Очень большой проект (50K+ строк)** — слишком много контекста
+- **Разные команды backend/frontend** — лучше использовать разные workspace
+- **Часто меняются одна сторона** — может быть лишняя информация
+
+**Рекомендация:** Для большинства full-stack проектов — **один workspace, один контекст, весь день.**
+
+#### Оптимальная workflow для full-stack разработки
+
+1. **Утром:** открываете IDE с workspace проекта
+2. **Целый день:** все задачи идут в одном контексте ИИ
+3. **Вечером:** коммитите прогресс, закрываете IDE
+4. **Завтра утром:** открываете снова (новая сессия, но project видим весь)
+
+**Результат:**
+- Контекст чистый каждый день
+- Architekture кешируется (Prompt Caching)
+- Full-stack консистентность
+- Скорость и качество оптимальны
+
+
+## Часть IV: Контроль качества
+
+### Code review
+
+**Финальная человеческая проверка.** Даже с типизацией и тестами нужен человеческий взгляд.
+
+Проверьте:
+- Соответствие плану
+- Логические ошибки (которые не поймала типизация и тесты)
+- Edge cases в тестах
+- Безопасность (нет ли уязвимостей)
+- Обработка ошибок (особенно важно для Go, Java)
+- Соответствие соглашениям проекта
+- Техдолг (не создал ли новые проблемы)
+
+### CI/CD интеграция
+
+Автоматизируйте проверки качества:
+
+```yaml
+# Пример GitHub Actions
+- name: Type check
+  run: bun run lint:ts:check
+
+- name: Lint
+  run: bun run lint:fix
+
+- name: Tests
+  run: bun test --coverage
+
+- name: Build
+  run: bun run build
 ```
+
+Команды для типичного проекта:
+- Сборка: `bun run build`
+- Тесты: `bun test`
+- Линтинг: `bun run lint:fix`
+- Type check: `bun run lint:ts:check`
+- Deploy: `bun run deploy`
+
+Все скрипты находятся в `package.json`.
+
+### Принципы тестирования
+
+**Главный фильтр** — тесты. Даже если type checking не заметит, тесты отловят логические ошибки.
 
 **Что ловят тесты:**
 - Граничные случаи (пустые массивы, нулевые значения, большие числа)
@@ -842,26 +1087,208 @@ fun `discount price should calculate correctly`() {
 - **Integration-тесты**: критичные пути (авторизация, оплата, сохранение данных)
 - **Snapshot-тесты**: для UI компонентов
 
-**Инструменты по языкам:**
-- **TypeScript/JavaScript:** vitest, Jest + `npm run test -- --coverage`
-- **Python:** pytest + `pytest --cov`
-- **Go:** testing пакет + `go test -cover`
-- **Java/Kotlin:** JUnit + `gradle test --info`
-- **C#:** xUnit + `dotnet test /p:CollectCoverage=true`
-
-### Слой 3: Code review
-
-**Финальная человеческая проверка.** Проверьте:
-- Соответствие плану
-- Логические ошибки (которые не поймала типизация и тесты)
-- Edge cases в тестах
-- Безопасность (нет ли уязвимостей)
-- Обработка ошибок (особенно важно для Go, Java)
-- Соответствие соглашениям проекта
-- Техдолг (не создал ли новые проблемы)
+**Универсальное правило:** Типизация не позволяет ИИ лениться. Это больше, чем проверка синтаксиса — это **автоматическая валидация всей логики**, независимо от языка.
 
 
-## Часть IV: Оптимизация — скрипты и фичи ИИ
+## Часть V: Безопасность
+
+Это реальная проблема, которую часто не замечают при работе с ИИ. ИИ может **непреднамеренно** выполнить деструктивные команды:
+
+- `rm -rf .git` → удаление репозитория
+- `rm -rf /` → удаление файловой системы (на производстве это чаще `docker exec`)
+- `DROP TABLE users;` → удаление таблицы в БД
+- `DELETE FROM *` → удаление всех данных
+- Перезапись production переменных на development значения
+
+**Это случилось со мной.** Я попросил ИИ написать скрипт очистки, и он создал `rm -rf *` на gh-pages orphan ветке. Это привело к удалению `.git` директории, и репозиторий пришлось восстанавливать из облака.
+
+### Типичные сценарии ущерба
+
+1. **Скрипты миграции и очистки:** "напиши скрипт удаления старых файлов" → `rm -rf *` вместо `rm -rf src/old_files/`
+
+2. **Deployment скрипты:** "развёрнуть новую версию" → ИИ пишет команду которая останавливает production БД вместо staging
+
+3. **Тестовые данные:** "очисти тестовую БД" → ИИ очищает production БД (перепутал переменные окружения)
+
+4. **Управление зависимостями:** "удали неиспользуемый пакет" → ИИ удаляет критически важный пакет, который используется через `require()`
+
+5. **Миграции БД:** "добавь индекс" → ИИ пишет миграцию которая дропает таблицу вместо её модификации
+
+### Стратегии защиты
+
+#### 1. Запрещённые команды в CLAUDE.md
+
+ИИ НИКОГДА не должен выполнять эти команды без явного разрешения:
+
+```bash
+# Файловая система
+rm -rf /
+rm -rf .
+rm -rf * (без указания конкретной папки)
+
+# База данных
+DROP TABLE
+DROP DATABASE
+DELETE FROM (без WHERE условия)
+
+# Git
+git reset --hard
+git push --force
+git rebase -i
+
+# Системные
+npm install -g
+sudo [anything]
+```
+
+**Правило:** Если ИИ предлагает такую команду — всегда требуйте подробное объяснение.
+
+#### 2. Операции требующие обязательного REVIEW
+
+Эти команды должны быть явно согласованы перед выполнением:
+
+- Любой `rm`, `delete`, `drop` (даже на test)
+- Изменения переменных окружения
+- Изменения скриптов deploy/backup
+- Изменения конфигурации БД
+- Изменения правил Git (commits, pushes)
+- Создание новых сервисов или инфраструктуры
+- Бизнес-логика, которая затрагивает данные пользователей
+
+**Правило:** Если сомневаешься — требуй review.
+
+#### 3. Никогда не давайте ИИ прямой доступ к destructive командам
+
+```bash
+# ПЛОХО: ИИ может написать опасную команду
+bun run clean  # ИИ пишет rm -rf внутри
+
+# ХОРОШО: Явный контроль
+bun run clean:dev      # удаляет только dev файлы
+bun run clean:tests    # удаляет только тестовые артефакты
+bun run db:reset:staging  # сброс ТОЛЬКО staging БД
+```
+
+#### 4. Разделение окружений с жесткой защитой
+
+```typescript
+// Правило: никогда не допускай production логики в dev скриптах
+const isProduction = process.env.NODE_ENV === 'production';
+const isDevelopment = process.env.NODE_ENV === 'development';
+
+if (isProduction) {
+  throw new Error("This script is for development only!");
+}
+
+// Сделай невозможным перепутать БД
+const dbConnection = {
+  host: process.env.DB_HOST,
+  name: process.env.DB_NAME,
+  // Никогда не используй hardcode! Только env variables
+};
+
+if (!process.env.DB_NAME) {
+  throw new Error("DB_NAME not set! Refusing to connect to unknown database");
+}
+```
+
+#### 5. Автоматическая защита в скриптах
+
+```typescript
+// Убедитесь что скрипт знает что он делает
+async function deleteOldFiles(dir: string) {
+  // Явная защита
+  if (!dir.includes("temp") && !dir.includes("cache")) {
+    throw new Error(`Cannot delete from ${dir}! Only temp/ and cache/ allowed`);
+  }
+
+  const files = await fs.readdir(dir);
+
+  // Еще одна защита: не удалять слишком много
+  if (files.length > 10000) {
+    throw new Error("Too many files! This looks like a mistake");
+  }
+
+  console.log(`Deleting ${files.length} files from ${dir}...`);
+  for (const file of files) {
+    await fs.unlink(path.join(dir, file));
+  }
+}
+```
+
+#### 6. Потребуй план на опасную операцию
+
+Когда вы говорите ИИ:
+- "удали старую миграцию"
+- "почисти БД"
+- "переинициализируй сервер"
+
+Всегда требуйте:
+
+```
+Вы: "Удали миграции старше 2024 года"
+
+ИИ должен ответить:
+1. Какие именно файлы будут удалены (список)
+2. Какие таблицы затронет каждая миграция
+3. План отката если что-то пойдёт не так
+4. Явный запрос подтверждения перед удалением
+```
+
+#### 7. Используйте git hooks для защиты
+
+```bash
+# .githooks/pre-commit
+# Запретить коммитить опасные паттерны
+
+if grep -r "rm -rf /" . ; then
+  echo "DANGEROUS: rm -rf / found!"
+  exit 1
+fi
+
+if grep -r "DROP TABLE" . ; then
+  echo "DANGEROUS: SQL DROP without WHERE found!"
+  exit 1
+fi
+```
+
+#### 8. CI/CD как барьер
+
+```yaml
+# .github/workflows/safety-check.yml
+- name: Security checks
+  run: |
+    # Запретить опасные паттерны попадать в main
+    if grep -r "DROP DATABASE" src/migrations; then
+      echo "Prevent destructive migrations"
+      exit 1
+    fi
+
+    if grep -r "rm -rf /" scripts; then
+      echo "Prevent destructive scripts"
+      exit 1
+    fi
+```
+
+### Резервные копии
+
+Даже с правилами ошибки случаются. Убедитесь что есть резервная копия:
+
+```bash
+# Daily backup
+0 2 * * * /scripts/backup-database.sh
+0 3 * * * /scripts/backup-git.sh
+
+# Git commits все сохранены в облаке (GitHub, GitLab)
+# БД имеет автоматические снимки состояния (AWS RDS, managed services)
+```
+
+### Главное правило безопасности
+
+**Никогда не доверяйте ИИ с production без явного контроля.**
+
+
+## Часть VI: Оптимизация
 
 ### Скрипты вместо постоянных запросов
 
@@ -898,7 +1325,7 @@ fun `discount price should calculate correctly`() {
 **Batch Processing** — массовая обработка однотипных задач (50% дешевле, чем обычные запросы).
 
 
-## Выводы: как начать
+## Выводы
 
 ### Результат: реальная экономия без техдолга
 
@@ -909,8 +1336,9 @@ fun `discount price should calculate correctly`() {
 3. **Типизация** — strict type checking (TypeScript, mypy, etc.)
 4. **Тесты 80%+** — фильтр логических ошибок
 5. **Code review** — финальная проверка
-6. **Скрипты для рутины** — экономия денег на повторных запросах
-7. **Современные фичи ИИ** — Skills, Caching, Sub-agents, Thinking
+6. **Безопасность** — запрещённые команды, review, бэкапы
+7. **Скрипты для рутины** — экономия денег на повторных запросах
+8. **Современные фичи ИИ** — Skills, Caching, Sub-agents, Thinking
 
 Вы получаете:
 - **2-3x прирост производительности** без роста ошибок
@@ -943,337 +1371,6 @@ fun `discount price should calculate correctly`() {
 - Скрипты для рутины
 - Фичи ИИ (caching, skills)
 - Постоянное совершенствование
-
-
-## Критическая тема: ИИ может удалить ваш git репозиторий и базу данных
-
-Это реальная проблема, которую часто не замечают при работе с ИИ. ИИ может **непреднамеренно** выполнить деструктивные команды:
-
-- `rm -rf .git` → удаление репозитория
-- `rm -rf /` → удаление файловой системы (на производстве это чаще `docker exec`)
-- `DROP TABLE users;` → удаление таблицы в БД
-- `DELETE FROM *` → удаление всех данных
-- Перезапись production переменных на development значения
-
-**Это случилось со мной.** Я попросил ИИ написать скрипт очистки, и он создал `rm -rf *` на gh-pages orphan ветке. Это привело к удалению `.git` директории, и репозиторий пришлось восстанавливать из облака.
-
-### Типичные сценарии, когда ИИ наносит ущерб
-
-1. **Скрипты миграции и очистки:** "напиши скрипт удаления старых файлов" → `rm -rf *` вместо `rm -rf src/old_files/`
-
-2. **Deployment скрипты:** "развёрнуть новую версию" → ИИ пишет команду которая останавливает production БД вместо staging
-
-3. **Тестовые данные:** "очисти тестовую БД" → ИИ очищает production БД (перепутал переменные окружения)
-
-4. **Управление зависимостями:** "удали неиспользуемый пакет" → ИИ удаляет критически важный пакет, который используется через `require()`
-
-5. **Миграции БД:** "добавь индекс" → ИИ пишет миграцию которая дропает таблицу вместо её модификации
-
-### Как противостоять
-
-#### 1. **Никогда не давайте ИИ прямой доступ к destructive командам**
-
-```bash
-# ❌ ПЛОХО: ИИ может написать опасную команду
-bun run clean  # ИИ пишет rm -rf внутри
-
-# ✅ ХОРОШО: Явный контроль
-bun run clean:dev      # удаляет только dev файлы
-bun run clean:tests    # удаляет только тестовые артефакты
-bun run db:reset:staging  # сброс ТОЛЬКО staging БД
-```
-
-#### 2. **Разделение окружений с жесткой защитой**
-
-```typescript
-// ✅ Правило: никогда не допускай production логики в dev скриптах
-const isProduction = process.env.NODE_ENV === 'production';
-const isDevelopment = process.env.NODE_ENV === 'development';
-
-if (isProduction) {
-  throw new Error("This script is for development only!");
-}
-
-// ✅ Сделай невозможным перепутать БД
-const dbConnection = {
-  host: process.env.DB_HOST,
-  name: process.env.DB_NAME,
-  // Никогда не используй hardcode! Только env variables
-};
-
-if (!process.env.DB_NAME) {
-  throw new Error("DB_NAME not set! Refusing to connect to unknown database");
-}
-```
-
-#### 3. **Белый список команд для ИИ**
-
-Напишите в `CLAUDE.md`:
-
-```markdown
-## Запрещённые команды
-
-ИИ НИКОГДА не должен использовать:
-- `rm -rf` без явной папки (только `rm -rf ./specific-folder/`)
-- `DROP TABLE`, `DROP DATABASE` без `IF EXISTS` проверки
-- `DELETE` без `WHERE` условия (только WHERE с определённым условием)
-- Прямые SQL запросы без параметризации
-- `git reset --hard`, `git push --force`
-- Команды с `sudo` (это разработка, не production!)
-
-Если ИИ пишет такие команды — всегда требуйте explicit review и объяснение.
-```
-
-#### 4. **Автоматическая защита в скриптах**
-
-```typescript
-// ✅ Убедитесь что скрипт знает что он делает
-async function deleteOldFiles(dir: string) {
-  // Явная защита
-  if (!dir.includes("temp") && !dir.includes("cache")) {
-    throw new Error(`Cannot delete from ${dir}! Only temp/ and cache/ allowed`);
-  }
-  
-  const files = await fs.readdir(dir);
-  
-  // Еще одна защита: не удалять слишком много
-  if (files.length > 10000) {
-    throw new Error("Too many files! This looks like a mistake");
-  }
-  
-  console.log(`Deleting ${files.length} files from ${dir}...`);
-  for (const file of files) {
-    await fs.unlink(path.join(dir, file));
-  }
-}
-```
-
-#### 5. **Приходит запрос на опасную операцию → потребуй план**
-
-Когда вы говорите ИИ:
-- "удали старую миграцию"
-- "почисти БД"
-- "переинициализируй сервер"
-
-Всегда требуйте:
-
-```
-Вы: "Удали миграции старше 2024 года"
-
-ИИ должен ответить:
-1. Какие именно файлы будут удалены (список)
-2. Какие таблицы затронет каждая миграция
-3. План отката если что-то пойдёт не так
-4. Явный запрос подтверждения перед удалением
-```
-
-#### 6. **Используйте git hooks для защиты**
-
-```bash
-# .githooks/pre-commit
-# Запретить коммитить опасные паттерны
-
-if grep -r "rm -rf /" . ; then
-  echo "❌ DANGEROUS: rm -rf / found!"
-  exit 1
-fi
-
-if grep -r "DROP TABLE" . ; then
-  echo "❌ DANGEROUS: SQL DROP without WHERE found!"
-  exit 1
-fi
-```
-
-#### 7. **CI/CD как барьер**
-
-```yaml
-# .github/workflows/safety-check.yml
-- name: Security checks
-  run: |
-    # Запретить опасные паттерны попадать в main
-    if grep -r "DROP DATABASE" src/migrations; then
-      echo "❌ Prevent destructive migrations"
-      exit 1
-    fi
-    
-    if grep -r "rm -rf /" scripts; then
-      echo "❌ Prevent destructive scripts"
-      exit 1
-    fi
-```
-
-#### 8. **Резервные копии — последний щит**
-
-Даже с правилами ошибки случаются. Убедитесь что есть резервная копия:
-
-```bash
-# Daily backup
-0 2 * * * /scripts/backup-database.sh
-0 3 * * * /scripts/backup-git.sh
-
-# Git commits все сохранены в облаке (GitHub, GitLab)
-# БД имеет автоматические снимки состояния (AWS RDS, managed services)
-```
-
-### Главное правило безопасности
-
-**Никогда не доверяйте ИИ с production без явного контроля.** 
-
-Этот список команд должен быть в вашем `CLAUDE.md`:
-
-```markdown
-## Команды которые ВСЕГДА требуют ручного review
-
-- Любой `rm`, `delete`, `drop`
-- Любой доступ к базе данных (даже на `test`)
-- Изменения переменных окружения
-- Изменения прав доступа
-- Создание новых сервисов или инфраструктуры
-- Изменения скриптов deploy и backup
-
-Правило: Если сомневаетесь — требуйте review.
-```
-
-
-## Контекст и Workspace: один непрерывный контекст или новый для каждой задачи?
-
-### Проблема выбора
-
-Когда вы работаете с ИИ, встаёт вопрос: **нужно ли создавать новую сессию для каждой задачи или лучше продолжить одну?**
-
-Ответ: **Зависит от типа работы.**
-
-### Вариант 1: Один непрерывный контекст (Рекомендуется для проекта)
-
-**Когда использовать:** когда вы работаете над одним проектом целый день/неделю.
-
-**Как это работает:**
-- Открываете workspace проекта один раз
-- Используете одну сессию ИИ целый день
-- Все задачи идут в одном контексте: "добавь фичу X", потом "исправь баг Y", потом "добавь тесты Z"
-- ИИ видит весь проект, его архитектуру, соглашения, `CLAUDE.md`
-
-**Преимущества:**
-- ✅ **Контекст сохраняется** — ИИ помнит архитектуру, стиль, паттерны
-- ✅ **Prompt Caching** — `CLAUDE.md` и структура проекта кешируются (экономия денег и скорость)
-- ✅ **Меньше повторений** — не нужно каждый раз объяснять архитектуру
-- ✅ **Консистентность** — ИИ пишет код в одном стиле целый день
-- ✅ **Ошибки ловятся быстро** — если ИИ нарушил паттерн, вы видите это сразу
-
-**Недостатки:**
-- ❌ Контекстное окно растёт (но Prompt Caching помогает)
-- ❌ Если большой файл был обсуждён — остаётся в памяти
-
-**Рекомендация:** Используйте это для большинства случаев.
-
-### Вариант 2: Новый контекст для каждой задачи
-
-**Когда использовать:** когда задачи полностью независимые или вы меняете проекты.
-
-**Как это работает:**
-- Вы закрываете предыдущую сессию
-- Для новой задачи открываете новый контекст
-- ИИ читает `CLAUDE.md`, смотрит затронутые файлы, и решает задачу
-
-**Преимущества:**
-- ✅ Чистый контекст (нет "мусора" от предыдущих задач)
-- ✅ Меньше контекстного окна (для больших проектов)
-- ✅ Каждая задача решается свежо
-
-**Недостатки:**
-- ❌ **Без Prompt Caching** — `CLAUDE.md` читается каждый раз (медленнее, дороже)
-- ❌ **Потеря контекста архитектуры** — нужно каждый раз напоминать
-- ❌ **Риск нарушения паттернов** — ИИ может забыть соглашения
-- ❌ **Больше ошибок** — нет "памяти" о том как вы делали прошлые фичи
-
-**Рекомендация:** Не рекомендуется. Используйте только если контекст действительно переполняется (редко с Prompt Caching).
-
-### Лучшая практика: Гибридный подход
-
-**Используйте один контекст в течение дня**, но:
-
-1. **Каждый день — новая сессия** (вечером закрываете, утром открываете новую)
-   - Это очищает контекст, но `CLAUDE.md` всё равно кешируется
-   
-2. **Если контекст стал слишком большим** — зафиксируйте прогресс коммитом и начните новую сессию
-   - `git commit` with descriptive message
-   - Закройте сессию
-   - Откройте новую с тем же workspace
-   - ИИ по-прежнему видит весь проект (через файлы), но контекст чистый
-
-3. **Между разными проектами** — всегда новая сессия
-   - Закрывайте предыдущий проект
-   - Открывайте новый workspace
-   - Новый контекст
-
-### Workspace и Full-Stack разработка
-
-**Workspace** в Claude Code позволяет ИИ видеть весь проект одновременно.
-
-#### Как ИИ работает с workspace
-
-Когда вы открываете workspace полного стека (frontend + backend):
-
-```
-project/
-├── backend/           # Node.js + Express
-│   ├── src/
-│   ├── package.json
-│   └── .env
-├── frontend/          # Angular/React
-│   ├── src/
-│   ├── angular.json
-│   └── package.json
-├── CLAUDE.md          # Единые правила
-└── README.md
-```
-
-**Что ИИ видит и может делать:**
-
-1. **Видит архитектуру обеих сторон** — backend структуру И frontend структуру
-2. **Может менять backend и frontend в одной задаче** — "добавь поле user.role в БД, в API endpoint, и покажи его в профиле"
-3. **Консистентность между слоями** — ИИ может проверить что типы совпадают: backend возвращает `User{ id, name, role }`, frontend ожидает то же
-4. **Видит конфигурацию обеих** — tsconfig, package.json, build scripts
-
-**Преимущества для full-stack:**
-- ✅ Одна задача = полный цикл (DB → API → UI)
-- ✅ Меньше ошибок типов между слоями
-- ✅ ИИ может проверить что backend и frontend согласованы
-
-#### Пример: добавить новый API endpoint с full-stack контекстом
-
-```
-Вы: "Добавь поле 'premium' в user профиль. Backend: добавь в БД, 
-создай миграцию, добавь в API. Frontend: покажи это поле в UI"
-
-ИИ видит:
-- Backend: структура User entity, repository, controller
-- Frontend: структура User interface, component, service
-- CLAUDE.md: как писать код для обеих сторон
-- Может сделать всё за один запрос
-```
-
-#### Когда НЕ использовать workspace для full-stack
-
-- **Очень большой проект (50K+ строк)** — слишком много контекста
-- **Разные команды backend/frontend** — лучше использовать разные workspace
-- **Часто меняются одна сторона** — может быть лишняя информация
-
-**Рекомендация:** Для большинства full-stack проектов — **один workspace, один контекст, весь день.**
-
-### Оптимальная workflow для full-stack разработки
-
-1. **Утром:** открываете IDE с workspace проекта
-2. **Целый день:** все задачи идут в одном контексте ИИ
-3. **Вечером:** коммитите прогресс, закрываете IDE
-4. **Завтра утром:** открываете снова (новая сессия, но project видим весь)
-
-**Результат:**
-- Контекст чистый каждый день ✅
-- Architekture кешируется (Prompt Caching) ✅  
-- Full-stack консистентность ✅
-- Скорость и качество оптимальны ✅
-
 
 ### Главный совет
 

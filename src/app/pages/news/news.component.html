@@ -1,10 +1,6 @@
 <app-page-loader [isLoading]="isLoading()"></app-page-loader>
 
-<app-news-control-panel
-  [projects]="projects()"
-  [selectedProject]="selectedProject()"
-  [onProjectChange]="onProjectChange.bind(this)"
-></app-news-control-panel>
+<div class="news-control-panel"></div>
 
 <div class="container-fluid" style="margin-top: var(--container-margin-top);">
   <div class="news-container">
@@ -13,18 +9,12 @@
 
     <div class="news-feed">
       @for (newsItem of filteredNews(); track newsItem.link) {
-      <div class="news-bubble">
-        <p class="news-text">{{ newsItem.title }}</p>
-        <div class="news-info">
-          <span class="news-time">{{ newsItem.publishedAt }}</span>
-          @if (newsItem.category) {
-            <span class="news-badge">{{ newsItem.category }}</span>
-          }
-          @if (newsItem.project) {
-            <span class="news-project">{{ newsItem.project }}</span>
+        <div class="news-item">
+          <div class="news-date">{{ newsItem.publishedAt }}</div>
+          @if (newsItem.content) {
+          <app-md-content [data]="newsItem.content"></app-md-content>
           }
         </div>
-      </div>
       }
     </div>
   </div>

@@ -51,6 +51,14 @@ export const APP_ROUTES: Routes = [
 			),
 	},
 	{
+		path: ":lang/posts/404",
+		title: "Post Not Found",
+		loadComponent: () =>
+			import("./pages/post-404/post-404.component").then(
+				(m) => m.Post404Component,
+			),
+	},
+	{
 		path: ":lang/posts/:name",
 		title: "Post",
 		loadComponent: () =>

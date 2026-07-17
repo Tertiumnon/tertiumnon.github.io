@@ -14,12 +14,18 @@
     <h1>Posts</h1>
 
     <div class="post-list">
+      @if (sortedPosts().length === 0) {
+      <div class="no-posts-message">
+        <p>No posts available.</p>
+      </div>
+      } @else {
       @for (article of sortedPosts(); track article.link) {
       <div class="post">
         <div class="post-date">{{ article.publishedAt }}</div>
         <div class="post-category">{{ getCategoryDisplay(article.category) }}</div>
         <a [routerLink]="getPostLink(article.link)">{{ article.title }}</a>
       </div>
+      }
       }
     </div>
   </div>
