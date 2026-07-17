@@ -41,56 +41,28 @@ export class MdContentComponent {
 	ngOnChanges() {
 		if (this.data) {
 			const markdown = this.stripFrontmatter(this.data);
-			// Use the modern marked API without deprecated options.
-			// Create a default Renderer so helper methods like renderer.text exist,
-			// then override only the code method to use highlight.js.
-			// Use non-deprecated options to avoid console warnings.
-			// Note: cast to any because types may not expose Renderer constructor in ESM build.
-			// Create a Renderer constructor in a typesafe-ish way (avoid explicit any type annotation).
-			const RendererCtor =
-				(marked as unknown as { Renderer?: new () => unknown }).Renderer ??
-				(marked as unknown as { renderer?: new () => unknown }).renderer ??
-				class {};
-			// @ts-ignore - the Renderer type is dynamic in ESM builds
-			const renderer = new RendererCtor();
-
-			// Provide the code method as an arrow function to satisfy lint rules.
-			// @ts-ignore - dynamic method assignment
-			renderer.code = (code: string, infostring: string | undefined) => {
-				const lang = (infostring || "").trim().split(/\s+/)[0];
-				try {
-					if (lang && hljs.getLanguage(lang)) {
-						return `<pre><code class="hljs language-${lang}">${
-							hljs.highlight(code, { language: lang }).value
-						}</code></pre>`;
-					}
-					return `<pre><code class="hljs">${
-						hljs.highlightAuto(code).value
-					}</code></pre>`;
-				} catch (e) {
-					return `<pre><code>${code}</code></pre>`;
-				}
-			};
-
-			// @ts-ignore - dynamic method assignment
-			renderer.image = (token: { href?: string; title?: string; text?: string }) => {
-				if (!token?.href) return "";
-				let href = token.href;
-				if (this.category && this.postDirname && !href.startsWith("http")) {
-					href = `/assets/posts/${this.postDirname}/${href}`;
-				}
-				const title = token.title ? ` title="${token.title}"` : "";
-				const alt = token.text || "";
-				return `<img src="${href}" alt="${alt}"${title}>`;
-			};
 
 			let raw = marked.parse(markdown, {
-				renderer,
 				gfm: true,
 				breaks: true,
-				// disable deprecated behaviors from marked 5
 				mangle: false,
 				headerIds: false,
+			});
+
+			// Fix image paths post-processing
+			if (this.category && this.postDirname) {
+				raw = raw.replace(/<img\s+src="(?!(?:https?:|\/))([^"]+)"/g,
+					`<img src="/assets/posts/${this.postDirname}/$1"`);
+			}
+
+			// Add syntax highlighting to code blocks
+			raw = raw.replace(/<code[^>]*>([^<]*)<\/code>/g, (match: string, code: string) => {
+				try {
+					const highlighted = hljs.highlightAuto(code).value;
+					return `<code class="hljs">${highlighted}</code>`;
+				} catch (e) {
+					return match;
+				}
 			});
 
 			if (this.postDate) {
