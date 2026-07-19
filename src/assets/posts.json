@@ -139,7 +139,7 @@
     "publishedAt": "2026-06-11",
     "filename": "index.ru.md",
     "dirname": "2026-06-11--ai-reality-after-hype-2026",
-    "updatedAt": "2026-07-14"
+    "updatedAt": "2026-07-19"
   },
   {
     "title": "Oh My Zsh Analogue for PowerShell",
@@ -694,7 +694,8 @@
     ],
     "publishedAt": "2026-07-12",
     "filename": "index.ru.md",
-    "dirname": "2026-07-12--ai-in-2026"
+    "dirname": "2026-07-12--ai-in-2026",
+    "updatedAt": "2026-07-19"
   },
   {
     "title": "Install NVM on Windows",
