@@ -47,7 +47,7 @@ Before writing a new article, read 1–2 recent posts (by folder date) to match 
 
 # New articles
 
-- Folder name: today's date + a short kebab-case English slug: `YYYY-MM-DD--slug`.
+- Folder name: today's date + a short kebab-case English slug: `YYYY-MM-DD--slug`. The slug must be natural English words describing the topic — never a transliteration of the Russian (or other non-English) title. E.g. for "Блеск и нищета Помодоро" use something like `pomodoro-technique-illusion-and-reality`, not `blesk-i-nishcheta-pomodoro`.
 - Set both `publishedAt` and `updatedAt` to today.
 - Structure: short preamble stating what the article covers, focused sections with sourced facts, a practical conclusion. Concrete data over generalities.
 
