@@ -12,6 +12,21 @@
     "dirname": "2018-08-26--how-to-organize-your-wallpapers"
   },
   {
+    "title": "Блеск и нищета Помодоро",
+    "link": "/ru/posts/2026-07-19--pomodoro-technique-illusion-and-reality",
+    "language": "ru",
+    "category": "Career",
+    "tags": [
+      "Productivity",
+      "Tips",
+      "Focus"
+    ],
+    "publishedAt": "2026-07-19",
+    "filename": "index.ru.md",
+    "dirname": "2026-07-19--pomodoro-technique-illusion-and-reality",
+    "updatedAt": "2026-07-19"
+  },
+  {
     "title": "Windows: Error: listen EACCES: permission denied 0.0.0.0:{{PORT}}",
     "link": "/en/posts/2020-07-16--windows-error-listen-eacces-permission-denied-0000port",
     "language": "en",
