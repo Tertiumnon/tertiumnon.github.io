@@ -1,5 +1,6 @@
 ---
 publishedAt: 2026-07-12
+updatedAt: 2026-07-19
 category: Programming
 tags: ["AI","Technical","Review"]
 ---
@@ -1176,57 +1177,105 @@ find ./src -name "*.py" | xargs -I {} claude-code analyze {}
 - **Минусы:** совсем молодой, меньше известен, нужна интеграция в приложение вручную
 - **Рекомендуется для:** нишевый выбор для тех, кому нужна абсолютная гибкость моделей
 
-### Как выбрать подписку? 
+### Рекомендации по выбору подписки
 
-**Для casual пользователей:**
+#### Для одного разработчика
+
+**Вариант 1: Максимальная производительность (Pro)**
+- Cursor Pro ($20) + Claude API (pay-as-you-go с Prompt Caching)
+- **Затраты:** ~$20-50/месяц в зависимости от использования
+- **Плюсы:** лучший IDE, лучший AI для кода
+- **Минусы:** дороже
+
+**Вариант 2: Хороший баланс (Mid)**
+- VS Code (бесплатно) + GitHub Copilot Pro ($20)
+- **Затраты:** $20/месяц
+- **Плюсы:** дешево, лучшее автодополнение, везде доступно
+- **Минусы:** agent режим менее автономен
+
+**Вариант 3: Бюджетный (Budget)**
+- Neovim + avante.nvim (Free) + Deepseek API ($0.14-0.28/1M токенов)
+- **Затраты:** ~$5-10/месяц
+- **Плюсы:** экономия 80%
+- **Минусы:** нужно настроить конфигурацию
+
+**Вариант 4: Облачные агенты**
+- Windsurf Pro ($20) — Cascade + Devin handoff
+- **Затраты:** $20/месяц
+- **Плюсы:** отдавайте задачи в облако, SWE-1.6 бесплатно
+- **Минусы:** CPU нагрузка, контекст плывёт
+
+#### Для casual пользователей
+
 - ChatGPT Plus ($20), Google Gemini Advanced ($20) или Mistral Le Chat Pro ($14.99 — дешевле всех)
 - Просто используй web interface
 
-**Для разработчиков (локально):**
-- **Лучший выбор:** Cursor Pro ($20) + API ключ (OpenAI/Claude/Deepseek)
-- **Альтернатива с полным контролем:** Cline (free) с BYOK — open-source, платишь провайдеру напрямую
-- **Хочешь отдавать задачи в облако:** Windsurf Pro ($20) — уникальный Cascade + Devin handoff, SWE-1.6 бесплатно
-- **Бюджетный вариант:** OpenCode (free) + Deepseek API ($0.14-0.28/1M tokens) или Mistral Codestral API
-- **Open source lover:** Kilo (free) + любая модель через Gateway
-- **В экосистеме AWS:** Amazon Kiro Pro ($20) — spec-driven подход, если Amazon Q Developer больше не вариант
-- **Multi-model гибкость:** DevPass ($20-40) — Claude + GPT + Gemini под одним ключом
+#### Для production приложений
 
-**Для production приложений:**
 - **Универсальный:** Anthropic Claude API + Prompt Caching
 - **Дешевый:** Deepseek API, Mistral API (Large 3/Codestral) или Google Gemini API
 - **Социальный:** GitHub Copilot Business для команды
 - **Multi-model:** DevPass — если нужна гибкость между провайдерами
 
-**Для больших монорепо (нужен полный контекст):**
+#### Для команды (3-10 человек)
+
+- **Рекомендация:** GitHub Copilot Business ($21/пользователь/месяц)
+- Enterprise management, централизованный биллинг, IP indemnity
+- **Затраты:** $63-210/месяц
+- **Альтернатива:** Cursor Business ($40/месяц) если нужен лучший IDE
+
+#### Для enterprise (20+ человек)
+
+- **Рекомендация:** GitHub Copilot Enterprise + Anthropic API
+- Полный контроль, SLA, поддержка
+- **Затраты:** договор (обычно $500-1000/месяц + Usage)
+- **Альтернатива:** Windsurf Teams ($40/пользователь/месяц) если нужны облачные агенты
+
+#### Для больших монорепо (нужен полный контекст)
+
 - Augment Code Developer ($50) — индексирует вашу кодовую базу, сохраняет контекст
 - Sourcegraph Cody ($59) — если нужна cross-repository analysis (дорого, но уникально)
 
-**Для research и fact-checking (отдельно от кодинга):**
+#### Для research и fact-checking (отдельно от кодинга)
+
 - Perplexity Pro ($20) — если нужны источники и цитирование, но не coding-агент
 
-**Для команд в Microsoft Office:**
+#### Для команд в Microsoft Office
+
 - Уже платите за Microsoft 365 → добавьте Copilot for Microsoft 365 Business ($18-21/user/месяц)
 - Copilot будет прямо в Word/Excel/PowerPoint/Teams, без смены инструментов
 - Не для coding-специалистов, а для офисной работы с AI
 
-**Для teams в Google Cloud:**
+#### Для teams в Google Cloud
+
 - Gemini Code Assist Standard ($19/user) — если уже в Google Cloud (но free tier закрыт с июня 2026)
 
-**Для enterprise (специализированное автодополнение):**
-- Tabnine Enterprise ($39) — если нужно именно хорошее автодополнение без chat
+#### Для крупных корпораций
 
-**Для крупных корпораций:**
 - GitHub Copilot Business ($21/user) + Claude API (production)
 - Или: Microsoft 365 E7 ($99/user) — всё в одном (Office + Copilot + Security)
 - Или: Cursor Business ($40) + собственный API
 - Или: Kilo Enterprise + облачные агенты
 - Или: Sourcegraph Cody ($59) для cross-repo анализа
 
-**Нишевые случаи:**
+#### Нишевые случаи
+
 - Нужны real-time данные из X/Twitter → xAI SuperGrok ($30), но не как основной coding-инструмент
 - Vibe-coding в браузере без установки чего-либо → Replit Core ($20)
 - Потребитель, уже имел Copilot Pro → переходите на Microsoft 365 Premium ($19.99) до 1 августа 2026
-- Специализированное автодополнение (Vim/Emacs/etc) → Tabnine
+- Специализированное автодополнение (Vim/Emacs/etc) → Tabnine Enterprise ($39)
+
+### Рекомендация по моделям
+
+| Сценарий | Модель | Почему |
+|----------|--------|--------|
+| **Лучший код** | Claude 3.5 Sonnet | Лучше всех понимает архитектуру |
+| **Универсальная** | GPT-4o | Работает на всё (текст, картинки, видео) |
+| **Больше всех контекста** | GPT-5 (4M токенов) | Если обрабатываете 50+ страниц |
+| **Экономия** | Deepseek ($0.14/1M) | 5-10x дешевле, приемлемое качество |
+| **Локально** | Llama 3 70B | Бесплатна, понимает код, можно запустить на GPU |
+| **Мультимедиа видео** | Runway Gen-4.5 | Лучшее качество, Pika 2.5 быстрее |
+| **3D модели** | Hunyuan3D | За 1 секунду, бесплатна (но геополитические риски) |
 
 ### Главный вывод про подписки в 2026
 
@@ -1259,6 +1308,17 @@ find ./src -name "*.py" | xargs -I {} claude-code analyze {}
 - Sourcegraph Cody закрыл Free/Pro → только Enterprise ($59)
 - Gemini Code Assist закрыл individual tier (18 июня 2026)
 - GitHub Copilot Individual урезан функционально (теперь нужен Pro $20)
+
+### Главное правило 2026
+
+**Выбирайте на основе ROI, не на основе маркетинга.**
+
+- Если вы экономите 20+ часов в неделю → инвестиция в Cursor Pro ($20) окупается
+- Если вы используете Claude с большим контекстом → Prompt Caching экономит 70-90%
+- Если вы разработчик на бюджете → Llama 3 локально + Deepseek API
+- Если вы enterprise → договоритесь на volume discount, никаких стандартных подписок
+
+**Не платите за то, что не используется.**
 
 
 ## Локальные агенты
