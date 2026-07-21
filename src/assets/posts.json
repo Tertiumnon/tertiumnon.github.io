@@ -1,175 +1,5 @@
 [
   {
-    "title": "How to Organize Your Wallpapers",
-    "link": "/en/posts/2018-08-26--how-to-organize-your-wallpapers",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "Tips"
-    ],
-    "publishedAt": "2018-08-26",
-    "filename": "index.en.md",
-    "dirname": "2018-08-26--how-to-organize-your-wallpapers"
-  },
-  {
-    "title": "Блеск и нищета Помодоро",
-    "link": "/ru/posts/2026-07-19--pomodoro-technique-illusion-and-reality",
-    "language": "ru",
-    "category": "Career",
-    "tags": [
-      "Productivity",
-      "Tips",
-      "Focus"
-    ],
-    "publishedAt": "2026-07-19",
-    "filename": "index.ru.md",
-    "dirname": "2026-07-19--pomodoro-technique-illusion-and-reality",
-    "updatedAt": "2026-07-19"
-  },
-  {
-    "title": "Windows: Error: listen EACCES: permission denied 0.0.0.0:{{PORT}}",
-    "link": "/en/posts/2020-07-16--windows-error-listen-eacces-permission-denied-0000port",
-    "language": "en",
-    "category": "OS",
-    "tags": [
-      "Terminal",
-      "Windows"
-    ],
-    "publishedAt": "2020-07-16",
-    "filename": "index.en.md",
-    "dirname": "2020-07-16--windows-error-listen-eacces-permission-denied-0000port"
-  },
-  {
-    "title": "Bun в 2025",
-    "link": "/ru/posts/2025-11-30--bun-in-2025",
-    "language": "ru",
-    "category": "Programming",
-    "tags": [
-      "JavaScript",
-      "Tools",
-      "Web Development"
-    ],
-    "publishedAt": "2025-11-30",
-    "filename": "index.ru.md",
-    "dirname": "2025-11-30--bun-in-2025",
-    "updatedAt": "2026-07-17"
-  },
-  {
-    "title": "Bun in 2025",
-    "link": "/en/posts/2025-11-30--bun-in-2025",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "JavaScript",
-      "Tools",
-      "Web Development"
-    ],
-    "publishedAt": "2025-11-30",
-    "filename": "index.en.md",
-    "dirname": "2025-11-30--bun-in-2025",
-    "updatedAt": "2026-07-17",
-    "source": {
-      "name": "\"medium",
-      "url": "https://tertiumnon.medium.com/bun-7fbe61f45e2e\""
-    }
-  },
-  {
-    "title": "ExpressJS: Square Brackets in Query",
-    "link": "/en/posts/2021-06-22--expressjs-square-brackets-in-query",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "Backend",
-      "JavaScript",
-      "Server",
-      "Web Development"
-    ],
-    "publishedAt": "2021-06-22",
-    "filename": "index.en.md",
-    "dirname": "2021-06-22--expressjs-square-brackets-in-query"
-  },
-  {
-    "title": "Хороший дизайн для вашего приложения",
-    "link": "/ru/posts/2025-03-24--good-design-for-your-app",
-    "language": "ru",
-    "category": "Programming",
-    "tags": [
-      "Review"
-    ],
-    "publishedAt": "2025-03-24",
-    "filename": "index.ru.md",
-    "dirname": "2025-03-24--good-design-for-your-app",
-    "updatedAt": "2026-05-28"
-  },
-  {
-    "title": "Frontend: Possible List Option Properties",
-    "link": "/en/posts/2021-06-23--frontend-possible-list-option-properties",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "Frontend",
-      "Web Development"
-    ],
-    "publishedAt": "2021-06-23",
-    "filename": "index.en.md",
-    "dirname": "2021-06-23--frontend-possible-list-option-properties"
-  },
-  {
-    "title": "JS: How to Decode HTML Entities",
-    "link": "/en/posts/2018-11-22--js-how-to-decode-html-entities",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "JavaScript",
-      "Web Development"
-    ],
-    "publishedAt": "2018-11-22",
-    "filename": "index.en.md",
-    "dirname": "2018-11-22--js-how-to-decode-html-entities"
-  },
-  {
-    "title": "How to: Visual Studio Code + XDebug (Remote)",
-    "link": "/en/posts/2019-01-23--how-to-visual-studio-code-xdebug-remote",
-    "language": "en",
-    "category": "Dev Tools",
-    "tags": [
-      "Development",
-      "IDE"
-    ],
-    "publishedAt": "2019-01-23",
-    "filename": "index.en.md",
-    "dirname": "2019-01-23--how-to-visual-studio-code-xdebug-remote"
-  },
-  {
-    "title": "ИИ: реальность после хайпа в 2026",
-    "link": "/ru/posts/2026-06-11--ai-reality-after-hype-2026",
-    "language": "ru",
-    "category": "Career",
-    "tags": [
-      "Review",
-      "Business",
-      "AI",
-      "Risk"
-    ],
-    "publishedAt": "2026-06-11",
-    "filename": "index.ru.md",
-    "dirname": "2026-06-11--ai-reality-after-hype-2026",
-    "updatedAt": "2026-07-19"
-  },
-  {
-    "title": "Oh My Zsh Analogue for PowerShell",
-    "link": "/en/posts/2020-12-30--oh-my-zsh-analogue-for-powershell",
-    "language": "en",
-    "category": "OS",
-    "tags": [
-      "Terminal",
-      "Windows"
-    ],
-    "publishedAt": "2020-12-30",
-    "filename": "index.en.md",
-    "dirname": "2020-12-30--oh-my-zsh-analogue-for-powershell"
-  },
-  {
     "title": "Hello Everyone, It's My First Post on Medium",
     "link": "/en/posts/2017-01-30--hello-everyone-its-my-first-post-on-medium",
     "language": "en",
@@ -183,72 +13,68 @@
     "isHidden": true
   },
   {
-    "title": "Azure + Git (SSH) != LFS",
-    "link": "/en/posts/2021-10-24--azure-git-ssh-lfs",
-    "language": "en",
-    "category": "Dev Tools",
-    "tags": [
-      "DevOps",
-      "Git"
-    ],
-    "publishedAt": "2021-10-24",
-    "filename": "index.en.md",
-    "dirname": "2021-10-24--azure-git-ssh-lfs"
-  },
-  {
-    "title": "My Best IDE Font",
-    "link": "/en/posts/2022-03-30--my-best-ide-font",
-    "language": "en",
-    "category": "Dev Tools",
-    "tags": [
-      "Development",
-      "IDE"
-    ],
-    "publishedAt": "2022-03-30",
-    "filename": "index.en.md",
-    "dirname": "2022-03-30--my-best-ide-font"
-  },
-  {
-    "title": "Рефакторинг",
-    "link": "/ru/posts/2025-02-11--refactoring",
-    "language": "ru",
-    "category": "Programming",
-    "tags": [
-      "Review"
-    ],
-    "publishedAt": "2025-02-11",
-    "filename": "index.ru.md",
-    "dirname": "2025-02-11--refactoring",
-    "updatedAt": "2026-05-28"
-  },
-  {
-    "title": "Angular Universal (SSR) caching with AWS Lambda",
-    "link": "/en/posts/2025-03-24--angular-universal-ssr-caching-with-aws-lambda",
+    "title": "English Language",
+    "link": "/en/posts/2017-04-12--english-language",
     "language": "en",
     "category": "Programming",
     "tags": [
-      "Frontend",
-      "Web Development"
+      "Tips"
     ],
-    "publishedAt": "2025-03-24",
+    "publishedAt": "2017-04-12",
     "filename": "index.en.md",
-    "dirname": "2025-03-24--angular-universal-ssr-caching-with-aws-lambda",
-    "updatedAt": "2025-03-26"
+    "dirname": "2017-04-12--english-language"
   },
   {
-    "title": "Windows + Git: Change crlf to lf",
-    "link": "/en/posts/2022-07-21--windows-git-change-crlf-to-lf",
+    "title": "Firefoxy :)",
+    "link": "/en/posts/2017-04-20--firefoxy",
     "language": "en",
-    "category": "Dev Tools",
+    "category": "Browsers",
     "tags": [
-      "DevOps",
-      "Git",
-      "Terminal",
-      "Windows"
+      "Browser",
+      "Extensions"
     ],
-    "publishedAt": "2022-07-21",
+    "publishedAt": "2017-04-20",
     "filename": "index.en.md",
-    "dirname": "2022-07-21--windows-git-change-crlf-to-lf"
+    "dirname": "2017-04-20--firefoxy"
+  },
+  {
+    "title": "How to Activate Dark YouTube Theme",
+    "link": "/en/posts/2017-05-24--how-to-activate-dark-youtube-theme",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Tips"
+    ],
+    "publishedAt": "2017-05-24",
+    "filename": "index.en.md",
+    "dirname": "2017-05-24--how-to-activate-dark-youtube-theme"
+  },
+  {
+    "title": "How to Change a Version of PHP (Ubuntu Example: PHP 5 → PHP 5.6)",
+    "link": "/en/posts/2017-07-11--how-to-change-a-version-of-php-ubuntu-example-php-5-php-56",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Backend",
+      "JavaScript",
+      "Server",
+      "Tools"
+    ],
+    "publishedAt": "2017-07-11",
+    "filename": "index.en.md",
+    "dirname": "2017-07-11--how-to-change-a-version-of-php-ubuntu-example-php-5-php-56"
+  },
+  {
+    "title": "MediaWiki: Pywikibot Installation",
+    "link": "/en/posts/2017-12-12--mediawiki-pywikibot-installation",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Tips"
+    ],
+    "publishedAt": "2017-12-12",
+    "filename": "index.en.md",
+    "dirname": "2017-12-12--mediawiki-pywikibot-installation"
   },
   {
     "title": "Adding SSH Keys (Git Bash on Windows)",
@@ -266,70 +92,17 @@
     "dirname": "2018-05-16--adding-ssh-keys-git-bash-on-windows"
   },
   {
-    "title": "MediaWiki: Pywikibot Installation",
-    "link": "/en/posts/2017-12-12--mediawiki-pywikibot-installation",
+    "title": "Install NVM on Windows",
+    "link": "/en/posts/2018-05-16--install-nvm-on-windows",
     "language": "en",
-    "category": "Programming",
+    "category": "OS",
     "tags": [
-      "Tips"
+      "Terminal",
+      "Windows"
     ],
-    "publishedAt": "2017-12-12",
+    "publishedAt": "2018-05-16",
     "filename": "index.en.md",
-    "dirname": "2017-12-12--mediawiki-pywikibot-installation"
-  },
-  {
-    "title": "Visual Studio 2019: LF Line Endings",
-    "link": "/en/posts/2020-05-10--visual-studio-2019-lf-line-endings",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "Tips"
-    ],
-    "publishedAt": "2020-05-10",
-    "filename": "index.en.md",
-    "dirname": "2020-05-10--visual-studio-2019-lf-line-endings"
-  },
-  {
-    "title": "Реализация Kanban и Scrum в Jira",
-    "link": "/ru/posts/2026-07-12--jira-kanban-scrum-implementation",
-    "language": "ru",
-    "category": "Career",
-    "tags": [
-      "Jira",
-      "Agile",
-      "Project Management"
-    ],
-    "publishedAt": "2026-07-12",
-    "filename": "index.ru.md",
-    "dirname": "2026-07-12--jira-kanban-scrum-implementation",
-    "updatedAt": "2026-07-12"
-  },
-  {
-    "title": "How to Activate Dark YouTube Theme",
-    "link": "/en/posts/2017-05-24--how-to-activate-dark-youtube-theme",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "Tips"
-    ],
-    "publishedAt": "2017-05-24",
-    "filename": "index.en.md",
-    "dirname": "2017-05-24--how-to-activate-dark-youtube-theme"
-  },
-  {
-    "title": "Agile, Kanban, Scrum - главное простыми словами",
-    "link": "/ru/posts/2025-02-11--agile-kanban-scrum",
-    "language": "ru",
-    "category": "Career",
-    "tags": [
-      "Review",
-      "Agile",
-      "Project Management"
-    ],
-    "publishedAt": "2025-02-11",
-    "filename": "index.ru.md",
-    "dirname": "2025-02-11--agile-kanban-scrum",
-    "updatedAt": "2025-02-15"
+    "dirname": "2018-05-16--install-nvm-on-windows"
   },
   {
     "title": "Tor as a Windows Service",
@@ -345,61 +118,94 @@
     "dirname": "2018-08-07--tor-as-a-windows-service"
   },
   {
-    "title": "Your Cloud Firestore Database Has Insecure Rules",
-    "link": "/en/posts/2020-12-13--your-cloud-firestore-database-has-insecure-rules",
+    "title": "How to Organize Your Wallpapers",
+    "link": "/en/posts/2018-08-26--how-to-organize-your-wallpapers",
     "language": "en",
     "category": "Programming",
     "tags": [
       "Tips"
     ],
-    "publishedAt": "2020-12-13",
+    "publishedAt": "2018-08-26",
     "filename": "index.en.md",
-    "dirname": "2020-12-13--your-cloud-firestore-database-has-insecure-rules"
+    "dirname": "2018-08-26--how-to-organize-your-wallpapers"
   },
   {
-    "title": "Windows: Free up some disk space on your SSD",
-    "link": "/en/posts/2020-05-01--windows-free-up-some-disk-space-on-your-ssd",
+    "title": "Windows: How to Set Sound Volume by Keyboard",
+    "link": "/en/posts/2018-10-12--windows-how-to-set-sound-volume-by-keyboard",
     "language": "en",
     "category": "OS",
     "tags": [
       "Terminal",
       "Windows"
     ],
-    "publishedAt": "2020-05-01",
+    "publishedAt": "2018-10-12",
     "filename": "index.en.md",
-    "dirname": "2020-05-01--windows-free-up-some-disk-space-on-your-ssd"
+    "dirname": "2018-10-12--windows-how-to-set-sound-volume-by-keyboard"
   },
   {
-    "title": "Минимум книг, которые нужно прочитать начинающему или продолжающему свою кривую обучения программисту",
-    "link": "/ru/posts/2025-03-26--a-minimum-of-books-that-should-be-read-by-a-novice-or-experienced-programmer",
-    "language": "ru",
+    "title": "Chrome: Letter \"T\" and Arial",
+    "link": "/en/posts/2018-11-19--chrome-letter-t-and-arial",
+    "language": "en",
+    "category": "Browsers",
+    "tags": [
+      "Browser",
+      "Extensions"
+    ],
+    "publishedAt": "2018-11-19",
+    "filename": "index.en.md",
+    "dirname": "2018-11-19--chrome-letter-t-and-arial"
+  },
+  {
+    "title": "JS: How to Decode HTML Entities",
+    "link": "/en/posts/2018-11-22--js-how-to-decode-html-entities",
+    "language": "en",
     "category": "Programming",
     "tags": [
-      "Tips"
+      "JavaScript",
+      "Web Development"
     ],
-    "publishedAt": "2025-03-20",
-    "filename": "index.ru.md",
-    "dirname": "2025-03-26--a-minimum-of-books-that-should-be-read-by-a-novice-or-experienced-programmer",
-    "updatedAt": "2025-03-26"
+    "publishedAt": "2018-11-22",
+    "filename": "index.en.md",
+    "dirname": "2018-11-22--js-how-to-decode-html-entities"
   },
   {
-    "title": "A minimum of books that should be read by a novice or experienced programmer",
-    "link": "/en/posts/2025-03-26--a-minimum-of-books-that-should-be-read-by-a-novice-or-experienced-programmer",
+    "title": "Great \"Pomodoro\" App for Windows and Mac",
+    "link": "/en/posts/2018-11-29--great-pomodoro-app-for-windows-and-mac",
     "language": "en",
-    "category": "Career",
+    "category": "OS",
     "tags": [
-      "Books",
-      "Career",
-      "Education",
-      "Professional Growth"
+      "Terminal",
+      "Windows"
     ],
-    "publishedAt": "2025-03-26",
+    "publishedAt": "2018-11-29",
     "filename": "index.en.md",
-    "dirname": "2025-03-26--a-minimum-of-books-that-should-be-read-by-a-novice-or-experienced-programmer",
-    "source": {
-      "name": "\"medium",
-      "url": "https://tertiumnon.medium.com/a-minimum-of-books-that-should-be-read-by-a-novice-or-experienced-programmer-8e9afd76fd6f\""
-    }
+    "dirname": "2018-11-29--great-pomodoro-app-for-windows-and-mac"
+  },
+  {
+    "title": "How to: Visual Studio Code + XDebug (Remote)",
+    "link": "/en/posts/2019-01-23--how-to-visual-studio-code-xdebug-remote",
+    "language": "en",
+    "category": "Dev Tools",
+    "tags": [
+      "Development",
+      "IDE"
+    ],
+    "publishedAt": "2019-01-23",
+    "filename": "index.en.md",
+    "dirname": "2019-01-23--how-to-visual-studio-code-xdebug-remote"
+  },
+  {
+    "title": "JS: How to Validate Date",
+    "link": "/en/posts/2019-02-01--js-how-to-validate-date",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "JavaScript",
+      "Web Development"
+    ],
+    "publishedAt": "2019-02-01",
+    "filename": "index.en.md",
+    "dirname": "2019-02-01--js-how-to-validate-date"
   },
   {
     "title": "Your Categories",
@@ -427,117 +233,6 @@
     "dirname": "2019-10-22--powershell-core-try-this-windows-shell"
   },
   {
-    "title": "ИИ программирование в 2026",
-    "link": "/ru/posts/2026-07-08--ai-programming-in-2026",
-    "language": "ru",
-    "category": "Programming",
-    "tags": [
-      "AI",
-      "Review"
-    ],
-    "publishedAt": "2026-07-08",
-    "filename": "index.ru.md",
-    "dirname": "2026-07-08--ai-programming-in-2026",
-    "updatedAt": "2026-07-20"
-  },
-  {
-    "title": "Chrome: Letter \"T\" and Arial",
-    "link": "/en/posts/2018-11-19--chrome-letter-t-and-arial",
-    "language": "en",
-    "category": "Browsers",
-    "tags": [
-      "Browser",
-      "Extensions"
-    ],
-    "publishedAt": "2018-11-19",
-    "filename": "index.en.md",
-    "dirname": "2018-11-19--chrome-letter-t-and-arial"
-  },
-  {
-    "title": "Windows: How to Set Sound Volume by Keyboard",
-    "link": "/en/posts/2018-10-12--windows-how-to-set-sound-volume-by-keyboard",
-    "language": "en",
-    "category": "OS",
-    "tags": [
-      "Terminal",
-      "Windows"
-    ],
-    "publishedAt": "2018-10-12",
-    "filename": "index.en.md",
-    "dirname": "2018-10-12--windows-how-to-set-sound-volume-by-keyboard"
-  },
-  {
-    "title": "Firefox userChrome.css",
-    "link": "/en/posts/2026-06-17--firefox-userchromecss",
-    "language": "en",
-    "category": "Browsers",
-    "tags": [
-      "Browser",
-      "Extensions"
-    ],
-    "publishedAt": "2026-06-17",
-    "filename": "index.en.md",
-    "dirname": "2026-06-17--firefox-userchromecss"
-  },
-  {
-    "title": "Firefoxy :)",
-    "link": "/en/posts/2017-04-20--firefoxy",
-    "language": "en",
-    "category": "Browsers",
-    "tags": [
-      "Browser",
-      "Extensions"
-    ],
-    "publishedAt": "2017-04-20",
-    "filename": "index.en.md",
-    "dirname": "2017-04-20--firefoxy"
-  },
-  {
-    "title": "Windows + Git: File permissions",
-    "link": "/en/posts/2022-09-14--windows-git-file-permissions",
-    "language": "en",
-    "category": "Dev Tools",
-    "tags": [
-      "DevOps",
-      "Git",
-      "Terminal",
-      "Windows"
-    ],
-    "publishedAt": "2022-09-14",
-    "filename": "index.en.md",
-    "dirname": "2022-09-14--windows-git-file-permissions"
-  },
-  {
-    "title": "Bun в 2026",
-    "link": "/ru/posts/2026-07-12--bun-in-2026",
-    "language": "ru",
-    "category": "Programming",
-    "tags": [
-      "JavaScript",
-      "Tools",
-      "Web Development"
-    ],
-    "publishedAt": "2026-07-12",
-    "filename": "index.ru.md",
-    "dirname": "2026-07-12--bun-in-2026",
-    "updatedAt": "2026-07-17"
-  },
-  {
-    "title": "Bun in 2026",
-    "link": "/en/posts/2026-07-12--bun-in-2026",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "JavaScript",
-      "Tools",
-      "Web Development"
-    ],
-    "publishedAt": "2026-07-12",
-    "filename": "index.en.md",
-    "dirname": "2026-07-12--bun-in-2026",
-    "updatedAt": "2026-07-17"
-  },
-  {
     "title": "If Your Windows Wakes up at Night",
     "link": "/en/posts/2019-11-16--if-your-windows-wakes-up-at-night",
     "language": "en",
@@ -549,52 +244,6 @@
     "publishedAt": "2019-11-16",
     "filename": "index.en.md",
     "dirname": "2019-11-16--if-your-windows-wakes-up-at-night"
-  },
-  {
-    "title": "Карьера программиста после 30",
-    "link": "/ru/posts/2025-02-11--programming-career-after-30",
-    "language": "ru",
-    "category": "Programming",
-    "tags": [
-      "Tips"
-    ],
-    "publishedAt": "2025-02-11",
-    "filename": "index.ru.md",
-    "dirname": "2025-02-11--programming-career-after-30",
-    "updatedAt": "2025-03-26",
-    "source": {
-      "name": "\"medium",
-      "url": "https://tertiumnon.medium.com/career-7b8d2f9c1a5b\""
-    }
-  },
-  {
-    "title": "Git: RPC failed Error 413",
-    "link": "/en/posts/2021-10-24--git-rpc-failed-error-413",
-    "language": "en",
-    "category": "Dev Tools",
-    "tags": [
-      "AI",
-      "DevOps",
-      "Git",
-      "Technology"
-    ],
-    "publishedAt": "2021-10-24",
-    "filename": "index.en.md",
-    "dirname": "2021-10-24--git-rpc-failed-error-413"
-  },
-  {
-    "title": "Cooking with TypeScript enums",
-    "link": "/en/posts/2025-03-26--cooking-with-typescript-enums",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "JavaScript",
-      "Web Development"
-    ],
-    "publishedAt": "2025-03-26",
-    "filename": "index.en.md",
-    "dirname": "2025-03-26--cooking-with-typescript-enums",
-    "updatedAt": "2026-07-12"
   },
   {
     "title": "VSCode: Error \"Extension host terminated unexpectedly\"",
@@ -612,118 +261,95 @@
     "dirname": "2020-03-20--vscode-error-extension-host-terminated-unexpectedly"
   },
   {
-    "title": "JS: How to Validate Date",
-    "link": "/en/posts/2019-02-01--js-how-to-validate-date",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "JavaScript",
-      "Web Development"
-    ],
-    "publishedAt": "2019-02-01",
-    "filename": "index.en.md",
-    "dirname": "2019-02-01--js-how-to-validate-date"
-  },
-  {
-    "title": "How to Change a Version of PHP (Ubuntu Example: PHP 5 → PHP 5.6)",
-    "link": "/en/posts/2017-07-11--how-to-change-a-version-of-php-ubuntu-example-php-5-php-56",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "Backend",
-      "JavaScript",
-      "Server",
-      "Tools"
-    ],
-    "publishedAt": "2017-07-11",
-    "filename": "index.en.md",
-    "dirname": "2017-07-11--how-to-change-a-version-of-php-ubuntu-example-php-5-php-56"
-  },
-  {
-    "title": "Great \"Pomodoro\" App for Windows and Mac",
-    "link": "/en/posts/2018-11-29--great-pomodoro-app-for-windows-and-mac",
+    "title": "Windows: Free up some disk space on your SSD",
+    "link": "/en/posts/2020-05-01--windows-free-up-some-disk-space-on-your-ssd",
     "language": "en",
     "category": "OS",
     "tags": [
       "Terminal",
       "Windows"
     ],
-    "publishedAt": "2018-11-29",
+    "publishedAt": "2020-05-01",
     "filename": "index.en.md",
-    "dirname": "2018-11-29--great-pomodoro-app-for-windows-and-mac"
+    "dirname": "2020-05-01--windows-free-up-some-disk-space-on-your-ssd"
   },
   {
-    "title": "You Can Thrive Without Using Redux",
-    "link": "/en/posts/2025-03-12--you-can-thrive-without-using-redux",
-    "language": "en",
-    "category": "Design",
-    "tags": [
-      "Design",
-      "JavaScript",
-      "UX",
-      "Web Development"
-    ],
-    "publishedAt": "2025-03-12",
-    "filename": "index.en.md",
-    "dirname": "2025-03-12--you-can-thrive-without-using-redux"
-  },
-  {
-    "title": "Angular RxJS vs Signals in 2026",
-    "link": "/en/posts/2026-07-09--angular-rxjs-vs-signals-in-2026",
+    "title": "Visual Studio 2019: LF Line Endings",
+    "link": "/en/posts/2020-05-10--visual-studio-2019-lf-line-endings",
     "language": "en",
     "category": "Programming",
     "tags": [
-      "Angular",
+      "Tips"
+    ],
+    "publishedAt": "2020-05-10",
+    "filename": "index.en.md",
+    "dirname": "2020-05-10--visual-studio-2019-lf-line-endings"
+  },
+  {
+    "title": "Windows: Error: listen EACCES: permission denied 0.0.0.0:{{PORT}}",
+    "link": "/en/posts/2020-07-16--windows-error-listen-eacces-permission-denied-0000port",
+    "language": "en",
+    "category": "OS",
+    "tags": [
+      "Terminal",
+      "Windows"
+    ],
+    "publishedAt": "2020-07-16",
+    "filename": "index.en.md",
+    "dirname": "2020-07-16--windows-error-listen-eacces-permission-denied-0000port"
+  },
+  {
+    "title": "Your Cloud Firestore Database Has Insecure Rules",
+    "link": "/en/posts/2020-12-13--your-cloud-firestore-database-has-insecure-rules",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Tips"
+    ],
+    "publishedAt": "2020-12-13",
+    "filename": "index.en.md",
+    "dirname": "2020-12-13--your-cloud-firestore-database-has-insecure-rules"
+  },
+  {
+    "title": "Oh My Zsh Analogue for PowerShell",
+    "link": "/en/posts/2020-12-30--oh-my-zsh-analogue-for-powershell",
+    "language": "en",
+    "category": "OS",
+    "tags": [
+      "Terminal",
+      "Windows"
+    ],
+    "publishedAt": "2020-12-30",
+    "filename": "index.en.md",
+    "dirname": "2020-12-30--oh-my-zsh-analogue-for-powershell"
+  },
+  {
+    "title": "ExpressJS: Square Brackets in Query",
+    "link": "/en/posts/2021-06-22--expressjs-square-brackets-in-query",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Backend",
+      "JavaScript",
+      "Server",
+      "Web Development"
+    ],
+    "publishedAt": "2021-06-22",
+    "filename": "index.en.md",
+    "dirname": "2021-06-22--expressjs-square-brackets-in-query"
+  },
+  {
+    "title": "Frontend: Possible List Option Properties",
+    "link": "/en/posts/2021-06-23--frontend-possible-list-option-properties",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
       "Frontend",
-      "JavaScript",
       "Web Development"
     ],
-    "publishedAt": "2026-07-09",
+    "publishedAt": "2021-06-23",
     "filename": "index.en.md",
-    "dirname": "2026-07-09--angular-rxjs-vs-signals-in-2026"
-  },
-  {
-    "title": "NodeJS: How to Refresh PM2 Instance",
-    "link": "/en/posts/2021-10-08--nodejs-how-to-refresh-pm2-instance",
-    "language": "en",
-    "category": "Programming",
-    "tags": [
-      "Backend",
-      "JavaScript",
-      "Server",
-      "Web Development"
-    ],
-    "publishedAt": "2021-10-08",
-    "filename": "index.en.md",
-    "dirname": "2021-10-08--nodejs-how-to-refresh-pm2-instance"
-  },
-  {
-    "title": "ИИ в 2026",
-    "link": "/ru/posts/2026-07-12--ai-in-2026",
-    "language": "ru",
-    "category": "Programming",
-    "tags": [
-      "AI",
-      "Technical",
-      "Review"
-    ],
-    "publishedAt": "2026-07-12",
-    "filename": "index.ru.md",
-    "dirname": "2026-07-12--ai-in-2026",
-    "updatedAt": "2026-07-20"
-  },
-  {
-    "title": "Install NVM on Windows",
-    "link": "/en/posts/2018-05-16--install-nvm-on-windows",
-    "language": "en",
-    "category": "OS",
-    "tags": [
-      "Terminal",
-      "Windows"
-    ],
-    "publishedAt": "2018-05-16",
-    "filename": "index.en.md",
-    "dirname": "2018-05-16--install-nvm-on-windows"
+    "dirname": "2021-06-23--frontend-possible-list-option-properties"
   },
   {
     "title": "Windows 11 — Specific Requirements: Some Details",
@@ -745,16 +371,60 @@
     "dirname": "2021-06-28--windows-11-specific-requirements-some-details"
   },
   {
-    "title": "MS Edge: Managed by your organization",
-    "link": "/en/posts/2024-05-06--ms-edge-managed-by-your-organization",
+    "title": "NodeJS: How to Refresh PM2 Instance",
+    "link": "/en/posts/2021-10-08--nodejs-how-to-refresh-pm2-instance",
     "language": "en",
     "category": "Programming",
     "tags": [
-      "Tips"
+      "Backend",
+      "JavaScript",
+      "Server",
+      "Web Development"
     ],
-    "publishedAt": "2024-05-06",
+    "publishedAt": "2021-10-08",
     "filename": "index.en.md",
-    "dirname": "2024-05-06--ms-edge-managed-by-your-organization"
+    "dirname": "2021-10-08--nodejs-how-to-refresh-pm2-instance"
+  },
+  {
+    "title": "Azure + Git (SSH) != LFS",
+    "link": "/en/posts/2021-10-24--azure-git-ssh-lfs",
+    "language": "en",
+    "category": "Dev Tools",
+    "tags": [
+      "DevOps",
+      "Git"
+    ],
+    "publishedAt": "2021-10-24",
+    "filename": "index.en.md",
+    "dirname": "2021-10-24--azure-git-ssh-lfs"
+  },
+  {
+    "title": "Git: RPC failed Error 413",
+    "link": "/en/posts/2021-10-24--git-rpc-failed-error-413",
+    "language": "en",
+    "category": "Dev Tools",
+    "tags": [
+      "AI",
+      "DevOps",
+      "Git",
+      "Technology"
+    ],
+    "publishedAt": "2021-10-24",
+    "filename": "index.en.md",
+    "dirname": "2021-10-24--git-rpc-failed-error-413"
+  },
+  {
+    "title": "My Best IDE Font",
+    "link": "/en/posts/2022-03-30--my-best-ide-font",
+    "language": "en",
+    "category": "Dev Tools",
+    "tags": [
+      "Development",
+      "IDE"
+    ],
+    "publishedAt": "2022-03-30",
+    "filename": "index.en.md",
+    "dirname": "2022-03-30--my-best-ide-font"
   },
   {
     "title": "WSL2: Temporary failure resolving",
@@ -770,15 +440,361 @@
     "dirname": "2022-07-03--wsl2-temporary-failure-resolving"
   },
   {
-    "title": "English Language",
-    "link": "/en/posts/2017-04-12--english-language",
+    "title": "Windows + Git: Change crlf to lf",
+    "link": "/en/posts/2022-07-21--windows-git-change-crlf-to-lf",
+    "language": "en",
+    "category": "Dev Tools",
+    "tags": [
+      "DevOps",
+      "Git",
+      "Terminal",
+      "Windows"
+    ],
+    "publishedAt": "2022-07-21",
+    "filename": "index.en.md",
+    "dirname": "2022-07-21--windows-git-change-crlf-to-lf"
+  },
+  {
+    "title": "Windows + Git: File permissions",
+    "link": "/en/posts/2022-09-14--windows-git-file-permissions",
+    "language": "en",
+    "category": "Dev Tools",
+    "tags": [
+      "DevOps",
+      "Git",
+      "Terminal",
+      "Windows"
+    ],
+    "publishedAt": "2022-09-14",
+    "filename": "index.en.md",
+    "dirname": "2022-09-14--windows-git-file-permissions"
+  },
+  {
+    "title": "MS Edge: Managed by your organization",
+    "link": "/en/posts/2024-05-06--ms-edge-managed-by-your-organization",
     "language": "en",
     "category": "Programming",
     "tags": [
       "Tips"
     ],
-    "publishedAt": "2017-04-12",
+    "publishedAt": "2024-05-06",
     "filename": "index.en.md",
-    "dirname": "2017-04-12--english-language"
+    "dirname": "2024-05-06--ms-edge-managed-by-your-organization"
+  },
+  {
+    "title": "Agile, Kanban, Scrum - главное простыми словами",
+    "link": "/ru/posts/2025-02-11--agile-kanban-scrum",
+    "language": "ru",
+    "category": "Career",
+    "tags": [
+      "Review",
+      "Agile",
+      "Project Management"
+    ],
+    "publishedAt": "2025-02-11",
+    "filename": "index.ru.md",
+    "dirname": "2025-02-11--agile-kanban-scrum",
+    "updatedAt": "2025-02-15"
+  },
+  {
+    "title": "Карьера программиста после 30",
+    "link": "/ru/posts/2025-02-11--programming-career-after-30",
+    "language": "ru",
+    "category": "Programming",
+    "tags": [
+      "Tips"
+    ],
+    "publishedAt": "2025-02-11",
+    "filename": "index.ru.md",
+    "dirname": "2025-02-11--programming-career-after-30",
+    "updatedAt": "2025-03-26",
+    "source": {
+      "name": "\"medium",
+      "url": "https://tertiumnon.medium.com/career-7b8d2f9c1a5b\""
+    }
+  },
+  {
+    "title": "Рефакторинг",
+    "link": "/ru/posts/2025-02-11--refactoring",
+    "language": "ru",
+    "category": "Programming",
+    "tags": [
+      "Review"
+    ],
+    "publishedAt": "2025-02-11",
+    "filename": "index.ru.md",
+    "dirname": "2025-02-11--refactoring",
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "title": "You Can Thrive Without Using Redux",
+    "link": "/en/posts/2025-03-12--you-can-thrive-without-using-redux",
+    "language": "en",
+    "category": "Design",
+    "tags": [
+      "Design",
+      "JavaScript",
+      "UX",
+      "Web Development"
+    ],
+    "publishedAt": "2025-03-12",
+    "filename": "index.en.md",
+    "dirname": "2025-03-12--you-can-thrive-without-using-redux"
+  },
+  {
+    "title": "Angular Universal (SSR) caching with AWS Lambda",
+    "link": "/en/posts/2025-03-24--angular-universal-ssr-caching-with-aws-lambda",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Frontend",
+      "Web Development"
+    ],
+    "publishedAt": "2025-03-24",
+    "filename": "index.en.md",
+    "dirname": "2025-03-24--angular-universal-ssr-caching-with-aws-lambda",
+    "updatedAt": "2025-03-26"
+  },
+  {
+    "title": "Хороший дизайн для вашего приложения",
+    "link": "/ru/posts/2025-03-24--good-design-for-your-app",
+    "language": "ru",
+    "category": "Programming",
+    "tags": [
+      "Review"
+    ],
+    "publishedAt": "2025-03-24",
+    "filename": "index.ru.md",
+    "dirname": "2025-03-24--good-design-for-your-app",
+    "updatedAt": "2026-05-28"
+  },
+  {
+    "title": "A minimum of books that should be read by a novice or experienced programmer",
+    "link": "/en/posts/2025-03-26--a-minimum-of-books-that-should-be-read-by-a-novice-or-experienced-programmer",
+    "language": "en",
+    "category": "Career",
+    "tags": [
+      "Books",
+      "Career",
+      "Education",
+      "Professional Growth"
+    ],
+    "publishedAt": "2025-03-26",
+    "filename": "index.en.md",
+    "dirname": "2025-03-26--a-minimum-of-books-that-should-be-read-by-a-novice-or-experienced-programmer",
+    "source": {
+      "name": "\"medium",
+      "url": "https://tertiumnon.medium.com/a-minimum-of-books-that-should-be-read-by-a-novice-or-experienced-programmer-8e9afd76fd6f\""
+    }
+  },
+  {
+    "title": "Минимум книг, которые нужно прочитать начинающему или продолжающему свою кривую обучения программисту",
+    "link": "/ru/posts/2025-03-26--a-minimum-of-books-that-should-be-read-by-a-novice-or-experienced-programmer",
+    "language": "ru",
+    "category": "Programming",
+    "tags": [
+      "Tips"
+    ],
+    "publishedAt": "2025-03-20",
+    "filename": "index.ru.md",
+    "dirname": "2025-03-26--a-minimum-of-books-that-should-be-read-by-a-novice-or-experienced-programmer",
+    "updatedAt": "2025-03-26"
+  },
+  {
+    "title": "Cooking with TypeScript enums",
+    "link": "/en/posts/2025-03-26--cooking-with-typescript-enums",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "JavaScript",
+      "Web Development"
+    ],
+    "publishedAt": "2025-03-26",
+    "filename": "index.en.md",
+    "dirname": "2025-03-26--cooking-with-typescript-enums",
+    "updatedAt": "2026-07-12"
+  },
+  {
+    "title": "Bun in 2025",
+    "link": "/en/posts/2025-11-30--bun-in-2025",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "JavaScript",
+      "Tools",
+      "Web Development"
+    ],
+    "publishedAt": "2025-11-30",
+    "filename": "index.en.md",
+    "dirname": "2025-11-30--bun-in-2025",
+    "updatedAt": "2026-07-17",
+    "source": {
+      "name": "\"medium",
+      "url": "https://tertiumnon.medium.com/bun-7fbe61f45e2e\""
+    }
+  },
+  {
+    "title": "Bun в 2025",
+    "link": "/ru/posts/2025-11-30--bun-in-2025",
+    "language": "ru",
+    "category": "Programming",
+    "tags": [
+      "JavaScript",
+      "Tools",
+      "Web Development"
+    ],
+    "publishedAt": "2025-11-30",
+    "filename": "index.ru.md",
+    "dirname": "2025-11-30--bun-in-2025",
+    "updatedAt": "2026-07-17"
+  },
+  {
+    "title": "ИИ: реальность после хайпа в 2026",
+    "link": "/ru/posts/2026-06-11--ai-reality-after-hype-2026",
+    "language": "ru",
+    "category": "Career",
+    "tags": [
+      "Review",
+      "Business",
+      "AI",
+      "Risk"
+    ],
+    "publishedAt": "2026-06-11",
+    "filename": "index.ru.md",
+    "dirname": "2026-06-11--ai-reality-after-hype-2026",
+    "updatedAt": "2026-07-19"
+  },
+  {
+    "title": "Firefox userChrome.css",
+    "link": "/en/posts/2026-06-17--firefox-userchromecss",
+    "language": "en",
+    "category": "Browsers",
+    "tags": [
+      "Browser",
+      "Extensions"
+    ],
+    "publishedAt": "2026-06-17",
+    "filename": "index.en.md",
+    "dirname": "2026-06-17--firefox-userchromecss"
+  },
+  {
+    "title": "ИИ программирование в 2026",
+    "link": "/ru/posts/2026-07-08--ai-programming-in-2026",
+    "language": "ru",
+    "category": "Programming",
+    "tags": [
+      "AI",
+      "Review"
+    ],
+    "publishedAt": "2026-07-08",
+    "filename": "index.ru.md",
+    "dirname": "2026-07-08--ai-programming-in-2026",
+    "updatedAt": "2026-07-20"
+  },
+  {
+    "title": "Angular RxJS vs Signals in 2026",
+    "link": "/en/posts/2026-07-09--angular-rxjs-vs-signals-in-2026",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Angular",
+      "Frontend",
+      "JavaScript",
+      "Web Development"
+    ],
+    "publishedAt": "2026-07-09",
+    "filename": "index.en.md",
+    "dirname": "2026-07-09--angular-rxjs-vs-signals-in-2026"
+  },
+  {
+    "title": "ИИ в 2026",
+    "link": "/ru/posts/2026-07-12--ai-in-2026",
+    "language": "ru",
+    "category": "Programming",
+    "tags": [
+      "AI",
+      "Technical",
+      "Review"
+    ],
+    "publishedAt": "2026-07-12",
+    "filename": "index.ru.md",
+    "dirname": "2026-07-12--ai-in-2026",
+    "updatedAt": "2026-07-20"
+  },
+  {
+    "title": "Bun in 2026",
+    "link": "/en/posts/2026-07-12--bun-in-2026",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "JavaScript",
+      "Tools",
+      "Web Development"
+    ],
+    "publishedAt": "2026-07-12",
+    "filename": "index.en.md",
+    "dirname": "2026-07-12--bun-in-2026",
+    "updatedAt": "2026-07-17"
+  },
+  {
+    "title": "Bun в 2026",
+    "link": "/ru/posts/2026-07-12--bun-in-2026",
+    "language": "ru",
+    "category": "Programming",
+    "tags": [
+      "JavaScript",
+      "Tools",
+      "Web Development"
+    ],
+    "publishedAt": "2026-07-12",
+    "filename": "index.ru.md",
+    "dirname": "2026-07-12--bun-in-2026",
+    "updatedAt": "2026-07-17"
+  },
+  {
+    "title": "Реализация Kanban и Scrum в Jira",
+    "link": "/ru/posts/2026-07-12--jira-kanban-scrum-implementation",
+    "language": "ru",
+    "category": "Career",
+    "tags": [
+      "Jira",
+      "Agile",
+      "Project Management"
+    ],
+    "publishedAt": "2026-07-12",
+    "filename": "index.ru.md",
+    "dirname": "2026-07-12--jira-kanban-scrum-implementation",
+    "updatedAt": "2026-07-12"
+  },
+  {
+    "title": "Блеск и нищета Помодоро",
+    "link": "/ru/posts/2026-07-19--pomodoro-technique-illusion-and-reality",
+    "language": "ru",
+    "category": "Career",
+    "tags": [
+      "Productivity",
+      "Tips",
+      "Focus"
+    ],
+    "publishedAt": "2026-07-19",
+    "filename": "index.ru.md",
+    "dirname": "2026-07-19--pomodoro-technique-illusion-and-reality",
+    "updatedAt": "2026-07-19"
+  },
+  {
+    "title": "SolidJS vs React (2026)",
+    "link": "/ru/posts/2026-07-21--solidjs-vs-react-2026",
+    "language": "ru",
+    "category": "Programming",
+    "tags": [
+      "JavaScript",
+      "Frontend",
+      "React",
+      "SolidJS"
+    ],
+    "publishedAt": "2026-07-21",
+    "filename": "index.ru.md",
+    "dirname": "2026-07-21--solidjs-vs-react-2026",
+    "updatedAt": "2026-07-21"
   }
 ]
