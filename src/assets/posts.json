@@ -383,7 +383,23 @@
     "publishedAt": "2026-07-21",
     "filename": "index.ru.md",
     "dirname": "2026-07-21--solidjs-vs-react-2026",
-    "updatedAt": "2026-07-21"
+    "updatedAt": "2026-07-27"
+  },
+  {
+    "title": "SolidJS vs React (2026)",
+    "link": "/en/posts/2026-07-21--solidjs-vs-react-2026",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "JavaScript",
+      "Frontend",
+      "React",
+      "SolidJS"
+    ],
+    "publishedAt": "2026-07-21",
+    "filename": "index.en.md",
+    "dirname": "2026-07-21--solidjs-vs-react-2026",
+    "updatedAt": "2026-07-27"
   },
   {
     "title": "Git: RPC failed Error 413",
