@@ -117,6 +117,46 @@
     "dirname": "2020-12-13--your-cloud-firestore-database-has-insecure-rules"
   },
   {
+    "title": "package.json, package-lock.json и семантическое версионирование: почему это критично знать",
+    "link": "/ru/posts/2026-08-05--packagejson-lock-semver",
+    "language": "ru",
+    "category": "Development",
+    "tags": [
+      "npm",
+      "Dependencies",
+      "Versioning",
+      "package.json",
+      "package-lock.json",
+      "bun",
+      "pnpm",
+      "yarn"
+    ],
+    "publishedAt": "2026-08-05",
+    "filename": "index.ru.md",
+    "dirname": "2026-08-05--packagejson-lock-semver",
+    "updatedAt": "2026-08-05T12:30:00Z"
+  },
+  {
+    "title": "package.json, package-lock.json, and Semantic Versioning: Why You Need to Understand This",
+    "link": "/en/posts/2026-08-05--packagejson-lock-semver",
+    "language": "en",
+    "category": "Development",
+    "tags": [
+      "npm",
+      "Dependencies",
+      "Versioning",
+      "package.json",
+      "package-lock.json",
+      "bun",
+      "pnpm",
+      "yarn"
+    ],
+    "publishedAt": "2026-08-05",
+    "filename": "index.en.md",
+    "dirname": "2026-08-05--packagejson-lock-semver",
+    "updatedAt": "2026-08-05T12:30:00Z"
+  },
+  {
     "title": "Frontend: Possible List Option Properties",
     "link": "/en/posts/2021-06-23--frontend-possible-list-option-properties",
     "language": "en",
