@@ -1,8 +1,8 @@
 ---
 publishedAt: 2026-08-05
-updatedAt: 2026-08-05
+updatedAt: 2026-08-05T12:30:00Z
 category: Development
-tags: ["npm","Dependencies","Versioning","package.json","package-lock.json"]
+tags: ["npm","Dependencies","Versioning","package.json","package-lock.json","bun","pnpm","yarn"]
 ---
 
 # package.json, package-lock.json и семантическое версионирование: почему это критично знать
@@ -155,15 +155,16 @@ git commit -m "Add dependency"
 
 ## Разные lock-файлы для разных менеджеров
 
-Если вы переходите с npm на yarn или на pnpm, важно знать:
+Если вы переходите с npm на yarn, pnpm или Bun, важно знать:
 
 - **npm** использует `package-lock.json`
 - **yarn** использует `yarn.lock`
 - **pnpm** использует `pnpm-lock.yaml`
+- **Bun** использует `bun.lock`
 
-Структурно они немного отличаются ([pnpm-lock.yaml](https://dev.to/_d7eb1c1703182e3ce1782/npm-vs-pnpm-vs-yarn-which-package-manager-should-you-use-in-2026-3o3o), например, оптимизирован под пнпм-ский content-addressable storage), но суть одна: фиксируют точные версии. Главное:
+Структурно они немного отличаются ([pnpm-lock.yaml](https://dev.to/_d7eb1c1703182e3ce1782/npm-vs-pnpm-vs-yarn-which-package-manager-should-you-use-in-2026-3o3o), например, оптимизирован под пнпм-ский content-addressable storage, а `bun.lock` разработан для максимальной скорости и совместимости с Node.js экосистемой), но суть одна: фиксируют точные версии. Главное:
 
-**Никогда не коммитьте lock-файлы разных менеджеров одновременно.** Если вы переходите с npm на pnpm, удалите старый `package-lock.json`:
+**Никогда не коммитьте lock-файлы разных менеджеров одновременно.** Если вы переходите с npm на pnpm или Bun, удалите старый `package-lock.json`:
 
 ```bash
 rm package-lock.json
@@ -172,7 +173,16 @@ git add pnpm-lock.yaml package.json
 git commit -m "Migrate to pnpm"
 ```
 
-Если оставить оба файла, они будут конфликтовать, и коллеги будут в замешательстве.
+Или при переходе на Bun:
+
+```bash
+rm package-lock.json yarn.lock pnpm-lock.yaml
+bun install
+git add bun.lock package.json
+git commit -m "Migrate to bun"
+```
+
+Если оставить несколько файлов, они будут конфликтовать, и коллеги будут в замешательстве.
 
 ## Типичные ошибки разработчиков
 

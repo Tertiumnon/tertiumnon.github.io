@@ -1,8 +1,8 @@
 ---
 publishedAt: 2026-08-05
-updatedAt: 2026-08-05
+updatedAt: 2026-08-05T12:30:00Z
 category: Development
-tags: ["npm","Dependencies","Versioning","package.json","package-lock.json"]
+tags: ["npm","Dependencies","Versioning","package.json","package-lock.json","bun","pnpm","yarn"]
 ---
 
 # package.json, package-lock.json, and Semantic Versioning: Why You Need to Understand This
@@ -155,15 +155,16 @@ On your machine `npm install`, on CI machine `npm install` (or worse — no lock
 
 ## Different lock files for different package managers
 
-If you're switching from npm to yarn or pnpm, it's important to know:
+If you're switching from npm to yarn, pnpm, or Bun, it's important to know:
 
 - **npm** uses `package-lock.json`
 - **yarn** uses `yarn.lock`
 - **pnpm** uses `pnpm-lock.yaml`
+- **Bun** uses `bun.lock`
 
-Structurally they differ slightly ([pnpm-lock.yaml](https://dev.to/_d7eb1c1703182e3ce1782/npm-vs-pnpm-vs-yarn-which-package-manager-should-you-use-in-2026-3o3o), for instance, is optimized for pnpm's content-addressable storage), but the essence is the same: they lock exact versions. The key thing:
+Structurally they differ slightly ([pnpm-lock.yaml](https://dev.to/_d7eb1c1703182e3ce1782/npm-vs-pnpm-vs-yarn-which-package-manager-should-you-use-in-2026-3o3o), for instance, is optimized for pnpm's content-addressable storage, and `bun.lock` is designed for maximum speed and Node.js ecosystem compatibility), but the essence is the same: they lock exact versions. The key thing:
 
-**Never commit lock files from different package managers simultaneously.** If you're switching from npm to pnpm, delete the old `package-lock.json`:
+**Never commit lock files from different package managers simultaneously.** If you're switching from npm to pnpm or Bun, delete the old `package-lock.json`:
 
 ```bash
 rm package-lock.json
@@ -172,7 +173,16 @@ git add pnpm-lock.yaml package.json
 git commit -m "Migrate to pnpm"
 ```
 
-If you leave both files, they'll conflict and confuse your teammates.
+Or when switching to Bun:
+
+```bash
+rm package-lock.json yarn.lock pnpm-lock.yaml
+bun install
+git add bun.lock package.json
+git commit -m "Migrate to bun"
+```
+
+If you leave multiple files, they'll conflict and confuse your teammates.
 
 ## Common developer mistakes
 
