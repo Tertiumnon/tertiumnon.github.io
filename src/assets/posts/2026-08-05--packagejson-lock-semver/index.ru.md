@@ -186,7 +186,7 @@ git commit -m "Migrate to bun"
 
 ## Типичные ошибки разработчиков
 
-### Ошибка 1: Удаление lock-файла из .gitignore
+### Ошибка 1: Добавление lock-файла в .gitignore
 
 ```bash
 # ✗ ошибка
