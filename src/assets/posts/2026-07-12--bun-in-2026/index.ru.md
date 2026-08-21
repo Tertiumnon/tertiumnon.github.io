@@ -7,7 +7,7 @@ tags: ["JavaScript","Tools","Web Development"]
 
 # Bun в 2026
 
-<img src="https://bun.sh/logo.svg" alt="Bun Logo" width="200" />
+![](./img/bun-1.4.png)
 
 > **Для кого эта статья:** для разработчиков JavaScript/TypeScript, которые хотят узнать о главных событиях и новых возможностях Bun в 2026 году.
 
