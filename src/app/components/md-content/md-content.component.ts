@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, HostListener, Input } from "@angular/core";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { marked, Renderer } from "marked";
 import hljs from "highlight.js/lib/core";
@@ -50,6 +50,24 @@ export class MdContentComponent {
 		};
 	}
 
+	// The app uses hash-based routing (useHash: true), so an in-page anchor
+	// like <a href="#key-features"> would otherwise change location.hash,
+	// get intercepted by the Router as a navigation, fail to match any route,
+	// and redirect away to the home page via the wildcard route. Handle
+	// same-page anchors manually instead of letting them hit the Router.
+	@HostListener("click", ["$event"])
+	onContentClick(event: MouseEvent) {
+		const anchor = (event.target as HTMLElement)?.closest?.("a");
+		const href = anchor?.getAttribute("href");
+		if (!href || !href.startsWith("#") || href.length < 2) return;
+
+		const target = document.getElementById(href.slice(1));
+		if (!target) return;
+
+		event.preventDefault();
+		target.scrollIntoView({ behavior: "smooth", block: "start" });
+	}
+
 	private stripFrontmatter(md: string): string {
 		if (!md.startsWith("---")) return md;
 		const end = md.indexOf("\n---", 3);
@@ -65,7 +83,7 @@ export class MdContentComponent {
 				gfm: true,
 				breaks: true,
 				mangle: false,
-				headerIds: false,
+				headerIds: true,
 				renderer: this.renderer,
 			});
 
