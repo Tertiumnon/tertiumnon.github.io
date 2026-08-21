@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import { marked } from "marked";
+import { marked, Renderer } from "marked";
 import hljs from "highlight.js/lib/core";
 // register common languages (add more as needed)
 import javascript from "highlight.js/lib/languages/javascript";
@@ -12,6 +12,10 @@ hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("typescript", typescript);
 hljs.registerLanguage("css", css);
 hljs.registerLanguage("json", json);
+
+function escapeHtml(str: string): string {
+	return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
 
 @Component({
 	selector: "app-md-content",
@@ -28,8 +32,23 @@ export class MdContentComponent {
 	@Input() lang = "en";
 	@Input() showBreadcrumb = false;
 	htmlData: SafeHtml = "";
+	private renderer = new Renderer();
 
-	constructor(private sanitizer: DomSanitizer) {}
+	constructor(private sanitizer: DomSanitizer) {
+		this.renderer.code = (code: string, infostring?: string): string => {
+			const language = (infostring || "").trim().split(/\s+/)[0];
+			let highlighted: string;
+			try {
+				highlighted = language && hljs.getLanguage(language)
+					? hljs.highlight(code, { language }).value
+					: hljs.highlightAuto(code).value;
+			} catch (e) {
+				highlighted = escapeHtml(code);
+			}
+			const langClass = language ? ` language-${language}` : "";
+			return `<pre><code class="hljs${langClass}">${highlighted}</code></pre>\n`;
+		};
+	}
 
 	private stripFrontmatter(md: string): string {
 		if (!md.startsWith("---")) return md;
@@ -47,6 +66,7 @@ export class MdContentComponent {
 				breaks: true,
 				mangle: false,
 				headerIds: false,
+				renderer: this.renderer,
 			});
 
 			// Fix image paths post-processing
@@ -54,16 +74,6 @@ export class MdContentComponent {
 				raw = raw.replace(/<img\s+src="(?!(?:https?:|\/))([^"]+)"/g,
 					`<img src="/assets/posts/${this.postDirname}/$1"`);
 			}
-
-			// Add syntax highlighting to code blocks
-			raw = raw.replace(/<code[^>]*>([^<]*)<\/code>/g, (match: string, code: string) => {
-				try {
-					const highlighted = hljs.highlightAuto(code).value;
-					return `<code class="hljs">${highlighted}</code>`;
-				} catch (e) {
-					return match;
-				}
-			});
 
 			if (this.postDate) {
 				const h1Start = raw.indexOf("<h1>");
