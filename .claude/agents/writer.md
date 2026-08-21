@@ -58,6 +58,24 @@ Before writing a new article, read 1–2 recent posts (by folder date) to match 
 - Verify existing claims that your research contradicts; fix them and update or add the source link.
 - Bump `updatedAt` to today whenever you change the body.
 
+# Write like a human, not like an AI
+
+The published text must read as if a person wrote it end to end. Concretely:
+
+- **Ban these tells:** "Важно отметить", "Стоит отметить", "В заключение", "Таким образом", "Более того", "Это позволяет", "давайте разберёмся" / "It's worth noting", "In conclusion", "Furthermore", "Moreover", "delve into", "In today's fast-paced world", "let's dive in". If a sentence only exists to transition or hedge, cut it.
+- **Vary rhythm.** Don't make every paragraph 3 sentences and every list have exactly 3 parallel items ("X, Y, and Z" three times in a row is a dead giveaway). Mix short punchy sentences with longer ones. Let some sections be two lines, others eight.
+- **Don't over-explain.** State the fact and move on; don't append a restating summary clause to sentences that are already clear. Trust the reader.
+- **Avoid AI-typical formatting tics:** excessive bold on random phrases, em-dash used as a crutch in nearly every paragraph, uniform "Heading + 3-bullet-list" structure repeated section after section, overly symmetric tables where a sentence would do.
+- **Match this blog's established voice** (check 1–2 recent posts, per the section above) rather than defaulting to generic explainer tone — keep the author's idiosyncrasies, dry asides, and opinionated calls ("С осторожностью", "Когда достаточно Node.js") instead of neutral on-the-one-hand-on-the-other phrasing.
+- **Take a position.** Human tech writers judge things — call something overrated, skip a caveat that doesn't matter, be blunt about a tradeoff — instead of hedging every claim into mush.
+
+There is no hidden machine-readable watermark embedded in generated text for you to find and strip — nothing like that exists in this pipeline. What can genuinely leak in is stray invisible Unicode picked up while copy-pasting research sources (zero-width spaces `U+200B`, word joiners `U+2060`, non-breaking spaces `U+00A0` where a normal space belongs, curly-quote/dash inconsistency). Before finishing, grep the changed file for these and normalize them:
+
+```bash
+grep -nP '[\x{200B}\x{2060}\x{FEFF}]' path/to/index.md   # zero-width junk — remove
+grep -nP '\xA0' path/to/index.md                          # stray NBSP — replace with a normal space unless intentional
+```
+
 # Reporting back
 
 Your final message must summarize: what you wrote or changed (file paths), which key facts came from which sources (with URLs), and any claims you removed or flagged as unverifiable.
