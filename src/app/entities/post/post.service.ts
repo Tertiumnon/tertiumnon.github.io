@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, catchError, throwError } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { Post, PostGetParams } from "./post";
 
@@ -8,12 +8,16 @@ import { Post, PostGetParams } from "./post";
 	providedIn: "root",
 })
 export class PostService {
-	httpClient = inject(HttpClient);
+	private readonly httpClient = inject(HttpClient);
 
-	getAll() {
+	getAll(): Observable<Post[]> {
 		return this.httpClient.get<Post[]>("assets/posts.json", {
 			responseType: "json",
-		});
+		}).pipe(
+			catchError((error: unknown) =>
+				throwError(() => new Error(`Failed to fetch posts: ${error}`))
+			)
+		);
 	}
 
 	get(params: PostGetParams): Observable<string> {
@@ -28,8 +32,15 @@ export class PostService {
 				return this.httpClient.get(
 					`assets/posts/${dirname}/${filename}`,
 					{ responseType: "text" }
+				).pipe(
+					catchError((error: unknown) =>
+						throwError(() => new Error(`Failed to fetch post content: ${error}`))
+					)
 				);
-			})
+			}),
+			catchError((error: unknown) =>
+				throwError(() => new Error(`Failed to fetch posts: ${error}`))
+			)
 		);
 	}
 }

@@ -172,6 +172,10 @@ docs/
 
 
 # START Ruler Generated Files
+/.agent/rules/ruler.md
+/.agent/rules/ruler.md.bak
+/.aiassistant/rules/AGENTS.md
+/.aiassistant/rules/AGENTS.md.bak
 /.aider.conf.yml
 /.aider.conf.yml.bak
 /.amazonq/mcp.json
@@ -186,26 +190,24 @@ docs/
 /.codex/config.toml.bak
 /.crush.json
 /.crush.json.bak
-/.cursor/rules/ruler_cursor_instructions.mdc
-/.cursor/rules/ruler_cursor_instructions.mdc.bak
 /.goosehints
 /.goosehints.bak
 /.idx/airules.md
 /.idx/airules.md.bak
 /.junie/guidelines.md
 /.junie/guidelines.md.bak
-/.kilocode/rules/ruler_kilocode_instructions.md
-/.kilocode/rules/ruler_kilocode_instructions.md.bak
 /.kiro/steering/ruler_kiro_instructions.md
 /.kiro/steering/ruler_kiro_instructions.md.bak
+/.mcp.json
+/.mcp.json.bak
 /.openhands/microagents/repo.md
 /.openhands/microagents/repo.md.bak
 /.roo/mcp.json
 /.roo/mcp.json.bak
 /.trae/rules/project_rules.md
 /.trae/rules/project_rules.md.bak
-/.windsurf/rules/ruler_windsurf_instructions.md
-/.windsurf/rules/ruler_windsurf_instructions.md.bak
+/.vibe/config.toml
+/.vibe/config.toml.bak
 /AGENTS.md
 /AGENTS.md.bak
 /CLAUDE.md

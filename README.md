@@ -51,7 +51,7 @@ bun run test:coverage
 
 ```bash
 # Type check
-bun run lint:ts:check
+bun run typecheck
 
 # Fix formatting
 bun run lint:fix

@@ -26,7 +26,7 @@ git commit -m "feat: add new feature"
 ```
 
 **Pre-commit checks:**
-- `bun run lint:ts:check` – TypeScript type checking
+- `bun run typecheck` – TypeScript type checking
 - `bun run test` – Test suite
 
 ### After pulling changes

@@ -1,4 +1,5 @@
-import { Component, inject, signal } from "@angular/core";
+import { Component, DestroyRef, inject, signal } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { MdContentComponent } from "../../components/md-content/md-content.component";
@@ -14,9 +15,11 @@ import { PostService } from "../../entities/post/post.service";
 	styleUrl: "./post.component.css",
 })
 export class PostComponent {
-	activatedRoute = inject(ActivatedRoute);
-	PostService = inject(PostService);
-	router = inject(Router);
+	private readonly destroyRef = inject(DestroyRef);
+	private readonly activatedRoute = inject(ActivatedRoute);
+	private readonly postService = inject(PostService);
+	private readonly router = inject(Router);
+
 	data = signal("");
 	category = signal("");
 	postName = signal("");
@@ -25,42 +28,54 @@ export class PostComponent {
 	currentLang = signal("en");
 	isLoading = signal(true);
 
-	ngOnInit() {
-		this.activatedRoute.params.subscribe((params) => {
-			this.isLoading.set(true);
-			this.postName.set(params["name"]);
-			const lang = params["lang"] ?? "en";
-			this.currentLang.set(lang);
+	ngOnInit(): void {
+		this.activatedRoute.params
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe((params) => {
+				this.isLoading.set(true);
+				this.postName.set(params["name"]);
+				const lang = params["lang"] ?? "en";
+				this.currentLang.set(lang);
 
-			// Get post details to extract dirname, category and date
-			this.PostService.getAll().subscribe((posts) => {
-				const post = posts.find(
-					(a: Post) => a.dirname === params["name"] && a.language === lang
-				);
-				if (post) {
-					this.category.set(post.category);
-					this.postDirname.set(post.dirname);
-					this.postDate.set(post.publishedAt);
+				this.postService.getAll().subscribe({
+					next: (posts) => {
+						const post = posts.find(
+							(a: Post) => a.dirname === params["name"] && a.language === lang
+						);
 
-					// Load post content
-					this.PostService
-						.get({
-							lang,
-							category: post.category,
-							name: post.dirname,
-						})
-						.subscribe((response: string) => {
-							this.data.set(response);
-							this.isLoading.set(false);
-						});
-				} else {
-					// Post not found, redirect to 404 page with the attempted post name
-					this.router.navigate([`/${lang}/posts/404`], {
-						queryParams: { search: params["name"] }
-					});
-				}
+						if (post) {
+							this.category.set(post.category);
+							this.postDirname.set(post.dirname);
+							this.postDate.set(post.publishedAt);
+
+							this.postService
+								.get({
+									lang,
+									category: post.category,
+									name: post.dirname,
+								} as PostGetParams)
+								.subscribe({
+									next: (response: string) => {
+										this.data.set(response);
+										this.isLoading.set(false);
+									},
+									error: (error: unknown) => {
+										console.error(`Failed to load post ${params["name"]}:`, error);
+										this.isLoading.set(false);
+									},
+								});
+						} else {
+							this.router.navigate([`/${lang}/posts/404`], {
+								queryParams: { search: params["name"] }
+							});
+						}
+					},
+					error: (error: unknown) => {
+						console.error("Failed to fetch posts:", error);
+						this.isLoading.set(false);
+					},
+				});
 			});
-		});
 	}
 
 	getCurrentLang(): string {

@@ -1,7 +1,10 @@
-import { Component, Input, inject, signal } from "@angular/core";
+import { Component, Input, inject, signal, DestroyRef } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { CommonModule } from "@angular/common";
 import { DropdownComponent } from "../dropdown/dropdown.component";
 import { ActivatedRoute, Router } from "@angular/router";
+
+const MAX_DROPDOWN_ITEMS = 50;
 
 @Component({
 	selector: "app-news-control-panel",
@@ -15,18 +18,21 @@ export class NewsControlPanelComponent {
 	@Input() selectedProject: string = "All";
 	@Input() onProjectChange: (project: string) => void = () => {};
 
-	private router = inject(Router);
-	private activatedRoute = inject(ActivatedRoute);
-	currentLang = signal("en");
+	private readonly destroyRef = inject(DestroyRef);
+	private readonly router = inject(Router);
+	private readonly activatedRoute = inject(ActivatedRoute);
+	readonly currentLang = signal("en");
 
 	constructor() {
-		this.activatedRoute.params.subscribe((params) => {
-			const lang = params["lang"] || "en";
-			this.currentLang.set(lang);
-		});
+		this.activatedRoute.params
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe((params) => {
+				const lang = params["lang"] || "en";
+				this.currentLang.set(lang);
+			});
 	}
 
-	onLanguageChange(lang: string) {
+	onLanguageChange(lang: string): void {
 		if (lang === this.currentLang()) return;
 
 		const currentUrl = this.router.url;

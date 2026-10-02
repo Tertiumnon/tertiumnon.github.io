@@ -13,7 +13,7 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
     "lint:fix": "bunx rome format --write src && bunx rome check src --apply",
-    "lint:ts:check": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "release": "bun node_modules/@tertium/js/scripts/release/release.ts",
     "release:patch": "bun run release patch",
     "release:minor": "bun run release minor",

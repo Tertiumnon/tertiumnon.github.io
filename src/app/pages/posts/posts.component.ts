@@ -1,4 +1,5 @@
-import { Component, inject, signal, computed } from "@angular/core";
+import { Component, DestroyRef, inject, signal, computed } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { Post } from "../../entities/post/post";
@@ -14,9 +15,11 @@ import { PostControlPanelComponent } from "../../components/post-control-panel/p
 	styleUrl: "./posts.component.css",
 })
 export class PostsComponent {
-	activatedRoute = inject(ActivatedRoute);
-	router = inject(Router);
-	PostService = inject(PostService);
+	private readonly destroyRef = inject(DestroyRef);
+	private readonly activatedRoute = inject(ActivatedRoute);
+	private readonly router = inject(Router);
+	private readonly postService = inject(PostService);
+
 	allPosts = signal<Post[]>([]);
 	isLoading = signal(true);
 	selectedCategory = signal("All");
@@ -42,7 +45,6 @@ export class PostsComponent {
 	sortedPosts = computed(() => {
 		let filtered = this.allPosts();
 
-		// Filter out articles without a category
 		filtered = filtered.filter((a) => a.category);
 
 		if (this.selectedCategory() !== "All") {
@@ -55,26 +57,37 @@ export class PostsComponent {
 			);
 		}
 
-		// Sort by date (newest first)
 		return filtered.sort(
 			(a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
 		);
 	});
 
-	ngOnInit() {
-		this.activatedRoute.params.subscribe((params) => {
-			const lang = params["lang"] ?? "en";
-			this.isLoading.set(true);
-			this.PostService.getAll().subscribe((response) => {
-				const filtered = response.filter((a: Post) => a.language === lang && !a.isHidden);
-				const sorted = filtered.sort(
-					(a: Post, b: Post) =>
-						new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-				);
-				this.allPosts.set(sorted);
-				this.isLoading.set(false);
+	ngOnInit(): void {
+		this.activatedRoute.params
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe((params) => {
+				const lang = params["lang"] ?? "en";
+				this.isLoading.set(true);
+
+				this.postService.getAll().subscribe({
+					next: (response) => {
+						const filtered = response.filter(
+							(a: Post) => a.language === lang && !a.isHidden
+						);
+						const sorted = filtered.sort(
+							(a: Post, b: Post) =>
+								new Date(b.publishedAt).getTime() -
+								new Date(a.publishedAt).getTime()
+						);
+						this.allPosts.set(sorted);
+						this.isLoading.set(false);
+					},
+					error: (error: unknown) => {
+						console.error("Failed to fetch posts:", error);
+						this.isLoading.set(false);
+					},
+				});
 			});
-		});
 	}
 
 	onCategoryChange(category: string): void {
