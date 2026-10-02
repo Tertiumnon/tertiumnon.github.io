@@ -1,4 +1,5 @@
-import { IProject, ProjectStatus } from "./project.interface";
+import { IProject } from "./project.types";
+import { ProjectStatus } from "./project.constants";
 
 const PROJECT_ITEMS: IProject[] = [
 	{

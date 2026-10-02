@@ -1,7 +1,7 @@
 import { CommonModule, DOCUMENT } from "@angular/common";
 import { Component, DestroyRef, inject, OnInit } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { ProjectStatus } from "../../entities/project/project.interface";
+import { ProjectStatus } from "../../entities/project/project.constants";
 import { SoftwareService } from "../../pages/software/software.service";
 import { DropdownComponent } from "../dropdown/dropdown.component";
 

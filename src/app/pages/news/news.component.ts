@@ -2,13 +2,15 @@ import { Component, DestroyRef, inject, signal, computed } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { News } from "../../entities/news/news.d";
+import { News } from "../../entities/news/news.types";
 import { NewsService } from "../../entities/news/news.service";
 import { PageLoaderComponent } from "../../components/page-loader/page-loader.component";
 import { MdContentComponent } from "../../components/md-content/md-content.component";
 
 interface NewsWithContent extends News {
 	content?: string;
+	dirname: string;
+	filename: string;
 }
 
 @Component({

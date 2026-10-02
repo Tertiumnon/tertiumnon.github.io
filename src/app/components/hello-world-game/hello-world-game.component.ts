@@ -1,6 +1,7 @@
 import { Component, HostListener, OnDestroy } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { HelloWorldGameService, CellData } from "./hello-world-game.service";
+import { HelloWorldGameService } from "./hello-world-game.service";
+import { CellData } from "./hello-world-game.types";
 
 @Component({
 	selector: "app-hello-world-game",

@@ -1,1 +1,1 @@
-export const ALLOWED_ROUTES = [":lang/news", ":lang/posts", "software"];
+export { ALLOWED_ROUTES } from "./nav.constants";

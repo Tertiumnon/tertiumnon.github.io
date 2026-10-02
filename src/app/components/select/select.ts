@@ -1,4 +1,1 @@
-export interface Select {
-	value: string;
-	viewValue: string;
-}
+export { Select } from "./select.types";

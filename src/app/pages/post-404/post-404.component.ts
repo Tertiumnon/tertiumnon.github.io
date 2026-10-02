@@ -1,7 +1,7 @@
 import { Component, inject, signal, computed } from "@angular/core";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { Post } from "../../entities/post/post";
+import { Post } from "../../entities/post/post.types";
 import { PostService } from "../../entities/post/post.service";
 import { PageLoaderComponent } from "../../components/page-loader/page-loader.component";
 

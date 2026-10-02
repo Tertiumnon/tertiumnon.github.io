@@ -1,9 +1,2 @@
-export enum FilterOperator {
-	Equal = "eq",
-}
-
-export interface IFilter {
-	name: string;
-	operator: FilterOperator;
-	value: string | string[] | number | number[];
-}
+export { FilterOperator } from "./filter.constants";
+export { IFilter } from "./filter.types";

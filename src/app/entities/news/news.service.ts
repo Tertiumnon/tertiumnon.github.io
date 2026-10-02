@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable, catchError, throwError } from "rxjs";
 import { switchMap } from "rxjs/operators";
-import { News, NewsGetParams } from "./news.d";
+import { News, NewsGetParams } from "./news.types";
 
 @Injectable({
 	providedIn: "root",

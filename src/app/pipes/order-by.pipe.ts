@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Pipe, PipeTransform } from "@angular/core";
-import { ProjectControlPanelService } from "../components/project-control-panel/project-control-panel.service";
+import { orderBy } from "./order-by.utils";
 
 @Pipe({
 	name: "orderBy",
@@ -11,6 +11,6 @@ export class OrderByPipe implements PipeTransform {
 		value: T[],
 		...args: string[]
 	): T[] {
-		return ProjectControlPanelService.orderBy(value, ...args);
+		return orderBy(value, ...args);
 	}
 }

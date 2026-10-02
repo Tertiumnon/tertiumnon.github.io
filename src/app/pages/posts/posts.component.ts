@@ -2,7 +2,7 @@ import { Component, DestroyRef, inject, signal, computed } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { Post } from "../../entities/post/post";
+import { Post } from "../../entities/post/post.types";
 import { PostService } from "../../entities/post/post.service";
 import { PageLoaderComponent } from "../../components/page-loader/page-loader.component";
 import { PostControlPanelComponent } from "../../components/post-control-panel/post-control-panel.component";

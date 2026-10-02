@@ -1,11 +1,3 @@
-import "zone.js";
-import "zone.js/testing";
-import { getTestBed } from "@angular/core/testing";
-import {
-	BrowserDynamicTestingModule,
-	platformBrowserDynamicTesting,
-} from "@angular/platform-browser-dynamic/testing";
-
 // Polyfill localStorage for jsdom test environment
 const storage = new Map<string, string>();
 const localStorageMock = {
@@ -23,12 +15,3 @@ Object.defineProperty(window, "localStorage", {
 	writable: true,
 	configurable: true,
 });
-
-// Initialize the Angular testing environment
-getTestBed().initTestEnvironment(
-	BrowserDynamicTestingModule,
-	platformBrowserDynamicTesting(),
-	{
-		teardown: { destroyAfterEach: false },
-	},
-);
