@@ -3,6 +3,7 @@ import { normalizeUrls, findContentLines, addLineNumbers, processFrontlink, norm
 /**
  * Process MD content
  */
+
 export async function processMdContent(content) {
     const lines = content.split("\n");
     const resultLines = [];
@@ -41,6 +42,7 @@ export async function processMdContent(content) {
 /**
  * Calculate content line count
  */
+
 function calculateContentLines(lines) {
     let count = 0;
     lines.forEach(l => {
@@ -52,5 +54,5 @@ function calculateContentLines(lines) {
     return { count };
 }
 
-// Export all exports
-export { normalizeUrls, addLineNumbers, renderGitLabMD, transformMdxFrontmatter, processFrontmatter, processMdContent };
+// Export all functions
+export { normalizeUrls, findContentLines, addLineNumbers, processFrontlink, normalizeUrls as nu, renderGitLabMD, transformMdxFrontmatter, processFrontmatter };
