@@ -1,5 +1,20 @@
 [
   {
+    "title": "VS Code + Git: Recommended Team Setup",
+    "link": "/en/posts/2026-10-05--vs-code-git-recommended-team-setup",
+    "language": "en",
+    "category": "Development",
+    "tags": [
+      "VS Code",
+      "Git",
+      "Team Setup",
+      "TypeScript"
+    ],
+    "publishedAt": "2026-10-05",
+    "filename": "index.en.md",
+    "dirname": "2026-10-05--vs-code-git-recommended-team-setup"
+  },
+  {
     "title": "Hello Everyone, It's My First Post on Medium",
     "link": "/en/posts/2017-01-30--hello-everyone-its-my-first-post-on-medium",
     "language": "en",
