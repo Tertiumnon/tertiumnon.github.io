@@ -1,41 +1,56 @@
-/**
- * Post-fix MD content script - transforms raw markdown into Ternium frontend format
- * - Handles line numbers
- * - Handles front/backlinks  
- * - Normalizes URLs
- */
-
-// @ts-check
+import { normalizeUrls, findContentLines, addLineNumbers, processFrontlink, normalizeUrls as nu, renderGitLabMD, transformMdxFrontmatter, processFrontmatter, processMdContent }
 
 /**
- * Normalize URLs in markdown content lines
+ * Process MD content
  */
-export function normalizeUrls(line: string): string {
-    const t = line.trim();
+export async function processMdContent(content) {
+    const lines = content.split("\n");
+    const resultLines = [];
+    const { count: contentCount } = calculateContentLines(lines);
+    let contentIndex = 0;
     
-    if (!t || t.startsWith("#") || t.startsWith("!--")) {
-        return t;
-    }
-    
-    if (line.includes("http://")) {
-        return line.replace(/http:\/\//g, "https://");
-    }
-    
-    return line;
-}
-
-/**
- * Add line numbers to markdown content
- */
-export function addLineNumbers(lines: string[]): string[] {
-    const linesNum = lines.length - 1;
-    
-    lines.forEach((l, i) => {
-        const t = l.trim();
-        if (t && t.length > 0 && !t.startsWith("#") && !t.startsWith("!--")) {
-            lines[i] = `${i + 1 + 1}: ${lines[i].substring(0, 2)}.${t.split(". ")?.[0] || ""}:${t.split(". ")?.[1] || ""}`;
+    lines.forEach((line, i) => {
+        const t = line.trim();
+        
+        // Skip headers and add to contentIndex
+        if (t.startsWith("#")) {
+            contentIndex = 0;
+        } else if (!resultLines.length && !t.trim()) {
+            contentIndex = 0;
+        }
+        
+        // Content line
+        if (t && t.length > 0 && !t.startsWith("#") && !t.startsWith("!--") && !t.startsWith("---")) {
+            const lineNum = contentIndex + 1;
+            
+            // Normalize URLs
+            if (line.includes("http://")) {
+                lines[i] = normalizeUrls(line);
+            }
+            
+            resultLines.push(`${lineNum}. ` + lines[i].trim());
+            contentIndex++;
+        } else {
+            resultLines.push(line);
         }
     });
     
-    return lines;
+    return resultLines.join("\n");
 }
+
+/**
+ * Calculate content line count
+ */
+function calculateContentLines(lines) {
+    let count = 0;
+    lines.forEach(l => {
+        const t = l.trim();
+        if (t && t.length > 0 && !t.startsWith("#") && !t.startsWith("!--") && !t.startsWith("---")) {
+            count++;
+        }
+    });
+    return { count };
+}
+
+// Export all exports
+export { normalizeUrls, addLineNumbers, renderGitLabMD, transformMdxFrontmatter, processFrontmatter, processMdContent };
