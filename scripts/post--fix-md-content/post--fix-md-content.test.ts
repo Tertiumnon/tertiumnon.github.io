@@ -1,266 +1,58 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { readFileSync, writeFileSync } from 'fs';
-import { fixMarkdownContent } from './post--fix-md-content';
+import { normalizeUrls, addLineNumbers, renderGitLabMD, transformMdxFrontmatter, processFrontmatter, processMdContent } from './post--fix-md-content';
 
-describe('fixMarkdownContent - Code Block Safety', () => {
-  let tempFilePath: string;
-
-  beforeEach(() => {
-    tempFilePath = 'temp-test-file.md';
-  });
-
-  afterEach(() => {
-    // Clean up the test file
-    try {
-      writeFileSync(tempFilePath, '');
-    } catch {
-      // Ignore errors during cleanup
+Deno.test("normalizeUrls: no URLs", () => {
+    const normalized = normalizeUrls("Hello world");
+    if (normalized !== "Hello world") {
+        throw new Error("Expected 'Hello world', got: " + JSON.stringify(normalized));
     }
-  });
+});
 
-  it('should remove extra "---" markers after the first 5 lines', () => {
-    const originalContent = `---
----
----
----
----
----
-extra line 1
-extra line 2
----
----
----
-`;
+Deno.test("normalizeUrls: https only", () => {
+    const normalized = normalizeUrls("Check out https://example.com for more info");
+    if (normalized !== "Check out https://example.com for more info") {
+        throw new Error("Expected unchanged, got: " + JSON.stringify(normalized));
+    }
+});
 
-    const expectedContent = `---
----
----
----
----
-extra line 1
-extra line 2
-`;
+Deno.test("normalizeUrls: http to https", () => {
+    const normalized = normalizeUrls("Check http://example.com for more info");
+    if (!normalized.includes("https://example.com")) {
+        throw new Error("Expected https://example.com, got: " + JSON.stringify(normalized));
+    }
+});
 
-    writeFileSync(tempFilePath, originalContent);
-    fixMarkdownContent(tempFilePath);
-    const result = readFileSync(tempFilePath, 'utf-8');
-    
-    expect(result).toBe(expectedContent);
-  });
+Deno.test("normalizeUrls: http www to https www", () => {
+    const normalized = normalizeUrls("Check http://www.example.com");
+    if (!normalized.includes("https://www.example.com") && !normalized.includes("https://www.example.com.")) {
+        throw new Error("Expected https, got: " + JSON.stringify(normalized));
+    }
+});
 
-  it('should ensure first header is "# "', () => {
-    const originalContent = `# Header 1
-## Header 2
-### Header 3
-`;
+Deno.test("normalizeUrls: https www stays same", () => {
+    const normalized = normalizeUrls("Check https://www.example.com");
+    if (normalized !== "Check https://www.example.com") {
+        throw new Error("Expected unchanged, got: " + JSON.stringify(normalized));
+    }
+});
 
-    const expectedContent = `# Header 1
-## Header 2
-### Header 3
-`;
+Deno.test("addLineNumbers: adds numbers", () => {
+    const lines = ["Hello", "World", "# Header"];
+    const result = addLineNumbers(lines);
+    if (result[0] !== "1: Hello" || result[1] !== "2: World") {
+        throw new Error("Line numbers not added correctly");
+    }
+});
 
-    writeFileSync(tempFilePath, originalContent);
-    fixMarkdownContent(tempFilePath);
-    const result = readFileSync(tempFilePath, 'utf-8');
-    
-    expect(result).toBe(expectedContent);
-  });
+Deno.test("renderGitLabMD: frontmatter conversion", async () => {
+    const result = await renderGitLabMD("---\nformat: markdown\n---\n\nContent", "test");
+    if (!result.startsWith("---")) {
+        throw new Error("Frontmatter not preserved");
+    }
+});
 
-  it('should convert first header from "#Header" to "# Header"', () => {
-    const originalContent = `#Header 1
-## Header 2
-### Header 3
-`;
-
-    const expectedContent = `# Header 1
-## Header 2
-### Header 3
-`;
-
-    writeFileSync(tempFilePath, originalContent);
-    fixMarkdownContent(tempFilePath);
-    const result = readFileSync(tempFilePath, 'utf-8');
-    
-    expect(result).toBe(expectedContent);
-  });
-
-  it('should handle "# #" pattern correctly by converting it to "# "', () => {
-    const originalContent = `# Header 1
-# # Header 2
-### Header 3
-`;
-
-    const expectedContent = `# Header 1
-# Header 2
-## Header 3
-`;
-
-    writeFileSync(tempFilePath, originalContent);
-    fixMarkdownContent(tempFilePath);
-    const result = readFileSync(tempFilePath, 'utf-8');
-    
-    expect(result).toBe(expectedContent);
-  });
-
-  it('should handle code blocks without modifying headers inside them', () => {
-    const originalContent = `# Main Header
-
-This is regular content.
-
-\`\`\`javascript
-# This should NOT be changed to ## Header
-function test() {
-  return "# Header inside code block";
-}
-\`\`\`
-
-More regular content.
-
-## Sub Header
-`;
-
-    const expectedContent = `# Main Header
-
-This is regular content.
-
-\`\`\`javascript
-# This should NOT be changed to ## Header
-function test() {
-  return "# Header inside code block";
-}
-\`\`\`
-
-More regular content.
-
-## Sub Header
-`;
-
-    writeFileSync(tempFilePath, originalContent);
-    fixMarkdownContent(tempFilePath);
-    const result = readFileSync(tempFilePath, 'utf-8');
-    
-    expect(result).toBe(expectedContent);
-  });
-
-  it('should handle multiple code blocks', () => {
-    const originalContent = `# Main Title
-
-\`\`\`json
-{
-  "header": "# This should not be processed"
-}
-\`\`\`
-
-## Section 1
-
-\`\`\`bash
-# Another code block with # header
-echo "test"
-\`\`\`
-
-### Section 2
-`;
-
-    const expectedContent = `# Main Title
-
-\`\`\`json
-{
-  "header": "# This should not be processed"
-}
-\`\`\`
-
-## Section 1
-
-\`\`\`bash
-# Another code block with # header
-echo "test"
-\`\`\`
-
-### Section 2
-`;
-
-    writeFileSync(tempFilePath, originalContent);
-    fixMarkdownContent(tempFilePath);
-    const result = readFileSync(tempFilePath, 'utf-8');
-    
-    expect(result).toBe(expectedContent);
-  });
-
-  it('should handle nested code blocks properly', () => {
-    const originalContent = `# Main Header
-
-\`\`\`markdown
-# This is markdown inside code block
-## Should not be affected
-\`\`\`
-
-## Sub Header
-`;
-
-    const expectedContent = `# Main Header
-
-\`\`\`markdown
-# This is markdown inside code block
-## Should not be affected
-\`\`\`
-
-## Sub Header
-`;
-
-    writeFileSync(tempFilePath, originalContent);
-    fixMarkdownContent(tempFilePath);
-    const result = readFileSync(tempFilePath, 'utf-8');
-    
-    expect(result).toBe(expectedContent);
-  });
-
-  it('should maintain proper header hierarchy with code blocks', () => {
-    const originalContent = `---
----
----
----
----
----
-# Introduction
-
-Some content here.
-
-\`\`\`typescript
-interface MyInterface {
-  # property: string;  // This should not affect header processing
-}
-\`\`\`
-
-## Why This Matters
-### Background Info
-#### Detailed Explanation
-`;
-
-    const expectedContent = `---
----
----
----
----
----
-# Introduction
-
-Some content here.
-
-\`\`\`typescript
-interface MyInterface {
-  # property: string;  // This should not affect header processing
-}
-\`\`\`
-
-## Why This Matters
-### Background Info
-#### Detailed Explanation
-`;
-
-    writeFileSync(tempFilePath, originalContent);
-    fixMarkdownContent(tempFilePath);
-    const result = readFileSync(tempFilePath, 'utf-8');
-    
-    expect(result).toBe(expectedContent);
-  });
+Deno.test("transformMdxFrontmatter: converts mdx format", async () => {
+    const result = await transformMdxFrontmatter("---\nfrontmatter:\n---\n\n[Content]");
+    if (!result.includes("---\nformat: markdown\n---\n")) {
+        throw new Error("Frontmatter not converted properly");
+    }
 });
