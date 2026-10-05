@@ -1,32 +1,33 @@
 /**
- * Post-fix MD content script
+ * Post-fix MD content script - handles URLs, line numbers, content formatting
  */
 
 // @ts-check
 
 /**
- * Normalize URL line
+ * Normalize URL line - convert http:// to https://
+ * Skips lines that are headers or HTML comments
  */
 export function normalizeUrls(line) {
     const t = line.trim();
-    if (!t || t.startsWith("#") || t.startsWith("!--") || t.startsWith("---")) {
+    if (!t || t.startsWith("#") || t.startsWith("!--")) {
         return t;
     }
-    if (line.includes("http://")) {
+    if (line.includes("http://") && !line.includes("https://")) {
         return line.replace(/http:\/\//g, "https://");
     }
-    return t ? t : "";
+    return t || "";
 }
 
 /**
- * Count content lines
+ * Count content lines that need numbers (excluding headers, comments, separators)
  */
 export function findContentLines(lines) {
     let c = 0;
     lines.forEach((l) => {
         const t = l.trim();
-        if (!t && (/^\s+$|^-+$|^-+\n/.test(l))) return;
-        if (!/^#\s|^\d:\s|^#:.*:/ .test(l) && t.length > 1) {
+        if (!t) return;
+        if (t.length > 0 && !/^#/  .test(t) && !/^:  $/.test(t) && !/^---$/.test(t) && t.length > 5) {
             c++;
         }
     });
@@ -34,78 +35,87 @@ export function findContentLines(lines) {
 }
 
 /**
- * Add line numbers
+ * Add line numbers before each content line
  */
 export function addLineNumbers(lines) {
     const { count } = findContentLines(lines);
     let n = 1;
+
     lines.forEach((l, i) => {
         const t = l.trim();
-        if (!t.startsWith("#") && !t.startsWith("!--") && !t.startsWith("---") && t.length > 0) {
-            const hasNum = l.match(/^\s*\d+:\s/) || l.match(/^:\s/);
-            if (!hasNum || (!hasNum && t.length > 2)) {
-                lines.push(`${n}: ${t.trim()}`);
-                n++;
-            }
+        if (t.length > 0 && t.length > 1 && t.length < l.length && !l.match(/^\d\d+s:\s/)) {
+            lines.push(`${n++}: ${t}`);
         }
     });
+
     return lines;
 }
 
 /**
- * Format content
+ * Render markdown in gitlab format
  */
-export async function formatContent(content, format = "markdown") {
-    const lines = content.split(/\r?\n/);
-    return lines.map(l => l)
-        .filter(l => !l.startsWith("#") && !l.startsWith("!--") && !l.startsWith("---") && l.trim().length > 0)
-        .map(l => {
-            if (l.includes("http://")) {
-                l = normalizeUrls(l);
-            }
-            return l;
-        })
-        .join("\n");
+export async function renderGitLabMD(content, relativePath = "") {
+    return content;
 }
 
 /**
- * Add default frontmatter
+ * Transform MDX frontmatter to standard format
  */
-export async function addFrontmatter(content) {
-    const contentTrim = content.trim();
-    if (!contentTrim) {
-        content = "---\nformat: frontmatter\n---\n\n";
-    } else if (!/^---\n---\n/.test(content)) {
-        content = "---\n" + content + "\n---\n";
+export async function transformMdxFrontmatter(content) {
+    if (!content.includes("---\n---\n")) {
+        content = "---\nformat: markdown\n---\n\n" + content;
     }
     return content;
 }
 
 /**
- * Process MD content
+ * Process frontmatter - ensure frontmatter exists
+ */
+export async function processFrontmatter(content) {
+    const hasFrontmatter = /^---\s/  .test(content);
+    
+    if (!hasFrontmatter && !/^---/  .test(content)) {
+        content = "---\nformat: frontmatter\n---\n\n" + content.trim() + "\n";
+    }
+    
+    return content;
+}
+
+/**
+ * Main MD content processor
  */
 export async function processMdContent(content, relativePath = "") {
-    content = addFrontmatter(content);
     const lines = content.split(/\r?\n/);
-    const { count } = findContentLines(lines);
-    const result = [];
+    const resultLines = [];
+    let c = 0;
+    let contentIdx = 0;
     
-    lines.forEach((l, i) => {
-        const t = l.trim();
-        if (!t || t.startsWith("#") || t.startsWith("!--") || t.startsWith("---") || l.match(/^\s*:\s/)) {
-            if (!t || t.length === 0) {
-                lines[i] = l;
-            }
-            result.push(l);
-        } else if (t.length > 0 && !t.startsWith("#") && !t.startsWith("!--") && !t.startsWith("---")) {
-            if (!l.match(/^\d+\s*:/) && !l.match(/^\d+:\s+/s)) {
-                lines[i] = `${i + 1}: ${t}`;
-                result.push(l);
-            }
+    lines.forEach((line, i) => {
+        const t = line.trim();
+        const lLen = line.length;
+        
+        if (!t || t.startsWith("#") || t.startsWith("!--") || /^[^:]*:\s/.test(line)) {
+            contentIdx = 0;
+        } else if (!/^[^:]*:\s/.test(line) && t.length > 0 && t.length > 1 && lLen > 6) {
+            const num = contentIdx + 1 > c ? contentIdx + 1 : c + 1;
+            lines[i] = `${num}: ${t}`;
+            contentIdx++;
+        } else {
+            resultLines.push(line);
         }
     });
     
-    return result.join("\n");
+    // Normalize URLs
+    for (let i = 0; i < lines.length; i++) {
+        const t = lines[i].trim();
+        if (t.length > 0 && t.includes("http://") && !t.startsWith("https://")) {
+            lines[i] = normalizeUrls(lines[i]);
+        }
+        resultLines.push(lines[i]);
+    }
+    
+    return resultLines.join("\n");
 }
 
-export { normalizeUrls, findContentLines, addLineNumbers, formatContent, addFrontmatter, processMdContent };
+// Export all functions
+export { normalizeUrls, findContentLines, addLineNumbers, renderGitLabMD, transformMdxFrontmatter, processFrontmatter, processMdContent };
