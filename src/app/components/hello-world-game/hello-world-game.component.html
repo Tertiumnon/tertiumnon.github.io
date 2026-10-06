@@ -1,5 +1,14 @@
 
 <div class="hello-world">
+		<p class="game-instructions">Shoot “{{ phrase }}” with <kbd>Space</kbd> or <kbd>S</kbd>.</p>
+		<div class="game-hud">
+			<label class="player-name">Pilot
+				<input [value]="playerName" (input)="updatePlayerName($event)" maxlength="10" aria-label="Pilot name">
+			</label>
+			<span>SCORE <strong>{{ score }}</strong></span>
+			<span>BLOCKS <strong>{{ destroyedBlocks }}</strong></span>
+			<span>TIME <strong>{{ formatTime(elapsedSeconds) }}</strong></span>
+		</div>
 		<div class="bricks grid" *ngIf="cells.length"
 			 [style.position]="'relative'"
 			 [style.width.px]="getContainerCols() * (cellSize + gap)"
@@ -18,7 +27,7 @@
 								[style.margin-right.px]="gap"
 								[style.margin-bottom.px]="gap"
 								[style.background]="cell.isEnabled ? (cell.color || '#000') : 'transparent'">
-								</div>
+							</div>
 						</ng-container>
 					</ng-container>
 				</div>
@@ -32,6 +41,7 @@
 				[style.height.px]="getContainerRows() * (cellSize + gap)">
 				<div *ngFor="let b of getTankBricks()"
 					class="tank-brick"
+					[class.cannon]="b.isCannon"
 					[style.left.px]="b.containerCol * (cellSize + gap)"
 					[style.top.px]="b.containerRow * (cellSize + gap)"
 					[style.width.px]="cellSize"
@@ -52,16 +62,41 @@
 					[style.width.px]="cellSize"
 					[style.height.px]="cellSize"></div>
 			</div>
+
+			<div class="game-over-overlay" *ngIf="gameOver" role="status">
+				<section class="arcade-screen">
+					<p class="arcade-kicker">★ INSERT COIN ★</p>
+					<h2>GAME OVER</h2>
+					<p class="game-result" [class.victory]="gameWon">{{ gameWon ? 'ALL BLOCKS DESTROYED — YOU WIN!' : 'THE FORMATION REACHED YOUR TANK' }}</p>
+					<p class="final-score">SCORE <strong>{{ score }}</strong></p>
+					<p class="final-stats">BLOCKS {{ destroyedBlocks }} <span>•</span> TIME {{ formatTime(survivalSeconds) }}</p>
+					<p class="records-title">TOP PILOTS</p>
+					<table class="records-table">
+						<thead><tr><th>#</th><th>PILOT</th><th>SCORE</th><th>BLK</th><th>TIME</th></tr></thead>
+						<tbody>
+							<tr *ngFor="let record of records; let rank = index" [class.current-record]="record.name === playerName && record.score === score && record.blocks === destroyedBlocks">
+								<td>{{ rank + 1 }}</td>
+								<td>{{ record.name }}</td>
+								<td>{{ record.score }}</td>
+								<td>{{ record.blocks }}</td>
+								<td>{{ formatTime(record.timeSeconds) }}</td>
+							</tr>
+						</tbody>
+					</table>
+					<button type="button" (click)="restart()">PLAY AGAIN</button>
+				</section>
+			</div>
 		</div>
 
 		<!-- controls -->
 		<div class="tank-controls">
-			<button (click)="shoot()">S</button>
-			<button (click)="moveUp()">↑</button>
+			<button class="restart-button" (click)="restart()">Restart</button>
+			<button (click)="shoot()" aria-label="Shoot" [disabled]="gameOver">S</button>
+			<button (click)="moveUp()" [disabled]="gameOver">↑</button>
 			<div>
-				<button (click)="moveLeft()">←</button>
-				<button (click)="moveRight()">→</button>
+				<button (click)="moveLeft()" [disabled]="gameOver">←</button>
+				<button (click)="moveRight()" [disabled]="gameOver">→</button>
 			</div>
-			<button (click)="moveDown()">↓</button>
+			<button (click)="moveDown()" [disabled]="gameOver">↓</button>
 		</div>
 </div>
