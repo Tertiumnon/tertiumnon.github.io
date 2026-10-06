@@ -55,10 +55,9 @@
  */
 
 /***************************************************************************************************
- * Zone JS was previously required by Angular; this project is moving to a zoneless setup.
- * If you still need ZoneJS features, re-add the import: import 'zone.js';
+ * Angular v19+ drops zone.js support by default. This project is now zoneless.
+ * If you need zone.js for some reason, re-add the import: import 'zone.js';
  */
-import "zone.js"; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
