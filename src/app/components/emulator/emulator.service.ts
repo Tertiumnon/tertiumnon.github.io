@@ -1,4 +1,5 @@
-import { Injectable } from "@angular/core";
+import { Injectable, DestroyRef, inject } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { NavigationEnd, Router } from "@angular/router";
 import { BehaviorSubject, Observable } from "rxjs";
 
@@ -6,15 +7,21 @@ import { BehaviorSubject, Observable } from "rxjs";
 	providedIn: "root",
 })
 export class EmulatorService {
-	private _lines$ = new BehaviorSubject<string[]>([]);
-	public isVisible$ = new BehaviorSubject<boolean>(false);
-	public isCliEnabled$ = new BehaviorSubject<boolean>(true);
-	public command$ = new BehaviorSubject<string>("");
+	private readonly destroyRef = inject(DestroyRef);
+	private readonly _lines$ = new BehaviorSubject<string[]>([]);
+	public readonly isVisible$ = new BehaviorSubject<boolean>(false);
+	public readonly isCliEnabled$ = new BehaviorSubject<boolean>(true);
+	public readonly command$ = new BehaviorSubject<string>("");
+	private readonly router = inject(Router);
 
-	constructor(private router: Router) {
-		this.router.events.subscribe((event) => {
-			if (event instanceof NavigationEnd) this.clear();
-		});
+	constructor() {
+		this.router.events
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe((event) => {
+				if (event instanceof NavigationEnd) {
+					this.clear();
+				}
+			});
 
 		this._lines$.subscribe((lines) => {
 			this.isVisible$.next(lines.length > 0);

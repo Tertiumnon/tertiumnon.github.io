@@ -1,17 +1,34 @@
 import { Injectable, signal } from "@angular/core";
-import { Theme } from "./theme";
+import { Theme } from "./theme.constants";
+
+const THEME_STORAGE_KEY = "theme";
 
 @Injectable({
 	providedIn: "root",
 })
 export class ThemeService {
-	themes = Object.values(Theme);
-	theme = signal<string>(typeof localStorage !== "undefined" ? localStorage.getItem("theme") || Theme.Coder : Theme.Coder);
+	readonly themes = Object.values(Theme);
+	readonly theme = signal<string>(this.getStoredTheme() ?? Theme.Coder);
 
-	constructor() {}
+	private getStoredTheme(): string | null {
+		if (typeof localStorage === "undefined") {
+			return null;
+		}
+		try {
+			return localStorage.getItem(THEME_STORAGE_KEY);
+		} catch {
+			return null;
+		}
+	}
 
-	setTheme(theme: Theme) {
+	setTheme(theme: Theme): void {
 		this.theme.set(theme);
-		localStorage.setItem("theme", theme);
+		if (typeof localStorage !== "undefined") {
+			try {
+				localStorage.setItem(THEME_STORAGE_KEY, theme);
+			} catch {
+				// Storage access denied or unavailable
+			}
+		}
 	}
 }

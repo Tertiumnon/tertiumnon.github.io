@@ -1,13 +1,7 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { DropdownComponent } from "../dropdown/dropdown.component";
-
-export interface FilterConfig {
-	label: string;
-	value: string;
-	options: string[];
-	onChange: (value: string) => void;
-}
+import { FilterConfig } from "./control-panel.types";
 
 @Component({
 	selector: "app-control-panel",

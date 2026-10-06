@@ -8,10 +8,15 @@ import {
 	inject,
 	input,
 	signal,
+	DestroyRef,
 } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { interval } from "rxjs";
+import { interval, Subscription } from "rxjs";
 import { TimeService } from "../../components/time/time.service";
+
+const INTERVAL_MS = 1000;
+const MAX_DROPDOWN_ITEMS = 50;
 
 @Component({
 	selector: "app-what-time",
@@ -22,54 +27,65 @@ import { TimeService } from "../../components/time/time.service";
 	standalone: true,
 })
 export class WhatTimeComponent {
-	TimeService = TimeService;
-	cdr = inject(ChangeDetectorRef);
-	elementRef = inject(ElementRef);
+	private readonly destroyRef = inject(DestroyRef);
+	private readonly cdr = inject(ChangeDetectorRef);
+	private readonly elementRef = inject(ElementRef);
+
+	readonly TimeService = TimeService;
+
 	// now
-	date = signal(new Date());
-	isoDate = signal(new Date().toISOString());
-	timeZone = input();
+	readonly date = signal(new Date());
+	readonly isoDate = signal(new Date().toISOString());
+	readonly timeZone = input();
+
 	// init date time
-	initDateTime = signal(TimeService.createDt({ h: 11 }));
-	initDateCtrl = new FormControl(
+	readonly initDateTime = signal(TimeService.createDt({ h: 11 }));
+	readonly initDateCtrl = new FormControl(
 		TimeService.formatToIsoDate(this.initDateTime().getTime()),
 	);
-	initTimeCtrl = new FormControl(
+	readonly initTimeCtrl = new FormControl(
 		TimeService.formatToIsoTime(this.initDateTime().getTime()),
 	);
-	initTimeZoneCtrl = new FormControl(TimeService.timeZone());
-	initTimeZoneSearchCtrl = new FormControl("");
-	filteredInitTimeZones = signal<string[]>([]);
-	showInitTimeZoneDropdown = signal(false);
-	selectedInitIndex = signal(-1);
-	// converted date time
-	convertedDateTime = signal<Date | undefined>(undefined);
-	convertedDateCtrl = new FormControl();
-	convertedTimeCtrl = new FormControl();
-	convertedTimeZoneCtrl = new FormControl(this.initTimeZoneCtrl.value);
-	convertedTimeZoneSearchCtrl = new FormControl("");
-	filteredConvertedTimeZones = signal<string[]>([]);
-	showConvertedTimeZoneDropdown = signal(false);
-	selectedConvertedIndex = signal(-1);
-	// interval
-	interval$ = interval(1000);
-	intervalSub = this.interval$.subscribe(this.setTime.bind(this));
+	readonly initTimeZoneCtrl = new FormControl(TimeService.timeZone());
+	readonly initTimeZoneSearchCtrl = new FormControl("");
+	readonly filteredInitTimeZones = signal<string[]>([]);
+	readonly showInitTimeZoneDropdown = signal(false);
+	readonly selectedInitIndex = signal(-1);
 
-	ngOnInit() {
-		this.initDateCtrl.valueChanges.subscribe(this.onInitDateChange.bind(this));
-		this.initTimeCtrl.valueChanges.subscribe(this.onInitTimeChange.bind(this));
-		this.initTimeZoneCtrl.valueChanges.subscribe(
-			this.onInitTimeZoneChange.bind(this),
-		);
-		this.convertedTimeZoneCtrl.valueChanges.subscribe(
-			this.onConvertedTimeZoneChange.bind(this),
-		);
-		this.initTimeZoneSearchCtrl.valueChanges.subscribe(
-			this.onInitTimeZoneSearch.bind(this),
-		);
-		this.convertedTimeZoneSearchCtrl.valueChanges.subscribe(
-			this.onConvertedTimeZoneSearch.bind(this),
-		);
+	// converted date time
+	readonly convertedDateTime = signal<Date | undefined>(undefined);
+	readonly convertedDateCtrl = new FormControl();
+	readonly convertedTimeCtrl = new FormControl();
+	readonly convertedTimeZoneCtrl = new FormControl(this.initTimeZoneCtrl.value);
+	readonly convertedTimeZoneSearchCtrl = new FormControl("");
+	readonly filteredConvertedTimeZones = signal<string[]>([]);
+	readonly showConvertedTimeZoneDropdown = signal(false);
+	readonly selectedConvertedIndex = signal(-1);
+
+	private intervalSub: Subscription | null = null;
+
+	ngOnInit(): void {
+		this.intervalSub = interval(INTERVAL_MS).subscribe(() => this.setTime());
+
+		this.initDateCtrl.valueChanges
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe(this.onInitDateChange.bind(this));
+		this.initTimeCtrl.valueChanges
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe(this.onInitTimeChange.bind(this));
+		this.initTimeZoneCtrl.valueChanges
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe(this.onInitTimeZoneChange.bind(this));
+		this.convertedTimeZoneCtrl.valueChanges
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe(this.onConvertedTimeZoneChange.bind(this));
+		this.initTimeZoneSearchCtrl.valueChanges
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe(this.onInitTimeZoneSearch.bind(this));
+		this.convertedTimeZoneSearchCtrl.valueChanges
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe(this.onConvertedTimeZoneSearch.bind(this));
+
 		// Initialize with current timezone value
 		this.initTimeZoneSearchCtrl.setValue(
 			this.getTimezoneLabel(this.initTimeZoneCtrl.value || ""),
@@ -79,16 +95,19 @@ export class WhatTimeComponent {
 		);
 	}
 
-	ngOnDestroy() {
-		this.intervalSub.unsubscribe();
+	ngOnDestroy(): void {
+		if (this.intervalSub) {
+			this.intervalSub.unsubscribe();
+			this.intervalSub = null;
+		}
 	}
 
-	setTime() {
+	setTime(): void {
 		this.date.set(new Date());
 		this.isoDate.set(new Date().toISOString());
 	}
 
-	onInitDateChange(date: string | null) {
+	onInitDateChange(date: string | null): void {
 		if (!date) return;
 		const dt = this.initDateTime();
 		dt.setFullYear(Number(date.slice(0, 4)));
@@ -98,7 +117,7 @@ export class WhatTimeComponent {
 		if (this.convertedDateTime()) this.updateConvertedDateTime();
 	}
 
-	onInitTimeChange(time: string | null) {
+	onInitTimeChange(time: string | null): void {
 		if (!time) return;
 		const dt = this.initDateTime();
 		dt.setHours(Number(time.slice(0, 2)));
@@ -107,7 +126,7 @@ export class WhatTimeComponent {
 		if (this.convertedDateTime()) this.updateConvertedDateTime();
 	}
 
-	onInitTimeZoneChange(tz: string | null) {
+	onInitTimeZoneChange(tz: string | null): void {
 		if (!tz) return;
 		this.initDateTime.set(TimeService.convertTimeZone(this.initDateTime(), tz));
 		const time = this.initDateTime().getTime();
@@ -116,7 +135,7 @@ export class WhatTimeComponent {
 		if (this.convertedDateTime()) this.updateConvertedDateTime();
 	}
 
-	updateConvertedDateTime() {
+	updateConvertedDateTime(): void {
 		const tz = this.convertedTimeZoneCtrl.value;
 		if (!tz) return;
 		this.convertedDateTime.set(
@@ -128,7 +147,7 @@ export class WhatTimeComponent {
 		this.convertedTimeCtrl.setValue(TimeService.formatToIsoTime(time));
 	}
 
-	onConvertedTimeZoneChange() {
+	onConvertedTimeZoneChange(): void {
 		this.updateConvertedDateTime();
 	}
 
@@ -138,11 +157,10 @@ export class WhatTimeComponent {
 		return `${tz} (${offset})`;
 	}
 
-	onInitTimeZoneSearch(searchTerm: string | null) {
-		this.selectedInitIndex.set(-1); // Reset selection when search changes
+	onInitTimeZoneSearch(searchTerm: string | null): void {
+		this.selectedInitIndex.set(-1);
 		if (!searchTerm) {
-			// Show all timezones when search is empty
-			this.filteredInitTimeZones.set(TimeService.timeZones().slice(0, 50));
+			this.filteredInitTimeZones.set(TimeService.timeZones().slice(0, MAX_DROPDOWN_ITEMS));
 			this.cdr.markForCheck();
 			return;
 		}
@@ -151,15 +169,14 @@ export class WhatTimeComponent {
 			const label = this.getTimezoneLabel(tz).toLowerCase();
 			return label.includes(term);
 		});
-		this.filteredInitTimeZones.set(filtered.slice(0, 50)); // Limit to 50 results
+		this.filteredInitTimeZones.set(filtered.slice(0, MAX_DROPDOWN_ITEMS));
 		this.cdr.markForCheck();
 	}
 
-	onConvertedTimeZoneSearch(searchTerm: string | null) {
-		this.selectedConvertedIndex.set(-1); // Reset selection when search changes
+	onConvertedTimeZoneSearch(searchTerm: string | null): void {
+		this.selectedConvertedIndex.set(-1);
 		if (!searchTerm) {
-			// Show all timezones when search is empty
-			this.filteredConvertedTimeZones.set(TimeService.timeZones().slice(0, 50));
+			this.filteredConvertedTimeZones.set(TimeService.timeZones().slice(0, MAX_DROPDOWN_ITEMS));
 			this.cdr.markForCheck();
 			return;
 		}
@@ -168,11 +185,11 @@ export class WhatTimeComponent {
 			const label = this.getTimezoneLabel(tz).toLowerCase();
 			return label.includes(term);
 		});
-		this.filteredConvertedTimeZones.set(filtered.slice(0, 50)); // Limit to 50 results
+		this.filteredConvertedTimeZones.set(filtered.slice(0, MAX_DROPDOWN_ITEMS));
 		this.cdr.markForCheck();
 	}
 
-	selectInitTimeZone(tz: string) {
+	selectInitTimeZone(tz: string): void {
 		this.initTimeZoneCtrl.setValue(tz);
 		this.initTimeZoneSearchCtrl.setValue(this.getTimezoneLabel(tz), {
 			emitEvent: false,
@@ -180,7 +197,7 @@ export class WhatTimeComponent {
 		this.showInitTimeZoneDropdown.set(false);
 	}
 
-	selectConvertedTimeZone(tz: string) {
+	selectConvertedTimeZone(tz: string): void {
 		this.convertedTimeZoneCtrl.setValue(tz);
 		this.convertedTimeZoneSearchCtrl.setValue(this.getTimezoneLabel(tz), {
 			emitEvent: false,
@@ -188,25 +205,23 @@ export class WhatTimeComponent {
 		this.showConvertedTimeZoneDropdown.set(false);
 	}
 
-	onInitTimeZoneFocus() {
+	onInitTimeZoneFocus(): void {
 		this.showInitTimeZoneDropdown.set(true);
 		this.selectedInitIndex.set(-1);
 		this.initTimeZoneSearchCtrl.setValue("");
-		// Show all timezones initially (up to limit)
-		this.filteredInitTimeZones.set(TimeService.timeZones().slice(0, 50));
+		this.filteredInitTimeZones.set(TimeService.timeZones().slice(0, MAX_DROPDOWN_ITEMS));
 		this.cdr.markForCheck();
 	}
 
-	onConvertedTimeZoneFocus() {
+	onConvertedTimeZoneFocus(): void {
 		this.showConvertedTimeZoneDropdown.set(true);
 		this.selectedConvertedIndex.set(-1);
 		this.convertedTimeZoneSearchCtrl.setValue("");
-		// Show all timezones initially (up to limit)
-		this.filteredConvertedTimeZones.set(TimeService.timeZones().slice(0, 50));
+		this.filteredConvertedTimeZones.set(TimeService.timeZones().slice(0, MAX_DROPDOWN_ITEMS));
 		this.cdr.markForCheck();
 	}
 
-	onInitTimeZoneKeydown(event: KeyboardEvent) {
+	onInitTimeZoneKeydown(event: KeyboardEvent): void {
 		if (!this.showInitTimeZoneDropdown()) return;
 
 		const filtered = this.filteredInitTimeZones();
@@ -241,7 +256,7 @@ export class WhatTimeComponent {
 		}
 	}
 
-	onConvertedTimeZoneKeydown(event: KeyboardEvent) {
+	onConvertedTimeZoneKeydown(event: KeyboardEvent): void {
 		if (!this.showConvertedTimeZoneDropdown()) return;
 
 		const filtered = this.filteredConvertedTimeZones();
@@ -277,7 +292,7 @@ export class WhatTimeComponent {
 	}
 
 	@HostListener("document:click", ["$event"])
-	onDocumentClick(event: MouseEvent) {
+	onDocumentClick(event: MouseEvent): void {
 		const target = event.target as HTMLElement;
 
 		// Check if click is inside any timezone search container
@@ -306,7 +321,7 @@ export class WhatTimeComponent {
 		}
 	}
 
-	scrollToSelectedItem(type: "init" | "converted") {
+	scrollToSelectedItem(type: "init" | "converted"): void {
 		// Scroll the selected item into view
 		setTimeout(() => {
 			const dropdown = this.elementRef.nativeElement.querySelector(
@@ -323,7 +338,7 @@ export class WhatTimeComponent {
 		}, 0);
 	}
 
-	setToNow() {
+	setToNow(): void {
 		const now = new Date();
 		this.initDateTime.set(now);
 		this.initDateCtrl.setValue(TimeService.formatToIsoDate(now.getTime()));

@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from "@angular/core";
+import { Component, HostListener, Input, inject } from "@angular/core";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { marked, Renderer } from "marked";
 import hljs from "highlight.js/lib/core";
@@ -24,6 +24,8 @@ function escapeHtml(str: string): string {
 	standalone: true,
 })
 export class MdContentComponent {
+	private readonly sanitizer = inject(DomSanitizer);
+
 	@Input() data = "";
 	@Input() category = "";
 	@Input() postName = "";
@@ -32,9 +34,9 @@ export class MdContentComponent {
 	@Input() lang = "en";
 	@Input() showBreadcrumb = false;
 	htmlData: SafeHtml = "";
-	private renderer = new Renderer();
+	private readonly renderer = new Renderer();
 
-	constructor(private sanitizer: DomSanitizer) {
+	constructor() {
 		this.renderer.code = (code: string, infostring?: string): string => {
 			const language = (infostring || "").trim().split(/\s+/)[0];
 			let highlighted: string;
@@ -56,7 +58,7 @@ export class MdContentComponent {
 	// and redirect away to the home page via the wildcard route. Handle
 	// same-page anchors manually instead of letting them hit the Router.
 	@HostListener("click", ["$event"])
-	onContentClick(event: MouseEvent) {
+	onContentClick(event: MouseEvent): void {
 		const anchor = (event.target as HTMLElement)?.closest?.("a");
 		const href = anchor?.getAttribute("href");
 		if (!href || !href.startsWith("#") || href.length < 2) return;
@@ -75,17 +77,23 @@ export class MdContentComponent {
 		return md.slice(end + 4).replace(/^\s+/, "");
 	}
 
-	ngOnChanges() {
+	ngOnChanges(): void {
 		if (this.data) {
 			const markdown = this.stripFrontmatter(this.data);
 
-			let raw = marked.parse(markdown, {
-				gfm: true,
-				breaks: true,
-				mangle: false,
-				headerIds: true,
-				renderer: this.renderer,
-			});
+			let raw: string;
+			try {
+				raw = marked.parse(markdown, {
+					gfm: true,
+					breaks: true,
+					mangle: false,
+					headerIds: true,
+					renderer: this.renderer,
+				}) as string;
+			} catch (error) {
+				console.error("Failed to parse markdown:", error);
+				raw = "<p>Failed to render content.</p>";
+			}
 
 			// Fix image paths post-processing
 			if (this.category && this.postDirname) {

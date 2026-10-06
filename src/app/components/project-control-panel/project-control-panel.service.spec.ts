@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { ProjectControlPanelService } from "./project-control-panel.service";
-import { IProject, ProjectStatus } from "../../entities/project/project.interface";
+import { IProject } from "../../entities/project/project.types";
+import { ProjectStatus } from "../../entities/project/project.constants";
 
 const makeProject = (overrides: Partial<IProject> = {}): IProject => ({
 	name: "project",

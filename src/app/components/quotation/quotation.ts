@@ -1,5 +1,1 @@
-export interface IQuotation {
-	text: string;
-	author: string;
-	source: string;
-}
+export { IQuotation } from "./quotation.types";

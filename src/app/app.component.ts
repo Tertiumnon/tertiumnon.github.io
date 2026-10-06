@@ -1,5 +1,6 @@
-import { CommonModule } from "@angular/common";
-import { Component, inject } from "@angular/core";
+import { AsyncPipe, CommonModule } from "@angular/common";
+import { Component, DestroyRef, inject, OnInit } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { NavigationEnd, Router, RouterOutlet } from "@angular/router";
 import { BehaviorSubject } from "rxjs";
 import { EmulatorComponent } from "./components/emulator/emulator.component";
@@ -20,17 +21,20 @@ import { ThemeService } from "./components/theme/theme.service";
 		RouterOutlet,
 	],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 	title = "Tertiumnon";
-	isHomePage$ = new BehaviorSubject(true);
-	router$ = inject(Router);
+	private destroyRef = inject(DestroyRef);
+	private readonly router = inject(Router);
 	themeService = inject(ThemeService);
+	isHomePage$ = new BehaviorSubject(true);
 
-	ngOnInit() {
-		this.router$.events.subscribe((event) => {
-			if (event instanceof NavigationEnd) {
-				this.isHomePage$.next(["/", "/index"].includes(event.url));
-			}
-		});
+	ngOnInit(): void {
+		this.router.events
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe((event) => {
+				if (event instanceof NavigationEnd) {
+					this.isHomePage$.next(["/", "/index"].includes(event.url));
+				}
+			});
 	}
 }

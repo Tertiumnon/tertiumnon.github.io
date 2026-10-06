@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 
 import { CommonModule } from "@angular/common";
-import { ProjectControlPanelComponent } from "src/app/components/project-control-panel/project-control-panel.component";
-import { ProjectListComponent } from "src/app/components/project-list/project-list.component";
-import { IProject } from "../../entities/project/project.interface";
+import { ProjectControlPanelComponent } from "../../components/project-control-panel/project-control-panel.component";
+import { ProjectListComponent } from "../../components/project-list/project-list.component";
+import { IProject } from "../../entities/project/project.types";
 import { SoftwareService } from "./software.service";
 
 @Component({

@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, DestroyRef, inject, ViewEncapsulation } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FormsModule } from "@angular/forms";
 import { EmulatorService } from "./emulator.service";
 
@@ -11,18 +12,21 @@ import { EmulatorService } from "./emulator.service";
 	standalone: true,
 	imports: [CommonModule, FormsModule],
 })
-export class EmulatorComponent implements OnInit {
-	lines$ = this.emulatorService.lines;
-	isVisible$ = this.emulatorService.isVisible$;
-	isCliEnabled$ = this.emulatorService.isCliEnabled$;
+export class EmulatorComponent {
+	private readonly emulatorService = inject(EmulatorService);
+	private readonly destroyRef = inject(DestroyRef);
+
+	readonly lines$ = this.emulatorService.lines;
+	readonly isVisible$ = this.emulatorService.isVisible$;
+	readonly isCliEnabled$ = this.emulatorService.isCliEnabled$;
 	command = "";
 
-	constructor(private emulatorService: EmulatorService) {}
-
 	ngOnInit(): void {
-		this.emulatorService.command$.subscribe((command) => {
-			this.command = command;
-		});
+		this.emulatorService.command$
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe((command) => {
+				this.command = command;
+			});
 	}
 
 	onEnter(): void {

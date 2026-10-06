@@ -1,8 +1,13 @@
 import { CommonModule } from "@angular/common";
 import { Component, computed, inject } from "@angular/core";
 import { RouterLink, RouterLinkActive, ActivatedRoute } from "@angular/router";
-import { APP_ROUTES } from "../../app.routing";
+import { APP_ROUTES } from "../../app.routes.constants";
 import { ALLOWED_ROUTES } from "./nav.constant";
+
+interface NavRoute {
+	path: string;
+	title?: string;
+}
 
 @Component({
 	selector: "app-nav",
@@ -21,10 +26,10 @@ export class NavComponent {
 			path: r.path === ":lang/posts" ? `${lang}/posts` :
 			      r.path === ":lang/news" ? `${lang}/news` :
 			      r.path,
-		}));
+		})) as NavRoute[];
 	});
 
-	getRouterLink(route: any) {
+	getRouterLink(route: NavRoute): string[] {
 		return [route.path];
 	}
 }

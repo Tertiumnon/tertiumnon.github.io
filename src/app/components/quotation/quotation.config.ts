@@ -1,9 +1,4 @@
-import { IQuotation } from "./quotation";
+import { IQuotation } from "./quotation.types";
+import { QUOTATIONS } from "./quotation.constants";
 
-export const QUOTATIONS: IQuotation[] = [
-	{
-		text: "In the world of kung fu, speed determines the winner",
-		author: "The Beast",
-		source: "Kung Fu Hustle (movie)",
-	},
-];
+export { QUOTATIONS };

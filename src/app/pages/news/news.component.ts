@@ -1,13 +1,16 @@
-import { Component, inject, signal, computed } from "@angular/core";
+import { Component, DestroyRef, inject, signal, computed } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { News } from "../../entities/news/news.d";
+import { News } from "../../entities/news/news.types";
 import { NewsService } from "../../entities/news/news.service";
 import { PageLoaderComponent } from "../../components/page-loader/page-loader.component";
 import { MdContentComponent } from "../../components/md-content/md-content.component";
 
 interface NewsWithContent extends News {
 	content?: string;
+	dirname: string;
+	filename: string;
 }
 
 @Component({
@@ -18,8 +21,10 @@ interface NewsWithContent extends News {
 	styleUrl: "./news.component.css",
 })
 export class NewsComponent {
-	activatedRoute = inject(ActivatedRoute);
-	NewsService = inject(NewsService);
+	private readonly destroyRef = inject(DestroyRef);
+	private readonly activatedRoute = inject(ActivatedRoute);
+	private readonly newsService = inject(NewsService);
+
 	allNews = signal<NewsWithContent[]>([]);
 	isLoading = signal(true);
 	currentLang = signal("en");
@@ -32,58 +37,81 @@ export class NewsComponent {
 	});
 
 	private stripFirstHeading(content: string): string {
-		// Remove YAML front matter (--- ... ---)
 		let cleaned = content.replace(/^---[\s\S]*?---\s*/, "");
-		// Remove first H1 heading
 		cleaned = cleaned.replace(/^#\s+.*?\n/, "").trim();
 		return cleaned;
 	}
 
-	ngOnInit() {
-		this.activatedRoute.params.subscribe((params) => {
-			const lang = params["lang"] ?? "en";
-			this.currentLang.set(lang);
-			this.isLoading.set(true);
-			this.NewsService.getAll().subscribe((response) => {
-				const filtered = response.filter((a: News) => a.language === lang && !a.isHidden);
-				const sorted = filtered.sort(
-					(a: News, b: News) =>
-						new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-				);
+	ngOnInit(): void {
+		this.activatedRoute.params
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe((params) => {
+				const lang = params["lang"] ?? "en";
+				this.currentLang.set(lang);
+				this.isLoading.set(true);
 
-				const newsWithContent = sorted.map((newsItem) => ({
-					...newsItem,
-					content: "",
-				}));
+				this.newsService.getAll().subscribe({
+					next: (response) => {
+						const filtered = response.filter(
+							(a: News) => a.language === lang && !a.isHidden
+						);
+						const sorted = filtered.sort(
+							(a: News, b: News) =>
+								new Date(b.publishedAt).getTime() -
+								new Date(a.publishedAt).getTime()
+						);
 
-				this.allNews.set(newsWithContent);
-				this.loadNewsContent(newsWithContent, lang);
+						const newsWithContent = sorted.map((newsItem) => ({
+							...newsItem,
+							content: "",
+						}));
+
+						this.allNews.set(newsWithContent);
+						this.loadNewsContent(newsWithContent, lang);
+					},
+					error: (error: unknown) => {
+						console.error("Failed to load news:", error);
+						this.isLoading.set(false);
+					},
+				});
 			});
-		});
 	}
 
-	private loadNewsContent(newsItems: NewsWithContent[], lang: string): void {
+	private loadNewsContent(
+		newsItems: NewsWithContent[],
+		lang: string
+	): void {
 		let loadedCount = 0;
 		const contentMap = new Map<string, string>();
 
-		newsItems.forEach((newsItem, index) => {
-			this.NewsService.get({
-				lang,
-				name: newsItem.dirname,
-				filename: newsItem.filename,
-			}).subscribe((content: string) => {
-				contentMap.set(newsItem.dirname, content);
-				loadedCount++;
+		newsItems.forEach((newsItem) => {
+			this.newsService
+				.get({
+					lang,
+					name: newsItem.dirname,
+					filename: newsItem.filename,
+				})
+				.subscribe({
+					next: (content: string) => {
+						contentMap.set(newsItem.dirname, content);
+						loadedCount++;
 
-				if (loadedCount === newsItems.length) {
-					const updatedNews = newsItems.map((item) => ({
-						...item,
-						content: contentMap.get(item.dirname) || "",
-					}));
-					this.allNews.set(updatedNews);
-					this.isLoading.set(false);
-				}
-			});
+						if (loadedCount === newsItems.length) {
+							const updatedNews = newsItems.map((item) => ({
+								...item,
+								content: contentMap.get(item.dirname) || "",
+							}));
+							this.allNews.set(updatedNews);
+							this.isLoading.set(false);
+						}
+					},
+					error: (error: unknown) => {
+						console.error(
+							`Failed to load content for ${newsItem.dirname}:`,
+							error
+						);
+					},
+				});
 		});
 	}
 }

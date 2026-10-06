@@ -227,7 +227,7 @@ src/
 - Сборка: `bun run build`
 - Тесты: `bun test`
 - Линтинг: `bun run lint:fix`
-- Type check: `bun run lint:ts:check`
+- Type check: `bun run typecheck`
 - Deploy: `bun run deploy`
 
 Все скрипты находятся в `package.json`.
@@ -1063,7 +1063,7 @@ project/
 ```yaml
 # Пример GitHub Actions
 - name: Type check
-  run: bun run lint:ts:check
+  run: bun run typecheck
 
 - name: Lint
   run: bun run lint:fix

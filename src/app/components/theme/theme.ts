@@ -1,4 +1,1 @@
-export enum Theme {
-	Coder = "CoderTheme",
-	HoneyPie = "HoneyPieTheme",
-}
+export { Theme } from "./theme.constants";

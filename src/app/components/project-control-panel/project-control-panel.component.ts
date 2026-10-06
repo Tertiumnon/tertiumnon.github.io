@@ -1,9 +1,12 @@
-import { Component, Input, OnInit } from "@angular/core";
-
-import { CommonModule } from "@angular/common";
-import { ProjectStatus } from "../../entities/project/project.interface";
+import { CommonModule, DOCUMENT } from "@angular/common";
+import { Component, DestroyRef, inject, OnInit } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { ProjectStatus } from "../../entities/project/project.constants";
 import { SoftwareService } from "../../pages/software/software.service";
 import { DropdownComponent } from "../dropdown/dropdown.component";
+
+const STATUS_KEY = "status";
+const RELEASE_KEY = "release";
 
 @Component({
 	selector: "app-project-control-panel",
@@ -13,29 +16,19 @@ import { DropdownComponent } from "../dropdown/dropdown.component";
 	imports: [CommonModule, DropdownComponent],
 })
 export class ProjectControlPanelComponent implements OnInit {
-	@Input() isStatusFilterVisible = true;
-	// status
-	status = ProjectStatus.Active.toString();
-	statusOptions = Object.values(ProjectStatus);
-	//
-	release = "Year (newer)";
-	releaseOptions = ["Year (newer)", "Year (older)"];
-	releaseMap = {
+	private readonly destroyRef = inject(DestroyRef);
+	private readonly document = inject(DOCUMENT);
+	private readonly projectService = inject(SoftwareService);
+
+	readonly isStatusFilterVisible = true;
+	readonly status = ProjectStatus.Active.toString();
+	readonly statusOptions = Object.values(ProjectStatus);
+	readonly release = "Year (newer)";
+	readonly releaseOptions = ["Year (newer)", "Year (older)"];
+	readonly releaseMap: Record<string, string> = {
 		[this.releaseOptions[0]]: "year",
 		[this.releaseOptions[1]]: "-year",
 	};
-
-	constructor(private projectService: SoftwareService) {}
-
-	static getTextWidth(txt: string): number {
-		const span = document.createElement("span");
-		span.setAttribute("style", "display: hidden;");
-		span.innerHTML = txt;
-		document.body.appendChild(span);
-		const res = span.offsetWidth + 1;
-		span.remove();
-		return res;
-	}
 
 	onStatusChange(status: string): void {
 		this.projectService.setState({ filterByStatus: status as ProjectStatus });
@@ -45,7 +38,7 @@ export class ProjectControlPanelComponent implements OnInit {
 		this.projectService.setState({ sortByAttrVal: this.releaseMap[release] });
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.onReleaseChange(this.release);
 		this.onStatusChange(this.status);
 	}
