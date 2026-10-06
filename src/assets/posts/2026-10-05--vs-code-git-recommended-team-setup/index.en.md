@@ -22,7 +22,7 @@ Instead, commit only files that provide value to the entire team.
 
 
 
-# Recommended `.gitignore`
+## Recommended `.gitignore`
 
 ```gitignore
 # VS Code
@@ -51,9 +51,9 @@ This approach:
 
 
 
-# What should NOT be committed
+## What should NOT be committed
 
-## Machine-specific debugging
+### Machine-specific debugging
 
 Example:
 
@@ -72,7 +72,7 @@ Hardcoded paths break on other machines.
 
 
 
-## Personal editor preferences
+### Personal editor preferences
 
 Example:
 
@@ -87,7 +87,7 @@ These are personal choices and should stay local.
 
 
 
-## Local environment references
+### Local environment references
 
 Example:
 
@@ -101,9 +101,9 @@ This will not work for other developers.
 
 
 
-# What SHOULD be committed
+## What SHOULD be committed
 
-## extensions.json
+### extensions.json
 
 Provides extension recommendations when a developer opens the project.
 
@@ -124,7 +124,7 @@ Provides extension recommendations when a developer opens the project.
 
 
 
-## Team settings
+### Team settings
 
 `.vscode/settings.json`
 
@@ -161,13 +161,13 @@ Benefits:
 
 
 
-# Shared Tasks
+## Shared Tasks
 
 Tasks are an excellent candidate for source control because everyone uses the same commands.
 
 `.vscode/tasks.json`
 
-## Angular
+### Angular
 
 ```json
 {
@@ -197,7 +197,7 @@ Tasks are an excellent candidate for source control because everyone uses the sa
 
 
 
-## Node.js API
+### Node.js API
 
 ```json
 {
@@ -226,7 +226,7 @@ Tasks are an excellent candidate for source control because everyone uses the sa
 
 
 
-## Bun Project
+### Bun Project
 
 ```json
 {
@@ -255,9 +255,9 @@ Tasks are an excellent candidate for source control because everyone uses the sa
 
 
 
-# Recommended Extensions for Modern TypeScript Teams
+## Recommended Extensions for Modern TypeScript Teams
 
-## Required
+### Required
 
 ```json
 [
@@ -275,7 +275,7 @@ Purpose:
 
 
 
-## Highly Recommended
+### Highly Recommended
 
 ```json
 [
@@ -295,7 +295,7 @@ Purpose:
 
 
 
-## Angular Teams
+### Angular Teams
 
 ```json
 [
@@ -305,7 +305,7 @@ Purpose:
 
 
 
-## Node.js Teams
+### Node.js Teams
 
 ```json
 [
@@ -315,7 +315,7 @@ Purpose:
 
 
 
-## Docker Teams
+### Docker Teams
 
 ```json
 [
@@ -325,7 +325,7 @@ Purpose:
 
 
 
-# Typical Team Structure
+## Typical Team Structure
 
 ```text
 project/
@@ -341,7 +341,7 @@ project/
 
 
 
-# Recommended Final Configuration
+## Recommended Final Configuration
 
 `.gitignore`
 
