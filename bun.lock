@@ -13,7 +13,7 @@
         "@angular/platform-browser": "^22.2.0",
         "@angular/router": "^22.2.0",
         "@tertium/css": "^1.4.1",
-        "@tertium/js": "^3.1.1",
+        "@tertium/js": "^3.2.0",
         "highlight.js": "^11.11.1",
         "jsdom": "^29.1.1",
         "marked": "^5.1.2",
@@ -479,7 +479,7 @@
 
     "@tertium/css": ["@tertium/css@1.4.1", "", {}, ""],
 
-    "@tertium/js": ["@tertium/js@3.1.1", "", { "peerDependencies": { "jose": "^6.0.0" } }, ""],
+    "@tertium/js": ["@tertium/js@3.2.0", "", { "peerDependencies": { "jose": "^6.0.0" }, "optionalPeers": ["jose"] }, "sha512-ukPRhQU1Hvj+wkAz9Gdc0G9tJUMOU5EXIx6x5cf/oz9HHL5ySKqdJvxn7sDCtegLBIjtiC5QV2Te0FuOwxFj8Q=="],
 
     "@tsconfig/node10": ["@tsconfig/node10@1.0.11", "", {}, ""],
 
@@ -758,8 +758,6 @@
     "jackspeak": ["jackspeak@3.4.0", "", { "dependencies": { "@isaacs/cliui": "^8.0.2" }, "optionalDependencies": { "@pkgjs/parseargs": "^0.11.0" } }, ""],
 
     "jiti": ["jiti@1.21.7", "", { "bin": "bin/jiti.js" }, ""],
-
-    "jose": ["jose@6.2.3", "", {}, ""],
 
     "js-tokens": ["js-tokens@10.0.0", "", {}, ""],
 
@@ -1292,8 +1290,6 @@
     "vite-node/vite/tinyglobby": ["tinyglobby@0.2.15", "", { "dependencies": { "fdir": "^6.5.0", "picomatch": "^4.0.3" } }, ""],
 
     "vitest/vite/esbuild": ["esbuild@0.28.1", "", { "optionalDependencies": { "@esbuild/aix-ppc64": "0.28.1", "@esbuild/android-arm": "0.28.1", "@esbuild/android-arm64": "0.28.1", "@esbuild/android-x64": "0.28.1", "@esbuild/darwin-arm64": "0.28.1", "@esbuild/darwin-x64": "0.28.1", "@esbuild/freebsd-arm64": "0.28.1", "@esbuild/freebsd-x64": "0.28.1", "@esbuild/linux-arm": "0.28.1", "@esbuild/linux-arm64": "0.28.1", "@esbuild/linux-ia32": "0.28.1", "@esbuild/linux-loong64": "0.28.1", "@esbuild/linux-mips64el": "0.28.1", "@esbuild/linux-ppc64": "0.28.1", "@esbuild/linux-riscv64": "0.28.1", "@esbuild/linux-s390x": "0.28.1", "@esbuild/linux-x64": "0.28.1", "@esbuild/netbsd-arm64": "0.28.1", "@esbuild/netbsd-x64": "0.28.1", "@esbuild/openbsd-arm64": "0.28.1", "@esbuild/openbsd-x64": "0.28.1", "@esbuild/openharmony-arm64": "0.28.1", "@esbuild/sunos-x64": "0.28.1", "@esbuild/win32-arm64": "0.28.1", "@esbuild/win32-ia32": "0.28.1", "@esbuild/win32-x64": "0.28.1" }, "bin": "bin/esbuild" }, ""],
-
-    "vitest/vite/tinyglobby": ["tinyglobby@0.2.15", "", { "dependencies": { "fdir": "^6.5.0", "picomatch": "^4.0.3" } }, ""],
 
     "wrap-ansi-cjs/string-width/emoji-regex": ["emoji-regex@8.0.0", "", {}, ""],
 
