@@ -9,9 +9,6 @@
 /* Highlight.js theme */
 @import "highlight.js/styles/github-dark.css";
 
-/* Google Fonts - with Russian support */
-@import "https://fonts.googleapis.com/css2?family=VT323:wght@400&display=swap";
-
 /* Local fonts */
 @font-face {
   font-family: "Ubuntu Nerd Font";
