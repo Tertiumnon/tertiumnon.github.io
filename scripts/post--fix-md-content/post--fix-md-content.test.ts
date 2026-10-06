@@ -1,58 +1,108 @@
-import { normalizeUrls, addLineNumbers, renderGitLabMD, transformMdxFrontmatter, processFrontmatter, processMdContent } from './post--fix-md-content';
+import { describe, expect, test } from 'bun:test';
+import { normalizeHeaders, normalizeMdContent, removeSeparators } from './post--fix-md-content';
 
-Deno.test("normalizeUrls: no URLs", () => {
-    const normalized = normalizeUrls("Hello world");
-    if (normalized !== "Hello world") {
-        throw new Error("Expected 'Hello world', got: " + JSON.stringify(normalized));
-    }
-});
+describe('Markdown content fixer', () => {
+  describe('removeSeparators', () => {
+    test('preserves opening YAML frontmatter and removes later separators', () => {
+      const input = '---\ntitle: Example\n---\n\nText\n\n---\n';
 
-Deno.test("normalizeUrls: https only", () => {
-    const normalized = normalizeUrls("Check out https://example.com for more info");
-    if (normalized !== "Check out https://example.com for more info") {
-        throw new Error("Expected unchanged, got: " + JSON.stringify(normalized));
-    }
-});
+      expect(removeSeparators(input)).toBe('---\ntitle: Example\n---\n\nText\n\n');
+    });
 
-Deno.test("normalizeUrls: http to https", () => {
-    const normalized = normalizeUrls("Check http://example.com for more info");
-    if (!normalized.includes("https://example.com")) {
-        throw new Error("Expected https://example.com, got: " + JSON.stringify(normalized));
-    }
-});
+    test('preserves separator-like lines inside backtick and tilde fences', () => {
+      const input = '```md\n---\n```\n~~~md\n---\n~~~\n---\n';
 
-Deno.test("normalizeUrls: http www to https www", () => {
-    const normalized = normalizeUrls("Check http://www.example.com");
-    if (!normalized.includes("https://www.example.com") && !normalized.includes("https://www.example.com.")) {
-        throw new Error("Expected https, got: " + JSON.stringify(normalized));
-    }
-});
+      expect(removeSeparators(input)).toBe('```md\n---\n```\n~~~md\n---\n~~~\n');
+    });
 
-Deno.test("normalizeUrls: https www stays same", () => {
-    const normalized = normalizeUrls("Check https://www.example.com");
-    if (normalized !== "Check https://www.example.com") {
-        throw new Error("Expected unchanged, got: " + JSON.stringify(normalized));
-    }
-});
+    test('preserves the requested leading lines', () => {
+      const input = 'first\n---\nthird\n---\nfifth\n';
 
-Deno.test("addLineNumbers: adds numbers", () => {
-    const lines = ["Hello", "World", "# Header"];
-    const result = addLineNumbers(lines);
-    if (result[0] !== "1: Hello" || result[1] !== "2: World") {
-        throw new Error("Line numbers not added correctly");
-    }
-});
+      expect(removeSeparators(input, { skipLines: 3 })).toBe('first\n---\nthird\nfifth\n');
+    });
+  });
 
-Deno.test("renderGitLabMD: frontmatter conversion", async () => {
-    const result = await renderGitLabMD("---\nformat: markdown\n---\n\nContent", "test");
-    if (!result.startsWith("---")) {
-        throw new Error("Frontmatter not preserved");
-    }
-});
+  describe('normalizeHeaders', () => {
+    test('keeps the first H1 and repairs a skipped level after it', () => {
+      const input = '# Title\n### Jumped section\n';
 
-Deno.test("transformMdxFrontmatter: converts mdx format", async () => {
-    const result = await transformMdxFrontmatter("---\nfrontmatter:\n---\n\n[Content]");
-    if (!result.includes("---\nformat: markdown\n---\n")) {
-        throw new Error("Frontmatter not converted properly");
-    }
+      expect(normalizeHeaders(input)).toBe('# Title\n## Jumped section\n');
+    });
+
+    test('demotes later H1s and keeps their nested levels distinct', () => {
+      const input = '# Title\n# Section\n## Subsection\n# Next section\n';
+
+      expect(normalizeHeaders(input)).toBe('# Title\n## Section\n### Subsection\n## Next section\n');
+    });
+
+    test('normalizes headings before a later first H1', () => {
+      const input = '## Intro\n# Title\n### Subsection\n';
+
+      expect(normalizeHeaders(input)).toBe('### Intro\n# Title\n## Subsection\n');
+    });
+
+    test('leaves headings inside fenced code unchanged', () => {
+      const input = '# Title\n\n```md\n# Code sample\n---\n```\n# Section\n';
+
+      expect(normalizeHeaders(input)).toBe('# Title\n\n```md\n# Code sample\n---\n```\n## Section\n');
+    });
+
+    test('leaves skipped lines unchanged and uses them for nesting context', () => {
+      const input = '# Title\n### Section\n';
+
+      expect(normalizeHeaders(input, { skipLines: 1 })).toBe('# Title\n## Section\n');
+    });
+
+    test('rejects an invalid skip-lines value', () => {
+      expect(() => normalizeHeaders('# Title', { skipLines: -1 })).toThrow(RangeError);
+    });
+  });
+
+  describe('normalizeMdContent', () => {
+    test('combines frontmatter, separator, heading, and code preservation rules', () => {
+      const input = [
+        '---',
+        'title: Example',
+        '---',
+        '',
+        '# Title',
+        '',
+        '### Jumped section',
+        '',
+        '---',
+        '```md',
+        '# Code heading',
+        '---',
+        '```',
+        '',
+      ].join('\n');
+      const expected = [
+        '---',
+        'title: Example',
+        '---',
+        '',
+        '# Title',
+        '',
+        '## Jumped section',
+        '',
+        '```md',
+        '# Code heading',
+        '---',
+        '```',
+        '',
+      ].join('\n');
+
+      expect(normalizeMdContent(input)).toBe(expected);
+    });
+
+    test('preserves CRLF line endings and whether the file ends with a newline', () => {
+      const input = '# Title\r\n### Section';
+
+      expect(normalizeMdContent(input)).toBe('# Title\r\n## Section');
+    });
+
+    test('rejects invalid skip-lines values', () => {
+      expect(() => normalizeMdContent('# Title', { skipLines: 1.5 })).toThrow(RangeError);
+    });
+  });
 });
