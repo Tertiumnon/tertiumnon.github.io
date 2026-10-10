@@ -59,5 +59,9 @@
   ],
   "overrides": {
     "tar": "^7.5.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tertiumnon/tertiumnon.github.io.git"
   }
 }
