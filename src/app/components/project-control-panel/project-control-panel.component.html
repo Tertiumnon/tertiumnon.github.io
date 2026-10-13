@@ -8,6 +8,12 @@
         (selectedOptionChange)="onStatusChange($event)"
       ></app-dropdown>
       <app-dropdown
+        label="License"
+        [selectedOption]="license"
+        [options]="licenseOptions"
+        (selectedOptionChange)="onLicenseChange($event)"
+      ></app-dropdown>
+      <app-dropdown
         label="Release"
         [(selectedOption)]="release"
         [options]="releaseOptions"

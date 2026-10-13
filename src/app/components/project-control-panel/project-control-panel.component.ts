@@ -1,7 +1,10 @@
 import { CommonModule, DOCUMENT } from "@angular/common";
 import { Component, DestroyRef, inject, OnInit } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { ProjectStatus } from "../../entities/project/project.constants";
+import {
+	ProjectLicense,
+	ProjectStatus,
+} from "../../entities/project/project.constants";
 import { SoftwareService } from "../../pages/software/software.service";
 import { DropdownComponent } from "../dropdown/dropdown.component";
 
@@ -23,15 +26,22 @@ export class ProjectControlPanelComponent implements OnInit {
 	readonly isStatusFilterVisible = true;
 	readonly status = ProjectStatus.Active.toString();
 	readonly statusOptions = Object.values(ProjectStatus);
-	readonly release = "Year (newer)";
-	readonly releaseOptions = ["Year (newer)", "Year (older)"];
+	readonly release = "Updated (newer)";
+	readonly releaseOptions = ["Updated (newer)", "Updated (older)"];
 	readonly releaseMap: Record<string, string> = {
-		[this.releaseOptions[0]]: "year",
-		[this.releaseOptions[1]]: "-year",
+		[this.releaseOptions[0]]: "updatedAt",
+		[this.releaseOptions[1]]: "-updatedAt",
 	};
 
 	onStatusChange(status: string): void {
 		this.projectService.setState({ filterByStatus: status as ProjectStatus });
+	}
+
+	readonly license = "all";
+	readonly licenseOptions = ["all", ...Object.values(ProjectLicense)];
+
+	onLicenseChange(license: string): void {
+		this.projectService.setState({ filterByLicense: license });
 	}
 
 	onReleaseChange(release: string): void {

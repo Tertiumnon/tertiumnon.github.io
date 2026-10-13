@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { ProjectControlPanelService } from "./project-control-panel.service";
 import { IProject } from "../../entities/project/project.types";
-import { ProjectStatus } from "../../entities/project/project.constants";
+import { ProjectLicense, ProjectStatus } from "../../entities/project/project.constants";
 
 const makeProject = (overrides: Partial<IProject> = {}): IProject => ({
 	name: "project",
@@ -13,7 +13,7 @@ const makeProject = (overrides: Partial<IProject> = {}): IProject => ({
 	link: "",
 	year: 2020,
 	status: ProjectStatus.Active,
-	workTypes: [],
+	license: ProjectLicense.OpenSource,
 	...overrides,
 });
 
@@ -51,12 +51,12 @@ describe("ProjectControlPanelService.filterBy", () => {
 		expect(result[0].status).toBe(ProjectStatus.Active);
 	});
 
-	it("filters by workType", () => {
+	it("filters by license", () => {
 		const list = [
-			makeProject({ workTypes: ["frontend", "backend"] }),
-			makeProject({ workTypes: ["backend"] }),
+			makeProject({ license: ProjectLicense.OpenSource }),
+			makeProject({ license: ProjectLicense.Free }),
 		];
-		const result = ProjectControlPanelService.filterBy(list, "workType", "frontend") as IProject[];
+		const result = ProjectControlPanelService.filterBy(list, "license", ProjectLicense.Free) as IProject[];
 		expect(result).toHaveLength(1);
 	});
 });

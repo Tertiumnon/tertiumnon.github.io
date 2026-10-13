@@ -9,8 +9,8 @@ export const ProjectControlPanelUtils = {
 		const column = direction === "-" ? args[0].slice(1) : args[0];
 		const newList = [...list];
 		newList.sort((a: T, b: T) => {
-			const aVal = a[column as keyof T] as unknown as string | number;
-			const bVal = b[column as keyof T] as unknown as string | number;
+			const aVal = (a[column as keyof T] ?? "") as unknown as string | number;
+			const bVal = (b[column as keyof T] ?? "") as unknown as string | number;
 			if (aVal < bVal) {
 				return direction === "-" ? -1 : 1;
 			}
@@ -32,10 +32,8 @@ export const ProjectControlPanelUtils = {
 		switch (param) {
 			case "status":
 				return newProjectList.filter((project) => project.status === value);
-			case "workType":
-				return newProjectList.filter((project) =>
-					project.workTypes.includes(value),
-				);
+			case "license":
+				return newProjectList.filter((project) => project.license === value);
 			default:
 				return undefined;
 		}

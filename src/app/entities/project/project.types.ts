@@ -8,12 +8,14 @@ export interface IProject extends Params {
 	image: string;
 	imagePreview: string;
 	link: string;
-	year: number;
+	url?: string;
+	updatedAt?: string;
 	status: import("./project.constants").ProjectStatus;
+	license?: import("./project.constants").ProjectLicense;
 }
 
 export interface IState {
 	filterByStatus?: import("./project.constants").ProjectStatus;
-	filterByWorkType?: string;
+	filterByLicense?: string;
 	sortByAttrVal?: string;
 }

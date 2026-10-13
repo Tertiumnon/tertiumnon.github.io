@@ -4,6 +4,7 @@
   box-shadow: var(--box-shadow);
   font-family: "Ubuntu Nerd Font", sans-serif;
   font-size: 1.1em;
+  position: relative;
 }
 
 .project-card:hover {
@@ -38,9 +39,24 @@
   position: absolute;
   top: 0;
   padding: 14px 28px 14px 20px;
+  font-size: calc(1em - 2pt);
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.8;
 }
 
 .project-card .project-card-content {
   margin-top: 0px;
   padding: 16px 14px;
+}
+
+.project-card .footer .updated-at {
+  color: #888;
+  font-size: 0.75em;
+  letter-spacing: 0.02em;
+}
+
+.project-card .project-card-link {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
 }
