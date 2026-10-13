@@ -43,11 +43,17 @@ export const APP_ROUTES: Routes = [
 	},
 	{
 		path: "software",
-		title: "Software",
+		title: "Projects",
 		loadComponent: () =>
 			import("./pages/software/software.component").then(
 				(m) => m.SoftwareComponent,
 			),
+	},
+	{
+		path: "tools",
+		title: "Tools",
+		loadComponent: () =>
+			import("./pages/tools/tools.component").then((m) => m.ToolsComponent),
 	},
 	{
 		path: "software/app-port-convention",
@@ -55,6 +61,14 @@ export const APP_ROUTES: Routes = [
 		loadComponent: () =>
 			import("./pages/software--app-port-convention/app-port-convention.component").then(
 				(m) => m.AppPortConventionComponent,
+			),
+	},
+	{
+		path: "software/:name",
+		title: "Projects",
+		loadComponent: () =>
+			import("./pages/software--project/project.component").then(
+				(m) => m.ProjectPageComponent,
 			),
 	},
 	{

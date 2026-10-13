@@ -8,17 +8,22 @@ const THEME_STORAGE_KEY = "theme";
 })
 export class ThemeService {
 	readonly themes = Object.values(Theme);
-	readonly theme = signal<string>(this.getStoredTheme() ?? Theme.Coder);
+	readonly theme = signal<string>(this.getStoredTheme());
 
-	private getStoredTheme(): string | null {
+	private getStoredTheme(): string {
 		if (typeof localStorage === "undefined") {
-			return null;
+			return Theme.Coder;
 		}
 		try {
-			return localStorage.getItem(THEME_STORAGE_KEY);
+			const stored = localStorage.getItem(THEME_STORAGE_KEY);
+			if (stored && this.themes.includes(stored as Theme)) {
+				return stored;
+			}
+			localStorage.removeItem(THEME_STORAGE_KEY);
 		} catch {
-			return null;
+			// Storage access denied or unavailable
 		}
+		return Theme.Coder;
 	}
 
 	setTheme(theme: Theme): void {

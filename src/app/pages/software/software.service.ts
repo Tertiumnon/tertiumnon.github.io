@@ -15,8 +15,8 @@ export class SoftwareService {
 	state: IState = {};
 	state$ = new BehaviorSubject<IState>({
 		filterByStatus: ProjectStatus.Active,
-		filterByWorkType: "all",
-		sortByAttrVal: "year",
+		filterByLicense: "all",
+		sortByAttrVal: "updatedAt",
 	});
 
 	setState(state?: IState): void {
@@ -36,14 +36,14 @@ export class SoftwareService {
 		);
 		projects = ProjectControlPanelService.filterBy(
 			projects ?? [],
-			"workType",
-			this.state.filterByWorkType,
+			"license",
+			this.state.filterByLicense,
 		);
 		this.projects$.next(projects as IProject[]);
 	}
 
 	sortProjects() {
-		const sortBy = this.state.sortByAttrVal ?? "year";
+		const sortBy = this.state.sortByAttrVal ?? "updatedAt";
 		this.projects$.next(
 			ProjectControlPanelService.orderBy(this.projects$.value ?? [], sortBy),
 		);

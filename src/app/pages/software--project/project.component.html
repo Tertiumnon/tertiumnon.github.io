@@ -1,0 +1,12 @@
+<div class="container-fluid content" style="margin-top: var(--container-margin-top);">
+  <h1>{{ project.title }}</h1>
+  <p>
+    {{ project.type }}
+    @if (project.license) { · {{ project.license }} }
+    @if (project.updatedAt) { · updated {{ project.updatedAt | date: "yyyy MMM d" }} }
+  </p>
+  <p>{{ project.description }}</p>
+  @if (project.url) {
+  <p><a [href]="project.url" target="_blank" rel="noopener">Open project</a></p>
+  }
+</div>

@@ -1,7 +1,23 @@
 import { IProject } from "./project.types";
-import { ProjectStatus } from "./project.constants";
+import { ProjectLicense, ProjectStatus } from "./project.constants";
+import { GITHUB_REPOS, GITHUB_USER } from "../github-repo/github-repo.data";
+import projectDates from "../../../assets/project-dates.json";
 
-const PROJECT_ITEMS: IProject[] = [
+const PROJECT_DATES: Record<string, string> = projectDates;
+
+const GITHUB_PROJECT_ITEMS: IProject[] = GITHUB_REPOS.map((repo) => ({
+	name: repo.name,
+	title: repo.title,
+	type: repo.type,
+	description: repo.description,
+	imagePreview: "",
+	image: "",
+	link: `#/software/github/${repo.name}`,
+	updatedAt: PROJECT_DATES[`github:${repo.name}`],
+	status: repo.status,
+}));
+
+export const TOOL_ITEMS: IProject[] = [
 	{
 		name: "app-port-convention",
 		title: "App Port Convention",
@@ -10,7 +26,8 @@ const PROJECT_ITEMS: IProject[] = [
 		imagePreview: "",
 		image: "",
 		link: "#/software/app-port-convention",
-		year: 2026,
+		updatedAt: PROJECT_DATES["github:app-port-convention"],
+		license: ProjectLicense.OpenSource,
 		status: ProjectStatus.Active,
 	},
 	{
@@ -21,20 +38,11 @@ const PROJECT_ITEMS: IProject[] = [
 		imagePreview: "",
 		image: "",
 		link: "#/tools/what-time",
-		year: 2025,
 		status: ProjectStatus.Active,
 	},
-	{
-		name: "entity-driven-architecture",
-		title: "Entity Driven Architecture",
-		type: "Style Guide",
-		description: "Entity Driven Architecture.",
-		imagePreview: "",
-		image: "",
-		link: "https://github.com/Tertiumnon/entity-driven-architecture",
-		year: 2023,
-		status: ProjectStatus.Inactive,
-	},
+];
+
+const MANUAL_PROJECT_ITEMS: IProject[] = [
 	{
 		name: "git-style-guide",
 		title: "Git Style Guide",
@@ -42,8 +50,8 @@ const PROJECT_ITEMS: IProject[] = [
 		description: "Git Style Guide.",
 		imagePreview: "",
 		image: "",
-		link: "https://github.com/Tertiumnon/git-style-guide",
-		year: 2022,
+		link: "#/software/git-style-guide",
+		url: "https://github.com/Tertiumnon/git-style-guide",
 		status: ProjectStatus.Inactive,
 	},
 	{
@@ -53,8 +61,8 @@ const PROJECT_ITEMS: IProject[] = [
 		description: "REST API Style Guide.",
 		imagePreview: "",
 		image: "",
-		link: "https://github.com/Tertiumnon/rest-api-style-guide",
-		year: 2022,
+		link: "#/software/rest-api-style-guide",
+		url: "https://github.com/Tertiumnon/rest-api-style-guide",
 		status: ProjectStatus.Inactive,
 	},
 	{
@@ -64,20 +72,9 @@ const PROJECT_ITEMS: IProject[] = [
 		description: "Frontend Style Guide.",
 		imagePreview: "",
 		image: "",
-		link: "https://github.com/Tertiumnon/frontend-style-guide",
-		year: 2016,
+		link: "#/software/frontend-style-guide",
+		url: "https://github.com/Tertiumnon/frontend-style-guide",
 		status: ProjectStatus.Inactive,
-	},
-	{
-		name: "cheatsheets",
-		title: "Cheatsheets",
-		type: "Knowledge Base",
-		description: "Cheatsheets for programmers.",
-		imagePreview: "",
-		image: "",
-		link: "https://github.com/Tertiumnon/cheatsheets",
-		year: 2017,
-		status: ProjectStatus.Active,
 	},
 	{
 		name: "send-text-to-form",
@@ -87,19 +84,9 @@ const PROJECT_ITEMS: IProject[] = [
 		imagePreview: "",
 		image:
 			"/assets/images/projects/send-text-to-form-web-ext/2017-send-text-to-form-web-ext.png",
-		link: "https://chrome.google.com/webstore/detail/send-text-to-form/oapmpchdbmlmblgeambfmcmmoalbgooi",
-		year: 2017,
-		status: ProjectStatus.Inactive,
-	},
-	{
-		name: "mw-deploy",
-		title: "MediaWiki Deploy",
-		type: "NodeJS Application",
-		description: "NodeJS application for deploying MediaWiki pages.",
-		imagePreview: "",
-		image: "",
-		link: "https://github.com/Tertiumnon/mw-deploy",
-		year: 2017,
+		link: "#/software/send-text-to-form",
+		url: "https://chrome.google.com/webstore/detail/send-text-to-form/oapmpchdbmlmblgeambfmcmmoalbgooi",
+		updatedAt: PROJECT_DATES["github:send-text-to-form"],
 		status: ProjectStatus.Inactive,
 	},
 	{
@@ -109,19 +96,9 @@ const PROJECT_ITEMS: IProject[] = [
 		description: "Firefox extension for bookmarks organizing.",
 		imagePreview: "",
 		image: "",
-		link: "https://addons.mozilla.org/en-US/firefox/addon/bookmarks-manager/",
-		year: 2017,
-		status: ProjectStatus.Active,
-	},
-	{
-		name: "tertium-js-snippets",
-		title: "Tertium JS Snippets",
-		type: "VSCode Extension",
-		description: "Visual Studio Code extension for JavaScript autocompletion.",
-		imagePreview: "",
-		image: "",
-		link: "https://marketplace.visualstudio.com/items?itemName=tertiumnon.tertium-js-snippets",
-		year: 2019,
+		link: "#/software/bookmarks-manager",
+		url: "https://addons.mozilla.org/en-US/firefox/addon/bookmarks-manager/",
+		updatedAt: PROJECT_DATES["github:bookmarks-manager"],
 		status: ProjectStatus.Active,
 	},
 	{
@@ -131,8 +108,9 @@ const PROJECT_ITEMS: IProject[] = [
 		description: "NodeJS script for JSON files concatenation.",
 		imagePreview: "",
 		image: "",
-		link: "https://www.npmjs.com/package/json-all-to-one",
-		year: 2019,
+		link: "#/software/json-all-to-one",
+		url: "https://www.npmjs.com/package/json-all-to-one",
+		license: ProjectLicense.OpenSource,
 		status: ProjectStatus.Inactive,
 	},
 	{
@@ -142,8 +120,9 @@ const PROJECT_ITEMS: IProject[] = [
 		description: "NodeJS script that creates SQL script from JSON file.",
 		imagePreview: "",
 		image: "",
-		link: "https://www.npmjs.com/package/json-to-sql-script",
-		year: 2019,
+		link: "#/software/json-to-sql",
+		url: "https://www.npmjs.com/package/json-to-sql-script",
+		license: ProjectLicense.OpenSource,
 		status: ProjectStatus.Inactive,
 	},
 	{
@@ -153,8 +132,9 @@ const PROJECT_ITEMS: IProject[] = [
 		description: "NodeJS module for country codes.",
 		imagePreview: "",
 		image: "",
-		link: "https://www.npmjs.com/package/@tertium/countries",
-		year: 2021,
+		link: "#/software/tertium-countries",
+		url: "https://www.npmjs.com/package/@tertium/countries",
+		license: ProjectLicense.OpenSource,
 		status: ProjectStatus.Inactive,
 	},
 	{
@@ -164,8 +144,9 @@ const PROJECT_ITEMS: IProject[] = [
 		description: "SVG and font icons.",
 		imagePreview: "",
 		image: "",
-		link: "https://www.npmjs.com/package/tertium.icons",
-		year: 2017,
+		link: "#/software/tertium-icons",
+		url: "https://www.npmjs.com/package/tertium.icons",
+		license: ProjectLicense.OpenSource,
 		status: ProjectStatus.Inactive,
 	},
 	{
@@ -175,10 +156,27 @@ const PROJECT_ITEMS: IProject[] = [
 		description: "Pomodoro timer for coders.",
 		imagePreview: "",
 		image: "",
-		link: "",
-		year: 2020,
+		link: "#/software/senior-pomodoro",
+		updatedAt: PROJECT_DATES["github:senior-pomodoro-app"],
+		license: ProjectLicense.Free,
 		status: ProjectStatus.Inactive,
 	},
 ];
+
+const ACTIVE_YEARS = 5;
+
+const activeSince = new Date();
+activeSince.setFullYear(activeSince.getFullYear() - ACTIVE_YEARS);
+const ACTIVE_SINCE = activeSince.toISOString().slice(0, 10);
+
+const isActive = (updatedAt?: string): boolean =>
+	updatedAt !== undefined && updatedAt >= ACTIVE_SINCE;
+
+const PROJECT_ITEMS: IProject[] = [...MANUAL_PROJECT_ITEMS, ...GITHUB_PROJECT_ITEMS].map(
+	(project) => ({
+		...project,
+		status: isActive(project.updatedAt) ? ProjectStatus.Active : ProjectStatus.Inactive,
+	}),
+);
 
 export default PROJECT_ITEMS;

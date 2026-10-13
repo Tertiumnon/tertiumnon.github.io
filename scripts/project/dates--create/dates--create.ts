@@ -1,0 +1,83 @@
+import { execFileSync } from "node:child_process";
+import * as fs from "node:fs/promises";
+import { GITHUB_REPOS, GITHUB_USER } from "../../../src/app/entities/github-repo/github-repo.data";
+
+const CACHE_FILE = "scripts/project/dates--create/cache.json";
+const MANUAL_FILE = "scripts/project/dates--create/manual-dates.json";
+const DATES_JSON = "src/assets/project-dates.json";
+const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+
+type Source = { id: string; repo: string };
+type Cache = Record<string, { date: string; checkedAt: string }>;
+
+const SOURCES: Source[] = [
+	...GITHUB_REPOS.map((repo): Source => ({ id: `github:${repo.name}`, repo: repo.name })),
+	{ id: "github:app-port-convention", repo: "app-port-convention" },
+	{ id: "github:senior-pomodoro-app", repo: "senior-pomodoro-app" },
+	{ id: "github:send-text-to-form", repo: "send-text-to-form" },
+	{ id: "github:bookmarks-manager", repo: "bookmarks-manager" },
+];
+
+const readManual = async (): Promise<Record<string, string>> =>
+	JSON.parse(await fs.readFile(MANUAL_FILE, { encoding: "utf-8" })) as Record<string, string>;
+
+const readCache = async (): Promise<Cache> => {
+	try {
+		return JSON.parse(await fs.readFile(CACHE_FILE, { encoding: "utf-8" })) as Cache;
+	} catch {
+		return {};
+	}
+};
+
+const fetchGithubDate = (repo: string): string => {
+	const out = execFileSync(
+		"gh",
+		["api", `repos/${GITHUB_USER}/${repo}/commits?per_page=1`, "-q", ".[0].commit.committer.date"],
+		{ encoding: "utf-8" },
+	).trim();
+	if (!out) throw new Error(`No commits found for GitHub repo ${repo}`);
+	return out.slice(0, 10);
+};
+
+const main = async (): Promise<void> => {
+	const refresh = process.argv.includes("--refresh");
+	const cache = await readCache();
+	const manual = await readManual();
+	const dates: Record<string, string> = {};
+	const now = new Date().toISOString();
+	let fetched = 0;
+
+	try {
+		for (const source of SOURCES) {
+			if (manual[source.id] !== undefined) {
+				dates[source.id] = manual[source.id];
+				continue;
+			}
+			const cached = cache[source.id];
+			const fresh = cached !== undefined && Date.now() - Date.parse(cached.checkedAt) < CACHE_TTL_MS;
+			if (!refresh && fresh) {
+				dates[source.id] = cached.date;
+				continue;
+			}
+			const date = fetchGithubDate(source.repo);
+			cache[source.id] = { date, checkedAt: now };
+			dates[source.id] = date;
+			fetched++;
+		}
+	} finally {
+		await fs.writeFile(CACHE_FILE, `${JSON.stringify(cache, null, 2)}\n`);
+	}
+
+	for (const [id, date] of Object.entries(manual)) {
+		if (id.startsWith("manual:")) dates[id] = date;
+	}
+
+	const sorted = Object.fromEntries(Object.entries(dates).sort(([a], [b]) => a.localeCompare(b)));
+	await fs.writeFile(DATES_JSON, `${JSON.stringify(sorted, null, 2)}\n`);
+	console.log(`Project dates: ${Object.keys(sorted).length} total, ${fetched} fetched, ${Object.keys(sorted).length - fetched} from cache.`);
+};
+
+main().catch((error) => {
+	console.error(error);
+	process.exit(1);
+});

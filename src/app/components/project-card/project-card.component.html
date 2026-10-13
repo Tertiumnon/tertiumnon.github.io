@@ -11,12 +11,12 @@
     </div>
   </div>
   <div class="flex place-content-between gap-3 py-4 px-6 text-black footer">
-    <span>{{ project.year }}</span>
-    @if (project.link) {
-    <span class="mt-0.5"
-      ><a [href]="project.link" [target]="linkTarget">&#x260D;</a></span
-    >
+    @if (project.updatedAt) {
+    <span class="updated-at">updated {{ project.updatedAt | date: "yyyy MMM d" }}</span>
     }
   </div>
+  @if (project.link) {
+  <a class="project-card-link" [href]="project.link" [attr.aria-label]="project.title"></a>
+  }
 </div>
 }

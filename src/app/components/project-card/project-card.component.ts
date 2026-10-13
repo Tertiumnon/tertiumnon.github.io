@@ -1,3 +1,4 @@
+import { DatePipe } from "@angular/common";
 import { Component, Input } from "@angular/core";
 import { IProject } from "../../entities/project/project.types";
 
@@ -6,10 +7,8 @@ import { IProject } from "../../entities/project/project.types";
 	templateUrl: "./project-card.component.html",
 	styleUrls: ["./project-card.component.css"],
 	standalone: true,
+	imports: [DatePipe],
 })
 export class ProjectCardComponent {
 	@Input() project?: IProject;
-	get linkTarget() {
-		return this.project?.link.search("http") === -1 ? "_self" : "_blank";
-	}
 }

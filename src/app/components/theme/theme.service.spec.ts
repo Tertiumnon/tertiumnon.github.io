@@ -20,6 +20,13 @@ describe("ThemeService", () => {
 		expect(service.theme()).toBe(Theme.HoneyPie);
 	});
 
+	it("replaces an unknown stored theme with Coder and clears it", () => {
+		localStorage.setItem("theme", "OldTheme");
+		const service = TestBed.inject(ThemeService);
+		expect(service.theme()).toBe(Theme.Coder);
+		expect(localStorage.getItem("theme")).toBeNull();
+	});
+
 	it("setTheme updates the signal and persists to localStorage", () => {
 		const service = TestBed.inject(ThemeService);
 		service.setTheme(Theme.HoneyPie);
