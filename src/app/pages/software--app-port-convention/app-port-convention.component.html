@@ -1,0 +1,112 @@
+<div class="container-fluid content port-convention" style="margin-top: var(--container-margin-top);">
+  <h1>App Port Convention</h1>
+  <p class="intro">
+    Pick your framework to see its recommended ports. Project ports follow
+    <code>Stack base + Project × 100 + Role</code>. Shared services keep their default ports.
+  </p>
+
+  <div class="framework-picker">
+    <input
+      type="search"
+      role="combobox"
+      class="framework-search"
+      placeholder="Select your framework"
+      aria-label="Select your framework"
+      aria-autocomplete="list"
+      aria-controls="framework-listbox"
+      autocomplete="off"
+      [attr.aria-expanded]="isOpen()"
+      [attr.aria-activedescendant]="activeOptionId()"
+      [value]="query()"
+      (focus)="onFocus()"
+      (input)="onInput($event)"
+      (keydown)="onKeydown($event)"
+    />
+
+    @if (isOpen()) {
+      <ul id="framework-listbox" class="framework-list" role="listbox">
+        @for (framework of matches(); track framework.name; let i = $index) {
+          <li
+            role="option"
+            id="framework-option-{{ i }}"
+            class="framework-option"
+            [class.active]="i === activeIndex()"
+            [attr.aria-selected]="framework === selected()"
+            (mousedown)="select(framework); $event.preventDefault()"
+            (mouseenter)="activeIndex.set(i)"
+          >
+            <span>{{ framework.name }}</span>
+            <span class="stack-tag">{{ stackOf(framework).label }}</span>
+          </li>
+        } @empty {
+          <li class="framework-option empty">No frameworks found</li>
+        }
+      </ul>
+    }
+  </div>
+
+  @if (ports(); as p) {
+    <section class="ports">
+      <div class="ports-header">
+        <h2>{{ selected()?.name }}</h2>
+        <span class="stack-tag">{{ p.stack.label }}</span>
+        <label class="slot">
+          Project slot
+          <select [value]="slot()" (change)="onSlotChange($event)">
+            @for (s of slots; track s) {
+              <option [value]="s">{{ s }}</option>
+            }
+          </select>
+        </label>
+      </div>
+
+      <h3>Recommended ports</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>Port</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (role of p.roles; track role.port) {
+            <tr>
+              <td>{{ role.name }}</td>
+              <td class="port">{{ role.port }}</td>
+            </tr>
+          }
+          <tr class="reserved">
+            <td>Debugger (reserved, not in project blocks)</td>
+            <td class="port">{{ p.debugPort ?? "none" }}</td>
+          </tr>
+          @if (p.defaultPort) {
+            <tr class="reserved">
+              <td>Framework default (only when running alone)</td>
+              <td class="port">{{ p.defaultPort }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+
+      <h3>Shared services for this stack</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Port</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (service of p.stack.sharedServices; track service.name) {
+            <tr>
+              <td>{{ service.name }}</td>
+              <td class="port">{{ service.port }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </section>
+  } @else {
+    <p class="empty-state">Select a framework to see its recommended ports.</p>
+  }
+</div>
