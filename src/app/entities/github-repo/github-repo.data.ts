@@ -117,20 +117,6 @@ export const GITHUB_REPOS: IGithubRepo[] = [
 		status: ProjectStatus.Active,
 	},
 	{
-		name: "algorithms-c-sharp",
-		title: "Algorithms C#",
-		type: "C#",
-		description: "Algorithm implementations in C#.",
-		status: ProjectStatus.Active,
-	},
-	{
-		name: "algorithms-js",
-		title: "Algorithms JS",
-		type: "JavaScript",
-		description: "Algorithm implementations in JavaScript.",
-		status: ProjectStatus.Active,
-	},
-	{
 		name: "stickers-ru-coders",
 		title: "RU Coders",
 		type: "Telegram Sticker Pack",
