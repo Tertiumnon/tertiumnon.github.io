@@ -221,3 +221,4 @@ docs/
 /opencode.json
 /opencode.json.bak
 # END Ruler Generated Files
+scripts/project/dates--create/cache.json

@@ -62,6 +62,16 @@ async function deploy(): Promise<void> {
       run('git commit -m "docs: regenerate article list"');
     }
 
+    // Update project dates (cached, see scripts/project/dates--create)
+    console.log("📅 Updating project dates...");
+    run("bun run project:dates:create");
+
+    const datesStatus = run("git status --porcelain src/assets/project-dates.json", { silent: true });
+    if (datesStatus) {
+      run("git add src/assets/project-dates.json");
+      run('git commit -m "docs: update project dates"');
+    }
+
     // STEP 2: Build site
     console.log("🔨 Building site...");
     run("bun run gh:pages:build");

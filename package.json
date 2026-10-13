@@ -8,6 +8,7 @@
     "gh:pages:build": "bun ./scripts/gh-pages/gh-pages--build/gh-pages--build.ts",
     "post:create": "bun ./scripts/post/create/create.ts",
     "post:list:create": "bun ./scripts/post/list--create/list--create.ts",
+    "project:dates:create": "bun ./scripts/project/dates--create/dates--create.ts",
     "watch": "ng build --watch --configuration development",
     "test": "vitest",
     "test:ui": "vitest --ui",
