@@ -50,6 +50,14 @@ export const APP_ROUTES: Routes = [
 			),
 	},
 	{
+		path: "software/app-port-convention",
+		title: "App Port Convention",
+		loadComponent: () =>
+			import("./pages/software--app-port-convention/app-port-convention.component").then(
+				(m) => m.AppPortConventionComponent,
+			),
+	},
+	{
 		path: ":lang/posts/404",
 		title: "Post Not Found",
 		loadComponent: () =>

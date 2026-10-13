@@ -3,6 +3,17 @@ import { ProjectStatus } from "./project.constants";
 
 const PROJECT_ITEMS: IProject[] = [
 	{
+		name: "app-port-convention",
+		title: "App Port Convention",
+		type: "Web Tool",
+		description: "Recommended dev ports for frameworks and services.",
+		imagePreview: "",
+		image: "",
+		link: "#/software/app-port-convention",
+		year: 2026,
+		status: ProjectStatus.Active,
+	},
+	{
 		name: "what-time",
 		title: "What Time",
 		type: "Web Tool",

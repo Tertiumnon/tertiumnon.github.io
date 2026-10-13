@@ -1,0 +1,139 @@
+:host {
+  --border-radius: 8px;
+  --panel-bg: rgba(0, 0, 0, 0.2);
+  --panel-border: rgba(255, 255, 255, 0.15);
+  --muted: rgba(246, 237, 255, 0.7);
+}
+
+.intro {
+  color: var(--muted);
+  max-width: 48rem;
+}
+
+.framework-picker {
+  position: relative;
+  max-width: 32rem;
+  margin-bottom: 1.5rem;
+}
+
+.framework-search,
+.slot select {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  color: var(--text-color);
+  box-sizing: border-box;
+}
+
+.framework-search {
+  width: 100%;
+}
+
+.framework-search:focus,
+.slot select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.framework-list {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  max-height: 20rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  border: 1px solid var(--panel-border);
+  background: #2f365e;
+  box-shadow: var(--box-shadow--hover);
+}
+
+.framework-option {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+}
+
+.framework-option.active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.framework-option.empty {
+  cursor: default;
+  color: var(--muted);
+}
+
+.stack-tag {
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.ports-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem 1.5rem;
+}
+
+.ports-header h2 {
+  margin: 0;
+}
+
+.slot {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+}
+
+table {
+  width: 100%;
+  max-width: 48rem;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.port {
+  font-family: monospace;
+  white-space: nowrap;
+}
+
+.reserved td {
+  color: var(--muted);
+}
+
+.empty-state {
+  color: var(--muted);
+}
+
+@media (max-width: 600px) {
+  .framework-picker {
+    max-width: 100%;
+  }
+
+  .framework-option {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+}
