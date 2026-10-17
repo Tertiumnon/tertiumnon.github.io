@@ -1,6 +1,6 @@
 ---
 publishedAt: 2026-07-12
-updatedAt: 2026-08-21
+updatedAt: 2026-10-13
 category: Programming
 tags: ["JavaScript","Tools","Web Development"]
 ---
@@ -11,8 +11,7 @@ tags: ["JavaScript","Tools","Web Development"]
 
 > **For whom this article is:** For JavaScript/TypeScript developers who want to learn about major events and new capabilities of Bun in 2026.
 
-2026 was a turning point for Bun. [Rewriting in Rust](https://bun.com/blog/bun-in-rust) using Claude Fable 5 in 11 days demonstrated new possibilities for AI-accelerated development, and on August 20, 2026 [Bun v1.4 shipped](https://bun.com/blog/bun-v1.4) — the first production release running fully on the Rust rewrite (until then Rust was only used internally, for example in Claude Code). Version 1.3.14 added Bun.Image, HTTP/3, and Global Virtual Store, while v1.4 brought a sharp jump in Node.js compatibility and dozens of new built-in APIs. Bun became part of Anthropic after [acquisition in December 2025](https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone).
-
+2026 was a turning point for Bun. [Rewriting in Rust](https://bun.com/blog/bun-in-rust) using Claude Fable 5 in 11 days demonstrated new possibilities for AI-accelerated development, and on August 20, 2026 [Bun v1.4 shipped](https://bun.com/blog/bun-v1.4) — the first production release running fully on the Rust rewrite (until then Rust was only used internally, for example in Claude Code). Version 1.3.14 added Bun.Image, HTTP/3, and Global Virtual Store, while v1.4 brought a sharp jump in Node.js compatibility and dozens of new built-in APIs.
 ## Table of Contents
 
 - [Key Features](#key-features)
@@ -38,7 +37,7 @@ tags: ["JavaScript","Tools","Web Development"]
 
 Bun natively supports running TypeScript and JSX without a separate compilation step. Path aliases from `tsconfig.json` work out of the box.
 
-**Important:** Bun does NOT replace static type checking. For full type checking, use `tsc --noEmit` in CI.
+**Important:** Bun does NOT replace static type checking by itself. Since v1.4.3 it ships `bun check`, a built-in type checker that reports the same errors as `tsc` and is 3-6x faster; before that, use `tsc --noEmit` in CI.
 
 ### Bun vs Node.js: TypeScript Support in 2026
 
@@ -101,6 +100,18 @@ bun test --parallel  # new in 2026
 
 ## Major Events 2026
 
+### Rewritten in Rust (May 4-14, 2026)
+
+[Bun was rewritten from Zig to Rust](https://bun.com/blog/bun-in-rust) in 11 days using Claude Fable 5 — 535,496 lines of Zig became over a million lines of Rust across 6,502 commits, with up to 64 Claude agents working in parallel and an API bill of roughly $165,000 (5.9 billion tokens).
+
+The payoff: the binary shrank by about 20%, 128 bugs got fixed along the way, memory leaks in Bun.build() dropped from 6,745 MB to 609 MB — more than 11x — and every test passed on every platform.
+
+The reason for the rewrite is mundane: the Zig version had 13 memory-safety vulnerabilities (use-after-free, double-free, leaks), and Rust catches that class of bug at compile time. The rewritten code spent three months running inside Bun itself, including in Claude Code, before becoming the production version in v1.4.
+
+### Bun v1.3.14 (May 13, 2026)
+
+[Bun v1.3.14](https://bun.com/blog/bun-v1.3.14) — the last stable release on Zig before the Rust move — shipped Bun.Image (image processing 7x faster than sharp), HTTP/3 and QUIC support in `Bun.serve()` and `fetch()`, the Global Virtual Store (7x faster cached installs), and Bun.Terminal, terminal APIs on Windows via ConPTY.
+
 ### Bun v1.4 (August 20, 2026)
 
 [Bun v1.4](https://bun.com/blog/bun-v1.4) is the first production release running on the rewritten Rust engine — previously the Rust version lived only inside Anthropic, Claude Code included, and the last Zig build was v1.3.14. Startup got 50% faster on Linux (5.1ms vs 10.9ms) and 2.5x faster on Windows (15.5ms vs 39.0ms), idle CPU usage dropped fivefold, and HTTP server memory under load fell by 35-48%.
@@ -111,21 +122,20 @@ The most telling number comes from Anthropic's own production: Claude Code's p99
 
 Part of the community [criticized the AI-driven rewrite](https://grigio.org/bun-1-4-the-controversial-ai-driven-rewrite-from-zig-to-rust/) for over 13,000 `unsafe` blocks in the resulting Rust code — hand-written Rust projects of similar size average around 70 — and for the fact that the largest PR in GitHub history was reviewed only by AI agents (`coderabbitai` and `claude`), with no human in the loop. A 99.8% first-pass test suite score sounds reassuring, but it's not the same thing as a person actually reading a million-line diff, and that gap is a fair thing to be uneasy about. Upgrading via `bun upgrade` at least requires no breaking changes.
 
-### Bun v1.3.14 (May 13, 2026)
+### Bun v1.4.1–v1.4.3 (September–October 2026)
 
-[Bun v1.3.14](https://bun.com/blog/bun-v1.3.14) — the last stable release on Zig before the Rust move — shipped Bun.Image (image processing 7x faster than sharp), HTTP/3 and QUIC support in `Bun.serve()` and `fetch()`, the Global Virtual Store (7x faster cached installs), and Bun.Terminal, terminal APIs on Windows via ConPTY.
+Bun kept shipping after v1.4. [v1.4.1](https://bun.com/blog) (September 4) fixed 202 issues and added HTTP/2 in `Bun.serve()`, streaming `Response` bodies to disk with `Bun.write()`, offline installs, and faster startup. [v1.4.2](https://bun.com/blog) (September 5) was a patch release for regressions affecting Elysia and AsyncLocalStorage, plus a hang in `@discordjs/ws` and a GC crash on musl.
 
-### Rewritten in Rust (May 4-14, 2026)
+[v1.4.3](https://bun.com/blog/bun-v1.4.3) (October 10, 2026) is the most significant follow-up. It adds `bun check`, a port of typescript-go that reads `tsconfig.json`, reports the same errors as `tsc`, and needs no `typescript` package. It passes all 51,210 tests from TypeScript 7.0.2's suite and runs 3.0-6.4x faster than `tsc` 7.0.2 (VS Code's `src` in 1.24s vs 5.98s), using 2.2-4.9x less memory. It only type checks; it doesn't emit files or provide a language server. The same check is available as `bun run --check`, `bun test --check`, and `bun build --check`.
 
-[Bun was rewritten from Zig to Rust](https://bun.com/blog/bun-in-rust) in 11 days using Claude Fable 5 — 535,496 lines of Zig became over a million lines of Rust across 6,502 commits, with up to 64 Claude agents working in parallel and an API bill of roughly $165,000 (5.9 billion tokens).
+v1.4.3 also adds `Bun.FetchSession`, which gives a group of requests their own TLS settings, proxy, and connection pool, so sessions never share connections with each other or with plain `fetch()`. Idle servers use 67-89% less CPU than in v1.4.2 (Express: 282 → 57 CPU ms over two idle minutes). The JavaScriptCore engine was upgraded too, with `JSON.parse()` on registry manifests 1.2-1.5x faster.
 
-The payoff: the binary shrank by about 20%, 128 bugs got fixed along the way, memory leaks in Bun.build() dropped from 6,745 MB to 609 MB — more than 11x — and every test passed on every platform.
-
-The reason for the rewrite is mundane: the Zig version had 13 memory-safety vulnerabilities (use-after-free, double-free, leaks), and Rust catches that class of bug at compile time. The rewritten code spent three months running inside Bun itself, including in Claude Code, before becoming the production version in v1.4.
-
-### Acquired by Anthropic (December 2, 2025)
-
-Bun was [acquired by Anthropic](https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone) and is now used as the foundation for Claude Code and Claude Agent SDK. Bun remains open source under MIT license.
+Upgrading to v1.4.3 is not a drop-in change. Watch for these behavior changes:
+- `fetch()` rejects with `ERR_PROXY_TUNNEL` when a proxy refuses `CONNECT` with a non-2xx status, instead of resolving with the proxy's reply.
+- `fetch()` rejects when a user-supplied `Content-Length` doesn't match a `ReadableStream` body.
+- `BigInt("-")`, `BigInt("+")`, and `BigInt("0x")` now throw `SyntaxError` instead of returning `0n`.
+- `--disallow-code-generation-from-strings` is now enforced.
+- `bun test --coverage-reporter=lcov` now implies `--coverage`.
 
 ## New APIs and Features
 
@@ -152,6 +162,19 @@ const webview = await Bun.WebView.open("https://example.com");
 const screenshot = await webview.screenshot();
 await webview.close();
 ```
+
+### bun fmt: Built-in Formatter
+
+[`bun fmt`](https://bun.com/docs/format) is Bun's built-in code formatter, with output that matches Prettier's. It needs no installation or configuration:
+
+```bash
+bun fmt                    # format files in the current directory
+bun fmt src "test/**/*.ts" # format specific paths or globs
+bun fmt --check            # CI: exits 1 if files need formatting
+bun fmt --init             # add a [fmt] section to bunfig.toml
+```
+
+It covers JavaScript, TypeScript, JSX, CSS, SCSS, Less, HTML, Vue, Angular, JSON, YAML, TOML, Markdown, MDX, GraphQL, and Handlebars, including embedded code in HTML, Markdown, and template literals. Settings go in the `[fmt]` section of `bunfig.toml` (`printWidth`, `tabWidth`, `semi`, `singleQuote`, `trailingComma`, and others). Existing `.prettierrc` and `.editorconfig` files are read, so migrating from Prettier is usually painless. It also sorts imports and Tailwind classes, sorts `package.json`, and can format only staged or changed files. It was merged into Bun's main branch on October 12, 2026, two days after v1.4.3, and Bun announced it for the next version. That version number hasn't been published yet.
 
 ### Bun.cron (v1.3.12)
 
@@ -375,6 +398,8 @@ Bun's idea isn't to add one more tool to `node_modules` — it's to remove as mu
 | Parallel scripts | `concurrently`, `npm-run-all` | `bun run --parallel` | v1.4 |
 | Environment variables | `dotenv` | built-in `.env` support | built-in |
 | Running TypeScript | `ts-node`, `tsx` | `bun app.ts` | built-in |
+| Type checking | `tsc --noEmit` | `bun check` | v1.4.3 |
+| Code formatting | `prettier` | `bun fmt` | next release after v1.4.3 |
 
 Not every replacement is a full drop-in — specific `webpack` loaders or advanced Puppeteer flows aren't going anywhere, and a third-party package will stay necessary there. But for a typical full-stack TypeScript project in 2026, `package.json` can genuinely shrink by a large factor, with `bun` ending up as pretty much the only dependency left.
 

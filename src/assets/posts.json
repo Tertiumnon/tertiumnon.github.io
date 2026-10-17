@@ -299,19 +299,19 @@
     "dirname": "2018-08-26--how-to-organize-your-wallpapers"
   },
   {
-    "title": "Local Ports for Several React Apps: Stop Guessing",
-    "link": "/en/posts/2026-10-13--local-ports-for-several-react-apps",
+    "title": "Local Ports for Several Apps: Stop Guessing",
+    "link": "/en/posts/2026-10-13--local-ports-for-several-apps-stop-guessing",
     "language": "en",
     "category": "Development",
     "tags": [
       "Ports",
-      "React",
       "Local Development",
       "Convention"
     ],
     "publishedAt": "2026-10-13",
     "filename": "index.en.md",
-    "dirname": "2026-10-13--local-ports-for-several-react-apps"
+    "dirname": "2026-10-13--local-ports-for-several-apps-stop-guessing",
+    "updatedAt": "2026-10-15"
   },
   {
     "title": "Hello Everyone, It's My First Post on Medium",
@@ -915,6 +915,7 @@
     ],
     "publishedAt": "2018-11-22",
     "filename": "index.en.md",
-    "dirname": "2018-11-22--js-how-to-decode-html-entities"
+    "dirname": "2018-11-22--js-how-to-decode-html-entities",
+    "updatedAt": "2026-10-15"
   }
 ]

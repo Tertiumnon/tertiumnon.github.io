@@ -1,6 +1,6 @@
 ---
 publishedAt: 2025-11-30
-updatedAt: 2026-07-17
+updatedAt: 2026-10-13
 category: Programming
 tags: ["JavaScript","Tools","Web Development"]
 ---
@@ -205,12 +205,13 @@ bun test --watch
 
 ### Приобретение Anthropic (декабрь 2, 2025)
 
-**Историческое событие:** Bun был приобретен **Anthropic** — компанией создавшей Claude!
+**Историческое событие:** Bun был [приобретен **Anthropic**](https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone) — компанией создавшей Claude!
 
 **Значение:**
 - Bun теперь официально часть инфраструктуры Anthropic
 - Используется как основа для **Claude Code** и **Claude Agent SDK**
 - Долгосрочная поддержка и развитие гарантированы
+- Bun остаётся open source под MIT-лицензией
 
 ### Основные фичи 2025
 

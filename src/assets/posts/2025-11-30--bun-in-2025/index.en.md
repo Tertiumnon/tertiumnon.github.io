@@ -1,6 +1,6 @@
 ---
 publishedAt: 2025-11-30
-updatedAt: 2026-07-17
+updatedAt: 2026-10-13
 category: Programming
 tags: ["JavaScript","Tools","Web Development"]
 source: "medium: https://tertiumnon.medium.com/bun-7fbe61f45e2e"
@@ -204,12 +204,13 @@ Expected output:
 
 ### Acquired by Anthropic (December 2, 2025)
 
-**Historic Event:** Bun was acquired by **Anthropic** — the company that created Claude!
+**Historic Event:** Bun was [acquired by **Anthropic**](https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone) — the company that created Claude!
 
 **Significance:**
 - Bun is now officially part of Anthropic's infrastructure
 - Powers **Claude Code** and **Claude Agent SDK**
 - Long-term support and development guaranteed
+- Bun remains open source under MIT license
 
 ### Key Features in 2025
 
