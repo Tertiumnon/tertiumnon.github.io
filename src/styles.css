@@ -216,7 +216,7 @@ main {
   content: "### ";
 }
 
-/* Code palettes: the code theme (data-code-theme, set by the status bar) picks the colours of code blocks only. */
+/* Code palettes: data-code-theme follows the app theme, so each theme gets its own code block colours. */
 .workbench {
   --code-bg: var(--theme-panel);
   --code-text: var(--theme-text);
@@ -304,6 +304,7 @@ main {
 .hljs-template-variable { color: var(--code-variable); }
 
 pre {
+  position: relative;
   overflow-x: auto;
   color: var(--code-text);
   background-color: var(--code-bg);
@@ -339,6 +340,39 @@ pre code {
   border: none;
   background: none;
   color: inherit;
+}
+
+/* highlight.js paints .hljs with its own background; the block frame is the only one. */
+pre code.hljs {
+  background: none;
+  padding: 0;
+}
+
+.copy-code {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--theme-border);
+  border-radius: 4px;
+  background-color: var(--code-bg);
+  color: var(--code-text);
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.copy-code:hover,
+.copy-code:focus-visible {
+  opacity: 1;
+}
+
+.copy-code.copied {
+  color: var(--theme-accent);
+  opacity: 1;
 }
 
 /* Tables */

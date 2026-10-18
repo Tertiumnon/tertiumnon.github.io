@@ -10,15 +10,6 @@
       </select>
     </label>
     <label class="theme-switch">
-      <span class="visually-hidden">Code theme</span>
-      <select [formControl]="codeThemeCtrl">
-        <option value="same">Code: same as theme</option>
-        @for (theme of themeService.themes; track $index) {
-        <option [value]="theme">Code: {{ themeLabels[theme] }}</option>
-        }
-      </select>
-    </label>
-    <label class="theme-switch">
       <span class="visually-hidden">Theme</span>
       <select [formControl]="themeCtrl">
         @for (theme of themeService.themes; track $index) {
