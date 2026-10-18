@@ -3,12 +3,11 @@ import { ActivatedRoute, RouterLink } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { Post } from "../../entities/post/post.types";
 import { PostService } from "../../entities/post/post.service";
-import { PageLoaderComponent } from "../../components/page-loader/page-loader.component";
 
 @Component({
 	selector: "app-post-404",
 	standalone: true,
-	imports: [CommonModule, RouterLink, PageLoaderComponent],
+	imports: [CommonModule, RouterLink],
 	templateUrl: "./post-404.component.html",
 	styleUrl: "./post-404.component.css",
 })

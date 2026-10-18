@@ -1,32 +1,18 @@
-<app-page-loader [isLoading]="isLoading()"></app-page-loader>
 
-<app-post-control-panel
-  [categories]="categories()"
-  [selectedCategory]="selectedCategory()"
-  [onCategoryChange]="onCategoryChange.bind(this)"
-  [tags]="tags()"
-  [selectedTag]="selectedTag()"
-  [onTagChange]="onTagChange.bind(this)"
-></app-post-control-panel>
+<div class="container-fluid posts-page" style="margin-top: var(--container-margin-top);">
+  <h1 class="posts-title">Posts</h1>
 
-<div class="container-fluid" style="margin-top: var(--container-margin-top);">
-  <div class="content">
-    <h1>Posts</h1>
-
-    <div class="post-list">
-      @if (sortedPosts().length === 0) {
-      <div class="no-posts-message">
-        <p>No posts available.</p>
-      </div>
-      } @else {
-      @for (article of sortedPosts(); track article.link) {
-      <div class="post">
-        <div class="post-date">{{ article.publishedAt }}</div>
-        <div class="post-category">{{ getCategoryDisplay(article.category) }}</div>
-        <a [routerLink]="getPostLink(article.link)">{{ article.title }}</a>
-      </div>
-      }
-      }
-    </div>
-  </div>
+  @if (sortedPosts().length === 0) {
+  <p class="no-posts-message">No posts available.</p>
+  } @else {
+  <ol class="post-list">
+    @for (article of sortedPosts(); track article.link) {
+    <li class="post-row">
+      <time class="post-date">{{ article.publishedAt }}</time>
+      <span class="post-category">{{ getCategoryDisplay(article.category) }}</span>
+      <a class="post-title" [routerLink]="getPostLink(article.link)">{{ article.title }}</a>
+    </li>
+    }
+  </ol>
+  }
 </div>
