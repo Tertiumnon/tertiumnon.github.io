@@ -1,10 +1,16 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { HelloWorldGameComponent } from "../../components/hello-world-game/hello-world-game.component";
+import { AnimeSceneComponent } from "../../components/anime-scene/anime-scene.component";
+import { Theme } from "../../components/theme/theme.constants";
+import { ThemeService } from "../../components/theme/theme.service";
 
 @Component({
 	selector: "app-home",
 	templateUrl: "./home.component.html",
 	standalone: true,
-	imports: [HelloWorldGameComponent],
+	imports: [HelloWorldGameComponent, AnimeSceneComponent],
 })
-export class HomeComponent { }
+export class HomeComponent {
+	readonly themeService = inject(ThemeService);
+	readonly honeyPie = Theme.HoneyPie;
+}
