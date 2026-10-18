@@ -1,5 +1,7 @@
 import { Component, computed, ElementRef, inject, signal, viewChild } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { SelectFieldComponent, SelectOption } from "../form/select-field.component";
+import { TextareaFieldComponent } from "../form/textarea-field.component";
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
 import typescript from "highlight.js/lib/languages/typescript";
@@ -29,9 +31,13 @@ console.table([{ language: "typescript", sandboxed: true }]);
 	standalone: true,
 	templateUrl: "./terminal.component.html",
 	styleUrl: "./terminal.component.css",
-	imports: [FormsModule],
+	imports: [FormsModule, SelectFieldComponent, TextareaFieldComponent],
 })
 export class TerminalComponent {
+	readonly languages: SelectOption[] = [
+		{ value: "typescript", label: "TypeScript" },
+		{ value: "javascript", label: "JavaScript" },
+	];
 	readonly terminal = inject(TerminalService);
 	readonly language = signal<Language>("typescript");
 	readonly script = signal(DEFAULT_SCRIPT);
@@ -45,7 +51,8 @@ export class TerminalComponent {
 		hljs.highlight(this.script() + "\n", { language: this.language() }).value,
 	);
 
-	syncScroll(textarea: HTMLTextAreaElement): void {
+	syncScroll(event: Event): void {
+		const textarea = event.target as HTMLTextAreaElement;
 		const pre = this.highlightPre()?.nativeElement;
 		if (pre) {
 			pre.scrollTop = textarea.scrollTop;

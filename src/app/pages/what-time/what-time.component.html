@@ -1,112 +1,81 @@
-<div class="container-fluid content">
+<div class="what-time">
   <h1>What Time</h1>
-  <h2>Now</h2>
-  <p>{{ date() }}</p>
-  <p>ISO: {{ isoDate() }}</p>
-  <p>
-    Time: {{ date() | date : "yyyy-MM-dd HH:mm:ss" }} ({{
-      getTimezoneLabel(TimeService.timeZone())
-    }})
-  </p>
-  <h2>Date Time Zone Converter</h2>
 
-  <!-- Input Block -->
-  <div class="converter-block input-block">
-    <div class="block-label">Input</div>
+  <section class="now-card" aria-label="Current time">
+    <p class="now-date">{{ date() | date : "EEEE, d MMMM yyyy" }}</p>
+    <p class="now-clock">{{ date() | date : "HH:mm:ss" }}</p>
+    <p class="now-meta">
+      <span>{{ getTimezoneLabel(TimeService.timeZone()) }}</span>
+      <span class="now-iso">{{ isoDate() }}</span>
+    </p>
+  </section>
 
-    <!-- Line 1: Current parameters (date, time, source timezone) -->
-    <div class="flex gap-1 pb-2">
-      <div>
-        <input type="date" name="date" [formControl]="initDateCtrl" />
+  <h2>Converter</h2>
+
+  <div class="converter">
+    <section class="side from">
+      <p class="side-label">From</p>
+      <div class="row">
+        <app-text-field type="date" name="date" label="Source date" [formControl]="initDateCtrl"></app-text-field>
+        <app-text-field type="time" name="time" label="Source time" [formControl]="initTimeCtrl"></app-text-field>
       </div>
-      <div>
-        <input type="time" name="time" [formControl]="initTimeCtrl" />
-      </div>
-      <div class="timezone-inputs-wrapper">
-        <div class="timezone-search-container">
-          <input
-            type="text"
-            name="timeZoneSearch"
-            [formControl]="initTimeZoneSearchCtrl"
-            (focus)="onInitTimeZoneFocus()"
-            (keydown)="onInitTimeZoneKeydown($event)"
-            placeholder="Search timezone..."
-            class="timezone-search-input"
-          />
-          @if (showInitTimeZoneDropdown()) {
-          <div class="timezone-dropdown">
-            @for (tz of filteredInitTimeZones(); track tz; let i = $index) {
-            <div
-              class="timezone-option"
-              [class.active]="i === selectedInitIndex()"
-              (click)="selectInitTimeZone(tz)"
-              (mouseenter)="selectedInitIndex.set(i)">
-              {{ getTimezoneLabel(tz) }}
-            </div>
-            } @empty {
-            <div class="timezone-option-empty">No timezones found</div>
-            }
+      <div class="timezone-search-container">
+        <app-text-field
+          name="timeZoneSearch"
+          placeholder="Search timezone..."
+          [formControl]="initTimeZoneSearchCtrl"
+          (focused)="onInitTimeZoneFocus()"
+          (keydown)="onInitTimeZoneKeydown($event)"></app-text-field>
+        @if (showInitTimeZoneDropdown()) {
+        <div class="timezone-dropdown" data-dropdown="init">
+          @for (tz of filteredInitTimeZones(); track tz; let i = $index) {
+          <div
+            class="timezone-option"
+            [class.active]="i === selectedInitIndex()"
+            (click)="selectInitTimeZone(tz)"
+            (mouseenter)="selectedInitIndex.set(i)">
+            {{ getTimezoneLabel(tz) }}
           </div>
+          } @empty {
+          <div class="timezone-option-empty">No timezones found</div>
           }
         </div>
-        <div class="timezone-search-container timezone-search-second">
-          <input
-            type="text"
-            name="convertedTimeZoneSearch"
-            [formControl]="convertedTimeZoneSearchCtrl"
-            (focus)="onConvertedTimeZoneFocus()"
-            (keydown)="onConvertedTimeZoneKeydown($event)"
-            placeholder="Search target timezone..."
-            class="timezone-search-input"
-          />
-          @if (showConvertedTimeZoneDropdown()) {
-          <div class="timezone-dropdown">
-            @for (tz of filteredConvertedTimeZones(); track tz; let i = $index) {
-            <div
-              class="timezone-option"
-              [class.active]="i === selectedConvertedIndex()"
-              (click)="selectConvertedTimeZone(tz)"
-              (mouseenter)="selectedConvertedIndex.set(i)">
-              {{ getTimezoneLabel(tz) }}
-            </div>
-            } @empty {
-            <div class="timezone-option-empty">No timezones found</div>
-            }
+        }
+      </div>
+      <button type="button" (click)="setToNow()" class="now-button">Now</button>
+    </section>
+
+    <div class="converter-arrow" aria-hidden="true">→</div>
+
+    <section class="side to">
+      <p class="side-label">To</p>
+      <div class="row">
+        <app-text-field type="date" name="convertedDate" label="Converted date" [formControl]="convertedDateCtrl" [readOnly]="true"></app-text-field>
+        <app-text-field type="time" name="convertedTime" label="Converted time" [formControl]="convertedTimeCtrl" [readOnly]="true"></app-text-field>
+      </div>
+      <div class="timezone-search-container">
+        <app-text-field
+          name="convertedTimeZoneSearch"
+          placeholder="Search target timezone..."
+          [formControl]="convertedTimeZoneSearchCtrl"
+          (focused)="onConvertedTimeZoneFocus()"
+          (keydown)="onConvertedTimeZoneKeydown($event)"></app-text-field>
+        @if (showConvertedTimeZoneDropdown()) {
+        <div class="timezone-dropdown" data-dropdown="converted">
+          @for (tz of filteredConvertedTimeZones(); track tz; let i = $index) {
+          <div
+            class="timezone-option"
+            [class.active]="i === selectedConvertedIndex()"
+            (click)="selectConvertedTimeZone(tz)"
+            (mouseenter)="selectedConvertedIndex.set(i)">
+            {{ getTimezoneLabel(tz) }}
           </div>
+          } @empty {
+          <div class="timezone-option-empty">No timezones found</div>
           }
         </div>
+        }
       </div>
-      <div>
-        <button type="button" (click)="setToNow()" class="now-button">Now</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Arrow separator -->
-  <div class="converter-arrow">↓</div>
-
-  <!-- Output Block -->
-  <div class="converter-block output-block">
-    <div class="block-label">Output</div>
-
-    <!-- Line 3: Result (converted date and time) -->
-    <div class="flex gap-1">
-      <div>
-        <input
-          type="date"
-          name="convertedDate"
-          [formControl]="convertedDateCtrl"
-          readonly
-        />
-      </div>
-      <div>
-        <input
-          type="time"
-          name="convertedTime"
-          [formControl]="convertedTimeCtrl"
-          readonly
-        />
-      </div>
-    </div>
+    </section>
   </div>
 </div>

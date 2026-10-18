@@ -1,5 +1,5 @@
 <div class="search">
-  <input type="search" class="search-input" [placeholder]="scope() === 'project' ? 'Search projects' : 'Search posts'" [value]="query()" (input)="onInput($event)" [attr.aria-label]="scope() === 'project' ? 'Search projects' : 'Search posts'" autocomplete="off" />
+  <app-text-field type="search" [label]="scope() === 'project' ? 'Search projects' : 'Search posts'" [placeholder]="scope() === 'project' ? 'Search projects' : 'Search posts'" [value]="query()" (valueChange)="query.set($event)"></app-text-field>
 
   @if (query().trim()) {
   <ul class="results">

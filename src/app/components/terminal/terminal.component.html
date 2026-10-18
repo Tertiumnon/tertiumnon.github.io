@@ -1,9 +1,6 @@
 <div class="terminal-header">
   <span class="terminal-title">Terminal</span>
-  <select class="language" [ngModel]="language()" (ngModelChange)="language.set($event)" aria-label="Language">
-    <option value="typescript">TypeScript</option>
-    <option value="javascript">JavaScript</option>
-  </select>
+  <app-select-field class="language" label="Language" [options]="languages" [ngModel]="language()" (ngModelChange)="language.set($event)"></app-select-field>
   <button type="button" class="action" (click)="run()" [disabled]="running()">Run</button>
   <button type="button" class="action" (click)="stop()" [disabled]="!running()">Stop</button>
   <button type="button" class="action" (click)="clear()">Clear</button>
@@ -14,16 +11,16 @@
 <div class="terminal-body">
   <div class="script-stack">
     <pre #highlight class="script-highlight hljs" aria-hidden="true"><code [innerHTML]="highlighted()"></code></pre>
-    <textarea
-      #editor
+    <app-textarea-field
       class="script"
-      spellcheck="false"
+      [overlay]="true"
+      label="Script"
       wrap="off"
-      aria-label="Script"
+      [spellcheck]="false"
       [ngModel]="script()"
       (ngModelChange)="script.set($event)"
       (keydown)="onKeydown($event)"
-      (scroll)="syncScroll(editor)"></textarea>
+      (scrolled)="syncScroll($event)"></app-textarea-field>
   </div>
 
   <div class="console" aria-live="polite">

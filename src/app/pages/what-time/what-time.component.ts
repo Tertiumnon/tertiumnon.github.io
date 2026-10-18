@@ -14,13 +14,14 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { interval, Subscription } from "rxjs";
 import { TimeService } from "../../components/time/time.service";
+import { TextFieldComponent } from "../../components/form/text-field.component";
 
 const INTERVAL_MS = 1000;
 const MAX_DROPDOWN_ITEMS = 50;
 
 @Component({
 	selector: "app-what-time",
-	imports: [CommonModule, ReactiveFormsModule, DatePipe],
+	imports: [CommonModule, ReactiveFormsModule, DatePipe, TextFieldComponent],
 	templateUrl: "./what-time.component.html",
 	styleUrl: "./what-time.component.css",
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -326,8 +327,8 @@ export class WhatTimeComponent {
 		setTimeout(() => {
 			const dropdown = this.elementRef.nativeElement.querySelector(
 				type === "init"
-					? '.timezone-dropdown:has(~ input[name="timeZoneSearch"])'
-					: '.timezone-dropdown:has(~ input[name="convertedTimeZoneSearch"])',
+					? '[data-dropdown="init"]'
+					: '[data-dropdown="converted"]',
 			);
 			if (!dropdown) return;
 

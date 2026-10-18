@@ -1,21 +1,7 @@
 <footer class="status-bar">
   <button type="button" class="terminal-toggle" (click)="terminal.toggle()" [attr.aria-pressed]="terminal.open()">Terminal</button>
   <div class="status-controls">
-    <label class="font-switch">
-      <span class="visually-hidden">Font</span>
-      <select [formControl]="fontCtrl">
-        @for (font of fontService.fonts; track font) {
-        <option [value]="font">{{ fontOptions[font].label }}</option>
-        }
-      </select>
-    </label>
-    <label class="theme-switch">
-      <span class="visually-hidden">Theme</span>
-      <select [formControl]="themeCtrl">
-        @for (theme of themeService.themes; track $index) {
-        <option [value]="theme">{{ themeLabels[theme] }}</option>
-        }
-      </select>
-    </label>
+    <app-select-field class="font-switch" label="Font" [options]="fontChoices" [formControl]="fontCtrl"></app-select-field>
+    <app-select-field class="theme-switch" label="Theme" [options]="themeChoices" [formControl]="themeCtrl"></app-select-field>
   </div>
 </footer>

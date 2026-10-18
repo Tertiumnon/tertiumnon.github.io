@@ -1,180 +1,189 @@
-/* CSS Variables */
-:host {
-  --input-height: 38px;
-  --input-gap: 0.25rem;
-  --border-radius: 8px;
+/* What Time: a "now" card and a From / To converter. Stacks on narrow windows. */
+.what-time {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 12px 24px;
 }
 
-/* Converter blocks */
-.converter-block {
-  padding: 16px;
-  border-radius: var(--border-radius);
+.what-time h2 {
+  margin-top: 1.5rem;
+}
+
+/* Current time. */
+.now-card {
   position: relative;
+  overflow: hidden;
+  padding: 18px 20px;
+  border: 1px solid var(--theme-border);
+  border-left: 4px solid var(--theme-accent);
+  border-radius: var(--editor-radius);
+  background: linear-gradient(135deg, var(--theme-surface), var(--theme-panel));
+  box-shadow: var(--box-shadow);
 }
 
-.input-block {
-  background-color: rgba(248, 249, 250, 0.5);
-  border: 2px solid #e0e7ff;
+.now-date {
+  margin: 0;
+  font-size: 0.85em;
+  opacity: 0.75;
 }
 
-.output-block {
-  background-color: rgba(240, 253, 244, 0.5);
-  border: 2px solid #d1fae5;
+.now-clock {
+  margin: 2px 0;
+  font-family: var(--font-code);
+  font-size: clamp(2.2rem, 9vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--theme-accent);
+  font-variant-numeric: tabular-nums;
 }
 
-.block-label {
-  position: absolute;
-  top: -10px;
-  left: 12px;
-  background: white;
-  padding: 0 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #6b7280;
+.now-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 0;
+  font-size: 0.85em;
+  opacity: 0.8;
+}
+
+.now-iso {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+/* Converter: From | arrow | To. */
+.converter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+}
+
+.side {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--theme-border);
+  border-radius: var(--editor-radius);
+  background-color: var(--theme-surface);
+  box-shadow: var(--box-shadow);
+}
+
+.side.to {
+  border-top: 3px solid var(--theme-accent);
+}
+
+.side.from {
+  border-top: 3px solid var(--theme-border);
+}
+
+.side-label {
+  margin: 0;
+  font-size: 0.75em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  opacity: 0.7;
+}
+
+/* Date and time side by side; they wrap when the side is narrow. */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.row > * {
+  flex: 1 1 140px;
+  min-width: 0;
+}
+
+.now-button {
+  align-self: flex-start;
+  min-height: 36px;
+  padding: 0 18px;
+  border: 1px solid var(--theme-accent);
+  border-radius: var(--editor-radius);
+  background-color: var(--theme-accent);
+  color: var(--theme-bg);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.now-button:hover {
+  transform: translateY(-1px);
+}
+
+.now-button:active {
+  transform: translateY(1px);
 }
 
 .converter-arrow {
-  text-align: center;
-  font-size: 24px;
-  color: white;
-  margin: 8px 0;
-  font-weight: bold;
+  align-self: center;
+  font-size: 1.8em;
+  color: var(--theme-accent);
+  line-height: 1;
 }
 
-.timezone-inputs-wrapper {
-  position: relative;
-  display: inline-block;
-  min-height: calc(2 * var(--input-height) + var(--input-gap));
-}
-
+/* Timezone search and its dropdown. */
 .timezone-search-container {
   position: relative;
-  display: inline-block;
-  min-width: 300px;
-}
-
-.timezone-search-second {
-  position: absolute;
-  top: calc(var(--input-height) + var(--input-gap));
-  left: 0;
-}
-
-.timezone-search-input {
-  width: 100%;
-  box-sizing: border-box;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  border-radius: var(--border-radius);
-  transition: border-radius 0.15s ease;
-}
-
-/* When dropdown is open, remove bottom border radius */
-.timezone-search-container:has(.timezone-dropdown) .timezone-search-input {
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-}
-
-.timezone-search-input:focus {
-  outline: none;
 }
 
 .timezone-dropdown {
   position: absolute;
-  top: calc(100% - 1px);
+  top: calc(100% + 4px);
   left: 0;
   right: 0;
-  max-height: 300px;
+  z-index: 20;
+  max-height: 260px;
   overflow-y: auto;
-  background: white;
-  border: 1px solid;
-  border-color: inherit;
-  border-top: none;
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  border: 1px solid var(--theme-border);
+  border-radius: var(--editor-radius);
+  background-color: var(--theme-panel);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.timezone-option,
+.timezone-option-empty {
+  padding: 8px 12px;
+  font-size: 0.9em;
 }
 
 .timezone-option {
-  padding: 10px 12px;
   cursor: pointer;
-  color: #000;
-  font-size: 14px;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.12s ease;
 }
 
 .timezone-option:hover {
-  background-color: #f3f4f6;
+  background-color: color-mix(in srgb, var(--theme-accent) 14%, transparent);
 }
 
 .timezone-option.active {
-  background-color: #e0e7ff;
-  border-left: 3px solid #6366f1;
-  padding-left: 9px;
-}
-
-.timezone-option:active {
-  background-color: #e5e7eb;
+  background-color: color-mix(in srgb, var(--theme-accent) 28%, transparent);
+  box-shadow: inset 3px 0 0 var(--theme-accent);
 }
 
 .timezone-option-empty {
-  padding: 10px 12px;
-  color: #6b7280;
-  font-size: 14px;
+  opacity: 0.7;
   font-style: italic;
 }
 
-/* Scrollbar styling for dropdown */
-.timezone-dropdown::-webkit-scrollbar {
-  width: 8px;
-}
+/* Narrow windows: From on top, the arrow turns downward, To below. */
+@media (max-width: 720px) {
+  .converter {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
-.timezone-dropdown::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.timezone-dropdown::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: calc(var(--border-radius) / 2);
-}
-
-.timezone-dropdown::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* Readonly inputs styling */
-input[readonly] {
-  background-color: #f3f4f6;
-  cursor: default;
-  border-color: #d1d5db;
-}
-
-/* Now button styling */
-.now-button {
-  padding: 0 16px;
-  height: var(--input-height);
-  background-color: #6366f1;
-  color: white;
-  border: 2px solid #6366f1;
-  border-radius: var(--border-radius);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
-  font-family: inherit;
-  font-size: inherit;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.now-button:hover {
-  background-color: #4f46e5;
-  border-color: #4f46e5;
-}
-
-.now-button:active {
-  background-color: #4338ca;
-  border-color: #4338ca;
+  .converter-arrow {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
 }

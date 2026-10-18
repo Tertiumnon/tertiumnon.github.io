@@ -1,6 +1,7 @@
 import { Component, computed, inject, input, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { RouterLink } from "@angular/router";
+import { TextFieldComponent } from "../form/text-field.component";
 import { catchError, of } from "rxjs";
 import PROJECT_ITEMS from "../../entities/project/project.mock";
 import { PostService } from "../../entities/post/post.service";
@@ -23,7 +24,7 @@ const MAX_RESULTS = 30;
 	standalone: true,
 	templateUrl: "./sidebar-search.component.html",
 	styleUrl: "./sidebar-search.component.css",
-	imports: [RouterLink],
+	imports: [RouterLink, TextFieldComponent],
 })
 export class SidebarSearchComponent {
 	private readonly postService = inject(PostService);
@@ -58,8 +59,4 @@ export class SidebarSearchComponent {
 			.slice(0, MAX_RESULTS)
 			.map((post) => ({ kind: "post" as const, title: post.title, detail: post.category, link: post.link }));
 	});
-
-	onInput(event: Event): void {
-		this.query.set((event.target as HTMLInputElement).value);
-	}
 }

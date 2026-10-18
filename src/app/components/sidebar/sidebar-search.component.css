@@ -3,23 +3,6 @@
   border-top: 1px solid var(--theme-border);
 }
 
-.search-input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 4px 8px;
-  border: 1px solid var(--theme-border);
-  border-radius: 4px;
-  background-color: var(--theme-bg);
-  color: inherit;
-  font: inherit;
-  font-size: 0.9rem;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: var(--theme-accent);
-}
-
 .results {
   margin: 6px 0 0;
   padding: 0;

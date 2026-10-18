@@ -1,6 +1,7 @@
 import { Component, DestroyRef, inject } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { SelectFieldComponent } from "../form/select-field.component";
 import { Theme, THEME_LABELS } from "../theme/theme";
 import { ThemeService } from "../theme/theme.service";
 import { TerminalService } from "../terminal/terminal.service";
@@ -11,7 +12,7 @@ import { FONT_OPTIONS, FontKey, FontService } from "../font/font.service";
 	standalone: true,
 	templateUrl: "./status-bar.component.html",
 	styleUrl: "./status-bar.component.css",
-	imports: [ReactiveFormsModule],
+	imports: [ReactiveFormsModule, SelectFieldComponent],
 })
 export class StatusBarComponent {
 	private readonly destroyRef = inject(DestroyRef);
@@ -20,6 +21,8 @@ export class StatusBarComponent {
 	readonly terminal = inject(TerminalService);
 	readonly themeLabels = THEME_LABELS;
 	readonly fontOptions = FONT_OPTIONS;
+	readonly fontChoices = this.fontService.fonts.map((font) => ({ value: font, label: FONT_OPTIONS[font].label }));
+	readonly themeChoices = this.themeService.themes.map((theme) => ({ value: theme, label: THEME_LABELS[theme] }));
 	readonly themeCtrl = new FormControl(this.themeService.theme());
 	readonly fontCtrl = new FormControl(this.fontService.font());
 

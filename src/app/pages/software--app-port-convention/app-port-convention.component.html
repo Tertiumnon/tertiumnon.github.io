@@ -6,22 +6,19 @@
   </p>
 
   <div class="framework-picker">
-    <input
-      type="search"
-      role="combobox"
+    <app-text-field
       class="framework-search"
+      role="combobox"
+      label="Select your framework"
       placeholder="Select your framework"
-      aria-label="Select your framework"
-      aria-autocomplete="list"
-      aria-controls="framework-listbox"
-      autocomplete="off"
-      [attr.aria-expanded]="isOpen()"
-      [attr.aria-activedescendant]="activeOptionId()"
+      [expanded]="isOpen()"
+      controls="framework-listbox"
+      [activeDescendant]="activeOptionId()"
       [value]="query()"
+      (valueChange)="onQueryChange($event)"
       (focus)="onFocus()"
-      (input)="onInput($event)"
       (keydown)="onKeydown($event)"
-    />
+    ></app-text-field>
 
     @if (isOpen()) {
       <ul id="framework-listbox" class="framework-list" role="listbox">

@@ -8,6 +8,7 @@ import {
 	signal,
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { TextFieldComponent } from "../../components/form/text-field.component";
 import {
 	FRAMEWORKS,
 	IFramework,
@@ -19,7 +20,7 @@ import {
 
 @Component({
 	selector: "app-app-port-convention",
-	imports: [CommonModule],
+	imports: [CommonModule, TextFieldComponent],
 	templateUrl: "./app-port-convention.component.html",
 	styleUrl: "./app-port-convention.component.css",
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -72,8 +73,8 @@ export class AppPortConventionComponent {
 		this.isOpen.set(true);
 	}
 
-	onInput(event: Event): void {
-		this.query.set((event.target as HTMLInputElement).value);
+	onQueryChange(value: string): void {
+		this.query.set(value);
 		this.activeIndex.set(0);
 		this.isOpen.set(true);
 	}

@@ -34,22 +34,6 @@
   gap: 4px;
 }
 
-.font-switch select,
-.theme-switch select {
-  padding: 0 4px;
-  border: none;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-}
-
-.font-switch select option,
-.theme-switch select option {
-  background-color: var(--theme-panel);
-  color: var(--theme-text);
-}
-
 .visually-hidden {
   position: absolute;
   width: 1px;
