@@ -71,8 +71,8 @@ export class HelloWorldGameComponent {
 	containerHeight = 360;
 
 	// must match the service cell size/gap
-	readonly cellSize = 9;
-	readonly gap = 1;
+	readonly cellSize = 13;
+	readonly gap = 2;
 
 	constructor(
 		private svc: HelloWorldGameService,
@@ -81,7 +81,7 @@ export class HelloWorldGameComponent {
 	) {
 		// Fill the TV screen; the instructions, HUD and controls take the height above and below the grid.
 		this.containerWidth = Math.max(200, screen.width() - 24);
-		this.containerHeight = Math.max(160, screen.height() - 170);
+		this.containerHeight = Math.max(160, screen.height() - 70);
 	}
 
 	ngOnInit() {

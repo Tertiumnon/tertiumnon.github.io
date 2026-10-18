@@ -1,13 +1,7 @@
 
 <div class="hello-world">
-		<p class="game-instructions">Shoot “{{ phrase }}” with <kbd>Space</kbd> or <kbd>S</kbd>.</p>
 		<div class="game-hud">
-			<label class="player-name">Pilot
-				<input [value]="playerName" (input)="updatePlayerName($event)" maxlength="10" aria-label="Pilot name">
-			</label>
 			<span>SCORE <strong>{{ score }}</strong></span>
-			<span>BLOCKS <strong>{{ destroyedBlocks }}</strong></span>
-			<span>TIME <strong>{{ formatTime(elapsedSeconds) }}</strong></span>
 		</div>
 		<div class="bricks grid" *ngIf="cells.length"
 			 [style.position]="'relative'"
@@ -88,8 +82,4 @@
 			</div>
 		</div>
 
-		<!-- controls -->
-		<div class="tank-controls">
-			<button class="restart-button" (click)="restart()">Restart</button>
-		</div>
 </div>

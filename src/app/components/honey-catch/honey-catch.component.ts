@@ -11,10 +11,10 @@ const TICK_MS = 40;
 const LIVES = 3;
 // Positions are percentages of the field. The collider follows the girl picture: a pie is caught when it reaches
 // the top of the picture and is within the figure's width (sizes are fractions of the field width).
-const GIRL_WIDTH = 0.3;
+const GIRL_WIDTH = 0.38;
 const GIRL_RATIO = 113 / 200;
-const PIE_WIDTH = 0.05;
-const CATCH_RANGE = 7;
+const PIE_WIDTH = 0.07;
+const CATCH_RANGE = 10;
 const STEP = 1.6;
 const SPAWN_EVERY_TICKS = 32;
 
@@ -26,8 +26,6 @@ const SPAWN_EVERY_TICKS = 32;
 		<section class="honey-catch">
 			<header class="hud">
 				<span>Score <b>{{ score() }}</b></span>
-				<span>Best <b>{{ best() }}</b></span>
-				<span class="lives" aria-label="Lives">{{ hearts() }}</span>
 			</header>
 			<div #field class="field" (pointermove)="onPointer($event)" (pointerdown)="onPointer($event)">
 				@for (pie of pies(); track pie.id) {
@@ -99,7 +97,7 @@ const SPAWN_EVERY_TICKS = 32;
 
 		.pie {
 			position: absolute;
-			width: 5%;
+			width: 7%;
 			aspect-ratio: 1;
 			border-radius: 50%;
 			transform: translateX(-50%);
@@ -111,7 +109,7 @@ const SPAWN_EVERY_TICKS = 32;
 		.girl {
 			position: absolute;
 			bottom: 0;
-			width: 30%;
+			width: 38%;
 			transform: translateX(-50%);
 			pointer-events: none;
 		}
