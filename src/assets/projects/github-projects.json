@@ -1,9 +1,24 @@
 [
   {
+    "name": "tertium-cheatsheets",
+    "title": "Cheatsheets",
+    "type": "cheatsheets",
+    "description": "Cheatsheets for programmers",
+    "language": "Markdown",
+    "url": "https://github.com/Tertiumnon/tertium-cheatsheets",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v2.3.1",
+      "date": "2026-07-19"
+    }
+  },
+  {
     "name": "release-convention",
     "title": "Release Convention",
     "type": "guide",
     "description": "Guide to release workflows with Git branches (release, hotfix), CI/CD notes, and a release metadata JSON schema.",
+    "language": "Markdown",
     "url": "https://github.com/Tertiumnon/release-convention",
     "readme": true,
     "releases": []
@@ -59,6 +74,7 @@
     "title": "Entity-Driven Architecture",
     "type": "style guide",
     "description": "Guide to entity-driven development principles, naming conventions, and architectural patterns.",
+    "language": "Markdown",
     "url": "https://github.com/Tertiumnon/entity-driven-architecture",
     "readme": true,
     "releases": []
@@ -68,6 +84,7 @@
     "title": "tRUe coders",
     "type": "telegram sticker pack",
     "description": "Telegram sticker pack: tRUe coders.",
+    "image": "https://raw.githubusercontent.com/Tertiumnon/true-coders-sticker-pack/HEAD/stickers/sockets_down.png",
     "url": "https://github.com/Tertiumnon/true-coders-sticker-pack",
     "readme": true,
     "releases": []
@@ -77,6 +94,7 @@
     "title": "Git Convention",
     "type": "conventions",
     "description": "Git branch and commit conventions: goal-based branches, containers for release and hotfix, conventional commits",
+    "language": "Markdown",
     "url": "https://github.com/Tertiumnon/git-convention",
     "readme": true,
     "releases": []
@@ -86,6 +104,7 @@
     "title": "CLI Convention",
     "type": "conventions",
     "description": "CLI conventions for Tertium tools: commands, short and long flags, one- and two-dash meaning, errors and output",
+    "language": "Markdown",
     "url": "https://github.com/Tertiumnon/cli-convention",
     "readme": true,
     "releases": []
@@ -95,6 +114,7 @@
     "title": "JSON to SQL Script",
     "type": "npm package",
     "description": "Convert your JSON-file to SQL-script for inserting to database.",
+    "language": "JavaScript",
     "url": "https://github.com/Tertiumnon/json-to-sql-script",
     "readme": true,
     "releases": [],
@@ -108,6 +128,7 @@
     "title": "JSON All to One",
     "type": "cli",
     "description": "CLI that concatenates several JSON files from a directory into one file, optionally wrapped under a key.",
+    "language": "JavaScript",
     "url": "https://github.com/Tertiumnon/json-all-to-one",
     "readme": true,
     "releases": [],
@@ -121,6 +142,7 @@
     "title": "hlpr",
     "type": "cli",
     "description": "Command-line helper for everyday tasks on Windows, macOS, and Linux, run as hlpr <domain> <command>.",
+    "language": "TypeScript",
     "url": "https://github.com/Tertiumnon/tertium-hlpr",
     "readme": true,
     "releases": [],
@@ -134,6 +156,7 @@
     "title": "gith",
     "type": "cli",
     "description": "gf: git-only branch flow CLI (goal branches, release/hotfix containers, synced merges)",
+    "language": "TypeScript",
     "url": "https://github.com/Tertiumnon/tertium-gith",
     "readme": true,
     "releases": [],
@@ -147,6 +170,7 @@
     "title": "@tertium/js",
     "type": "library",
     "description": "Reusable TypeScript library of shared core utilities, entity models, and release scripts for JavaScript projects. In development.",
+    "language": "TypeScript",
     "url": "https://github.com/Tertiumnon/tertium-js",
     "readme": true,
     "releases": [],
@@ -160,6 +184,7 @@
     "title": "Intel Arc B60 Local LLM Cookbook",
     "type": "cookbook",
     "description": "Running local LLMs on a 24 GB Intel Arc B60 with Llama.cpp, Strata, and OpenVINO.",
+    "language": "TypeScript",
     "url": "https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook",
     "readme": true,
     "releases": []
@@ -169,6 +194,7 @@
     "title": "Full Windowed Youtube",
     "type": "firefox extension",
     "description": "Open source Firefox extension that adds a button to YouTube's control bar to fill the browser window with the player.",
+    "language": "TypeScript",
     "url": "https://github.com/Tertiumnon/youtube-full-window-ext",
     "readme": true,
     "releases": []
@@ -178,6 +204,7 @@
     "title": "@tertium/prisma-codegen",
     "type": "code generator",
     "description": "Code generation library for Prisma schemas: REST handlers, GraphQL resolvers, and TypeScript types. In development.",
+    "language": "TypeScript",
     "url": "https://github.com/Tertiumnon/tertium-prisma-codegen",
     "readme": true,
     "releases": [],
@@ -191,6 +218,7 @@
     "title": "tertium.icons",
     "type": "icon set",
     "description": "Free svg and font icons",
+    "language": "HTML",
     "url": "https://github.com/Tertiumnon/tertium-icons",
     "readme": true,
     "releases": []
@@ -200,6 +228,7 @@
     "title": "Bun Markdown Wiki",
     "type": "web app",
     "description": "Simple Bun web server that displays and manages markdown files over HTTP.",
+    "language": "TypeScript",
     "url": "https://github.com/Tertiumnon/tertium-js-markdown-wiki",
     "readme": true,
     "releases": [],
@@ -209,23 +238,11 @@
     }
   },
   {
-    "name": "tertium-cheatsheets",
-    "title": "Cheatsheets",
-    "type": "cheatsheets",
-    "description": "Cheatsheets for programmers",
-    "url": "https://github.com/Tertiumnon/tertium-cheatsheets",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v2.3.1",
-      "date": "2026-07-19"
-    }
-  },
-  {
     "name": "tertium-css",
     "title": "Tertium CSS - Universal Design System",
     "type": "css library",
     "description": "Minimalistic set of CSS classes.",
+    "language": "CSS",
     "url": "https://github.com/Tertiumnon/tertium-css",
     "readme": true,
     "releases": [],
@@ -239,6 +256,7 @@
     "title": "Countries",
     "type": "npm package",
     "description": "Country names in 20 languages with lookup helpers, as an ESM package.",
+    "language": "TypeScript",
     "url": "https://github.com/Tertiumnon/tertium-countries",
     "readme": true,
     "releases": [],
@@ -252,6 +270,7 @@
     "title": "Blog Platform - Entity-Driven Architecture",
     "type": "web app",
     "description": "Blog platform built with entity-driven architecture: Bun and Elysia backend, SolidJS frontend.",
+    "language": "TypeScript",
     "url": "https://github.com/Tertiumnon/entity-driven-architecture--example",
     "readme": true,
     "releases": []
@@ -261,6 +280,7 @@
     "title": "MediaWiki Template Deploy",
     "type": "cli",
     "description": "Node.js CLI to stream, update, and delete MediaWiki pages on a remote server from local article files.",
+    "language": "JavaScript",
     "url": "https://github.com/Tertiumnon/mw-deploy",
     "readme": true,
     "releases": [],
@@ -274,6 +294,7 @@
     "title": "JavaScript Snippets for Visual Studio Code",
     "type": "vscode extension",
     "description": "Collection of JavaScript snippets for Visual Studio Code.",
+    "language": "JavaScript",
     "url": "https://github.com/Tertiumnon/tertium-js-snippets",
     "readme": true,
     "releases": [],
@@ -287,6 +308,7 @@
     "title": "Anime Emotions",
     "type": "telegram sticker pack",
     "description": "Telegram sticker pack: Anime Emotions.",
+    "image": "https://raw.githubusercontent.com/Tertiumnon/anime-emotions-sticker-pack/HEAD/stickers/akanbe.png",
     "url": "https://github.com/Tertiumnon/anime-emotions-sticker-pack",
     "readme": true,
     "releases": []
