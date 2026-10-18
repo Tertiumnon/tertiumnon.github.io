@@ -56,9 +56,9 @@
 	text-transform: uppercase;
 }
 
-.bricks.grid {
+.bricks {
+	display: grid;
 	position: relative;
-	background: transparent;
 	box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.73);
 	border-radius: 6px;
 }

@@ -32,3 +32,15 @@
   color: var(--text-color);
   font: inherit;
 }
+
+.panel-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+}
