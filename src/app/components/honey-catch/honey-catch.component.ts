@@ -10,8 +10,8 @@ const BEST_KEY = "honey-catch-best";
 const TICK_MS = 40;
 const LIVES = 3;
 // Positions are percentages of the field. The figure stands at the bottom, so a pie is caught when it reaches its height.
-const CATCH_LINE = 68;
-const CATCH_RANGE = 10;
+const CATCH_LINE = 80;
+const CATCH_RANGE = 9;
 const STEP = 1.6;
 const SPAWN_EVERY_TICKS = 16;
 
@@ -33,7 +33,7 @@ const SPAWN_EVERY_TICKS = 16;
 				@for (pie of pies(); track pie.id) {
 				<span class="pie" [style.left.%]="pie.x" [style.top.%]="pie.y"></span>
 				}
-				<div class="girl" [style.left.%]="girlX()"></div>
+				<img class="girl" src="/assets/images/honey-pie-girl.gif" alt="" [style.left.%]="girlX()" />
 				@if (over()) {
 				<p class="message">Game over</p>
 				}
@@ -43,7 +43,7 @@ const SPAWN_EVERY_TICKS = 16;
 	styles: [`
 		.honey-catch {
 			width: 100%;
-			max-width: 480px;
+			max-width: 720px;
 			margin: 2rem auto;
 			font-family: var(--font-ui);
 		}
@@ -90,26 +90,21 @@ const SPAWN_EVERY_TICKS = 16;
 
 		.pie {
 			position: absolute;
-			width: 24px;
-			height: 24px;
+			width: 5%;
+			aspect-ratio: 1;
 			border-radius: 50%;
 			transform: translateX(-50%);
 			background: radial-gradient(circle at 35% 35%, #fff3b0, #ffb703 45%, #c77d1a 100%);
 			box-shadow: 0 0 8px rgba(255, 183, 3, 0.6);
 		}
 
-		/* The girl is cropped from the picture: her face and shoulders. */
+		/* Sizes are percentages of the field, so the girl and the pies scale with the screen. */
 		.girl {
 			position: absolute;
 			bottom: 0;
-			width: 120px;
-			height: 120px;
+			width: 30%;
 			transform: translateX(-50%);
-			border-radius: 50%;
-			background: url("/assets/images/honey-pie-2.png") no-repeat;
-			background-size: 560px auto;
-			background-position: -121px -35px;
-			box-shadow: 0 0 0 3px var(--theme-accent);
+			pointer-events: none;
 		}
 
 		.message {
