@@ -7,7 +7,7 @@
   <p class="no-posts-message">No posts available.</p>
   } @else {
   <ol class="post-list">
-    @for (article of pagedPosts(); track article.link) {
+    @for (article of visiblePosts(); track article.link) {
     <li class="post-row">
       <time class="post-date">{{ article.publishedAt }}</time>
       <span class="post-category">{{ getCategoryDisplay(article.category) }}</span>
@@ -17,4 +17,4 @@
   </ol>
   }
 </div>
-<app-pager [page]="page()" [pageCount]="pageCount()" (pageChange)="page.set($event)"></app-pager>
+<app-load-more [hasMore]="visibleCount() < sortedPosts().length" (reached)="loadMore()"></app-load-more>

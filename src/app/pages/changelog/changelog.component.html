@@ -3,7 +3,7 @@
 </app-page-header>
 <div class="container-fluid changelog-page" style="margin-top: 0.5rem;">
   <ol class="changelog-feed">
-    @for (changelogItem of pagedChangelog(); track changelogItem.link) {
+    @for (changelogItem of visibleChangelog(); track changelogItem.link) {
     <li class="changelog-item">
       <time class="changelog-date">{{ changelogItem.publishedAt }}</time>
       <span class="changelog-rail" aria-hidden="true"></span>
@@ -16,4 +16,4 @@
     }
   </ol>
 </div>
-<app-pager [page]="page()" [pageCount]="pageCount()" (pageChange)="page.set($event)"></app-pager>
+<app-load-more [hasMore]="visibleCount() < filteredChangelog().length" (reached)="loadMore()"></app-load-more>

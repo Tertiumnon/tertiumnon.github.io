@@ -1,9 +1,9 @@
 import { SidebarPageFiltersComponent } from "../../components/sidebar/sidebar-page-filters.component";
 import { PageHeaderComponent } from "../../components/page-header/page-header.component";
 import { Component, DestroyRef, inject, signal, computed, effect, untracked } from "@angular/core";
-import { PagerComponent } from "../../components/pager/pager.component";
+import { LoadMoreComponent } from "../../components/load-more/load-more.component";
 
-const CHANGELOG_PER_PAGE = 10;
+const CHANGELOG_PER_BATCH = 10;
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -15,7 +15,7 @@ import { ChangelogFilterService } from "../../components/sidebar/changelog-filte
 @Component({
 	selector: "app-changelog",
 	standalone: true,
-	imports: [CommonModule, MdContentComponent, SidebarPageFiltersComponent, PageHeaderComponent, PagerComponent],
+	imports: [CommonModule, MdContentComponent, SidebarPageFiltersComponent, PageHeaderComponent, LoadMoreComponent],
 	templateUrl: "./changelog.component.html",
 	styleUrl: "./changelog.component.css",
 })
@@ -24,13 +24,13 @@ export class ChangelogComponent {
 	private readonly activatedRoute = inject(ActivatedRoute);
 	private readonly changelogService = inject(ChangelogService);
 	readonly filters = inject(ChangelogFilterService);
-	page = signal(1);
+	visibleCount = signal(CHANGELOG_PER_BATCH);
 
 	constructor() {
-		// A new project filter starts again from the first page.
+		// A new project filter starts again from the first batch.
 		effect(() => {
 			this.filters.selectedProject();
-			untracked(() => this.page.set(1));
+			untracked(() => this.visibleCount.set(CHANGELOG_PER_BATCH));
 		});
 	}
 
@@ -48,12 +48,11 @@ export class ChangelogComponent {
 			}));
 	});
 
-	pageCount = computed(() => Math.max(1, Math.ceil(this.filteredChangelog().length / CHANGELOG_PER_PAGE)));
+	visibleChangelog = computed(() => this.filteredChangelog().slice(0, this.visibleCount()));
 
-	pagedChangelog = computed(() => {
-		const start = (this.page() - 1) * CHANGELOG_PER_PAGE;
-		return this.filteredChangelog().slice(start, start + CHANGELOG_PER_PAGE);
-	});
+	loadMore(): void {
+		this.visibleCount.update((count) => count + CHANGELOG_PER_BATCH);
+	}
 
 	private stripFirstHeading(content: string): string {
 		let cleaned = content.replace(/^---[\s\S]*?---\s*/, "");

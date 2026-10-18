@@ -1,6 +1,6 @@
 import { SidebarPageFiltersComponent } from "../../components/sidebar/sidebar-page-filters.component";
 import { PageHeaderComponent } from "../../components/page-header/page-header.component";
-import { PagerComponent } from "../../components/pager/pager.component";
+import { LoadMoreComponent } from "../../components/load-more/load-more.component";
 import { Component, DestroyRef, effect, inject, signal, computed, untracked } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute, RouterLink } from "@angular/router";
@@ -9,12 +9,12 @@ import { Post } from "../../entities/post/post.types";
 import { PostService } from "../../entities/post/post.service";
 import { PostFilterService } from "../../components/sidebar/post-filter.service";
 
-const POSTS_PER_PAGE = 10;
+const POSTS_PER_BATCH = 10;
 
 @Component({
 	selector: "app-posts",
 	standalone: true,
-	imports: [CommonModule, RouterLink, SidebarPageFiltersComponent, PageHeaderComponent, PagerComponent],
+	imports: [CommonModule, RouterLink, SidebarPageFiltersComponent, PageHeaderComponent, LoadMoreComponent],
 	templateUrl: "./posts.component.html",
 	styleUrl: "./posts.component.css",
 })
@@ -26,7 +26,7 @@ export class PostsComponent {
 
 	allPosts = signal<Post[]>([]);
 	isLoading = signal(true);
-	page = signal(1);
+	visibleCount = signal(POSTS_PER_BATCH);
 
 	sortedPosts = computed(() => {
 		let filtered = this.allPosts();
@@ -53,19 +53,18 @@ export class PostsComponent {
 		);
 	});
 
-	pageCount = computed(() => Math.max(1, Math.ceil(this.sortedPosts().length / POSTS_PER_PAGE)));
+	visiblePosts = computed(() => this.sortedPosts().slice(0, this.visibleCount()));
 
-	pagedPosts = computed(() => {
-		const start = (this.page() - 1) * POSTS_PER_PAGE;
-		return this.sortedPosts().slice(start, start + POSTS_PER_PAGE);
-	});
+	loadMore(): void {
+		this.visibleCount.update((count) => count + POSTS_PER_BATCH);
+	}
 
 	constructor() {
-		// A new filter starts again from the first page.
+		// A new filter starts again from the first batch.
 		effect(() => {
 			this.filters.selectedCategory();
 			this.filters.selectedTag();
-			untracked(() => this.page.set(1));
+			untracked(() => this.visibleCount.set(POSTS_PER_BATCH));
 		});
 	}
 
