@@ -120,6 +120,10 @@ export class AppPortConventionComponent {
 		element?.scrollIntoView({ block: "nearest" });
 	}
 
+	stepSlot(delta: number): void {
+		this.slot.update((slot) => Math.min(9, Math.max(0, slot + delta)));
+	}
+
 	onSlotChange(event: Event): void {
 		this.slot.set(Number((event.target as HTMLSelectElement).value));
 	}

@@ -47,64 +47,54 @@
 
   @if (ports(); as p) {
     <section class="ports">
-      <div class="ports-header">
-        <h2>{{ selected()?.name }}</h2>
-        <span class="stack-tag">{{ p.stack.label }}</span>
-        <label class="slot">
-          Project slot
-          <select [value]="slot()" (change)="onSlotChange($event)">
-            @for (s of slots; track s) {
-              <option [value]="s">{{ s }}</option>
-            }
-          </select>
-        </label>
+      <div class="result-head">
+        <div>
+          <p class="result-kicker">Ports for</p>
+          <h2>{{ selected()?.name }} <span class="stack-tag">{{ p.stack.label }}</span></h2>
+        </div>
+        <div class="slot-stepper" role="group" aria-label="Project slot">
+          <span class="slot-label">Project slot</span>
+          <button type="button" (click)="stepSlot(-1)" [disabled]="slot() === 0" aria-label="Previous slot">−</button>
+          <output>{{ slot() }}</output>
+          <button type="button" (click)="stepSlot(1)" [disabled]="slot() === 9" aria-label="Next slot">+</button>
+        </div>
       </div>
 
-      <h3>Recommended ports</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Role</th>
-            <th>Port</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (role of p.roles; track role.port) {
-            <tr>
-              <td>{{ role.name }}</td>
-              <td class="port">{{ role.port }}</td>
-            </tr>
-          }
-          <tr class="reserved">
-            <td>Debugger (reserved, not in project blocks)</td>
-            <td class="port">{{ p.debugPort ?? "none" }}</td>
-          </tr>
-          @if (p.defaultPort) {
-            <tr class="reserved">
-              <td>Framework default (only when running alone)</td>
-              <td class="port">{{ p.defaultPort }}</td>
-            </tr>
-          }
-        </tbody>
-      </table>
+      <div class="primary">
+        <span class="primary-label">{{ p.roles[0].name }}</span>
+        <span class="primary-port">{{ p.roles[0].port }}</span>
+      </div>
 
-      <h3>Shared services for this stack</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Service</th>
-            <th>Port</th>
-          </tr>
-        </thead>
-        <tbody>
+      <ul class="role-cards">
+        @for (role of p.roles.slice(1); track role.port) {
+          <li class="role-card">
+            <span class="role-name">{{ role.name }}</span>
+            <span class="role-port">{{ role.port }}</span>
+          </li>
+        }
+        <li class="role-card reserved">
+          <span class="role-name">Debugger</span>
+          <span class="role-port">{{ p.debugPort ?? "none" }}</span>
+        </li>
+        @if (p.defaultPort) {
+          <li class="role-card reserved">
+            <span class="role-name">Framework default (alone)</span>
+            <span class="role-port">{{ p.defaultPort }}</span>
+          </li>
+        }
+      </ul>
+
+      <details class="services">
+        <summary>Shared services for this stack ({{ p.stack.sharedServices.length }})</summary>
+        <ul class="service-chips">
           @for (service of p.stack.sharedServices; track service.name) {
-            <tr>
-              <td>{{ service.name }}</td>
-              <td class="port">{{ service.port }}</td>
-            </tr>
+            <li>
+              <span>{{ service.name }}</span>
+              <b>{{ service.port }}</b>
+            </li>
           }
-        </tbody>
-      </table>
+        </ul>
+      </details>
     </section>
   } @else {
     <p class="empty-state">Select a framework to see its recommended ports.</p>

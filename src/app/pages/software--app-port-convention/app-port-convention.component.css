@@ -17,27 +17,11 @@
 }
 
 .framework-search,
-.slot select {
-  font-family: inherit;
-  font-size: inherit;
-  padding: 0.5rem 0.75rem;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--panel-border);
-  background: var(--panel-bg);
-  color: var(--text-color);
-  box-sizing: border-box;
-}
-
 .framework-search {
   width: 100%;
 }
 
 .framework-search:focus,
-.slot select:focus {
-  outline: none;
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
 .framework-list {
   position: absolute;
   z-index: 10;
@@ -77,52 +61,6 @@
   white-space: nowrap;
 }
 
-.ports-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.75rem 1.5rem;
-}
-
-.ports-header h2 {
-  margin: 0;
-}
-
-.slot {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--muted);
-}
-
-table {
-  width: 100%;
-  max-width: 48rem;
-  border-collapse: collapse;
-  margin-bottom: 1.5rem;
-}
-
-th,
-td {
-  text-align: left;
-  padding: 0.45rem 0.75rem;
-  border-bottom: 1px solid var(--panel-border);
-}
-
-th {
-  color: var(--muted);
-  font-weight: 600;
-}
-
-.port {
-  font-family: monospace;
-  white-space: nowrap;
-}
-
-.reserved td {
-  color: var(--muted);
-}
-
 .empty-state {
   color: var(--muted);
 }
@@ -136,4 +74,151 @@ th {
     flex-direction: column;
     gap: 0.1rem;
   }
+}
+
+/* Result: the answer first, then the other ports as cards, shared services folded away. */
+.result-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-bottom: 16px;
+}
+
+.result-kicker {
+  margin: 0;
+  font-family: var(--font-code);
+  font-size: 0.8em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.slot-stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.slot-stepper button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--theme-border);
+  border-radius: var(--editor-radius);
+  background-color: var(--theme-surface);
+  color: inherit;
+  font: inherit;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.slot-stepper button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.slot-stepper output {
+  min-width: 2.5em;
+  text-align: center;
+  font-family: var(--font-code);
+  font-size: 1.6em;
+  font-weight: 700;
+}
+
+.slot-label {
+  margin-right: 4px;
+  opacity: 0.8;
+}
+
+/* The answer: the frontend port, large. */
+.primary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 20px 22px;
+  border: 1px solid var(--theme-border);
+  border-left: 4px solid var(--theme-accent);
+  border-radius: var(--editor-radius);
+  background: linear-gradient(135deg, var(--theme-surface), var(--theme-panel));
+  box-shadow: var(--box-shadow);
+}
+
+.primary-label {
+  font-size: 0.85em;
+  opacity: 0.75;
+}
+
+.primary-port {
+  font-family: var(--font-code);
+  font-size: 3.2em;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--theme-accent);
+}
+
+.role-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+.role-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+  border: 1px solid var(--theme-border);
+  border-radius: var(--editor-radius);
+  background-color: var(--theme-surface);
+}
+
+.role-card.reserved {
+  opacity: 0.7;
+  border-style: dashed;
+}
+
+.role-name {
+  font-size: 0.85em;
+  opacity: 0.8;
+}
+
+.role-port {
+  font-family: var(--font-code);
+  font-size: 1.6em;
+  font-weight: 700;
+}
+
+.services {
+  margin-top: 20px;
+}
+
+.services summary {
+  opacity: 0.8;
+}
+
+.service-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.service-chips li {
+  display: inline-flex;
+  gap: 8px;
+  padding: 4px 10px;
+  border: 1px solid var(--theme-border);
+  border-radius: 999px;
+  font-size: 0.9em;
+}
+
+.service-chips b {
+  font-family: var(--font-code);
 }
