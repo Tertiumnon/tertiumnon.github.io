@@ -1,6 +1,6 @@
 <div class="terminal-header">
   <span class="terminal-title">Terminal</span>
-  <app-select-field class="language" label="Language" [options]="languages" [ngModel]="language()" (ngModelChange)="language.set($event)"></app-select-field>
+  <app-select-field class="language" label="Language" [compact]="true" [options]="languages" [ngModel]="language()" (ngModelChange)="language.set($event)"></app-select-field>
   <button type="button" class="action" (click)="run()" [disabled]="running()">Run</button>
   <button type="button" class="action" (click)="stop()" [disabled]="!running()">Stop</button>
   <button type="button" class="action" (click)="clear()">Clear</button>
@@ -19,7 +19,6 @@
       [spellcheck]="false"
       [ngModel]="script()"
       (ngModelChange)="script.set($event)"
-      (keydown)="onKeydown($event)"
       (scrolled)="syncScroll($event)"></app-textarea-field>
   </div>
 

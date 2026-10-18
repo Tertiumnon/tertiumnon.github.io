@@ -45,7 +45,7 @@
 
 .language {
   display: flex;
-  height: 36px;
+  align-items: center;
 }
 
 .action:disabled {
@@ -153,4 +153,11 @@
     border-right: none;
     border-bottom: 1px solid var(--theme-border);
   }
+}
+
+/* The editor element only positions the textarea; the padding belongs to the textarea itself. */
+.script {
+  padding: 0;
+  overflow: hidden;
+  border: none;
 }

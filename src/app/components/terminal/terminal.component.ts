@@ -1,4 +1,4 @@
-import { Component, computed, ElementRef, inject, signal, viewChild } from "@angular/core";
+import { Component, computed, ElementRef, HostListener, inject, signal, viewChild } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { SelectFieldComponent, SelectOption } from "../form/select-field.component";
 import { TextareaFieldComponent } from "../form/textarea-field.component";
@@ -91,6 +91,8 @@ export class TerminalComponent {
 		this.output.set([]);
 	}
 
+	// Document-level so the hotkey works wherever focus is while the terminal is open.
+	@HostListener("document:keydown", ["$event"])
 	onKeydown(event: KeyboardEvent): void {
 		if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
 			event.preventDefault();
