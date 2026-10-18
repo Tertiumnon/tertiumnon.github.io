@@ -1,22 +1,18 @@
-<app-page-loader [isLoading]="isLoading()"></app-page-loader>
 
-<div class="changelog-control-panel"></div>
+<div class="container-fluid changelog-page" style="margin-top: var(--container-margin-top);">
+  <h1 class="changelog-title">Changelog</h1>
 
-<div class="container-fluid" style="margin-top: var(--container-margin-top);">
-  <div class="changelog-container">
-  <div class="content">
-    <h1>Changelog</h1>
-
-    <div class="changelog-feed">
-      @for (changelogItem of filteredChangelog(); track changelogItem.link) {
-        <div class="changelog-item">
-          <div class="changelog-date">{{ changelogItem.publishedAt }}</div>
-          @if (changelogItem.content) {
-          <app-md-content [data]="changelogItem.content"></app-md-content>
-          }
-        </div>
-      }
-    </div>
-  </div>
-  </div>
+  <ol class="changelog-feed">
+    @for (changelogItem of filteredChangelog(); track changelogItem.link) {
+    <li class="changelog-item">
+      <time class="changelog-date">{{ changelogItem.publishedAt }}</time>
+      <span class="changelog-rail" aria-hidden="true"></span>
+      <div class="changelog-entry">
+        @if (changelogItem.content) {
+        <app-md-content [data]="changelogItem.content"></app-md-content>
+        }
+      </div>
+    </li>
+    }
+  </ol>
 </div>

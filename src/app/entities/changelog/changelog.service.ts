@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { Observable, catchError, throwError } from "rxjs";
+import { Observable, catchError, shareReplay, throwError } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { Changelog, ChangelogGetParams } from "./changelog.types";
 
@@ -14,6 +14,7 @@ export class ChangelogService {
 		return this.httpClient.get<Changelog[]>("assets/changelog.json", {
 			responseType: "json",
 		}).pipe(
+			shareReplay(1),
 			catchError((error: unknown) =>
 				throwError(() => new Error(`Failed to fetch changelog: ${error}`))
 			)

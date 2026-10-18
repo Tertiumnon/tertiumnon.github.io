@@ -15,6 +15,7 @@ export interface Changelog {
 	updatedAt?: string;
 	filename: string;
 	dirname: string;
+	content?: string;
 	isHidden?: boolean;
 	source?: {
 		name: string;

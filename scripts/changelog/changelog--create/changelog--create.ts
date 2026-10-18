@@ -17,6 +17,7 @@ type ChangelogItem = {
 	publishedAt: string;
 	filename: string;
 	dirname: string;
+	content?: string;
 	generated?: boolean;
 	source?: { name: string; url: string };
 };
@@ -74,7 +75,14 @@ const main = async (): Promise<void> => {
 	const existing = JSON.parse(await fs.readFile(CHANGELOG_JSON, { encoding: "utf-8" })) as ChangelogItem[];
 
 	// Generated items are rebuilt on every run; hand-written items are kept as they are.
-	const manual = existing.filter((item) => !item.generated);
+	const manual = await Promise.all(
+		existing
+			.filter((item) => !item.generated)
+			.map(async (item) => ({
+				...item,
+				content: await fs.readFile(path.join(CHANGELOG_DIR, item.dirname, item.filename), { encoding: "utf-8" }),
+			})),
+	);
 	for (const item of existing.filter((entry) => entry.generated)) {
 		await fs.rm(path.join(CHANGELOG_DIR, item.dirname), { recursive: true, force: true });
 	}
@@ -101,7 +109,11 @@ const main = async (): Promise<void> => {
 			const dirname = `${tag.date}--${project.name}-${section.version.replace(/\./g, "-")}`;
 			await fs.mkdir(path.join(CHANGELOG_DIR, dirname), { recursive: true });
 			// The changelog page strips the first "#" heading, so the title is written as "##".
-			await fs.writeFile(path.join(CHANGELOG_DIR, dirname, "index.en.md"), `## ${title}\n\n${section.body}\n`);
+			const markdown = `## ${title}
+
+${section.body}
+`;
+			await fs.writeFile(path.join(CHANGELOG_DIR, dirname, "index.en.md"), markdown);
 			generated.push({
 				title,
 				link: `/en/changelog/${dirname}`,
@@ -113,6 +125,7 @@ const main = async (): Promise<void> => {
 				filename: "index.en.md",
 				dirname,
 				generated: true,
+				content: markdown,
 				source: { name: "GitHub", url: `${project.url}/releases/tag/${tag.name}` },
 			});
 		}
