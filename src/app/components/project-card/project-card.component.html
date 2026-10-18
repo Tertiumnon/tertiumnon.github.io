@@ -1,7 +1,7 @@
 @if (project) {
 <div class="min-h-48 w-full h-full project-card rounded-lg">
   <div class="py-4 px-6 text-black header">
-    <div class="project-card-title">{{ project.title }}</div>
+    <div class="project-card-title" [attr.title]="project.title">{{ project.title }}</div>
     <div class="project-card-subtitle">{{ project.type }}</div>
   </div>
   <div class="h-36 body">
@@ -12,7 +12,10 @@
   </div>
   <div class="flex place-content-between gap-3 py-4 px-6 text-black footer">
     @if (project.updatedAt) {
-    <span class="updated-at">updated {{ project.updatedAt | date: "yyyy MMM d" }}</span>
+    <span class="updated-at">{{ project.updatedAt | date: "yyyy MMM d" }}</span>
+    }
+    @if (project.version) {
+    <span class="version">{{ project.version.tag }}</span>
     }
   </div>
   @if (project.link) {

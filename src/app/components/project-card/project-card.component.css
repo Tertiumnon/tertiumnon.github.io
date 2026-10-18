@@ -15,7 +15,8 @@
   text-transform: uppercase;
   margin-top: 0.2em;
   overflow: hidden;
-  word-break: break-all;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-family: "Science Gothic", sans-serif;
 }
 
@@ -49,14 +50,14 @@
   padding: 16px 14px;
 }
 
-.project-card .footer .updated-at {
-  color: #888;
-  font-size: 0.75em;
-  letter-spacing: 0.02em;
-}
-
 .project-card .project-card-link {
   position: absolute;
   inset: 0;
   cursor: pointer;
+}
+
+:host {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
 }
