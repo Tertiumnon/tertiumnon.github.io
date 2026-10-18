@@ -1,44 +1,22 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, inject, viewChild } from "@angular/core";
 import { ArcadeScreenService } from "./game-screen.service";
 
-// The TV screen area. The play field fills it above the on-screen pad, and its size is published for the game.
+// The TV screen area. The game fills it, and its size is published for the game to use.
 @Component({
 	selector: "app-game-stage",
 	standalone: true,
-	template: `
-		<div class="stage">
-			<div class="play" #play><ng-content></ng-content></div>
-			<div class="pad"><ng-content select="[pad]"></ng-content></div>
-		</div>
-	`,
+	template: `<div class="play" #play><ng-content></ng-content></div>`,
 	styles: [`
 		:host {
-			--pad-height: 110px;
 			display: block;
 			width: 100%;
 			height: 100%;
 		}
 
-		.stage {
+		.play {
 			position: relative;
 			width: 100%;
 			height: 100%;
-		}
-
-		.play {
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: var(--pad-height);
-		}
-
-		.pad {
-			position: absolute;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			height: var(--pad-height);
 		}
 	`],
 })

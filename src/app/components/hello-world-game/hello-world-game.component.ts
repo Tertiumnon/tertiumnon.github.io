@@ -502,8 +502,11 @@ export class HelloWorldGameComponent {
 
 	@HostListener("window:keydown", ["$event"])
 	onKeyDown(event: KeyboardEvent) {
-		if (this.gameOver) return;
 		const k = event.key;
+		if (this.gameOver) {
+			if (k.toLowerCase() === "a" || k === "Enter") this.restart();
+			return;
+		}
 
 		// Space or S => shoot. The down direction uses ArrowDown.
 		if (event.code === "Space" || k === " " || k === "Spacebar" || k.toLowerCase() === "s") {

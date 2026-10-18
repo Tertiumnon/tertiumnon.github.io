@@ -3,6 +3,17 @@
 	height: 100%;
 }
 
+.press-prompt {
+	margin: 12px 0 0;
+	color: #fff7b0;
+	text-shadow: 3px 3px 0 #ff2e9a;
+	animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+	to { visibility: hidden; }
+}
+
 .hello-world {
 	font-family: "VT323", monospace;
 	font-size: 26px;

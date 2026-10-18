@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, computed, signal } from "@angular/core";
+import { Component, ElementRef, OnDestroy, OnInit, computed, signal, viewChild } from "@angular/core";
 
 interface Pie {
 	id: number;
@@ -9,9 +9,12 @@ interface Pie {
 const BEST_KEY = "honey-catch-best";
 const TICK_MS = 40;
 const LIVES = 3;
-// Positions are percentages of the field. The figure stands at the bottom, so a pie is caught when it reaches its height.
-const CATCH_LINE = 80;
-const CATCH_RANGE = 9;
+// Positions are percentages of the field. The collider follows the girl picture: a pie is caught when it reaches
+// the top of the picture and is within the figure's width (sizes are fractions of the field width).
+const GIRL_WIDTH = 0.3;
+const GIRL_RATIO = 113 / 200;
+const PIE_WIDTH = 0.05;
+const CATCH_RANGE = 7;
 const STEP = 1.6;
 const SPAWN_EVERY_TICKS = 16;
 
@@ -25,17 +28,14 @@ const SPAWN_EVERY_TICKS = 16;
 				<span>Score <b>{{ score() }}</b></span>
 				<span>Best <b>{{ best() }}</b></span>
 				<span class="lives" aria-label="Lives">{{ hearts() }}</span>
-				@if (!running()) {
-				<button type="button" (click)="start()">{{ over() ? "Play again" : "Start" }}</button>
-				}
 			</header>
-			<div class="field" (pointermove)="onPointer($event)" (pointerdown)="onPointer($event)">
+			<div #field class="field" (pointermove)="onPointer($event)" (pointerdown)="onPointer($event)">
 				@for (pie of pies(); track pie.id) {
 				<span class="pie" [style.left.%]="pie.x" [style.top.%]="pie.y"></span>
 				}
 				<img class="girl" src="/assets/games/honey-pie-girl.gif" alt="" [style.left.%]="girlX()" />
 				@if (over()) {
-				<p class="message">Game over</p>
+				<p class="message">Game over<br />Press A to play again<br />Press B to exit</p>
 				}
 			</div>
 		</section>
@@ -145,6 +145,7 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 	private ticks = 0;
 	private nextId = 0;
 	private readonly keys = new Set<string>();
+	private readonly field = viewChild.required<ElementRef<HTMLElement>>("field");
 
 	// The game starts as soon as it is shown; the home page shows it after the start screen.
 	ngOnInit(): void {
@@ -170,6 +171,10 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 	}
 
 	onKeyDown(event: KeyboardEvent): void {
+		if (this.over()) {
+			if (event.key.toLowerCase() === "a" || event.key === "Enter") this.start();
+			return;
+		}
 		if (!this.running() || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
 		event.preventDefault();
 		this.keys.add(event.key);
@@ -190,13 +195,16 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 		x = this.clamp(x);
 		this.girlX.set(x);
 
+		const field = this.field().nativeElement;
+		const girlTop = 100 - ((field.clientWidth * GIRL_WIDTH * GIRL_RATIO) / field.clientHeight) * 100;
+		const pieSize = ((field.clientWidth * PIE_WIDTH) / field.clientHeight) * 100;
 		const fall = Math.min(0.8 + this.score() * 0.04, 2.2);
 		const kept: Pie[] = [];
 		let caught = 0;
 		let missed = 0;
 		for (const pie of this.pies()) {
 			const y = pie.y + fall;
-			if (y >= CATCH_LINE && Math.abs(pie.x - x) <= CATCH_RANGE) {
+			if (y + pieSize >= girlTop && Math.abs(pie.x - x) <= CATCH_RANGE) {
 				caught++;
 			} else if (y >= 100) {
 				missed++;

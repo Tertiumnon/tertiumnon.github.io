@@ -83,7 +83,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<button type="button" (click)="restart()">PLAY AGAIN</button>
+					<p class="press-prompt">Press A to play again<br />Press B to exit</p>
 				</section>
 			</div>
 		</div>
@@ -91,12 +91,5 @@
 		<!-- controls -->
 		<div class="tank-controls">
 			<button class="restart-button" (click)="restart()">Restart</button>
-			<button (click)="shoot()" aria-label="Shoot" [disabled]="gameOver">S</button>
-			<button (click)="moveUp()" [disabled]="gameOver">↑</button>
-			<div>
-				<button (click)="moveLeft()" [disabled]="gameOver">←</button>
-				<button (click)="moveRight()" [disabled]="gameOver">→</button>
-			</div>
-			<button (click)="moveDown()" [disabled]="gameOver">↓</button>
 		</div>
 </div>

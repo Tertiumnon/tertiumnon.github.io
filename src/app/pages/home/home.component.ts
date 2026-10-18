@@ -3,7 +3,6 @@ import { HelloWorldGameComponent } from "../../components/hello-world-game/hello
 import { HoneyCatchComponent } from "../../components/honey-catch/honey-catch.component";
 import { GameStageComponent } from "../../components/game-stage/game-stage.component";
 import { ArcadeCabinetComponent } from "../../components/arcade-cabinet/arcade-cabinet.component";
-import { ScreenPadComponent } from "../../components/screen-pad/screen-pad.component";
 import { Theme } from "../../components/theme/theme.constants";
 import { ThemeService } from "../../components/theme/theme.service";
 
@@ -20,7 +19,7 @@ const GAMES: { key: GameKey; label: string }[] = [
 	templateUrl: "./home.component.html",
 	styleUrl: "./home.component.css",
 	standalone: true,
-	imports: [HelloWorldGameComponent, HoneyCatchComponent, GameStageComponent, ArcadeCabinetComponent, ScreenPadComponent],
+	imports: [HelloWorldGameComponent, HoneyCatchComponent, GameStageComponent, ArcadeCabinetComponent],
 })
 export class HomeComponent {
 	private readonly themeService = inject(ThemeService);
@@ -47,11 +46,11 @@ export class HomeComponent {
 		this.view.set("menu");
 	}
 
-	// Menu: arrows choose, A or Enter starts. In a game: Escape goes back to the menu.
+	// Menu: arrows choose, A or Enter starts. In a game: B (or Escape) goes back to the menu.
 	@HostListener("document:keydown", ["$event"])
 	onKeyDown(event: KeyboardEvent): void {
 		if (this.view() === "game") {
-			if (event.key === "Escape") this.backToMenu();
+			if (event.key === "Escape" || event.key.toLowerCase() === "b") this.backToMenu();
 			return;
 		}
 		if (event.key === "ArrowUp" || event.key === "ArrowDown") {
