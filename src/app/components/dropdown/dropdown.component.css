@@ -1,14 +1,43 @@
+/* Width is the widest option, never the selected one. Colours come from the theme. */
 .option-list {
-  height: 1.5rem;
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 6rem;
+  padding: 0;
   border-bottom: 1px dashed;
+  color: var(--theme-text);
   cursor: pointer;
-  transition: box-shadow 0.2s ease;
+}
+
+.option-list .sizer {
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
 }
 
 .option-list .option {
   text-align: center;
+  padding: 2px 12px;
+  line-height: 1.5;
+  white-space: nowrap;
 }
 
 .option-list .option.hidden {
   display: none;
+}
+
+/* Opened options float over the content, so nothing below moves. */
+.option-list .menu {
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  right: -1px;
+  z-index: 20;
+  margin-top: 2px;
+  border: 1px solid var(--theme-border);
+  border-radius: 4px;
+  background-color: var(--theme-panel);
+  box-shadow: var(--box-shadow--hover);
+  overflow: hidden;
 }

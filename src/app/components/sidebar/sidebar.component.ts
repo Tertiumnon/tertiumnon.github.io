@@ -1,3 +1,4 @@
+import { SearchScope } from "./sidebar-search.component";
 import { Component, DestroyRef, inject, signal } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { NavigationEnd, Router, RouterLink } from "@angular/router";
@@ -5,7 +6,6 @@ import { filter } from "rxjs";
 import { LayoutService } from "../workbench/layout.service";
 import { EditorTabsService } from "../editor-tabs/editor-tabs.service";
 import { SidebarSearchComponent } from "./sidebar-search.component";
-import { SidebarPageFiltersComponent } from "./sidebar-page-filters.component";
 
 const ANIMATION_DURATION_MS = 1000;
 const CLICK_ANIMATION_DURATION_MS = 2000;
@@ -23,7 +23,7 @@ interface SidebarSection {
 	standalone: true,
 	templateUrl: "./sidebar.component.html",
 	styleUrl: "./sidebar.component.css",
-	imports: [RouterLink, SidebarSearchComponent, SidebarPageFiltersComponent],
+	imports: [RouterLink, SidebarSearchComponent],
 })
 export class SidebarComponent {
 	private readonly destroyRef = inject(DestroyRef);
@@ -64,6 +64,14 @@ export class SidebarComponent {
 		};
 		window.addEventListener("pointermove", move);
 		window.addEventListener("pointerup", stop);
+	}
+
+	// Search is offered on the projects and posts list pages only, and searches that content type.
+	searchScope(): SearchScope | undefined {
+		const segments = this.tabs.activeUrl().split("/").filter((segment) => segment.length > 0);
+		if (segments.length > 0 && ["en", "ru"].includes(segments[0])) segments.shift();
+		if (segments.length !== 1) return undefined;
+		return segments[0] === "projects" ? "project" : segments[0] === "posts" ? "post" : undefined;
 	}
 
 	onLogoClick(): void {

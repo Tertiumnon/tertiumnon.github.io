@@ -47,6 +47,7 @@
   --font-size-content: 1rem;
   --line-height-base: 1.6;
   --editor-radius: 6px;
+  --page-max-width: 960px;
 }
 
 html,
@@ -176,7 +177,7 @@ main {
   margin: 0 auto;
   padding: 0 1%;
   width: 96%;
-  max-width: 960px;
+  max-width: var(--page-max-width);
 }
 
 .content {
@@ -227,6 +228,20 @@ pre {
   font-family: var(--font-code);
   font-size: 0.85em;
   box-shadow: var(--box-shadow);
+}
+
+pre.numbered {
+  display: flex;
+  gap: 1.2em;
+}
+
+pre .gutter {
+  flex: none;
+  white-space: pre;
+  text-align: right;
+  color: var(--theme-text);
+  opacity: 0.4;
+  user-select: none;
 }
 
 pre code {
@@ -338,19 +353,13 @@ tr:hover {
   filter: var(--theme-bg-blur);
 }
 
-.project-control-panel,
-.option-list {
-  background-color: var(--theme-panel);
-}
 
-.post-control-panel,
-.changelog-control-panel {
+.post-control-panel {
   background: linear-gradient(180deg, var(--theme-bg) 0%, var(--theme-panel) 100%);
   border-bottom: 1px solid var(--theme-border);
 }
 
 .project-card .description,
-.option:not(.selected),
 .content {
   background-color: var(--theme-surface);
 }
@@ -373,4 +382,9 @@ tr:hover {
   .content {
     padding: 1em 5%;
   }
+}
+
+/* Level-1 title of a list page, with the same top spacing as the other pages. */
+.page-title {
+  margin-top: 0.5rem;
 }

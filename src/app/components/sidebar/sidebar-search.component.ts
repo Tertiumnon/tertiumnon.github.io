@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from "@angular/core";
+import { Component, computed, inject, input, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { RouterLink } from "@angular/router";
 import { catchError, of } from "rxjs";
@@ -17,7 +17,7 @@ export type SearchScope = "project" | "post";
 
 const MAX_RESULTS = 30;
 
-// VS Code style search under the menu: the scope dropdown picks projects or posts, the input filters them.
+// Search under the menu. It is shown only on the pages that list a content type, and searches that type.
 @Component({
 	selector: "app-sidebar-search",
 	standalone: true,
@@ -27,8 +27,8 @@ const MAX_RESULTS = 30;
 })
 export class SidebarSearchComponent {
 	private readonly postService = inject(PostService);
+	readonly scope = input.required<SearchScope>();
 	readonly query = signal("");
-	readonly scope = signal<SearchScope>("project");
 	private readonly posts = toSignal(
 		this.postService.getAll().pipe(catchError(() => of([] as Post[]))),
 		{ initialValue: [] as Post[] },
@@ -61,9 +61,5 @@ export class SidebarSearchComponent {
 
 	onInput(event: Event): void {
 		this.query.set((event.target as HTMLInputElement).value);
-	}
-
-	onScope(event: Event): void {
-		this.scope.set((event.target as HTMLSelectElement).value as SearchScope);
 	}
 }

@@ -1,11 +1,5 @@
 <div class="search">
-  <div class="search-row">
-    <input type="search" class="search-input" placeholder="Search" [value]="query()" (input)="onInput($event)" aria-label="Search" autocomplete="off" />
-    <select class="scope" (change)="onScope($event)" aria-label="Search in">
-      <option value="project" [selected]="scope() === 'project'">Projects</option>
-      <option value="post" [selected]="scope() === 'post'">Posts</option>
-    </select>
-  </div>
+  <input type="search" class="search-input" [placeholder]="scope() === 'project' ? 'Search projects' : 'Search posts'" [value]="query()" (input)="onInput($event)" [attr.aria-label]="scope() === 'project' ? 'Search projects' : 'Search posts'" autocomplete="off" />
 
   @if (query().trim()) {
   <ul class="results">

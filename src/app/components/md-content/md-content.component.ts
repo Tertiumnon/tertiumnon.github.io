@@ -33,6 +33,7 @@ export class MdContentComponent {
 	@Input() postDate = "";
 	@Input() lang = "en";
 	@Input() showBreadcrumb = false;
+	@Input() lineNumbers = false;
 	htmlData: SafeHtml = "";
 	private readonly renderer = new Renderer();
 
@@ -48,7 +49,11 @@ export class MdContentComponent {
 				highlighted = escapeHtml(code);
 			}
 			const langClass = language ? ` language-${language}` : "";
-			return `<pre><code class="hljs${langClass}">${highlighted}</code></pre>\n`;
+			const codeHtml = `<code class="hljs${langClass}">${highlighted}</code>`;
+				if (!this.lineNumbers) return `<pre>${codeHtml}</pre>\n`;
+				// Gutter is a separate column, so the highlighted markup stays intact.
+				const numbers = code.replace(/\n$/, "").split("\n").map((_, i) => i + 1).join("\n");
+				return `<pre class="numbered"><span class="gutter" aria-hidden="true">${numbers}</span>${codeHtml}</pre>\n`;
 		};
 	}
 

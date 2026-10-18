@@ -1,3 +1,5 @@
+import { SidebarPageFiltersComponent } from "../../components/sidebar/sidebar-page-filters.component";
+import { PageHeaderComponent } from "../../components/page-header/page-header.component";
 import { Component, DestroyRef, inject, signal, computed } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute } from "@angular/router";
@@ -10,7 +12,7 @@ import { ChangelogFilterService } from "../../components/sidebar/changelog-filte
 @Component({
 	selector: "app-changelog",
 	standalone: true,
-	imports: [CommonModule, MdContentComponent],
+	imports: [CommonModule, MdContentComponent, SidebarPageFiltersComponent, PageHeaderComponent],
 	templateUrl: "./changelog.component.html",
 	styleUrl: "./changelog.component.css",
 })

@@ -31,8 +31,9 @@
   </nav>
 
   @if (layout.sidebarOpen()) {
-  <app-sidebar-search></app-sidebar-search>
-  <app-sidebar-page-filters></app-sidebar-page-filters>
+  @if (searchScope(); as scope) {
+  <app-sidebar-search [scope]="scope"></app-sidebar-search>
+  }
   }
 
   </div>
