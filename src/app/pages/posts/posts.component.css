@@ -103,3 +103,8 @@
   opacity: 0.4;
   cursor: default;
 }
+
+/* Date of the last update, shown after the publish date in the list. */
+.post-updated {
+  opacity: 0.6;
+}

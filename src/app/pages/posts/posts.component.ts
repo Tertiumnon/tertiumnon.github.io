@@ -11,6 +11,11 @@ import { PostFilterService } from "../../components/sidebar/post-filter.service"
 
 const POSTS_PER_BATCH = 10;
 
+const time = (date: string | undefined): number => new Date(date ?? 0).getTime();
+
+// When a post last changed: the later of its publish and update dates.
+const lastActivity = (post: Post): number => Math.max(time(post.publishedAt), time(post.updatedAt));
+
 @Component({
 	selector: "app-posts",
 	standalone: true,
@@ -46,6 +51,9 @@ export class PostsComponent {
 		const sort = this.filters.selectedSort();
 		if (sort === "Title A-Z") {
 			return filtered.sort((a, b) => a.title.localeCompare(b.title));
+		}
+		if (sort === "Recently updated") {
+			return filtered.sort((a, b) => lastActivity(b) - lastActivity(a) || time(b.publishedAt) - time(a.publishedAt));
 		}
 		const newestFirst = sort === "Newest created" ? 1 : -1;
 		return filtered.sort(

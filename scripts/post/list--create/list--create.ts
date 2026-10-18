@@ -1,5 +1,21 @@
 import * as fs from "node:fs/promises";
+import { execFileSync } from "node:child_process";
 import { Post } from "../../../src/app/entities/post/post.types";
+
+// Last change of a post file, from git. A file with one commit was never changed after it was added,
+// so only files with more than one commit get a date.
+const gitUpdatedAt = (file: string, publishedAt: string): string | undefined => {
+	try {
+		const dates = execFileSync("git", ["log", "--format=%cs", "--", file], { encoding: "utf-8" })
+			.split("\n")
+			.filter(Boolean);
+		if (dates.length < 2) return undefined;
+		const last = dates[0];
+		return last > publishedAt ? last : undefined;
+	} catch {
+		return undefined;
+	}
+};
 
 const ARTICLE_LIST_DIR = "src/assets/posts";
 const ARTICLE_LIST_JSON = "src/assets/posts.json";
@@ -66,8 +82,12 @@ export const getPostList = async (path: string): Promise<Post[]> => {
 						dirname: dirName,
 					};
 
-					if (fm.updatedAt) {
-						postData.updatedAt = fm.updatedAt;
+					// A date set in the front matter wins; otherwise the date of the last git change.
+					// Dates are YYYY-MM-DD. An update counts only when it is later than the publish day.
+const publishedDay = String(fm.publishedAt ?? "").slice(0, 10);
+const updatedDay = String(fm.updatedAt ?? gitUpdatedAt(`${dirPath}/${fileName}`, publishedDay) ?? "").slice(0, 10);
+					if (updatedDay > publishedDay) {
+						postData.updatedAt = updatedDay;
 					}
 
 					if (fm.isHidden !== undefined) {

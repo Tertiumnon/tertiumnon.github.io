@@ -22,7 +22,8 @@
     ],
     "publishedAt": "2017-04-12",
     "filename": "index.en.md",
-    "dirname": "2017-04-12--english-language"
+    "dirname": "2017-04-12--english-language",
+    "updatedAt": "2026-07-08"
   },
   {
     "title": "Firefoxy :)",
@@ -35,7 +36,8 @@
     ],
     "publishedAt": "2017-04-20",
     "filename": "index.en.md",
-    "dirname": "2017-04-20--firefoxy"
+    "dirname": "2017-04-20--firefoxy",
+    "updatedAt": "2026-07-08"
   },
   {
     "title": "How to Activate Dark YouTube Theme",
@@ -218,7 +220,8 @@
     ],
     "publishedAt": "2019-02-08",
     "filename": "index.en.md",
-    "dirname": "2019-02-08--your-categories"
+    "dirname": "2019-02-08--your-categories",
+    "updatedAt": "2026-07-08"
   },
   {
     "title": "PowerShell Core — Try This Windows Shell",
@@ -468,7 +471,8 @@
     ],
     "publishedAt": "2022-09-14",
     "filename": "index.en.md",
-    "dirname": "2022-09-14--windows-git-file-permissions"
+    "dirname": "2022-09-14--windows-git-file-permissions",
+    "updatedAt": "2026-07-08"
   },
   {
     "title": "MS Edge: Managed by your organization",
@@ -764,8 +768,7 @@
     ],
     "publishedAt": "2026-07-12",
     "filename": "index.ru.md",
-    "dirname": "2026-07-12--jira-kanban-scrum-implementation",
-    "updatedAt": "2026-07-12"
+    "dirname": "2026-07-12--jira-kanban-scrum-implementation"
   },
   {
     "title": "Блеск и нищета Помодоро",
@@ -779,8 +782,7 @@
     ],
     "publishedAt": "2026-07-19",
     "filename": "index.ru.md",
-    "dirname": "2026-07-19--pomodoro-technique-illusion-and-reality",
-    "updatedAt": "2026-07-19"
+    "dirname": "2026-07-19--pomodoro-technique-illusion-and-reality"
   },
   {
     "title": "SolidJS vs React (2026)",
@@ -831,8 +833,7 @@
     ],
     "publishedAt": "2026-08-05",
     "filename": "index.en.md",
-    "dirname": "2026-08-05--packagejson-lock-semver",
-    "updatedAt": "2026-08-05T12:30:00Z"
+    "dirname": "2026-08-05--packagejson-lock-semver"
   },
   {
     "title": "package.json, package-lock.json и семантическое версионирование: почему это критично знать",
@@ -851,8 +852,7 @@
     ],
     "publishedAt": "2026-08-05",
     "filename": "index.ru.md",
-    "dirname": "2026-08-05--packagejson-lock-semver",
-    "updatedAt": "2026-08-05T12:30:00Z"
+    "dirname": "2026-08-05--packagejson-lock-semver"
   },
   {
     "title": "Fallbacks Are Evil",
@@ -868,8 +868,7 @@
     ],
     "publishedAt": "2026-08-24",
     "filename": "index.en.md",
-    "dirname": "2026-08-24--fallbacks-are-evil",
-    "updatedAt": "2026-08-24"
+    "dirname": "2026-08-24--fallbacks-are-evil"
   },
   {
     "title": "Фоллбэки — это зло",
@@ -885,8 +884,7 @@
     ],
     "publishedAt": "2026-08-24",
     "filename": "index.ru.md",
-    "dirname": "2026-08-24--fallbacks-are-evil",
-    "updatedAt": "2026-08-24"
+    "dirname": "2026-08-24--fallbacks-are-evil"
   },
   {
     "title": "VS Code + Git: Recommended Team Setup",
@@ -901,7 +899,8 @@
     ],
     "publishedAt": "2026-10-05",
     "filename": "index.en.md",
-    "dirname": "2026-10-05--vs-code-git-recommended-team-setup"
+    "dirname": "2026-10-05--vs-code-git-recommended-team-setup",
+    "updatedAt": "2026-10-06"
   },
   {
     "title": "Local Ports for Several Apps: Stop Guessing",

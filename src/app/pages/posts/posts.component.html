@@ -9,7 +9,7 @@
   <ol class="post-list">
     @for (article of visiblePosts(); track article.link) {
     <li class="post-row">
-      <time class="post-date">{{ article.publishedAt }}</time>
+      <time class="post-date">{{ article.publishedAt }}@if (article.updatedAt) {<span class="post-updated"> · updated {{ article.updatedAt }}</span>}</time>
       <span class="post-category">{{ getCategoryDisplay(article.category) }}</span>
       <a class="post-title" [routerLink]="getPostLink(article.link)">{{ article.title }}</a>
     </li>
