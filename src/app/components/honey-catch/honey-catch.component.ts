@@ -60,6 +60,7 @@ const SPAWN_EVERY_TICKS = 16;
 			flex-wrap: wrap;
 			align-items: center;
 			gap: 12px 18px;
+			padding: 10px 26px 0;
 			margin-bottom: 8px;
 			font-size: 0.9rem;
 		}

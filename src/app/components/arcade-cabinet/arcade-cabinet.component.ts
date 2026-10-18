@@ -1,7 +1,7 @@
 import { Component, ElementRef, input, signal, viewChild } from "@angular/core";
 
-// Retro arcade cabinet shared by every game: marquee, rounded CRT screen and control panel.
-// The game goes into the [screen] slot, the game switch into the [controls] slot.
+// Retro arcade cabinet: marquee, rounded CRT screen and power button. Game controls are drawn on the screen.
+// The game goes into the [screen] slot.
 @Component({
 	selector: "app-arcade-cabinet",
 	standalone: true,
@@ -15,16 +15,6 @@ import { Component, ElementRef, input, signal, viewChild } from "@angular/core";
 				<span class="power-dot" aria-hidden="true"></span>
 			</div>
 			<footer class="panel">
-				<div class="controls">
-					<ng-content select="[controls]"></ng-content>
-				</div>
-				<div class="joystick" aria-hidden="true">
-					<span class="base"></span>
-					<span class="stick"></span>
-				</div>
-				<div class="buttons" aria-hidden="true">
-					<i></i><i></i><i></i>
-				</div>
 				<button type="button" class="power" [class.on]="powered()" [attr.aria-pressed]="powered()" aria-label="Power" (click)="togglePower()">
 					<span class="led"></span>
 				</button>
@@ -82,6 +72,7 @@ import { Component, ElementRef, input, signal, viewChild } from "@angular/core";
 			height: 100%;
 			display: grid;
 			place-items: stretch;
+			container-type: size;
 			overflow: hidden;
 			border-radius: 34px / 28px;
 			background: #000;
@@ -139,58 +130,10 @@ import { Component, ElementRef, input, signal, viewChild } from "@angular/core";
 
 		.panel {
 			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-			justify-content: space-between;
-			gap: 12px 18px;
+			justify-content: flex-end;
 			padding: 10px 14px 6px;
 			border-top: 4px solid #000;
 		}
-
-		.controls {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 10px;
-		}
-
-		.joystick {
-			position: relative;
-			width: 40px;
-			height: 40px;
-		}
-
-		.joystick .base {
-			position: absolute;
-			inset: 0;
-			border-radius: 50%;
-			background: #000;
-		}
-
-		.joystick .stick {
-			position: absolute;
-			left: 14px;
-			top: -12px;
-			width: 12px;
-			height: 30px;
-			background: #ff6ec7;
-			border: 2px solid #000;
-		}
-
-		.buttons {
-			display: flex;
-			gap: 10px;
-		}
-
-		.buttons i {
-			width: 24px;
-			height: 24px;
-			background: #fff7b0;
-			border: 3px solid #000;
-			box-shadow: 0 4px 0 #000;
-		}
-
-		.buttons i:nth-child(2) { background: #36f9f6; }
-		.buttons i:nth-child(3) { background: #ff2e9a; }
 
 		/* Round power button with a status light. */
 		.power {

@@ -3,6 +3,7 @@ import { HelloWorldGameComponent } from "../../components/hello-world-game/hello
 import { HoneyCatchComponent } from "../../components/honey-catch/honey-catch.component";
 import { GameStageComponent } from "../../components/game-stage/game-stage.component";
 import { ArcadeCabinetComponent } from "../../components/arcade-cabinet/arcade-cabinet.component";
+import { ScreenPadComponent } from "../../components/screen-pad/screen-pad.component";
 import { Theme } from "../../components/theme/theme.constants";
 import { ThemeService } from "../../components/theme/theme.service";
 
@@ -19,7 +20,7 @@ const GAMES: { key: GameKey; label: string }[] = [
 	templateUrl: "./home.component.html",
 	styleUrl: "./home.component.css",
 	standalone: true,
-	imports: [HelloWorldGameComponent, HoneyCatchComponent, GameStageComponent, ArcadeCabinetComponent],
+	imports: [HelloWorldGameComponent, HoneyCatchComponent, GameStageComponent, ArcadeCabinetComponent, ScreenPadComponent],
 })
 export class HomeComponent {
 	private readonly themeService = inject(ThemeService);
