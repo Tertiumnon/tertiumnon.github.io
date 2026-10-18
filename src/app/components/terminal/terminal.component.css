@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  height: 32px;
+  height: 36px;
   padding: 0 8px 0 12px;
   background-color: var(--theme-panel);
   border-bottom: 1px solid var(--theme-border);
@@ -149,13 +149,4 @@
     border-right: none;
     border-bottom: 1px solid var(--theme-border);
   }
-}
-
-/* The shared select keeps the header's compact size. */
-.language ::ng-deep .field {
-  background-color: var(--theme-panel);
-  min-height: 0;
-  height: 22px;
-  padding: 0 8px;
-  font-size: 0.9em;
 }
