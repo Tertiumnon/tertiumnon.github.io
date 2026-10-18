@@ -8,7 +8,7 @@
   } @else {
   <ol class="post-list">
     @for (article of visiblePosts(); track article.link) {
-    <li class="post-row">
+    <li class="post-row" [routerLink]="getPostLink(article.link)">
       <div class="post-top">
         <time class="post-date">{{ article.publishedAt }}</time>
         <span class="post-category">{{ getCategoryDisplay(article.category) }}</span>
@@ -16,7 +16,7 @@
         <span class="post-updated">updated {{ article.updatedAt }}</span>
         }
       </div>
-      <a class="post-title" [routerLink]="getPostLink(article.link)">{{ article.title }}</a>
+      <span class="post-title">{{ article.title }}</span>
       <ul class="post-tags">
         @for (tag of article.tags; track tag) {
         <li>#{{ tag }}</li>

@@ -81,7 +81,11 @@
   text-decoration: none;
 }
 
-.post-title:hover {
+.post-row {
+  cursor: pointer;
+}
+
+.post-row:hover .post-title {
   color: var(--theme-accent);
 }
 
