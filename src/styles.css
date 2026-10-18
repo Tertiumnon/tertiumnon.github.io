@@ -497,6 +497,11 @@ tr:hover {
   filter: var(--theme-bg-blur);
 }
 
+/* Resting size of the Honey Pie picture; the navigation drift starts and ends here, so there is no snap back. */
+.theme-honey-pie .bg {
+  transform: scale(1.03);
+}
+
 
 .post-control-panel {
   background: linear-gradient(180deg, var(--theme-bg) 0%, var(--theme-panel) 100%);
