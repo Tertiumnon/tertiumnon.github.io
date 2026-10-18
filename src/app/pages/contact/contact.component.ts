@@ -1,21 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { EmulatorService } from "../../components/emulator/emulator.service";
+import { PageHeaderComponent } from "../../components/page-header/page-header.component";
+import { Component } from "@angular/core";
 
 @Component({
 	selector: "app-contact",
 	templateUrl: "./contact.component.html",
+	styleUrl: "./contact.component.css",
 	standalone: true,
+	imports: [PageHeaderComponent],
 })
-export class ContactComponent {
-	constructor(private emulatorService: EmulatorService) {}
-
-	ngOnInit(): void {
-		this.emulatorService.lines = [
-			"First name: Vitalii",
-			"Last name: Balabanov",
-			"Medium: <a href='https://medium.com/@tertiumnon' class='text-link'>https://medium.com/@tertiumnon</a>",
-			"LinkedIn: <a href='https://www.linkedin.com/in/tertium/' class='text-link'>https://www.linkedin.com/in/tertium/</a>",
-			"Email: <a href='mailto:tertiumnon@gmail.com' class='text-link'>tertiumnon@gmail.com</a>",
-		];
-	}
-}
+export class ContactComponent {}
