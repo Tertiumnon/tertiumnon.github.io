@@ -1,4 +1,4 @@
-import { Component, HostListener, inject, signal } from "@angular/core";
+import { Component, HostListener, computed, inject, signal } from "@angular/core";
 import { HelloWorldGameComponent } from "../../components/hello-world-game/hello-world-game.component";
 import { HoneyCatchComponent } from "../../components/honey-catch/honey-catch.component";
 import { GameStageComponent } from "../../components/game-stage/game-stage.component";
@@ -29,6 +29,8 @@ export class HomeComponent {
 	readonly game = signal<GameKey>("catch");
 	// The Honey Pie theme's menu opens on Honey Catch; the other themes open on Hello World.
 	readonly cursor = signal(this.themeService.theme() === Theme.HoneyPie ? 0 : 1);
+	// The marquee names the selected game, in the menu and while it is played.
+	readonly marqueeTitle = computed(() => GAMES[this.cursor()].label);
 
 	moveCursor(step: number): void {
 		this.cursor.update((index) => (index + step + GAMES.length) % GAMES.length);

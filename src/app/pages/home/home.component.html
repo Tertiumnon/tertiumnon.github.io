@@ -1,5 +1,5 @@
 <div class="home-page">
-  <app-arcade-cabinet title="Tertium Arcade">
+  <app-arcade-cabinet [title]="marqueeTitle()">
     <app-game-stage screen>
       @if (view() === "menu") {
       <div class="tv-menu" role="listbox" aria-label="Games">

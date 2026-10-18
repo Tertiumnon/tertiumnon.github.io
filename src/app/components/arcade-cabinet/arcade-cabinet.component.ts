@@ -55,7 +55,7 @@ import { Component, ElementRef, input, signal, viewChild } from "@angular/core";
 			letter-spacing: 0.3em;
 			text-transform: uppercase;
 			color: #fff7b0;
-			background: repeating-linear-gradient(90deg, #ff2e9a 0 16px, #7c3cff 16px 32px);
+			background: linear-gradient(#0006, #0006), url("/assets/images/honey-pie.png") center / cover;
 			border: 4px solid #000;
 			box-shadow: inset 0 -4px 0 #000, 0 0 16px #ff6ec7;
 			text-shadow: 2px 2px 0 #000;
