@@ -15,10 +15,15 @@ export const GAME_DESIGN_HEIGHT = 540;
 		</div>
 	`,
 	styles: [`
+		:host {
+			display: block;
+			width: 100%;
+		}
+
 		.stage {
 			position: relative;
 			/* As wide as the page allows, and no taller than the window. */
-			width: min(100%, ${GAME_DESIGN_WIDTH}px, calc((100vh - 240px) * ${GAME_DESIGN_WIDTH} / ${GAME_DESIGN_HEIGHT}));
+			width: min(100%, ${GAME_DESIGN_WIDTH}px, calc((100vh - 380px) * ${GAME_DESIGN_WIDTH} / ${GAME_DESIGN_HEIGHT}));
 			aspect-ratio: ${GAME_DESIGN_WIDTH} / ${GAME_DESIGN_HEIGHT};
 			margin: 0 auto;
 		}

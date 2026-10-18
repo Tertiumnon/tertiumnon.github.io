@@ -33,7 +33,7 @@ const SPAWN_EVERY_TICKS = 16;
 				@for (pie of pies(); track pie.id) {
 				<span class="pie" [style.left.%]="pie.x" [style.top.%]="pie.y"></span>
 				}
-				<img class="girl" src="/assets/images/honey-pie-girl.gif" alt="" [style.left.%]="girlX()" />
+				<img class="girl" src="/assets/games/honey-pie-girl.gif" alt="" [style.left.%]="girlX()" />
 				@if (over()) {
 				<p class="message">Game over</p>
 				}
