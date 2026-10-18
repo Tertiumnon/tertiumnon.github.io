@@ -11,7 +11,7 @@
   <div class="card-main">
     <h3 class="card-title" [attr.title]="project.title">{{ project.title }}</h3>
     @if (project.type) {
-    <div class="card-type">{{ project.type }}</div>
+    <div class="card-type">{{ project.type }}@for (framework of project.frameworks; track framework) { · {{ framework }} }</div>
     }
     @if (project.description) {
     <p class="card-description">{{ project.description }}</p>

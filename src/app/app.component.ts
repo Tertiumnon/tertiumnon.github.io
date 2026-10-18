@@ -6,6 +6,8 @@ import { BehaviorSubject } from "rxjs";
 import { EditorTabsComponent } from "./components/editor-tabs/editor-tabs.component";
 import { EmulatorComponent } from "./components/emulator/emulator.component";
 import { LayoutService } from "./components/workbench/layout.service";
+import { LightboxComponent } from "./components/lightbox/lightbox.component";
+import { LightboxService } from "./components/lightbox/lightbox.service";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { StatusBarComponent } from "./components/status-bar/status-bar.component";
 import { TerminalComponent } from "./components/terminal/terminal.component";
@@ -27,6 +29,7 @@ import { Theme } from "./components/theme/theme.constants";
 		EmulatorComponent,
 		StatusBarComponent,
 		TerminalComponent,
+		LightboxComponent,
 		RouterOutlet,
 	],
 })
@@ -38,12 +41,21 @@ export class AppComponent implements OnInit {
 	layout = inject(LayoutService);
 	terminal = inject(TerminalService);
 	fontService = inject(FontService);
+	private readonly lightbox = inject(LightboxService);
 	isHomePage$ = new BehaviorSubject(true);
 	readonly bgLayer = viewChild<ElementRef<HTMLElement>>("bgLayer");
 
 	// Expanded: the dragged width. Collapsed: the icon rail.
 	sidebarColumn(): string {
 		return this.layout.sidebarOpen() ? `${this.layout.sidebarWidth()}px` : "48px";
+	}
+
+	// Pictures in content (screenshots, README images) open full size in the popup.
+	@HostListener("document:click", ["$event"])
+	onImageClick(event: MouseEvent): void {
+		const target = event.target;
+		if (!(target instanceof HTMLImageElement) || target.closest("a") || !target.closest(".content, .screenshots")) return;
+		this.lightbox.open(target.src);
 	}
 
 	@HostListener("document:keydown", ["$event"])

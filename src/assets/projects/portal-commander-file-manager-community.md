@@ -7,12 +7,6 @@ Two folders side by side, a keyboard shortcut for everything, and files that ope
 > [!WARNING]
 > **Portal is in active development and has not reached its first 1.0.0 release yet.** Almost all features already work well and are used daily, but you may still run into rough edges. If something goes wrong, please [open an issue on GitHub](https://github.com/Tertiumnon/portal-commander-file-manager-community/issues/new) — every report helps make 1.0.0 better.
 
-<!-- screenshots -->
-![Portal Commander: two folders side by side with disks, favorites and shortcuts](https://raw.githubusercontent.com/Tertiumnon/portal-commander-file-manager-community/HEAD/docs/screenshots/01-main.png)
-
-![A Markdown file with highlighted code open in the panel, Tokyo Night theme](https://raw.githubusercontent.com/Tertiumnon/portal-commander-file-manager-community/HEAD/docs/screenshots/02-editor.png)
-<!-- /screenshots -->
-
 ## Really free
 
 Portal is free for personal use — not a trial, not "freemium":

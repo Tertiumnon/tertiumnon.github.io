@@ -4,6 +4,10 @@
     "title": "Portal Commander",
     "type": "desktop-app",
     "description": "Fast, free two-panel file manager for Windows with in-panel file preview and editing.",
+    "frameworks": [
+      "Tauri 2",
+      "Angular"
+    ],
     "screenshots": [
       "https://raw.githubusercontent.com/Tertiumnon/portal-commander-file-manager-community/HEAD/docs/screenshots/01-main.png",
       "https://raw.githubusercontent.com/Tertiumnon/portal-commander-file-manager-community/HEAD/docs/screenshots/02-editor.png"

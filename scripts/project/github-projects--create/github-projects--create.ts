@@ -79,6 +79,9 @@ export function absolutizeReadmeLinks(md: string, repo: string): string {
 			isRelative(url) ? `${prefix}${raw}${clean(url)}"` : match);
 }
 
+// Screenshots written between these markers in a README; the site's gallery replaces them.
+const SCREENSHOT_BLOCK = /<!-- screenshots -->[\s\S]*?<!-- \/screenshots -->\s*/;
+
 // First H1 of the README, with links and emphasis removed; used as the project title.
 export function readmeTitle(md: string): string | undefined {
 	const heading = /^#[ \t]+(.+)$/m.exec(md)?.[1];
@@ -197,7 +200,9 @@ const main = async (): Promise<void> => {
 		};
 		try {
 			const md = gh(`repos/${GITHUB_USER}/${repo.name}/readme`, "-H", "Accept: application/vnd.github.raw");
-			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.md`), absolutizeReadmeLinks(md, repo.name));
+			// The site shows the screenshot gallery itself, so the README's copy of the screenshots is left out.
+			const body = project.screenshots?.length ? md.replace(SCREENSHOT_BLOCK, "") : md;
+			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.md`), absolutizeReadmeLinks(body, repo.name));
 			project.readme = true;
 			project.title = readmeTitle(md) ?? project.title;
 		} catch (error) {
