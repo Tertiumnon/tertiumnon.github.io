@@ -4,8 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "bun run project:create && ng build",
-    "gh:pages:build": "bun run project:create && bun ./scripts/gh-pages/gh-pages--build/gh-pages--build.ts",
+    "build": "bun run project:create && bun run changelog:create && ng build",
+    "gh:pages:build": "bun run project:create && bun run changelog:create && bun ./scripts/gh-pages/gh-pages--build/gh-pages--build.ts",
+    "changelog:create": "bun ./scripts/changelog/changelog--create/changelog--create.ts",
     "project:create": "bun run project:github:create && bun run project:dates:create",
     "prepare": "git config core.hooksPath .githooks",
     "project:github:create": "bun ./scripts/project/github-projects--create/github-projects--create.ts",

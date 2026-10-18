@@ -5,9 +5,10 @@ set -e
 
 echo "📦 Refreshing project pages and dates..."
 bun run project:create
+bun run changelog:create
 
 # Generated files go into the same commit
-git add src/assets/projects src/assets/project-dates.json
+git add src/assets/projects src/assets/project-dates.json src/assets/changelog src/assets/changelog.json
 
 echo "🔍 Running pre-commit checks..."
 

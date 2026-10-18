@@ -14,17 +14,17 @@ export const APP_ROUTES: Routes = [
 			),
 	},
 	{
-		path: "news",
-		title: "News",
-		redirectTo: "en/news",
+		path: "changelog",
+		title: "Changelog",
+		redirectTo: "en/changelog",
 		pathMatch: "full",
 	},
 	{
-		path: ":lang/news",
-		title: "News",
+		path: ":lang/changelog",
+		title: "Changelog",
 		loadComponent: () =>
-			import("./pages/news/news.component").then(
-				(m) => m.NewsComponent,
+			import("./pages/changelog/changelog.component").then(
+				(m) => m.ChangelogComponent,
 			),
 	},
 	{

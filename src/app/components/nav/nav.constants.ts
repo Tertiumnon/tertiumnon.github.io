@@ -1,1 +1,1 @@
-export const ALLOWED_ROUTES = [":lang/news", ":lang/posts", "projects", "tools"];
+export const ALLOWED_ROUTES = [":lang/changelog", ":lang/posts", "projects", "tools"];

@@ -1,0 +1,588 @@
+[
+  {
+    "title": "Welcome to Changelog Feed",
+    "link": "/en/changelog/2026-06-23--welcome-to-changelog",
+    "language": "en",
+    "category": "Announcements",
+    "project": "Tertium",
+    "tags": [
+      "Changelog",
+      "Update"
+    ],
+    "publishedAt": "2026-06-23",
+    "filename": "index.en.md",
+    "dirname": "2026-06-23--welcome-to-changelog"
+  },
+  {
+    "title": "Bookmarks Manager for Firefox",
+    "link": "/en/changelog/2017-07-10--bookmarks-manager-for-firefox",
+    "language": "en",
+    "category": "Browsers",
+    "tags": [
+      "Books",
+      "Browser",
+      "Education",
+      "Extensions"
+    ],
+    "publishedAt": "2017-07-10",
+    "filename": "index.en.md",
+    "dirname": "2017-07-10--bookmarks-manager-for-firefox"
+  },
+  {
+    "title": "Send Text To Form (Chrome Extension)",
+    "link": "/en/changelog/2017-04-23--send-text-to-form-chrome-extension",
+    "language": "en",
+    "category": "Browsers",
+    "tags": [
+      "Browser",
+      "Extensions"
+    ],
+    "publishedAt": "2017-04-23",
+    "filename": "index.en.md",
+    "dirname": "2017-04-23--send-text-to-form-chrome-extension"
+  },
+  {
+    "title": "Bookmarks Manager: Release 0.1",
+    "link": "/en/changelog/2020-03-28--bookmarks-manager-release-01",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Books",
+      "Education"
+    ],
+    "publishedAt": "2020-03-28",
+    "filename": "index.en.md",
+    "dirname": "2020-03-28--bookmarks-manager-release-01"
+  },
+  {
+    "title": "Tertium JS Snippets: My New Visual Studio Code Extension",
+    "link": "/en/changelog/2019-10-22--tertium-js-snippets-my-new-visual-studio-code-extension",
+    "language": "en",
+    "category": "Browsers",
+    "tags": [
+      "Browser",
+      "Extensions",
+      "JavaScript",
+      "Web Development"
+    ],
+    "publishedAt": "2019-10-22",
+    "filename": "index.en.md",
+    "dirname": "2019-10-22--tertium-js-snippets-my-new-visual-studio-code-extension"
+  },
+  {
+    "title": "Sticker Pack for Telegram: FavoriteSerials",
+    "link": "/en/changelog/2017-07-20--sticker-pack-for-telegram-favoriteserials",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Tips"
+    ],
+    "publishedAt": "2017-07-20",
+    "filename": "index.en.md",
+    "dirname": "2017-07-20--sticker-pack-for-telegram-favoriteserials"
+  },
+  {
+    "title": "hlpr 0.23.2",
+    "link": "/en/changelog/2026-10-18--tertium-hlpr-0-23-2",
+    "language": "en",
+    "category": "Releases",
+    "project": "hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-18",
+    "filename": "index.en.md",
+    "dirname": "2026-10-18--tertium-hlpr-0-23-2",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.23.2"
+    }
+  },
+  {
+    "title": "hlpr 0.23.1",
+    "link": "/en/changelog/2026-10-18--tertium-hlpr-0-23-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-18",
+    "filename": "index.en.md",
+    "dirname": "2026-10-18--tertium-hlpr-0-23-1",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.23.1"
+    }
+  },
+  {
+    "title": "hlpr 0.23.0",
+    "link": "/en/changelog/2026-10-17--tertium-hlpr-0-23-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-hlpr-0-23-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.23.0"
+    }
+  },
+  {
+    "title": "hlpr 0.22.0",
+    "link": "/en/changelog/2026-10-17--tertium-hlpr-0-22-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-hlpr-0-22-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.22.0"
+    }
+  },
+  {
+    "title": "hlpr 0.21.0",
+    "link": "/en/changelog/2026-10-17--tertium-hlpr-0-21-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-hlpr-0-21-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.21.0"
+    }
+  },
+  {
+    "title": "hlpr 0.20.0",
+    "link": "/en/changelog/2026-10-17--tertium-hlpr-0-20-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-hlpr-0-20-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.20.0"
+    }
+  },
+  {
+    "title": "hlpr 0.19.0",
+    "link": "/en/changelog/2026-10-17--tertium-hlpr-0-19-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-hlpr-0-19-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.19.0"
+    }
+  },
+  {
+    "title": "hlpr 0.18.0",
+    "link": "/en/changelog/2026-10-16--tertium-hlpr-0-18-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-16",
+    "filename": "index.en.md",
+    "dirname": "2026-10-16--tertium-hlpr-0-18-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.18.0"
+    }
+  },
+  {
+    "title": "hlpr 0.17.0",
+    "link": "/en/changelog/2026-10-16--tertium-hlpr-0-17-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-16",
+    "filename": "index.en.md",
+    "dirname": "2026-10-16--tertium-hlpr-0-17-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.17.0"
+    }
+  },
+  {
+    "title": "hlpr 0.16.0",
+    "link": "/en/changelog/2026-10-13--tertium-hlpr-0-16-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-13",
+    "filename": "index.en.md",
+    "dirname": "2026-10-13--tertium-hlpr-0-16-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.16.0"
+    }
+  },
+  {
+    "title": "gith 0.3.1",
+    "link": "/en/changelog/2026-10-18--tertium-gith-0-3-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "gith",
+    "tags": [
+      "tertium-gith"
+    ],
+    "publishedAt": "2026-10-18",
+    "filename": "index.en.md",
+    "dirname": "2026-10-18--tertium-gith-0-3-1",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-gith/releases/tag/v0.3.1"
+    }
+  },
+  {
+    "title": "gith 0.3.0",
+    "link": "/en/changelog/2026-10-17--tertium-gith-0-3-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "gith",
+    "tags": [
+      "tertium-gith"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-gith-0-3-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-gith/releases/tag/v0.3.0"
+    }
+  },
+  {
+    "title": "gith 0.2.0",
+    "link": "/en/changelog/2026-10-17--tertium-gith-0-2-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "gith",
+    "tags": [
+      "tertium-gith"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-gith-0-2-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-gith/releases/tag/v0.2.0"
+    }
+  },
+  {
+    "title": "@tertium/js 4.2.0",
+    "link": "/en/changelog/2026-10-17--tertium-js-4-2-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-js-4-2-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v4.2.0"
+    }
+  },
+  {
+    "title": "@tertium/js 4.1.0",
+    "link": "/en/changelog/2026-10-13--tertium-js-4-1-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-13",
+    "filename": "index.en.md",
+    "dirname": "2026-10-13--tertium-js-4-1-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v4.1.0"
+    }
+  },
+  {
+    "title": "@tertium/js 4.0.0",
+    "link": "/en/changelog/2026-10-11--tertium-js-4-0-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-11",
+    "filename": "index.en.md",
+    "dirname": "2026-10-11--tertium-js-4-0-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v4.0.0"
+    }
+  },
+  {
+    "title": "@tertium/js 3.2.0",
+    "link": "/en/changelog/2026-10-05--tertium-js-3-2-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-05",
+    "filename": "index.en.md",
+    "dirname": "2026-10-05--tertium-js-3-2-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.2.0"
+    }
+  },
+  {
+    "title": "@tertium/js 3.1.1",
+    "link": "/en/changelog/2026-10-04--tertium-js-3-1-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-04",
+    "filename": "index.en.md",
+    "dirname": "2026-10-04--tertium-js-3-1-1",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.1.1"
+    }
+  },
+  {
+    "title": "@tertium/js 3.1.0",
+    "link": "/en/changelog/2026-10-04--tertium-js-3-1-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-04",
+    "filename": "index.en.md",
+    "dirname": "2026-10-04--tertium-js-3-1-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.1.0"
+    }
+  },
+  {
+    "title": "@tertium/js 3.0.4",
+    "link": "/en/changelog/2026-10-03--tertium-js-3-0-4",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-03",
+    "filename": "index.en.md",
+    "dirname": "2026-10-03--tertium-js-3-0-4",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.0.4"
+    }
+  },
+  {
+    "title": "@tertium/js 3.0.3",
+    "link": "/en/changelog/2026-10-03--tertium-js-3-0-3",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-03",
+    "filename": "index.en.md",
+    "dirname": "2026-10-03--tertium-js-3-0-3",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.0.3"
+    }
+  },
+  {
+    "title": "@tertium/js 3.0.2",
+    "link": "/en/changelog/2026-10-01--tertium-js-3-0-2",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-01",
+    "filename": "index.en.md",
+    "dirname": "2026-10-01--tertium-js-3-0-2",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.0.2"
+    }
+  },
+  {
+    "title": "@tertium/js 3.0.1",
+    "link": "/en/changelog/2026-10-01--tertium-js-3-0-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-01",
+    "filename": "index.en.md",
+    "dirname": "2026-10-01--tertium-js-3-0-1",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.0.1"
+    }
+  },
+  {
+    "title": "@tertium/js 3.0.0",
+    "link": "/en/changelog/2026-09-22--tertium-js-3-0-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-09-22",
+    "filename": "index.en.md",
+    "dirname": "2026-09-22--tertium-js-3-0-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.0.0"
+    }
+  },
+  {
+    "title": "Bun Markdown Wiki 0.6.0",
+    "link": "/en/changelog/2026-10-01--tertium-js-markdown-wiki-0-6-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "Bun Markdown Wiki",
+    "tags": [
+      "tertium-js-markdown-wiki"
+    ],
+    "publishedAt": "2026-10-01",
+    "filename": "index.en.md",
+    "dirname": "2026-10-01--tertium-js-markdown-wiki-0-6-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js-markdown-wiki/releases/tag/v0.6.0"
+    }
+  },
+  {
+    "title": "Countries 0.1.2",
+    "link": "/en/changelog/2021-05-18--tertium-countries-0-1-2",
+    "language": "en",
+    "category": "Releases",
+    "project": "Countries",
+    "tags": [
+      "tertium-countries"
+    ],
+    "publishedAt": "2021-05-18",
+    "filename": "index.en.md",
+    "dirname": "2021-05-18--tertium-countries-0-1-2",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-countries/releases/tag/v0.1.2"
+    }
+  },
+  {
+    "title": "JavaScript Snippets for Visual Studio Code 3.0.0",
+    "link": "/en/changelog/2025-05-30--tertium-js-snippets-3-0-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "JavaScript Snippets for Visual Studio Code",
+    "tags": [
+      "tertium-js-snippets"
+    ],
+    "publishedAt": "2025-05-30",
+    "filename": "index.en.md",
+    "dirname": "2025-05-30--tertium-js-snippets-3-0-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js-snippets/releases/tag/v3.0.0"
+    }
+  },
+  {
+    "title": "JavaScript Snippets for Visual Studio Code 2.0.0",
+    "link": "/en/changelog/2021-10-29--tertium-js-snippets-2-0-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "JavaScript Snippets for Visual Studio Code",
+    "tags": [
+      "tertium-js-snippets"
+    ],
+    "publishedAt": "2021-10-29",
+    "filename": "index.en.md",
+    "dirname": "2021-10-29--tertium-js-snippets-2-0-0",
+    "generated": true,
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js-snippets/releases/tag/v2.0.0"
+    }
+  }
+]
