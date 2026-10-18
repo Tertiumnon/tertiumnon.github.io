@@ -1,24 +1,35 @@
+/* Fills the editor: the tab bar and status bar are subtracted from the window height. */
 .home-page {
-  padding: 16px 0 2rem;
+  height: calc(100vh - 60px);
+  padding: 0;
 }
 
 .game-switch {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 }
 
 .game-switch button {
-  padding: 2px 12px;
-  border: 1px solid var(--theme-border);
-  border-radius: 4px;
-  background-color: var(--theme-bg);
-  color: inherit;
+  padding: 2px 14px;
+  border: 3px solid #000;
+  border-radius: 0;
+  background: #1a0a2e;
+  color: #36f9f6;
   font: inherit;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 0 #000;
   cursor: pointer;
 }
 
+.game-switch button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #000;
+}
+
 .game-switch button.active {
-  border-color: var(--theme-accent);
-  color: var(--theme-accent);
+  background: #ff2e9a;
+  color: #fff7b0;
 }

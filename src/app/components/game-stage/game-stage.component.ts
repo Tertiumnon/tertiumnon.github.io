@@ -22,8 +22,8 @@ export const GAME_DESIGN_HEIGHT = 540;
 
 		.stage {
 			position: relative;
-			/* As wide as the page allows, and no taller than the window. */
-			width: min(100%, ${GAME_DESIGN_WIDTH}px, calc((100vh - 380px) * ${GAME_DESIGN_WIDTH} / ${GAME_DESIGN_HEIGHT}));
+			/* Fills the cabinet screen (a size container) while keeping the design proportions. */
+			width: min(100cqw, calc(100cqh * ${GAME_DESIGN_WIDTH} / ${GAME_DESIGN_HEIGHT}));
 			aspect-ratio: ${GAME_DESIGN_WIDTH} / ${GAME_DESIGN_HEIGHT};
 			margin: 0 auto;
 		}
