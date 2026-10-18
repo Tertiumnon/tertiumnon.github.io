@@ -1,4 +1,4 @@
-## hlpr 0.23.0
+## @tertium/hlpr 0.23.0
 
 - docs: list aws-param-store add and remove and the new ssh destination flags
 - refactor(pm2): take the ssh destination from -ssh-host, -ssh-user or -ssm-param

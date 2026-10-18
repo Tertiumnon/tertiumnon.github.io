@@ -1,4 +1,4 @@
-## hlpr 0.23.1
+## @tertium/hlpr 0.23.1
 
 - docs(app): list snap, flatpak and zypper in app command docs
 - feat(app): remove apps from a keyboard menu

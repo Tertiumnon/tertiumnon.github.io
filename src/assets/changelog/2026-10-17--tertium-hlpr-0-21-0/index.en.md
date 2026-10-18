@@ -1,4 +1,4 @@
-## hlpr 0.21.0
+## @tertium/hlpr 0.21.0
 
 - docs: list aws-param-store set in README and help test
 - feat(aws-param-store): add set and read -key for one .env variable

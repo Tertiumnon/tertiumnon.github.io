@@ -1,4 +1,4 @@
-## gith 0.3.0
+## @tertium/gith 0.3.0
 
 - feat(merge): --develop merges this branch into develop
 - fix(remove): print the branch list before asking to remove them

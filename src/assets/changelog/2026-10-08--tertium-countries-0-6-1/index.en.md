@@ -1,4 +1,4 @@
-## Countries 0.6.1
+## @tertium/countries 0.6.1
 
 - chore(release): add changelog and release scripts
 - chore(release): use @tertium/gith for releases and changelog

@@ -1,4 +1,4 @@
-## hlpr 0.18.0
+## @tertium/hlpr 0.18.0
 
 - docs: update root command table and AGENTS example
 - fix(help): show runnable "also" commands and source descriptions

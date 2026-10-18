@@ -1,4 +1,4 @@
-## Cheatsheets 2.3.1
+## @tertium/cheatsheets 2.3.1
 
 - chore(release): add changelog and release scripts
 - chore(release): use @tertium/gith for releases and changelog

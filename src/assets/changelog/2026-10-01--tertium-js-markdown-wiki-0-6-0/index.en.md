@@ -1,4 +1,4 @@
-## Bun Markdown Wiki 0.6.0
+## @tertium/js-markdown-wiki 0.6.0
 
 - test: add suite for common markdown transformations
 - refactor: switch markdown rendering from markdown-it to Bun.markdown

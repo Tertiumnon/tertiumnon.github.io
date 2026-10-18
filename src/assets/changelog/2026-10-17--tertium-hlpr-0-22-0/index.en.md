@@ -1,4 +1,4 @@
-## hlpr 0.22.0
+## @tertium/hlpr 0.22.0
 
 - refactor(mariadb): read set-user-password's password from stdin when not given
 - docs: list set-user-password, rotate-password and pm2 commands

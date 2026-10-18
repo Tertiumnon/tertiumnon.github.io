@@ -1,4 +1,4 @@
-## hlpr 0.19.0
+## @tertium/hlpr 0.19.0
 
 - feat(gh): add rename and change commands
 - chore: update to a new gith cli util approach

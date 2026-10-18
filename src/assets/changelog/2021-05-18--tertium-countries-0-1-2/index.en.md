@@ -1,4 +1,4 @@
-## Countries 0.1.2
+## @tertium/countries 0.1.2
 
 ### Bug Fixes
 
