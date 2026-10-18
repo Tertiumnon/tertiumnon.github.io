@@ -223,3 +223,8 @@
 .service-chips b {
   font-family: var(--font-code);
 }
+
+/* Same header-to-content gap as the other pages. */
+.port-convention {
+  margin-top: 0.5rem;
+}
