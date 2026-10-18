@@ -151,3 +151,8 @@
   margin: 0;
   line-height: 1.2;
 }
+
+/* Space between the title and the tags. */
+.post-tags {
+  margin-top: 6px;
+}
