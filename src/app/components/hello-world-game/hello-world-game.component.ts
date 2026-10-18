@@ -66,8 +66,8 @@ export class HelloWorldGameComponent {
 	private readonly pressedDirections = new Set<"up" | "down" | "left" | "right">();
 
 	// fixed game area
-	containerWidth = 640;
-	containerHeight = 640;
+	containerWidth = 600;
+	containerHeight = 360;
 
 	// must match the service cell size/gap
 	readonly cellSize = 9;

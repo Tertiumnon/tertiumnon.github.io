@@ -41,10 +41,16 @@ const SPAWN_EVERY_TICKS = 16;
 		</section>
 	`,
 	styles: [`
+		:host {
+			display: block;
+			height: 100%;
+		}
+
 		.honey-catch {
 			width: 100%;
-			max-width: 720px;
-			margin: 2rem auto;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
 			font-family: var(--font-ui);
 		}
 
@@ -79,7 +85,8 @@ const SPAWN_EVERY_TICKS = 16;
 		.field {
 			position: relative;
 			width: 100%;
-			aspect-ratio: 4 / 3;
+			flex: 1;
+			min-height: 0;
 			overflow: hidden;
 			touch-action: none;
 			border: 1px solid var(--theme-border);

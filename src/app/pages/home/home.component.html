@@ -1,7 +1,17 @@
 <div class="home-page">
-  @if (themeService.theme() === honeyPie) {
-  <app-honey-catch></app-honey-catch>
-  } @else {
-  <app-hello-world-game></app-hello-world-game>
-  }
+  <nav class="game-switch" aria-label="Games">
+    @for (item of games; track item.key) {
+    <button type="button" [class.active]="game() === item.key" [attr.aria-pressed]="game() === item.key" (click)="game.set(item.key)">{{ item.label }}</button>
+    }
+  </nav>
+  <app-game-stage>
+    @switch (game()) {
+    @case ("catch") {
+    <app-honey-catch></app-honey-catch>
+    }
+    @case ("hello") {
+    <app-hello-world-game></app-hello-world-game>
+    }
+    }
+  </app-game-stage>
 </div>

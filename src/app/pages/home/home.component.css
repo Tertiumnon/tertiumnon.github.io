@@ -1,0 +1,25 @@
+.home-page {
+  padding: 16px 0 2rem;
+}
+
+.game-switch {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.game-switch button {
+  padding: 2px 12px;
+  border: 1px solid var(--theme-border);
+  border-radius: 4px;
+  background-color: var(--theme-surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.game-switch button.active {
+  border-color: var(--theme-accent);
+  color: var(--theme-accent);
+}
