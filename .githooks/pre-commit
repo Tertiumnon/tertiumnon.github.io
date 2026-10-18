@@ -1,14 +1,7 @@
 #!/usr/bin/env bash
-# Pre-commit hook: refresh project pages and data, then type checking before committing
+# Pre-commit hook: type checking only. Projects, changelog and posts are rebuilt on merge (see post-merge).
 
 set -e
-
-echo "📦 Refreshing project pages and dates..."
-bun run project:create
-bun run changelog:create
-
-# Generated files go into the same commit
-git add src/assets/projects src/assets/project-dates.json src/assets/changelog src/assets/changelog.json
 
 echo "🔍 Running pre-commit checks..."
 

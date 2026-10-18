@@ -1,15 +1,22 @@
 #!/usr/bin/env bash
-# Post-merge hook: update articles after pulling changes
+# Post-merge hook: on develop and main, rebuild projects, changelog and posts after a merge, then commit the result.
 
 set -e
 
-echo "📚 Updating article list..."
+branch=$(git rev-parse --abbrev-ref HEAD)
+case "$branch" in
+  main|develop) ;;
+  *) exit 0 ;;
+esac
+
+echo "📚 Rebuilding projects, changelog and posts for $branch..."
+bun run project:create
+bun run changelog:create
 bun run post:list:create
 
-# Only commit if there are changes
-if ! git diff --quiet src/assets/posts.json; then
-  git add src/assets/posts.json
-  git commit -m "docs: update article list" --no-verify
+git add src/assets/projects src/assets/project-dates.json src/assets/changelog src/assets/changelog.json src/assets/posts.json
+if ! git diff --cached --quiet; then
+  git commit -m "docs: rebuild projects, changelog and posts" --no-verify
 fi
 
-echo "✅ Article list updated!"
+echo "✅ Rebuilt"
