@@ -4,6 +4,8 @@ export enum Theme {
 	GitHubDark = "github-dark",
 	Catppuccin = "catppuccin",
 	AtomOneDark = "atom-one-dark",
+	Matrix = "matrix",
+	Fallout = "fallout",
 }
 
 export const THEME_LABELS: Record<Theme, string> = {
@@ -12,4 +14,6 @@ export const THEME_LABELS: Record<Theme, string> = {
 	[Theme.GitHubDark]: "GitHub Dark",
 	[Theme.Catppuccin]: "Catppuccin Mocha",
 	[Theme.AtomOneDark]: "Atom One Dark",
+	[Theme.Matrix]: "Matrix",
+	[Theme.Fallout]: "Fallout",
 };

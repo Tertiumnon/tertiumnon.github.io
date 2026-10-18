@@ -288,6 +288,32 @@ main {
   --code-variable: #ffffff;
 }
 
+.workbench[data-code-theme="matrix"] {
+  --code-bg: #020c04;
+  --code-text: #00ff41;
+  --code-keyword: #b6ffc8;
+  --code-string: #7dff9e;
+  --code-number: #39ff14;
+  --code-comment: #2e7d3e;
+  --code-title: #00ff41;
+  --code-attr: #7dff5c;
+  --code-builtin: #b6ffc8;
+  --code-variable: #00ff41;
+}
+
+.workbench[data-code-theme="fallout"] {
+  --code-bg: #0a1209;
+  --code-text: #b8f5a8;
+  --code-keyword: #7dff5c;
+  --code-string: #d6ffc4;
+  --code-number: #e6ff8a;
+  --code-comment: #5a7f4a;
+  --code-title: #9dff7a;
+  --code-attr: #c5ff9a;
+  --code-builtin: #7dff5c;
+  --code-variable: #b8f5a8;
+}
+
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-meta { color: var(--code-keyword); }
@@ -491,6 +517,106 @@ tr:hover {
   --theme-bg-image: none;
   --theme-bg-blur: none;
   --theme-accent: #61afef;
+}
+
+.theme-matrix {
+  --theme-bg: #000000;
+  --theme-panel: #020c04;
+  --theme-surface: #052410;
+  --theme-border: #0d5a20;
+  --theme-text: #00ff41;
+  --theme-bg-image: none;
+  --theme-bg-blur: none;
+  --theme-accent: #00ff41;
+}
+
+.theme-fallout {
+  --theme-bg: #101a0e;
+  --theme-panel: #0a1209;
+  --theme-surface: #1c2e17;
+  --theme-border: #3d5a2c;
+  --theme-text: #b8f5a8;
+  --theme-bg-image: none;
+  --theme-bg-blur: none;
+  --theme-accent: #7dff5c;
+}
+
+/* TV display: the arcade cabinet and its menu screen take their colours from the theme. */
+.theme-coder {
+  --tv-case: linear-gradient(180deg, #2f365e, #1e2442);
+  --tv-bezel: linear-gradient(180deg, #444175, #2a2750);
+  --tv-glass: #000;
+  --tv-text: #ffffff;
+  --tv-title: #ffd166;
+  --tv-glow: #ffd166;
+  --tv-select-bg: #ffd166;
+  --tv-select-text: #2f365e;
+}
+
+.theme-honey-pie {
+  --tv-case: linear-gradient(180deg, #2a0f3a 0%, #120620 100%);
+  --tv-bezel: linear-gradient(180deg, #3b3346, #221c2b);
+  --tv-glass: #000;
+  --tv-text: #36f9f6;
+  --tv-title: #ff2e9a;
+  --tv-glow: #ff6ec7;
+  --tv-select-bg: #ff2e9a;
+  --tv-select-text: #fff7b0;
+}
+
+.theme-github-dark {
+  --tv-case: linear-gradient(180deg, #161b22, #010409);
+  --tv-bezel: linear-gradient(180deg, #30363d, #161b22);
+  --tv-glass: #010409;
+  --tv-text: #58a6ff;
+  --tv-title: #e6edf3;
+  --tv-glow: #58a6ff;
+  --tv-select-bg: #58a6ff;
+  --tv-select-text: #0d1117;
+}
+
+.theme-catppuccin {
+  --tv-case: linear-gradient(180deg, #313244, #181825);
+  --tv-bezel: linear-gradient(180deg, #45475a, #1e1e2e);
+  --tv-glass: #11111b;
+  --tv-text: #cdd6f4;
+  --tv-title: #cba6f7;
+  --tv-glow: #cba6f7;
+  --tv-select-bg: #cba6f7;
+  --tv-select-text: #1e1e2e;
+}
+
+.theme-atom-one-dark {
+  --tv-case: linear-gradient(180deg, #2c313a, #21252b);
+  --tv-bezel: linear-gradient(180deg, #3e4451, #282c34);
+  --tv-glass: #181a1f;
+  --tv-text: #abb2bf;
+  --tv-title: #61afef;
+  --tv-glow: #61afef;
+  --tv-select-bg: #61afef;
+  --tv-select-text: #282c34;
+}
+
+.theme-matrix {
+  --tv-case: linear-gradient(180deg, #03250a, #000);
+  --tv-bezel: linear-gradient(180deg, #0b3d14, #031a07);
+  --tv-glass: #000;
+  --tv-text: #00ff41;
+  --tv-title: #b6ffc8;
+  --tv-glow: #00ff41;
+  --tv-select-bg: #00ff41;
+  --tv-select-text: #000;
+}
+
+.theme-fallout {
+  --tv-case: linear-gradient(180deg, #1c2a16, #0a1009);
+  --tv-bezel: linear-gradient(180deg, #2e4226, #131d0f);
+  --tv-glass: #040904;
+  --tv-text: #7dff5c;
+  --tv-title: #d6ffc4;
+  --tv-glow: #7dff5c;
+  --tv-select-bg: #7dff5c;
+  --tv-select-text: #0a1209;
 }
 
 .bg {
