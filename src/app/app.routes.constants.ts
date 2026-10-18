@@ -7,12 +7,13 @@ export const APP_ROUTES: Routes = [
 		loadComponent: () =>
 			import("./pages/home/home.component").then((m) => m.HomeComponent),
 	},
+	{ path: "about", redirectTo: "about-me", pathMatch: "full" },
 	{
-		path: "about",
-		title: "Contact",
+		path: "about-me",
+		title: "About me",
 		loadComponent: () =>
-			import("./pages/contact/contact.component").then(
-				(m) => m.ContactComponent,
+			import("./pages/about-me/about-me.component").then(
+				(m) => m.AboutMeComponent,
 			),
 	},
 	{

@@ -10,7 +10,7 @@ import { SidebarSearchComponent } from "./sidebar-search.component";
 const ANIMATION_DURATION_MS = 1000;
 const CLICK_ANIMATION_DURATION_MS = 2000;
 
-type SidebarIcon = "projects" | "changelog" | "posts" | "tools" | "contact";
+type SidebarIcon = "projects" | "changelog" | "posts" | "tools" | "about-me";
 
 interface SidebarSection {
 	label: string;
@@ -37,7 +37,7 @@ export class SidebarComponent {
 		{ label: "Changelog", link: "/changelog", icon: "changelog" },
 		{ label: "Posts", link: "/posts", icon: "posts" },
 		{ label: "Tools", link: "/tools", icon: "tools" },
-		{ label: "Contact", link: "/about", icon: "contact" },
+		{ label: "About me", link: "/about-me", icon: "about-me" },
 	];
 
 	constructor() {

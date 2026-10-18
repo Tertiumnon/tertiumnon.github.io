@@ -68,7 +68,7 @@ export class EmulatorService {
 				break;
 			case "about":
 				this.lines = [];
-				this.router.navigate(["about"], { skipLocationChange: true });
+				this.router.navigate(["about-me"], { skipLocationChange: true });
 				break;
 			case "projects":
 				this.lines = [];

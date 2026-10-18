@@ -2,10 +2,10 @@ import { PageHeaderComponent } from "../../components/page-header/page-header.co
 import { Component } from "@angular/core";
 
 @Component({
-	selector: "app-contact",
-	templateUrl: "./contact.component.html",
-	styleUrl: "./contact.component.css",
+	selector: "app-about-me",
+	templateUrl: "./about-me.component.html",
+	styleUrl: "./about-me.component.css",
 	standalone: true,
 	imports: [PageHeaderComponent],
 })
-export class ContactComponent {}
+export class AboutMeComponent {}

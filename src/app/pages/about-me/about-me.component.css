@@ -1,4 +1,4 @@
-.contact-list {
+.about-list {
 	display: grid;
 	grid-template-columns: max-content 1fr;
 	gap: 6px 24px;
@@ -7,11 +7,11 @@
 	padding: 0 16px;
 }
 
-.contact-list dt {
+.about-list dt {
 	color: var(--theme-text);
 	opacity: 0.6;
 }
 
-.contact-list dd {
+.about-list dd {
 	margin: 0;
 }

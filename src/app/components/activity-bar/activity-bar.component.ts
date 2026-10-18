@@ -5,7 +5,7 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive } from "@angular/ro
 const ANIMATION_DURATION_MS = 1000;
 const CLICK_ANIMATION_DURATION_MS = 2000;
 
-type ActivityIcon = "projects" | "changelog" | "posts" | "tools" | "contact";
+type ActivityIcon = "projects" | "changelog" | "posts" | "tools" | "about-me";
 
 interface ActivityItem {
 	label: string;
@@ -30,7 +30,7 @@ export class ActivityBarComponent {
 		{ label: "Changelog", link: ["/changelog"], icon: "changelog" },
 		{ label: "Posts", link: ["/posts"], icon: "posts" },
 		{ label: "Tools", link: ["/tools"], icon: "tools" },
-		{ label: "Contact", link: ["/about"], icon: "contact" },
+		{ label: "About me", link: ["/about-me"], icon: "about-me" },
 	];
 
 	constructor() {
