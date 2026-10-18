@@ -1,4 +1,4 @@
-# Portal File Manager
+# Portal Commander
 
 Portal is a fast, two-panel desktop file manager for Windows that stays out of your way. **Really free for personal use.**
 
@@ -140,7 +140,7 @@ Portal is still before its 1.0.0 release, so your reports matter. Found a bug or
 
 ## License
 
-Portal File Manager is **free for personal use**: no ads, no tracking, no account and no paid features.
+Portal Commander is **free for personal use**: no ads, no tracking, no account and no paid features.
 
 Selling, copying, redistribution or modification of the application is not permitted.
 

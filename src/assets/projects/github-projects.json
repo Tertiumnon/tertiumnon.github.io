@@ -1,64 +1,7 @@
 [
   {
-    "name": "project-structure-convention",
-    "title": "Project Structure Guide",
-    "description": "Standard layout, files and GitHub metadata for Tertium projects: README, changelog, release notes, screenshots, logo, topics.",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/project-structure-convention",
-    "readme": true,
-    "releases": []
-  },
-  {
-    "name": "intel-arc-b60-local-llm-cookbook",
-    "title": "Intel Arc B60 Local LLM Cookbook",
-    "type": "cookbook",
-    "description": "Running local LLMs on a 24 GB Intel Arc B60 with Llama.cpp, Strata, and OpenVINO.",
-    "language": "TypeScript",
-    "languageIcon": "assets/icons/languages/typescript.svg",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook",
-    "readme": true,
-    "releases": []
-  },
-  {
-    "name": "tertium-cheatsheets",
-    "title": "@tertium/cheatsheets",
-    "type": "cheatsheets",
-    "description": "Cheatsheets for programmers",
-    "language": "Markdown",
-    "languageIcon": "assets/icons/languages/markdown.svg",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-cheatsheets",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v2.3.1",
-      "date": "2026-07-19"
-    }
-  },
-  {
-    "name": "tertium-js-snippets",
-    "title": "JavaScript Snippets for Visual Studio Code",
-    "type": "vscode-extension",
-    "description": "Collection of JavaScript snippets for Visual Studio Code.",
-    "language": "JavaScript",
-    "languageIcon": "assets/icons/languages/javascript.svg",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-js-snippets",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v3.0.10",
-      "date": "2025-05-31"
-    }
-  },
-  {
     "name": "portal-commander-file-manager-community",
-    "title": "Portal File Manager",
+    "title": "Portal Commander",
     "type": "desktop-app",
     "description": "Fast, free two-panel file manager for Windows with in-panel file preview and editing.",
     "screenshots": [
@@ -105,7 +48,79 @@
     "version": {
       "tag": "v0.3.0",
       "date": "2026-10-17"
-    }
+    },
+    "languageIcon": "assets/icons/languages/markdown.svg"
+  },
+  {
+    "name": "tertium-icons",
+    "title": "tertium-icons",
+    "type": "icon-set",
+    "description": "Free svg and font icons",
+    "language": "HTML",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-icons",
+    "readme": true,
+    "releases": [],
+    "languageIcon": "assets/icons/languages/html.svg"
+  },
+  {
+    "name": "project-structure-convention",
+    "title": "Project Structure Guide",
+    "description": "Standard layout, files and GitHub metadata for Tertium projects: README, changelog, release notes, screenshots, logo, topics.",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/project-structure-convention",
+    "readme": true,
+    "releases": [],
+    "languageIcon": "assets/icons/languages/markdown.svg"
+  },
+  {
+    "name": "intel-arc-b60-local-llm-cookbook",
+    "title": "Intel Arc B60 Local LLM Cookbook",
+    "type": "cookbook",
+    "description": "Running local LLMs on a 24 GB Intel Arc B60 with Llama.cpp, Strata, and OpenVINO.",
+    "language": "TypeScript",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook",
+    "readme": true,
+    "releases": [],
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
+    "name": "tertium-cheatsheets",
+    "title": "@tertium/cheatsheets",
+    "type": "cheatsheets",
+    "description": "Cheatsheets for programmers",
+    "language": "Markdown",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-cheatsheets",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v2.3.1",
+      "date": "2026-07-19"
+    },
+    "languageIcon": "assets/icons/languages/markdown.svg"
+  },
+  {
+    "name": "tertium-js-snippets",
+    "title": "JavaScript Snippets for Visual Studio Code",
+    "type": "vscode-extension",
+    "description": "Collection of JavaScript snippets for Visual Studio Code.",
+    "language": "JavaScript",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-js-snippets",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v3.0.10",
+      "date": "2025-05-31"
+    },
+    "languageIcon": "assets/icons/languages/javascript.svg"
   },
   {
     "name": "tertium-js-markdown-wiki",
@@ -113,7 +128,6 @@
     "type": "web-app",
     "description": "Simple Bun web server that displays and manages markdown files over HTTP.",
     "language": "TypeScript",
-    "languageIcon": "assets/icons/languages/typescript.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/tertium-js-markdown-wiki",
@@ -122,7 +136,8 @@
     "version": {
       "tag": "v0.6.0",
       "date": "2026-10-01"
-    }
+    },
+    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "tertium-css",
@@ -130,7 +145,6 @@
     "type": "css-library",
     "description": "Minimalistic set of CSS classes.",
     "language": "CSS",
-    "languageIcon": "assets/icons/languages/css.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/tertium-css",
@@ -139,7 +153,8 @@
     "version": {
       "tag": "v1.5.1",
       "date": "2026-10-08"
-    }
+    },
+    "languageIcon": "assets/icons/languages/css.svg"
   },
   {
     "name": "tertium-countries",
@@ -147,7 +162,6 @@
     "type": "npm-package",
     "description": "Country names in 20 languages with lookup helpers, as an ESM package.",
     "language": "TypeScript",
-    "languageIcon": "assets/icons/languages/typescript.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/tertium-countries",
@@ -156,7 +170,8 @@
     "version": {
       "tag": "v0.6.1",
       "date": "2026-10-08"
-    }
+    },
+    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "tertium-hlpr",
@@ -164,7 +179,6 @@
     "type": "cli",
     "description": "Command-line helper for everyday tasks on Windows, macOS, and Linux, run as hlpr <domain> <command>.",
     "language": "TypeScript",
-    "languageIcon": "assets/icons/languages/typescript.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/tertium-hlpr",
@@ -173,7 +187,8 @@
     "version": {
       "tag": "v0.23.2",
       "date": "2026-10-18"
-    }
+    },
+    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "tertium-gith",
@@ -181,7 +196,6 @@
     "type": "cli",
     "description": "gf: git-only branch flow CLI (goal branches, release/hotfix containers, synced merges)",
     "language": "TypeScript",
-    "languageIcon": "assets/icons/languages/typescript.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/tertium-gith",
@@ -190,20 +204,8 @@
     "version": {
       "tag": "v0.3.1",
       "date": "2026-10-18"
-    }
-  },
-  {
-    "name": "tertium-icons",
-    "title": "tertium.icons",
-    "type": "icon-set",
-    "description": "Free svg and font icons",
-    "language": "HTML",
-    "languageIcon": "assets/icons/languages/html.svg",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-icons",
-    "readme": true,
-    "releases": []
+    },
+    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "anime-emotions-sticker-pack",
@@ -215,7 +217,8 @@
     "repoLicense": "Creative Commons Attribution 4.0 International",
     "url": "https://github.com/Tertiumnon/anime-emotions-sticker-pack",
     "readme": true,
-    "releases": []
+    "releases": [],
+    "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
     "name": "true-coders-sticker-pack",
@@ -227,7 +230,8 @@
     "repoLicense": "Creative Commons Attribution 4.0 International",
     "url": "https://github.com/Tertiumnon/true-coders-sticker-pack",
     "readme": true,
-    "releases": []
+    "releases": [],
+    "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
     "name": "entity-driven-architecture--example",
@@ -235,12 +239,12 @@
     "type": "web-app",
     "description": "Blog platform built with entity-driven architecture: Bun and Elysia backend, SolidJS frontend.",
     "language": "TypeScript",
-    "languageIcon": "assets/icons/languages/typescript.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/entity-driven-architecture--example",
     "readme": true,
-    "releases": []
+    "releases": [],
+    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "json-all-to-one",
@@ -248,7 +252,6 @@
     "type": "cli",
     "description": "CLI that concatenates several JSON files from a directory into one file, optionally wrapped under a key.",
     "language": "JavaScript",
-    "languageIcon": "assets/icons/languages/javascript.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/json-all-to-one",
@@ -257,7 +260,8 @@
     "version": {
       "tag": "v0.2.4",
       "date": "2020-05-25"
-    }
+    },
+    "languageIcon": "assets/icons/languages/javascript.svg"
   },
   {
     "name": "tertium-prisma-codegen",
@@ -265,7 +269,6 @@
     "type": "code-generator",
     "description": "Code generation library for Prisma schemas: REST handlers, GraphQL resolvers, and TypeScript types. In development.",
     "language": "TypeScript",
-    "languageIcon": "assets/icons/languages/typescript.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/tertium-prisma-codegen",
@@ -274,7 +277,8 @@
     "version": {
       "tag": "v0.11.2",
       "date": "2026-10-13"
-    }
+    },
+    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "tertium-js",
@@ -282,7 +286,6 @@
     "type": "library",
     "description": "Reusable TypeScript library of shared core utilities, entity models, and release scripts for JavaScript projects. In development.",
     "language": "TypeScript",
-    "languageIcon": "assets/icons/languages/typescript.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/tertium-js",
@@ -291,7 +294,8 @@
     "version": {
       "tag": "v4.3.0",
       "date": "2026-10-17"
-    }
+    },
+    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "json-to-sql-script",
@@ -299,7 +303,6 @@
     "type": "cli",
     "description": "Convert your JSON-file to SQL-script for inserting to database.",
     "language": "JavaScript",
-    "languageIcon": "assets/icons/languages/javascript.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/json-to-sql-script",
@@ -308,7 +311,8 @@
     "version": {
       "tag": "v0.2.0",
       "date": "2020-05-29"
-    }
+    },
+    "languageIcon": "assets/icons/languages/javascript.svg"
   },
   {
     "name": "youtube-full-window-ext",
@@ -316,12 +320,12 @@
     "type": "firefox-extension",
     "description": "Open source Firefox extension that adds a button to YouTube's control bar to fill the browser window with the player.",
     "language": "TypeScript",
-    "languageIcon": "assets/icons/languages/typescript.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/youtube-full-window-ext",
     "readme": true,
-    "releases": []
+    "releases": [],
+    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "cli-convention",
@@ -329,12 +333,12 @@
     "type": "conventions",
     "description": "CLI conventions for Tertium tools: commands, short and long flags, one- and two-dash meaning, errors and output",
     "language": "Markdown",
-    "languageIcon": "assets/icons/languages/markdown.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/cli-convention",
     "readme": true,
-    "releases": []
+    "releases": [],
+    "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
     "name": "git-convention",
@@ -342,12 +346,12 @@
     "type": "conventions",
     "description": "Git branch and commit conventions: goal-based branches, containers for release and hotfix, conventional commits",
     "language": "Markdown",
-    "languageIcon": "assets/icons/languages/markdown.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/git-convention",
     "readme": true,
-    "releases": []
+    "releases": [],
+    "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
     "name": "entity-driven-architecture",
@@ -355,12 +359,12 @@
     "type": "style-guide",
     "description": "Guide to entity-driven development principles, naming conventions, and architectural patterns.",
     "language": "Markdown",
-    "languageIcon": "assets/icons/languages/markdown.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/entity-driven-architecture",
     "readme": true,
-    "releases": []
+    "releases": [],
+    "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
     "name": "release-convention",
@@ -368,12 +372,12 @@
     "type": "guide",
     "description": "Guide to release workflows with Git branches (release, hotfix), CI/CD notes, and a release metadata JSON schema.",
     "language": "Markdown",
-    "languageIcon": "assets/icons/languages/markdown.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/release-convention",
     "readme": true,
-    "releases": []
+    "releases": [],
+    "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
     "name": "mw-deploy",
@@ -381,7 +385,6 @@
     "type": "cli",
     "description": "Node.js CLI to stream, update, and delete MediaWiki pages on a remote server from local article files.",
     "language": "JavaScript",
-    "languageIcon": "assets/icons/languages/javascript.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/mw-deploy",
@@ -390,7 +393,8 @@
     "version": {
       "tag": "v0.4.0",
       "date": "2026-08-13"
-    }
+    },
+    "languageIcon": "assets/icons/languages/javascript.svg"
   },
   {
     "name": "software-gentelman-agreement",
@@ -400,6 +404,7 @@
     "screenshots": [],
     "url": "https://github.com/Tertiumnon/software-gentelman-agreement",
     "readme": true,
-    "releases": []
+    "releases": [],
+    "languageIcon": "assets/icons/languages/markdown.svg"
   }
 ]

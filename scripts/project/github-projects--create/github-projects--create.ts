@@ -131,10 +131,13 @@ const listFolder = (repo: string, folder: string): { name: string; type: string 
 const rawUrl = (repo: string, path: string): string =>
 	`https://raw.githubusercontent.com/${GITHUB_USER}/${repo}/HEAD/${path.split("/").map(encodeURIComponent).join("/")}`;
 
-// Standard location: assets/logo.svg, assets/logo.png (or another image type).
+// Standard location: assets/logo/logo.svg or assets/logo/logo.png. Older repositories kept assets/logo.* at the root.
+const LOGO_PATTERN = /^logo.(svg|png|webp|jpe?g)$/i;
 const fetchLogo = (repo: string): string | undefined => {
-	const logo = listFolder(repo, "assets").find((file) => file.type === "file" && /^logo.(svg|png|webp|jpe?g)$/i.test(file.name));
-	return logo ? rawUrl(repo, `assets/${logo.name}`) : undefined;
+	const folder = listFolder(repo, "assets/logo").find((file) => file.type === "file" && LOGO_PATTERN.test(file.name));
+	if (folder) return rawUrl(repo, `assets/logo/${folder.name}`);
+	const root = listFolder(repo, "assets").find((file) => file.type === "file" && LOGO_PATTERN.test(file.name));
+	return root ? rawUrl(repo, `assets/${root.name}`) : undefined;
 };
 
 // Standard location: docs/screenshots/NN-name.png, in display order.
@@ -182,9 +185,8 @@ const main = async (): Promise<void> => {
 			type: attributes?.type,
 			description: repo.description || undefined,
 			language,
-			languageIcon: languageIconFor(language),
 			frameworks: attributes?.frameworks,
-			// Convention: assets/logo.* is the logo; a repository without one uses the first image in stickers/ (sticker packs).
+			// Convention: assets/logo/logo.* is the logo; a repository without one uses the first image in stickers/ (sticker packs).
 			image: fetchLogo(repo.name) ?? fetchFirstSticker(repo.name),
 			screenshots: fetchScreenshots(repo.name),
 			repoLicense: repo.licenseInfo?.spdxId && repo.licenseInfo.spdxId !== "NOASSERTION" ? repo.licenseInfo.spdxId : repo.licenseInfo?.name,
@@ -201,6 +203,8 @@ const main = async (): Promise<void> => {
 		} catch (error) {
 			if (!isNotFound(error)) throw error;
 		}
+		// Icon: the language icon; a project without one but with a README (documents) shows the Markdown icon.
+		project.languageIcon = languageIconFor(language) ?? (project.readme ? languageIconFor("Markdown") : undefined);
 		projects.push(project);
 	}
 
