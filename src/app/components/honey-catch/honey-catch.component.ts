@@ -16,7 +16,7 @@ const GIRL_RATIO = 113 / 200;
 const PIE_WIDTH = 0.05;
 const CATCH_RANGE = 7;
 const STEP = 1.6;
-const SPAWN_EVERY_TICKS = 16;
+const SPAWN_EVERY_TICKS = 32;
 
 // Catch the honey pies with the girl from the picture. Move with the pointer or the arrow keys.
 @Component({
