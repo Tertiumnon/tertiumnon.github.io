@@ -2,7 +2,7 @@ import { Component, DestroyRef, inject } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { Theme, THEME_LABELS } from "../theme/theme";
-import { ThemeService } from "../theme/theme.service";
+import { SAME_AS_THEME, ThemeService } from "../theme/theme.service";
 import { TerminalService } from "../terminal/terminal.service";
 import { FONT_OPTIONS, FontKey, FontService } from "../font/font.service";
 
@@ -22,11 +22,15 @@ export class StatusBarComponent {
 	readonly fontOptions = FONT_OPTIONS;
 	readonly themeCtrl = new FormControl(this.themeService.theme());
 	readonly fontCtrl = new FormControl(this.fontService.font());
+	readonly codeThemeCtrl = new FormControl(this.themeService.codeTheme());
 
 	constructor() {
 		this.themeCtrl.valueChanges
 			.pipe(takeUntilDestroyed(this.destroyRef))
 			.subscribe((theme) => this.themeService.setTheme(theme as Theme));
+		this.codeThemeCtrl.valueChanges
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe((codeTheme) => this.themeService.setCodeTheme(codeTheme ?? SAME_AS_THEME));
 		this.fontCtrl.valueChanges
 			.pipe(takeUntilDestroyed(this.destroyRef))
 			.subscribe((font) => this.fontService.setFont(font as FontKey));

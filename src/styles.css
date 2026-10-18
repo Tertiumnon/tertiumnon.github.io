@@ -216,9 +216,97 @@ main {
   content: "### ";
 }
 
+/* Code palettes: the code theme (data-code-theme, set by the status bar) picks the colours of code blocks only. */
+.workbench {
+  --code-bg: var(--theme-panel);
+  --code-text: var(--theme-text);
+  --code-keyword: var(--theme-accent);
+  --code-string: #9ccc65;
+  --code-number: #ff9e64;
+  --code-comment: #7f8c8d;
+  --code-title: #82aaff;
+  --code-attr: #ffcb6b;
+  --code-builtin: #c3e88d;
+  --code-variable: var(--theme-text);
+}
+
+.workbench[data-code-theme="github-dark"] {
+  --code-bg: #010409;
+  --code-text: #e6edf3;
+  --code-keyword: #ff7b72;
+  --code-string: #a5d6ff;
+  --code-number: #79c0ff;
+  --code-comment: #8b949e;
+  --code-title: #d2a8ff;
+  --code-attr: #79c0ff;
+  --code-builtin: #ffa657;
+  --code-variable: #ffa657;
+}
+
+.workbench[data-code-theme="catppuccin"] {
+  --code-bg: #181825;
+  --code-text: #cdd6f4;
+  --code-keyword: #cba6f7;
+  --code-string: #a6e3a1;
+  --code-number: #fab387;
+  --code-comment: #6c7086;
+  --code-title: #89b4fa;
+  --code-attr: #f9e2af;
+  --code-builtin: #f38ba8;
+  --code-variable: #f5c2e7;
+}
+
+.workbench[data-code-theme="atom-one-dark"] {
+  --code-bg: #21252b;
+  --code-text: #abb2bf;
+  --code-keyword: #c678dd;
+  --code-string: #98c379;
+  --code-number: #d19a66;
+  --code-comment: #5c6370;
+  --code-title: #61afef;
+  --code-attr: #d19a66;
+  --code-builtin: #e6c07b;
+  --code-variable: #e06c75;
+}
+
+.workbench[data-code-theme="honey-pie"] {
+  --code-bg: var(--theme-panel);
+  --code-text: #ffffff;
+  --code-keyword: #ffb3d9;
+  --code-string: #ffe6f2;
+  --code-number: #ffd166;
+  --code-comment: #d9a3c2;
+  --code-title: #ffffff;
+  --code-attr: #ffd166;
+  --code-builtin: #ffb3d9;
+  --code-variable: #ffffff;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-meta { color: var(--code-keyword); }
+.hljs-string,
+.hljs-regexp { color: var(--code-string); }
+.hljs-number,
+.hljs-literal { color: var(--code-number); }
+.hljs-comment,
+.hljs-quote { color: var(--code-comment); font-style: italic; }
+.hljs-title,
+.hljs-function,
+.hljs-type,
+.hljs-section { color: var(--code-title); }
+.hljs-attr,
+.hljs-property,
+.hljs-attribute { color: var(--code-attr); }
+.hljs-built_in,
+.hljs-symbol { color: var(--code-builtin); }
+.hljs-variable,
+.hljs-template-variable { color: var(--code-variable); }
+
 pre {
   overflow-x: auto;
-  background-color: var(--theme-panel);
+  color: var(--code-text);
+  background-color: var(--code-bg);
   border: 1px solid var(--theme-border);
   border-left: 3px solid var(--theme-accent);
   border-radius: var(--editor-radius);

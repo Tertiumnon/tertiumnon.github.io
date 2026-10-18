@@ -1,4 +1,4 @@
-<div class="app-theme workbench" [ngClass]="themeService.themeClass()" [style.--font-ui]="fontService.family()" [style.--sidebar-width]="sidebarColumn()" [class.resizing]="layout.resizing()">
+<div class="app-theme workbench" [ngClass]="themeService.themeClass()" [attr.data-code-theme]="themeService.codeThemeKey()" [style.--font-ui]="fontService.family()" [style.--font-code]="fontService.family()" [style.--sidebar-width]="sidebarColumn()" [class.resizing]="layout.resizing()">
   <app-sidebar class="sidebar-host"></app-sidebar>
 
   <section class="editor-area">
