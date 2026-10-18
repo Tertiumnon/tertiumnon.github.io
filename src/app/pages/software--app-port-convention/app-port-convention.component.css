@@ -228,3 +228,8 @@
 .port-convention {
   margin-top: 0.5rem;
 }
+
+/* The site adds markdown markers to headings in content; this tool has no markers. */
+.port-convention h2::before {
+  content: none;
+}
