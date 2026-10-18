@@ -1,8 +1,12 @@
+/* Full editor width; the row inside lines up with the page content below. */
 :host {
   position: sticky;
   top: 0;
   z-index: 5;
   display: block;
+  background-color: var(--theme-sticky, var(--theme-bg));
+  backdrop-filter: var(--theme-sticky-blur, none);
+  border-bottom: 1px solid var(--theme-border);
 }
 
 /* Sticks to the top of the editor while the page scrolls. */
@@ -13,10 +17,10 @@
   justify-content: space-between;
   gap: 12px 24px;
   min-height: 56px;
+  width: 94%;
+  max-width: calc(var(--page-max-width) - 20px);
+  margin: 0 auto;
   padding: 8px 0;
-  background-color: var(--theme-sticky, var(--theme-bg));
-  backdrop-filter: var(--theme-sticky-blur, none);
-  border-bottom: 1px solid var(--theme-border);
 }
 
 .page-title {

@@ -1,7 +1,7 @@
-<div class="container-fluid posts-page" style="margin-top: var(--container-margin-top);">
-  <app-page-header title="Posts">
-    <app-sidebar-page-filters></app-sidebar-page-filters>
-  </app-page-header>
+<app-page-header title="Posts">
+  <app-sidebar-page-filters></app-sidebar-page-filters>
+</app-page-header>
+<div class="container-fluid posts-page" style="margin-top: 0.5rem;">
 
   @if (sortedPosts().length === 0) {
   <p class="no-posts-message">No posts available.</p>
@@ -15,12 +15,12 @@
     </li>
     }
   </ol>
-  @if (pageCount() > 1) {
-  <nav class="pagination" aria-label="Posts pages">
-    <button type="button" (click)="previousPage()" [disabled]="page() === 1">Previous</button>
-    <span>{{ page() }} / {{ pageCount() }}</span>
-    <button type="button" (click)="nextPage()" [disabled]="page() === pageCount()">Next</button>
-  </nav>
-  }
   }
 </div>
+@if (pageCount() > 1) {
+<nav class="pagination" aria-label="Posts pages">
+  <button type="button" (click)="previousPage()" [disabled]="page() === 1">Previous</button>
+  <span>{{ page() }} / {{ pageCount() }}</span>
+  <button type="button" (click)="nextPage()" [disabled]="page() === pageCount()">Next</button>
+</nav>
+}

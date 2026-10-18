@@ -1,8 +1,7 @@
-<div class="container-fluid changelog-page" style="margin-top: var(--container-margin-top);">
-  <app-page-header title="Changelog">
-    <app-sidebar-page-filters></app-sidebar-page-filters>
-  </app-page-header>
-
+<app-page-header title="Changelog">
+  <app-sidebar-page-filters></app-sidebar-page-filters>
+</app-page-header>
+<div class="container-fluid changelog-page" style="margin-top: 0.5rem;">
   <ol class="changelog-feed">
     @for (changelogItem of filteredChangelog(); track changelogItem.link) {
     <li class="changelog-item">
