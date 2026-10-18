@@ -1,0 +1,13 @@
+<div class="tab-bar" role="tablist">
+  @for (tab of tabsService.tabs(); track tab.url; let first = $first) {
+  <div class="tab" [class.active]="tab.url === tabsService.activeUrl()" [class.pinned]="first" role="tab" [attr.aria-selected]="tab.url === tabsService.activeUrl()">
+    <button type="button" class="tab-label" (click)="tabsService.activate(tab.url)">
+      <span class="tab-dot"></span>
+      <span class="tab-title">{{ tab.title }}</span>
+    </button>
+    @if (!first) {
+    <button type="button" class="tab-close" (click)="tabsService.close(tab.url)" aria-label="Close tab" title="Close tab">×</button>
+    }
+  </div>
+  }
+</div>
