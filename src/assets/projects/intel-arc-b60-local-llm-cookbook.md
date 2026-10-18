@@ -5,7 +5,7 @@ port `8080` on the local network, with one service active at a time.
 
 ## Use a model
 
-1. Follow the [server setup](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/pages/setup.md) and the
+1. Follow the [server setup](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/content/setup.md) and the
    [one-time SSH setup](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/scripts/README.md).
 2. Copy `.env.example` to `.env` and set `AI_SSH_HOST` to your SSH alias.
 3. From the repository root, run:
@@ -32,12 +32,12 @@ Other scripts:
 
 ## Guides
 
-- [Models and fit](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/pages/models.md)
-- [Server setup and daily use](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/pages/setup.md)
-- [VS Code and other clients](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/pages/clients.md)
+- [Models and fit](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/content/models.md)
+- [Server setup and daily use](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/content/setup.md)
+- [VS Code and other clients](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/content/clients.md)
 - [Scripts](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/scripts/README.md)
-- [Recommendations](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/pages/recommendations.md)
-- [Results](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/pages/results.md)
+- [Recommendations](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/content/recommendations.md)
+- [Results](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/content/results.md)
 
 ## Support
 

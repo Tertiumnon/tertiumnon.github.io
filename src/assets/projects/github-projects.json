@@ -1,16 +1,111 @@
 [
   {
     "name": "project-structure-convention",
-    "title": "Project Structure Convention",
-    "type": "conventions",
+    "title": "Project Structure Guide",
     "description": "Standard layout, files and GitHub metadata for Tertium projects: README, changelog, release notes, screenshots, logo, topics.",
-    "language": "Markdown",
-    "languageIcon": "assets/icons/languages/markdown.svg",
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/project-structure-convention",
     "readme": true,
     "releases": []
+  },
+  {
+    "name": "intel-arc-b60-local-llm-cookbook",
+    "title": "Intel Arc B60 Local LLM Cookbook",
+    "type": "cookbook",
+    "description": "Running local LLMs on a 24 GB Intel Arc B60 with Llama.cpp, Strata, and OpenVINO.",
+    "language": "TypeScript",
+    "languageIcon": "assets/icons/languages/typescript.svg",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook",
+    "readme": true,
+    "releases": []
+  },
+  {
+    "name": "tertium-cheatsheets",
+    "title": "@tertium/cheatsheets",
+    "type": "cheatsheets",
+    "description": "Cheatsheets for programmers",
+    "language": "Markdown",
+    "languageIcon": "assets/icons/languages/markdown.svg",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-cheatsheets",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v2.3.1",
+      "date": "2026-07-19"
+    }
+  },
+  {
+    "name": "tertium-js-snippets",
+    "title": "JavaScript Snippets for Visual Studio Code",
+    "type": "vscode-extension",
+    "description": "Collection of JavaScript snippets for Visual Studio Code.",
+    "language": "JavaScript",
+    "languageIcon": "assets/icons/languages/javascript.svg",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-js-snippets",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v3.0.10",
+      "date": "2025-05-31"
+    }
+  },
+  {
+    "name": "portal-commander-file-manager-community",
+    "title": "Portal File Manager",
+    "type": "desktop-app",
+    "description": "Fast, free two-panel file manager for Windows with in-panel file preview and editing.",
+    "screenshots": [
+      "https://raw.githubusercontent.com/Tertiumnon/portal-commander-file-manager-community/HEAD/docs/screenshots/01-main.png",
+      "https://raw.githubusercontent.com/Tertiumnon/portal-commander-file-manager-community/HEAD/docs/screenshots/02-editor.png"
+    ],
+    "repoLicense": "Other",
+    "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community",
+    "readme": true,
+    "releases": [
+      {
+        "name": "Portal File Manager 0.2.0",
+        "tag": "v0.2.0",
+        "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/tag/untagged-dd851096db0023b55cc3",
+        "publishedAt": "",
+        "assets": [
+          {
+            "name": "Portal.File.Manager_0.2.0_x64-setup.exe",
+            "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/download/untagged-dd851096db0023b55cc3/Portal.File.Manager_0.2.0_x64-setup.exe"
+          },
+          {
+            "name": "Portal.File.Manager_0.2.0_x64_en-US.msi",
+            "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/download/untagged-dd851096db0023b55cc3/Portal.File.Manager_0.2.0_x64_en-US.msi"
+          }
+        ]
+      },
+      {
+        "name": "Portal Commander 0.3.0",
+        "tag": "v0.3.0",
+        "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/tag/v0.3.0",
+        "publishedAt": "2026-10-17",
+        "assets": [
+          {
+            "name": "Portal.Commander_0.3.0_x64-setup.exe",
+            "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/download/v0.3.0/Portal.Commander_0.3.0_x64-setup.exe"
+          },
+          {
+            "name": "Portal.Commander_0.3.0_x64_en-US.msi",
+            "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/download/v0.3.0/Portal.Commander_0.3.0_x64_en-US.msi"
+          }
+        ]
+      }
+    ],
+    "version": {
+      "tag": "v0.3.0",
+      "date": "2026-10-17"
+    }
   },
   {
     "name": "tertium-js-markdown-wiki",
@@ -44,23 +139,6 @@
     "version": {
       "tag": "v1.5.1",
       "date": "2026-10-08"
-    }
-  },
-  {
-    "name": "tertium-cheatsheets",
-    "title": "@tertium/cheatsheets",
-    "type": "cheatsheets",
-    "description": "Cheatsheets for programmers",
-    "language": "Markdown",
-    "languageIcon": "assets/icons/languages/markdown.svg",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-cheatsheets",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v2.3.1",
-      "date": "2026-07-19"
     }
   },
   {
@@ -233,54 +311,6 @@
     }
   },
   {
-    "name": "portal-commander-file-manager-community",
-    "title": "Portal File Manager",
-    "type": "desktop-app",
-    "description": "Fast, free two-panel file manager for Windows with in-panel file preview and editing.",
-    "screenshots": [],
-    "repoLicense": "Other",
-    "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community",
-    "readme": true,
-    "releases": [
-      {
-        "name": "Portal File Manager 0.2.0",
-        "tag": "v0.2.0",
-        "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/tag/untagged-dd851096db0023b55cc3",
-        "publishedAt": "",
-        "assets": [
-          {
-            "name": "Portal.File.Manager_0.2.0_x64-setup.exe",
-            "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/download/untagged-dd851096db0023b55cc3/Portal.File.Manager_0.2.0_x64-setup.exe"
-          },
-          {
-            "name": "Portal.File.Manager_0.2.0_x64_en-US.msi",
-            "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/download/untagged-dd851096db0023b55cc3/Portal.File.Manager_0.2.0_x64_en-US.msi"
-          }
-        ]
-      },
-      {
-        "name": "Portal Commander 0.3.0",
-        "tag": "v0.3.0",
-        "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/tag/v0.3.0",
-        "publishedAt": "2026-10-17",
-        "assets": [
-          {
-            "name": "Portal.Commander_0.3.0_x64-setup.exe",
-            "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/download/v0.3.0/Portal.Commander_0.3.0_x64-setup.exe"
-          },
-          {
-            "name": "Portal.Commander_0.3.0_x64_en-US.msi",
-            "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/download/v0.3.0/Portal.Commander_0.3.0_x64_en-US.msi"
-          }
-        ]
-      }
-    ],
-    "version": {
-      "tag": "v0.3.0",
-      "date": "2026-10-17"
-    }
-  },
-  {
     "name": "youtube-full-window-ext",
     "title": "Full Windowed Youtube",
     "type": "firefox-extension",
@@ -290,19 +320,6 @@
     "screenshots": [],
     "repoLicense": "MIT License",
     "url": "https://github.com/Tertiumnon/youtube-full-window-ext",
-    "readme": true,
-    "releases": []
-  },
-  {
-    "name": "intel-arc-b60-local-llm-cookbook",
-    "title": "Intel Arc B60 Local LLM Cookbook",
-    "type": "cookbook",
-    "description": "Running local LLMs on a 24 GB Intel Arc B60 with Llama.cpp, Strata, and OpenVINO.",
-    "language": "TypeScript",
-    "languageIcon": "assets/icons/languages/typescript.svg",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook",
     "readme": true,
     "releases": []
   },
@@ -357,23 +374,6 @@
     "url": "https://github.com/Tertiumnon/release-convention",
     "readme": true,
     "releases": []
-  },
-  {
-    "name": "tertium-js-snippets",
-    "title": "JavaScript Snippets for Visual Studio Code",
-    "type": "vscode-extension",
-    "description": "Collection of JavaScript snippets for Visual Studio Code.",
-    "language": "JavaScript",
-    "languageIcon": "assets/icons/languages/javascript.svg",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-js-snippets",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v3.0.10",
-      "date": "2025-05-31"
-    }
   },
   {
     "name": "mw-deploy",

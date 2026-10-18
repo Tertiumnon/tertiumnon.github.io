@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Pre-push hook: build the generated data locally before anything goes to the remote.
+# If the data changed, the push stops so the change can be committed first; the remote never has to rebuild it.
+
+set -e
+
+echo "📦 Checking generated data..."
+bun run generate
+
+GENERATED="src/assets/projects src/assets/project-dates.json src/assets/changelog src/assets/changelog.json src/assets/posts.json src/assets/generated.json"
+
+if [ -n "$(git status --porcelain -- $GENERATED)" ]; then
+  echo ""
+  echo "❌ Generated data changed. Commit it, then push again:"
+  git status --short -- $GENERATED
+  exit 1
+fi
+
+echo "✅ Generated data is up to date"

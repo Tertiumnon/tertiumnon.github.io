@@ -88,6 +88,63 @@
     "content": "---\npublishedAt: 2017-07-20\ncategory: Programming\ntags: [\"Tips\"]\n---\n\n# Sticker Pack for Telegram: FavoriteSerials\n\nMy sticker pack for Telegram:\n\n[FavoriteSerials](https://t.me/addstickers/FavoriteSerials)\n"
   },
   {
+    "title": "@tertium/cheatsheets 2.3.1",
+    "link": "/en/changelog/2026-07-19--tertium-cheatsheets-2-3-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/cheatsheets",
+    "tags": [
+      "tertium-cheatsheets"
+    ],
+    "publishedAt": "2026-07-19",
+    "filename": "index.en.md",
+    "dirname": "2026-07-19--tertium-cheatsheets-2-3-1",
+    "generated": true,
+    "content": "## @tertium/cheatsheets 2.3.1\n\n- chore(release): add changelog and release scripts\n- chore(release): use @tertium/gith for releases and changelog\n- chore: mark php snippets as documentation\n- docs: add comprehensive architectural styles and patterns documentation\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-cheatsheets/releases/tag/v2.3.1"
+    }
+  },
+  {
+    "title": "JavaScript Snippets for Visual Studio Code 3.0.0",
+    "link": "/en/changelog/2025-05-30--tertium-js-snippets-3-0-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "JavaScript Snippets for Visual Studio Code",
+    "tags": [
+      "tertium-js-snippets"
+    ],
+    "publishedAt": "2025-05-30",
+    "filename": "index.en.md",
+    "dirname": "2025-05-30--tertium-js-snippets-3-0-0",
+    "generated": true,
+    "content": "## JavaScript Snippets for Visual Studio Code 3.0.0\n\n##### Build System / Dependencies\n\n*  replace node to bun ([47c691d0](https://github.com/Tertiumnon/tertium-js-snippets/commit/47c691d0b29e57e059c823e9f383a819835ed6d2))\n\n### 2.3.0 (2023-11-04)\n\n##### New Features\n\n*  remove semicolon ([d0bf8a93](https://github.com/Tertiumnon/tertium-js-snippets/commit/d0bf8a93ea4d85649424e96dc600a55c655d61e4))\n\n#### 2.2.2 (2021-10-30)\n\n##### Documentation Changes\n\n*  add new readme image ([bcb1e132](https://github.com/Tertiumnon/tertium-js-snippets/commit/bcb1e132edb60d7209bf60b7bd5afdb29ff1488e))\n\n#### 2.2.1 (2021-10-30)\n\n##### Documentation Changes\n\n*  update declarations ([bb799b75](https://github.com/Tertiumnon/tertium-js-snippets/commit/bb799b75b87014143b653b81277db45f0409e459))\n\n### 2.2.0 (2021-10-30)\n\n##### New Features\n\n*  add object and array arguments ([cffabefa](https://github.com/Tertiumnon/tertium-js-snippets/commit/cffabefa787838b5898fcf011bbd403d9862040b))\n\n### 2.1.0 (2021-10-30)\n\n##### New Features\n\n*  add object methods, fix semicommas ([03fed135](https://github.com/Tertiumnon/tertium-js-snippets/commit/03fed1353ac4d6c9cbf09b451c0a727817f77d1e))\n\n#### 2.0.1 (2021-10-29)\n\n##### Chores\n\n*  change publisher name ([ea1b24f9](https://github.com/Tertiumnon/tertium-js-snippets/commit/ea1b24f92a6124647fd2ba0d68a74678ca0c479b))\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js-snippets/releases/tag/v3.0.0"
+    }
+  },
+  {
+    "title": "JavaScript Snippets for Visual Studio Code 2.0.0",
+    "link": "/en/changelog/2021-10-29--tertium-js-snippets-2-0-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "JavaScript Snippets for Visual Studio Code",
+    "tags": [
+      "tertium-js-snippets"
+    ],
+    "publishedAt": "2021-10-29",
+    "filename": "index.en.md",
+    "dirname": "2021-10-29--tertium-js-snippets-2-0-0",
+    "generated": true,
+    "content": "## JavaScript Snippets for Visual Studio Code 2.0.0\n\n##### New Features\n\n*  use new naming, remove all quotes, remove duplicating functionality ([7088414d](https://github.com/Tertiumnon/tertium-js-snippets/commit/7088414d45f03e799e13ec62d3018ff3c9bc9cfd))\n\n### 1.9.0 (2021-08-21)\n\n##### Build System / Dependencies\n\n*  add changelog package ([4e576b29](https://github.com/Tertiumnon/tertium-js-snippets/commit/4e576b294763e690a15ac5a85f13823993a20ec6))\n*  change build command ([720bf1c5](https://github.com/Tertiumnon/tertium-js-snippets/commit/720bf1c5533de71b09d02e07864d8db1e5e73b92))\n*  add build command ([a8d1f632](https://github.com/Tertiumnon/tertium-js-snippets/commit/a8d1f63255addff7188d7410f2d63408f1056450))\n*  init cz ([b082aade](https://github.com/Tertiumnon/tertium-js-snippets/commit/b082aade94c1d0dec4eddfec4620e1b920c0fd4f))\n\n##### Documentation Changes\n\n*  change version ([a0be2230](https://github.com/Tertiumnon/tertium-js-snippets/commit/a0be2230fb767298c25ba136cee02e037c882adf))\n*  change changelog ([b2b988d1](https://github.com/Tertiumnon/tertium-js-snippets/commit/b2b988d19f470c5b4458dc72693759dc0ca97306))\n\n##### New Features\n\n*  improve for snippet ([0cd95591](https://github.com/Tertiumnon/tertium-js-snippets/commit/0cd955911a4a53427ac5c283e3cce6b9eff5c023))\n\n##### Bug Fixes\n\n*  add default break for switch ([6e3147e8](https://github.com/Tertiumnon/tertium-js-snippets/commit/6e3147e8e5cb94ef9f54d78be58076caafa5520f))\n\n##### Refactors\n\n*  change semicolons and shortcuts ([11b2ad43](https://github.com/Tertiumnon/tertium-js-snippets/commit/11b2ad43064738e9f835ead94a151ad1d96b15de))\n\n# Change Log\n\nAll notable changes to the \"tertium-js-snippets\" extension will be documented in this file.\n\nCheck [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js-snippets/releases/tag/v2.0.0"
+    }
+  },
+  {
     "title": "@tertium/js-markdown-wiki 0.6.0",
     "link": "/en/changelog/2026-10-01--tertium-js-markdown-wiki-0-6-0",
     "language": "en",
@@ -123,25 +180,6 @@
     "source": {
       "name": "GitHub",
       "url": "https://github.com/Tertiumnon/tertium-css/releases/tag/v1.5.1"
-    }
-  },
-  {
-    "title": "@tertium/cheatsheets 2.3.1",
-    "link": "/en/changelog/2026-07-19--tertium-cheatsheets-2-3-1",
-    "language": "en",
-    "category": "Releases",
-    "project": "@tertium/cheatsheets",
-    "tags": [
-      "tertium-cheatsheets"
-    ],
-    "publishedAt": "2026-07-19",
-    "filename": "index.en.md",
-    "dirname": "2026-07-19--tertium-cheatsheets-2-3-1",
-    "generated": true,
-    "content": "## @tertium/cheatsheets 2.3.1\n\n- chore(release): add changelog and release scripts\n- chore(release): use @tertium/gith for releases and changelog\n- chore: mark php snippets as documentation\n- docs: add comprehensive architectural styles and patterns documentation\n",
-    "source": {
-      "name": "GitHub",
-      "url": "https://github.com/Tertiumnon/tertium-cheatsheets/releases/tag/v2.3.1"
     }
   },
   {
@@ -674,44 +712,6 @@
     "source": {
       "name": "GitHub",
       "url": "https://github.com/Tertiumnon/json-to-sql-script/releases/tag/v0.2.0"
-    }
-  },
-  {
-    "title": "JavaScript Snippets for Visual Studio Code 3.0.0",
-    "link": "/en/changelog/2025-05-30--tertium-js-snippets-3-0-0",
-    "language": "en",
-    "category": "Releases",
-    "project": "JavaScript Snippets for Visual Studio Code",
-    "tags": [
-      "tertium-js-snippets"
-    ],
-    "publishedAt": "2025-05-30",
-    "filename": "index.en.md",
-    "dirname": "2025-05-30--tertium-js-snippets-3-0-0",
-    "generated": true,
-    "content": "## JavaScript Snippets for Visual Studio Code 3.0.0\n\n##### Build System / Dependencies\n\n*  replace node to bun ([47c691d0](https://github.com/Tertiumnon/tertium-js-snippets/commit/47c691d0b29e57e059c823e9f383a819835ed6d2))\n\n### 2.3.0 (2023-11-04)\n\n##### New Features\n\n*  remove semicolon ([d0bf8a93](https://github.com/Tertiumnon/tertium-js-snippets/commit/d0bf8a93ea4d85649424e96dc600a55c655d61e4))\n\n#### 2.2.2 (2021-10-30)\n\n##### Documentation Changes\n\n*  add new readme image ([bcb1e132](https://github.com/Tertiumnon/tertium-js-snippets/commit/bcb1e132edb60d7209bf60b7bd5afdb29ff1488e))\n\n#### 2.2.1 (2021-10-30)\n\n##### Documentation Changes\n\n*  update declarations ([bb799b75](https://github.com/Tertiumnon/tertium-js-snippets/commit/bb799b75b87014143b653b81277db45f0409e459))\n\n### 2.2.0 (2021-10-30)\n\n##### New Features\n\n*  add object and array arguments ([cffabefa](https://github.com/Tertiumnon/tertium-js-snippets/commit/cffabefa787838b5898fcf011bbd403d9862040b))\n\n### 2.1.0 (2021-10-30)\n\n##### New Features\n\n*  add object methods, fix semicommas ([03fed135](https://github.com/Tertiumnon/tertium-js-snippets/commit/03fed1353ac4d6c9cbf09b451c0a727817f77d1e))\n\n#### 2.0.1 (2021-10-29)\n\n##### Chores\n\n*  change publisher name ([ea1b24f9](https://github.com/Tertiumnon/tertium-js-snippets/commit/ea1b24f92a6124647fd2ba0d68a74678ca0c479b))\n",
-    "source": {
-      "name": "GitHub",
-      "url": "https://github.com/Tertiumnon/tertium-js-snippets/releases/tag/v3.0.0"
-    }
-  },
-  {
-    "title": "JavaScript Snippets for Visual Studio Code 2.0.0",
-    "link": "/en/changelog/2021-10-29--tertium-js-snippets-2-0-0",
-    "language": "en",
-    "category": "Releases",
-    "project": "JavaScript Snippets for Visual Studio Code",
-    "tags": [
-      "tertium-js-snippets"
-    ],
-    "publishedAt": "2021-10-29",
-    "filename": "index.en.md",
-    "dirname": "2021-10-29--tertium-js-snippets-2-0-0",
-    "generated": true,
-    "content": "## JavaScript Snippets for Visual Studio Code 2.0.0\n\n##### New Features\n\n*  use new naming, remove all quotes, remove duplicating functionality ([7088414d](https://github.com/Tertiumnon/tertium-js-snippets/commit/7088414d45f03e799e13ec62d3018ff3c9bc9cfd))\n\n### 1.9.0 (2021-08-21)\n\n##### Build System / Dependencies\n\n*  add changelog package ([4e576b29](https://github.com/Tertiumnon/tertium-js-snippets/commit/4e576b294763e690a15ac5a85f13823993a20ec6))\n*  change build command ([720bf1c5](https://github.com/Tertiumnon/tertium-js-snippets/commit/720bf1c5533de71b09d02e07864d8db1e5e73b92))\n*  add build command ([a8d1f632](https://github.com/Tertiumnon/tertium-js-snippets/commit/a8d1f63255addff7188d7410f2d63408f1056450))\n*  init cz ([b082aade](https://github.com/Tertiumnon/tertium-js-snippets/commit/b082aade94c1d0dec4eddfec4620e1b920c0fd4f))\n\n##### Documentation Changes\n\n*  change version ([a0be2230](https://github.com/Tertiumnon/tertium-js-snippets/commit/a0be2230fb767298c25ba136cee02e037c882adf))\n*  change changelog ([b2b988d1](https://github.com/Tertiumnon/tertium-js-snippets/commit/b2b988d19f470c5b4458dc72693759dc0ca97306))\n\n##### New Features\n\n*  improve for snippet ([0cd95591](https://github.com/Tertiumnon/tertium-js-snippets/commit/0cd955911a4a53427ac5c283e3cce6b9eff5c023))\n\n##### Bug Fixes\n\n*  add default break for switch ([6e3147e8](https://github.com/Tertiumnon/tertium-js-snippets/commit/6e3147e8e5cb94ef9f54d78be58076caafa5520f))\n\n##### Refactors\n\n*  change semicolons and shortcuts ([11b2ad43](https://github.com/Tertiumnon/tertium-js-snippets/commit/11b2ad43064738e9f835ead94a151ad1d96b15de))\n\n# Change Log\n\nAll notable changes to the \"tertium-js-snippets\" extension will be documented in this file.\n\nCheck [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.\n",
-    "source": {
-      "name": "GitHub",
-      "url": "https://github.com/Tertiumnon/tertium-js-snippets/releases/tag/v2.0.0"
     }
   },
   {

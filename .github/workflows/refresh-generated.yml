@@ -1,0 +1,64 @@
+name: Refresh generated data
+
+# Generated data is built locally and pushed with the code. This workflow rebuilds it on the remote
+# only when the data is stale (no change for 14 days), or when started by hand with force.
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Rebuild even if the data is fresh"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: |
+          bun install --frozen-lockfile
+
+      - name: Check whether the data is stale
+        id: stale
+        run: |
+          echo "state=$(bun ./scripts/generate/stamp.ts --stale 14)" >> "$GITHUB_OUTPUT"
+
+      - name: Rebuild generated data
+        if: steps.stale.outputs.state == 'stale' || inputs.force
+        run: |
+          bun run generate
+
+      - name: Commit and deploy if the data changed
+        if: steps.stale.outputs.state == 'stale' || inputs.force
+        run: |
+          GENERATED="src/assets/projects src/assets/project-dates.json src/assets/changelog src/assets/changelog.json src/assets/posts.json src/assets/generated.json"
+          if [ -z "$(git status --porcelain -- $GENERATED)" ]; then
+            echo "Generated data is unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add $GENERATED
+          git commit -m "docs: refresh generated data"
+          git push origin HEAD:main
+          # Pushes made with the default token do not start other workflows, so deploy here.
+          gh workflow run deploy-pages.yml --ref main

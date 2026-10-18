@@ -10,11 +10,9 @@ case "$branch" in
 esac
 
 echo "📚 Rebuilding projects, changelog and posts for $branch..."
-bun run project:create
-bun run changelog:create
-bun run post:list:create
+bun run generate
 
-git add src/assets/projects src/assets/project-dates.json src/assets/changelog src/assets/changelog.json src/assets/posts.json
+git add src/assets/projects src/assets/project-dates.json src/assets/changelog src/assets/changelog.json src/assets/posts.json src/assets/generated.json
 if ! git diff --cached --quiet; then
   git commit -m "docs: rebuild projects, changelog and posts" --no-verify
 fi
