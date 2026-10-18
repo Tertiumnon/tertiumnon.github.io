@@ -1,27 +1,31 @@
-import { Component, DestroyRef, inject, signal, computed } from "@angular/core";
+import { SidebarPageFiltersComponent } from "../../components/sidebar/sidebar-page-filters.component";
+import { PageHeaderComponent } from "../../components/page-header/page-header.component";
+import { Component, DestroyRef, effect, inject, signal, computed, untracked } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { ActivatedRoute, Router, RouterLink } from "@angular/router";
+import { ActivatedRoute, RouterLink } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { Post } from "../../entities/post/post.types";
 import { PostService } from "../../entities/post/post.service";
 import { PostFilterService } from "../../components/sidebar/post-filter.service";
 
+const POSTS_PER_PAGE = 10;
+
 @Component({
 	selector: "app-posts",
 	standalone: true,
-	imports: [CommonModule, RouterLink],
+	imports: [CommonModule, RouterLink, SidebarPageFiltersComponent, PageHeaderComponent],
 	templateUrl: "./posts.component.html",
 	styleUrl: "./posts.component.css",
 })
 export class PostsComponent {
 	private readonly destroyRef = inject(DestroyRef);
 	private readonly activatedRoute = inject(ActivatedRoute);
-	private readonly router = inject(Router);
 	private readonly postService = inject(PostService);
 	readonly filters = inject(PostFilterService);
 
 	allPosts = signal<Post[]>([]);
 	isLoading = signal(true);
+	page = signal(1);
 
 	sortedPosts = computed(() => {
 		let filtered = this.allPosts();
@@ -42,6 +46,22 @@ export class PostsComponent {
 			(a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
 		);
 	});
+
+	pageCount = computed(() => Math.max(1, Math.ceil(this.sortedPosts().length / POSTS_PER_PAGE)));
+
+	pagedPosts = computed(() => {
+		const start = (this.page() - 1) * POSTS_PER_PAGE;
+		return this.sortedPosts().slice(start, start + POSTS_PER_PAGE);
+	});
+
+	constructor() {
+		// A new filter starts again from the first page.
+		effect(() => {
+			this.filters.selectedCategory();
+			this.filters.selectedTag();
+			untracked(() => this.page.set(1));
+		});
+	}
 
 	ngOnInit(): void {
 		this.activatedRoute.params
@@ -76,6 +96,14 @@ export class PostsComponent {
 					},
 				});
 			});
+	}
+
+	previousPage(): void {
+		this.page.update((page) => Math.max(1, page - 1));
+	}
+
+	nextPage(): void {
+		this.page.update((page) => Math.min(this.pageCount(), page + 1));
 	}
 
 	getPostLink(link: string): (string | number)[] {

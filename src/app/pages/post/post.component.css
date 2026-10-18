@@ -1,6 +1,5 @@
 /* A post opens like a file: one column, no pane around the article. */
 .post-file {
-  max-width: 760px;
   padding-bottom: 2rem;
 }
 
