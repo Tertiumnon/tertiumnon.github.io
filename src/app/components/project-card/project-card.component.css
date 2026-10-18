@@ -1,63 +1,124 @@
-.project-card {
-  opacity: 0.9;
-  background-color: white;
-  box-shadow: var(--box-shadow);
-  font-family: "Ubuntu Nerd Font", sans-serif;
-  font-size: 1.1em;
+:host {
+  display: block;
+  height: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Extension-store style tile: icon on the left, text on the right, facts in a footer row. */
+.store-card {
   position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  column-gap: 14px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  background-color: var(--theme-surface);
+  border: 1px solid var(--theme-border);
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  color: var(--theme-text);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
-.project-card:hover {
+.store-card:hover {
+  transform: translateY(-2px);
   box-shadow: var(--box-shadow--hover);
+  border-color: var(--theme-accent);
 }
 
-.project-card .header .project-card-title {
-  text-transform: uppercase;
-  margin-top: 0.2em;
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background-color: var(--theme-panel);
+}
+
+.card-icon img {
+  width: 32px;
+  height: 32px;
+}
+
+.card-main {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.card-title {
+  margin: 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-family: "Science Gothic", sans-serif;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
-.project-card .header .project-card-subtitle {
-  color: #666;
-}
-
-.project-card .body {
-  position: relative;
+.card-type {
+  margin-top: 2px;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.9em;
+  opacity: 0.7;
 }
 
-.project-card .body .project-card-image {
-  border-top: 1px solid #dadada;
-  border-bottom: 1px solid #dadada;
-  margin-top: 0;
-  margin-bottom: -4px;
+.card-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 8px 0 0;
+  font-size: 0.95em;
+  line-height: 1.45;
+  opacity: 0.9;
 }
 
-.project-card .body .description {
-  position: absolute;
-  top: 0;
-  padding: 14px 28px 14px 20px;
-  font-size: calc(1em - 2pt);
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.8;
+.card-footer {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--theme-border);
+  font-family: var(--font-code);
+  font-size: 0.85em;
+  opacity: 0.85;
 }
 
-.project-card .project-card-content {
-  margin-top: 0px;
-  padding: 16px 14px;
+.card-version {
+  padding: 1px 6px;
+  border: 1px solid var(--theme-border);
+  border-radius: 4px;
+  color: var(--theme-accent);
 }
 
-.project-card .project-card-link {
+.card-date {
+  margin-left: auto;
+}
+
+.card-link {
   position: absolute;
   inset: 0;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-:host {
-  display: block;
-  min-width: 0;
-  max-width: 100%;
+.card-icon {
+  overflow: hidden;
+}
+
+.card-icon img.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

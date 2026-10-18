@@ -1,16 +1,6 @@
-<div class="container-fluid content" style="margin-top: var(--container-margin-top);">
-  <h1>{{ project.title }}</h1>
-  @if (project.type || project.license) {
-  <p>{{ project.type }}@if (project.type && project.license) { · }{{ project.license }}</p>
-  }
-  @if (project.updatedAt) {
-  <p>Last commit {{ project.updatedAt | date: "yyyy MMM d" }}</p>
-  }
-  @if (project.version) {
-  <p>Latest version {{ project.version.tag }} · {{ project.version.date | date: "yyyy MMM d" }}</p>
-  }
-  <p>{{ project.description }}</p>
-  <div class="project-links">
+<article class="project-page container-fluid" style="margin-top: var(--container-margin-top);">
+  @if (project.url || project.releases?.length) {
+  <nav class="project-links">
     @if (project.url) {
     <a [href]="project.url" target="_blank" rel="noopener">Open project</a>
     }
@@ -30,8 +20,15 @@
       </ul>
     </details>
     }
-  </div>
+  </nav>
+  }
+
   @if (readme()) {
   <app-md-content [data]="readme()"></app-md-content>
+  } @else {
+  <h1>{{ project.title }}</h1>
+  @if (project.description) {
+  <p>{{ project.description }}</p>
   }
-</div>
+  }
+</article>

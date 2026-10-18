@@ -5,7 +5,9 @@ import { GITHUB_EXCLUDED_REPOS, GITHUB_USER } from "../../../src/app/entities/gi
 import type { IProjectRelease, IProjectVersion } from "../../../src/app/entities/project/project.types";
 
 const OUT_DIR = "src/assets/projects";
-const JSON_FILE = path.join(OUT_DIR, "github-projects.json");
+// Files are written here first and swapped in only after every project was fetched, so a failed run keeps the old data.
+const STAGE_DIR = "src/assets/projects.next";
+const JSON_FILE = path.join(STAGE_DIR, "github-projects.json");
 
 type PublicRepo = {
 	name: string;
@@ -13,13 +15,19 @@ type PublicRepo = {
 	isFork: boolean;
 	url: string;
 	repositoryTopics: { name: string }[] | null;
+	primaryLanguage: { name: string } | null;
 };
+
+const DOCS_TOPIC = "documentation";
+const STICKER_TOPIC = "telegram-sticker-pack";
 
 type GithubProject = {
 	name: string;
 	title: string;
 	type?: string;
+	language?: string;
 	description?: string;
+	image?: string;
 	url: string;
 	readme: boolean;
 	releases: IProjectRelease[];
@@ -61,7 +69,7 @@ const fetchPublicRepos = (): PublicRepo[] =>
 	JSON.parse(
 		execFileSync(
 			"gh",
-			["repo", "list", GITHUB_USER, "--visibility", "public", "--limit", "1000", "--json", "name,description,isFork,url,repositoryTopics"],
+			["repo", "list", GITHUB_USER, "--visibility", "public", "--limit", "1000", "--json", "name,description,isFork,url,repositoryTopics,primaryLanguage"],
 			{ encoding: "utf-8", maxBuffer: 64 * 1024 * 1024 },
 		),
 	);
@@ -87,6 +95,15 @@ const fetchLatestVersion = (repo: string): IProjectVersion | undefined => {
 	return { tag: latest.tag.name, date: commit.commit.committer.date.slice(0, 10) };
 };
 
+// Sticker packs show one of their stickers: the first image in the stickers folder, as a raw GitHub URL.
+const fetchFirstSticker = (repo: string): string | undefined => {
+	const files = JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/contents/stickers`)) as { name: string; type: string }[];
+	const image = files.find((file) => file.type === "file" && /\.(png|webp|gif|jpe?g)$/i.test(file.name));
+	if (!image) return undefined;
+	const encodedPath = image.name.split("/").map(encodeURIComponent).join("/");
+	return `https://raw.githubusercontent.com/${GITHUB_USER}/${repo}/HEAD/stickers/${encodedPath}`;
+};
+
 const fetchReleases = (repo: string): IProjectRelease[] =>
 	(JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/releases`)) as {
 		name: string | null;
@@ -103,19 +120,24 @@ const fetchReleases = (repo: string): IProjectRelease[] =>
 	}));
 
 const main = async (): Promise<void> => {
-	await fs.rm(OUT_DIR, { recursive: true, force: true });
-	await fs.mkdir(OUT_DIR, { recursive: true });
+	await fs.rm(STAGE_DIR, { recursive: true, force: true });
+	await fs.mkdir(STAGE_DIR, { recursive: true });
 
 	// Projects are every public, non-fork repository except the excluded ones.
 	// Type is the first GitHub topic and description is the GitHub description; a missing value stays missing.
 	const repos = fetchPublicRepos().filter((repo) => !repo.isFork && !isExcluded(repo.name));
 	const projects: GithubProject[] = [];
 	for (const repo of repos) {
+		const topics = (repo.repositoryTopics ?? []).map((topic) => topic.name);
+		// "documentation" marks docs-only repos: they get the Markdown icon, and it is not used as the type label.
+		const isDocs = topics.includes(DOCS_TOPIC);
 		const project: GithubProject = {
 			name: repo.name,
 			title: repo.name,
-			type: repo.repositoryTopics?.[0]?.name.replace(/-/g, " "),
+			type: topics.filter((topic) => topic !== DOCS_TOPIC)[0]?.replace(/-/g, " "),
 			description: repo.description || undefined,
+			language: isDocs ? "Markdown" : repo.primaryLanguage?.name,
+			image: topics.includes(STICKER_TOPIC) ? fetchFirstSticker(repo.name) : undefined,
 			url: repo.url,
 			readme: false,
 			releases: fetchReleases(repo.name),
@@ -123,7 +145,7 @@ const main = async (): Promise<void> => {
 		};
 		try {
 			const md = gh(`repos/${GITHUB_USER}/${repo.name}/readme`, "-H", "Accept: application/vnd.github.raw");
-			await fs.writeFile(path.join(OUT_DIR, `${repo.name}.md`), absolutizeReadmeLinks(md, repo.name));
+			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.md`), absolutizeReadmeLinks(md, repo.name));
 			project.readme = true;
 			project.title = readmeTitle(md) ?? project.title;
 		} catch (error) {
@@ -133,6 +155,8 @@ const main = async (): Promise<void> => {
 	}
 
 	await fs.writeFile(JSON_FILE, `${JSON.stringify(projects, null, 2)}\n`);
+	await fs.rm(OUT_DIR, { recursive: true, force: true });
+	await fs.rename(STAGE_DIR, OUT_DIR);
 	console.log(`GitHub projects: ${projects.length} public repositories kept.`);
 };
 

@@ -1,9 +1,23 @@
-import { IProject } from "./project.types";
+import { IProject, IProjectRelease, IProjectVersion } from "./project.types";
 import { ProjectLicense, ProjectStatus } from "./project.constants";
 import githubProjects from "../../../assets/projects/github-projects.json";
 import projectDates from "../../../assets/project-dates.json";
 
 const PROJECT_DATES: Record<string, string> = projectDates;
+
+// Shape of one entry in github-projects.json; optional fields are left out of the JSON when absent.
+type GithubProjectJson = {
+	name: string;
+	title: string;
+	type?: string;
+	language?: string;
+	image?: string;
+	description?: string;
+	url: string;
+	readme: boolean;
+	releases: IProjectRelease[];
+	version?: IProjectVersion;
+};
 
 const ACTIVE_YEARS = 5;
 
@@ -15,16 +29,17 @@ const isActive = (updatedAt?: string): boolean =>
 	updatedAt !== undefined && updatedAt >= ACTIVE_SINCE;
 
 // Generated at build time by scripts/project/github-projects--create (only public repositories are listed).
-const GITHUB_PROJECT_ITEMS: IProject[] = githubProjects.map((repo) => {
+const GITHUB_PROJECT_ITEMS: IProject[] = (githubProjects as GithubProjectJson[]).map((repo) => {
 	const updatedAt = PROJECT_DATES[`github:${repo.name}`];
 	return {
 		name: repo.name,
 		title: repo.title,
 		type: repo.type,
+		language: repo.language,
 		description: repo.description,
 		imagePreview: "",
-		image: "",
 		link: `#/projects/${repo.name}`,
+		image: repo.image,
 		url: repo.url,
 		updatedAt,
 		readme: repo.readme,
