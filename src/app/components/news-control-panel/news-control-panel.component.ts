@@ -15,7 +15,7 @@ const MAX_DROPDOWN_ITEMS = 50;
 })
 export class NewsControlPanelComponent {
 	@Input() projects: string[] = [];
-	@Input() selectedProject: string = "All";
+	@Input() selectedProject = "All";
 	@Input() onProjectChange: (project: string) => void = () => {};
 
 	private readonly destroyRef = inject(DestroyRef);
@@ -44,7 +44,7 @@ export class NewsControlPanelComponent {
 		} else if (currentUrl.startsWith(`/${currentLang}`)) {
 			newUrl = currentUrl.replace(`/${currentLang}`, `/${lang}`);
 		} else {
-			newUrl = `/${lang}${currentUrl.startsWith("/") ? currentUrl : "/" + currentUrl}`;
+			newUrl = `/${lang}${currentUrl.startsWith("/") ? currentUrl : `/${currentUrl}`}`;
 		}
 
 		this.router.navigateByUrl(newUrl);

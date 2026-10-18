@@ -9,5 +9,5 @@ import { CommonModule } from "@angular/common";
 	styleUrl: "./page-loader.component.css",
 })
 export class PageLoaderComponent {
-	@Input() isLoading: boolean = false;
+	@Input() isLoading = false;
 }
