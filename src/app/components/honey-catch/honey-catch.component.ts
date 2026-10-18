@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, signal, viewChild } from "@angular/core";
+import { Component, ElementRef, OnDestroy, OnInit, computed, signal, viewChild } from "@angular/core";
 
 interface Pie {
 	id: number;
@@ -10,18 +10,17 @@ interface Pie {
 
 const BEST_KEY = "honey-catch-best";
 const TICK_MS = 40;
-// Game over when a pile of landed pies reaches this height (top of the pile, in % of the field).
-const PILE_LIMIT = 50;
+const LIVES = 3;
+const FINALE_PIES = 24;
 // Positions are percentages of the field. The collider follows the girl picture: a pie is caught when it reaches
 // the top of the picture and is within the figure's width (sizes are fractions of the field width).
 const GIRL_WIDTH = 0.28;
 const GIRL_RATIO = 113 / 200;
-const PIE_WIDTH = 0.08;
+const PIE_WIDTH = 0.06;
 const CATCH_RANGE = 10;
 const STEP = 1.6;
 const SPAWN_EVERY_TICKS = 32;
 const HEART_CHANCE = 0.15;
-const HEART_POINTS = 5;
 
 // Catch the honey pies with the girl from the picture. Move with the pointer or the arrow keys.
 @Component({
@@ -31,15 +30,16 @@ const HEART_POINTS = 5;
 		<section class="honey-catch">
 			<header class="hud">
 				<span>Score <b>{{ score() }}</b></span>
+				<span class="lives" aria-label="Lives">{{ hearts() }}</span>
 			</header>
 			<div #field class="field" (pointermove)="onPointer($event)" (pointerdown)="onPointer($event)">
 				@for (pie of pies(); track pie.id) {
 				<span class="pie" [class.heart]="pie.heart" [style.left.%]="pie.x" [style.top.%]="pie.y">{{ pie.heart ? "♥" : "" }}</span>
 				}
-				@for (pie of landed(); track pie.id) {
-				<span class="pie" [style.left.%]="pie.x" [style.top.%]="pie.y"></span>
-				}
 				<img class="girl" src="/assets/games/honey-pie-girl.gif" alt="" [style.left.%]="girlX()" />
+				@for (pie of finale(); track pie.id; let i = $index) {
+				<span class="pie drop" [style.left.%]="pie.x" [style.top.%]="pie.y" [style.--delay]="(i * 90) + 'ms'"></span>
+				}
 				@if (over()) {
 				<p class="message">Game over<br />Press A to play again<br />Press B to exit</p>
 				}
@@ -101,7 +101,7 @@ const HEART_POINTS = 5;
 
 		.pie {
 			position: absolute;
-			width: 8%;
+			width: 6%;
 			aspect-ratio: 1;
 			border-radius: 50%;
 			transform: translateX(-50%);
@@ -110,6 +110,20 @@ const HEART_POINTS = 5;
 		}
 
 		/* Sizes are percentages of the field, so the girl and the pies scale with the screen. */
+			.pie.drop {
+			animation: drop 0.5s ease-in both;
+			animation-delay: var(--delay);
+		}
+
+		@keyframes drop {
+			from { transform: translate(-50%, -70vh); }
+			to { transform: translate(-50%, 0); }
+		}
+
+		.lives {
+			color: #ff2e9a;
+		}
+
 		.pie.heart {
 			background: none;
 			box-shadow: none;
@@ -147,7 +161,9 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 	readonly pies = signal<Pie[]>([]);
 	readonly girlX = signal(50);
 	readonly score = signal(0);
-	readonly landed = signal<Pie[]>([]);
+	readonly lives = signal(LIVES);
+	readonly finale = signal<Pie[]>([]);
+	readonly hearts = computed(() => "♥".repeat(this.lives()));
 	readonly running = signal(false);
 	readonly over = signal(false);
 	readonly best = signal(this.loadBest());
@@ -168,7 +184,8 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 		this.pies.set([]);
 		this.girlX.set(50);
 		this.score.set(0);
-		this.landed.set([]);
+		this.finale.set([]);
+		this.lives.set(LIVES);
 		this.ticks = 0;
 		this.over.set(false);
 		this.running.set(true);
@@ -211,18 +228,17 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 		const pieSize = ((field.clientWidth * PIE_WIDTH) / field.clientHeight) * 100;
 		const fall = Math.min(0.8 + this.score() * 0.04, 2.2);
 		const kept: Pie[] = [];
-		const piled = [...this.landed()];
 		let caught = 0;
+		let missed = 0;
+		let restored = 0;
 		for (const pie of this.pies()) {
 			const y = pie.y + fall;
 			if (y + pieSize >= girlTop && Math.abs(pie.x - x) <= CATCH_RANGE) {
-				caught += pie.heart ? HEART_POINTS : 1;
+				if (pie.heart) restored++;
+				else caught++;
 			} else if (y + pieSize >= 100) {
-				// A pie lands on the ground or on the pile in its column and stays there; a heart just disappears.
-				if (!pie.heart) {
-					const below = piled.filter((other) => Math.abs(other.x - pie.x) < PIE_WIDTH * 100).length;
-					piled.push({ ...pie, y: 100 - pieSize * (below + 1) });
-				}
+				// A pie that reaches the ground is lost; a heart that reaches the ground is just gone.
+				if (!pie.heart) missed++;
 			} else {
 				kept.push({ ...pie, y });
 			}
@@ -233,20 +249,36 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 			kept.push({ id: this.nextId++, x: 8 + Math.random() * 84, y: 0, heart: Math.random() < HEART_CHANCE });
 		}
 		this.pies.set(kept);
-		this.landed.set(piled);
 
 		if (caught) this.score.update((score) => score + caught);
-		if (piled.some((pie) => pie.y <= PILE_LIMIT)) this.end();
+		if (restored) this.lives.update((lives) => Math.min(LIVES, lives + restored));
+		if (missed) this.lives.update((lives) => Math.max(0, lives - missed));
+		if (this.lives() === 0) this.end();
 	}
 
 	private end(): void {
 		this.stop();
 		this.over.set(true);
 		this.running.set(false);
+		this.pies.set([]);
+		this.finale.set(this.buildFinale());
 		if (this.score() > this.best()) {
 			this.best.set(this.score());
 			this.saveBest(this.best());
 		}
+	}
+
+	// Game over: a big pile of pies drops onto the girl and stacks on her head.
+	private buildFinale(): Pie[] {
+		const field = this.field().nativeElement;
+		const girlTop = 100 - ((field.clientWidth * GIRL_WIDTH * GIRL_RATIO) / field.clientHeight) * 100;
+		const pieSize = ((field.clientWidth * PIE_WIDTH) / field.clientHeight) * 100;
+		const x = this.girlX();
+		return Array.from({ length: FINALE_PIES }, (_, i) => ({
+			id: i,
+			x: x + ((i % 4) - 1.5) * pieSize * 0.9,
+			y: girlTop - pieSize * (1 + Math.floor(i / 4)),
+		}));
 	}
 
 	private stop(): void {
