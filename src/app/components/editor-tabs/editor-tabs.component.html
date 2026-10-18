@@ -2,7 +2,20 @@
   @for (tab of tabsService.tabs(); track tab.url; let first = $first) {
   <div class="tab" [class.active]="tab.url === tabsService.activeUrl()" [class.pinned]="first" role="tab" [attr.aria-selected]="tab.url === tabsService.activeUrl()">
     <button type="button" class="tab-label" (click)="tabsService.activate(tab.url)">
-      <span class="tab-dot"></span>
+      <span class="tab-icon" aria-hidden="true">
+        @if (first) {
+        <svg viewBox="0 0 24 24"><path d="M9 4h6l-1 6 3 3v2H7v-2l3-3z" /><path d="M12 15v6" /></svg>
+        } @else {
+        @switch (iconFor(tab.url)) {
+          @case ("home") { <svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H3z" /></svg> }
+          @case ("projects") { <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg> }
+          @case ("changelog") { <svg viewBox="0 0 24 24"><path d="M5 6h14M5 12h14M5 18h9" /></svg> }
+          @case ("posts") { <svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z" /><path d="M9 11h6M9 15h6" /></svg> }
+          @case ("tools") { <svg viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9" /><circle cx="15" cy="7" r="2" /><circle cx="9" cy="17" r="2" /></svg> }
+          @case ("contact") { <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 4-6 8-6s8 2 8 6" /></svg> }
+        }
+        }
+      </span>
       <span class="tab-title">{{ tab.title }}</span>
     </button>
     @if (!first) {

@@ -92,3 +92,19 @@
   box-shadow: 0 0 0 2px var(--theme-border);
 }
 
+
+/* Section icon at the start of each tab; the pinned tab shows a pin. */
+.tab-icon {
+  display: flex;
+  flex: none;
+}
+
+.tab-icon svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
