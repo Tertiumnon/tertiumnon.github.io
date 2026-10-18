@@ -20,9 +20,8 @@ const PIE_WIDTH = 0.06;
 const CATCH_RANGE = 10;
 const STEP = 1.6;
 const SPAWN_EVERY_TICKS = 32;
-const HEART_CHANCE = 0.15;
-// No hearts in the first 20 seconds of a game.
-const HEART_DELAY_MS = 20000;
+// One heart every 30 seconds of play.
+const HEART_INTERVAL_MS = 30000;
 
 // Catch the honey pies with the girl from the picture. Move with the pointer or the arrow keys.
 @Component({
@@ -172,6 +171,8 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 
 	private timer: ReturnType<typeof setInterval> | undefined;
 	private ticks = 0;
+	private nextSpawnTick = SPAWN_EVERY_TICKS;
+	private nextHeartMs = HEART_INTERVAL_MS;
 	private nextId = 0;
 	private readonly keys = new Set<string>();
 	private readonly field = viewChild.required<ElementRef<HTMLElement>>("field");
@@ -189,6 +190,8 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 		this.finale.set([]);
 		this.lives.set(LIVES);
 		this.ticks = 0;
+		this.nextSpawnTick = SPAWN_EVERY_TICKS;
+		this.nextHeartMs = HEART_INTERVAL_MS;
 		this.over.set(false);
 		this.running.set(true);
 		this.timer = setInterval(() => this.tick(), TICK_MS);
@@ -247,8 +250,13 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 		}
 
 		this.ticks++;
-		if (this.ticks % SPAWN_EVERY_TICKS === 0) {
-			kept.push({ id: this.nextId++, x: 8 + Math.random() * 84, y: 0, heart: this.ticks * TICK_MS >= HEART_DELAY_MS && Math.random() < HEART_CHANCE });
+		const elapsedMs = this.ticks * TICK_MS;
+		if (this.ticks >= this.nextSpawnTick) {
+			const heart = elapsedMs >= this.nextHeartMs;
+			if (heart) this.nextHeartMs += HEART_INTERVAL_MS;
+			kept.push({ id: this.nextId++, x: 8 + Math.random() * 84, y: 0, heart });
+			// Pies come a little more often as the game goes on.
+			this.nextSpawnTick = this.ticks + Math.max(18, Math.round(SPAWN_EVERY_TICKS - elapsedMs / 10000));
 		}
 		this.pies.set(kept);
 
