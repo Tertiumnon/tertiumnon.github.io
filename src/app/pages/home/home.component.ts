@@ -7,6 +7,12 @@ import { Theme } from "../../components/theme/theme.constants";
 import { ThemeService } from "../../components/theme/theme.service";
 
 type GameKey = "catch" | "hello";
+type TvView = "menu" | "game";
+
+const GAMES: { key: GameKey; label: string }[] = [
+	{ key: "catch", label: "Honey Catch" },
+	{ key: "hello", label: "Hello World" },
+];
 
 @Component({
 	selector: "app-home",
@@ -17,26 +23,39 @@ type GameKey = "catch" | "hello";
 })
 export class HomeComponent {
 	private readonly themeService = inject(ThemeService);
-	// The Honey Pie theme opens with the honey catch game; the other themes open the hello world game.
-	readonly game = signal<GameKey>(this.themeService.theme() === Theme.HoneyPie ? "catch" : "hello");
-	// A game is created only after its start screen is passed, so it begins when the player presses A.
-	readonly started = signal(false);
-	readonly games: { key: GameKey; label: string }[] = [
-		{ key: "catch", label: "Honey Catch" },
-		{ key: "hello", label: "Hello World" },
-	];
+	readonly games = GAMES;
+	// The TV shows the game menu first; a game is created only when it is picked, so it starts right away.
+	readonly view = signal<TvView>("menu");
+	readonly game = signal<GameKey>("catch");
+	// The Honey Pie theme's menu opens on Honey Catch; the other themes open on Hello World.
+	readonly cursor = signal(this.themeService.theme() === Theme.HoneyPie ? 0 : 1);
 
-	select(key: GameKey): void {
-		this.game.set(key);
-		this.started.set(false);
+	moveCursor(step: number): void {
+		this.cursor.update((index) => (index + step + GAMES.length) % GAMES.length);
 	}
 
-	pressStart(): void {
-		this.started.set(true);
+	startGame(index = this.cursor()): void {
+		this.cursor.set(index);
+		this.game.set(GAMES[index].key);
+		this.view.set("game");
 	}
 
+	backToMenu(): void {
+		this.view.set("menu");
+	}
+
+	// Menu: arrows choose, A or Enter starts. In a game: Escape goes back to the menu.
 	@HostListener("document:keydown", ["$event"])
 	onKeyDown(event: KeyboardEvent): void {
-		if (!this.started() && event.key.toLowerCase() === "a") this.pressStart();
+		if (this.view() === "game") {
+			if (event.key === "Escape") this.backToMenu();
+			return;
+		}
+		if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+			event.preventDefault();
+			this.moveCursor(event.key === "ArrowUp" ? -1 : 1);
+		} else if (event.key === "Enter" || event.key.toLowerCase() === "a") {
+			this.startGame();
+		}
 	}
 }

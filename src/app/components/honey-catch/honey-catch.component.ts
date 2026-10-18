@@ -51,7 +51,8 @@ const SPAWN_EVERY_TICKS = 16;
 			height: 100%;
 			display: flex;
 			flex-direction: column;
-			font-family: var(--font-ui);
+			font-family: "VT323", monospace;
+			font-size: 1.4rem;
 		}
 
 		.hud {
@@ -75,7 +76,7 @@ const SPAWN_EVERY_TICKS = 16;
 			margin-left: auto;
 			padding: 2px 12px;
 			border: 1px solid var(--theme-border);
-			border-radius: 4px;
+			border-radius: 0;
 			background-color: var(--theme-surface);
 			color: inherit;
 			font: inherit;

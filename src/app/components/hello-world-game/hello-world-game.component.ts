@@ -8,6 +8,7 @@ import { CommonModule } from "@angular/common";
 import { HelloWorldGameService } from "./hello-world-game.service";
 import { CellData } from "./hello-world-game.types";
 import { TANK_HEIGHT, TANK_WIDTH } from "./hello-world-game.utils";
+import { ArcadeScreenService } from "../game-stage/game-screen.service";
 
 interface PlayerRecord {
 	name: string;
@@ -76,7 +77,12 @@ export class HelloWorldGameComponent {
 	constructor(
 		private svc: HelloWorldGameService,
 		private changeDetector: ChangeDetectorRef,
-	) {}
+		screen: ArcadeScreenService,
+	) {
+		// Fill the TV screen; the instructions, HUD and controls take the height above and below the grid.
+		this.containerWidth = Math.max(200, screen.width() - 24);
+		this.containerHeight = Math.max(160, screen.height() - 170);
+	}
 
 	ngOnInit() {
 		this.records = this.loadRecords();

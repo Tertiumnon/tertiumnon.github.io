@@ -33,7 +33,7 @@
 	justify-content: space-between;
 	flex-wrap: wrap;
 	gap: 6px 12px;
-	font: 12px "Courier New", monospace;
+	font: 20px "VT323", monospace;
 }
 
 .player-name input {

@@ -1,51 +1,34 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, signal, viewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnDestroy, inject, viewChild } from "@angular/core";
+import { ArcadeScreenService } from "./game-screen.service";
 
-// Every game is laid out on the same design surface, which is scaled to fit the window and centred.
-export const GAME_DESIGN_WIDTH = 720;
-export const GAME_DESIGN_HEIGHT = 540;
-
+// The TV screen area. The game inside fills it, and its size is published for the game to use.
 @Component({
 	selector: "app-game-stage",
 	standalone: true,
-	template: `
-		<div class="stage" #stage>
-			<div class="design" [style.transform]="'scale(' + scale() + ')'">
-				<ng-content></ng-content>
-			</div>
-		</div>
-	`,
+	template: `<div class="stage" #stage><ng-content></ng-content></div>`,
 	styles: [`
 		:host {
 			display: block;
 			width: 100%;
+			height: 100%;
 		}
 
 		.stage {
 			position: relative;
-			/* Fills the cabinet screen (a size container) while keeping the design proportions. */
-			width: min(100cqw, calc(100cqh * ${GAME_DESIGN_WIDTH} / ${GAME_DESIGN_HEIGHT}));
-			aspect-ratio: ${GAME_DESIGN_WIDTH} / ${GAME_DESIGN_HEIGHT};
-			margin: 0 auto;
-		}
-
-		.design {
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: ${GAME_DESIGN_WIDTH}px;
-			height: ${GAME_DESIGN_HEIGHT}px;
-			transform-origin: 0 0;
+			width: 100%;
+			height: 100%;
 		}
 	`],
 })
 export class GameStageComponent implements AfterViewInit, OnDestroy {
+	private readonly screen = inject(ArcadeScreenService);
 	private readonly stage = viewChild.required<ElementRef<HTMLElement>>("stage");
 	private observer?: ResizeObserver;
-	readonly scale = signal(1);
 
 	ngAfterViewInit(): void {
 		this.observer = new ResizeObserver(([entry]) => {
-			this.scale.set(entry.contentRect.width / GAME_DESIGN_WIDTH);
+			this.screen.width.set(Math.floor(entry.contentRect.width));
+			this.screen.height.set(Math.floor(entry.contentRect.height));
 		});
 		this.observer.observe(this.stage().nativeElement);
 	}
