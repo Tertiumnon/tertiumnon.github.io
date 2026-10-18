@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, computed, signal, viewChild } from "@angular/core";
+import { GameOverComponent } from "../game-over/game-over.component";
 
 interface Pie {
 	id: number;
@@ -11,7 +12,7 @@ interface Pie {
 const BEST_KEY = "honey-catch-best";
 const TICK_MS = 40;
 const LIVES = 3;
-const FINALE_PIES = 24;
+const PYRAMID_ROWS = 5;
 // Positions are percentages of the field. The collider follows the girl picture: a pie is caught when it reaches
 // the top of the picture and is within the figure's width (sizes are fractions of the field width).
 const GIRL_WIDTH = 0.28;
@@ -27,6 +28,7 @@ const HEART_INTERVAL_MS = 30000;
 @Component({
 	selector: "app-honey-catch",
 	standalone: true,
+	imports: [GameOverComponent],
 	template: `
 		<section class="honey-catch">
 			<header class="hud">
@@ -37,12 +39,12 @@ const HEART_INTERVAL_MS = 30000;
 				@for (pie of pies(); track pie.id) {
 				<span class="pie" [class.heart]="pie.heart" [style.left.%]="pie.x" [style.top.%]="pie.y">{{ pie.heart ? "♥" : "" }}</span>
 				}
-				<img class="girl" src="/assets/games/honey-pie-girl.gif" alt="" [style.left.%]="girlX()" />
+				<img class="girl" [class.lying]="over()" src="/assets/games/honey-pie-girl.gif" alt="" [style.left.%]="girlX()" />
 				@for (pie of finale(); track pie.id; let i = $index) {
 				<span class="pie drop" [style.left.%]="pie.x" [style.top.%]="pie.y" [style.--delay]="(i * 90) + 'ms'"></span>
 				}
 				@if (over()) {
-				<p class="message">Game over<br />Press A to play again<br />Press B to exit</p>
+				<app-game-over [score]="score()" [light]="true"></app-game-over>
 				}
 			</div>
 		</section>
@@ -133,6 +135,11 @@ const HEART_INTERVAL_MS = 30000;
 			place-items: center;
 			font-size: 4.5rem;
 			text-shadow: 0 0 10px #ff2e9a;
+		}
+
+		/* Game over: the girl lies on the ground under the pile. */
+		.girl.lying {
+			transform: translate(-50%, -39%) rotate(-90deg);
 		}
 
 		.girl {
@@ -278,17 +285,25 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	// Game over: a big pile of pies drops onto the girl and stacks on her head.
+	// Game over: a pyramid of pies drops onto the lying girl, widest row at the bottom.
 	private buildFinale(): Pie[] {
 		const field = this.field().nativeElement;
-		const girlTop = 100 - ((field.clientWidth * GIRL_WIDTH * GIRL_RATIO) / field.clientHeight) * 100;
 		const pieSize = ((field.clientWidth * PIE_WIDTH) / field.clientHeight) * 100;
+		// Lying down, the figure is about half the picture's width tall; the pyramid stands on her.
+		const base = 100 - ((field.clientWidth * GIRL_WIDTH * 0.5) / field.clientHeight) * 100;
 		const x = this.girlX();
-		return Array.from({ length: FINALE_PIES }, (_, i) => ({
-			id: i,
-			x: x + ((i % 4) - 1.5) * pieSize * 0.9,
-			y: girlTop - pieSize * (1 + Math.floor(i / 4)),
-		}));
+		const pies: Pie[] = [];
+		for (let row = 0; row < PYRAMID_ROWS; row++) {
+			const count = PYRAMID_ROWS - row;
+			for (let j = 0; j < count; j++) {
+				pies.push({
+					id: pies.length,
+					x: x + (j - (count - 1) / 2) * PIE_WIDTH * 100 * 0.95,
+					y: base - pieSize * (row + 1),
+				});
+			}
+		}
+		return pies;
 	}
 
 	private stop(): void {

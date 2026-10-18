@@ -56,13 +56,8 @@
 					[style.width.px]="cellSize"
 					[style.height.px]="cellSize"></div>
 			</div>
-
-			<div class="game-over-overlay" *ngIf="gameOver" role="status">
-				<section class="arcade-screen">
-					<p class="arcade-kicker">★ INSERT COIN ★</p>
-					<h2>GAME OVER</h2>
+		<app-game-over *ngIf="gameOver" [score]="score">
 					<p class="game-result" [class.victory]="gameWon">{{ gameWon ? 'ALL BLOCKS DESTROYED — YOU WIN!' : 'THE FORMATION REACHED YOUR TANK' }}</p>
-					<p class="final-score">SCORE <strong>{{ score }}</strong></p>
 					<p class="final-stats">BLOCKS {{ destroyedBlocks }} <span>•</span> TIME {{ formatTime(survivalSeconds) }}</p>
 					<p class="records-title">TOP PILOTS</p>
 					<table class="records-table">
@@ -77,9 +72,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<p class="press-prompt">Press A to play again<br />Press B to exit</p>
-				</section>
-			</div>
+		</app-game-over>
 		</div>
 
 </div>

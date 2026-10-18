@@ -8,6 +8,7 @@ import { CommonModule } from "@angular/common";
 import { HelloWorldGameService } from "./hello-world-game.service";
 import { CellData } from "./hello-world-game.types";
 import { TANK_HEIGHT, TANK_WIDTH } from "./hello-world-game.utils";
+import { GameOverComponent } from "../game-over/game-over.component";
 import { ArcadeScreenService } from "../game-stage/game-screen.service";
 
 interface PlayerRecord {
@@ -32,7 +33,7 @@ const SEED_RECORDS: PlayerRecord[] = [
 	templateUrl: "./hello-world-game.component.html",
 	styleUrls: ["./hello-world-game.component.css"],
 	standalone: true,
-	imports: [CommonModule],
+	imports: [CommonModule, GameOverComponent],
 })
 export class HelloWorldGameComponent {
 	phrase = "Hello World";
