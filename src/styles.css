@@ -542,3 +542,8 @@ tr:hover {
 .page-title {
   margin-top: 0.5rem;
 }
+
+/* The page's own top margin is the only gap under the header: the first list item adds none. */
+app-page-header + * > ol > li:first-child {
+  margin-top: 0;
+}

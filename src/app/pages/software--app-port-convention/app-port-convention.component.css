@@ -214,7 +214,8 @@
 
 /* Same header-to-content gap as the other pages. */
 .port-convention {
-  margin-top: var(--spacing-2);
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .port-convention h2::before {

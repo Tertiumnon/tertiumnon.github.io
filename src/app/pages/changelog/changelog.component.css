@@ -17,10 +17,6 @@
   padding-bottom: 1rem;
 }
 
-.changelog-title {
-  margin-top: var(--spacing-2);
-}
-
 .changelog-feed {
   list-style: none;
   margin: 0;
