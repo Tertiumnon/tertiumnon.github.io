@@ -92,9 +92,9 @@
   border-radius: var(--editor-radius);
   background-color: var(--theme-surface);
   box-shadow: var(--box-shadow);
-  font-size: inherit;
+  font-size: 0.85em;
 }
 
-.changelog-entry app-md-content ::ng-deep .content h2:first-child {
+.changelog-entry app-md-content ::ng-deep .content h3:first-child {
   margin-top: 0;
 }

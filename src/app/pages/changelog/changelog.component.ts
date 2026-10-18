@@ -57,7 +57,8 @@ export class ChangelogComponent {
 	private stripFirstHeading(content: string): string {
 		let cleaned = content.replace(/^---[\s\S]*?---\s*/, "");
 		cleaned = cleaned.replace(/^#\s+.*?\n/, "").trim();
-		return cleaned;
+		// The entry title (for example "## @tertium/hlpr 0.23.2") is shown as a level-3 heading.
+		return cleaned.replace(/^##\s+/, "### ");
 	}
 
 	ngOnInit(): void {
