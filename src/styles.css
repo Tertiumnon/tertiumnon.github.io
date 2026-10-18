@@ -199,6 +199,32 @@ main {
   color: var(--theme-accent);
 }
 
+/* Editor-style gutter: every top-level block of the page gets its number. */
+.content.numbered-lines {
+  counter-reset: line;
+  padding-left: 4em;
+}
+
+.content.numbered-lines > * {
+  position: relative;
+  counter-increment: line;
+}
+
+.content.numbered-lines > *::after {
+  content: counter(line);
+  position: absolute;
+  top: 0;
+  left: -3.5em;
+  width: 2.5em;
+  text-align: right;
+  font-family: var(--font-code);
+  font-size: 0.8em;
+  line-height: inherit;
+  color: var(--theme-text);
+  opacity: 0.4;
+  user-select: none;
+}
+
 .content h1::before,
 .content h2::before,
 .content h3::before {
