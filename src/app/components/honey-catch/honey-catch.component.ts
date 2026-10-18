@@ -21,6 +21,8 @@ const CATCH_RANGE = 10;
 const STEP = 1.6;
 const SPAWN_EVERY_TICKS = 32;
 const HEART_CHANCE = 0.15;
+// No hearts in the first 20 seconds of a game.
+const HEART_DELAY_MS = 20000;
 
 // Catch the honey pies with the girl from the picture. Move with the pointer or the arrow keys.
 @Component({
@@ -246,7 +248,7 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 
 		this.ticks++;
 		if (this.ticks % SPAWN_EVERY_TICKS === 0) {
-			kept.push({ id: this.nextId++, x: 8 + Math.random() * 84, y: 0, heart: Math.random() < HEART_CHANCE });
+			kept.push({ id: this.nextId++, x: 8 + Math.random() * 84, y: 0, heart: this.ticks * TICK_MS >= HEART_DELAY_MS && Math.random() < HEART_CHANCE });
 		}
 		this.pies.set(kept);
 
