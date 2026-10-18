@@ -1,24 +1,18 @@
 <div class="project-control-panel">
   <div class="container-fluid panel-bar">
     <div class="filters">
-      <app-dropdown
-        label="Status"
-        [(selectedOption)]="status"
-        [options]="statusOptions"
-        (selectedOptionChange)="onStatusChange($event)"
-      ></app-dropdown>
-      <app-dropdown
-        label="License"
-        [selectedOption]="license"
-        [options]="licenseOptions"
-        (selectedOptionChange)="onLicenseChange($event)"
-      ></app-dropdown>
-      <app-dropdown
-        label="Release"
-        [(selectedOption)]="release"
-        [options]="releaseOptions"
-        (selectedOptionChange)="onReleaseChange($event)"
-      ></app-dropdown>
+      <label class="filter">
+        <span>Status</span>
+        <app-select-field label="Status" [options]="statusSelectOptions" [value]="status" (valueChange)="onStatusChange($event)"></app-select-field>
+      </label>
+      <label class="filter">
+        <span>License</span>
+        <app-select-field label="License" [options]="licenseSelectOptions" [value]="license" (valueChange)="onLicenseChange($event)"></app-select-field>
+      </label>
+      <label class="filter">
+        <span>Release</span>
+        <app-select-field label="Release" [options]="releaseSelectOptions" [value]="release" (valueChange)="onReleaseChange($event)"></app-select-field>
+      </label>
     </div>
   </div>
 </div>

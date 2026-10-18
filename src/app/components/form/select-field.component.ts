@@ -7,6 +7,10 @@ export interface SelectOption {
 	label: string;
 }
 
+// Plain strings as options, where the value is the label.
+export const selectOptions = (values: readonly string[]): SelectOption[] =>
+	values.map((value) => ({ value, label: value }));
+
 // Drop-down choice. Works with [(value)], [value] and reactive forms.
 @Component({
 	selector: "app-select-field",
@@ -15,6 +19,7 @@ export interface SelectOption {
 	template: `
 		<select
 			class="field"
+			[class.compact]="compact()"
 			[attr.aria-label]="label() || null"
 			[disabled]="disabled()"
 			(change)="onChange($event)"
@@ -24,10 +29,21 @@ export interface SelectOption {
 			}
 		</select>
 	`,
-	styles: [FIELD_STYLES],
+	styles: [
+		FIELD_STYLES,
+		`
+		/* Toolbar size, matching the 22px buttons beside it. */
+		.field.compact {
+			min-height: 22px;
+			height: 22px;
+			padding: 0 6px;
+		}
+		`,
+	],
 })
 export class SelectFieldComponent implements ControlValueAccessor {
 	readonly label = input("");
+	readonly compact = input(false);
 	readonly options = input.required<SelectOption[]>();
 	readonly value = model("");
 	readonly disabled = signal(false);

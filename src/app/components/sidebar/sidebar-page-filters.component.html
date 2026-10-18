@@ -4,14 +4,26 @@
   }
   @case ("changelog") {
     <div class="filters">
-      <app-dropdown label="Project" [selectedOption]="changelog.selectedProject()" [options]="changelog.projects()" (selectedOptionChange)="changelog.selectedProject.set($event)"></app-dropdown>
+      <label class="filter">
+        <span>Project</span>
+        <app-select-field label="Project" [options]="projectOptions()" [value]="changelog.selectedProject()" (valueChange)="changelog.selectedProject.set($event)"></app-select-field>
+      </label>
     </div>
   }
   @case ("posts") {
     <div class="filters">
-      <app-dropdown label="Category" [selectedOption]="posts.selectedCategory()" [options]="posts.categories()" (selectedOptionChange)="posts.selectedCategory.set($event)"></app-dropdown>
-      <app-dropdown label="Tag" [selectedOption]="posts.selectedTag()" [options]="posts.tags()" (selectedOptionChange)="posts.selectedTag.set($event)"></app-dropdown>
-      <app-dropdown label="Sort" [selectedOption]="posts.selectedSort()" [options]="posts.sorts" (selectedOptionChange)="posts.selectedSort.set($event)"></app-dropdown>
+      <label class="filter">
+        <span>Category</span>
+        <app-select-field label="Category" [options]="categoryOptions()" [value]="posts.selectedCategory()" (valueChange)="posts.selectedCategory.set($event)"></app-select-field>
+      </label>
+      <label class="filter">
+        <span>Tag</span>
+        <app-select-field label="Tag" [options]="tagOptions()" [value]="posts.selectedTag()" (valueChange)="posts.selectedTag.set($event)"></app-select-field>
+      </label>
+      <label class="filter">
+        <span>Sort</span>
+        <app-select-field label="Sort" [options]="sortOptions" [value]="posts.selectedSort()" (valueChange)="posts.selectedSort.set($event)"></app-select-field>
+      </label>
     </div>
   }
 }

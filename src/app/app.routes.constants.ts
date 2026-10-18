@@ -48,8 +48,8 @@ export const APP_ROUTES: Routes = [
 		path: "projects",
 		title: "Projects",
 		loadComponent: () =>
-			import("./pages/software/software.component").then(
-				(m) => m.SoftwareComponent,
+			import("./pages/projects/projects.component").then(
+				(m) => m.ProjectsComponent,
 			),
 	},
 	{

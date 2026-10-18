@@ -5,9 +5,9 @@ import {
 
 	ProjectStatus,
 } from "../../entities/project/project.constants";
-import { SoftwareService } from "../../pages/software/software.service";
+import { ProjectsService } from "../../pages/projects/projects.service";
 import PROJECT_ITEMS from "../../entities/project/project.mock";
-import { DropdownComponent } from "../dropdown/dropdown.component";
+import { SelectFieldComponent, selectOptions } from "../form/select-field.component";
 
 const STATUS_KEY = "status";
 const RELEASE_KEY = "release";
@@ -22,18 +22,20 @@ const shortLicense = (license: string): string => LICENSE_SHORT_NAMES[license] ?
 	templateUrl: "./project-control-panel.component.html",
 	styleUrls: ["./project-control-panel.component.css"],
 	standalone: true,
-	imports: [CommonModule, DropdownComponent],
+	imports: [CommonModule, SelectFieldComponent],
 })
 export class ProjectControlPanelComponent implements OnInit {
 	private readonly destroyRef = inject(DestroyRef);
 	private readonly document = inject(DOCUMENT);
-	private readonly projectService = inject(SoftwareService);
+	private readonly projectService = inject(ProjectsService);
 
 	readonly isStatusFilterVisible = true;
 	readonly status = ProjectStatus.Active.toString();
 	readonly statusOptions = Object.values(ProjectStatus);
+	readonly statusSelectOptions = selectOptions(this.statusOptions);
 	readonly release = "Updated (newer)";
 	readonly releaseOptions = ["Updated (newer)", "Updated (older)"];
+	readonly releaseSelectOptions = selectOptions(this.releaseOptions);
 	readonly releaseMap: Record<string, string> = {
 		[this.releaseOptions[0]]: "updatedAt",
 		[this.releaseOptions[1]]: "-updatedAt",
@@ -52,6 +54,7 @@ export class ProjectControlPanelComponent implements OnInit {
 			.map(shortLicense)
 			.sort(),
 	];
+	readonly licenseSelectOptions = selectOptions(this.licenseOptions);
 
 	onLicenseChange(license: string): void {
 		const fullName = PROJECT_ITEMS.map((project) => project.repoLicense).find((name) => name && shortLicense(name) === license);

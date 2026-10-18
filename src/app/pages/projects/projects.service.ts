@@ -9,7 +9,7 @@ import PROJECT_ITEMS from "../../entities/project/project.mock";
 @Injectable({
 	providedIn: "root",
 })
-export class SoftwareService {
+export class ProjectsService {
 	projects: IProject[] = PROJECT_ITEMS;
 	projects$ = new BehaviorSubject<IProject[] | undefined>(PROJECT_ITEMS);
 	state: IState = {};
