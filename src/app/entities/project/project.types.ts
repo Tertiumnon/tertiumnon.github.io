@@ -1,10 +1,28 @@
 import { Params } from "@angular/router";
 
+export interface IProjectReleaseAsset {
+	name: string;
+	url: string;
+}
+
+export interface IProjectRelease {
+	name: string;
+	tag: string;
+	url: string;
+	publishedAt: string;
+	assets: IProjectReleaseAsset[];
+}
+
+export interface IProjectVersion {
+	tag: string;
+	date: string;
+}
+
 export interface IProject extends Params {
 	name: string;
 	title: string;
-	type: string;
-	description: string;
+	type?: string;
+	description?: string;
 	image: string;
 	imagePreview: string;
 	link: string;
@@ -12,6 +30,9 @@ export interface IProject extends Params {
 	updatedAt?: string;
 	status: import("./project.constants").ProjectStatus;
 	license?: import("./project.constants").ProjectLicense;
+	readme?: boolean;
+	releases?: IProjectRelease[];
+	version?: IProjectVersion;
 }
 
 export interface IState {
