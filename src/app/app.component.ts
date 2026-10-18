@@ -59,12 +59,15 @@ export class AppComponent implements OnInit {
 	private nudgeBackground(): void {
 		if (this.themeService.theme() !== Theme.HoneyPie) return;
 		this.bgLayer()?.nativeElement.animate(
+			// A damped wobble: each swing is smaller than the last, so the picture settles without a stop.
 			[
-				{ transform: "scale(1.03) translate(0, 0)" },
-				{ transform: "scale(1.03) translate(-8px, 5px)", offset: 0.4 },
+				{ transform: "scale(1.03) translate(0, 0)", easing: "cubic-bezier(0.33, 0, 0.67, 1)" },
+				{ transform: "scale(1.03) translate(-8px, 5px)", offset: 0.3, easing: "cubic-bezier(0.33, 0, 0.67, 1)" },
+				{ transform: "scale(1.03) translate(3px, -2px)", offset: 0.6, easing: "cubic-bezier(0.33, 0, 0.67, 1)" },
+				{ transform: "scale(1.03) translate(-1px, 1px)", offset: 0.82, easing: "cubic-bezier(0.33, 0, 0.67, 1)" },
 				{ transform: "scale(1.03) translate(0, 0)" },
 			],
-			{ duration: 900, easing: "ease-in-out" },
+			{ duration: 1200 },
 		);
 	}
 
