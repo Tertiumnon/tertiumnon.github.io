@@ -1,4 +1,4 @@
-import { Component, OnDestroy, computed, signal } from "@angular/core";
+import { Component, OnDestroy, OnInit, computed, signal } from "@angular/core";
 
 interface Pie {
 	id: number;
@@ -129,7 +129,7 @@ const SPAWN_EVERY_TICKS = 16;
 		"(document:keyup)": "onKeyUp($event)",
 	},
 })
-export class HoneyCatchComponent implements OnDestroy {
+export class HoneyCatchComponent implements OnInit, OnDestroy {
 	readonly pies = signal<Pie[]>([]);
 	readonly girlX = signal(50);
 	readonly score = signal(0);
@@ -143,6 +143,11 @@ export class HoneyCatchComponent implements OnDestroy {
 	private ticks = 0;
 	private nextId = 0;
 	private readonly keys = new Set<string>();
+
+	// The game starts as soon as it is shown; the home page shows it after the start screen.
+	ngOnInit(): void {
+		this.start();
+	}
 
 	start(): void {
 		this.stop();

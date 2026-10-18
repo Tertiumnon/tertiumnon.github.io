@@ -1,6 +1,7 @@
 <div class="home-page">
   <app-arcade-cabinet title="Tertium Arcade">
     <app-game-stage screen>
+      @if (started()) {
       @switch (game()) {
       @case ("catch") {
       <app-honey-catch></app-honey-catch>
@@ -9,10 +10,16 @@
       <app-hello-world-game></app-hello-world-game>
       }
       }
+      } @else {
+      <button type="button" class="start-screen" (click)="pressStart()">
+        <span class="start-title">{{ games[game() === 'catch' ? 0 : 1].label }}</span>
+        <span class="start-prompt">Press A to start</span>
+      </button>
+      }
     </app-game-stage>
     <nav controls class="game-switch" aria-label="Games">
       @for (item of games; track item.key) {
-      <button type="button" [class.active]="game() === item.key" [attr.aria-pressed]="game() === item.key" (click)="game.set(item.key)">{{ item.label }}</button>
+      <button type="button" [class.active]="game() === item.key" [attr.aria-pressed]="game() === item.key" (click)="select(item.key)">{{ item.label }}</button>
       }
     </nav>
   </app-arcade-cabinet>
