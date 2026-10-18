@@ -9,6 +9,7 @@ import {
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { TextFieldComponent } from "../../components/form/text-field.component";
+import { PageHeaderComponent } from "../../components/page-header/page-header.component";
 import {
 	FRAMEWORKS,
 	IFramework,
@@ -20,7 +21,7 @@ import {
 
 @Component({
 	selector: "app-app-port-convention",
-	imports: [CommonModule, TextFieldComponent],
+	imports: [CommonModule, TextFieldComponent, PageHeaderComponent],
 	templateUrl: "./app-port-convention.component.html",
 	styleUrl: "./app-port-convention.component.css",
 	changeDetection: ChangeDetectionStrategy.OnPush,

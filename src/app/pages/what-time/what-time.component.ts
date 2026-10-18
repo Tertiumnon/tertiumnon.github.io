@@ -15,13 +15,14 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { interval, Subscription } from "rxjs";
 import { TimeService } from "../../components/time/time.service";
 import { TextFieldComponent } from "../../components/form/text-field.component";
+import { PageHeaderComponent } from "../../components/page-header/page-header.component";
 
 const INTERVAL_MS = 1000;
 const MAX_DROPDOWN_ITEMS = 50;
 
 @Component({
 	selector: "app-what-time",
-	imports: [CommonModule, ReactiveFormsModule, DatePipe, TextFieldComponent],
+	imports: [CommonModule, ReactiveFormsModule, DatePipe, TextFieldComponent, PageHeaderComponent],
 	templateUrl: "./what-time.component.html",
 	styleUrl: "./what-time.component.css",
 	changeDetection: ChangeDetectionStrategy.OnPush,
