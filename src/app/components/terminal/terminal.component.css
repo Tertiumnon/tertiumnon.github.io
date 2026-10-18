@@ -150,3 +150,11 @@
     border-bottom: 1px solid var(--theme-border);
   }
 }
+
+/* The shared select keeps the header's compact size. */
+.language ::ng-deep .field {
+  min-height: 0;
+  height: 22px;
+  padding: 0 8px;
+  font-size: 0.9em;
+}
