@@ -43,8 +43,13 @@ export class PostsComponent {
 			filtered = filtered.filter((a) => (Array.isArray(a.tags) ? a.tags.includes(tag) : false));
 		}
 
+		const sort = this.filters.selectedSort();
+		if (sort === "Title A-Z") {
+			return filtered.sort((a, b) => a.title.localeCompare(b.title));
+		}
+		const newestFirst = sort === "Newest created" ? 1 : -1;
 		return filtered.sort(
-			(a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+			(a, b) => newestFirst * (new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
 		);
 	});
 
