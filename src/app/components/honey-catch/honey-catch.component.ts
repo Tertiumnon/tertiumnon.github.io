@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, computed, signal, viewChild } from "@angular/core";
+import { Component, ElementRef, OnDestroy, OnInit, signal, viewChild } from "@angular/core";
 
 interface Pie {
 	id: number;
@@ -8,12 +8,13 @@ interface Pie {
 
 const BEST_KEY = "honey-catch-best";
 const TICK_MS = 40;
-const LIVES = 3;
+// Game over when a pile of landed pies reaches this height (top of the pile, in % of the field).
+const PILE_LIMIT = 50;
 // Positions are percentages of the field. The collider follows the girl picture: a pie is caught when it reaches
 // the top of the picture and is within the figure's width (sizes are fractions of the field width).
-const GIRL_WIDTH = 0.38;
+const GIRL_WIDTH = 0.28;
 const GIRL_RATIO = 113 / 200;
-const PIE_WIDTH = 0.07;
+const PIE_WIDTH = 0.08;
 const CATCH_RANGE = 10;
 const STEP = 1.6;
 const SPAWN_EVERY_TICKS = 32;
@@ -29,6 +30,9 @@ const SPAWN_EVERY_TICKS = 32;
 			</header>
 			<div #field class="field" (pointermove)="onPointer($event)" (pointerdown)="onPointer($event)">
 				@for (pie of pies(); track pie.id) {
+				<span class="pie" [style.left.%]="pie.x" [style.top.%]="pie.y"></span>
+				}
+				@for (pie of landed(); track pie.id) {
 				<span class="pie" [style.left.%]="pie.x" [style.top.%]="pie.y"></span>
 				}
 				<img class="girl" src="/assets/games/honey-pie-girl.gif" alt="" [style.left.%]="girlX()" />
@@ -67,10 +71,6 @@ const SPAWN_EVERY_TICKS = 32;
 			font-weight: 600;
 		}
 
-		.lives {
-			color: #ff6b9a;
-		}
-
 		.hud button {
 			margin-left: auto;
 			padding: 2px 12px;
@@ -97,7 +97,7 @@ const SPAWN_EVERY_TICKS = 32;
 
 		.pie {
 			position: absolute;
-			width: 7%;
+			width: 8%;
 			aspect-ratio: 1;
 			border-radius: 50%;
 			transform: translateX(-50%);
@@ -109,7 +109,7 @@ const SPAWN_EVERY_TICKS = 32;
 		.girl {
 			position: absolute;
 			bottom: 0;
-			width: 38%;
+			width: 28%;
 			transform: translateX(-50%);
 			pointer-events: none;
 		}
@@ -133,11 +133,10 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 	readonly pies = signal<Pie[]>([]);
 	readonly girlX = signal(50);
 	readonly score = signal(0);
-	readonly lives = signal(LIVES);
+	readonly landed = signal<Pie[]>([]);
 	readonly running = signal(false);
 	readonly over = signal(false);
 	readonly best = signal(this.loadBest());
-	readonly hearts = computed(() => "♥".repeat(this.lives()));
 
 	private timer: ReturnType<typeof setInterval> | undefined;
 	private ticks = 0;
@@ -155,7 +154,7 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 		this.pies.set([]);
 		this.girlX.set(50);
 		this.score.set(0);
-		this.lives.set(LIVES);
+		this.landed.set([]);
 		this.ticks = 0;
 		this.over.set(false);
 		this.running.set(true);
@@ -198,14 +197,16 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 		const pieSize = ((field.clientWidth * PIE_WIDTH) / field.clientHeight) * 100;
 		const fall = Math.min(0.8 + this.score() * 0.04, 2.2);
 		const kept: Pie[] = [];
+		const piled = [...this.landed()];
 		let caught = 0;
-		let missed = 0;
 		for (const pie of this.pies()) {
 			const y = pie.y + fall;
 			if (y + pieSize >= girlTop && Math.abs(pie.x - x) <= CATCH_RANGE) {
 				caught++;
-			} else if (y >= 100) {
-				missed++;
+			} else if (y + pieSize >= 100) {
+				// The pie lands on the ground or on the pile in its column and stays there.
+				const below = piled.filter((other) => Math.abs(other.x - pie.x) < PIE_WIDTH * 100).length;
+				piled.push({ ...pie, y: 100 - pieSize * (below + 1) });
 			} else {
 				kept.push({ ...pie, y });
 			}
@@ -216,10 +217,10 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 			kept.push({ id: this.nextId++, x: 8 + Math.random() * 84, y: 0 });
 		}
 		this.pies.set(kept);
+		this.landed.set(piled);
 
 		if (caught) this.score.update((score) => score + caught);
-		if (missed) this.lives.update((lives) => Math.max(0, lives - missed));
-		if (this.lives() === 0) this.end();
+		if (piled.some((pie) => pie.y <= PILE_LIMIT)) this.end();
 	}
 
 	private end(): void {
