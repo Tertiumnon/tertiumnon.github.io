@@ -123,7 +123,7 @@ export class HelloWorldGameComponent {
 	}
 
 	get score(): number {
-		return this.destroyedBlocks * 100 + this.elapsedSeconds;
+		return this.destroyedBlocks * 100;
 	}
 
 	formatTime(seconds: number): string {

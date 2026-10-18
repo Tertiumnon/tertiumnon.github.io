@@ -4,6 +4,8 @@ interface Pie {
 	id: number;
 	x: number;
 	y: number;
+	// Hearts are bonus drops: worth more when caught and gone when they reach the ground.
+	heart?: boolean;
 }
 
 const BEST_KEY = "honey-catch-best";
@@ -18,6 +20,8 @@ const PIE_WIDTH = 0.08;
 const CATCH_RANGE = 10;
 const STEP = 1.6;
 const SPAWN_EVERY_TICKS = 32;
+const HEART_CHANCE = 0.15;
+const HEART_POINTS = 5;
 
 // Catch the honey pies with the girl from the picture. Move with the pointer or the arrow keys.
 @Component({
@@ -30,7 +34,7 @@ const SPAWN_EVERY_TICKS = 32;
 			</header>
 			<div #field class="field" (pointermove)="onPointer($event)" (pointerdown)="onPointer($event)">
 				@for (pie of pies(); track pie.id) {
-				<span class="pie" [style.left.%]="pie.x" [style.top.%]="pie.y"></span>
+				<span class="pie" [class.heart]="pie.heart" [style.left.%]="pie.x" [style.top.%]="pie.y">{{ pie.heart ? "♥" : "" }}</span>
 				}
 				@for (pie of landed(); track pie.id) {
 				<span class="pie" [style.left.%]="pie.x" [style.top.%]="pie.y"></span>
@@ -106,6 +110,16 @@ const SPAWN_EVERY_TICKS = 32;
 		}
 
 		/* Sizes are percentages of the field, so the girl and the pies scale with the screen. */
+		.pie.heart {
+			background: none;
+			box-shadow: none;
+			color: #ff2e9a;
+			display: grid;
+			place-items: center;
+			font-size: 4.5rem;
+			text-shadow: 0 0 10px #ff2e9a;
+		}
+
 		.girl {
 			position: absolute;
 			bottom: 0;
@@ -202,11 +216,13 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 		for (const pie of this.pies()) {
 			const y = pie.y + fall;
 			if (y + pieSize >= girlTop && Math.abs(pie.x - x) <= CATCH_RANGE) {
-				caught++;
+				caught += pie.heart ? HEART_POINTS : 1;
 			} else if (y + pieSize >= 100) {
-				// The pie lands on the ground or on the pile in its column and stays there.
-				const below = piled.filter((other) => Math.abs(other.x - pie.x) < PIE_WIDTH * 100).length;
-				piled.push({ ...pie, y: 100 - pieSize * (below + 1) });
+				// A pie lands on the ground or on the pile in its column and stays there; a heart just disappears.
+				if (!pie.heart) {
+					const below = piled.filter((other) => Math.abs(other.x - pie.x) < PIE_WIDTH * 100).length;
+					piled.push({ ...pie, y: 100 - pieSize * (below + 1) });
+				}
 			} else {
 				kept.push({ ...pie, y });
 			}
@@ -214,7 +230,7 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 
 		this.ticks++;
 		if (this.ticks % SPAWN_EVERY_TICKS === 0) {
-			kept.push({ id: this.nextId++, x: 8 + Math.random() * 84, y: 0 });
+			kept.push({ id: this.nextId++, x: 8 + Math.random() * 84, y: 0, heart: Math.random() < HEART_CHANCE });
 		}
 		this.pies.set(kept);
 		this.landed.set(piled);
