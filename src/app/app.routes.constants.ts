@@ -3,11 +3,13 @@ import { Routes } from "@angular/router";
 export const APP_ROUTES: Routes = [
 	{
 		path: "index",
+		title: "Home",
 		loadComponent: () =>
 			import("./pages/home/home.component").then((m) => m.HomeComponent),
 	},
 	{
 		path: "about",
+		title: "Contact",
 		loadComponent: () =>
 			import("./pages/contact/contact.component").then(
 				(m) => m.ContactComponent,
@@ -97,11 +99,13 @@ export const APP_ROUTES: Routes = [
 	},
 	{
 		path: "life",
+		title: "Life",
 		loadComponent: () =>
 			import("./pages/life/life.component").then((m) => m.LifeComponent),
 	},
 	{
 		path: "favorite",
+		title: "Favorite",
 		loadComponent: () =>
 			import("./pages/favorite/favorite.component").then(
 				(m) => m.FavoriteComponent,
@@ -109,6 +113,7 @@ export const APP_ROUTES: Routes = [
 	},
 	{
 		path: "favorite/books",
+		title: "Favorite Books",
 		loadComponent: () =>
 			import("./pages/favorite-books/favorite-books.component").then(
 				(m) => m.FavoriteBooksComponent,

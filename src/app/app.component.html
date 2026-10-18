@@ -1,12 +1,21 @@
-<div [ngClass]="themeService.theme()">
-  <app-header></app-header>
+<div class="app-theme workbench" [ngClass]="themeService.themeClass()" [style.--font-ui]="fontService.family()" [style.--sidebar-width]="sidebarColumn()" [class.resizing]="layout.resizing()">
+  <app-sidebar class="sidebar-host"></app-sidebar>
+
+  <section class="editor-area">
+    <app-editor-tabs></app-editor-tabs>
+    <main class="editor-content">
+      <app-emulator></app-emulator>
+      <router-outlet></router-outlet>
+    </main>
+  </section>
+
+  @defer (when terminal.open()) {
+    @if (terminal.open()) {
+    <app-terminal class="terminal-host"></app-terminal>
+    }
+  }
+
+  <app-status-bar class="status-host"></app-status-bar>
 
   <div class="bg" [class.bg-blur]="!(isHomePage$ | async)"></div>
-
-  <main>
-    <app-emulator></app-emulator>
-    <router-outlet></router-outlet>
-  </main>
-
-  <app-footer></app-footer>
 </div>
