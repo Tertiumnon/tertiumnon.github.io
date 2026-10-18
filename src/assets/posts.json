@@ -185,7 +185,7 @@
     "publishedAt": "2026-06-11",
     "filename": "index.ru.md",
     "dirname": "2026-06-11--ai-reality-after-hype-2026",
-    "updatedAt": "2026-07-19"
+    "updatedAt": "2026-10-13"
   },
   {
     "title": "Install NVM on Windows",
@@ -297,21 +297,6 @@
     "publishedAt": "2018-08-26",
     "filename": "index.en.md",
     "dirname": "2018-08-26--how-to-organize-your-wallpapers"
-  },
-  {
-    "title": "Local Ports for Several Apps: Stop Guessing",
-    "link": "/en/posts/2026-10-13--local-ports-for-several-apps-stop-guessing",
-    "language": "en",
-    "category": "Development",
-    "tags": [
-      "Ports",
-      "Local Development",
-      "Convention"
-    ],
-    "publishedAt": "2026-10-13",
-    "filename": "index.en.md",
-    "dirname": "2026-10-13--local-ports-for-several-apps-stop-guessing",
-    "updatedAt": "2026-10-15"
   },
   {
     "title": "Hello Everyone, It's My First Post on Medium",
@@ -472,6 +457,21 @@
     "publishedAt": "2018-05-16",
     "filename": "index.en.md",
     "dirname": "2018-05-16--adding-ssh-keys-git-bash-on-windows"
+  },
+  {
+    "title": "Local Ports for Several Apps: Stop Guessing",
+    "link": "/en/posts/2026-10-13--local-ports-for-several-apps-stop-guessing",
+    "language": "en",
+    "category": "Development",
+    "tags": [
+      "Ports",
+      "Local Development",
+      "Convention"
+    ],
+    "publishedAt": "2026-10-13",
+    "filename": "index.en.md",
+    "dirname": "2026-10-13--local-ports-for-several-apps-stop-guessing",
+    "updatedAt": "2026-10-15"
   },
   {
     "title": "Angular Universal (SSR) caching with AWS Lambda",
@@ -766,7 +766,7 @@
     "publishedAt": "2026-07-12",
     "filename": "index.ru.md",
     "dirname": "2026-07-12--bun-in-2026",
-    "updatedAt": "2026-08-21"
+    "updatedAt": "2026-10-13"
   },
   {
     "title": "Bun in 2026",
@@ -781,7 +781,7 @@
     "publishedAt": "2026-07-12",
     "filename": "index.en.md",
     "dirname": "2026-07-12--bun-in-2026",
-    "updatedAt": "2026-08-21"
+    "updatedAt": "2026-10-13"
   },
   {
     "title": "Bun в 2025",
@@ -796,7 +796,7 @@
     "publishedAt": "2025-11-30",
     "filename": "index.ru.md",
     "dirname": "2025-11-30--bun-in-2025",
-    "updatedAt": "2026-07-17"
+    "updatedAt": "2026-10-13"
   },
   {
     "title": "Bun in 2025",
@@ -811,7 +811,7 @@
     "publishedAt": "2025-11-30",
     "filename": "index.en.md",
     "dirname": "2025-11-30--bun-in-2025",
-    "updatedAt": "2026-07-17",
+    "updatedAt": "2026-10-13",
     "source": {
       "name": "\"medium",
       "url": "https://tertiumnon.medium.com/bun-7fbe61f45e2e\""
