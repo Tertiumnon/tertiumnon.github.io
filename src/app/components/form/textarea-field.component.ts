@@ -57,6 +57,12 @@ import { FIELD_STYLES } from "./field.styles";
 			border: none;
 			box-shadow: none;
 		}
+
+		/* The text stays transparent, so the selection is drawn in a colour that does not cover the highlighting. */
+		.field.overlay::selection {
+			background-color: color-mix(in srgb, var(--theme-accent) 35%, transparent);
+			color: transparent;
+		}
 		`,
 	],
 })
