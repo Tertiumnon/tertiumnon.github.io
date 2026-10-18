@@ -153,6 +153,7 @@
 
 /* The shared select keeps the header's compact size. */
 .language ::ng-deep .field {
+  background-color: var(--theme-panel);
   min-height: 0;
   height: 22px;
   padding: 0 8px;
