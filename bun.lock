@@ -12,7 +12,7 @@
         "@angular/forms": "^22.2.0",
         "@angular/platform-browser": "^22.2.0",
         "@angular/router": "^22.2.0",
-        "@tertium/css": "^1.4.1",
+        "@tertium/css": "1.5.1",
         "@tertium/js": "^3.2.0",
         "highlight.js": "^11.11.1",
         "jsdom": "^29.1.1",
@@ -479,7 +479,7 @@
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
-    "@tertium/css": ["@tertium/css@1.4.1", "", {}, ""],
+    "@tertium/css": ["@tertium/css@1.5.1", "", {}, "sha512-xA2pKl+/WEtqHfkxHavJ7obnICL4MmWAJOSLwKi3WTL/zaaOIUJAADCWHu3b7OWjPNetMWypTG6LgpKISsHVeQ=="],
 
     "@tertium/js": ["@tertium/js@3.2.0", "", { "peerDependencies": { "jose": "^6.0.0" }, "optionalPeers": ["jose"] }, "sha512-ukPRhQU1Hvj+wkAz9Gdc0G9tJUMOU5EXIx6x5cf/oz9HHL5ySKqdJvxn7sDCtegLBIjtiC5QV2Te0FuOwxFj8Q=="],
 

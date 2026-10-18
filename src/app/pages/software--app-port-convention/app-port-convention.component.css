@@ -194,14 +194,6 @@
   font-weight: 700;
 }
 
-.services {
-  margin-top: 20px;
-}
-
-.services summary {
-  opacity: 0.8;
-}
-
 .service-chips {
   display: flex;
   flex-wrap: wrap;
@@ -220,16 +212,11 @@
   font-size: 0.9em;
 }
 
-.service-chips b {
-  font-family: var(--font-code);
-}
-
 /* Same header-to-content gap as the other pages. */
 .port-convention {
-  margin-top: 0.5rem;
+  margin-top: var(--spacing-2);
 }
 
-/* The site adds markdown markers to headings in content; this tool has no markers. */
 .port-convention h2::before {
   content: none;
 }
