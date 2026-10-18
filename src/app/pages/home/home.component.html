@@ -1,5 +1,5 @@
 <div class="home-page">
-  <app-arcade-cabinet>
+  <app-arcade-cabinet (powerChange)="onPowerChange($event)">
     <app-game-stage screen>
       @if (view() === "game") {
       @switch (game()) {

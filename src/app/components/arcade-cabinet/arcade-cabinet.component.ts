@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, inject, signal, viewChild } from "@angular/core";
+import { Component, ElementRef, HostListener, inject, output, signal, viewChild } from "@angular/core";
 import { SoundService } from "../sound/sound.service";
 import { TvControlsComponent } from "./tv-controls.component";
 
@@ -139,6 +139,8 @@ export class ArcadeCabinetComponent {
 	readonly powered = signal(true);
 	readonly fullWindow = signal(false);
 	readonly fullscreen = signal(false);
+	// Emits the new power state after each switch.
+	readonly powerChange = output<boolean>();
 	private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
 	private readonly sound = inject(SoundService);
 	private readonly screen = viewChild.required<ElementRef<HTMLElement>>("screen");
@@ -160,6 +162,7 @@ export class ArcadeCabinetComponent {
 
 	togglePower(): void {
 		this.powered.update((on) => !on);
+		this.powerChange.emit(this.powered());
 		this.sound.play("power");
 		if (this.powered()) {
 			// Switching on: the picture stretches out from a line, like an old TV warming up.

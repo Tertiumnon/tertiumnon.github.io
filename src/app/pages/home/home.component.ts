@@ -48,7 +48,9 @@ export class HomeComponent {
 	readonly mainCursor = signal(0);
 	readonly game = signal<GameKey>("catch");
 	// The Honey Pie theme's game menu opens on Honey Catch; the other themes open on Hello World.
-	readonly gameCursor = signal(this.themeService.theme() === Theme.HoneyPie ? 0 : 1);
+	readonly gameCursor = signal(this.defaultGameCursor());
+	// False while the set is switched off: key presses are ignored, so nothing starts behind the dark screen.
+	readonly tvOn = signal(true);
 
 	// The menu on the TV: the start menu, or the games.
 	readonly menu = computed<MenuItem[]>(() => (this.view() === "main" ? MAIN_ITEMS : GAMES));
@@ -84,6 +86,19 @@ export class HomeComponent {
 		this.view.set("game");
 	}
 
+	private defaultGameCursor(): number {
+		return this.themeService.theme() === Theme.HoneyPie ? 0 : 1;
+	}
+
+	// Switching the set on or off starts again from the main menu, with any game stopped.
+	onPowerChange(on: boolean): void {
+		this.tvOn.set(on);
+		this.view.set("main");
+		this.mainCursor.set(0);
+		this.game.set("catch");
+		this.gameCursor.set(this.defaultGameCursor());
+	}
+
 	back(): void {
 		this.sound.play("back");
 		this.view.set(this.view() === "game" ? "games" : "main");
@@ -92,6 +107,7 @@ export class HomeComponent {
 	// Menus: arrows choose, A or Enter selects. Games and the game screen: B or Escape goes back.
 	@HostListener("document:keydown", ["$event"])
 	onKeyDown(event: KeyboardEvent): void {
+		if (!this.tvOn()) return;
 		const isBack = event.key === "Escape" || event.key.toLowerCase() === "b";
 		if (this.view() === "game") {
 			if (isBack) this.back();
