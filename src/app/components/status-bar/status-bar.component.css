@@ -8,8 +8,8 @@
   justify-content: space-between;
   height: 36px;
   padding: 0 10px;
-  background-color: var(--theme-accent);
-  color: #101014;
+  background-color: var(--theme-surface);
+  color: var(--theme-text);
   font-family: var(--font-code);
   font-size: 13px;
 }
