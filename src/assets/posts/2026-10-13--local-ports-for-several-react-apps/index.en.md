@@ -98,7 +98,7 @@ With `strictPort: true`, Vite refuses to start on a busy port and tells you so. 
 
 ## Use the tool
 
-The [App Port Convention page](https://tertiumnon.github.io/#/software/app-port-convention) turns the convention into a lookup:
+The [App Port Convention page](https://tertiumnon.github.io/#/projects/app-port-convention) turns the convention into a lookup:
 
 1. Type your framework in the search box, or pick it from the list.
 2. Choose a free project slot.

@@ -42,7 +42,7 @@ export const APP_ROUTES: Routes = [
 			),
 	},
 	{
-		path: "software",
+		path: "projects",
 		title: "Projects",
 		loadComponent: () =>
 			import("./pages/software/software.component").then(
@@ -56,7 +56,7 @@ export const APP_ROUTES: Routes = [
 			import("./pages/tools/tools.component").then((m) => m.ToolsComponent),
 	},
 	{
-		path: "software/app-port-convention",
+		path: "projects/app-port-convention",
 		title: "App Port Convention",
 		loadComponent: () =>
 			import("./pages/software--app-port-convention/app-port-convention.component").then(
@@ -64,7 +64,7 @@ export const APP_ROUTES: Routes = [
 			),
 	},
 	{
-		path: "software/:name",
+		path: "projects/:name",
 		title: "Projects",
 		loadComponent: () =>
 			import("./pages/software--project/project.component").then(
