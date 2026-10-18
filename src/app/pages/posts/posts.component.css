@@ -16,14 +16,15 @@
   gap: 4px;
 }
 
-/* Posts: a card per post. Date, title and meta sit in a grid that stacks on narrow screens. */
+/* Posts: a card per post. Left column: created date and category on top, updated date and tags at the bottom.
+   The title sits in the middle. On narrow screens the left column moves above the title. */
 .post-row {
   position: relative;
   display: grid;
-  grid-template-columns: 120px minmax(0, 1fr) auto;
-  grid-template-areas: "date title meta";
-  align-items: center;
-  gap: 4px 18px;
+  grid-template-columns: minmax(180px, 280px) minmax(0, 1fr);
+  grid-template-areas: "side title";
+  align-items: stretch;
+  gap: 14px;
   padding: 14px 18px 14px 22px;
   border: 1px solid var(--theme-border);
   border-radius: var(--editor-radius);
@@ -48,8 +49,23 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
+.post-side {
+  grid-area: side;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.post-top,
+.post-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
 .post-date {
-  grid-area: date;
   font-family: var(--font-code);
   font-size: 0.8em;
   letter-spacing: 0.04em;
@@ -59,25 +75,19 @@
 
 .post-title {
   grid-area: title;
+  align-self: center;
   min-width: 0;
   color: var(--theme-text);
   font-size: 1.05em;
   font-weight: 600;
   line-height: 1.35;
+  text-align: center;
   overflow-wrap: anywhere;
   text-decoration: none;
 }
 
 .post-title:hover {
   color: var(--theme-accent);
-}
-
-.post-meta {
-  grid-area: meta;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 6px;
 }
 
 /* Category and update date as small pills. */
@@ -101,14 +111,25 @@
   opacity: 0.7;
 }
 
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.72em;
+  opacity: 0.8;
+}
+
 @media (max-width: 640px) {
   .post-row {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "date" "title" "meta";
+    grid-template-areas: "side" "title";
   }
 
-  .post-meta {
-    justify-content: flex-start;
+  .post-title {
+    text-align: left;
   }
 }
 
