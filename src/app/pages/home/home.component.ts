@@ -11,7 +11,7 @@ type TvView = "menu" | "game";
 
 const GAMES: { key: GameKey; label: string }[] = [
 	{ key: "catch", label: "Honey Catch" },
-	{ key: "hello", label: "Hello World" },
+	{ key: "hello", label: "Hellowordian" },
 ];
 
 @Component({
