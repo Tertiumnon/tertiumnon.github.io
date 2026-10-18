@@ -1,6 +1,7 @@
 import { execFileSync } from "node:child_process";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
+import { existsSync } from "node:fs";
 import { GITHUB_EXCLUDED_REPOS, GITHUB_USER } from "../../../src/app/entities/github-repo/github-repo.data";
 import type { IProjectRelease, IProjectVersion } from "../../../src/app/entities/project/project.types";
 
@@ -15,19 +16,22 @@ type PublicRepo = {
 	isFork: boolean;
 	url: string;
 	repositoryTopics: { name: string }[] | null;
+	licenseInfo: { spdxId: string | null; name: string } | null;
 	primaryLanguage: { name: string } | null;
 };
 
-const DOCS_TOPIC = "documentation";
-const STICKER_TOPIC = "telegram-sticker-pack";
 
 type GithubProject = {
 	name: string;
 	title: string;
 	type?: string;
 	language?: string;
+	languageIcon?: string;
+	frameworks?: string[];
 	description?: string;
 	image?: string;
+	screenshots?: string[];
+	repoLicense?: string;
 	url: string;
 	readme: boolean;
 	releases: IProjectRelease[];
@@ -36,6 +40,25 @@ type GithubProject = {
 
 const gh = (endpoint: string, ...args: string[]): string =>
 	execFileSync("gh", ["api", endpoint, ...args], { encoding: "utf-8", maxBuffer: 64 * 1024 * 1024 });
+
+// Project attributes that GitHub does not provide, from the project.yml file at the repository root.
+type ProjectFile = { type?: string; language?: string; frameworks?: string[] };
+const fetchProjectFile = (repo: string): ProjectFile | undefined => {
+	try {
+		const file = JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/contents/project.yml`)) as { content: string };
+		return Bun.YAML.parse(Buffer.from(file.content, "base64").toString("utf-8")) as ProjectFile;
+	} catch (error) {
+		if (isNotFound(error)) return undefined;
+		throw error;
+	}
+};
+
+// The language icon is the file named after the language in assets/icons/languages, if there is one.
+const languageIconFor = (language?: string): string | undefined => {
+	if (!language) return undefined;
+	const file = `${language.toLowerCase()}.svg`;
+	return existsSync(path.join("src/assets/icons/languages", file)) ? `assets/icons/languages/${file}` : undefined;
+};
 
 const isNotFound = (error: unknown): boolean =>
 	String((error as { stderr?: unknown }).stderr ?? error).includes("HTTP 404");
@@ -69,7 +92,7 @@ const fetchPublicRepos = (): PublicRepo[] =>
 	JSON.parse(
 		execFileSync(
 			"gh",
-			["repo", "list", GITHUB_USER, "--visibility", "public", "--limit", "1000", "--json", "name,description,isFork,url,repositoryTopics,primaryLanguage"],
+			["repo", "list", GITHUB_USER, "--visibility", "public", "--limit", "1000", "--json", "name,description,isFork,url,repositoryTopics,primaryLanguage,licenseInfo"],
 			{ encoding: "utf-8", maxBuffer: 64 * 1024 * 1024 },
 		),
 	);
@@ -95,13 +118,36 @@ const fetchLatestVersion = (repo: string): IProjectVersion | undefined => {
 	return { tag: latest.tag.name, date: commit.commit.committer.date.slice(0, 10) };
 };
 
+// Files of a repository folder, or none when the folder does not exist.
+const listFolder = (repo: string, folder: string): { name: string; type: string }[] => {
+	try {
+		return JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/contents/${folder}`));
+	} catch (error) {
+		if (isNotFound(error)) return [];
+		throw error;
+	}
+};
+
+const rawUrl = (repo: string, path: string): string =>
+	`https://raw.githubusercontent.com/${GITHUB_USER}/${repo}/HEAD/${path.split("/").map(encodeURIComponent).join("/")}`;
+
+// Standard location: assets/logo.svg, assets/logo.png (or another image type).
+const fetchLogo = (repo: string): string | undefined => {
+	const logo = listFolder(repo, "assets").find((file) => file.type === "file" && /^logo.(svg|png|webp|jpe?g)$/i.test(file.name));
+	return logo ? rawUrl(repo, `assets/${logo.name}`) : undefined;
+};
+
+// Standard location: docs/screenshots/NN-name.png, in display order.
+const fetchScreenshots = (repo: string): string[] =>
+	listFolder(repo, "docs/screenshots")
+		.filter((file) => file.type === "file" && /.(png|webp|gif|jpe?g|svg)$/i.test(file.name))
+		.sort((a, b) => a.name.localeCompare(b.name))
+		.map((file) => rawUrl(repo, `docs/screenshots/${file.name}`));
+
 // Sticker packs show one of their stickers: the first image in the stickers folder, as a raw GitHub URL.
 const fetchFirstSticker = (repo: string): string | undefined => {
-	const files = JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/contents/stickers`)) as { name: string; type: string }[];
-	const image = files.find((file) => file.type === "file" && /\.(png|webp|gif|jpe?g)$/i.test(file.name));
-	if (!image) return undefined;
-	const encodedPath = image.name.split("/").map(encodeURIComponent).join("/");
-	return `https://raw.githubusercontent.com/${GITHUB_USER}/${repo}/HEAD/stickers/${encodedPath}`;
+	const image = listFolder(repo, "stickers").find((file) => file.type === "file" && /.(png|webp|gif|jpe?g)$/i.test(file.name));
+	return image ? rawUrl(repo, `stickers/${image.name}`) : undefined;
 };
 
 const fetchReleases = (repo: string): IProjectRelease[] =>
@@ -128,16 +174,20 @@ const main = async (): Promise<void> => {
 	const repos = fetchPublicRepos().filter((repo) => !repo.isFork && !isExcluded(repo.name));
 	const projects: GithubProject[] = [];
 	for (const repo of repos) {
-		const topics = (repo.repositoryTopics ?? []).map((topic) => topic.name);
-		// "documentation" marks docs-only repos: they get the Markdown icon, and it is not used as the type label.
-		const isDocs = topics.includes(DOCS_TOPIC);
+		const attributes = fetchProjectFile(repo.name);
+		const language = attributes?.language ?? repo.primaryLanguage?.name;
 		const project: GithubProject = {
 			name: repo.name,
 			title: repo.name,
-			type: topics.filter((topic) => topic !== DOCS_TOPIC)[0]?.replace(/-/g, " "),
+			type: attributes?.type,
 			description: repo.description || undefined,
-			language: isDocs ? "Markdown" : repo.primaryLanguage?.name,
-			image: topics.includes(STICKER_TOPIC) ? fetchFirstSticker(repo.name) : undefined,
+			language,
+			languageIcon: languageIconFor(language),
+			frameworks: attributes?.frameworks,
+			// Convention: assets/logo.* is the logo; a repository without one uses the first image in stickers/ (sticker packs).
+			image: fetchLogo(repo.name) ?? fetchFirstSticker(repo.name),
+			screenshots: fetchScreenshots(repo.name),
+			repoLicense: repo.licenseInfo?.spdxId && repo.licenseInfo.spdxId !== "NOASSERTION" ? repo.licenseInfo.spdxId : repo.licenseInfo?.name,
 			url: repo.url,
 			readme: false,
 			releases: fetchReleases(repo.name),

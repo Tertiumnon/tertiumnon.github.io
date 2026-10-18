@@ -33,7 +33,7 @@ export const ProjectControlPanelUtils = {
 			case "status":
 				return newProjectList.filter((project) => project.status === value);
 			case "license":
-				return newProjectList.filter((project) => project.license === value);
+				return newProjectList.filter((project) => project.repoLicense === value);
 			default:
 				return undefined;
 		}

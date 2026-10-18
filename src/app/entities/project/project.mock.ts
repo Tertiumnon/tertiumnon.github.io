@@ -12,6 +12,10 @@ type GithubProjectJson = {
 	type?: string;
 	language?: string;
 	image?: string;
+	screenshots?: string[];
+	repoLicense?: string;
+	languageIcon?: string;
+	frameworks?: string[];
 	description?: string;
 	url: string;
 	readme: boolean;
@@ -40,6 +44,10 @@ const GITHUB_PROJECT_ITEMS: IProject[] = (githubProjects as GithubProjectJson[])
 		imagePreview: "",
 		link: `#/projects/${repo.name}`,
 		image: repo.image,
+		screenshots: repo.screenshots,
+		repoLicense: repo.repoLicense,
+		languageIcon: repo.languageIcon,
+		frameworks: repo.frameworks,
 		url: repo.url,
 		updatedAt,
 		readme: repo.readme,

@@ -1,4 +1,8 @@
 <article class="project-page container-fluid" style="margin-top: var(--container-margin-top);">
+  @if (project.repoLicense) {
+  <p class="project-license">License: {{ project.repoLicense }}</p>
+  }
+
   @if (project.url || project.releases?.length) {
   <nav class="project-links">
     @if (project.url) {
@@ -23,8 +27,16 @@
   </nav>
   }
 
+  @if (project.screenshots?.length) {
+  <div class="screenshots">
+    @for (src of project.screenshots; track src) {
+    <img [src]="src" alt="" loading="lazy" />
+    }
+  </div>
+  }
+
   @if (readme()) {
-  <app-md-content [data]="readme()"></app-md-content>
+  <app-md-content [data]="readme()" [lineNumbers]="true"></app-md-content>
   } @else {
   <h1>{{ project.title }}</h1>
   @if (project.description) {

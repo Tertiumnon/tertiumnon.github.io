@@ -2,10 +2,11 @@ import { CommonModule, DOCUMENT } from "@angular/common";
 import { Component, DestroyRef, inject, OnInit } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import {
-	ProjectLicense,
+
 	ProjectStatus,
 } from "../../entities/project/project.constants";
 import { SoftwareService } from "../../pages/software/software.service";
+import PROJECT_ITEMS from "../../entities/project/project.mock";
 import { DropdownComponent } from "../dropdown/dropdown.component";
 
 const STATUS_KEY = "status";
@@ -38,7 +39,11 @@ export class ProjectControlPanelComponent implements OnInit {
 	}
 
 	readonly license = "all";
-	readonly licenseOptions = ["all", ...Object.values(ProjectLicense)];
+	// Options are the licences the projects actually declare, as GitHub reports them.
+	readonly licenseOptions = [
+		"all",
+		...Array.from(new Set(PROJECT_ITEMS.map((project) => project.repoLicense).filter((license): license is string => !!license))).sort(),
+	];
 
 	onLicenseChange(license: string): void {
 		this.projectService.setState({ filterByLicense: license });

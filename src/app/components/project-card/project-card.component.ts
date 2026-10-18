@@ -1,7 +1,6 @@
 import { DatePipe } from "@angular/common";
 import { Component, Input } from "@angular/core";
 import { IProject } from "../../entities/project/project.types";
-import { languageIconPath } from "../../entities/project/project.icons";
 
 @Component({
 	selector: "app-project-card",
@@ -12,5 +11,4 @@ import { languageIconPath } from "../../entities/project/project.icons";
 })
 export class ProjectCardComponent {
 	@Input() project?: IProject;
-	readonly languageIconPath = languageIconPath;
 }

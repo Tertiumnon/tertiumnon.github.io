@@ -3,7 +3,7 @@
   <div class="card-icon">
     @if (project.image) {
     <img class="card-image" [src]="project.image" alt="" />
-    } @else if (languageIconPath(project.language); as icon) {
+    } @else if (project.languageIcon; as icon) {
     <img [src]="icon" [alt]="project.language" />
     }
   </div>

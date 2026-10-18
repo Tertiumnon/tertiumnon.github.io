@@ -1,3 +1,5 @@
+import { SidebarPageFiltersComponent } from "../../components/sidebar/sidebar-page-filters.component";
+import { PageHeaderComponent } from "../../components/page-header/page-header.component";
 import { Component, OnInit } from "@angular/core";
 
 import { CommonModule } from "@angular/common";
@@ -8,7 +10,7 @@ import { SoftwareService } from "./software.service";
 @Component({
 	selector: "app-software",
 	templateUrl: "./software.component.html",
-	imports: [CommonModule, ProjectListComponent],
+	imports: [CommonModule, ProjectListComponent, SidebarPageFiltersComponent, PageHeaderComponent],
 	standalone: true,
 })
 export class SoftwareComponent implements OnInit {

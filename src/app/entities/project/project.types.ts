@@ -25,6 +25,10 @@ export interface IProject extends Params {
 	language?: string;
 	description?: string;
 	image?: string;
+	screenshots?: string[];
+	repoLicense?: string;
+	languageIcon?: string;
+	frameworks?: string[];
 	imagePreview: string;
 	link: string;
 	url?: string;
