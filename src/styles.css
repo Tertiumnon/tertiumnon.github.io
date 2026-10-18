@@ -199,6 +199,11 @@ main {
   color: var(--theme-accent);
 }
 
+/* Pages with a pager end flush with the editor, so the pager can sit on the bottom edge. */
+.editor-content.editor-content:has(app-pager) {
+  padding-bottom: 0;
+}
+
 .content h1::before,
 .content h2::before,
 .content h3::before {

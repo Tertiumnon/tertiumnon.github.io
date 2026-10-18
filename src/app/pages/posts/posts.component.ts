@@ -1,5 +1,6 @@
 import { SidebarPageFiltersComponent } from "../../components/sidebar/sidebar-page-filters.component";
 import { PageHeaderComponent } from "../../components/page-header/page-header.component";
+import { PagerComponent } from "../../components/pager/pager.component";
 import { Component, DestroyRef, effect, inject, signal, computed, untracked } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute, RouterLink } from "@angular/router";
@@ -13,7 +14,7 @@ const POSTS_PER_PAGE = 10;
 @Component({
 	selector: "app-posts",
 	standalone: true,
-	imports: [CommonModule, RouterLink, SidebarPageFiltersComponent, PageHeaderComponent],
+	imports: [CommonModule, RouterLink, SidebarPageFiltersComponent, PageHeaderComponent, PagerComponent],
 	templateUrl: "./posts.component.html",
 	styleUrl: "./posts.component.css",
 })
@@ -96,14 +97,6 @@ export class PostsComponent {
 					},
 				});
 			});
-	}
-
-	previousPage(): void {
-		this.page.update((page) => Math.max(1, page - 1));
-	}
-
-	nextPage(): void {
-		this.page.update((page) => Math.min(this.pageCount(), page + 1));
 	}
 
 	getPostLink(link: string): (string | number)[] {

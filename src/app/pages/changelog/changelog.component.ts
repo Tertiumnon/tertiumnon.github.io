@@ -1,6 +1,9 @@
 import { SidebarPageFiltersComponent } from "../../components/sidebar/sidebar-page-filters.component";
 import { PageHeaderComponent } from "../../components/page-header/page-header.component";
-import { Component, DestroyRef, inject, signal, computed } from "@angular/core";
+import { Component, DestroyRef, inject, signal, computed, effect, untracked } from "@angular/core";
+import { PagerComponent } from "../../components/pager/pager.component";
+
+const CHANGELOG_PER_PAGE = 10;
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -12,7 +15,7 @@ import { ChangelogFilterService } from "../../components/sidebar/changelog-filte
 @Component({
 	selector: "app-changelog",
 	standalone: true,
-	imports: [CommonModule, MdContentComponent, SidebarPageFiltersComponent, PageHeaderComponent],
+	imports: [CommonModule, MdContentComponent, SidebarPageFiltersComponent, PageHeaderComponent, PagerComponent],
 	templateUrl: "./changelog.component.html",
 	styleUrl: "./changelog.component.css",
 })
@@ -21,6 +24,15 @@ export class ChangelogComponent {
 	private readonly activatedRoute = inject(ActivatedRoute);
 	private readonly changelogService = inject(ChangelogService);
 	readonly filters = inject(ChangelogFilterService);
+	page = signal(1);
+
+	constructor() {
+		// A new project filter starts again from the first page.
+		effect(() => {
+			this.filters.selectedProject();
+			untracked(() => this.page.set(1));
+		});
+	}
 
 	// Entries arrive with their Markdown already built in, so the page needs a single request.
 	allChangelog = signal<Changelog[]>([]);
@@ -34,6 +46,13 @@ export class ChangelogComponent {
 				...changelogItem,
 				content: this.stripFirstHeading(changelogItem.content || ""),
 			}));
+	});
+
+	pageCount = computed(() => Math.max(1, Math.ceil(this.filteredChangelog().length / CHANGELOG_PER_PAGE)));
+
+	pagedChangelog = computed(() => {
+		const start = (this.page() - 1) * CHANGELOG_PER_PAGE;
+		return this.filteredChangelog().slice(start, start + CHANGELOG_PER_PAGE);
 	});
 
 	private stripFirstHeading(content: string): string {

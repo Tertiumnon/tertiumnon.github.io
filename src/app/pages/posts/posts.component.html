@@ -17,10 +17,4 @@
   </ol>
   }
 </div>
-@if (pageCount() > 1) {
-<nav class="pagination" aria-label="Posts pages">
-  <button type="button" (click)="previousPage()" [disabled]="page() === 1">Previous</button>
-  <span>{{ page() }} / {{ pageCount() }}</span>
-  <button type="button" (click)="nextPage()" [disabled]="page() === pageCount()">Next</button>
-</nav>
-}
+<app-pager [page]="page()" [pageCount]="pageCount()" (pageChange)="page.set($event)"></app-pager>

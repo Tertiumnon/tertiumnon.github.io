@@ -13,8 +13,18 @@
 }
 
 /* Page: a flat timeline, no pane around it. */
+/* Same flex column as the posts list, so the pager sits at the bottom of the editor. */
+:host {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
 .changelog-page {
-  padding-bottom: 2rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-bottom: 1rem;
 }
 
 .changelog-title {
