@@ -1,17 +1,7 @@
 <div class="home-page">
-  <app-arcade-cabinet [title]="marqueeTitle()">
+  <app-arcade-cabinet>
     <app-game-stage screen>
-      @if (view() === "menu") {
-      <div class="tv-menu" role="listbox" aria-label="Games">
-        <h2 class="menu-title">Select game</h2>
-        @for (item of games; track item.key; let i = $index) {
-        <button type="button" role="option" class="menu-item" [class.selected]="cursor() === i" [attr.aria-selected]="cursor() === i" (click)="startGame(i)">
-          <span class="cursor" aria-hidden="true">{{ cursor() === i ? "▶" : "" }}</span>{{ item.label }}
-        </button>
-        }
-        <p class="menu-prompt">Press A to start</p>
-      </div>
-      } @else {
+      @if (view() === "game") {
       @switch (game()) {
       @case ("catch") {
       <app-honey-catch></app-honey-catch>
@@ -20,6 +10,21 @@
       <app-hello-world-game></app-hello-world-game>
       }
       }
+      } @else {
+      <div class="tv-menu" role="listbox" [attr.aria-label]="menuTitle()">
+        <h2 class="menu-title">{{ menuTitle() }}</h2>
+        @for (item of menu(); track item.label; let i = $index) {
+        <button type="button" role="option" class="menu-item" [class.selected]="menuCursor() === i" [attr.aria-selected]="menuCursor() === i" (click)="choose(i)">
+          <span class="cursor" aria-hidden="true">{{ menuCursor() === i ? "▶" : "" }}</span>{{ item.label }}
+        </button>
+        }
+        @if (description(); as text) {
+        <p class="menu-description">{{ text }}</p>
+        }
+        @if (view() === "games") {
+        <p class="menu-prompt">Press A to start, B to go back</p>
+        }
+      </div>
       }
     </app-game-stage>
   </app-arcade-cabinet>

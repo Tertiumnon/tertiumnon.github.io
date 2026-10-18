@@ -1,54 +1,58 @@
-import { Component, ElementRef, input, signal, viewChild } from "@angular/core";
+import { Component, ElementRef, HostListener, inject, signal, viewChild } from "@angular/core";
+import { SoundService } from "../sound/sound.service";
+import { TvControlsComponent } from "./tv-controls.component";
 
-// Retro arcade cabinet: marquee, rounded CRT screen and power button. Game controls are drawn on the screen.
+// Retro arcade cabinet: rounded CRT screen and power button. Colours come from the theme (--tv-* tokens).
 // The game goes into the [screen] slot.
 @Component({
 	selector: "app-arcade-cabinet",
 	standalone: true,
+	imports: [TvControlsComponent],
 	template: `
-		<section class="cabinet">
-			<header class="marquee">{{ title() }}</header>
+		<section class="cabinet" [class.full-window]="fullWindow()">
 			<div class="bezel" [class.off]="!powered()">
 				<div class="screen" #screen>
 					<ng-content select="[screen]"></ng-content>
 				</div>
 				<span class="power-dot" aria-hidden="true"></span>
 			</div>
-			<footer class="panel">
-				<button type="button" class="power" [class.on]="powered()" [attr.aria-pressed]="powered()" aria-label="Power" (click)="togglePower()">
-					<span class="led"></span>
-				</button>
-			</footer>
+			<app-tv-controls
+				[powered]="powered()"
+				[fullWindow]="fullWindow()"
+				[fullscreen]="fullscreen()"
+				(powerToggle)="togglePower()"
+				(windowToggle)="toggleFullWindow()"
+				(fullscreenToggle)="toggleFullscreen()"
+			></app-tv-controls>
 		</section>
 	`,
 	styles: [`
-		/* Fills the window: the marquee and panel keep their height, the screen takes the rest. */
+		:host {
+			display: block;
+			height: 100%;
+		}
+
+		/* Full window: the cabinet covers the whole browser window. */
+		.cabinet.full-window {
+			position: fixed;
+			inset: 0;
+			z-index: 1000;
+		}
+
+		/* Fills the window: the panel keeps its height, the screen takes the rest. */
 		.cabinet {
 			box-sizing: border-box;
 			display: flex;
 			flex-direction: column;
 			width: 100%;
 			height: 100%;
-			padding: 10px;
+			padding: clamp(4px, 1vw, 10px);
 			font-family: "VT323", monospace;
 			font-size: 1.25rem;
-			color: #ffe9f6;
-			background: linear-gradient(180deg, #2a0f3a 0%, #120620 100%);
+			color: var(--tv-text);
+			background: var(--tv-case);
 			border: 4px solid #000;
-			box-shadow: inset 0 0 0 3px #ff6ec7, inset 0 0 0 6px #000, 0 0 0 4px #ff6ec7;
-		}
-
-		.marquee {
-			padding: 6px 12px;
-			text-align: center;
-			font-size: 2rem;
-			letter-spacing: 0.3em;
-			text-transform: uppercase;
-			color: #fff7b0;
-			background: linear-gradient(#0006, #0006), url("/assets/images/honey-pie.png") center / cover;
-			border: 4px solid #000;
-			box-shadow: inset 0 -4px 0 #000, 0 0 16px #ff6ec7;
-			text-shadow: 2px 2px 0 #000;
+			box-shadow: inset 0 0 0 3px var(--tv-glow), inset 0 0 0 6px #000, 0 0 0 4px var(--tv-glow);
 		}
 
 		/* Old TV: a thick rounded plastic case around a curved glass screen. */
@@ -58,15 +62,16 @@ import { Component, ElementRef, input, signal, viewChild } from "@angular/core";
 			min-height: 0;
 			display: grid;
 			place-items: center;
-			margin: 12px 0;
-			padding: 22px;
+			margin: clamp(3px, 1.2vh, 12px) 0;
+			padding: clamp(6px, 2vw, 22px);
 			border-radius: 48px / 40px;
-			background: linear-gradient(180deg, #3b3346, #221c2b);
+			background: var(--tv-bezel);
 			border: 4px solid #000;
 			box-shadow: inset 0 3px 0 #5a4d6e, inset 0 -6px 0 #15101c, 0 0 0 3px #000;
 		}
 
 		.screen {
+			--scan: clamp(1px, 0.25vh, 2px);
 			position: relative;
 			width: 100%;
 			height: 100%;
@@ -75,7 +80,7 @@ import { Component, ElementRef, input, signal, viewChild } from "@angular/core";
 			container-type: size;
 			overflow: hidden;
 			border-radius: 34px / 28px;
-			background: #000;
+			background: var(--tv-glass);
 			box-shadow: inset 0 0 60px #000, inset 0 0 0 4px #0b0a0f;
 		}
 
@@ -86,7 +91,7 @@ import { Component, ElementRef, input, signal, viewChild } from "@angular/core";
 			inset: 0;
 			pointer-events: none;
 			background:
-				repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.28) 0 1px, transparent 1px 3px),
+				repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.28) 0 var(--scan), transparent var(--scan) calc(var(--scan) * 3)),
 				radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.75) 100%);
 		}
 
@@ -128,56 +133,34 @@ import { Component, ElementRef, input, signal, viewChild } from "@angular/core";
 			100% { opacity: 0; transform: scale(60, 0.02); }
 		}
 
-		.panel {
-			display: flex;
-			justify-content: flex-end;
-			padding: 10px 14px 6px;
-			border-top: 4px solid #000;
-		}
-
-		/* Round power button with a status light. */
-		.power {
-			position: relative;
-			width: 46px;
-			height: 46px;
-			padding: 0;
-			border: 3px solid #000;
-			border-radius: 50%;
-			background: radial-gradient(circle at 35% 35%, #5a4d6e, #221c2b);
-			box-shadow: 0 5px 0 #000;
-			cursor: pointer;
-		}
-
-		.power:active {
-			transform: translateY(3px);
-			box-shadow: 0 2px 0 #000;
-		}
-
-		.power .led {
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			width: 12px;
-			height: 12px;
-			margin: -6px 0 0 -6px;
-			border-radius: 50%;
-			background: #3a1020;
-			border: 2px solid #000;
-		}
-
-		.power.on .led {
-			background: #ff2e9a;
-			box-shadow: 0 0 10px #ff2e9a;
-		}
 	`],
 })
 export class ArcadeCabinetComponent {
-	readonly title = input("Arcade");
 	readonly powered = signal(true);
+	readonly fullWindow = signal(false);
+	readonly fullscreen = signal(false);
+	private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+	private readonly sound = inject(SoundService);
 	private readonly screen = viewChild.required<ElementRef<HTMLElement>>("screen");
+
+	toggleFullWindow(): void {
+		this.fullWindow.update((on) => !on);
+	}
+
+	// The browser's own full-screen mode; Escape leaves it, which the fullscreenchange event reports back.
+	toggleFullscreen(): void {
+		if (document.fullscreenElement) void document.exitFullscreen();
+		else void this.host.nativeElement.requestFullscreen().catch(() => undefined);
+	}
+
+	@HostListener("document:fullscreenchange")
+	onFullscreenChange(): void {
+		this.fullscreen.set(document.fullscreenElement === this.host.nativeElement);
+	}
 
 	togglePower(): void {
 		this.powered.update((on) => !on);
+		this.sound.play("power");
 		if (this.powered()) {
 			// Switching on: the picture stretches out from a line, like an old TV warming up.
 			this.screen().nativeElement.animate(
