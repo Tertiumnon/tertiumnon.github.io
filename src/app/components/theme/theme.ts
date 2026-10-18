@@ -1,1 +1,1 @@
-export { Theme } from "./theme.constants";
+export { Theme, THEME_LABELS } from "./theme.constants";

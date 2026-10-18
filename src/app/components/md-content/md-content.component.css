@@ -5,7 +5,7 @@
 ::ng-deep .post-date {
   font-size: 0.85em;
   color: white;
-  font-family: monospace;
+  font-family: var(--font-code);
   opacity: 0.8;
   margin-bottom: 0.5em;
 }
