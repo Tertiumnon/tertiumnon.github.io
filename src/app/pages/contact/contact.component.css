@@ -1,0 +1,17 @@
+.contact-list {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 6px 24px;
+	max-width: var(--page-max-width);
+	margin: 0;
+	padding: 0 16px;
+}
+
+.contact-list dt {
+	color: var(--theme-text);
+	opacity: 0.6;
+}
+
+.contact-list dd {
+	margin: 0;
+}

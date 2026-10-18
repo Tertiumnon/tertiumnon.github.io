@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Pre-commit hook: type checking before committing
+# Pre-commit hook: type checking only. Projects, changelog and posts are rebuilt on merge (see post-merge).
 
 set -e
 

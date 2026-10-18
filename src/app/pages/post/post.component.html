@@ -1,5 +1,4 @@
-<app-page-loader [isLoading]="isLoading()"></app-page-loader>
 
-<div class="container-fluid">
-  <app-md-content [data]="data()" [category]="category()" [postName]="postName()" [postDirname]="postDirname()" [postDate]="postDate()" [lang]="getCurrentLang()" [showBreadcrumb]="true"></app-md-content>
+<div class="container-fluid post-file" style="margin-top: var(--container-margin-top);">
+  <app-md-content [data]="data()" [category]="category()" [postName]="postName()" [postDirname]="postDirname()" [postDate]="postDate()" [lang]="getCurrentLang()" [showBreadcrumb]="true" [lineNumbers]="true"></app-md-content>
 </div>

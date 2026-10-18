@@ -33,6 +33,7 @@ export class MdContentComponent {
 	@Input() postDate = "";
 	@Input() lang = "en";
 	@Input() showBreadcrumb = false;
+	@Input() lineNumbers = false;
 	htmlData: SafeHtml = "";
 	private readonly renderer = new Renderer();
 
@@ -48,7 +49,12 @@ export class MdContentComponent {
 				highlighted = escapeHtml(code);
 			}
 			const langClass = language ? ` language-${language}` : "";
-			return `<pre><code class="hljs${langClass}">${highlighted}</code></pre>\n`;
+			const codeHtml = `<code class="hljs${langClass}">${highlighted}</code>`;
+				const copyButton = `<button type="button" class="copy-code" aria-label="Copy code" title="Copy code"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>`;
+				if (!this.lineNumbers) return `<pre>${copyButton}${codeHtml}</pre>\n`;
+				// Gutter is a separate column, so the highlighted markup stays intact.
+				const numbers = code.replace(/\n$/, "").split("\n").map((_, i) => i + 1).join("\n");
+				return `<pre class="numbered">${copyButton}<span class="gutter" aria-hidden="true">${numbers}</span>${codeHtml}</pre>\n`;
 		};
 	}
 
@@ -59,6 +65,14 @@ export class MdContentComponent {
 	// same-page anchors manually instead of letting them hit the Router.
 	@HostListener("click", ["$event"])
 	onContentClick(event: MouseEvent): void {
+		const copyButton = (event.target as HTMLElement)?.closest?.(".copy-code");
+		if (copyButton) {
+			const code = copyButton.closest("pre")?.querySelector("code")?.textContent ?? "";
+			void navigator.clipboard?.writeText(code);
+			copyButton.classList.add("copied");
+			setTimeout(() => copyButton.classList.remove("copied"), 1500);
+			return;
+		}
 		const anchor = (event.target as HTMLElement)?.closest?.("a");
 		const href = anchor?.getAttribute("href");
 		if (!href || !href.startsWith("#") || href.length < 2) return;

@@ -25,6 +25,11 @@
 						"outputPath": "dist/tertiumnon-github-io",
 						"index": "src/index.html",
 						"polyfills": ["src/polyfills.ts"],
+						"allowedCommonJsDependencies": [
+							"@jridgewell/gen-mapping",
+							"ts-interface-checker",
+							"lines-and-columns"
+						],
 						"tsConfig": "tsconfig.app.json",
 								"inlineStyleLanguage": "css",
 						"assets": ["src/favicon.ico", "src/assets"],

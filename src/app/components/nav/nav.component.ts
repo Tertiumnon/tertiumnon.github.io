@@ -24,7 +24,7 @@ export class NavComponent {
 		return APP_ROUTES.filter((r) => ALLOWED_ROUTES.includes(r.path || "")).map((r) => ({
 			...r,
 			path: r.path === ":lang/posts" ? `${lang}/posts` :
-			      r.path === ":lang/news" ? `${lang}/news` :
+			      r.path === ":lang/changelog" ? `${lang}/changelog` :
 			      r.path,
 		})) as NavRoute[];
 	});

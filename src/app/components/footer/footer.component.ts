@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { Component, DestroyRef, inject, OnInit } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { Theme } from "../theme/theme";
+import { Theme, THEME_LABELS } from "../theme/theme";
 import { ThemeService } from "../theme/theme.service";
 
 @Component({
@@ -15,6 +15,7 @@ import { ThemeService } from "../theme/theme.service";
 export class FooterComponent implements OnInit {
 	private readonly destroyRef = inject(DestroyRef);
 	readonly themeService = inject(ThemeService);
+	readonly themeLabels = THEME_LABELS;
 	readonly themeCtrl = new FormControl(this.themeService.theme());
 
 	ngOnInit(): void {

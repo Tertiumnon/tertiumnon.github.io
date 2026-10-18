@@ -1,4 +1,4 @@
-import { Injectable, signal } from "@angular/core";
+import { Injectable, computed, signal } from "@angular/core";
 import { Theme } from "./theme.constants";
 
 const THEME_STORAGE_KEY = "theme";
@@ -9,6 +9,7 @@ const THEME_STORAGE_KEY = "theme";
 export class ThemeService {
 	readonly themes = Object.values(Theme);
 	readonly theme = signal<string>(this.getStoredTheme());
+	readonly themeClass = computed(() => `theme-${this.theme()}`);
 
 	private getStoredTheme(): string {
 		if (typeof localStorage === "undefined") {

@@ -15,11 +15,11 @@ const MAX_DROPDOWN_ITEMS = 50;
 })
 export class PostControlPanelComponent {
 	@Input() categories: string[] = [];
-	@Input() selectedCategory: string = "All";
+	@Input() selectedCategory = "All";
 	@Input() onCategoryChange: (category: string) => void = () => {};
 
 	@Input() tags: string[] = [];
-	@Input() selectedTag: string = "All";
+	@Input() selectedTag = "All";
 	@Input() onTagChange: (tag: string) => void = () => {};
 
 	private readonly destroyRef = inject(DestroyRef);
@@ -48,7 +48,7 @@ export class PostControlPanelComponent {
 		} else if (currentUrl.startsWith(`/${currentLang}`)) {
 			newUrl = currentUrl.replace(`/${currentLang}`, `/${lang}`);
 		} else {
-			newUrl = `/${lang}${currentUrl.startsWith("/") ? currentUrl : "/" + currentUrl}`;
+			newUrl = `/${lang}${currentUrl.startsWith("/") ? currentUrl : `/${currentUrl}`}`;
 		}
 
 		this.router.navigateByUrl(newUrl);

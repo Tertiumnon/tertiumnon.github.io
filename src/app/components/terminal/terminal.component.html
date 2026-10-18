@@ -1,0 +1,36 @@
+<div class="terminal-header">
+  <span class="terminal-title">Terminal</span>
+  <select class="language" [ngModel]="language()" (ngModelChange)="language.set($event)" aria-label="Language">
+    <option value="typescript">TypeScript</option>
+    <option value="javascript">JavaScript</option>
+  </select>
+  <button type="button" class="action" (click)="run()" [disabled]="running()">Run</button>
+  <button type="button" class="action" (click)="stop()" [disabled]="!running()">Stop</button>
+  <button type="button" class="action" (click)="clear()">Clear</button>
+  <span class="spacer"></span>
+  <button type="button" class="action close" (click)="terminal.toggle()" aria-label="Close terminal" title="Close terminal">×</button>
+</div>
+
+<div class="terminal-body">
+  <div class="script-stack">
+    <pre #highlight class="script-highlight hljs" aria-hidden="true"><code [innerHTML]="highlighted()"></code></pre>
+    <textarea
+      #editor
+      class="script"
+      spellcheck="false"
+      wrap="off"
+      aria-label="Script"
+      [ngModel]="script()"
+      (ngModelChange)="script.set($event)"
+      (keydown)="onKeydown($event)"
+      (scroll)="syncScroll(editor)"></textarea>
+  </div>
+
+  <div class="console" aria-live="polite">
+    @for (line of output(); track $index) {
+    <div class="console-line level-{{ line.level }}">{{ line.text }}</div>
+    } @empty {
+    <div class="console-empty">Console output appears here. Ctrl+Enter runs the script.</div>
+    }
+  </div>
+</div>

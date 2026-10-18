@@ -3,28 +3,30 @@ import { Routes } from "@angular/router";
 export const APP_ROUTES: Routes = [
 	{
 		path: "index",
+		title: "Home",
 		loadComponent: () =>
 			import("./pages/home/home.component").then((m) => m.HomeComponent),
 	},
 	{
 		path: "about",
+		title: "Contact",
 		loadComponent: () =>
 			import("./pages/contact/contact.component").then(
 				(m) => m.ContactComponent,
 			),
 	},
 	{
-		path: "news",
-		title: "News",
-		redirectTo: "en/news",
+		path: "changelog",
+		title: "Changelog",
+		redirectTo: "en/changelog",
 		pathMatch: "full",
 	},
 	{
-		path: ":lang/news",
-		title: "News",
+		path: ":lang/changelog",
+		title: "Changelog",
 		loadComponent: () =>
-			import("./pages/news/news.component").then(
-				(m) => m.NewsComponent,
+			import("./pages/changelog/changelog.component").then(
+				(m) => m.ChangelogComponent,
 			),
 	},
 	{
@@ -42,7 +44,7 @@ export const APP_ROUTES: Routes = [
 			),
 	},
 	{
-		path: "software",
+		path: "projects",
 		title: "Projects",
 		loadComponent: () =>
 			import("./pages/software/software.component").then(
@@ -56,7 +58,7 @@ export const APP_ROUTES: Routes = [
 			import("./pages/tools/tools.component").then((m) => m.ToolsComponent),
 	},
 	{
-		path: "software/app-port-convention",
+		path: "projects/app-port-convention",
 		title: "App Port Convention",
 		loadComponent: () =>
 			import("./pages/software--app-port-convention/app-port-convention.component").then(
@@ -64,7 +66,7 @@ export const APP_ROUTES: Routes = [
 			),
 	},
 	{
-		path: "software/:name",
+		path: "projects/:name",
 		title: "Projects",
 		loadComponent: () =>
 			import("./pages/software--project/project.component").then(
@@ -97,11 +99,13 @@ export const APP_ROUTES: Routes = [
 	},
 	{
 		path: "life",
+		title: "Life",
 		loadComponent: () =>
 			import("./pages/life/life.component").then((m) => m.LifeComponent),
 	},
 	{
 		path: "favorite",
+		title: "Favorite",
 		loadComponent: () =>
 			import("./pages/favorite/favorite.component").then(
 				(m) => m.FavoriteComponent,
@@ -109,6 +113,7 @@ export const APP_ROUTES: Routes = [
 	},
 	{
 		path: "favorite/books",
+		title: "Favorite Books",
 		loadComponent: () =>
 			import("./pages/favorite-books/favorite-books.component").then(
 				(m) => m.FavoriteBooksComponent,

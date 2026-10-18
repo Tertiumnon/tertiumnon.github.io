@@ -3,14 +3,13 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { MdContentComponent } from "../../components/md-content/md-content.component";
-import { PageLoaderComponent } from "../../components/page-loader/page-loader.component";
 import { Post, PostGetParams } from "../../entities/post/post.types";
 import { PostService } from "../../entities/post/post.service";
 
 @Component({
 	selector: "app-post",
 	standalone: true,
-	imports: [CommonModule, MdContentComponent, PageLoaderComponent],
+	imports: [CommonModule, MdContentComponent],
 	templateUrl: "./post.component.html",
 	styleUrl: "./post.component.css",
 })

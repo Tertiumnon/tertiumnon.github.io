@@ -1,14 +1,26 @@
 <div class="flex dropdown">
   <div class="mr-2 label">{{ label }}</div>
   <div class="option-list" (click)="toggle()">
-    <div class="option selected">{{ selectedOption || placeholder }}</div>
-    <div
-      *ngFor="let option of options"
-      class="px-4 p-1 option"
-      [class.hidden]="!isOpened || option === selectedOption"
-      (click)="onOptionClick(option, $event)"
-    >
-      {{ option }}
+    <!-- Hidden copy of every option: it reserves the width of the widest one, so the control does not change width. -->
+    <div class="sizer" aria-hidden="true">
+      @for (option of options; track option) {
+      <div class="option">{{ option }}</div>
+      }
+      <div class="option">{{ placeholder }}</div>
     </div>
+    <div class="option selected">{{ selectedOption || placeholder }}</div>
+    <!-- The opened list floats over the content below the control. -->
+    @if (isOpened) {
+    <div class="menu">
+      <div
+        *ngFor="let option of options"
+        class="option"
+        [class.hidden]="option === selectedOption"
+        (click)="onOptionClick(option, $event)"
+      >
+        {{ option }}
+      </div>
+    </div>
+    }
   </div>
 </div>

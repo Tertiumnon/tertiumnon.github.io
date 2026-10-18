@@ -1,21 +1,61 @@
-import { IProject } from "./project.types";
+import { IProject, IProjectRelease, IProjectVersion } from "./project.types";
 import { ProjectLicense, ProjectStatus } from "./project.constants";
-import { GITHUB_REPOS, GITHUB_USER } from "../github-repo/github-repo.data";
+import githubProjects from "../../../assets/projects/github-projects.json";
 import projectDates from "../../../assets/project-dates.json";
 
 const PROJECT_DATES: Record<string, string> = projectDates;
 
-const GITHUB_PROJECT_ITEMS: IProject[] = GITHUB_REPOS.map((repo) => ({
-	name: repo.name,
-	title: repo.title,
-	type: repo.type,
-	description: repo.description,
-	imagePreview: "",
-	image: "",
-	link: `#/software/github/${repo.name}`,
-	updatedAt: PROJECT_DATES[`github:${repo.name}`],
-	status: repo.status,
-}));
+// Shape of one entry in github-projects.json; optional fields are left out of the JSON when absent.
+type GithubProjectJson = {
+	name: string;
+	title: string;
+	type?: string;
+	language?: string;
+	image?: string;
+	screenshots?: string[];
+	repoLicense?: string;
+	languageIcon?: string;
+	frameworks?: string[];
+	description?: string;
+	url: string;
+	readme: boolean;
+	releases: IProjectRelease[];
+	version?: IProjectVersion;
+};
+
+const ACTIVE_YEARS = 5;
+
+const activeSince = new Date();
+activeSince.setFullYear(activeSince.getFullYear() - ACTIVE_YEARS);
+const ACTIVE_SINCE = activeSince.toISOString().slice(0, 10);
+
+const isActive = (updatedAt?: string): boolean =>
+	updatedAt !== undefined && updatedAt >= ACTIVE_SINCE;
+
+// Generated at build time by scripts/project/github-projects--create (only public repositories are listed).
+const GITHUB_PROJECT_ITEMS: IProject[] = (githubProjects as GithubProjectJson[]).map((repo) => {
+	const updatedAt = PROJECT_DATES[`github:${repo.name}`];
+	return {
+		name: repo.name,
+		title: repo.title,
+		type: repo.type,
+		language: repo.language,
+		description: repo.description,
+		imagePreview: "",
+		link: `#/projects/${repo.name}`,
+		image: repo.image,
+		screenshots: repo.screenshots,
+		repoLicense: repo.repoLicense,
+		languageIcon: repo.languageIcon,
+		frameworks: repo.frameworks,
+		url: repo.url,
+		updatedAt,
+		readme: repo.readme,
+		releases: repo.releases,
+		version: repo.version,
+		status: isActive(updatedAt) ? ProjectStatus.Active : ProjectStatus.Inactive,
+	};
+});
 
 export const TOOL_ITEMS: IProject[] = [
 	{
@@ -25,7 +65,7 @@ export const TOOL_ITEMS: IProject[] = [
 		description: "Recommended dev ports for frameworks and services.",
 		imagePreview: "",
 		image: "",
-		link: "#/software/app-port-convention",
+		link: "#/projects/app-port-convention",
 		updatedAt: PROJECT_DATES["github:app-port-convention"],
 		license: ProjectLicense.OpenSource,
 		status: ProjectStatus.Active,
@@ -42,93 +82,4 @@ export const TOOL_ITEMS: IProject[] = [
 	},
 ];
 
-const MANUAL_PROJECT_ITEMS: IProject[] = [
-	{
-		name: "git-style-guide",
-		title: "Git Style Guide",
-		type: "Style Guide",
-		description: "Git Style Guide.",
-		imagePreview: "",
-		image: "",
-		link: "#/software/git-style-guide",
-		url: "https://github.com/Tertiumnon/git-style-guide",
-		status: ProjectStatus.Inactive,
-	},
-	{
-		name: "rest-api-style-guide",
-		title: "REST API Style Guide",
-		type: "Style Guide",
-		description: "REST API Style Guide.",
-		imagePreview: "",
-		image: "",
-		link: "#/software/rest-api-style-guide",
-		url: "https://github.com/Tertiumnon/rest-api-style-guide",
-		status: ProjectStatus.Inactive,
-	},
-	{
-		name: "frontend-style-guide",
-		title: "Frontend Style Guide",
-		type: "Style Guide",
-		description: "Frontend Style Guide.",
-		imagePreview: "",
-		image: "",
-		link: "#/software/frontend-style-guide",
-		url: "https://github.com/Tertiumnon/frontend-style-guide",
-		status: ProjectStatus.Inactive,
-	},
-	{
-		name: "send-text-to-form",
-		title: "Send Text To Form",
-		type: "Chrome Extension",
-		description: "Chrome extension for sending text to form on any page.",
-		imagePreview: "",
-		image:
-			"/assets/images/projects/send-text-to-form-web-ext/2017-send-text-to-form-web-ext.png",
-		link: "#/software/send-text-to-form",
-		url: "https://chrome.google.com/webstore/detail/send-text-to-form/oapmpchdbmlmblgeambfmcmmoalbgooi",
-		updatedAt: PROJECT_DATES["github:send-text-to-form"],
-		status: ProjectStatus.Inactive,
-	},
-	{
-		name: "bookmarks-manager",
-		title: "Bookmarks Manager",
-		type: "Firefox Extension",
-		description: "Firefox extension for bookmarks organizing.",
-		imagePreview: "",
-		image: "",
-		link: "#/software/bookmarks-manager",
-		url: "https://addons.mozilla.org/en-US/firefox/addon/bookmarks-manager/",
-		updatedAt: PROJECT_DATES["github:bookmarks-manager"],
-		status: ProjectStatus.Active,
-	},
-	{
-		name: "senior-pomodoro",
-		title: "Senior Pomodoro",
-		type: "Desktop Application",
-		description: "Pomodoro timer for coders.",
-		imagePreview: "",
-		image: "",
-		link: "#/software/senior-pomodoro",
-		updatedAt: PROJECT_DATES["github:senior-pomodoro-app"],
-		license: ProjectLicense.Free,
-		status: ProjectStatus.Inactive,
-	},
-];
-
-const ACTIVE_YEARS = 5;
-
-const activeSince = new Date();
-activeSince.setFullYear(activeSince.getFullYear() - ACTIVE_YEARS);
-const ACTIVE_SINCE = activeSince.toISOString().slice(0, 10);
-
-const isActive = (updatedAt?: string): boolean =>
-	updatedAt !== undefined && updatedAt >= ACTIVE_SINCE;
-
-const PROJECT_ITEMS: IProject[] = [...MANUAL_PROJECT_ITEMS, ...GITHUB_PROJECT_ITEMS].map(
-	(project) => ({
-		...project,
-		status: isActive(project.updatedAt) ? ProjectStatus.Active : ProjectStatus.Inactive,
-	}),
-);
-
-export default PROJECT_ITEMS;
+export default GITHUB_PROJECT_ITEMS;

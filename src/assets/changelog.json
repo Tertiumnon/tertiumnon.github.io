@@ -1,0 +1,736 @@
+[
+  {
+    "title": "Welcome to Changelog Feed",
+    "link": "/en/changelog/2026-06-23--welcome-to-changelog",
+    "language": "en",
+    "category": "Announcements",
+    "project": "Tertium",
+    "tags": [
+      "Changelog",
+      "Update"
+    ],
+    "publishedAt": "2026-06-23",
+    "filename": "index.en.md",
+    "dirname": "2026-06-23--welcome-to-changelog",
+    "content": "---\npublishedAt: 2026-06-23\ncategories: [\"Announcements\"]\ntags: [\"Changelog\",\"Update\"]\n---\n\n# Welcome to Changelog Feed\n\nThis is the first test changelog item. Changelog items are displayed inline on the Changelog page, similar to Twitter messages.\n\nEach changelog item includes:\n- **Title** - Main heading\n- **Date** - Publication date\n- **Content** - Full markdown content rendered directly\n\nYou can add categories and tags to organize your changelog items.\n"
+  },
+  {
+    "title": "Bookmarks Manager for Firefox",
+    "link": "/en/changelog/2017-07-10--bookmarks-manager-for-firefox",
+    "language": "en",
+    "category": "Browsers",
+    "tags": [
+      "Books",
+      "Browser",
+      "Education",
+      "Extensions"
+    ],
+    "publishedAt": "2017-07-10",
+    "filename": "index.en.md",
+    "dirname": "2017-07-10--bookmarks-manager-for-firefox",
+    "content": "---\npublishedAt: 2017-07-10\ncategory: Browsers\ntags: [\"Books\",\"Browser\",\"Education\",\"Extensions\"]\n---\n\n# Bookmarks Manager for Firefox\n\nMy new extension for Firefox:\n\n[Bookmarks Manager on Firefox Add-ons](https://addons.mozilla.org/firefox/addon/bookmarks-manager/)\n"
+  },
+  {
+    "title": "Send Text To Form (Chrome Extension)",
+    "link": "/en/changelog/2017-04-23--send-text-to-form-chrome-extension",
+    "language": "en",
+    "category": "Browsers",
+    "tags": [
+      "Browser",
+      "Extensions"
+    ],
+    "publishedAt": "2017-04-23",
+    "filename": "index.en.md",
+    "dirname": "2017-04-23--send-text-to-form-chrome-extension",
+    "content": "---\npublishedAt: 2017-04-23\ncategory: Browsers\ntags: [\"Browser\",\"Extensions\"]\n---\n\n# Send Text To Form (Chrome Extension)\n\nA Chrome browser extension for sending selected text from web pages to a custom form destination.\n\nHighlight any text on a webpage and use the context menu \"Send to…\" option to route it to a pre-configured web form. Useful for SEO analyzers and other text processing tools.\n\n[Send Text to Form on Chrome Web Store](https://chrome.google.com/webstore/search/send%20text%20to%20form)\n"
+  },
+  {
+    "title": "Bookmarks Manager: Release 0.1",
+    "link": "/en/changelog/2020-03-28--bookmarks-manager-release-01",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Books",
+      "Education"
+    ],
+    "publishedAt": "2020-03-28",
+    "filename": "index.en.md",
+    "dirname": "2020-03-28--bookmarks-manager-release-01",
+    "content": "---\npublishedAt: 2020-03-28\ncategory: Programming\ntags: [\"Books\",\"Education\"]\n---\n\n# Bookmarks Manager: Release 0.1\n\nA new version (0.1) of the Firefox web extension \"Bookmarks Manager\" has been released.\n\nThe key addition in this update is a sorting function for managing bookmarks.\n\n[Bookmarks Manager on Firefox Add-ons](https://addons.mozilla.org/firefox/addon/bookmarks-manager/)\n"
+  },
+  {
+    "title": "Tertium JS Snippets: My New Visual Studio Code Extension",
+    "link": "/en/changelog/2019-10-22--tertium-js-snippets-my-new-visual-studio-code-extension",
+    "language": "en",
+    "category": "Browsers",
+    "tags": [
+      "Browser",
+      "Extensions",
+      "JavaScript",
+      "Web Development"
+    ],
+    "publishedAt": "2019-10-22",
+    "filename": "index.en.md",
+    "dirname": "2019-10-22--tertium-js-snippets-my-new-visual-studio-code-extension",
+    "content": "---\npublishedAt: 2019-10-22\ncategory: Browsers\ntags: [\"Browser\",\"Extensions\",\"JavaScript\",\"Web Development\"]\n---\n\n# Tertium JS Snippets: My New Visual Studio Code Extension\n\nMy new VS Code extension with JavaScript/TypeScript code snippets.\n\n[Tertium JS Snippets on VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=vittertiumnon.tertium-js-snippets)\n"
+  },
+  {
+    "title": "Sticker Pack for Telegram: FavoriteSerials",
+    "link": "/en/changelog/2017-07-20--sticker-pack-for-telegram-favoriteserials",
+    "language": "en",
+    "category": "Programming",
+    "tags": [
+      "Tips"
+    ],
+    "publishedAt": "2017-07-20",
+    "filename": "index.en.md",
+    "dirname": "2017-07-20--sticker-pack-for-telegram-favoriteserials",
+    "content": "---\npublishedAt: 2017-07-20\ncategory: Programming\ntags: [\"Tips\"]\n---\n\n# Sticker Pack for Telegram: FavoriteSerials\n\nMy sticker pack for Telegram:\n\n[FavoriteSerials](https://t.me/addstickers/FavoriteSerials)\n"
+  },
+  {
+    "title": "@tertium/js-markdown-wiki 0.6.0",
+    "link": "/en/changelog/2026-10-01--tertium-js-markdown-wiki-0-6-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js-markdown-wiki",
+    "tags": [
+      "tertium-js-markdown-wiki"
+    ],
+    "publishedAt": "2026-10-01",
+    "filename": "index.en.md",
+    "dirname": "2026-10-01--tertium-js-markdown-wiki-0-6-0",
+    "generated": true,
+    "content": "## @tertium/js-markdown-wiki 0.6.0\n\n- test: add suite for common markdown transformations\n- refactor: switch markdown rendering from markdown-it to Bun.markdown\n- chore: add pre-commit hook and bump @tertium/js to 3.0.2\n- docs: update readme\n- chore: bump @tertium/js to 3.0.0\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js-markdown-wiki/releases/tag/v0.6.0"
+    }
+  },
+  {
+    "title": "@tertium/css 1.5.1",
+    "link": "/en/changelog/2026-10-08--tertium-css-1-5-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/css",
+    "tags": [
+      "tertium-css"
+    ],
+    "publishedAt": "2026-10-08",
+    "filename": "index.en.md",
+    "dirname": "2026-10-08--tertium-css-1-5-1",
+    "generated": true,
+    "content": "## @tertium/css 1.5.1\n\n- chore(release): add changelog and release scripts\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-css/releases/tag/v1.5.1"
+    }
+  },
+  {
+    "title": "@tertium/cheatsheets 2.3.1",
+    "link": "/en/changelog/2026-07-19--tertium-cheatsheets-2-3-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/cheatsheets",
+    "tags": [
+      "tertium-cheatsheets"
+    ],
+    "publishedAt": "2026-07-19",
+    "filename": "index.en.md",
+    "dirname": "2026-07-19--tertium-cheatsheets-2-3-1",
+    "generated": true,
+    "content": "## @tertium/cheatsheets 2.3.1\n\n- chore(release): add changelog and release scripts\n- chore(release): use @tertium/gith for releases and changelog\n- chore: mark php snippets as documentation\n- docs: add comprehensive architectural styles and patterns documentation\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-cheatsheets/releases/tag/v2.3.1"
+    }
+  },
+  {
+    "title": "@tertium/countries 0.6.1",
+    "link": "/en/changelog/2026-10-08--tertium-countries-0-6-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/countries",
+    "tags": [
+      "tertium-countries"
+    ],
+    "publishedAt": "2026-10-08",
+    "filename": "index.en.md",
+    "dirname": "2026-10-08--tertium-countries-0-6-1",
+    "generated": true,
+    "content": "## @tertium/countries 0.6.1\n\n- chore(release): add changelog and release scripts\n- chore(release): use @tertium/gith for releases and changelog\n\n# [0.2.0](https://github.com/Tertiumnon/countries/compare/v0.1.1...v0.2.0) (2021-05-19)\n\n\n### Features\n\n* change export type ([abf495a](https://github.com/Tertiumnon/countries/commit/abf495a8c9c1af4e6e116cbd153f69e42041c8f5))\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-countries/releases/tag/v0.6.1"
+    }
+  },
+  {
+    "title": "@tertium/countries 0.1.2",
+    "link": "/en/changelog/2021-05-18--tertium-countries-0-1-2",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/countries",
+    "tags": [
+      "tertium-countries"
+    ],
+    "publishedAt": "2021-05-18",
+    "filename": "index.en.md",
+    "dirname": "2021-05-18--tertium-countries-0-1-2",
+    "generated": true,
+    "content": "## @tertium/countries 0.1.2\n\n### Bug Fixes\n\n* export ([36bce67](https://github.com/Tertiumnon/countries/commit/36bce67371f1b5cf713999890bd9face961d5601))\n\n\n\n# 0.1.0 (2021-05-18)\n\n\n### Features\n\n* add changelog ([ce964ee](https://github.com/Tertiumnon/countries/commit/ce964ee709aafa5f1ace946c8b781ce0db710b3b))\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-countries/releases/tag/v0.1.2"
+    }
+  },
+  {
+    "title": "@tertium/hlpr 0.23.2",
+    "link": "/en/changelog/2026-10-18--tertium-hlpr-0-23-2",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-18",
+    "filename": "index.en.md",
+    "dirname": "2026-10-18--tertium-hlpr-0-23-2",
+    "generated": true,
+    "content": "## @tertium/hlpr 0.23.2\n\n- fix: app install/uninstall - search strongly by name\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.23.2"
+    }
+  },
+  {
+    "title": "@tertium/hlpr 0.23.1",
+    "link": "/en/changelog/2026-10-18--tertium-hlpr-0-23-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-18",
+    "filename": "index.en.md",
+    "dirname": "2026-10-18--tertium-hlpr-0-23-1",
+    "generated": true,
+    "content": "## @tertium/hlpr 0.23.1\n\n- docs(app): list snap, flatpak and zypper in app command docs\n- feat(app): remove apps from a keyboard menu\n- feat(app): install apps from a keyboard-selected package\n- docs: update to standard way\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.23.1"
+    }
+  },
+  {
+    "title": "@tertium/hlpr 0.23.0",
+    "link": "/en/changelog/2026-10-17--tertium-hlpr-0-23-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-hlpr-0-23-0",
+    "generated": true,
+    "content": "## @tertium/hlpr 0.23.0\n\n- docs: list aws-param-store add and remove and the new ssh destination flags\n- refactor(pm2): take the ssh destination from -ssh-host, -ssh-user or -ssm-param\n- refactor(mariadb): take the ssh destination from -ssh-host, -ssh-user or -ssm-param\n- feat(ssh): take the connection from -ssh-host and -ssh-user or an SSM env value\n- feat(aws-param-store): add add and remove commands\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.23.0"
+    }
+  },
+  {
+    "title": "@tertium/hlpr 0.22.0",
+    "link": "/en/changelog/2026-10-17--tertium-hlpr-0-22-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-hlpr-0-22-0",
+    "generated": true,
+    "content": "## @tertium/hlpr 0.22.0\n\n- refactor(mariadb): read set-user-password's password from stdin when not given\n- docs: list set-user-password, rotate-password and pm2 commands\n- feat(pm2): add start, stop, restart and status over SSH\n- feat(mariadb): add rotate-password for a user and its DATABASE_URL parameter\n- feat(ssh): use a Host alias as written when -host names one\n- refactor(core): move parseFlags to core/args for every command\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.22.0"
+    }
+  },
+  {
+    "title": "@tertium/hlpr 0.21.0",
+    "link": "/en/changelog/2026-10-17--tertium-hlpr-0-21-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-hlpr-0-21-0",
+    "generated": true,
+    "content": "## @tertium/hlpr 0.21.0\n\n- docs: list aws-param-store set in README and help test\n- feat(aws-param-store): add set and read -key for one .env variable\n- docs: list file, aws-param-store and mariadb commands in README and help test\n- feat(mariadb): add backup, sync and user-password over SSH\n- feat(aws-param-store): add read and edit for Parameter Store values\n- feat(file): add read and edit for remote files over SSH\n- feat(ssh): look up connections by HostName and remove ssh read\n- feat(core): add -editor choice for file and aws edit commands\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.21.0"
+    }
+  },
+  {
+    "title": "@tertium/hlpr 0.20.0",
+    "link": "/en/changelog/2026-10-17--tertium-hlpr-0-20-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-hlpr-0-20-0",
+    "generated": true,
+    "content": "## @tertium/hlpr 0.20.0\n\n- docs(changelog): drop hand-written Unreleased; release entries are generated\n- chore: use gith changelog for the version script\n- refactor(git)!: move git setup to gith setup -n npm\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.20.0"
+    }
+  },
+  {
+    "title": "@tertium/hlpr 0.19.0",
+    "link": "/en/changelog/2026-10-17--tertium-hlpr-0-19-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-hlpr-0-19-0",
+    "generated": true,
+    "content": "## @tertium/hlpr 0.19.0\n\n- feat(gh): add rename and change commands\n- chore: update to a new gith cli util approach\n- feat(git): restore setup with --hooks --npm\n- refactor(git)!: remove hlpr git commands, moved to @tertium/gith\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.19.0"
+    }
+  },
+  {
+    "title": "@tertium/hlpr 0.18.0",
+    "link": "/en/changelog/2026-10-16--tertium-hlpr-0-18-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-16",
+    "filename": "index.en.md",
+    "dirname": "2026-10-16--tertium-hlpr-0-18-0",
+    "generated": true,
+    "content": "## @tertium/hlpr 0.18.0\n\n- docs: update root command table and AGENTS example\n- fix(help): show runnable \"also\" commands and source descriptions\n- refactor(runtime): match install help with tool install\n- feat(system): read Linux RAM modules with dmidecode\n- feat(zsh): add fix --bun to put bun on PATH in .zshrc\n- feat(tool): add Claude, Codex, and Copilot CLI installs\n- feat(ssh): add mkkey, setup, and fix; rename mkconn to mkcon\n- fix: make info output color explicit so tests are TTY-independent\n- feat(app): search remote package catalogs with --remote\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.18.0"
+    }
+  },
+  {
+    "title": "@tertium/hlpr 0.17.0",
+    "link": "/en/changelog/2026-10-16--tertium-hlpr-0-17-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-16",
+    "filename": "index.en.md",
+    "dirname": "2026-10-16--tertium-hlpr-0-17-0",
+    "generated": true,
+    "content": "## @tertium/hlpr 0.17.0\n\n- feat: process kill -folder, -file and -path targets\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.17.0"
+    }
+  },
+  {
+    "title": "@tertium/hlpr 0.16.0",
+    "link": "/en/changelog/2026-10-13--tertium-hlpr-0-16-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/hlpr",
+    "tags": [
+      "tertium-hlpr"
+    ],
+    "publishedAt": "2026-10-13",
+    "filename": "index.en.md",
+    "dirname": "2026-10-13--tertium-hlpr-0-16-0",
+    "generated": true,
+    "content": "## @tertium/hlpr 0.16.0\n\n- feat: add angular, npm, git, gh, az and ssh read commands with changelog\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-hlpr/releases/tag/v0.16.0"
+    }
+  },
+  {
+    "title": "@tertium/gith 0.3.1",
+    "link": "/en/changelog/2026-10-18--tertium-gith-0-3-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/gith",
+    "tags": [
+      "tertium-gith"
+    ],
+    "publishedAt": "2026-10-18",
+    "filename": "index.en.md",
+    "dirname": "2026-10-18--tertium-gith-0-3-1",
+    "generated": true,
+    "content": "## @tertium/gith 0.3.1\n\n- chore(hooks): run typecheck, format check and lint before each commit\n- feat(flow): name work branches develop--<goal>, merge --main, merge -r/-h picker\n- feat: switch -r/-h to newest container, save --all stages first\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-gith/releases/tag/v0.3.1"
+    }
+  },
+  {
+    "title": "@tertium/gith 0.3.0",
+    "link": "/en/changelog/2026-10-17--tertium-gith-0-3-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/gith",
+    "tags": [
+      "tertium-gith"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-gith-0-3-0",
+    "generated": true,
+    "content": "## @tertium/gith 0.3.0\n\n- feat(merge): --develop merges this branch into develop\n- fix(remove): print the branch list before asking to remove them\n- feat(finish): gith finish --current-release and --current-hotfix\n- feat(merge): pick the branch and the target; delete the merged work branch\n- feat(remove): gith remove without -b opens the branch list\n- feat(picker): arrow keys replace number entry; empty pockets says so\n- feat(switch): gith switch lists local and origin branches to pick from\n- feat(switch): --release and --hotfix switch to the newest release or hotfix\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-gith/releases/tag/v0.3.0"
+    }
+  },
+  {
+    "title": "@tertium/gith 0.2.0",
+    "link": "/en/changelog/2026-10-17--tertium-gith-0-2-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/gith",
+    "tags": [
+      "tertium-gith"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-gith-0-2-0",
+    "generated": true,
+    "content": "## @tertium/gith 0.2.0\n\n- feat(changelog): write CHANGELOG.md as its own commit\n- feat(changelog): gith changelog writes a release entry from commits\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-gith/releases/tag/v0.2.0"
+    }
+  },
+  {
+    "title": "@tertium/prisma-codegen 0.11.2",
+    "link": "/en/changelog/2026-10-13--tertium-prisma-codegen-0-11-2",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/prisma-codegen",
+    "tags": [
+      "tertium-prisma-codegen"
+    ],
+    "publishedAt": "2026-10-13",
+    "filename": "index.en.md",
+    "dirname": "2026-10-13--tertium-prisma-codegen-0-11-2",
+    "generated": true,
+    "content": "## @tertium/prisma-codegen 0.11.2\n\n- chore(release): add changelog and release scripts\n- chore(release): use @tertium/gith for releases and changelog\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-prisma-codegen/releases/tag/v0.11.2"
+    }
+  },
+  {
+    "title": "@tertium/js 4.2.0",
+    "link": "/en/changelog/2026-10-17--tertium-js-4-2-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-17",
+    "filename": "index.en.md",
+    "dirname": "2026-10-17--tertium-js-4-2-0",
+    "generated": true,
+    "content": "## @tertium/js 4.2.0\n\n- (no changes recorded)\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v4.2.0"
+    }
+  },
+  {
+    "title": "@tertium/js 4.1.0",
+    "link": "/en/changelog/2026-10-13--tertium-js-4-1-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-13",
+    "filename": "index.en.md",
+    "dirname": "2026-10-13--tertium-js-4-1-0",
+    "generated": true,
+    "content": "## @tertium/js 4.1.0\n\n- chore: move scripts to hlpr and document the move\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v4.1.0"
+    }
+  },
+  {
+    "title": "@tertium/js 4.0.0",
+    "link": "/en/changelog/2026-10-11--tertium-js-4-0-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-11",
+    "filename": "index.en.md",
+    "dirname": "2026-10-11--tertium-js-4-0-0",
+    "generated": true,
+    "content": "## @tertium/js 4.0.0\n\n- feat(workflow): run a project's .tertium/workflows/*.yml in GitHub Actions syntax\n- chore: retain shared VS Code tasks\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v4.0.0"
+    }
+  },
+  {
+    "title": "@tertium/js 3.2.0",
+    "link": "/en/changelog/2026-10-05--tertium-js-3-2-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-05",
+    "filename": "index.en.md",
+    "dirname": "2026-10-05--tertium-js-3-2-0",
+    "generated": true,
+    "content": "## @tertium/js 3.2.0\n\n- feat(db-backup): add shared MariaDB backup command\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.2.0"
+    }
+  },
+  {
+    "title": "@tertium/js 3.1.1",
+    "link": "/en/changelog/2026-10-04--tertium-js-3-1-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-04",
+    "filename": "index.en.md",
+    "dirname": "2026-10-04--tertium-js-3-1-1",
+    "generated": true,
+    "content": "## @tertium/js 3.1.1\n\n- feat: new db sync param\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.1.1"
+    }
+  },
+  {
+    "title": "@tertium/js 3.1.0",
+    "link": "/en/changelog/2026-10-04--tertium-js-3-1-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-04",
+    "filename": "index.en.md",
+    "dirname": "2026-10-04--tertium-js-3-1-0",
+    "generated": true,
+    "content": "## @tertium/js 3.1.0\n\n- feat(db-sync): add dev→prod DB copy with AWS env in memory\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.1.0"
+    }
+  },
+  {
+    "title": "@tertium/js 3.0.4",
+    "link": "/en/changelog/2026-10-03--tertium-js-3-0-4",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-03",
+    "filename": "index.en.md",
+    "dirname": "2026-10-03--tertium-js-3-0-4",
+    "generated": true,
+    "content": "## @tertium/js 3.0.4\n\n- fix(release): push only the release tag; format the deploy env fix\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.0.4"
+    }
+  },
+  {
+    "title": "@tertium/js 3.0.3",
+    "link": "/en/changelog/2026-10-03--tertium-js-3-0-3",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-03",
+    "filename": "index.en.md",
+    "dirname": "2026-10-03--tertium-js-3-0-3",
+    "generated": true,
+    "content": "## @tertium/js 3.0.3\n\n- fix(deploy): pass process.env to the build explicitly\n- docs: create to-do for deploy\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.0.3"
+    }
+  },
+  {
+    "title": "@tertium/js 3.0.2",
+    "link": "/en/changelog/2026-10-01--tertium-js-3-0-2",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-01",
+    "filename": "index.en.md",
+    "dirname": "2026-10-01--tertium-js-3-0-2",
+    "generated": true,
+    "content": "## @tertium/js 3.0.2\n\n- fix static deploy archive self-inclusion\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.0.2"
+    }
+  },
+  {
+    "title": "@tertium/js 3.0.1",
+    "link": "/en/changelog/2026-10-01--tertium-js-3-0-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-10-01",
+    "filename": "index.en.md",
+    "dirname": "2026-10-01--tertium-js-3-0-1",
+    "generated": true,
+    "content": "## @tertium/js 3.0.1\n\n- fix deploy archive safety\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.0.1"
+    }
+  },
+  {
+    "title": "@tertium/js 3.0.0",
+    "link": "/en/changelog/2026-09-22--tertium-js-3-0-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/js",
+    "tags": [
+      "tertium-js"
+    ],
+    "publishedAt": "2026-09-22",
+    "filename": "index.en.md",
+    "dirname": "2026-09-22--tertium-js-3-0-0",
+    "generated": true,
+    "content": "## @tertium/js 3.0.0\n\n- chore: trim package.json scripts to daily-use ones only\n- feat: add JWT library and automated changelog generation, clean up auth/API modules\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js/releases/tag/v3.0.0"
+    }
+  },
+  {
+    "title": "JSON to SQL Script 0.2.0",
+    "link": "/en/changelog/2020-05-29--json-to-sql-script-0-2-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "JSON to SQL Script",
+    "tags": [
+      "json-to-sql-script"
+    ],
+    "publishedAt": "2020-05-29",
+    "filename": "index.en.md",
+    "dirname": "2020-05-29--json-to-sql-script-0-2-0",
+    "generated": true,
+    "content": "## JSON to SQL Script 0.2.0\n\n- chore(release): add changelog and release scripts\n- docs: improve README title\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/json-to-sql-script/releases/tag/v0.2.0"
+    }
+  },
+  {
+    "title": "JavaScript Snippets for Visual Studio Code 3.0.0",
+    "link": "/en/changelog/2025-05-30--tertium-js-snippets-3-0-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "JavaScript Snippets for Visual Studio Code",
+    "tags": [
+      "tertium-js-snippets"
+    ],
+    "publishedAt": "2025-05-30",
+    "filename": "index.en.md",
+    "dirname": "2025-05-30--tertium-js-snippets-3-0-0",
+    "generated": true,
+    "content": "## JavaScript Snippets for Visual Studio Code 3.0.0\n\n##### Build System / Dependencies\n\n*  replace node to bun ([47c691d0](https://github.com/Tertiumnon/tertium-js-snippets/commit/47c691d0b29e57e059c823e9f383a819835ed6d2))\n\n### 2.3.0 (2023-11-04)\n\n##### New Features\n\n*  remove semicolon ([d0bf8a93](https://github.com/Tertiumnon/tertium-js-snippets/commit/d0bf8a93ea4d85649424e96dc600a55c655d61e4))\n\n#### 2.2.2 (2021-10-30)\n\n##### Documentation Changes\n\n*  add new readme image ([bcb1e132](https://github.com/Tertiumnon/tertium-js-snippets/commit/bcb1e132edb60d7209bf60b7bd5afdb29ff1488e))\n\n#### 2.2.1 (2021-10-30)\n\n##### Documentation Changes\n\n*  update declarations ([bb799b75](https://github.com/Tertiumnon/tertium-js-snippets/commit/bb799b75b87014143b653b81277db45f0409e459))\n\n### 2.2.0 (2021-10-30)\n\n##### New Features\n\n*  add object and array arguments ([cffabefa](https://github.com/Tertiumnon/tertium-js-snippets/commit/cffabefa787838b5898fcf011bbd403d9862040b))\n\n### 2.1.0 (2021-10-30)\n\n##### New Features\n\n*  add object methods, fix semicommas ([03fed135](https://github.com/Tertiumnon/tertium-js-snippets/commit/03fed1353ac4d6c9cbf09b451c0a727817f77d1e))\n\n#### 2.0.1 (2021-10-29)\n\n##### Chores\n\n*  change publisher name ([ea1b24f9](https://github.com/Tertiumnon/tertium-js-snippets/commit/ea1b24f92a6124647fd2ba0d68a74678ca0c479b))\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js-snippets/releases/tag/v3.0.0"
+    }
+  },
+  {
+    "title": "JavaScript Snippets for Visual Studio Code 2.0.0",
+    "link": "/en/changelog/2021-10-29--tertium-js-snippets-2-0-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "JavaScript Snippets for Visual Studio Code",
+    "tags": [
+      "tertium-js-snippets"
+    ],
+    "publishedAt": "2021-10-29",
+    "filename": "index.en.md",
+    "dirname": "2021-10-29--tertium-js-snippets-2-0-0",
+    "generated": true,
+    "content": "## JavaScript Snippets for Visual Studio Code 2.0.0\n\n##### New Features\n\n*  use new naming, remove all quotes, remove duplicating functionality ([7088414d](https://github.com/Tertiumnon/tertium-js-snippets/commit/7088414d45f03e799e13ec62d3018ff3c9bc9cfd))\n\n### 1.9.0 (2021-08-21)\n\n##### Build System / Dependencies\n\n*  add changelog package ([4e576b29](https://github.com/Tertiumnon/tertium-js-snippets/commit/4e576b294763e690a15ac5a85f13823993a20ec6))\n*  change build command ([720bf1c5](https://github.com/Tertiumnon/tertium-js-snippets/commit/720bf1c5533de71b09d02e07864d8db1e5e73b92))\n*  add build command ([a8d1f632](https://github.com/Tertiumnon/tertium-js-snippets/commit/a8d1f63255addff7188d7410f2d63408f1056450))\n*  init cz ([b082aade](https://github.com/Tertiumnon/tertium-js-snippets/commit/b082aade94c1d0dec4eddfec4620e1b920c0fd4f))\n\n##### Documentation Changes\n\n*  change version ([a0be2230](https://github.com/Tertiumnon/tertium-js-snippets/commit/a0be2230fb767298c25ba136cee02e037c882adf))\n*  change changelog ([b2b988d1](https://github.com/Tertiumnon/tertium-js-snippets/commit/b2b988d19f470c5b4458dc72693759dc0ca97306))\n\n##### New Features\n\n*  improve for snippet ([0cd95591](https://github.com/Tertiumnon/tertium-js-snippets/commit/0cd955911a4a53427ac5c283e3cce6b9eff5c023))\n\n##### Bug Fixes\n\n*  add default break for switch ([6e3147e8](https://github.com/Tertiumnon/tertium-js-snippets/commit/6e3147e8e5cb94ef9f54d78be58076caafa5520f))\n\n##### Refactors\n\n*  change semicolons and shortcuts ([11b2ad43](https://github.com/Tertiumnon/tertium-js-snippets/commit/11b2ad43064738e9f835ead94a151ad1d96b15de))\n\n# Change Log\n\nAll notable changes to the \"tertium-js-snippets\" extension will be documented in this file.\n\nCheck [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-js-snippets/releases/tag/v2.0.0"
+    }
+  },
+  {
+    "title": "MediaWiki Template Deploy 0.4.0",
+    "link": "/en/changelog/2026-08-13--mw-deploy-0-4-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "MediaWiki Template Deploy",
+    "tags": [
+      "mw-deploy"
+    ],
+    "publishedAt": "2026-08-13",
+    "filename": "index.en.md",
+    "dirname": "2026-08-13--mw-deploy-0-4-0",
+    "generated": true,
+    "content": "## MediaWiki Template Deploy 0.4.0\n\n- chore(release): add changelog and release scripts\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/mw-deploy/releases/tag/v0.4.0"
+    }
+  }
+]

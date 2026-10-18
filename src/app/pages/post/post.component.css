@@ -1,0 +1,23 @@
+/* A post opens like a file: one column, no pane around the article. */
+.post-file {
+  padding-bottom: 2rem;
+}
+
+app-md-content ::ng-deep .content {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  font-size: inherit;
+}
+
+/* The first heading sits right under the date line. */
+app-md-content ::ng-deep h1 {
+  margin-top: 0;
+}
+
+app-md-content ::ng-deep .post-meta {
+  margin-bottom: 0.5em;
+}

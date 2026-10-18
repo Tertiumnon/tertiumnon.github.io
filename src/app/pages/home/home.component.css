@@ -1,0 +1,64 @@
+/* Fills the editor: the tab bar and status bar are subtracted from the window height. */
+.home-page {
+  height: calc(100vh - 60px);
+  padding: 0;
+}
+
+/* 8-bit game menu on the TV screen. */
+.tv-menu {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #000;
+  color: #36f9f6;
+  font-family: "VT323", monospace;
+  font-size: 2.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.menu-title {
+  margin: 0;
+  font: inherit;
+  font-size: 3rem;
+  color: #ff2e9a;
+  text-shadow: 4px 4px 0 #36f9f6;
+}
+
+.menu-item {
+  display: flex;
+  gap: 16px;
+  min-width: 18rem;
+  padding: 2px 24px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.menu-item.selected {
+  background: #ff2e9a;
+  color: #fff7b0;
+}
+
+.cursor {
+  width: 1em;
+}
+
+.menu-prompt {
+  margin: 8px 0 0;
+  color: #fff7b0;
+  text-shadow: 3px 3px 0 #ff2e9a;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}

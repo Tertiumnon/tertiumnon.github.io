@@ -1,66 +1,72 @@
-import { Component, DestroyRef, inject, signal, computed } from "@angular/core";
+import { SidebarPageFiltersComponent } from "../../components/sidebar/sidebar-page-filters.component";
+import { PageHeaderComponent } from "../../components/page-header/page-header.component";
+import { LoadMoreComponent } from "../../components/load-more/load-more.component";
+import { Component, DestroyRef, effect, inject, signal, computed, untracked } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { ActivatedRoute, Router, RouterLink } from "@angular/router";
+import { ActivatedRoute, RouterLink } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { Post } from "../../entities/post/post.types";
 import { PostService } from "../../entities/post/post.service";
-import { PageLoaderComponent } from "../../components/page-loader/page-loader.component";
-import { PostControlPanelComponent } from "../../components/post-control-panel/post-control-panel.component";
+import { PostFilterService } from "../../components/sidebar/post-filter.service";
+
+const POSTS_PER_BATCH = 10;
 
 @Component({
 	selector: "app-posts",
 	standalone: true,
-	imports: [CommonModule, RouterLink, PageLoaderComponent, PostControlPanelComponent],
+	imports: [CommonModule, RouterLink, SidebarPageFiltersComponent, PageHeaderComponent, LoadMoreComponent],
 	templateUrl: "./posts.component.html",
 	styleUrl: "./posts.component.css",
 })
 export class PostsComponent {
 	private readonly destroyRef = inject(DestroyRef);
 	private readonly activatedRoute = inject(ActivatedRoute);
-	private readonly router = inject(Router);
 	private readonly postService = inject(PostService);
+	readonly filters = inject(PostFilterService);
 
 	allPosts = signal<Post[]>([]);
 	isLoading = signal(true);
-	selectedCategory = signal("All");
-	selectedTag = signal("All");
-
-	categories = computed(() => {
-		const cats = new Set(this.allPosts()
-			.filter((a) => a.category)
-			.map((a) => a.category));
-		return ["All", ...Array.from(cats).sort()];
-	});
-
-	tags = computed(() => {
-		const allTags = new Set<string>();
-		this.allPosts().forEach((a) => {
-			if (Array.isArray(a.tags)) {
-				a.tags.forEach((tag: string) => allTags.add(tag));
-			}
-		});
-		return ["All", ...Array.from(allTags).sort()];
-	});
+	visibleCount = signal(POSTS_PER_BATCH);
 
 	sortedPosts = computed(() => {
 		let filtered = this.allPosts();
 
 		filtered = filtered.filter((a) => a.category);
 
-		if (this.selectedCategory() !== "All") {
-			filtered = filtered.filter((a) => a.category === this.selectedCategory());
+		const category = this.filters.selectedCategory();
+		if (category !== "All") {
+			filtered = filtered.filter((a) => a.category === category);
 		}
 
-		if (this.selectedTag() !== "All") {
-			filtered = filtered.filter((a) =>
-				Array.isArray(a.tags) ? a.tags.includes(this.selectedTag()) : false
-			);
+		const tag = this.filters.selectedTag();
+		if (tag !== "All") {
+			filtered = filtered.filter((a) => (Array.isArray(a.tags) ? a.tags.includes(tag) : false));
 		}
 
+		const sort = this.filters.selectedSort();
+		if (sort === "Title A-Z") {
+			return filtered.sort((a, b) => a.title.localeCompare(b.title));
+		}
+		const newestFirst = sort === "Newest created" ? 1 : -1;
 		return filtered.sort(
-			(a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+			(a, b) => newestFirst * (new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
 		);
 	});
+
+	visiblePosts = computed(() => this.sortedPosts().slice(0, this.visibleCount()));
+
+	loadMore(): void {
+		this.visibleCount.update((count) => count + POSTS_PER_BATCH);
+	}
+
+	constructor() {
+		// A new filter starts again from the first batch.
+		effect(() => {
+			this.filters.selectedCategory();
+			this.filters.selectedTag();
+			untracked(() => this.visibleCount.set(POSTS_PER_BATCH));
+		});
+	}
 
 	ngOnInit(): void {
 		this.activatedRoute.params
@@ -80,6 +86,13 @@ export class PostsComponent {
 								new Date(a.publishedAt).getTime()
 						);
 						this.allPosts.set(sorted);
+
+						const categories = new Set(sorted.filter((a) => a.category).map((a) => a.category));
+						this.filters.categories.set(["All", ...Array.from(categories).sort()]);
+						const tags = new Set<string>();
+						sorted.forEach((a) => a.tags?.forEach((tag) => tags.add(tag)));
+						this.filters.tags.set(["All", ...Array.from(tags).sort()]);
+
 						this.isLoading.set(false);
 					},
 					error: (error: unknown) => {
@@ -88,14 +101,6 @@ export class PostsComponent {
 					},
 				});
 			});
-	}
-
-	onCategoryChange(category: string): void {
-		this.selectedCategory.set(category);
-	}
-
-	onTagChange(tag: string): void {
-		this.selectedTag.set(tag);
 	}
 
 	getPostLink(link: string): (string | number)[] {

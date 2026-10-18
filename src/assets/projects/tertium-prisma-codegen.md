@@ -1,0 +1,409 @@
+# @tertium/prisma-codegen
+
+> ⚠️ **In development.** This package is pre-1.0 and not a final/stable API — breaking changes may land in minor/patch releases without notice. Pin an exact version and review changes before upgrading.
+
+Universal code generation library for Prisma schemas. Reads schema metadata during generation and produces:
+- **REST API handlers** with CRUD operations
+- **GraphQL resolvers** with filtering, search, pagination
+- **TypeScript types** for all entities
+- **Client-side generators** for frontend apps
+
+Single source of truth: your Prisma schema. Everything else is auto-generated.
+
+## Why use this?
+
+- ✅ **Zero manual CRUD code** — all handlers generated from schema
+- ✅ **Single definition** — Prisma schema drives everything
+- ✅ **Metadata-driven** — filtering, search, relations inferred automatically
+- ✅ **Frontend/backend sync** — shared EntityMeta contract
+- ✅ **Universal** — no project-specific names or patterns hardcoded
+
+## What is DMMF?
+
+DMMF (Data Model Meta Format) describes the models, fields, relations, and enums in a Prisma schema. For Prisma 7, read the full schema DMMF with `@prisma/internals.getDMMF` during code generation. Prisma Client's private `_runtimeDataModel` does not contain all the field metadata required by these generators. Older projects can still use the runtime model path in the backend CLI.
+
+## How it works
+
+```
+Prisma schema
+      │
+      ▼
+[generate-server.ts]  ──uses──▶  @tertium/prisma-codegen/server
+      │
+      ├── writes: src/entities/*.types.auto.ts
+      ├── writes: src/entities/*.rest.auto.ts
+      ├── writes: src/core/rest.router.auto.ts
+      ├── writes: src/core/graphql.resolvers.auto.ts
+      └── exposes: GET /entities  (EntityMeta JSON)
+                        │
+                        ▼
+         [generate-client.ts]  ──uses──▶  @tertium/prisma-codegen/client
+                        │
+                        ├── writes: src/entities/*.types.auto.ts
+                        ├── writes: src/entities/*.schema.auto.ts
+                        └── writes: src/entities/*.client.auto.ts
+```
+
+## Installation
+
+```bash
+npm install @tertium/prisma-codegen
+```
+
+For Prisma 7 backend generation, install `@prisma/internals` as a development dependency at the same version as `prisma`:
+
+```bash
+bun add -d @prisma/internals@7.10.0
+```
+
+## Scripts
+
+This package includes two CLI-driven code generation scripts. All configuration is passed via command-line arguments — no script editing needed.
+
+### Backend: [generate-server](https://github.com/Tertiumnon/tertium-prisma-codegen/blob/HEAD/scripts/generate-server/generate-server.md)
+
+Generates REST handlers and GraphQL resolvers from your Prisma schema.
+
+```bash
+bun scripts/generate-server/generate-server.ts [options]
+```
+
+**Generates:**
+- Entity TypeScript types
+- REST CRUD handlers
+- GraphQL query/mutation resolvers
+- Combined router and resolver files
+
+**Example:**
+```bash
+bun node_modules/@tertium/prisma-codegen/scripts/generate-server/generate-server.ts \
+  --schema prisma/schema.prisma \
+  --entities-dir src/entities \
+  --searchable-patterns name,title,description
+```
+
+[Full documentation →](https://github.com/Tertiumnon/tertium-prisma-codegen/blob/HEAD/scripts/generate-server/generate-server.md)
+
+### Frontend: [generate-client](https://github.com/Tertiumnon/tertium-prisma-codegen/blob/HEAD/scripts/generate-client/generate-client.md)
+
+Generates TypeScript types and GraphQL clients from API entity metadata.
+
+```bash
+bun scripts/generate-client/generate-client.ts --api <url> [options]
+```
+
+**Generates:**
+- Entity TypeScript types
+- GraphQL query/mutation functions
+- Table schemas for forms
+- Type and client barrel files
+
+**Example:**
+```bash
+bun node_modules/@tertium/prisma-codegen/scripts/generate-client/generate-client.ts \
+  --api http://localhost:8080 \
+  --entities-dir src/entities \
+  --scalars-import ./api.scalars
+```
+
+[Full documentation →](https://github.com/Tertiumnon/tertium-prisma-codegen/blob/HEAD/scripts/generate-client/generate-client.md)
+
+## Quick start
+
+### 1. Backend: Generate server code
+
+```bash
+bun node_modules/@tertium/prisma-codegen/scripts/generate-server/generate-server.ts
+```
+
+For Prisma 7, pass `--schema prisma/schema.prisma`. The no-argument form uses the older runtime model path. All paths are adjustable via CLI arguments.
+
+### 2. Expose `/entities` endpoint
+
+Add this to your backend to serve entity metadata:
+
+```ts
+import { writeFileSync } from 'node:fs';
+import { readSchemaDMMF } from '@tertium/prisma-codegen/dmmf/schema';
+import { dmmfToEntityMeta } from '@tertium/prisma-codegen/dmmf/utils';
+
+const dmmf = await readSchemaDMMF('prisma/schema.prisma');
+const { entities, enums } = dmmfToEntityMeta(dmmf.datamodel.models, dmmf.datamodel.enums);
+writeFileSync('src/core/entity/entity.meta.auto.json', JSON.stringify({ entities, enums }, null, 2));
+
+// Serve the generated JSON from GET /entities; no Prisma internals in production.
+```
+
+### 3. Frontend: Generate client code
+
+```bash
+bun node_modules/@tertium/prisma-codegen/scripts/generate-client/generate-client.ts \
+  --api http://localhost:8080
+```
+
+Uses default config. All paths adjustable via CLI arguments.
+
+## Configuration
+
+Rather than copying scripts and editing config, this package uses a **wrapper script pattern**:
+
+```ts
+// project/scripts/generate-client.ts (minimal wrapper)
+import { spawn } from 'child_process';
+import { resolve } from 'path';
+
+const script = resolve('./node_modules/@tertium/prisma-codegen/scripts/generate-client/generate-client.ts');
+
+spawn('bun', [
+  script,
+  '--api', 'http://localhost:8080',
+  '--entities-dir', 'src/app/entities',
+  '--scalars-import', '../../core/api/api.scalars',
+  // ... other project-specific args
+], { stdio: 'inherit' });
+```
+
+Then in `package.json`:
+
+```json
+{
+  "scripts": {
+    "codegen": "bun scripts/generate-server.ts",
+    "codegen:client": "bun scripts/generate-client.ts"
+  }
+}
+```
+
+## Per-caller ownership
+
+Generated CRUD is unscoped by default, which suits shared reference content but not
+per-user data: without scoping, any caller can read and modify any row. Declare an
+`owner` rule on a model and every generated query is constrained to the calling user.
+
+```ts
+// metadata, per model
+const metadata = {
+  // the owning user's id is a column on this model
+  Character: { orderBy: 'name', owner: { field: 'ownerId' } },
+
+  // owned through a relation: a PartyEvent belongs to whoever owns its Party
+  PartyEvent: {
+    orderBy: 'occurredAt',
+    owner: { via: { relation: 'party', foreignKey: 'partyId', model: 'Party', field: 'dmUserId' } },
+  },
+
+  // no rule: unscoped, generated exactly as before
+  Item: { orderBy: 'name' },
+};
+
+// generator config, telling it how to identify the caller
+generateRestHandlerContent('Character', metadata.Character, {
+  prismaClientPath: '../../db/prisma.client',
+  ownership: {
+    callerImport: '../../auth/verify-jwt',
+    callerExport: 'callerIdFromRequest', // (req: Request) => string | null
+  },
+});
+```
+
+What the generated handlers then do:
+
+| Operation | Behaviour |
+|---|---|
+| list | `401` if anonymous; owner filter merged into `where` **after** `filter.*` parsing, so no query parameter can widen it |
+| get | `findFirst` scoped to the owner; a row owned by someone else answers `404`, not `403`, so the endpoint never confirms it exists |
+| create | a direct rule forces the owner column to the caller; a `via` rule fetches and checks the parent first |
+| update / delete | ownership pre-check, then the normal mutation. A direct rule also strips the owner column from the body, so ownership cannot be transferred |
+
+Handlers for an owned model take `req` first (`get(req, id)`, `update(req, id)`,
+`delete(req, id)`) because they need it to identify the caller.
+`generateRestRouterContent` emits the matching call when given `metadataByModel`.
+
+Both halves are required. A model carrying an `owner` rule with no `ownership` config
+throws at generation time rather than emitting an unguarded handler for data that asked
+to be guarded. Models without a rule generate byte-identical output to before.
+
+## Library structure
+
+The library uses **direct imports only** — no central barrel files.
+
+```
+@tertium/prisma-codegen/
+├── dmmf/
+│   ├── dmmf.types.ts          # DMMF + EntityMeta types
+│   └── dmmf.utils.ts          # Utilities + dmmfToEntityMeta()
+├── server/
+│   ├── server.types.ts        # Config types
+│   ├── server.ts              # Generators
+│   └── server.test.ts         # Tests (36 tests)
+├── client/
+│   ├── client.types.ts        # Config types
+│   ├── client.ts              # Generators
+│   └── client.test.ts         # Tests (12 tests)
+└── scripts/
+    ├── generate-server/
+    │   ├── generate-server.ts           # Main script
+    │   ├── generate-server.types.ts     # Config interface
+    │   ├── generate-server.constants.ts # Defaults
+    │   └── generate-server.md           # Documentation
+    └── generate-client/
+        ├── generate-client.ts           # Main script
+        ├── generate-client.types.ts     # Config interface
+        ├── generate-client.constants.ts # Defaults
+        └── generate-client.md           # Documentation
+```
+
+## Import Rule
+
+**Always use explicit subpath imports.** No default export.
+
+- `@tertium/prisma-codegen/dmmf/types` → types
+- `@tertium/prisma-codegen/dmmf/utils` → utilities  
+- `@tertium/prisma-codegen/dmmf/schema` → build-time full DMMF loader (requires `@prisma/internals`)
+- `@tertium/prisma-codegen/server` → backend generators
+- `@tertium/prisma-codegen/client` → frontend generators
+
+This makes imports clear and prevents ambiguity.
+
+## Imports
+
+Use package subpath exports — one import per module:
+
+```ts
+// DMMF + EntityMeta types
+import type { DMMFModel, DMMFField, DMMFEnum, EntityMeta, FieldMeta, EnumMeta, FilterMode }
+  from '@tertium/prisma-codegen/dmmf/types';
+
+// DMMF utilities
+import { dmmfToEntityMeta, toCamelCase, toKebabCase, toDisplayName }
+  from '@tertium/prisma-codegen/dmmf/utils';
+
+// Backend generators
+import { parsePrismaModels, inferEntityMetadata, generateEntityTypesContent,
+         generateRestHandlerContent, generateRestRouterContent,
+         generateGraphQLResolversContent, generateGraphQLMetadataFileContent,
+         generateGraphQLContextTypesContent }
+  from '@tertium/prisma-codegen/server';
+
+// Backend config types
+import type { GraphQLResolverConfig, RestHandlerConfig, RestRouterConfig,
+              MetadataInferrerOptions, LocalizationConfig }
+  from '@tertium/prisma-codegen/server/server.types';
+
+// Frontend generators
+import { generateClientTypesContent, generateClientSchemaContent,
+         generateGraphQLClientContent, generateClientBarrelContent,
+         generateTypesBarrelContent, generateSchemasBarrelContent,
+         generateEnumsContent }
+  from '@tertium/prisma-codegen/client';
+
+// Frontend config types
+import type { ClientTypesConfig, ClientSchemaConfig, GraphQLClientConfig,
+              ClientBarrelConfig, TypesBarrelConfig, SchemasBarrelConfig }
+  from '@tertium/prisma-codegen/client/client.types';
+```
+
+## API reference
+
+### `@tertium/prisma-codegen/dmmf/types` — DMMF and EntityMeta types
+
+| Export | Purpose |
+|---|---|
+| `DMMFModel`, `DMMFField`, `DMMFEnum` | Prisma runtime data model input types |
+| `FilterMode` | `'contains' \| 'equals'` |
+| `EntityMeta`, `FieldMeta`, `EnumMeta` | Shared frontend/backend contract (served by `/entities`) |
+
+### `@tertium/prisma-codegen/dmmf/utils` — Utilities
+
+| Export | Purpose |
+|---|---|
+| `dmmfToEntityMeta(models, enums)` | Convert DMMF to `{ entities, enums }` (for `/entities` endpoint) |
+| `toCamelCase(str)` | `PascalCase` → `camelCase` |
+| `toKebabCase(str)` | `PascalCase` → `kebab-case` |
+| `toDisplayName(str)` | `PascalCase` → `Pascal Case` |
+| `scalarTsType(prismaType, required)` | Map Prisma scalar type to TypeScript type string |
+| `scalarFormType(prismaType, fieldName)` | Map Prisma scalar type to form field type string |
+| `mapField(field, fkRelationMap)` | Convert a `DMMFField` to `FieldMeta` |
+| `buildFkRelationMap(model)` | Build foreign-key → relation-model map for a model |
+
+### `@tertium/prisma-codegen/server` — Backend generators
+
+| Export | Purpose |
+|---|---|
+| `parsePrismaModels(dmmfModels)` | Parse DMMF models into internal `Model[]` |
+| `parseForeignKeys(dmmfModel)` | Extract foreign key fields from a model |
+| `inferEntityMetadata(dmmfModels, options)` | Infer filterable/searchable/relation metadata |
+| `generateEntityTypesContent(model, options?)` | Generate `*.types.auto.ts` |
+| `generateRestHandlerContent(name, meta, config)` | Generate `*.rest.auto.ts` (5 CRUD handlers) |
+| `generateRestRouterContent(models, config)` | Generate REST router dispatching all entities |
+| `generateGraphQLResolversContent(meta, dmmfModels, config)` | Generate GraphQL resolvers |
+| `generateGraphQLMetadataFileContent(metadata)` | Generate `GRAPHQL_ENTITY_METADATA` constants file |
+| `generateGraphQLContextTypesContent(extraFields?)` | Generate GraphQL context type interface |
+
+### `@tertium/prisma-codegen/server/server.types` — Backend config types
+
+| Export | Purpose |
+|---|---|
+| `MetadataInferrerOptions` | Options for `inferEntityMetadata()` |
+| `LocalizationConfig` | Localization import/export paths |
+| `GraphQLResolverConfig` | Config for `generateGraphQLResolversContent()` |
+| `RestHandlerConfig` | Config for `generateRestHandlerContent()` |
+| `RestRouterConfig` | Config for `generateRestRouterContent()` |
+| `EntityMetadata` | Internal metadata shape (filterable, searchable, relations) |
+| `Field`, `Model`, `ForeignKeyField` | Internal parsed model types |
+
+### `@tertium/prisma-codegen/client` — Frontend generators
+
+| Export | Purpose |
+|---|---|
+| `generateClientTypesContent(entity, allEntities, enums, config)` | Generate `*.types.auto.ts` |
+| `generateClientSchemaContent(entity, config)` | Generate `*.schema.auto.ts` (TableSchema) |
+| `generateGraphQLClientContent(entity, config)` | Generate `*.client.auto.ts` (GraphQL CRUD) |
+| `generateClientBarrelContent(entities, config)` | Generate client barrel |
+| `generateTypesBarrelContent(entities, enums, config)` | Generate types barrel |
+| `generateSchemasBarrelContent(entities, config)` | Generate schemas barrel |
+| `generateEnumsContent(enums)` | Generate enum declarations |
+
+### `@tertium/prisma-codegen/client/client.types` — Frontend config types
+
+| Export | Purpose |
+|---|---|
+| `ClientTypesConfig` | Config for `generateClientTypesContent()` |
+| `ClientSchemaConfig` | Config for `generateClientSchemaContent()` |
+| `GraphQLClientConfig` | Config for `generateGraphQLClientContent()` |
+| `ClientBarrelConfig` | Config for `generateClientBarrelContent()` |
+| `TypesBarrelConfig` | Config for `generateTypesBarrelContent()` |
+| `SchemasBarrelConfig` | Config for `generateSchemasBarrelContent()` |
+
+## Testing
+
+Run all 48 tests:
+
+```bash
+bun test
+```
+
+- **server.test.ts** — 36 tests for backend generators
+- **client.test.ts** — 12 tests for frontend generators
+
+All tests use generic fixtures (no project-specific names).
+
+## Release
+
+Release scripts use semantic versioning:
+
+```bash
+npm run release:patch   # 0.1.0 → 0.1.1
+npm run release:minor   # 0.1.0 → 0.2.0
+npm run release:major   # 0.1.0 → 1.0.0
+```
+
+Each bumps version and publishes to npm.
+
+## License
+
+ISC
+
+## Support
+
+If this project is useful to you, you can support its development on [Ko-fi](https://ko-fi.com/tertiumnon).

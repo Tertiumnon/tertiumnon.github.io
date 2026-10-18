@@ -1,3 +1,26 @@
 <div class="home-page">
-  <app-hello-world-game></app-hello-world-game>
+  <app-arcade-cabinet [title]="marqueeTitle()">
+    <app-game-stage screen>
+      @if (view() === "menu") {
+      <div class="tv-menu" role="listbox" aria-label="Games">
+        <h2 class="menu-title">Select game</h2>
+        @for (item of games; track item.key; let i = $index) {
+        <button type="button" role="option" class="menu-item" [class.selected]="cursor() === i" [attr.aria-selected]="cursor() === i" (click)="startGame(i)">
+          <span class="cursor" aria-hidden="true">{{ cursor() === i ? "▶" : "" }}</span>{{ item.label }}
+        </button>
+        }
+        <p class="menu-prompt">Press A to start</p>
+      </div>
+      } @else {
+      @switch (game()) {
+      @case ("catch") {
+      <app-honey-catch></app-honey-catch>
+      }
+      @case ("hello") {
+      <app-hello-world-game></app-hello-world-game>
+      }
+      }
+      }
+    </app-game-stage>
+  </app-arcade-cabinet>
 </div>

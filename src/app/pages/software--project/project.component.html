@@ -1,12 +1,46 @@
-<div class="container-fluid content" style="margin-top: var(--container-margin-top);">
-  <h1>{{ project.title }}</h1>
-  <p>
-    {{ project.type }}
-    @if (project.license) { · {{ project.license }} }
-    @if (project.updatedAt) { · updated {{ project.updatedAt | date: "yyyy MMM d" }} }
-  </p>
-  <p>{{ project.description }}</p>
-  @if (project.url) {
-  <p><a [href]="project.url" target="_blank" rel="noopener">Open project</a></p>
+<article class="project-page container-fluid" style="margin-top: var(--container-margin-top);">
+  @if (project.repoLicense) {
+  <p class="project-license">License: {{ project.repoLicense }}</p>
   }
-</div>
+
+  @if (project.url || project.releases?.length) {
+  <nav class="project-links">
+    @if (project.url) {
+    <a [href]="project.url" target="_blank" rel="noopener">Open project</a>
+    }
+    @if (project.releases?.length) {
+    <details class="download">
+      <summary>Download</summary>
+      <ul>
+        @for (release of project.releases; track release.tag) {
+        <li>
+          <a [href]="release.url" target="_blank" rel="noopener">{{ release.name }}</a>
+          @if (release.publishedAt) { · {{ release.publishedAt | date: "yyyy MMM d" }} }
+          @for (asset of release.assets; track asset.url) {
+          <a class="asset" [href]="asset.url" rel="noopener">{{ asset.name }}</a>
+          }
+        </li>
+        }
+      </ul>
+    </details>
+    }
+  </nav>
+  }
+
+  @if (project.screenshots?.length) {
+  <div class="screenshots">
+    @for (src of project.screenshots; track src) {
+    <img [src]="src" alt="" loading="lazy" />
+    }
+  </div>
+  }
+
+  @if (readme()) {
+  <app-md-content [data]="readme()" [lineNumbers]="true"></app-md-content>
+  } @else {
+  <h1>{{ project.title }}</h1>
+  @if (project.description) {
+  <p>{{ project.description }}</p>
+  }
+  }
+</article>

@@ -1,0 +1,273 @@
+# @tertium/js
+
+> **⚠️ IN DEVELOPMENT** — APIs, scripts, and configuration formats in this package are still changing and may break between versions without notice. Pin an exact version rather than a range, and review the changelog/diff before upgrading.
+
+A reusable TypeScript library providing shared core utilities, entity models, and release automation scripts for JavaScript projects. Includes abstractions for APIs, authentication, filtering, logging, repositories, and domain entities (users, posts, comments).
+
+## Why this package exists
+
+Across the author's JS/TS projects, the same small pieces of logic — password hashing, API response shapes, repository patterns, release/deploy scripts — kept getting hand-copied from one repo to the next, drifting apart with every copy. `@tertium/js` exists to break that cycle: it's the one place a genuinely repeatable function, type, or script gets written, so every consuming project imports it instead of reimplementing it.
+
+That gives a concrete test for what belongs here versus what stays local to a project:
+
+- **Belongs here**: logic that is project-agnostic — it would look the same in any app that needed it, with no dependency on one project's domain model, routes, or business rules (e.g. `hashPassword`/`verifyPassword`, the `Repo` base class, `ApiResponse` shapes, the release/deploy scripts).
+- **Stays local**: anything wired to a specific app's routes, schema, or product decisions (e.g. an endpoint's request/response handling, a project's own auth middleware, domain-specific validation) — even if the *pattern* was copied from another project, the wiring itself isn't universal.
+
+Because modules are consumed via subpath imports straight from source (no bundling — see below), a module can bring in its own runtime dependency without forcing it on projects that only import a different, dependency-free module. `core/*` and `entities/*` stay limited to `node:*` builtins for exactly this reason; anything that genuinely needs an external package lives under `libs/*` instead, with that package declared as an optional `peerDependency` the consumer installs themselves — never as a blanket dependency of the whole package.
+
+## Table of contents
+
+- Installation
+- Usage
+  - Importing modules
+  - Scripts
+    - Clean
+    - Changelog
+    - Deploy
+    - AWS Env
+    - Moved to hlpr
+- Contributing
+
+## Installation
+
+Install as a dependency or devDependency in your project:
+
+```bash
+npm install @tertium/js --save-dev
+```
+
+## Usage
+
+
+### Importing modules
+
+This package exposes subpath imports organized by domain. Import the specific modules you need rather than the package root.
+
+#### Core utilities (`./core/*`)
+
+Core modules provide foundational abstractions and utilities:
+
+- **REST API**: `api-rest` — CRUD request/response types (`ApiRequestFindManyParams`, `ApiResponse<T>`, etc.); a future `api-graphql` would live alongside it for GraphQL-specific shapes rather than sharing a protocol-agnostic `api` module
+- **Authentication**: `auth` — `hashPassword`/`verifyPassword` (scrypt, `node:crypto`); no external dependency
+- **Data management**: `entity`, `entity-ref`, `repo` — Base classes and types for entity management and repository patterns
+- **Filtering & forms**: `filter`, `form` — Types for filtering and form handling
+- **Logging**: `log` — Logging service and types
+- **Utilities**: `option`, `ref`, `time` — General utility types for options, references, and time handling
+
+Example:
+
+```typescript
+import { Repo } from "@tertium/js/core/repo/repo.class";
+import type { ApiResponse } from "@tertium/js/core/api-rest/api-rest.types";
+import { LogService } from "@tertium/js/core/log";
+```
+
+#### Entity models (`./entities/*`)
+
+Domain entity classes and utilities for common models:
+
+- **User**: User entity class and utilities
+- **Post**: Post entity class and utilities
+- **Comment**: Comment entity class and utilities
+
+Example:
+
+```typescript
+import { Post } from "@tertium/js/entities/post";
+import { User } from "@tertium/js/entities/user";
+```
+
+#### Libraries (`./libs/*`)
+
+Unlike `core/*`, a library under `libs/*` is allowed to carry its own runtime dependency — declared as an optional `peerDependency` of this package, so only projects that actually import that library need to install it. Each one still lives at its own subpath, so importing one library never pulls in another's dependency.
+
+- **JWT**: `jwt` — `generateToken`/`verifyToken`/`verifyAuthHeader`, built on [jose](https://github.com/panva/jose) (a `peerDependency` — install it yourself to use this). Payload shape and signing key/algorithm are caller-supplied, so the same functions cover an HS256 shared secret or an RS256/ES256 key pair; `verifyToken`/`verifyAuthHeader` forward jose's own claim-verification options (`issuer`, `audience`, `subject`, `clockTolerance`, `maxTokenAge`, `requiredClaims`, `algorithms`) instead of reimplementing them. `resolveJwtSecret` is a `process.env`-based convenience for the common shared-secret case — **no dev-only fallback**: a missing secret throws in every environment, since a silently-generated default is a worse failure mode than a startup crash. Node/Bun/Deno-style runtimes only; the rest of the module is plain jose/Web Crypto and runs anywhere JS does.
+
+Example:
+
+```typescript
+import { generateToken, verifyAuthHeader, resolveJwtSecret } from "@tertium/js/libs/jwt/jwt.utils.ts";
+
+const secret = resolveJwtSecret(); // throws if JWT_SECRET is unset
+const token = await generateToken({ userId: "u1", role: "ADMIN" }, secret);
+```
+
+## Scripts
+
+Utility scripts for common development tasks. All scripts are TypeScript-based and located in `scripts/[name]/`.
+
+Add the ones you'll actually run day-to-day (or as part of a release) to your project's `package.json`:
+
+```json
+{
+  "scripts": {
+    "clean": "bun node_modules/@tertium/js/scripts/clean/clean.ts",
+    "changelog": "gith changelog --dry-run",
+    "release:patch": "bun node_modules/@tertium/js/scripts/release/release.ts patch",
+    "release:minor": "bun node_modules/@tertium/js/scripts/release/release.ts minor",
+    "release:major": "bun node_modules/@tertium/js/scripts/release/release.ts major",
+    "deploy": "bun node_modules/@tertium/js/scripts/deploy/deploy.ts"
+  }
+}
+```
+
+### Clean
+
+Removes build and distribution directories cross-platform.
+
+Not used by this package itself (no `build`/`dist` step here) - add a `"clean"` script in a project that has one, or invoke directly:
+
+```bash
+bun scripts/clean/clean.ts             # Remove ./dist
+bun scripts/clean/clean.ts dist build  # Remove multiple directories
+```
+
+**See:** [scripts/clean/clean.md](https://github.com/Tertiumnon/tertium-js/blob/HEAD/scripts/clean/clean.md)
+
+### Release
+
+Git-flow releases are handled by `@tertium/gith`, which has no dependency on this package. Install `gith` and run it from this repo:
+
+```bash
+gith release --patch   # from main (hotfixes)
+gith release --minor   # from develop (features)
+gith release --major   # from develop (breaking changes)
+```
+
+### Changelog
+
+The changelog is generated by `gith changelog` from [@tertium/gith](https://github.com/Tertiumnon/tertium-gith). It writes a `CHANGELOG.md` entry from the git history for `package.json`'s version and commits it as `docs(changelog): <version>`, so run it after the release:
+
+```bash
+gith changelog --dry-run   # preview the entry without writing anything
+gith changelog             # write it and commit it
+```
+
+### Deploy script (`./scripts/deploy/*`)
+
+Automated deployment tool for Node.js/Bun projects using SSH, SCP, and PM2. Loads configuration from `.env` file, copies built files to remote server, and manages PM2 process.
+
+**Features:**
+- Automatic `.env` loading and validation (rejects an unsafe `DEPLOY_PATH`)
+- Builds locally before deploying (`BUILD_COMMAND`, skippable with `--skip-build`)
+- Cleans the remote `DEPLOY_PATH` before every deploy, preserving `.env`
+- SCP transfer of `package.json`, a lockfile, and the `dist/` directory (preserved as a folder)
+- Remote dependency installation with Bun
+- PM2 service management — always deletes and recreates the process with `--interpreter bun`, so it can never end up running under Node
+- Static site support (skip `bun install`/PM2 for static HTML/JS apps)
+- Cross-platform (Windows, macOS, Linux)
+
+**Quick start:**
+
+Create a `.env` file in your project:
+
+```env
+DEPLOY_USER=your-username
+DEPLOY_HOST=your-server
+DEPLOY_PATH=/var/www/my-app
+APP_NAME=my-app
+# Optional: Set to true for static sites (skips bun install and PM2)
+STATIC_SITE=false
+```
+
+Add to `package.json`:
+
+```json
+{
+  "scripts": {
+    "deploy": "bun ./node_modules/@tertium/js/scripts/deploy/deploy.ts"
+  }
+}
+```
+
+Then deploy:
+
+```bash
+npm run deploy               # Builds and deploys
+npm run deploy -- --skip-build   # Deploys the existing dist/ without rebuilding
+```
+
+**Usage as library:**
+
+```typescript
+import { deploy } from '@tertium/js/scripts/deploy';
+
+// Deploy with default config (reads .env from cwd)
+deploy();
+
+// Or with custom config
+deploy({
+  projectDir: '/path/to/project',
+  env: {
+    DEPLOY_USER: 'your-username',
+    DEPLOY_HOST: 'your-server',
+    DEPLOY_PATH: '/var/www/my-app',
+    APP_NAME: 'my-app'
+  }
+});
+```
+
+**See:** [scripts/deploy/deploy.md](https://github.com/Tertiumnon/tertium-js/blob/HEAD/scripts/deploy/deploy.md)
+
+### DB backup and sync moved to hlpr
+
+The MariaDB backup and sync utilities now live in [hlpr](https://www.npmjs.com/package/@tertium/hlpr):
+`hlpr mariadb backup`, `hlpr mariadb sync` and `hlpr mariadb set-user-password`. They are no longer part of
+this package, and `aws-env` no longer has `db-backup` or `db-sync` subcommands.
+
+### DB Rotate Password script (`./scripts/db-rotate-password/*`)
+
+Changes a project's database password, the SSM parameter that holds its `DATABASE_URL`, and the app's remote
+`.env` and PM2 process, with rollback if a step fails. The database and parameter steps are `hlpr mariadb
+rotate-password`; the app steps are here, since they are specific to Node/Bun projects.
+
+```bash
+bun node_modules/@tertium/js/scripts/db-rotate-password/db-rotate-password.ts --ssm-param=/env/<project>/env.dev --app-path=/var/www/<project> --app-name=<pm2 name>
+```
+
+**See:** [scripts/db-rotate-password/db-rotate-password.md](https://github.com/Tertiumnon/tertium-js/blob/HEAD/scripts/db-rotate-password/db-rotate-password.md)
+
+### AWS Env script (`./scripts/aws-env/*`)
+
+Stores `.env*` files in AWS SSM Parameter Store (SecureString, free standard tier) so AWS is the
+source of truth instead of a hand-maintained local file. `push` uploads a file after you edit it,
+`sync` refreshes the local cache from AWS with a graceful offline fallback, `pull` force-fetches
+the exact current source, `run` injects the local cache's variables into a child process (never
+touches the network itself, so a connectivity issue can't block starting the app), and `deploy`
+fetches a deploy-target config fresh from AWS, uses it for one deploy, and deletes it right after -
+`.env.dev`/`.env.prod` never need to sit on your laptop at all.
+
+Not used by this package itself (no deployed `.env` here) - add `"env:*"` scripts in a project that has one, or invoke directly:
+
+```bash
+bun node_modules/@tertium/js/scripts/aws-env/aws-env.ts push                       # Upload .env after editing it
+bun node_modules/@tertium/js/scripts/aws-env/aws-env.ts push --env-file=.env.dev
+bun node_modules/@tertium/js/scripts/aws-env/aws-env.ts sync --env-file=.env.dev   # Refresh local cache; falls back to existing file if offline
+bun node_modules/@tertium/js/scripts/aws-env/aws-env.ts pull --env-file=.env.dev   # Force-fetch, fails loudly if AWS is unreachable
+bun node_modules/@tertium/js/scripts/aws-env/aws-env.ts run -- bun run dev
+bun node_modules/@tertium/js/scripts/aws-env/aws-env.ts deploy --env-file=.env.prod --skip-build
+```
+
+**See:** [scripts/aws-env/aws-env.md](https://github.com/Tertiumnon/tertium-js/blob/HEAD/scripts/aws-env/aws-env.md)
+
+### Moved to hlpr
+
+Some scripts were moved out of this package into the [hlpr](https://github.com/Tertiumnon/tertium-hlpr) CLI, where they are commands instead of files under `scripts/`. Install it with `npm install -g @tertium/hlpr`, then use the command in the right-hand column:
+
+| Old script | hlpr command |
+|---|---|
+| `scripts/improve-start-scripts` | `hlpr npm scripts` |
+| `scripts/git-hooks` | `hlpr git setup -hooks` |
+| `scripts/npm-publish-workflow` | `hlpr gh setup -workflow publish` |
+| `scripts/azure-deployment-pipeline` | `hlpr az setup -workflow deploy` |
+| `scripts/changelog` | `gith changelog` (from [@tertium/gith](https://github.com/Tertiumnon/tertium-gith)) |
+
+The scripts were removed from this package, so a project that still calls them from `node_modules/@tertium/js/scripts/...` in its `package.json` must switch to the hlpr or gith command.
+
+## Contributing
+
+Contributions, issues and pull requests are welcome. If you add features that change the exported types or scripts, please update the documentation here.
+
+## Support
+
+If this project is useful to you, you can support its development on [Ko-fi](https://ko-fi.com/tertiumnon).

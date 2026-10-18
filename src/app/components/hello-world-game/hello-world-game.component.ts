@@ -8,6 +8,8 @@ import { CommonModule } from "@angular/common";
 import { HelloWorldGameService } from "./hello-world-game.service";
 import { CellData } from "./hello-world-game.types";
 import { TANK_HEIGHT, TANK_WIDTH } from "./hello-world-game.utils";
+import { GameOverComponent } from "../game-over/game-over.component";
+import { ArcadeScreenService } from "../game-stage/game-screen.service";
 
 interface PlayerRecord {
 	name: string;
@@ -31,7 +33,7 @@ const SEED_RECORDS: PlayerRecord[] = [
 	templateUrl: "./hello-world-game.component.html",
 	styleUrls: ["./hello-world-game.component.css"],
 	standalone: true,
-	imports: [CommonModule],
+	imports: [CommonModule, GameOverComponent],
 })
 export class HelloWorldGameComponent {
 	phrase = "Hello World";
@@ -66,17 +68,22 @@ export class HelloWorldGameComponent {
 	private readonly pressedDirections = new Set<"up" | "down" | "left" | "right">();
 
 	// fixed game area
-	containerWidth = 640;
-	containerHeight = 640;
+	containerWidth = 600;
+	containerHeight = 360;
 
 	// must match the service cell size/gap
-	readonly cellSize = 9;
-	readonly gap = 1;
+	readonly cellSize = 13;
+	readonly gap = 2;
 
 	constructor(
 		private svc: HelloWorldGameService,
 		private changeDetector: ChangeDetectorRef,
-	) {}
+		screen: ArcadeScreenService,
+	) {
+		// Fill the TV screen; the instructions, HUD and controls take the height above and below the grid.
+		this.containerWidth = Math.max(200, screen.width() - 24);
+		this.containerHeight = Math.max(160, screen.height() - 70);
+	}
 
 	ngOnInit() {
 		this.records = this.loadRecords();
@@ -117,7 +124,7 @@ export class HelloWorldGameComponent {
 	}
 
 	get score(): number {
-		return this.destroyedBlocks * 100 + this.elapsedSeconds;
+		return this.destroyedBlocks * 100;
 	}
 
 	formatTime(seconds: number): string {
@@ -496,8 +503,11 @@ export class HelloWorldGameComponent {
 
 	@HostListener("window:keydown", ["$event"])
 	onKeyDown(event: KeyboardEvent) {
-		if (this.gameOver) return;
 		const k = event.key;
+		if (this.gameOver) {
+			if (k.toLowerCase() === "a" || k === "Enter") this.restart();
+			return;
+		}
 
 		// Space or S => shoot. The down direction uses ArrowDown.
 		if (event.code === "Space" || k === " " || k === "Spacebar" || k.toLowerCase() === "s") {

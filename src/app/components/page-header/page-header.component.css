@@ -1,0 +1,50 @@
+/* Full editor width; the row inside lines up with the page content below. */
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: block;
+  background-color: var(--theme-sticky, var(--theme-bg));
+  backdrop-filter: var(--theme-sticky-blur, none);
+  border-bottom: 1px solid var(--theme-border);
+}
+
+/* Sticks to the top of the editor while the page scrolls. */
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  min-height: 56px;
+  width: 94%;
+  max-width: calc(var(--page-max-width) - 20px);
+  margin: 0 auto;
+  padding: 8px 0;
+}
+
+.page-title {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.page-header-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding-top: 8px;
+  font-size: 0.9rem;
+}
+
+/* Filter controls share one height and one vertical centre, whichever filter component they come from. */
+.page-header-filters ::ng-deep select {
+  height: 30px;
+  box-sizing: border-box;
+  padding: 0 8px;
+}
+
+.page-header-filters ::ng-deep label,
+.page-header-filters ::ng-deep label span {
+  line-height: 1;
+}

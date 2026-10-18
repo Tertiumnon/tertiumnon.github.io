@@ -1,0 +1,66 @@
+/* Just the README: no boxes around the page or the README. */
+.project-page {
+  padding-bottom: 1.5rem;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+  font-size: 0.9em;
+}
+
+.download {
+  display: inline;
+}
+
+.download summary {
+  display: inline;
+  cursor: pointer;
+  color: var(--theme-accent);
+  text-decoration: underline;
+}
+
+.download ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.asset {
+  margin-left: 0.5rem;
+}
+
+/* The README pane from the shared markdown component is flattened here, so it sits on the page itself. */
+app-md-content ::ng-deep .content {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  font-size: inherit;
+}
+
+/* Screenshots from docs/screenshots, shown above the README. */
+.screenshots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 1.25rem;
+}
+
+.screenshots img {
+  max-height: 240px;
+  max-width: 100%;
+  border: 1px solid var(--theme-border);
+  border-radius: var(--editor-radius);
+}
+
+/* Licence of the repository, as set on GitHub. */
+.project-license {
+  margin: 0 0 0.75rem;
+  font-size: 0.9em;
+  opacity: 0.75;
+}

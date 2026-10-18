@@ -1,0 +1,11 @@
+/* Cards sit on one even grid: the same gap above, below and between them. */
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 8px 0 24px;
+}
+
+.project-list > div {
+  min-width: 0;
+}
