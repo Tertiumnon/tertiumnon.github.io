@@ -4,8 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "gh:pages:build": "bun ./scripts/gh-pages/gh-pages--build/gh-pages--build.ts",
+    "build": "bun run project:create && ng build",
+    "gh:pages:build": "bun run project:create && bun ./scripts/gh-pages/gh-pages--build/gh-pages--build.ts",
+    "project:create": "bun run project:github:create && bun run project:dates:create",
+    "prepare": "git config core.hooksPath .githooks",
+    "project:github:create": "bun ./scripts/project/github-projects--create/github-projects--create.ts",
     "post:create": "bun ./scripts/post/create/create.ts",
     "post:list:create": "bun ./scripts/post/list--create/list--create.ts",
     "project:dates:create": "bun ./scripts/project/dates--create/dates--create.ts",

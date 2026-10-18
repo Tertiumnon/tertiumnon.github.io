@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
-# Pre-commit hook: type checking before committing
+# Pre-commit hook: refresh project pages and data, then type checking before committing
 
 set -e
+
+echo "📦 Refreshing project pages and dates..."
+bun run project:create
+
+# Generated files go into the same commit
+git add src/assets/projects src/assets/project-dates.json
 
 echo "🔍 Running pre-commit checks..."
 
