@@ -12,11 +12,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 16px;
   background: #000;
   color: #36f9f6;
   font-family: "VT323", monospace;
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -24,7 +24,7 @@
 .menu-title {
   margin: 0;
   font: inherit;
-  font-size: 3.4rem;
+  font-size: 3rem;
   color: #ff2e9a;
   text-shadow: 4px 4px 0 #36f9f6;
 }
@@ -53,7 +53,7 @@
 }
 
 .menu-prompt {
-  margin: 24px 0 0;
+  margin: 8px 0 0;
   color: #fff7b0;
   text-shadow: 3px 3px 0 #ff2e9a;
   animation: blink 1s steps(2, start) infinite;

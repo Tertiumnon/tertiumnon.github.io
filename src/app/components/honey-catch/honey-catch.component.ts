@@ -52,7 +52,7 @@ const SPAWN_EVERY_TICKS = 16;
 			display: flex;
 			flex-direction: column;
 			font-family: "VT323", monospace;
-			font-size: 1.4rem;
+			font-size: 2rem;
 		}
 
 		.hud {
@@ -62,7 +62,7 @@ const SPAWN_EVERY_TICKS = 16;
 			gap: 12px 18px;
 			padding: 10px 26px 0;
 			margin-bottom: 8px;
-			font-size: 0.9rem;
+			font-size: 1.7rem;
 		}
 
 		.hud b {
@@ -122,7 +122,7 @@ const SPAWN_EVERY_TICKS = 16;
 			display: grid;
 			place-items: center;
 			margin: 0;
-			font-size: 1.2rem;
+			font-size: 2rem;
 			background-color: color-mix(in srgb, var(--theme-bg) 60%, transparent);
 		}
 	`],

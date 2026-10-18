@@ -4,6 +4,8 @@
 }
 
 .hello-world {
+	font-family: "VT323", monospace;
+	font-size: 26px;
 	width: 100%;
 	height: 100%;
 	box-sizing: border-box;
@@ -33,11 +35,11 @@
 	justify-content: space-between;
 	flex-wrap: wrap;
 	gap: 6px 12px;
-	font: 20px "VT323", monospace;
+	font: 32px "VT323", monospace;
 }
 
 .player-name input {
-	width: 88px;
+	width: 150px;
 	margin-left: 4px;
 	font: inherit;
 	text-transform: uppercase;
@@ -119,7 +121,7 @@
 		transparent 4px
 	);
 	color: #e8faff;
-	font-family: "Courier New", monospace;
+	font-family: "VT323", monospace;
 	text-align: center;
 }
 
@@ -138,14 +140,14 @@
 .records-title {
 	margin: 4px 0;
 	color: #ffe45e;
-	font-size: 12px;
+	font-size: 19px;
 	letter-spacing: 2px;
 }
 
 .arcade-screen h2 {
 	margin: 4px 0 10px;
 	color: #ff4db8;
-	font-size: 28px;
+	font-size: 44px;
 	letter-spacing: 3px;
 	text-shadow: 0 0 6px rgba(255, 77, 184, 0.85);
 }
@@ -154,7 +156,7 @@
 .final-stats,
 .game-result {
 	margin: 5px 0;
-	font-size: 13px;
+	font-size: 20px;
 }
 
 .game-result.victory {
@@ -163,7 +165,7 @@
 
 .final-score strong {
 	color: #6dff7a;
-	font-size: 20px;
+	font-size: 32px;
 }
 
 .records-title {
@@ -175,7 +177,7 @@
 	width: 100%;
 	margin: 6px 0 12px;
 	border-collapse: collapse;
-	font-size: 11px;
+	font-size: 17px;
 }
 
 .records-table th,
@@ -197,7 +199,7 @@
 	border: 2px solid #ff4db8;
 	background: transparent;
 	color: #fff;
-	font: bold 13px "Courier New", monospace;
+	font: bold 20px "VT323", monospace;
 	letter-spacing: 1px;
 	cursor: pointer;
 }

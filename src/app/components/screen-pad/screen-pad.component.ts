@@ -42,7 +42,7 @@ type PadButton = keyof typeof PAD_KEYS;
 			background: #000;
 			border-top: 4px solid #3b2a5a;
 			font-family: "VT323", monospace;
-			font-size: 1.6rem;
+			font-size: 2.2rem;
 		}
 
 		.dpad {
@@ -65,6 +65,7 @@ type PadButton = keyof typeof PAD_KEYS;
 			background: #1a0a2e;
 			color: #36f9f6;
 			font: inherit;
+			font-size: 2.4rem;
 			box-shadow: 0 4px 0 #000;
 			touch-action: none;
 			user-select: none;
