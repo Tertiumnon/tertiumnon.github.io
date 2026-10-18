@@ -1,0 +1,59 @@
+:host {
+  display: block;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 22px;
+  padding: 0 10px;
+  background-color: var(--theme-accent);
+  color: #101014;
+  font-family: var(--font-code);
+  font-size: 13px;
+}
+
+.terminal-toggle {
+  padding: 0 6px;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.terminal-toggle[aria-pressed="true"] {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.status-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.font-switch select,
+.theme-switch select {
+  padding: 0 4px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.font-switch select option,
+.theme-switch select option {
+  background-color: var(--theme-panel);
+  color: var(--theme-text);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}

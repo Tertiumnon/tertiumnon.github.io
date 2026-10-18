@@ -1,0 +1,37 @@
+@switch (page()) {
+  @case ("projects") {
+    <app-project-control-panel></app-project-control-panel>
+  }
+  @case ("changelog") {
+    <div class="filters">
+      <label class="filter">
+        <span>Project</span>
+        <select (change)="onChangelogProject($event)">
+          @for (project of changelog.projects(); track project) {
+          <option [value]="project" [selected]="project === changelog.selectedProject()">{{ project }}</option>
+          }
+        </select>
+      </label>
+    </div>
+  }
+  @case ("posts") {
+    <div class="filters">
+      <label class="filter">
+        <span>Category</span>
+        <select (change)="onPostCategory($event)">
+          @for (category of posts.categories(); track category) {
+          <option [value]="category" [selected]="category === posts.selectedCategory()">{{ category }}</option>
+          }
+        </select>
+      </label>
+      <label class="filter">
+        <span>Tag</span>
+        <select (change)="onPostTag($event)">
+          @for (tag of posts.tags(); track tag) {
+          <option [value]="tag" [selected]="tag === posts.selectedTag()">{{ tag }}</option>
+          }
+        </select>
+      </label>
+    </div>
+  }
+}

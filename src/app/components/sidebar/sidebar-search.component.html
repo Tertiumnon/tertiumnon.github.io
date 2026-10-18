@@ -1,0 +1,24 @@
+<div class="search">
+  <div class="search-row">
+    <input type="search" class="search-input" placeholder="Search" [value]="query()" (input)="onInput($event)" aria-label="Search" autocomplete="off" />
+    <select class="scope" (change)="onScope($event)" aria-label="Search in">
+      <option value="project" [selected]="scope() === 'project'">Projects</option>
+      <option value="post" [selected]="scope() === 'post'">Posts</option>
+    </select>
+  </div>
+
+  @if (query().trim()) {
+  <ul class="results">
+    @for (result of results(); track result.link) {
+    <li>
+      <a class="result" [routerLink]="result.link" (click)="query.set('')">
+        <span class="result-kind">{{ result.kind }}</span>
+        <span class="result-title">{{ result.title }}</span>
+      </a>
+    </li>
+    } @empty {
+    <li class="result-empty">No matches</li>
+    }
+  </ul>
+  }
+</div>
