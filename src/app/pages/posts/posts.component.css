@@ -145,3 +145,9 @@
   opacity: 0.4;
   cursor: default;
 }
+
+/* Tag items: no list margin, so wrapped tag lines sit close together. */
+.post-tags li {
+  margin: 0;
+  line-height: 1.2;
+}
