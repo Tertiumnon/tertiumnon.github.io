@@ -14,7 +14,8 @@
   gap: 12px 24px;
   min-height: 56px;
   padding: 8px 0;
-  background-color: var(--theme-bg);
+  background-color: var(--theme-sticky, var(--theme-bg));
+  backdrop-filter: var(--theme-sticky-blur, none);
   border-bottom: 1px solid var(--theme-border);
 }
 

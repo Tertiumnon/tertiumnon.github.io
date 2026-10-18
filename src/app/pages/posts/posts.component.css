@@ -92,7 +92,8 @@
   bottom: 0;
   z-index: 4;
   padding: 8px 0;
-  background-color: var(--theme-bg);
+  background-color: var(--theme-sticky, var(--theme-bg));
+  backdrop-filter: var(--theme-sticky-blur, none);
   border-top: 1px solid var(--theme-border);
   font-family: var(--font-code);
   font-size: 0.85em;

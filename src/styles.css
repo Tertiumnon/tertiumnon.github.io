@@ -446,6 +446,9 @@ tr:hover {
   --theme-border: #8e396b;
   --theme-text: #ffffff;
   /* Acrylic: the picture is heavily blurred and tinted, so only its colour and light show through. */
+  /* Sticky bars (page header, pager) are see-through glass over the blurred picture. */
+  --theme-sticky: rgba(100, 46, 77, 0.35);
+  --theme-sticky-blur: blur(16px) saturate(1.3);
   --theme-bg-image: linear-gradient(rgba(100, 46, 77, 0.55), rgba(100, 46, 77, 0.55)), url("/assets/images/honey-pie.png");
   --theme-bg-blur: blur(28px) saturate(1.3);
   --theme-accent: #ffb3d9;
