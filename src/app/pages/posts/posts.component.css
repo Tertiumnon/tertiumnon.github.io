@@ -1,6 +1,16 @@
 /* Posts: one horizontal card per post, no pane around the list. */
+/* The page fills the editor height, so the pager sits on the bottom edge and sticks there while scrolling. */
+:host {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
 .posts-page {
-  padding-bottom: 2rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-bottom: 0;
 }
 
 .posts-title-unused {
@@ -77,10 +87,10 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
+  margin-top: auto;
   position: sticky;
   bottom: 0;
   z-index: 4;
-  margin: 0;
   padding: 8px 0;
   background-color: var(--theme-bg);
   border-top: 1px solid var(--theme-border);
