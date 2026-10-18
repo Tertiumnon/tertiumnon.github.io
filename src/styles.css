@@ -117,7 +117,14 @@ li {
   line-height: 1.5;
 }
 
+/* Links keep the text colour unless a rule gives them an accent (Tailwind used to reset this). */
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .text-link {
+  color: var(--theme-accent);
   text-decoration: underline;
 }
 
