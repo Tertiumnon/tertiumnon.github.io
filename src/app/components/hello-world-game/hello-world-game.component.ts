@@ -10,6 +10,7 @@ import { CellData } from "./hello-world-game.types";
 import { TANK_HEIGHT, TANK_WIDTH } from "./hello-world-game.utils";
 import { GameOverComponent } from "../game-over/game-over.component";
 import { ArcadeScreenService } from "../game-stage/game-screen.service";
+import { SoundService } from "../sound/sound.service";
 
 interface PlayerRecord {
 	name: string;
@@ -79,6 +80,7 @@ export class HelloWorldGameComponent {
 		private svc: HelloWorldGameService,
 		private changeDetector: ChangeDetectorRef,
 		screen: ArcadeScreenService,
+		private sound: SoundService,
 	) {
 		// Fill the TV screen; the instructions, HUD and controls take the height above and below the grid.
 		this.containerWidth = Math.max(200, screen.width() - 24);
@@ -299,6 +301,7 @@ export class HelloWorldGameComponent {
 					// disable the phrase cell
 					hit.isEnabled = false;
 					this.destroyedBlocks++;
+					this.sound.play("hit");
 					if (!this.cells.some((cell) => cell.isEnabled)) {
 						this.endGame(true);
 						return;
@@ -377,6 +380,7 @@ export class HelloWorldGameComponent {
 
 	private endGame(won = false) {
 		if (this.gameOver) return;
+		this.sound.play(won ? "win" : "over");
 		this.survivalSeconds = this.elapsedSeconds;
 		this.gameOver = true;
 		this.gameWon = won;

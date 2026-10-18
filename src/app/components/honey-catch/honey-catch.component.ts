@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnDestroy, OnInit, computed, signal, viewChild } from "@angular/core";
+import { Component, ElementRef, OnDestroy, OnInit, computed, inject, signal, viewChild } from "@angular/core";
 import { GameOverComponent } from "../game-over/game-over.component";
+import { SoundService } from "../sound/sound.service";
 
 interface Pie {
 	id: number;
@@ -102,6 +103,12 @@ const HEART_INTERVAL_MS = 30000;
 			background-color: var(--theme-panel);
 		}
 
+		/* Each tick moves the sprites a little; the transition glides them there instead of jumping. */
+		.pie,
+		.girl {
+			transition: left 40ms linear, top 40ms linear;
+		}
+
 		.pie {
 			position: absolute;
 			width: 6%;
@@ -174,6 +181,7 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 	readonly hearts = computed(() => "♥".repeat(this.lives()));
 	readonly running = signal(false);
 	readonly over = signal(false);
+	private readonly sound = inject(SoundService);
 	readonly best = signal(this.loadBest());
 
 	private timer: ReturnType<typeof setInterval> | undefined;
@@ -270,10 +278,14 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 		if (caught) this.score.update((score) => score + caught);
 		if (restored) this.lives.update((lives) => Math.min(LIVES, lives + restored));
 		if (missed) this.lives.update((lives) => Math.max(0, lives - missed));
+		if (caught) this.sound.play("catch");
+		if (restored) this.sound.play("heart");
+		if (missed) this.sound.play("miss");
 		if (this.lives() === 0) this.end();
 	}
 
 	private end(): void {
+		this.sound.play("over");
 		this.stop();
 		this.over.set(true);
 		this.running.set(false);
