@@ -1,5 +1,5 @@
 .changelog-control-panel {
-	position: fixed;
+	position: sticky;
 	display: flex;
 	width: 100%;
 	justify-content: flex-start;
@@ -7,7 +7,7 @@
 	font-size: 1em;
 	height: var(--control-panel-height);
 	z-index: 1;
-	top: var(--header-height);
+	top: 0;
 	left: 0;
 	backdrop-filter: blur(8px);
 }
