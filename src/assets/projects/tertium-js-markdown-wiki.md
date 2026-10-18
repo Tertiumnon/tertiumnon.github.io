@@ -1,4 +1,4 @@
-# Bun Markdown Wiki
+# @tertium/js-markdown-wiki
 
 A simple web server for displaying and managing markdown files with an HTTP interface.
 
@@ -240,3 +240,7 @@ MIT
 ## Author
 
 Vitalii Balabanov <tertiumnon@gmail.com>
+
+## Support
+
+If this project is useful to you, you can support its development on [Ko-fi](https://ko-fi.com/tertiumnon).

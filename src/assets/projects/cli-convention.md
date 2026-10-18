@@ -52,3 +52,7 @@ Each command takes one of a set of mutually exclusive flags. Giving two is an er
 ## Scope
 
 These rules describe how tools are used on the command line. Git branch and commit naming is covered in [git-convention](https://github.com/Tertiumnon/git-convention).
+
+## Support
+
+If this project is useful to you, you can support its development on [Ko-fi](https://ko-fi.com/tertiumnon).

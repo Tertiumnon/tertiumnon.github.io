@@ -41,3 +41,7 @@ Write the summary in the imperative, lowercase, without a trailing period. Keep 
 4. Release from `develop` to `main`, and from `hotfix/<name>` or `release/<name>` to `main`, then bring the change back to `develop`.
 
 Keep `develop` and `main` in sync with origin before and after each release or merge.
+
+## Support
+
+If this project is useful to you, you can support its development on [Ko-fi](https://ko-fi.com/tertiumnon).

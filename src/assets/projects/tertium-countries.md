@@ -1,4 +1,4 @@
-# Countries
+# @tertium/countries
 
 Country names are available in 20 languages: `en` (default), `zh`, `hi`, `es`, `fr`, `ar`, `bn`, `pt`, `ru`, `ur`, `id`, `de`, `ja`, `mr`, `te`, `tr`, `ko`, `vi`, `it`, `fa`.
 
@@ -115,3 +115,7 @@ Result:
   // ...
 ]
 ```
+
+## Support
+
+If this project is useful to you, you can support its development on [Ko-fi](https://ko-fi.com/tertiumnon).

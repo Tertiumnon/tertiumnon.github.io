@@ -131,3 +131,7 @@ Collection of JavaScript snippets for your productivity.
 - `saf` → `const $1 = ($2) => $3`
 - `saviaa` → `$1.reduce((acc, cur) => acc + cur, 0)`
 <!-- SNIPPETS_END -->
+
+## Support
+
+If this project is useful to you, you can support its development on [Ko-fi](https://ko-fi.com/tertiumnon).

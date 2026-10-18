@@ -38,3 +38,7 @@ Other scripts:
 - [Scripts](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/scripts/README.md)
 - [Recommendations](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/pages/recommendations.md)
 - [Results](https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook/blob/HEAD/pages/results.md)
+
+## Support
+
+If this project is useful to you, you can support its development on [Ko-fi](https://ko-fi.com/tertiumnon).
