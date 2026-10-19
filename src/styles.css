@@ -619,6 +619,42 @@ tr:hover {
   --tv-select-text: #0a1209;
 }
 
+/* HC Wonderland Wood: a dark wood-violet palette from the Bearded Theme (hc.ts). */
+.theme-hc-wonderland-wood {
+  --theme-bg: #1f1d36;
+  --theme-panel: #1b192f;
+  --theme-surface: #24213e;
+  --theme-border: #141222;
+  --theme-text: #d3d2e6;
+  --theme-bg-image: none;
+  --theme-bg-blur: none;
+  --theme-accent: #fbe7c3;
+}
+
+.workbench[data-code-theme="hc-wonderland-wood"] {
+  --code-bg: #1b192f;
+  --code-text: #d3d2e6;
+  --code-keyword: #de98ae;
+  --code-string: #91d6a7;
+  --code-number: #e4a792;
+  --code-comment: #8f8ab8;
+  --code-title: #92b4ff;
+  --code-attr: #fbe7c3;
+  --code-builtin: #ed98cb;
+  --code-variable: #d3d2e6;
+}
+
+.theme-hc-wonderland-wood {
+  --tv-case: linear-gradient(180deg, #1b192f, #1f1d36);
+  --tv-bezel: linear-gradient(180deg, #52426a, #1f1d36);
+  --tv-glass: #141222;
+  --tv-text: #d3d2e6;
+  --tv-title: #fbe7c3;
+  --tv-glow: #9a94e9;
+  --tv-select-bg: #fbe7c3;
+  --tv-select-text: #1f1d36;
+}
+
 .bg {
   background-color: var(--theme-bg);
   background-image: var(--theme-bg-image);

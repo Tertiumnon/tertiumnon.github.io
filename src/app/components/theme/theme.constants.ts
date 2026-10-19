@@ -6,6 +6,7 @@ export enum Theme {
 	AtomOneDark = "atom-one-dark",
 	Matrix = "matrix",
 	Fallout = "fallout",
+	HcWonderlandWood = "hc-wonderland-wood",
 }
 
 export const THEME_LABELS: Record<Theme, string> = {
@@ -16,4 +17,5 @@ export const THEME_LABELS: Record<Theme, string> = {
 	[Theme.AtomOneDark]: "Atom One Dark",
 	[Theme.Matrix]: "Matrix",
 	[Theme.Fallout]: "Fallout",
+	[Theme.HcWonderlandWood]: "HC Wonderland Wood (Bearded)",
 };
