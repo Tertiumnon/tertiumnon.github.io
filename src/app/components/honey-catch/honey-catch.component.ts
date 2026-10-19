@@ -25,7 +25,7 @@ const SPAWN_EVERY_TICKS = 32;
 // One heart every 30 seconds of play.
 const HEART_INTERVAL_MS = 30000;
 
-// Catch the honey pies with the girl from the picture. Move with the pointer or the arrow keys.
+// Catch the honey pies with the girl from the picture. Move with the left and right arrow keys.
 @Component({
 	selector: "app-honey-catch",
 	standalone: true,
@@ -36,7 +36,7 @@ const HEART_INTERVAL_MS = 30000;
 				<span>Score <b>{{ score() }}</b></span>
 				<span class="lives" aria-label="Lives">{{ hearts() }}</span>
 			</header>
-			<div #field class="field" (pointermove)="onPointer($event)" (pointerdown)="onPointer($event)">
+			<div #field class="field">
 				@for (pie of pies(); track pie.id) {
 				<span class="pie" [class.heart]="pie.heart" [style.left.%]="pie.x" [style.top.%]="pie.y">{{ pie.heart ? "♥" : "" }}</span>
 				}
@@ -210,12 +210,6 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 		this.over.set(false);
 		this.running.set(true);
 		this.timer = setInterval(() => this.tick(), TICK_MS);
-	}
-
-	onPointer(event: PointerEvent): void {
-		if (!this.running()) return;
-		const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
-		this.girlX.set(this.clamp(((event.clientX - rect.left) / rect.width) * 100));
 	}
 
 	onKeyDown(event: KeyboardEvent): void {

@@ -19,14 +19,27 @@ interface PlayerRecord {
 	timeSeconds: number;
 }
 
-const RECORDS_KEY = "hello-world-arcade-records";
+// One point per destroyed block and one per second survived; the total is the score.
+const POINTS_PER_BLOCK = 1;
+const POINTS_PER_SECOND = 1;
+const recordScore = (blocks: number, seconds: number): number =>
+	blocks * POINTS_PER_BLOCK + seconds * POINTS_PER_SECOND;
+
+// New key: records from the old scoring (100 per block, time not counted) are not comparable.
+const RECORDS_KEY = "hello-world-arcade-records-v2";
+const seedRecord = (name: string, blocks: number, timeSeconds: number): PlayerRecord => ({
+	name,
+	score: recordScore(blocks, timeSeconds),
+	blocks,
+	timeSeconds,
+});
 const SEED_RECORDS: PlayerRecord[] = [
-	{ name: "MARIO", score: 8945, blocks: 88, timeSeconds: 145 },
-	{ name: "LINK", score: 8552, blocks: 84, timeSeconds: 152 },
-	{ name: "SAMUS", score: 8066, blocks: 79, timeSeconds: 166 },
-	{ name: "MEGA", score: 7659, blocks: 75, timeSeconds: 159 },
-	{ name: "PAC-MAN", score: 7147, blocks: 70, timeSeconds: 147 },
-	{ name: "KIRBY", score: 6938, blocks: 68, timeSeconds: 138 },
+	seedRecord("MARIO", 88, 145),
+	seedRecord("LINK", 84, 152),
+	seedRecord("SAMUS", 79, 166),
+	seedRecord("MEGA", 75, 159),
+	seedRecord("PAC-MAN", 70, 147),
+	seedRecord("KIRBY", 68, 138),
 ];
 
 @Component({
@@ -66,7 +79,7 @@ export class HelloWorldGameComponent {
 	private movementTimer: ReturnType<typeof setInterval> | undefined;
 	private targetTimer: ReturnType<typeof setInterval> | undefined;
 	private targetSteps = 0;
-	private readonly pressedDirections = new Set<"up" | "down" | "left" | "right">();
+	private readonly pressedDirections = new Set<"left" | "right">();
 
 	// fixed game area
 	containerWidth = 600;
@@ -126,7 +139,7 @@ export class HelloWorldGameComponent {
 	}
 
 	get score(): number {
-		return this.destroyedBlocks * 100;
+		return recordScore(this.destroyedBlocks, this.elapsedSeconds);
 	}
 
 	formatTime(seconds: number): string {
@@ -210,33 +223,6 @@ export class HelloWorldGameComponent {
 		const unit = this.cellSize + this.gap;
 		this.colOffsetPx = this.startCol * unit;
 		this.rowOffsetPx = this.startRow * unit;
-	}
-
-	moveUp() {
-		const newRow = Math.max(0, this.tank.row - 1);
-		const upTank = this.svc.tankCellsAt(this.tank.col, newRow, this.tank.color);
-		if (this.isTankHittingPhrase(upTank)) {
-			this.endGame();
-			return;
-		}
-		this.tank.row = newRow;
-	}
-
-	moveDown() {
-		const newRow = Math.min(
-			this.getContainerRows() - TANK_HEIGHT,
-			this.tank.row + 1,
-		);
-		const downTank = this.svc.tankCellsAt(
-			this.tank.col,
-			newRow,
-			this.tank.color,
-		);
-		if (this.isTankHittingPhrase(downTank)) {
-			this.endGame();
-			return;
-		}
-		this.tank.row = newRow;
 	}
 
 	moveLeft() {
@@ -395,21 +381,16 @@ export class HelloWorldGameComponent {
 		this.bulletTimer = undefined;
 	}
 
-	private moveInDirection(direction: "up" | "down" | "left" | "right") {
+	private moveInDirection(direction: "left" | "right") {
 		if (this.gameOver) return;
 		switch (direction) {
-			case "up": this.moveUp(); break;
-			case "down": this.moveDown(); break;
 			case "left": this.moveLeft(); break;
 			case "right": this.moveRight(); break;
 		}
 	}
 
-	private directionForKey(key: string): "up" | "down" | "left" | "right" | undefined {
+	private directionForKey(key: string): "left" | "right" | undefined {
 		switch (key.toLowerCase()) {
-			case "arrowup":
-			case "w": return "up";
-			case "arrowdown": return "down";
 			case "arrowleft":
 			case "a": return "left";
 			case "arrowright":
@@ -513,7 +494,7 @@ export class HelloWorldGameComponent {
 			return;
 		}
 
-		// Space or S => shoot. The down direction uses ArrowDown.
+		// Space or S => shoot.
 		if (event.code === "Space" || k === " " || k === "Spacebar" || k.toLowerCase() === "s") {
 			event.preventDefault();
 			if (!event.repeat) this.shoot();

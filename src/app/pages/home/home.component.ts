@@ -20,10 +20,10 @@ interface MenuItem {
 }
 
 const MAIN_ITEMS: MenuItem[] = [
-	{ label: "Projects", route: "projects", description: "My web and soft freeware projects." },
+	{ label: "Projects", route: "projects", description: "My software projects (cli utils, apps, app extensions, libs, conventions, docs, etc)" },
 	{ label: "Changelog", route: "changelog", description: "What changed in my projects, release by release." },
 	{ label: "Posts", route: "posts", description: "Articles and notes on what I build." },
-	{ label: "Tools", route: "tools", description: "Small tools I use every day." },
+	{ label: "Tools", route: "tools", description: "Small web tools." },
 	{ label: "About me", route: "about-me", description: "Who makes these projects." },
 	{ label: "Play a game", description: "Honey Catch and Hellowordian, for a short break." },
 ];

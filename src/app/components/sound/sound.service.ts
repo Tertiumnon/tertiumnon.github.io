@@ -1,6 +1,6 @@
 import { Injectable, signal } from "@angular/core";
 
-export type SoundName = "move" | "select" | "back" | "power" | "catch" | "heart" | "miss" | "hit" | "over" | "win";
+export type SoundName = "move" | "select" | "back" | "power" | "modem" | "catch" | "heart" | "miss" | "hit" | "over" | "win";
 
 // One tone: frequency in Hz, length in ms, waveform, and when it starts relative to the sound's start.
 type Tone = { freq: number; ms: number; wave?: OscillatorType; at?: number };
@@ -19,6 +19,13 @@ const SOUNDS: Record<SoundName, Tone[]> = {
 	power: [
 		{ freq: 1200, ms: 40, wave: "square" },
 		{ freq: 1800, ms: 60, wave: "square", at: 40 },
+	],
+	// Dial-up modem: a buzz, then the handshake beeps.
+	modem: [
+		{ freq: 120, ms: 500, wave: "sawtooth" },
+		{ freq: 2100, ms: 80, wave: "square", at: 500 },
+		{ freq: 1200, ms: 80, wave: "square", at: 600 },
+		{ freq: 2400, ms: 120, wave: "square", at: 700 },
 	],
 	catch: [
 		{ freq: 1046, ms: 50, wave: "square" },

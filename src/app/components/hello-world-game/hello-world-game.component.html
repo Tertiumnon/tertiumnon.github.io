@@ -58,7 +58,7 @@
 			</div>
 		<app-game-over *ngIf="gameOver" [score]="score">
 					<p class="game-result" [class.victory]="gameWon">{{ gameWon ? 'ALL BLOCKS DESTROYED — YOU WIN!' : 'THE FORMATION REACHED YOUR TANK' }}</p>
-					<p class="final-stats">BLOCKS {{ destroyedBlocks }} <span>•</span> TIME {{ formatTime(survivalSeconds) }}</p>
+					<p class="final-stats">BLOCKS {{ destroyedBlocks }} <span>+</span> TIME {{ survivalSeconds }}s <span>=</span> {{ score }}</p>
 					<p class="records-title">TOP PILOTS</p>
 					<table class="records-table">
 						<thead><tr><th>#</th><th>PILOT</th><th>SCORE</th><th>BLK</th><th>TIME</th></tr></thead>

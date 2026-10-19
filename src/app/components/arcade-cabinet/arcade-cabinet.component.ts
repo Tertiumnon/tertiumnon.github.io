@@ -163,7 +163,7 @@ export class ArcadeCabinetComponent {
 	togglePower(): void {
 		this.powered.update((on) => !on);
 		this.powerChange.emit(this.powered());
-		this.sound.play("power");
+		this.sound.play(this.powered() ? "modem" : "power");
 		if (this.powered()) {
 			// Switching on: the picture stretches out from a line, like an old TV warming up.
 			this.screen().nativeElement.animate(
