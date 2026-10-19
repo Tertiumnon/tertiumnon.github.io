@@ -73,6 +73,25 @@
     "content": "---\npublishedAt: 2017-07-20\ncategory: Programming\ntags: [\"Tips\"]\n---\n\n# Sticker Pack for Telegram: FavoriteSerials\n\nMy sticker pack for Telegram:\n\n[FavoriteSerials](https://t.me/addstickers/FavoriteSerials)\n"
   },
   {
+    "title": "@tertium/css 1.5.1",
+    "link": "/en/changelog/2026-10-08--tertium-css-1-5-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/css",
+    "tags": [
+      "tertium-css"
+    ],
+    "publishedAt": "2026-10-08",
+    "filename": "index.en.md",
+    "dirname": "2026-10-08--tertium-css-1-5-1",
+    "generated": true,
+    "content": "## @tertium/css 1.5.1\n\n- chore(release): add changelog and release scripts\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-css/releases/tag/v1.5.1"
+    }
+  },
+  {
     "title": "@tertium/cheatsheets 2.3.1",
     "link": "/en/changelog/2026-07-19--tertium-cheatsheets-2-3-1",
     "language": "en",
@@ -146,25 +165,6 @@
     "source": {
       "name": "GitHub",
       "url": "https://github.com/Tertiumnon/tertium-js-markdown-wiki/releases/tag/v0.6.0"
-    }
-  },
-  {
-    "title": "@tertium/css 1.5.1",
-    "link": "/en/changelog/2026-10-08--tertium-css-1-5-1",
-    "language": "en",
-    "category": "Releases",
-    "project": "@tertium/css",
-    "tags": [
-      "tertium-css"
-    ],
-    "publishedAt": "2026-10-08",
-    "filename": "index.en.md",
-    "dirname": "2026-10-08--tertium-css-1-5-1",
-    "generated": true,
-    "content": "## @tertium/css 1.5.1\n\n- chore(release): add changelog and release scripts\n",
-    "source": {
-      "name": "GitHub",
-      "url": "https://github.com/Tertiumnon/tertium-css/releases/tag/v1.5.1"
     }
   },
   {

@@ -2,7 +2,7 @@
 
 A framework-agnostic, universal CSS design system with composable tokens, themes, components, and utilities. Use what you need, nothing more.
 
-Includes design tokens, four switchable themes, layout utilities, and reusable components.
+Includes design tokens, five switchable themes, layout utilities, and reusable components.
 
 **📖 [View Interactive Demo](https://github.com/Tertiumnon/tertium-css/blob/HEAD/demo/index.html)** - See all components, themes, and design tokens in action
 
@@ -49,7 +49,7 @@ Tertium CSS is built on a foundation of **design tokens** (CSS variables) that d
 ### Core Concepts
 
 1. **Tokens** - CSS custom properties (--spacing-4, --primary-color, etc.)
-2. **Themes** - Token presets that change appearance (Dark Purple Gold, Dark Violet Gold, Dark Blue White, Light White Red)
+2. **Themes** - Token presets that change appearance (Dark Purple Gold, Dark Violet Gold, Dark Blue White, Dark Indigo Gold, Light White Red)
 3. **Skeleton** - Essential layout utilities (flexbox, grid, spacing, positioning)
 4. **Components** - Pre-built UI elements (buttons, cards, etc.)
 5. **Utilities** - Extended utilities for rapid development
@@ -66,7 +66,7 @@ Choose what you need. All bundles include design tokens.
 
 Includes:
 - ✅ Design tokens (CSS variables)
-- ✅ All four themes
+- ✅ All five themes
 - ✅ Base styles (reset)
 - ✅ Skeleton layout utilities (flex, grid, spacing, positioning)
 - ✅ All utility classes
@@ -84,7 +84,7 @@ Includes:
 
 Includes:
 - ✅ Design tokens
-- ✅ Four theme presets
+- ✅ Five theme presets
 
 **Best for:** Teams with existing component styles who want consistent tokens and theme switching.
 
@@ -192,7 +192,13 @@ Combine bundles to get exactly what you need:
 
 ## Theme System
 
-Four built-in themes with runtime switching. Without `data-theme`, the light theme is used.
+Five built-in themes with runtime switching. Without `data-theme`, the light theme is used.
+
+Every theme defines the same variables (`src/themes/*.theme.ts` generates them), so a component written with these variables works under any theme. The theme contract test (`bun test`) checks this, and that the theme names follow `darkness--primary--accent`, for example `dark--indigo--gold`.
+
+### VS Code
+
+`bun run theme:vscode` writes every theme as a VS Code colour theme to `dist/vscode/<theme>.json`, with the workbench colours derived from the same tokens.
 
 ### Dark Purple Gold
 

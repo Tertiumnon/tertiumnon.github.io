@@ -1,5 +1,22 @@
 [
   {
+    "name": "tertium-css",
+    "title": "@tertium/css",
+    "type": "css-library",
+    "description": "Minimalistic set of CSS classes.",
+    "language": "CSS",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-css",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v1.6.1",
+      "date": "2026-10-19"
+    },
+    "languageIcon": "assets/icons/languages/css.svg"
+  },
+  {
     "name": "portal-commander-file-manager-community",
     "title": "Portal Commander",
     "type": "desktop-app",
@@ -143,23 +160,6 @@
       "date": "2026-10-01"
     },
     "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "tertium-css",
-    "title": "@tertium/css",
-    "type": "css-library",
-    "description": "Minimalistic set of CSS classes.",
-    "language": "CSS",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-css",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v1.5.1",
-      "date": "2026-10-08"
-    },
-    "languageIcon": "assets/icons/languages/css.svg"
   },
   {
     "name": "tertium-countries",
