@@ -1,20 +1,5 @@
 [
   {
-    "title": "Welcome to Changelog Feed",
-    "link": "/en/changelog/2026-06-23--welcome-to-changelog",
-    "language": "en",
-    "category": "Announcements",
-    "project": "Tertium",
-    "tags": [
-      "Changelog",
-      "Update"
-    ],
-    "publishedAt": "2026-06-23",
-    "filename": "index.en.md",
-    "dirname": "2026-06-23--welcome-to-changelog",
-    "content": "---\npublishedAt: 2026-06-23\ncategories: [\"Announcements\"]\ntags: [\"Changelog\",\"Update\"]\n---\n\n# Welcome to Changelog Feed\n\nThis is the first test changelog item. Changelog items are displayed inline on the Changelog page, similar to Twitter messages.\n\nEach changelog item includes:\n- **Title** - Main heading\n- **Date** - Publication date\n- **Content** - Full markdown content rendered directly\n\nYou can add categories and tags to organize your changelog items.\n"
-  },
-  {
     "title": "Bookmarks Manager for Firefox",
     "link": "/en/changelog/2017-07-10--bookmarks-manager-for-firefox",
     "language": "en",
