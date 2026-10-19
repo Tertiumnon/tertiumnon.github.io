@@ -1,5 +1,17 @@
 [
   {
+    "name": "project-structure-convention",
+    "title": "Project Structure Convention",
+    "description": "Standard layout, files and GitHub metadata for Tertium projects: README, changelog, release notes, screenshots, logo, topics.",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/project-structure-convention",
+    "readme": true,
+    "releases": [],
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/markdown.svg"
+  },
+  {
     "name": "tertium-css",
     "title": "@tertium/css",
     "type": "css-library",
@@ -14,6 +26,7 @@
       "tag": "v1.6.1",
       "date": "2026-10-19"
     },
+    "changelog": true,
     "languageIcon": "assets/icons/languages/css.svg"
   },
   {
@@ -87,17 +100,6 @@
     "languageIcon": "assets/icons/languages/html.svg"
   },
   {
-    "name": "project-structure-convention",
-    "title": "Project Structure Guide",
-    "description": "Standard layout, files and GitHub metadata for Tertium projects: README, changelog, release notes, screenshots, logo, topics.",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/project-structure-convention",
-    "readme": true,
-    "releases": [],
-    "languageIcon": "assets/icons/languages/markdown.svg"
-  },
-  {
     "name": "intel-arc-b60-local-llm-cookbook",
     "title": "Intel Arc B60 Local LLM Cookbook",
     "type": "cookbook",
@@ -108,6 +110,7 @@
     "url": "https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook",
     "readme": true,
     "releases": [],
+    "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
@@ -125,6 +128,7 @@
       "tag": "v2.3.1",
       "date": "2026-07-19"
     },
+    "changelog": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
@@ -142,6 +146,7 @@
       "tag": "v3.0.10",
       "date": "2025-05-31"
     },
+    "changelog": true,
     "languageIcon": "assets/icons/languages/javascript.svg"
   },
   {
@@ -159,6 +164,7 @@
       "tag": "v0.6.0",
       "date": "2026-10-01"
     },
+    "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
@@ -176,6 +182,7 @@
       "tag": "v0.6.1",
       "date": "2026-10-08"
     },
+    "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
@@ -193,6 +200,7 @@
       "tag": "v0.23.2",
       "date": "2026-10-18"
     },
+    "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
@@ -210,6 +218,7 @@
       "tag": "v0.3.1",
       "date": "2026-10-18"
     },
+    "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
@@ -266,6 +275,7 @@
       "tag": "v0.2.4",
       "date": "2020-05-25"
     },
+    "changelog": true,
     "languageIcon": "assets/icons/languages/javascript.svg"
   },
   {
@@ -283,6 +293,7 @@
       "tag": "v0.11.2",
       "date": "2026-10-13"
     },
+    "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
@@ -300,6 +311,7 @@
       "tag": "v4.3.0",
       "date": "2026-10-17"
     },
+    "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
@@ -317,6 +329,7 @@
       "tag": "v0.2.0",
       "date": "2020-05-29"
     },
+    "changelog": true,
     "languageIcon": "assets/icons/languages/javascript.svg"
   },
   {
@@ -330,6 +343,7 @@
     "url": "https://github.com/Tertiumnon/youtube-full-window-ext",
     "readme": true,
     "releases": [],
+    "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
@@ -399,6 +413,7 @@
       "tag": "v0.4.0",
       "date": "2026-08-13"
     },
+    "changelog": true,
     "languageIcon": "assets/icons/languages/javascript.svg"
   },
   {
