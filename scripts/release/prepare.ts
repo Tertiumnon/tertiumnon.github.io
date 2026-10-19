@@ -9,6 +9,7 @@ const GENERATED = [
 	"src/assets/changelog",
 	"src/assets/changelog.json",
 	"src/assets/posts.json",
+	"src/assets/lines.json",
 	"src/assets/generated.json",
 ];
 

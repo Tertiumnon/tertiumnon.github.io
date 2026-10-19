@@ -1,0 +1,29 @@
+<app-page-header title="Lines"></app-page-header>
+<div class="container-fluid lines-page">
+  @if (lines().length) {
+  <ol class="lines-feed">
+    @for (line of lines(); track line.uri) {
+    <li class="line">
+      @if (line.author.avatar) {
+      <img class="line-avatar" [src]="line.author.avatar" alt="" loading="lazy" />
+      } @else {
+      <span class="line-avatar line-avatar--empty" aria-hidden="true">{{ line.author.handle.charAt(0) }}</span>
+      }
+      <div class="line-body">
+        <header class="line-head">
+          @if (line.author.displayName) {
+          <strong>{{ line.author.displayName }}</strong>
+          }
+          <span class="line-handle">&#64;{{ line.author.handle }}</span>
+          <time class="line-time" [attr.datetime]="line.createdAt">{{ line.createdAt | date: "yyyy MMM d, HH:mm" }}</time>
+        </header>
+        <p class="line-text">{{ line.text }}</p>
+        <a class="line-link" [href]="line.url" target="_blank" rel="noopener">View on Bluesky</a>
+      </div>
+    </li>
+    }
+  </ol>
+  } @else {
+  <p class="lines-empty">No lines yet.</p>
+  }
+</div>

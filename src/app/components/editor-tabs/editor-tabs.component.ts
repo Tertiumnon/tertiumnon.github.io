@@ -1,13 +1,13 @@
 import { Component, inject } from "@angular/core";
 import { EditorTabsService } from "./editor-tabs.service";
 
-export type TabIcon = "home" | "projects" | "changelog" | "posts" | "tools" | "about-me";
+export type TabIcon = "home" | "projects" | "lines" | "posts" | "tools" | "about-me";
 
 const LANGUAGE_SEGMENTS = ["en", "ru"];
 const SECTION_ICONS: Record<string, TabIcon> = {
 	index: "home",
 	projects: "projects",
-	changelog: "changelog",
+	lines: "lines",
 	posts: "posts",
 	tools: "tools",
 	about: "about-me",

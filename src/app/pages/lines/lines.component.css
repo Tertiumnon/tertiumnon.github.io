@@ -1,0 +1,73 @@
+/* Lines: a feed of short messages, one card per post. */
+.lines-page {
+  max-width: 640px;
+  margin: 1em auto 0;
+}
+
+.lines-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.line {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--theme-border);
+  border-radius: 16px;
+  background-color: var(--theme-surface);
+}
+
+.line-avatar {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.line-avatar--empty {
+  display: grid;
+  place-items: center;
+  background-color: var(--theme-accent);
+  color: var(--theme-bg);
+  font-weight: 700;
+}
+
+.line-body {
+  min-width: 0;
+  flex: 1;
+}
+
+.line-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4em;
+  font-size: 0.95em;
+}
+
+.line-handle,
+.line-time {
+  opacity: 0.6;
+}
+
+.line-text {
+  margin: 0.4em 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.line-link {
+  font-size: 0.85em;
+  color: var(--theme-accent);
+  text-decoration: underline;
+}
+
+.lines-empty {
+  opacity: 0.7;
+}

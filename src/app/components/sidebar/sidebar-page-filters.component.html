@@ -2,14 +2,6 @@
   @case ("projects") {
     <app-project-control-panel></app-project-control-panel>
   }
-  @case ("changelog") {
-    <div class="filters">
-      <label class="filter">
-        <span>Project</span>
-        <app-select-field label="Project" [options]="projectOptions()" [value]="changelog.selectedProject()" (valueChange)="changelog.selectedProject.set($event)"></app-select-field>
-      </label>
-    </div>
-  }
   @case ("posts") {
     <div class="filters">
       <label class="filter">

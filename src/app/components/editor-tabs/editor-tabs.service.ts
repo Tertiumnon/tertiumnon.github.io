@@ -19,7 +19,7 @@ const LANGUAGE_SEGMENTS = ["en", "ru"];
 const SECTION_TITLES: Record<string, string> = {
 	index: "Home",
 	projects: "Projects",
-	changelog: "Changelog",
+	lines: "Lines",
 	posts: "Posts",
 	tools: "Tools",
 	about: "Contact",

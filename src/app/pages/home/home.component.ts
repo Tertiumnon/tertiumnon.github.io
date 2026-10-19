@@ -1,4 +1,5 @@
-import { Component, HostListener, computed, inject, signal } from "@angular/core";
+import { Component, DestroyRef, HostListener, computed, inject, signal } from "@angular/core";
+import { MatrixRainComponent } from "../../components/matrix-rain/matrix-rain.component";
 import { Router } from "@angular/router";
 import { HelloWorldGameComponent } from "../../components/hello-world-game/hello-world-game.component";
 import { HoneyCatchComponent } from "../../components/honey-catch/honey-catch.component";
@@ -21,12 +22,14 @@ interface MenuItem {
 
 const MAIN_ITEMS: MenuItem[] = [
 	{ label: "Projects", route: "projects", description: "My software projects (cli utils, apps, app extensions, libs, conventions, docs, etc)" },
-	{ label: "Changelog", route: "changelog", description: "What changed in my projects, release by release." },
+	{ label: "Lines", route: "lines", description: "Short message from my social networks." },
 	{ label: "Posts", route: "posts", description: "Articles and notes on what I build." },
 	{ label: "Tools", route: "tools", description: "Small web tools." },
 	{ label: "About me", route: "about-me", description: "Who makes these projects." },
 	{ label: "Play a game", description: "Honey Catch and Hellowordian, for a short break." },
 ];
+
+const IDLE_MS = 30_000;
 
 const GAMES: (MenuItem & { key: GameKey })[] = [
 	{ key: "catch", label: "Honey Catch" },
@@ -38,7 +41,7 @@ const GAMES: (MenuItem & { key: GameKey })[] = [
 	templateUrl: "./home.component.html",
 	styleUrl: "./home.component.css",
 	standalone: true,
-	imports: [HelloWorldGameComponent, HoneyCatchComponent, GameStageComponent, ArcadeCabinetComponent],
+	imports: [HelloWorldGameComponent, HoneyCatchComponent, GameStageComponent, ArcadeCabinetComponent, MatrixRainComponent],
 })
 export class HomeComponent {
 	private readonly themeService = inject(ThemeService);
@@ -52,11 +55,20 @@ export class HomeComponent {
 	// False while the set is switched off: key presses are ignored, so nothing starts behind the dark screen.
 	readonly tvOn = signal(true);
 
+	// After this long without input, the menus give way to the Matrix rain.
+	readonly idle = signal(false);
+	private lastActivity = Date.now();
+
 	// The menu on the TV: the start menu, or the games.
 	readonly menu = computed<MenuItem[]>(() => (this.view() === "main" ? MAIN_ITEMS : GAMES));
 	readonly menuCursor = computed(() => (this.view() === "main" ? this.mainCursor() : this.gameCursor()));
 	readonly menuTitle = computed(() => (this.view() === "main" ? "Main menu" : "Select game"));
 	readonly description = computed(() => (this.view() === "main" ? MAIN_ITEMS[this.mainCursor()].description : undefined));
+
+	constructor() {
+		const timer = setInterval(() => this.idle.set(this.view() !== "game" && this.tvOn() && Date.now() - this.lastActivity > IDLE_MS), 1000);
+		inject(DestroyRef).onDestroy(() => clearInterval(timer));
+	}
 
 	moveCursor(step: number): void {
 		const size = this.menu().length;
@@ -86,6 +98,14 @@ export class HomeComponent {
 		this.view.set("game");
 	}
 
+	// Any key or pointer movement wakes the TV from the Matrix rain.
+	@HostListener("document:pointermove")
+	@HostListener("document:pointerdown")
+	markActive(): void {
+		this.lastActivity = Date.now();
+		this.idle.set(false);
+	}
+
 	private defaultGameCursor(): number {
 		return this.themeService.theme() === Theme.HoneyPie ? 0 : 1;
 	}
@@ -107,6 +127,7 @@ export class HomeComponent {
 	// Menus: arrows choose, A or Enter selects. Games and the game screen: B or Escape goes back.
 	@HostListener("document:keydown", ["$event"])
 	onKeyDown(event: KeyboardEvent): void {
+		this.markActive();
 		if (!this.tvOn()) return;
 		const isBack = event.key === "Escape" || event.key.toLowerCase() === "b";
 		if (this.view() === "game") {

@@ -1,7 +1,9 @@
 <div class="home-page">
   <app-arcade-cabinet (powerChange)="onPowerChange($event)">
     <app-game-stage screen>
-      @if (view() === "game") {
+      @if (idle()) {
+        <app-matrix-rain></app-matrix-rain>
+      } @else if (view() === "game") {
       @switch (game()) {
       @case ("catch") {
       <app-honey-catch></app-honey-catch>

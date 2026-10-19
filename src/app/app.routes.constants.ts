@@ -18,17 +18,19 @@ export const APP_ROUTES: Routes = [
 	},
 	{
 		path: "changelog",
-		title: "Changelog",
-		redirectTo: "en/changelog",
+		redirectTo: "lines",
 		pathMatch: "full",
 	},
 	{
 		path: ":lang/changelog",
-		title: "Changelog",
+		redirectTo: "lines",
+		pathMatch: "full",
+	},
+	{
+		path: "lines",
+		title: "Lines",
 		loadComponent: () =>
-			import("./pages/changelog/changelog.component").then(
-				(m) => m.ChangelogComponent,
-			),
+			import("./pages/lines/lines.component").then((m) => m.LinesComponent),
 	},
 	{
 		path: "posts",

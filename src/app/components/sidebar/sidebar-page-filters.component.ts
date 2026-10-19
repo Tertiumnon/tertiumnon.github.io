@@ -2,7 +2,6 @@ import { Component, computed, inject } from "@angular/core";
 import { SelectFieldComponent, selectOptions } from "../form/select-field.component";
 import { EditorTabsService } from "../editor-tabs/editor-tabs.service";
 import { ProjectControlPanelComponent } from "../project-control-panel/project-control-panel.component";
-import { ChangelogFilterService } from "./changelog-filter.service";
 import { PostFilterService } from "./post-filter.service";
 
 // Filters of the open list page. Every page uses the same dropdown control.
@@ -15,9 +14,7 @@ import { PostFilterService } from "./post-filter.service";
 })
 export class SidebarPageFiltersComponent {
 	private readonly tabs = inject(EditorTabsService);
-	readonly changelog = inject(ChangelogFilterService);
 	readonly posts = inject(PostFilterService);
-	readonly projectOptions = computed(() => selectOptions(this.changelog.projects()));
 	readonly categoryOptions = computed(() => selectOptions(this.posts.categories()));
 	readonly tagOptions = computed(() => selectOptions(this.posts.tags()));
 	readonly sortOptions = selectOptions(this.posts.sorts);

@@ -12,6 +12,7 @@ const GENERATED = [
 	"src/assets/changelog",
 	"src/assets/changelog.json",
 	"src/assets/posts.json",
+	"src/assets/lines.json",
 ];
 const DAY_MS = 24 * 60 * 60 * 1000;
 
