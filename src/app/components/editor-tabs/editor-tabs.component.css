@@ -108,3 +108,30 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+/* The bar is a size container, so the tabs can react to its width. */
+.tab-bar {
+  container-type: inline-size;
+}
+
+/* The project tab (second slot) is as wide as its title, up to the tab limit; longer titles are cut with an ellipsis. */
+.tab:nth-child(2) {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 320px;
+}
+
+.tab:nth-child(2) .tab-label {
+  min-width: 0;
+}
+
+/* No room for titles: the first tab shows only its section icon. */
+@container (max-width: 560px) {
+  .tab.pinned .tab-title {
+    display: none;
+  }
+
+  .tab.pinned .tab-label {
+    padding: 0 10px;
+  }
+}

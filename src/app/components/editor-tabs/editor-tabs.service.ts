@@ -30,6 +30,8 @@ const SECTION_TITLES: Record<string, string> = {
 export function levelForUrl(url: string): NavLevel {
 	const segments = url.split("/").filter((segment) => segment.length > 0);
 	if (segments.length > 0 && LANGUAGE_SEGMENTS.includes(segments[0])) segments.shift();
+	// Sub pages of a project (README, screenshots, ...) stay in the project's own tab.
+	if (segments[0] === "projects" && segments.length > 2) return 2;
 	return Math.min(3, Math.max(1, segments.length)) as NavLevel;
 }
 
@@ -86,7 +88,7 @@ export class EditorTabsService {
 
 	// Project and post tabs carry the page's own title; other pages use their route title.
 	private titleFor(url: string, routeTitle: string): string {
-		const projectMatch = /^\/projects\/([^/]+)$/.exec(url);
+		const projectMatch = /^\/projects\/([^/]+)(?:\/[^/]+)?$/.exec(url);
 		if (projectMatch) {
 			const project = PROJECT_ITEMS.find((item) => item.name === projectMatch[1]);
 			if (project) return project.title;
