@@ -709,3 +709,39 @@ tr:hover {
 app-page-header + * > ol > li:first-child {
   margin-top: 0;
 }
+
+/* Atom One Light: the most installed light theme in the VS Code Marketplace (palette from its theme file). */
+.theme-atom-one-light {
+  --theme-bg: #fafafa;
+  --theme-panel: #eaeaeb;
+  --theme-surface: #ffffff;
+  --theme-border: #dbdbdc;
+  --theme-text: #383a42;
+  --theme-bg-image: none;
+  --theme-bg-blur: none;
+  --theme-accent: #4078f2;
+}
+
+.workbench[data-code-theme="atom-one-light"] {
+  --code-bg: #fafafa;
+  --code-text: #383a42;
+  --code-keyword: #a626a4;
+  --code-string: #50a14f;
+  --code-number: #986801;
+  --code-comment: #a0a1a7;
+  --code-title: #4078f2;
+  --code-attr: #c18401;
+  --code-builtin: #0184bc;
+  --code-variable: #e45649;
+}
+
+.theme-atom-one-light {
+  --tv-case: linear-gradient(180deg, #eaeaeb, #fafafa);
+  --tv-bezel: linear-gradient(180deg, #dbdbdc, #eaeaeb);
+  --tv-glass: #ffffff;
+  --tv-text: #383a42;
+  --tv-title: #4078f2;
+  --tv-glow: #4078f2;
+  --tv-select-bg: #4078f2;
+  --tv-select-text: #ffffff;
+}
