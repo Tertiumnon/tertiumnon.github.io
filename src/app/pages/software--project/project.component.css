@@ -29,7 +29,8 @@
 }
 
 .asset {
-  margin-left: 0.5rem;
+  display: block;
+  margin-left: 1.25rem;
 }
 
 /* The README pane from the shared markdown component is flattened here, so it sits on the page itself. */
