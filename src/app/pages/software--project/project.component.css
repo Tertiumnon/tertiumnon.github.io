@@ -65,3 +65,87 @@ app-md-content ::ng-deep .content {
   font-size: 0.9em;
   opacity: 0.75;
 }
+
+/* README / CHANGELOG sub pages: two links under the page's top edge. */
+.project-tabs {
+  display: flex;
+  gap: 0.5em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid var(--theme-border);
+}
+
+.project-tab {
+  padding: 0.4em 0.9em;
+  border-bottom: 2px solid transparent;
+  color: var(--theme-text);
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+.project-tab:hover {
+  opacity: 1;
+}
+
+.project-tab.active {
+  border-bottom-color: var(--theme-accent);
+  opacity: 1;
+  font-weight: 600;
+}
+
+.project-empty {
+  color: var(--theme-text);
+  opacity: 0.7;
+}
+
+.project-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  line-height: 1.8;
+}
+
+/* Tab titles give way to icons when the tab row is too narrow for them. */
+.project-tabs {
+  container-type: inline-size;
+}
+
+.project-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.project-tab-icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@container (max-width: 780px) {
+  .project-tab-title {
+    display: none;
+  }
+
+  .project-tab {
+    padding: 0.4em 0.6em;
+  }
+}
+
+.project-license-text {
+  padding: 1em;
+  border: 1px solid var(--theme-border);
+  border-radius: var(--editor-radius);
+  background-color: var(--theme-panel);
+  white-space: pre-wrap;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+/* Download and asset links are underlined, so they read as links. */
+.project-list a {
+  text-decoration: underline;
+}

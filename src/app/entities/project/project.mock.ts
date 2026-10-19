@@ -19,6 +19,8 @@ type GithubProjectJson = {
 	description?: string;
 	url: string;
 	readme: boolean;
+	changelog?: boolean;
+	licenseText?: boolean;
 	releases: IProjectRelease[];
 	version?: IProjectVersion;
 };
@@ -56,6 +58,8 @@ const GITHUB_PROJECT_ITEMS: IProject[] = (githubProjects as GithubProjectJson[])
 		url: repo.url,
 		updatedAt,
 		readme: repo.readme,
+		changelog: repo.changelog,
+		licenseText: repo.licenseText,
 		releases: repo.releases,
 		version: repo.version,
 		status: isActive(updatedAt) ? ProjectStatus.Active : ProjectStatus.Inactive,

@@ -1,46 +1,81 @@
 <article class="project-page container-fluid" style="margin-top: var(--container-margin-top);">
-  @if (project.repoLicense) {
-  <p class="project-license">License: {{ project.repoLicense }}</p>
-  }
 
-  @if (project.url || project.releases?.length) {
-  <nav class="project-links">
-    @if (project.url) {
-    <a [href]="project.url" target="_blank" rel="noopener">Open project</a>
-    }
-    @if (project.releases?.length) {
-    <details class="download">
-      <summary>Download</summary>
-      <ul>
-        @for (release of project.releases; track release.tag) {
-        <li>
-          <a [href]="release.url" target="_blank" rel="noopener">{{ release.name }}</a>
-          @if (release.publishedAt) { · {{ release.publishedAt | date: "yyyy MMM d" }} }
-          @for (asset of release.assets; track asset.url) {
-          <a class="asset" [href]="asset.url" rel="noopener">{{ asset.name }}</a>
-          }
-        </li>
-        }
-      </ul>
-    </details>
-    }
+  <nav class="project-tabs" aria-label="Project pages">
+    <a class="project-tab" [routerLink]="['/projects', project.name, 'readme']" routerLinkActive="active" [attr.aria-current]="view === 'readme' ? 'page' : null"><svg class="project-tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z" /><path d="M9 11h6M9 15h6" /></svg><span class="project-tab-title">README</span></a>
+    <a class="project-tab" [routerLink]="['/projects', project.name, 'changelog']" routerLinkActive="active" [attr.aria-current]="view === 'changelog' ? 'page' : null"><svg class="project-tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h9" /></svg><span class="project-tab-title">CHANGELOG</span></a>
+    <a class="project-tab" [routerLink]="['/projects', project.name, 'screenshots']" routerLinkActive="active" [attr.aria-current]="view === 'screenshots' ? 'page' : null"><svg class="project-tab-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><circle cx="9" cy="10" r="2" /><path d="M21 16l-5-5-8 8" /></svg><span class="project-tab-title">SCREENSHOTS</span></a>
+    <a class="project-tab" [routerLink]="['/projects', project.name, 'downloads']" routerLinkActive="active" [attr.aria-current]="view === 'downloads' ? 'page' : null"><svg class="project-tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14" /></svg><span class="project-tab-title">DOWNLOADS</span></a>
+    <a class="project-tab" [routerLink]="['/projects', project.name, 'license']" routerLinkActive="active" [attr.aria-current]="view === 'license' ? 'page' : null"><svg class="project-tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.5 8-8 9-4.5-1-8-4.5-8-9V6z" /></svg><span class="project-tab-title">LICENSE</span></a>
+    <a class="project-tab" [routerLink]="['/projects', project.name, 'links']" routerLinkActive="active" [attr.aria-current]="view === 'links' ? 'page' : null"><svg class="project-tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1" /><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" /></svg><span class="project-tab-title">LINKS</span></a>
   </nav>
-  }
 
+  @switch (view) {
+  @case ("readme") {
+  @if (markdown()) {
+  <app-md-content [data]="markdown()" [lineNumbers]="true"></app-md-content>
+  } @else {
+  <h1>{{ project.title }}</h1>
+  @if (project.description) {
+  <p>{{ project.description }}</p>
+  }
+  }
+  }
+  @case ("changelog") {
+  @if (markdown()) {
+  <app-md-content [data]="markdown()" [lineNumbers]="true"></app-md-content>
+  } @else {
+  <p class="project-empty">This repository has no CHANGELOG.md.</p>
+  }
+  }
+  @case ("screenshots") {
   @if (project.screenshots?.length) {
   <div class="screenshots">
     @for (src of project.screenshots; track src) {
     <img [src]="src" alt="" loading="lazy" />
     }
   </div>
-  }
-
-  @if (readme()) {
-  <app-md-content [data]="readme()" [lineNumbers]="true"></app-md-content>
   } @else {
-  <h1>{{ project.title }}</h1>
-  @if (project.description) {
-  <p>{{ project.description }}</p>
+  <p class="project-empty">This project has no screenshots.</p>
+  }
+  }
+  @case ("downloads") {
+  @if (project.releases?.length) {
+  <ul class="project-list">
+    @for (release of project.releases; track release.tag) {
+    <li>
+      <a [href]="release.url" target="_blank" rel="noopener">{{ release.name }}</a>
+      @if (release.publishedAt) { · {{ release.publishedAt | date: "yyyy MMM d" }} }
+      @for (asset of release.assets; track asset.url) {
+      <a class="asset" [href]="asset.url" rel="noopener">{{ asset.name }}</a>
+      }
+    </li>
+    }
+  </ul>
+  } @else {
+  <p class="project-empty">This project has no downloads yet.</p>
+  }
+  }
+  @case ("license") {
+  @if (project.repoLicense) {
+  <p class="project-license-name">{{ project.repoLicense }}</p>
+  }
+  @if (markdown()) {
+  <pre class="project-license-text">{{ markdown() }}</pre>
+  } @else {
+  <p class="project-empty">No license text is available for this project.</p>
+  }
+  }
+  @case ("links") {
+  <ul class="project-list">
+    @if (project.url) {
+    <li><a [href]="project.url" target="_blank" rel="noopener">Repository</a></li>
+    <li><a [href]="project.url + '/issues'" target="_blank" rel="noopener">Issues</a></li>
+    <li><a [href]="project.url + '/releases'" target="_blank" rel="noopener">Releases</a></li>
+    }
+    @if (project.title.startsWith('@')) {
+    <li><a [href]="'https://www.npmjs.com/package/' + project.title" target="_blank" rel="noopener">npm package</a></li>
+    }
+  </ul>
   }
   }
 </article>

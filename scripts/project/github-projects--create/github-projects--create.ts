@@ -34,6 +34,8 @@ type GithubProject = {
 	repoLicense?: string;
 	url: string;
 	readme: boolean;
+	changelog?: boolean;
+	licenseText?: boolean;
 	releases: IProjectRelease[];
 	version?: IProjectVersion;
 };
@@ -205,6 +207,26 @@ const main = async (): Promise<void> => {
 			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.md`), absolutizeReadmeLinks(body, repo.name));
 			project.readme = true;
 			project.title = readmeTitle(md) ?? project.title;
+		} catch (error) {
+			if (!isNotFound(error)) throw error;
+		}
+		// The license text, shown on the project's LICENSE page.
+		for (const file of ["LICENSE", "LICENSE.md", "LICENSE.txt"]) {
+			try {
+				const text = gh(`repos/${GITHUB_USER}/${repo.name}/contents/${file}`, "-H", "Accept: application/vnd.github.raw");
+				await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.license.txt`), text);
+				project.licenseText = true;
+				break;
+			} catch (error) {
+				if (!isNotFound(error)) throw error;
+			}
+		}
+
+		// CHANGELOG.md of the repository, shown on the project's CHANGELOG page.
+		try {
+			const changelog = gh(`repos/${GITHUB_USER}/${repo.name}/contents/CHANGELOG.md`, "-H", "Accept: application/vnd.github.raw");
+			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.changelog.md`), absolutizeReadmeLinks(changelog, repo.name));
+			project.changelog = true;
 		} catch (error) {
 			if (!isNotFound(error)) throw error;
 		}

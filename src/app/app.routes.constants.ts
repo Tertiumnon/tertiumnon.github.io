@@ -68,12 +68,27 @@ export const APP_ROUTES: Routes = [
 	},
 	{
 		path: "projects/:name",
+		redirectTo: "projects/:name/readme",
+		pathMatch: "full",
+	},
+	{
+		path: "projects/:name/readme",
 		title: "Projects",
+		data: { view: "readme" },
 		loadComponent: () =>
 			import("./pages/software--project/project.component").then(
 				(m) => m.ProjectPageComponent,
 			),
 	},
+	...(["changelog", "screenshots", "downloads", "license", "links"] as const).map((view) => ({
+		path: `projects/:name/${view}`,
+		title: "Projects",
+		data: { view },
+		loadComponent: () =>
+			import("./pages/software--project/project.component").then(
+				(m) => m.ProjectPageComponent,
+			),
+	})),
 	{
 		path: ":lang/posts/404",
 		title: "Post Not Found",

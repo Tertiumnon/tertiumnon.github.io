@@ -36,6 +36,8 @@ export interface IProject extends Params {
 	status: import("./project.constants").ProjectStatus;
 	license?: import("./project.constants").ProjectLicense;
 	readme?: boolean;
+	changelog?: boolean;
+	licenseText?: boolean;
 	releases?: IProjectRelease[];
 	version?: IProjectVersion;
 }

@@ -1,0 +1,31 @@
+Portal Commander - Personal Use Licence
+
+Copyright (c) 2026 Vitalii Balabanov. All rights reserved.
+
+This software ("Portal Commander") is NOT open source software. It is not licensed under any open source licence, including the MIT, GPL or any other licence that permits redistribution or modification.
+
+1. Permission
+
+The copyright holder grants you a free, non-exclusive, non-transferable and revocable licence to download, install and use Portal Commander for personal, non-commercial purposes.
+
+2. Restrictions
+
+You may not:
+
+(a) use Portal Commander for commercial purposes, including in a business or organisation, for paid work, or to provide services to others;
+(b) copy, distribute, sublicense, sell, rent or publish the software or any part of it, except that you may keep one unmodified copy for personal backup;
+(c) modify, adapt, translate or create derivative works based on the software;
+(d) reverse engineer, decompile or disassemble the software, except where applicable law expressly does not allow this restriction;
+(e) remove or alter any copyright or licence notice.
+
+3. No warranty
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. THE COPYRIGHT HOLDER DOES NOT WARRANT THAT THE SOFTWARE WILL BE ERROR-FREE OR THAT IT WILL NOT DAMAGE OR DELETE FILES.
+
+4. Limitation of liability
+
+IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING LOSS OF DATA, FILES OR PROFITS, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OF OR OTHER DEALINGS IN THE SOFTWARE.
+
+5. Termination
+
+This licence ends automatically if you break any of its terms. After it ends, you must delete all copies of the software.

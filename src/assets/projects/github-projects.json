@@ -1,17 +1,5 @@
 [
   {
-    "name": "project-structure-convention",
-    "title": "Project Structure Convention",
-    "description": "Standard layout, files and GitHub metadata for Tertium projects: README, changelog, release notes, screenshots, logo, topics.",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/project-structure-convention",
-    "readme": true,
-    "releases": [],
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/markdown.svg"
-  },
-  {
     "name": "tertium-css",
     "title": "@tertium/css",
     "type": "css-library",
@@ -23,11 +11,25 @@
     "readme": true,
     "releases": [],
     "version": {
-      "tag": "v1.6.1",
+      "tag": "v1.6.2",
       "date": "2026-10-19"
     },
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/css.svg"
+  },
+  {
+    "name": "project-structure-convention",
+    "title": "Project Structure Convention",
+    "description": "Standard layout, files and GitHub metadata for Tertium projects: README, changelog, release notes, screenshots, logo, topics.",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/project-structure-convention",
+    "readme": true,
+    "releases": [],
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
     "name": "portal-commander-file-manager-community",
@@ -84,6 +86,7 @@
       "tag": "v0.3.0",
       "date": "2026-10-17"
     },
+    "licenseText": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
@@ -97,6 +100,7 @@
     "url": "https://github.com/Tertiumnon/tertium-icons",
     "readme": true,
     "releases": [],
+    "licenseText": true,
     "languageIcon": "assets/icons/languages/html.svg"
   },
   {
@@ -110,6 +114,7 @@
     "url": "https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook",
     "readme": true,
     "releases": [],
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
@@ -128,6 +133,7 @@
       "tag": "v2.3.1",
       "date": "2026-07-19"
     },
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
@@ -146,6 +152,7 @@
       "tag": "v3.0.10",
       "date": "2025-05-31"
     },
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/javascript.svg"
   },
@@ -164,6 +171,7 @@
       "tag": "v0.6.0",
       "date": "2026-10-01"
     },
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
@@ -182,6 +190,7 @@
       "tag": "v0.6.1",
       "date": "2026-10-08"
     },
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
@@ -200,6 +209,7 @@
       "tag": "v0.23.2",
       "date": "2026-10-18"
     },
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
@@ -218,6 +228,7 @@
       "tag": "v0.3.1",
       "date": "2026-10-18"
     },
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
@@ -232,6 +243,7 @@
     "url": "https://github.com/Tertiumnon/anime-emotions-sticker-pack",
     "readme": true,
     "releases": [],
+    "licenseText": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
@@ -245,6 +257,7 @@
     "url": "https://github.com/Tertiumnon/true-coders-sticker-pack",
     "readme": true,
     "releases": [],
+    "licenseText": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
@@ -258,6 +271,7 @@
     "url": "https://github.com/Tertiumnon/entity-driven-architecture--example",
     "readme": true,
     "releases": [],
+    "licenseText": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
@@ -275,6 +289,7 @@
       "tag": "v0.2.4",
       "date": "2020-05-25"
     },
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/javascript.svg"
   },
@@ -293,6 +308,7 @@
       "tag": "v0.11.2",
       "date": "2026-10-13"
     },
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
@@ -311,6 +327,7 @@
       "tag": "v4.3.0",
       "date": "2026-10-17"
     },
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
@@ -329,6 +346,7 @@
       "tag": "v0.2.0",
       "date": "2020-05-29"
     },
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/javascript.svg"
   },
@@ -343,6 +361,7 @@
     "url": "https://github.com/Tertiumnon/youtube-full-window-ext",
     "readme": true,
     "releases": [],
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
@@ -357,6 +376,7 @@
     "url": "https://github.com/Tertiumnon/cli-convention",
     "readme": true,
     "releases": [],
+    "licenseText": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
@@ -370,6 +390,7 @@
     "url": "https://github.com/Tertiumnon/git-convention",
     "readme": true,
     "releases": [],
+    "licenseText": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
@@ -383,6 +404,7 @@
     "url": "https://github.com/Tertiumnon/entity-driven-architecture",
     "readme": true,
     "releases": [],
+    "licenseText": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
@@ -396,6 +418,7 @@
     "url": "https://github.com/Tertiumnon/release-convention",
     "readme": true,
     "releases": [],
+    "licenseText": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
@@ -413,6 +436,7 @@
       "tag": "v0.4.0",
       "date": "2026-08-13"
     },
+    "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/javascript.svg"
   },
