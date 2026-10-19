@@ -32,6 +32,10 @@ const ACTIVE_SINCE = activeSince.toISOString().slice(0, 10);
 const isActive = (updatedAt?: string): boolean =>
 	updatedAt !== undefined && updatedAt >= ACTIVE_SINCE;
 
+// Licence category of a repository: MIT is open source; other licences (personal-use or CC BY content) are free.
+const licenseOf = (repoLicense?: string): ProjectLicense | undefined =>
+	repoLicense === undefined ? undefined : repoLicense === "MIT License" ? ProjectLicense.OpenSource : ProjectLicense.Free;
+
 // Generated at build time by scripts/project/github-projects--create (only public repositories are listed).
 const GITHUB_PROJECT_ITEMS: IProject[] = (githubProjects as GithubProjectJson[]).map((repo) => {
 	const updatedAt = PROJECT_DATES[`github:${repo.name}`];
@@ -46,6 +50,7 @@ const GITHUB_PROJECT_ITEMS: IProject[] = (githubProjects as GithubProjectJson[])
 		image: repo.image,
 		screenshots: repo.screenshots,
 		repoLicense: repo.repoLicense,
+		license: licenseOf(repo.repoLicense),
 		languageIcon: repo.languageIcon,
 		frameworks: repo.frameworks,
 		url: repo.url,

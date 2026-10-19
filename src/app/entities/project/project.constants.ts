@@ -1,6 +1,6 @@
 export enum ProjectLicense {
-	OpenSource = "Open Source",
-	Free = "Free",
+	OpenSource = "OpenSource",
+	Free = "Freeware",
 	Commercial = "Commercial",
 }
 
