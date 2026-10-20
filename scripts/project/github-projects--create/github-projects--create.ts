@@ -147,13 +147,23 @@ const fetchReleases = (repo: string): IProjectRelease[] =>
 		assets: release.assets.map((asset) => ({ name: asset.name, url: asset.browser_download_url })),
 	}));
 
-const main = async (): Promise<void> => {
+// With a repository name, only that project is rebuilt; the other projects keep their current data.
+const main = async (only?: string): Promise<void> => {
 	await fs.rm(STAGE_DIR, { recursive: true, force: true });
-	await fs.mkdir(STAGE_DIR, { recursive: true });
+	if (only) await fs.cp(OUT_DIR, STAGE_DIR, { recursive: true });
+	else await fs.mkdir(STAGE_DIR, { recursive: true });
 
 	// Projects are the non-fork repositories whose project.yml publish_on lists the site, except the excluded ones.
 	// Type is the first GitHub topic and description is the GitHub description; a missing value stays missing.
-	const repos = fetchRepos().filter((repo) => !repo.isFork && !repo.isEmpty && !isExcluded(repo.name));
+	const repos = fetchRepos().filter(
+		(repo) => !repo.isFork && !repo.isEmpty && !isExcluded(repo.name) && (!only || repo.name === only),
+	);
+	if (only && repos.length === 0) throw new Error(`No repository ${only} - check the name, and that it is not a fork, empty or excluded`);
+	if (only) {
+		for (const suffix of [".md", ".license.txt", ".changelog.md"]) {
+			await fs.rm(path.join(STAGE_DIR, `${only}${suffix}`), { force: true });
+		}
+	}
 	const projects: GithubProject[] = [];
 	for (const repo of repos) {
 		const files = fetchRootFiles(repo.name);
@@ -201,14 +211,20 @@ const main = async (): Promise<void> => {
 		projects.push(project);
 	}
 
-	await fs.writeFile(JSON_FILE, `${JSON.stringify(projects, null, 2)}\n`);
+	const current = only ? (JSON.parse(await fs.readFile(JSON_FILE, "utf-8")) as GithubProject[]) : [];
+	const merged = !only
+		? projects
+		: current.some((project) => project.name === only)
+			? current.flatMap((project) => (project.name === only ? projects : [project]))
+			: [...current, ...projects];
+	await fs.writeFile(JSON_FILE, `${JSON.stringify(merged, null, 2)}\n`);
 	await fs.rm(OUT_DIR, { recursive: true, force: true });
 	await fs.rename(STAGE_DIR, OUT_DIR);
-	console.log(`GitHub projects: ${projects.length} public repositories kept.`);
+	console.log(`GitHub projects: ${merged.length} public repositories kept.`);
 };
 
 if (import.meta.main) {
-	main().catch((error) => {
+	main(process.argv[2]).catch((error) => {
 		console.error(error);
 		process.exit(1);
 	});
