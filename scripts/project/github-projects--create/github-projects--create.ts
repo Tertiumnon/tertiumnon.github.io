@@ -16,6 +16,7 @@ type Repo = {
 	description: string | null;
 	isFork: boolean;
 	isEmpty: boolean;
+	isPrivate: boolean;
 	url: string;
 	repositoryTopics: { name: string }[] | null;
 	licenseInfo: { spdxId: string | null; name: string } | null;
@@ -103,7 +104,7 @@ const fetchRepos = (): Repo[] =>
 	JSON.parse(
 		execFileSync(
 			"gh",
-			["repo", "list", GITHUB_USER, "--limit", "1000", "--json", "name,description,isFork,isEmpty,url,repositoryTopics,primaryLanguage,licenseInfo"],
+			["repo", "list", GITHUB_USER, "--limit", "1000", "--json", "name,description,isFork,isEmpty,isPrivate,url,repositoryTopics,primaryLanguage,licenseInfo"],
 			{ encoding: "utf-8", maxBuffer: 64 * 1024 * 1024 },
 		),
 	);
@@ -131,6 +132,20 @@ const fetchLatestVersion = (repo: string): IProjectVersion | undefined => {
 
 const rawUrl = (repo: string, path: string): string =>
 	`https://raw.githubusercontent.com/${GITHUB_USER}/${repo}/HEAD/${path.split("/").map(encodeURIComponent).join("/")}`;
+
+// A private repository's files are not publicly reachable, so its declared assets are copied into the site.
+const assetUrl = async (repo: Repo, file: string): Promise<string> => {
+	if (!repo.isPrivate) return rawUrl(repo.name, file);
+	const target = path.join(STAGE_DIR, repo.name, file);
+	await fs.mkdir(path.dirname(target), { recursive: true });
+	await fs.writeFile(
+		target,
+		execFileSync("gh", ["api", `repos/${GITHUB_USER}/${repo.name}/contents/${file}`, "-H", "Accept: application/vnd.github.raw"], {
+			maxBuffer: 64 * 1024 * 1024,
+		}),
+	);
+	return `assets/projects/${repo.name}/${file}`;
+};
 
 const fetchReleases = (repo: string): IProjectRelease[] =>
 	(JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/releases`)) as {
@@ -160,8 +175,8 @@ const main = async (only?: string): Promise<void> => {
 	);
 	if (only && repos.length === 0) throw new Error(`No repository ${only} - check the name, and that it is not a fork, empty or excluded`);
 	if (only) {
-		for (const suffix of [".md", ".license.txt", ".changelog.md"]) {
-			await fs.rm(path.join(STAGE_DIR, `${only}${suffix}`), { force: true });
+		for (const file of [`${only}.md`, `${only}.license.txt`, `${only}.changelog.md`, only]) {
+			await fs.rm(path.join(STAGE_DIR, file), { recursive: true, force: true });
 		}
 	}
 	const projects: GithubProject[] = [];
@@ -178,8 +193,8 @@ const main = async (only?: string): Promise<void> => {
 			description: repo.description || undefined,
 			language,
 			frameworks: attributes.frameworks,
-			image: attributes.icon ? rawUrl(repo.name, attributes.icon) : undefined,
-			screenshots: attributes.screenshots?.map((path) => rawUrl(repo.name, path)),
+			image: attributes.icon ? await assetUrl(repo, attributes.icon) : undefined,
+			screenshots: attributes.screenshots && (await Promise.all(attributes.screenshots.map((file) => assetUrl(repo, file)))),
 			repoLicense: repo.licenseInfo?.spdxId && repo.licenseInfo.spdxId !== "NOASSERTION" ? repo.licenseInfo.spdxId : repo.licenseInfo?.name,
 			url: repo.url,
 			readme: false,
