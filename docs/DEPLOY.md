@@ -1,13 +1,4 @@
-# Development and deployment
-
-## Quick start
-
-```bash
-bun install
-bun run start    # http://localhost:4200
-```
-
-`bun install` also points git at `.githooks/` (the `prepare` script).
+# Deployment
 
 ## Scripts
 
