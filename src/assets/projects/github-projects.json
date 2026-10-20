@@ -373,6 +373,12 @@
     "type": "firefox-extension",
     "description": "Halloween theme for YouTube as a Firefox extension.",
     "language": "CSS",
+    "image": "assets/projects/halloween-youtube-theme-ext/assets/logo/logo.svg",
+    "screenshots": [
+      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/01-player-window.png",
+      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/02-search-window.png",
+      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/03-description-and-comments-window.png"
+    ],
     "repoLicense": "MIT License",
     "readme": true,
     "releases": [],

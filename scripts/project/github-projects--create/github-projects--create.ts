@@ -1,7 +1,7 @@
 import { execFileSync } from "node:child_process";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
-import { existsSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { GITHUB_EXCLUDED_REPOS, GITHUB_USER } from "../../../src/app/entities/github-repo/github-repo.data";
 import type { IProjectRelease, IProjectVersion } from "../../../src/app/entities/project/project.types";
 
@@ -134,15 +134,35 @@ const fetchLatestVersion = (repo: string): IProjectVersion | undefined => {
 const rawUrl = (repo: string, path: string): string =>
 	`https://raw.githubusercontent.com/${GITHUB_USER}/${repo}/HEAD/${path.split("/").map(encodeURIComponent).join("/")}`;
 
-// A private repository is not public: nothing from it (images, downloads, links to its GitHub pages) may reach the site,
-// because those links and files stay unreachable for visitors. Its text is kept; its images are dropped.
-const privateText = (md: string, repo: Repo): string =>
-	md
-		.replace(/!\[[^\]]*\]\([^)]*\)\s*/g, "")
-		.replace(/<img[^>]*>\s*/g, "")
+// A private repository's files are not reachable on GitHub, so only the files its project.yml declares (icon, screenshots)
+// are copied into the site. Other images are dropped, and links to the repository itself become plain text.
+const assetUrl = (repo: Repo, file: string): string => {
+	const target = path.join(STAGE_DIR, repo.name, file);
+	mkdirSync(path.dirname(target), { recursive: true });
+	writeFileSync(
+		target,
+		execFileSync("gh", ["api", `repos/${GITHUB_USER}/${repo.name}/contents/${file}`, "-H", "Accept: application/vnd.github.raw"], {
+			maxBuffer: 64 * 1024 * 1024,
+		}),
+	);
+	return `assets/projects/${repo.name}/${file}`;
+};
+
+const privateText = (md: string, repo: Repo, chosen: string[]): string => {
+	const copies = new Map(chosen.map((file) => [file, assetUrl(repo, file)]));
+	const copyOf = (url: string): string | undefined => copies.get(clean(url));
+	return md
+		.replace(/!\[([^\]]*)\]\(([^)\s]+)\)\s*/g, (match, alt: string, url: string) => {
+			const copy = copyOf(url);
+			return copy ? `![${alt}](${copy})\n` : "";
+		})
+		.replace(/<img[^>]*\ssrc="([^"]+)"[^>]*>\s*/g, (match, url: string) => {
+			const copy = copyOf(url);
+			return copy ? match.replace(url, copy) : "";
+		})
 		.replace(/\[([^\]]*)\]\(([^)\s]+)\)/g, (match, text: string, url: string) =>
 			isRelative(url) || url.includes(`github.com/${GITHUB_USER}/${repo.name}`) ? text : match);
-
+};
 
 const fetchReleases = (repo: string): IProjectRelease[] =>
 	(JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/releases`)) as {
@@ -190,16 +210,17 @@ const main = async (only?: string): Promise<void> => {
 			description: repo.description || undefined,
 			language,
 			frameworks: attributes.frameworks,
-			image: !repo.isPrivate && attributes.icon ? rawUrl(repo.name, attributes.icon) : undefined,
-			screenshots: !repo.isPrivate && attributes.screenshots ? attributes.screenshots.map((file) => rawUrl(repo.name, file)) : undefined,
+			image: attributes.icon ? (repo.isPrivate ? assetUrl(repo, attributes.icon) : rawUrl(repo.name, attributes.icon)) : undefined,
+			screenshots: attributes.screenshots?.map((file) => (repo.isPrivate ? assetUrl(repo, file) : rawUrl(repo.name, file))),
 			repoLicense: repo.licenseInfo?.spdxId && repo.licenseInfo.spdxId !== "NOASSERTION" ? repo.licenseInfo.spdxId : repo.licenseInfo?.name,
 			url: repo.isPrivate ? undefined : repo.url,
 			readme: false,
 			releases: repo.isPrivate ? [] : fetchReleases(repo.name),
 			version: fetchLatestVersion(repo.name),
 		};
+		const declared = [...(attributes.icon ? [attributes.icon] : []), ...(attributes.screenshots ?? [])];
 		const toSite = (md: string): string =>
-			repo.isPrivate ? privateText(md, repo) : absolutizeReadmeLinks(md, repo.name);
+			repo.isPrivate ? privateText(md, repo, declared) : absolutizeReadmeLinks(md, repo.name);
 		const readme = files.find((file) => /^readme(\.md)?$/i.test(file));
 		if (readme) {
 			const md = fetchFile(repo.name, readme);
