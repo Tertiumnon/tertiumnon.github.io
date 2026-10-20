@@ -53,10 +53,10 @@ describe("ProjectControlPanelService.filterBy", () => {
 
 	it("filters by license", () => {
 		const list = [
-			makeProject({ repoLicense: "MIT" }),
-			makeProject({ repoLicense: "Apache-2.0" }),
+			makeProject({ license: ProjectLicense.OpenSource }),
+			makeProject({ license: ProjectLicense.Free }),
 		];
-		const result = ProjectControlPanelService.filterBy(list, "license", "Apache-2.0") as IProject[];
+		const result = ProjectControlPanelService.filterBy(list, "license", ProjectLicense.Free) as IProject[];
 		expect(result).toHaveLength(1);
 	});
 });
