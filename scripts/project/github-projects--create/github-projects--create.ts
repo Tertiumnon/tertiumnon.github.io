@@ -9,8 +9,9 @@ const OUT_DIR = "src/assets/projects";
 // Files are written here first and swapped in only after every project was fetched, so a failed run keeps the old data.
 const STAGE_DIR = "src/assets/projects.next";
 const JSON_FILE = path.join(STAGE_DIR, "github-projects.json");
+const SITE_URL = "https://tertiumnon.github.io";
 
-type PublicRepo = {
+type Repo = {
 	name: string;
 	description: string | null;
 	isFork: boolean;
@@ -44,7 +45,7 @@ const gh = (endpoint: string, ...args: string[]): string =>
 	execFileSync("gh", ["api", endpoint, ...args], { encoding: "utf-8", maxBuffer: 64 * 1024 * 1024 });
 
 // Project attributes that GitHub does not provide, from the project.yml file at the repository root.
-type ProjectFile = { type?: string; language?: string; frameworks?: string[] };
+type ProjectFile = { type?: string; language?: string; frameworks?: string[]; publish_on?: string[] };
 const fetchProjectFile = (repo: string): ProjectFile | undefined => {
 	try {
 		const file = JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/contents/project.yml`)) as { content: string };
@@ -93,11 +94,11 @@ export function readmeTitle(md: string): string | undefined {
 		.trim() || undefined;
 }
 
-const fetchPublicRepos = (): PublicRepo[] =>
+const fetchRepos = (): Repo[] =>
 	JSON.parse(
 		execFileSync(
 			"gh",
-			["repo", "list", GITHUB_USER, "--visibility", "public", "--limit", "1000", "--json", "name,description,isFork,url,repositoryTopics,primaryLanguage,licenseInfo"],
+			["repo", "list", GITHUB_USER, "--limit", "1000", "--json", "name,description,isFork,url,repositoryTopics,primaryLanguage,licenseInfo"],
 			{ encoding: "utf-8", maxBuffer: 64 * 1024 * 1024 },
 		),
 	);
@@ -177,12 +178,13 @@ const main = async (): Promise<void> => {
 	await fs.rm(STAGE_DIR, { recursive: true, force: true });
 	await fs.mkdir(STAGE_DIR, { recursive: true });
 
-	// Projects are every public, non-fork repository except the excluded ones.
+	// Projects are the non-fork repositories whose project.yml publish_on lists the site, except the excluded ones.
 	// Type is the first GitHub topic and description is the GitHub description; a missing value stays missing.
-	const repos = fetchPublicRepos().filter((repo) => !repo.isFork && !isExcluded(repo.name));
+	const repos = fetchRepos().filter((repo) => !repo.isFork && !isExcluded(repo.name));
 	const projects: GithubProject[] = [];
 	for (const repo of repos) {
 		const attributes = fetchProjectFile(repo.name);
+		if (!attributes?.publish_on?.includes(SITE_URL)) continue;
 		const language = attributes?.language ?? repo.primaryLanguage?.name;
 		const project: GithubProject = {
 			name: repo.name,
