@@ -15,6 +15,7 @@ type Repo = {
 	name: string;
 	description: string | null;
 	isFork: boolean;
+	isEmpty: boolean;
 	url: string;
 	repositoryTopics: { name: string }[] | null;
 	licenseInfo: { spdxId: string | null; name: string } | null;
@@ -45,16 +46,22 @@ const gh = (endpoint: string, ...args: string[]): string =>
 	execFileSync("gh", ["api", endpoint, ...args], { encoding: "utf-8", maxBuffer: 64 * 1024 * 1024 });
 
 // Project attributes that GitHub does not provide, from the project.yml file at the repository root.
-type ProjectFile = { type?: string; language?: string; frameworks?: string[]; publish_on?: string[] };
-const fetchProjectFile = (repo: string): ProjectFile | undefined => {
-	try {
-		const file = JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/contents/project.yml`)) as { content: string };
-		return Bun.YAML.parse(Buffer.from(file.content, "base64").toString("utf-8")) as ProjectFile;
-	} catch (error) {
-		if (isNotFound(error)) return undefined;
-		throw error;
-	}
+// Assets are read only when the project declares them, so the generator never requests a file that does not exist.
+type ProjectFile = {
+	type?: string;
+	language?: string;
+	frameworks?: string[];
+	publish_on?: string[];
+	icon?: string;
+	screenshots?: string[];
 };
+
+const fetchFile = (repo: string, file: string): string =>
+	gh(`repos/${GITHUB_USER}/${repo}/contents/${file}`, "-H", "Accept: application/vnd.github.raw");
+
+// Root entries of the default branch; a file is requested only when it is listed here, so no request ends in a 404.
+const fetchRootFiles = (repo: string): string[] =>
+	(JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/git/trees/HEAD`)) as { tree: { path: string }[] }).tree.map((entry) => entry.path);
 
 // The language icon is the file named after the language in assets/icons/languages, if there is one.
 const languageIconFor = (language?: string): string | undefined => {
@@ -63,8 +70,6 @@ const languageIconFor = (language?: string): string | undefined => {
 	return existsSync(path.join("src/assets/icons/languages", file)) ? `assets/icons/languages/${file}` : undefined;
 };
 
-const isNotFound = (error: unknown): boolean =>
-	String((error as { stderr?: unknown }).stderr ?? error).includes("HTTP 404");
 
 const isExcluded = (name: string): boolean =>
 	GITHUB_EXCLUDED_REPOS.some((rule) => (typeof rule === "string" ? rule === name : rule.test(name)));
@@ -98,7 +103,7 @@ const fetchRepos = (): Repo[] =>
 	JSON.parse(
 		execFileSync(
 			"gh",
-			["repo", "list", GITHUB_USER, "--limit", "1000", "--json", "name,description,isFork,url,repositoryTopics,primaryLanguage,licenseInfo"],
+			["repo", "list", GITHUB_USER, "--limit", "1000", "--json", "name,description,isFork,isEmpty,url,repositoryTopics,primaryLanguage,licenseInfo"],
 			{ encoding: "utf-8", maxBuffer: 64 * 1024 * 1024 },
 		),
 	);
@@ -124,40 +129,8 @@ const fetchLatestVersion = (repo: string): IProjectVersion | undefined => {
 	return { tag: latest.tag.name, date: commit.commit.committer.date.slice(0, 10) };
 };
 
-// Files of a repository folder, or none when the folder does not exist.
-const listFolder = (repo: string, folder: string): { name: string; type: string }[] => {
-	try {
-		return JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/contents/${folder}`));
-	} catch (error) {
-		if (isNotFound(error)) return [];
-		throw error;
-	}
-};
-
 const rawUrl = (repo: string, path: string): string =>
 	`https://raw.githubusercontent.com/${GITHUB_USER}/${repo}/HEAD/${path.split("/").map(encodeURIComponent).join("/")}`;
-
-// Standard location: assets/logo/logo.svg or assets/logo/logo.png. Older repositories kept assets/logo.* at the root.
-const LOGO_PATTERN = /^logo.(svg|png|webp|jpe?g)$/i;
-const fetchLogo = (repo: string): string | undefined => {
-	const folder = listFolder(repo, "assets/logo").find((file) => file.type === "file" && LOGO_PATTERN.test(file.name));
-	if (folder) return rawUrl(repo, `assets/logo/${folder.name}`);
-	const root = listFolder(repo, "assets").find((file) => file.type === "file" && LOGO_PATTERN.test(file.name));
-	return root ? rawUrl(repo, `assets/${root.name}`) : undefined;
-};
-
-// Standard location: docs/screenshots/NN-name.png, in display order.
-const fetchScreenshots = (repo: string): string[] =>
-	listFolder(repo, "docs/screenshots")
-		.filter((file) => file.type === "file" && /.(png|webp|gif|jpe?g|svg)$/i.test(file.name))
-		.sort((a, b) => a.name.localeCompare(b.name))
-		.map((file) => rawUrl(repo, `docs/screenshots/${file.name}`));
-
-// Sticker packs show one of their stickers: the first image in the stickers folder, as a raw GitHub URL.
-const fetchFirstSticker = (repo: string): string | undefined => {
-	const image = listFolder(repo, "stickers").find((file) => file.type === "file" && /.(png|webp|gif|jpe?g)$/i.test(file.name));
-	return image ? rawUrl(repo, `stickers/${image.name}`) : undefined;
-};
 
 const fetchReleases = (repo: string): IProjectRelease[] =>
 	(JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/releases`)) as {
@@ -180,57 +153,48 @@ const main = async (): Promise<void> => {
 
 	// Projects are the non-fork repositories whose project.yml publish_on lists the site, except the excluded ones.
 	// Type is the first GitHub topic and description is the GitHub description; a missing value stays missing.
-	const repos = fetchRepos().filter((repo) => !repo.isFork && !isExcluded(repo.name));
+	const repos = fetchRepos().filter((repo) => !repo.isFork && !repo.isEmpty && !isExcluded(repo.name));
 	const projects: GithubProject[] = [];
 	for (const repo of repos) {
-		const attributes = fetchProjectFile(repo.name);
-		if (!attributes?.publish_on?.includes(SITE_URL)) continue;
-		const language = attributes?.language ?? repo.primaryLanguage?.name;
+		const files = fetchRootFiles(repo.name);
+		if (!files.includes("project.yml")) continue;
+		const attributes = Bun.YAML.parse(fetchFile(repo.name, "project.yml")) as ProjectFile;
+		if (!attributes.publish_on?.includes(SITE_URL)) continue;
+		const language = attributes.language ?? repo.primaryLanguage?.name;
 		const project: GithubProject = {
 			name: repo.name,
 			title: repo.name,
-			type: attributes?.type,
+			type: attributes.type,
 			description: repo.description || undefined,
 			language,
-			frameworks: attributes?.frameworks,
-			// Convention: assets/logo/logo.* is the logo; a repository without one uses the first image in stickers/ (sticker packs).
-			image: fetchLogo(repo.name) ?? fetchFirstSticker(repo.name),
-			screenshots: fetchScreenshots(repo.name),
+			frameworks: attributes.frameworks,
+			image: attributes.icon ? rawUrl(repo.name, attributes.icon) : undefined,
+			screenshots: attributes.screenshots?.map((path) => rawUrl(repo.name, path)),
 			repoLicense: repo.licenseInfo?.spdxId && repo.licenseInfo.spdxId !== "NOASSERTION" ? repo.licenseInfo.spdxId : repo.licenseInfo?.name,
 			url: repo.url,
 			readme: false,
 			releases: fetchReleases(repo.name),
 			version: fetchLatestVersion(repo.name),
 		};
-		try {
-			const md = gh(`repos/${GITHUB_USER}/${repo.name}/readme`, "-H", "Accept: application/vnd.github.raw");
+		const readme = files.find((file) => /^readme(\.md)?$/i.test(file));
+		if (readme) {
+			const md = fetchFile(repo.name, readme);
 			// The site shows the screenshot gallery itself, so the README's copy of the screenshots is left out.
 			const body = project.screenshots?.length ? md.replace(SCREENSHOT_BLOCK, "") : md;
 			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.md`), absolutizeReadmeLinks(body, repo.name));
 			project.readme = true;
 			project.title = readmeTitle(md) ?? project.title;
-		} catch (error) {
-			if (!isNotFound(error)) throw error;
 		}
 		// The license text, shown on the project's LICENSE page.
-		for (const file of ["LICENSE", "LICENSE.md", "LICENSE.txt"]) {
-			try {
-				const text = gh(`repos/${GITHUB_USER}/${repo.name}/contents/${file}`, "-H", "Accept: application/vnd.github.raw");
-				await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.license.txt`), text);
-				project.licenseText = true;
-				break;
-			} catch (error) {
-				if (!isNotFound(error)) throw error;
-			}
+		const license = ["LICENSE", "LICENSE.md", "LICENSE.txt"].find((file) => files.includes(file));
+		if (license) {
+			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.license.txt`), fetchFile(repo.name, license));
+			project.licenseText = true;
 		}
-
 		// CHANGELOG.md of the repository, shown on the project's CHANGELOG page.
-		try {
-			const changelog = gh(`repos/${GITHUB_USER}/${repo.name}/contents/CHANGELOG.md`, "-H", "Accept: application/vnd.github.raw");
-			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.changelog.md`), absolutizeReadmeLinks(changelog, repo.name));
+		if (files.includes("CHANGELOG.md")) {
+			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.changelog.md`), absolutizeReadmeLinks(fetchFile(repo.name, "CHANGELOG.md"), repo.name));
 			project.changelog = true;
-		} catch (error) {
-			if (!isNotFound(error)) throw error;
 		}
 		// Icon: the language icon; a project without one but with a README (documents) shows the Markdown icon.
 		project.languageIcon = languageIconFor(language) ?? (project.readme ? languageIconFor("Markdown") : undefined);
