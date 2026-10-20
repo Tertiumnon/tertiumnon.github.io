@@ -1,5 +1,24 @@
 [
   {
+    "name": "halloween-youtube-theme-ext",
+    "title": "Halloween YouTube Theme",
+    "type": "firefox-extension",
+    "language": "CSS",
+    "image": "assets/projects/halloween-youtube-theme-ext/assets/logo/logo.svg",
+    "screenshots": [
+      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/01-player-window.png",
+      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/02-search-window.png",
+      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/03-description-and-comments-window.png"
+    ],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/halloween-youtube-theme-ext",
+    "readme": true,
+    "releases": [],
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/css.svg"
+  },
+  {
     "name": "portal-commander-file-manager-community",
     "title": "Portal Commander",
     "type": "desktop-app",
@@ -56,6 +75,24 @@
     },
     "licenseText": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
+  },
+  {
+    "name": "json-all-to-one",
+    "title": "JSON All to One",
+    "type": "cli",
+    "description": "CLI that concatenates several JSON files from a directory into one file, optionally wrapped under a key.",
+    "language": "TypeScript",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/json-all-to-one",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.2.4",
+      "date": "2020-05-25"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "true-coders-sticker-pack",
