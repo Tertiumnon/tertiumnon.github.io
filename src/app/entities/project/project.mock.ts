@@ -1,11 +1,7 @@
 import projectDates from "../../../assets/project-dates.json";
 import githubProjects from "../../../assets/projects/github-projects.json";
 import { ProjectLicense, ProjectStatus } from "./project.constants";
-import {
-	IProject,
-	IProjectRelease,
-	IProjectVersion,
-} from "./project.types";
+import { IProject, IProjectRelease, IProjectVersion } from "./project.types";
 
 const PROJECT_DATES: Record<string, string> = projectDates;
 
