@@ -1,5 +1,198 @@
 [
   {
+    "name": "project-structure-convention",
+    "title": "Project Structure Convention",
+    "type": "conventions",
+    "description": "Standard layout, files and GitHub metadata for Tertium projects: README, changelog, release notes, screenshots, logo, topics.",
+    "language": "TypeScript",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/project-structure-convention",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.1.0",
+      "date": "2026-10-20"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
+    "name": "entity-driven-architecture--example",
+    "title": "Blog Platform - Entity-Driven Architecture",
+    "type": "web-app",
+    "description": "Blog platform built with entity-driven architecture: Bun and Elysia backend, SolidJS frontend.",
+    "language": "TypeScript",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/entity-driven-architecture--example",
+    "readme": true,
+    "releases": [],
+    "licenseText": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
+    "name": "tertium-js-markdown-wiki",
+    "title": "@tertium/js-markdown-wiki",
+    "type": "web-app",
+    "description": "Simple Bun web server that displays and manages markdown files over HTTP.",
+    "language": "TypeScript",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-js-markdown-wiki",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.6.0",
+      "date": "2026-10-01"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
+    "name": "tertium-css",
+    "title": "@tertium/css",
+    "type": "css-library",
+    "description": "Minimalistic set of CSS classes.",
+    "language": "CSS",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-css",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v1.6.2",
+      "date": "2026-10-19"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/css.svg"
+  },
+  {
+    "name": "tertium-prisma-codegen",
+    "title": "@tertium/prisma-codegen",
+    "type": "code-generator",
+    "description": "Code generation library for Prisma schemas: REST handlers, GraphQL resolvers, and TypeScript types. In development.",
+    "language": "TypeScript",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-prisma-codegen",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.11.2",
+      "date": "2026-10-13"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
+    "name": "tertium-js",
+    "title": "@tertium/js",
+    "type": "library",
+    "description": "Reusable TypeScript library of shared core utilities, entity models, and release scripts for JavaScript projects. In development.",
+    "language": "TypeScript",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-js",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v4.3.0",
+      "date": "2026-10-17"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
+    "name": "mw-deploy",
+    "title": "MediaWiki Template Deploy",
+    "type": "cli",
+    "description": "Node.js CLI to stream, update, and delete MediaWiki pages on a remote server from local article files.",
+    "language": "JavaScript",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/mw-deploy",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.4.0",
+      "date": "2026-08-13"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/javascript.svg"
+  },
+  {
+    "name": "json-to-sql-script",
+    "title": "JSON to SQL Script",
+    "type": "cli",
+    "description": "Convert your JSON-file to SQL-script for inserting to database.",
+    "language": "JavaScript",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/json-to-sql-script",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.2.0",
+      "date": "2020-05-29"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/javascript.svg"
+  },
+  {
+    "name": "tertium-hlpr",
+    "title": "@tertium/hlpr",
+    "type": "cli",
+    "description": "Command-line helper for everyday tasks on Windows, macOS, and Linux, run as hlpr <domain> <command>.",
+    "language": "TypeScript",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-hlpr",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.25.4",
+      "date": "2026-10-20"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
+    "name": "tertium-gith",
+    "title": "@tertium/gith",
+    "type": "cli",
+    "description": "gf: git-only branch flow CLI (goal branches, release/hotfix containers, synced merges)",
+    "language": "TypeScript",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-gith",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.3.2",
+      "date": "2026-10-19"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
+    "name": "json-all-to-one",
+    "title": "JSON All to One",
+    "type": "cli",
+    "description": "CLI that concatenates several JSON files from a directory into one file, optionally wrapped under a key.",
+    "language": "TypeScript",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/json-all-to-one",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.2.4",
+      "date": "2020-05-25"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
     "name": "halloween-youtube-theme-ext",
     "title": "Halloween YouTube Theme",
     "type": "firefox-extension",
@@ -94,24 +287,6 @@
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
-    "name": "json-all-to-one",
-    "title": "JSON All to One",
-    "type": "cli",
-    "description": "CLI that concatenates several JSON files from a directory into one file, optionally wrapped under a key.",
-    "language": "TypeScript",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/json-all-to-one",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.2.4",
-      "date": "2020-05-25"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
     "name": "true-coders-sticker-pack",
     "title": "tRUe coders",
     "type": "telegram-sticker-pack",
@@ -148,42 +323,6 @@
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
-    "name": "json-to-sql-script",
-    "title": "JSON to SQL Script",
-    "type": "cli",
-    "description": "Convert your JSON-file to SQL-script for inserting to database.",
-    "language": "JavaScript",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/json-to-sql-script",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.2.0",
-      "date": "2020-05-29"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/javascript.svg"
-  },
-  {
-    "name": "tertium-css",
-    "title": "@tertium/css",
-    "type": "css-library",
-    "description": "Minimalistic set of CSS classes.",
-    "language": "CSS",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-css",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v1.6.2",
-      "date": "2026-10-19"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/css.svg"
-  },
-  {
     "name": "youtube-full-window-ext",
     "title": "Full Windowed Youtube",
     "type": "firefox-extension",
@@ -196,24 +335,6 @@
     "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "mw-deploy",
-    "title": "MediaWiki Template Deploy",
-    "type": "cli",
-    "description": "Node.js CLI to stream, update, and delete MediaWiki pages on a remote server from local article files.",
-    "language": "JavaScript",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/mw-deploy",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.4.0",
-      "date": "2026-08-13"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/javascript.svg"
   },
   {
     "name": "release-convention",
@@ -266,55 +387,6 @@
     "releases": [],
     "licenseText": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
-  },
-  {
-    "name": "tertium-prisma-codegen",
-    "title": "@tertium/prisma-codegen",
-    "type": "code-generator",
-    "description": "Code generation library for Prisma schemas: REST handlers, GraphQL resolvers, and TypeScript types. In development.",
-    "language": "TypeScript",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-prisma-codegen",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.11.2",
-      "date": "2026-10-13"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "entity-driven-architecture--example",
-    "title": "Blog Platform - Entity-Driven Architecture",
-    "type": "web-app",
-    "description": "Blog platform built with entity-driven architecture: Bun and Elysia backend, SolidJS frontend.",
-    "language": "TypeScript",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/entity-driven-architecture--example",
-    "readme": true,
-    "releases": [],
-    "licenseText": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "tertium-js-markdown-wiki",
-    "title": "@tertium/js-markdown-wiki",
-    "type": "web-app",
-    "description": "Simple Bun web server that displays and manages markdown files over HTTP.",
-    "language": "TypeScript",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-js-markdown-wiki",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.6.0",
-      "date": "2026-10-01"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "tertium-js-snippets",
@@ -385,42 +457,6 @@
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
-    "name": "tertium-js",
-    "title": "@tertium/js",
-    "type": "library",
-    "description": "Reusable TypeScript library of shared core utilities, entity models, and release scripts for JavaScript projects. In development.",
-    "language": "TypeScript",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-js",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v4.3.0",
-      "date": "2026-10-17"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "tertium-gith",
-    "title": "@tertium/gith",
-    "type": "cli",
-    "description": "gf: git-only branch flow CLI (goal branches, release/hotfix containers, synced merges)",
-    "language": "TypeScript",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-gith",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.3.2",
-      "date": "2026-10-19"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
     "name": "tertium-icons",
     "title": "tertium-icons",
     "type": "icon-set",
@@ -432,24 +468,6 @@
     "releases": [],
     "licenseText": true,
     "languageIcon": "assets/icons/languages/html.svg"
-  },
-  {
-    "name": "project-structure-convention",
-    "title": "Project Structure Convention",
-    "type": "conventions",
-    "description": "Standard layout, files and GitHub metadata for Tertium projects: README, changelog, release notes, screenshots, logo, topics.",
-    "language": "TypeScript",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/project-structure-convention",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.1.0",
-      "date": "2026-10-20"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "npm-convention",
@@ -467,23 +485,5 @@
     "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
-  },
-  {
-    "name": "tertium-hlpr",
-    "title": "@tertium/hlpr",
-    "type": "cli",
-    "description": "Command-line helper for everyday tasks on Windows, macOS, and Linux, run as hlpr <domain> <command>.",
-    "language": "TypeScript",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-hlpr",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.25.4",
-      "date": "2026-10-20"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
   }
 ]

@@ -439,37 +439,6 @@ initMultiSelect(document.querySelector(".multi-select"));
 
 See [COMPONENTS.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/COMPONENTS.md) for detailed component API reference.
 
-## File Structure
-
-```
-src/
-├── system/                  # Design tokens and base styles
-├── themes/                  # Four theme presets and generator configs
-├── form/                    # Form controls and multiselect behavior
-├── components/              # Pre-built components (buttons, cards, navigation)
-├── utilities/               # Utility classes (spacing, display, colors, etc.)
-└── bundles/                 # Composite bundle entry points
-
-dist/
-├── bundles/
-│   ├── full.min.css         # Full bundle
-│   ├── themes.min.css       # Theme presets
-│   ├── form.min.css         # Form controls
-│   ├── skeleton.min.css     # Layout essentials
-│   ├── utilities.min.css    # All utilities
-│   ├── components.min.css   # Components only
-│   └── variables.min.css    # Design tokens only
-├── themes/
-│   ├── dark.purple--gold.theme.min.css
-│   ├── dark.violet--gold.theme.min.css
-│   ├── dark.blue--white.theme.min.css
-│   └── light.white--red.theme.min.css
-├── components/              # Individual component files
-├── form/                    # Individual form files
-├── system/                  # Base styles and tokens
-├── utilities/               # Individual utility files
-```
-
 ## Documentation
 
 - [DESIGN_SYSTEM_OVERVIEW.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/DESIGN_SYSTEM_OVERVIEW.md) - Principles and architecture
@@ -479,6 +448,7 @@ dist/
 - [COMPONENTS.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/COMPONENTS.md) - Component catalog (TODO)
 - [UTILITIES.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/UTILITIES.md) - Utility class reference (TODO)
 - [STRUCTURE.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/STRUCTURE.md) - Directory organization
+- [Development](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/DEVELOPMENT.md)
 
 ## Why Tertium CSS?
 
@@ -514,24 +484,6 @@ CSS custom properties (CSS variables) are supported in all modern browsers.
   }
 }
 ```
-
-## Development
-
-```bash
-# Install dependencies
-npm install
-
-# Build all bundles
-npm run build
-
-# Check formatting and run tests
-npm run lint
-npm test
-```
-
-## Contributing
-
-See [CONTRIBUTING.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/CONTRIBUTING.md) for guidelines on adding new components, tokens, or themes.
 
 ## License
 
