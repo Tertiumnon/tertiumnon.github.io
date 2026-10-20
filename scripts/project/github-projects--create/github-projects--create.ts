@@ -75,12 +75,13 @@ const languageIconFor = (language?: string): string | undefined => {
 const isExcluded = (name: string): boolean =>
 	GITHUB_EXCLUDED_REPOS.some((rule) => (typeof rule === "string" ? rule === name : rule.test(name)));
 
+const isRelative = (url: string): boolean => !/^(?:[a-z]+:|\/|#)/i.test(url);
+const clean = (url: string): string => url.replace(/^\.\//, "");
+
 // Relative README links and images point at files in the repo; make them absolute so they work on the site.
 export function absolutizeReadmeLinks(md: string, repo: string): string {
 	const blob = `https://github.com/${GITHUB_USER}/${repo}/blob/HEAD/`;
 	const raw = `https://raw.githubusercontent.com/${GITHUB_USER}/${repo}/HEAD/`;
-	const isRelative = (url: string): boolean => !/^(?:[a-z]+:|\/|#)/i.test(url);
-	const clean = (url: string): string => url.replace(/^\.\//, "");
 	return md
 		.replace(/(!?\[[^\]]*\]\()([^)\s]+)/g, (match, prefix: string, url: string) =>
 			isRelative(url) ? `${prefix}${prefix.startsWith("!") ? raw : blob}${clean(url)}` : match)
@@ -147,6 +148,27 @@ const assetUrl = async (repo: Repo, file: string): Promise<string> => {
 	return `assets/projects/${repo.name}/${file}`;
 };
 
+// A private repository's README images are copied into the site like its other assets; links to its other files
+// become plain text, because visitors cannot open them on GitHub.
+const localizePrivateLinks = async (md: string, repo: Repo): Promise<string> => {
+	const images = [...md.matchAll(/!\[[^\]]*\]\(([^)\s]+)\)|<img[^>]*\ssrc="([^"]+)"/g)]
+		.map((match) => match[1] ?? match[2])
+		.filter((url): url is string => url !== undefined && isRelative(url));
+	const copies = new Map(
+		await Promise.all([...new Set(images)].map(async (url) => [url, await assetUrl(repo, clean(url))] as const)),
+	);
+	return md
+		.replace(/(!\[[^\]]*\]\()([^)\s]+)/g, (match, prefix: string, url: string) => {
+			const copy = copies.get(url);
+			return copy ? `${prefix}${copy}` : match;
+		})
+		.replace(/(<img[^>]*\ssrc=")([^"]+)"/g, (match, prefix: string, url: string) => {
+			const copy = copies.get(url);
+			return copy ? `${prefix}${copy}"` : match;
+		})
+		.replace(/(?<!!)\[([^\]]*)\]\(([^)\s]+)\)/g, (match, text: string, url: string) => (isRelative(url) ? text : match));
+};
+
 const fetchReleases = (repo: string): IProjectRelease[] =>
 	(JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/releases`)) as {
 		name: string | null;
@@ -201,12 +223,14 @@ const main = async (only?: string): Promise<void> => {
 			releases: fetchReleases(repo.name),
 			version: fetchLatestVersion(repo.name),
 		};
+		const toSite = (md: string): Promise<string> =>
+			repo.isPrivate ? localizePrivateLinks(md, repo) : Promise.resolve(absolutizeReadmeLinks(md, repo.name));
 		const readme = files.find((file) => /^readme(\.md)?$/i.test(file));
 		if (readme) {
 			const md = fetchFile(repo.name, readme);
 			// The site shows the screenshot gallery itself, so the README's copy of the screenshots is left out.
 			const body = project.screenshots?.length ? md.replace(SCREENSHOT_BLOCK, "") : md;
-			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.md`), absolutizeReadmeLinks(body, repo.name));
+			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.md`), await toSite(body));
 			project.readme = true;
 			project.title = readmeTitle(md) ?? project.title;
 		}
@@ -218,7 +242,7 @@ const main = async (only?: string): Promise<void> => {
 		}
 		// CHANGELOG.md of the repository, shown on the project's CHANGELOG page.
 		if (files.includes("CHANGELOG.md")) {
-			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.changelog.md`), absolutizeReadmeLinks(fetchFile(repo.name, "CHANGELOG.md"), repo.name));
+			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.changelog.md`), await toSite(fetchFile(repo.name, "CHANGELOG.md")));
 			project.changelog = true;
 		}
 		// Icon: the language icon; a project without one but with a README (documents) shows the Markdown icon.
@@ -233,8 +257,13 @@ const main = async (only?: string): Promise<void> => {
 			? current.flatMap((project) => (project.name === only ? projects : [project]))
 			: [...current, ...projects];
 	await fs.writeFile(JSON_FILE, `${JSON.stringify(merged, null, 2)}\n`);
-	await fs.rm(OUT_DIR, { recursive: true, force: true });
-	await fs.rename(STAGE_DIR, OUT_DIR);
+	// The output folder itself stays and only its contents are replaced: Windows refuses to delete or rename
+	// a folder that a dev server or editor is watching, which used to leave the folder empty.
+	for (const entry of await fs.readdir(OUT_DIR)) {
+		await fs.rm(path.join(OUT_DIR, entry), { recursive: true, force: true });
+	}
+	await fs.cp(STAGE_DIR, OUT_DIR, { recursive: true });
+	await fs.rm(STAGE_DIR, { recursive: true, force: true });
 	console.log(`GitHub projects: ${merged.length} public repositories kept.`);
 };
 
