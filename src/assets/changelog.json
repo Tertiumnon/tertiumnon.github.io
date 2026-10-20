@@ -73,6 +73,25 @@
     "content": "---\npublishedAt: 2017-07-20\ncategory: Programming\ntags: [\"Tips\"]\n---\n\n# Sticker Pack for Telegram: FavoriteSerials\n\nMy sticker pack for Telegram:\n\n[FavoriteSerials](https://t.me/addstickers/FavoriteSerials)\n"
   },
   {
+    "title": "Halloween YouTube Theme 0.1.0",
+    "link": "/en/changelog/2026-10-20--halloween-youtube-theme-ext-0-1-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "Halloween YouTube Theme",
+    "tags": [
+      "halloween-youtube-theme-ext"
+    ],
+    "publishedAt": "2026-10-20",
+    "filename": "index.en.md",
+    "dirname": "2026-10-20--halloween-youtube-theme-ext-0-1-0",
+    "generated": true,
+    "content": "## Halloween YouTube Theme 0.1.0\n\n### Added\n\n- Halloween theme for YouTube: pumpkin progress scrubber, pumpkins, a flying witch, a skeleton, drifting ghosts and a night-sky background.\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/halloween-youtube-theme-ext/releases/tag/v0.1.0"
+    }
+  },
+  {
     "title": "JSON to SQL Script 0.2.0",
     "link": "/en/changelog/2020-05-29--json-to-sql-script-0-2-0",
     "language": "en",
