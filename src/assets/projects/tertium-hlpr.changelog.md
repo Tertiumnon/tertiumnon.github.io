@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.25.3 - 2026-10-19
+
+- fix: image favicon commands
+
+## 0.25.2 - 2026-10-19
+
+- feat: add image resize favicon
+
+## 0.25.1 - 2026-10-19
+
+- fix: image resize command syntax
+
+## 0.25.0 - 2026-10-19
+
+- feat: add image resize command
+
 ## 0.24.0 - 2026-10-19
 
 - feat: add animation play and tui run commands
