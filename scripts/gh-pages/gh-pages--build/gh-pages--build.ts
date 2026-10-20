@@ -46,12 +46,12 @@ function flattenBrowserDir(docsDir: string): void {
 
 function main(): void {
 	const repoRoot = process.cwd();
-	const docsDir = path.join(repoRoot, "docs");
+	const outDir = path.join(repoRoot, "dist", "gh-pages");
 
-	rmrf(docsDir);
+	rmrf(outDir);
 
-	console.log("Running: ng build --output-path docs --base-href /");
-	const res = spawnSync("ng", ["build", "--output-path", "docs", "--base-href", "/"], {
+	console.log("Running: ng build --output-path dist/gh-pages --base-href /");
+	const res = spawnSync("ng", ["build", "--output-path", "dist/gh-pages", "--base-href", "/"], {
 		stdio: "inherit",
 	});
 	if (res.error) {
@@ -61,9 +61,9 @@ function main(): void {
 	const exitCode = res.status ?? 1;
 	if (exitCode !== 0) process.exit(exitCode);
 
-	flattenBrowserDir(docsDir);
+	flattenBrowserDir(outDir);
 
-	const nojekyllPath = path.join(docsDir, ".nojekyll");
+	const nojekyllPath = path.join(outDir, ".nojekyll");
 	try {
 		fs.writeFileSync(nojekyllPath, "");
 		console.log("Created .nojekyll file at:", nojekyllPath);
@@ -75,7 +75,7 @@ function main(): void {
 		process.exit(1);
 	}
 
-	console.log("Build complete. Output location:", docsDir);
+	console.log("Build complete. Output location:", outDir);
 }
 
 main();

@@ -15,7 +15,7 @@ bun run start    # http://localhost:4200
 | --- | --- |
 | `start` | Dev server |
 | `build` | Angular build into `dist/` |
-| `gh:pages:build` | Production build into `docs/` with `.nojekyll`, as GitHub Pages serves it |
+| `gh:pages:build` | Production build into `dist/gh-pages/` with `.nojekyll`, as GitHub Pages serves it |
 | `test`, `test:ui`, `test:coverage` | Vitest: watch mode, UI, coverage |
 | `typecheck` | `tsc --noEmit` |
 | `lint:fix` | Format and fix `src/` |
@@ -24,7 +24,7 @@ bun run start    # http://localhost:4200
 | `post:create`, `post:list:create` | Create a post; rebuild the post list |
 | `release:patch`, `release:minor`, `release:major` | Version bump, changelog and tag |
 
-`docs/` is build output and is git-ignored.
+`dist/` is build output and is git-ignored.
 
 ## Generated data
 
@@ -40,7 +40,7 @@ The data is built locally and committed with the code:
 
 ## Deployment
 
-Pushing to `main` runs `.github/workflows/deploy-pages.yml`: it builds `docs/` with `gh:pages:build` and publishes it to GitHub Pages. It deploys what is committed and never pushes.
+Pushing to `main` runs `.github/workflows/deploy-pages.yml`: it builds `dist/gh-pages/` with `gh:pages:build` and publishes it to GitHub Pages. It deploys what is committed and never pushes.
 
 ## Zoneless Angular 20
 

@@ -34,19 +34,19 @@ jobs:
         run: |
           bun install --frozen-lockfile
 
-      - name: Build site (docs/)
+      - name: Build site (dist/gh-pages/)
         run: |
           bun run gh:pages:build
 
       - name: Verify .nojekyll exists
         run: |
-          ls -la docs/ | grep -E "(^d|nojekyll|index)"
-          test -f docs/.nojekyll && echo ".nojekyll file exists" || echo "ERROR: .nojekyll file not found"
+          ls -la dist/gh-pages/ | grep -E "(^d|nojekyll|index)"
+          test -f dist/gh-pages/.nojekyll && echo ".nojekyll file exists" || echo "ERROR: .nojekyll file not found"
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          path: dist/gh-pages
 
   deploy:
     needs: build-deploy
