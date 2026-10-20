@@ -73,6 +73,44 @@
     "content": "---\npublishedAt: 2017-07-20\ncategory: Programming\ntags: [\"Tips\"]\n---\n\n# Sticker Pack for Telegram: FavoriteSerials\n\nMy sticker pack for Telegram:\n\n[FavoriteSerials](https://t.me/addstickers/FavoriteSerials)\n"
   },
   {
+    "title": "JSON to SQL Script 0.2.0",
+    "link": "/en/changelog/2020-05-29--json-to-sql-script-0-2-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "JSON to SQL Script",
+    "tags": [
+      "json-to-sql-script"
+    ],
+    "publishedAt": "2020-05-29",
+    "filename": "index.en.md",
+    "dirname": "2020-05-29--json-to-sql-script-0-2-0",
+    "generated": true,
+    "content": "## JSON to SQL Script 0.2.0\n\n- chore(release): add changelog and release scripts\n- docs: improve README title\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/json-to-sql-script/releases/tag/v0.2.0"
+    }
+  },
+  {
+    "title": "@tertium/css 1.5.1",
+    "link": "/en/changelog/2026-10-08--tertium-css-1-5-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "@tertium/css",
+    "tags": [
+      "tertium-css"
+    ],
+    "publishedAt": "2026-10-08",
+    "filename": "index.en.md",
+    "dirname": "2026-10-08--tertium-css-1-5-1",
+    "generated": true,
+    "content": "## @tertium/css 1.5.1\n\n- chore(release): add changelog and release scripts\n",
+    "source": {
+      "name": "GitHub",
+      "url": "https://github.com/Tertiumnon/tertium-css/releases/tag/v1.5.1"
+    }
+  },
+  {
     "title": "MediaWiki Template Deploy 0.4.0",
     "link": "/en/changelog/2026-08-13--mw-deploy-0-4-0",
     "language": "en",
