@@ -1,0 +1,33 @@
+type: web-app
+identifier: io.github.tertiumnon.tertiumnon-github-io
+display_name:
+  en: Tertiumnon
+summary:
+  en: Tertiumnon - Designer, analyst and programmer.
+languages:
+  - en
+  - ru
+default_language: en
+url: https://tertiumnon.github.io
+icon: src/assets/icons/logo.svg
+frameworks:
+  - Angular
+engines:
+  - node >=24
+  - bun
+data_collected: none
+team:
+  - name: Vitalii Balabanov
+    roles:
+      - owner
+      - developer
+    github: Tertiumnon
+platforms:
+  web:
+    settings:
+      start_url: /
+      display: standalone
+distribution:
+  - web
+environments:
+  - prod
