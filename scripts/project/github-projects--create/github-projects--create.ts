@@ -35,7 +35,7 @@ type GithubProject = {
 	image?: string;
 	screenshots?: string[];
 	repoLicense?: string;
-	url: string;
+	url?: string;
 	readme: boolean;
 	changelog?: boolean;
 	licenseText?: boolean;
@@ -134,40 +134,15 @@ const fetchLatestVersion = (repo: string): IProjectVersion | undefined => {
 const rawUrl = (repo: string, path: string): string =>
 	`https://raw.githubusercontent.com/${GITHUB_USER}/${repo}/HEAD/${path.split("/").map(encodeURIComponent).join("/")}`;
 
-// A private repository's files are not publicly reachable, so its declared assets are copied into the site.
-const assetUrl = async (repo: Repo, file: string): Promise<string> => {
-	if (!repo.isPrivate) return rawUrl(repo.name, file);
-	const target = path.join(STAGE_DIR, repo.name, file);
-	await fs.mkdir(path.dirname(target), { recursive: true });
-	await fs.writeFile(
-		target,
-		execFileSync("gh", ["api", `repos/${GITHUB_USER}/${repo.name}/contents/${file}`, "-H", "Accept: application/vnd.github.raw"], {
-			maxBuffer: 64 * 1024 * 1024,
-		}),
-	);
-	return `assets/projects/${repo.name}/${file}`;
-};
+// A private repository is not public: nothing from it (images, downloads, links to its GitHub pages) may reach the site,
+// because those links and files stay unreachable for visitors. Its text is kept; its images are dropped.
+const privateText = (md: string, repo: Repo): string =>
+	md
+		.replace(/!\[[^\]]*\]\([^)]*\)\s*/g, "")
+		.replace(/<img[^>]*>\s*/g, "")
+		.replace(/\[([^\]]*)\]\(([^)\s]+)\)/g, (match, text: string, url: string) =>
+			isRelative(url) || url.includes(`github.com/${GITHUB_USER}/${repo.name}`) ? text : match);
 
-// A private repository's README images are copied into the site like its other assets; links to its other files
-// become plain text, because visitors cannot open them on GitHub.
-const localizePrivateLinks = async (md: string, repo: Repo): Promise<string> => {
-	const images = [...md.matchAll(/!\[[^\]]*\]\(([^)\s]+)\)|<img[^>]*\ssrc="([^"]+)"/g)]
-		.map((match) => match[1] ?? match[2])
-		.filter((url): url is string => url !== undefined && isRelative(url));
-	const copies = new Map(
-		await Promise.all([...new Set(images)].map(async (url) => [url, await assetUrl(repo, clean(url))] as const)),
-	);
-	return md
-		.replace(/(!\[[^\]]*\]\()([^)\s]+)/g, (match, prefix: string, url: string) => {
-			const copy = copies.get(url);
-			return copy ? `${prefix}${copy}` : match;
-		})
-		.replace(/(<img[^>]*\ssrc=")([^"]+)"/g, (match, prefix: string, url: string) => {
-			const copy = copies.get(url);
-			return copy ? `${prefix}${copy}"` : match;
-		})
-		.replace(/(?<!!)\[([^\]]*)\]\(([^)\s]+)\)/g, (match, text: string, url: string) => (isRelative(url) ? text : match));
-};
 
 const fetchReleases = (repo: string): IProjectRelease[] =>
 	(JSON.parse(gh(`repos/${GITHUB_USER}/${repo}/releases`)) as {
@@ -215,22 +190,22 @@ const main = async (only?: string): Promise<void> => {
 			description: repo.description || undefined,
 			language,
 			frameworks: attributes.frameworks,
-			image: attributes.icon ? await assetUrl(repo, attributes.icon) : undefined,
-			screenshots: attributes.screenshots && (await Promise.all(attributes.screenshots.map((file) => assetUrl(repo, file)))),
+			image: !repo.isPrivate && attributes.icon ? rawUrl(repo.name, attributes.icon) : undefined,
+			screenshots: !repo.isPrivate && attributes.screenshots ? attributes.screenshots.map((file) => rawUrl(repo.name, file)) : undefined,
 			repoLicense: repo.licenseInfo?.spdxId && repo.licenseInfo.spdxId !== "NOASSERTION" ? repo.licenseInfo.spdxId : repo.licenseInfo?.name,
-			url: repo.url,
+			url: repo.isPrivate ? undefined : repo.url,
 			readme: false,
-			releases: fetchReleases(repo.name),
+			releases: repo.isPrivate ? [] : fetchReleases(repo.name),
 			version: fetchLatestVersion(repo.name),
 		};
-		const toSite = (md: string): Promise<string> =>
-			repo.isPrivate ? localizePrivateLinks(md, repo) : Promise.resolve(absolutizeReadmeLinks(md, repo.name));
+		const toSite = (md: string): string =>
+			repo.isPrivate ? privateText(md, repo) : absolutizeReadmeLinks(md, repo.name);
 		const readme = files.find((file) => /^readme(\.md)?$/i.test(file));
 		if (readme) {
 			const md = fetchFile(repo.name, readme);
 			// The site shows the screenshot gallery itself, so the README's copy of the screenshots is left out.
 			const body = project.screenshots?.length ? md.replace(SCREENSHOT_BLOCK, "") : md;
-			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.md`), await toSite(body));
+			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.md`), toSite(body));
 			project.readme = true;
 			project.title = readmeTitle(md) ?? project.title;
 		}
@@ -242,7 +217,7 @@ const main = async (only?: string): Promise<void> => {
 		}
 		// CHANGELOG.md of the repository, shown on the project's CHANGELOG page.
 		if (files.includes("CHANGELOG.md")) {
-			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.changelog.md`), await toSite(fetchFile(repo.name, "CHANGELOG.md")));
+			await fs.writeFile(path.join(STAGE_DIR, `${repo.name}.changelog.md`), toSite(fetchFile(repo.name, "CHANGELOG.md")));
 			project.changelog = true;
 		}
 		// Icon: the language icon; a project without one but with a README (documents) shows the Markdown icon.

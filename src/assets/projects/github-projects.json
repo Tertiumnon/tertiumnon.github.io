@@ -373,29 +373,9 @@
     "type": "firefox-extension",
     "description": "Halloween theme for YouTube as a Firefox extension.",
     "language": "CSS",
-    "image": "assets/projects/halloween-youtube-theme-ext/assets/logo/logo.svg",
-    "screenshots": [
-      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/01-player-window.png",
-      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/02-search-window.png",
-      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/03-description-and-comments-window.png"
-    ],
     "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/halloween-youtube-theme-ext",
     "readme": true,
-    "releases": [
-      {
-        "name": "Halloween YouTube Theme 0.1.0",
-        "tag": "v0.1.0",
-        "url": "https://github.com/Tertiumnon/halloween-youtube-theme-ext/releases/tag/v0.1.0",
-        "publishedAt": "2026-10-20",
-        "assets": [
-          {
-            "name": "halloween_youtube_theme-0.1.0.zip",
-            "url": "https://github.com/Tertiumnon/halloween-youtube-theme-ext/releases/download/v0.1.0/halloween_youtube_theme-0.1.0.zip"
-          }
-        ]
-      }
-    ],
+    "releases": [],
     "version": {
       "tag": "v0.1.0",
       "date": "2026-10-20"

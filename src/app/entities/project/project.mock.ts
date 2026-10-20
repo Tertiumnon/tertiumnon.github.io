@@ -17,7 +17,7 @@ type GithubProjectJson = {
 	languageIcon?: string;
 	frameworks?: string[];
 	description?: string;
-	url: string;
+	url?: string;
 	readme: boolean;
 	changelog?: boolean;
 	licenseText?: boolean;
