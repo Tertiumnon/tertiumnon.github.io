@@ -1,5 +1,24 @@
 [
   {
+    "name": "tertium-hlpr",
+    "title": "@tertium/hlpr",
+    "type": "cli",
+    "description": "Command-line helper for everyday tasks on Windows, macOS, and Linux, run as hlpr <domain> <command>.",
+    "language": "TypeScript",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-hlpr",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.25.4",
+      "date": "2026-10-20"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
     "name": "tertium-icons",
     "title": "tertium-icons",
     "type": "icon-set",
@@ -12,25 +31,6 @@
     "releases": [],
     "licenseText": true,
     "languageIcon": "assets/icons/languages/html.svg"
-  },
-  {
-    "name": "tertium-hlpr",
-    "title": "@tertium/hlpr",
-    "type": "cli",
-    "description": "Command-line helper for everyday tasks on Windows, macOS, and Linux, run as hlpr <domain> <command>.",
-    "language": "TypeScript",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-hlpr",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.25.3",
-      "date": "2026-10-19"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "tertium-gith",
