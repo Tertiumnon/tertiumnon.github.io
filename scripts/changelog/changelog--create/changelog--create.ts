@@ -22,15 +22,13 @@ type ChangelogItem = {
 	source?: { name: string; url: string };
 };
 
-type GithubProject = { name: string; title: string; url: string };
+type GithubProject = { name: string; title: string; url: string; changelog?: boolean };
 type ChangelogSection = { version: string; body: string };
 type TagInfo = { name: string; date: string };
 
 const gh = (endpoint: string, ...args: string[]): string =>
 	execFileSync("gh", ["api", endpoint, ...args], { encoding: "utf-8", maxBuffer: 64 * 1024 * 1024 });
 
-const isNotFound = (error: unknown): boolean =>
-	String((error as { stderr?: unknown }).stderr ?? error).includes("HTTP 404");
 
 // "## 0.2.2" and "## [1.0.0] - 2020-01-01" are releases; "## [Unreleased]" and other headings are not.
 const RELEASE_HEADING = /^## \[?v?(\d+\.\d+\.\d+)\]?/;
@@ -88,14 +86,9 @@ const main = async (): Promise<void> => {
 	}
 
 	const generated: ChangelogItem[] = [];
-	for (const project of projects) {
-		let markdown: string;
-		try {
-			markdown = gh(`repos/${GITHUB_USER}/${project.name}/contents/CHANGELOG.md`, "-H", "Accept: application/vnd.github.raw");
-		} catch (error) {
-			if (isNotFound(error)) continue;
-			throw error;
-		}
+	// The project generator records which repositories have a CHANGELOG.md, so no request ends in a 404.
+	for (const project of projects.filter((item) => item.changelog)) {
+		const markdown = gh(`repos/${GITHUB_USER}/${project.name}/contents/CHANGELOG.md`, "-H", "Accept: application/vnd.github.raw");
 
 		const sections = parseChangelog(markdown);
 		const tags = fetchTags(project.name, sections.map((section) => section.version));
