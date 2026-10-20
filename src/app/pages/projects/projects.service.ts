@@ -12,12 +12,16 @@ import PROJECT_ITEMS from "../../entities/project/project.mock";
 export class ProjectsService {
 	projects: IProject[] = PROJECT_ITEMS;
 	projects$ = new BehaviorSubject<IProject[] | undefined>(PROJECT_ITEMS);
-	state: IState = {};
-	state$ = new BehaviorSubject<IState>({
+	state: IState = {
 		filterByStatus: ProjectStatus.Active,
 		filterByLicense: "all",
 		sortByAttrVal: "updatedAt",
-	});
+	};
+
+	// The list is filtered and sorted from the start, so it does not depend on the filter panel being rendered.
+	constructor() {
+		this.setState();
+	}
 
 	setState(state?: IState): void {
 		this.state = {
