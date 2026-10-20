@@ -22,7 +22,7 @@ type ChangelogItem = {
 	source?: { name: string; url: string };
 };
 
-type GithubProject = { name: string; title: string; url: string; changelog?: boolean };
+type GithubProject = { name: string; title: string; url?: string; changelog?: boolean };
 type ChangelogSection = { version: string; body: string };
 type TagInfo = { name: string; date: string };
 
@@ -119,7 +119,8 @@ ${section.body}
 				dirname,
 				generated: true,
 				content: markdown,
-				source: { name: "GitHub", url: `${project.url}/releases/tag/${tag.name}` },
+				// A private repository has no public URL, so its entries carry no link to it.
+				source: project.url ? { name: "GitHub", url: `${project.url}/releases/tag/${tag.name}` } : undefined,
 			});
 		}
 	}

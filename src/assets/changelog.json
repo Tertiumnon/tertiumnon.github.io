@@ -921,11 +921,7 @@
     "filename": "index.en.md",
     "dirname": "2026-10-20--halloween-youtube-theme-ext-0-1-0",
     "generated": true,
-    "content": "## Halloween YouTube Theme 0.1.0\n\n### Added\n\n- Halloween theme for YouTube: pumpkin progress scrubber, pumpkins, a flying witch, a skeleton, drifting ghosts and a night-sky background.\n",
-    "source": {
-      "name": "GitHub",
-      "url": "https://github.com/Tertiumnon/halloween-youtube-theme-ext/releases/tag/v0.1.0"
-    }
+    "content": "## Halloween YouTube Theme 0.1.0\n\n### Added\n\n- Halloween theme for YouTube: pumpkin progress scrubber, pumpkins, a flying witch, a skeleton, drifting ghosts and a night-sky background.\n"
   },
   {
     "title": "@tertium/cheatsheets 2.3.1",
