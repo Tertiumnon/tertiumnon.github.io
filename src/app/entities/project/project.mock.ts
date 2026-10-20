@@ -38,30 +38,23 @@ const isActive = (updatedAt?: string): boolean =>
 const licenseOf = (repoLicense?: string): ProjectLicense | undefined =>
 	repoLicense === undefined ? undefined : repoLicense === "MIT License" ? ProjectLicense.OpenSource : ProjectLicense.Free;
 
-// Generated at build time by scripts/project/github-projects--create (only public repositories are listed).
+// Generated at build time by scripts/project/github-projects--create (renamed or removed repos are already dropped).
+// Status and licence are derived here, from the update date and the repository licence, because the JSON does not carry them.
 const GITHUB_PROJECT_ITEMS: IProject[] = (githubProjects as GithubProjectJson[]).map((repo) => {
 	const updatedAt = PROJECT_DATES[`github:${repo.name}`];
 	return {
 		name: repo.name,
 		title: repo.title,
 		type: repo.type,
-		language: repo.language,
 		description: repo.description,
 		imagePreview: "",
+		image: "",
 		link: `#/projects/${repo.name}`,
-		image: repo.image,
-		screenshots: repo.screenshots,
-		repoLicense: repo.repoLicense,
-		license: licenseOf(repo.repoLicense),
-		languageIcon: repo.languageIcon,
-		frameworks: repo.frameworks,
 		url: repo.url,
 		updatedAt,
 		readme: repo.readme,
-		changelog: repo.changelog,
-		licenseText: repo.licenseText,
 		releases: repo.releases,
-		version: repo.version,
+		license: licenseOf(repo.repoLicense),
 		status: isActive(updatedAt) ? ProjectStatus.Active : ProjectStatus.Inactive,
 	};
 });
