@@ -1,4 +1,4 @@
-## JavaScript Snippets for Visual Studio Code 3.0.0
+## Tertium JS Snippets 3.0.0
 
 ##### Build System / Dependencies
 

@@ -1,76 +1,5 @@
 [
   {
-    "name": "tertium-hlpr",
-    "title": "@tertium/hlpr",
-    "type": "cli",
-    "description": "Command-line helper for everyday tasks on Windows, macOS, and Linux, run as hlpr <domain> <command>.",
-    "language": "TypeScript",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-hlpr",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.25.4",
-      "date": "2026-10-20"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "tertium-icons",
-    "title": "tertium-icons",
-    "type": "icon-set",
-    "description": "Free svg and font icons",
-    "language": "HTML",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-icons",
-    "readme": true,
-    "releases": [],
-    "licenseText": true,
-    "languageIcon": "assets/icons/languages/html.svg"
-  },
-  {
-    "name": "tertium-gith",
-    "title": "@tertium/gith",
-    "type": "cli",
-    "description": "gf: git-only branch flow CLI (goal branches, release/hotfix containers, synced merges)",
-    "language": "TypeScript",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-gith",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.3.2",
-      "date": "2026-10-19"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "tertium-css",
-    "title": "@tertium/css",
-    "type": "css-library",
-    "description": "Minimalistic set of CSS classes.",
-    "language": "CSS",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-css",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v1.6.2",
-      "date": "2026-10-19"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/css.svg"
-  },
-  {
     "name": "youtube-full-window-ext",
     "title": "Full Windowed Youtube",
     "type": "firefox-extension",
@@ -133,116 +62,165 @@
     "languageIcon": "assets/icons/languages/javascript.svg"
   },
   {
-    "name": "json-all-to-one",
-    "title": "JSON All to One",
-    "type": "cli",
-    "description": "CLI that concatenates several JSON files from a directory into one file, optionally wrapped under a key.",
-    "language": "JavaScript",
+    "name": "release-convention",
+    "title": "Release Convention",
+    "type": "guide",
+    "description": "Guide to release workflows with Git branches (release, hotfix), CI/CD notes, and a release metadata JSON schema.",
+    "language": "Markdown",
     "screenshots": [],
     "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/json-all-to-one",
+    "url": "https://github.com/Tertiumnon/release-convention",
     "readme": true,
     "releases": [],
-    "version": {
-      "tag": "v0.2.4",
-      "date": "2020-05-25"
-    },
     "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/javascript.svg"
+    "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
-    "name": "tertium-js",
-    "title": "@tertium/js",
-    "type": "library",
-    "description": "Reusable TypeScript library of shared core utilities, entity models, and release scripts for JavaScript projects. In development.",
-    "language": "TypeScript",
+    "name": "entity-driven-architecture",
+    "title": "Entity-Driven Architecture",
+    "type": "style-guide",
+    "description": "Guide to entity-driven development principles, naming conventions, and architectural patterns.",
+    "language": "Markdown",
     "screenshots": [],
     "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-js",
+    "url": "https://github.com/Tertiumnon/entity-driven-architecture",
     "readme": true,
     "releases": [],
-    "version": {
-      "tag": "v4.3.0",
-      "date": "2026-10-17"
-    },
     "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
+    "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
-    "name": "tertium-countries",
-    "title": "@tertium/countries",
-    "type": "npm-package",
-    "description": "Country names in 20 languages with lookup helpers, as an ESM package.",
-    "language": "TypeScript",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-countries",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.6.1",
-      "date": "2026-10-08"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "json-to-sql-script",
-    "title": "JSON to SQL Script",
-    "type": "cli",
-    "description": "Convert your JSON-file to SQL-script for inserting to database.",
-    "language": "JavaScript",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/json-to-sql-script",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.2.0",
-      "date": "2020-05-29"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/javascript.svg"
-  },
-  {
-    "name": "project-structure-convention",
-    "title": "Project Structure Convention",
-    "description": "Standard layout, files and GitHub metadata for Tertium projects: README, changelog, release notes, screenshots, logo, topics.",
-    "language": "TypeScript",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/project-structure-convention",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.1.0",
-      "date": "2026-10-20"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "npm-convention",
-    "title": "NPM commands convention",
+    "name": "git-convention",
+    "title": "Git Convention",
     "type": "conventions",
-    "description": "One npm script name for the same task in every project.",
+    "description": "Git branch and commit conventions: goal-based branches, containers for release and hotfix, conventional commits",
+    "language": "Markdown",
     "screenshots": [],
     "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/npm-convention",
+    "url": "https://github.com/Tertiumnon/git-convention",
+    "readme": true,
+    "releases": [],
+    "licenseText": true,
+    "languageIcon": "assets/icons/languages/markdown.svg"
+  },
+  {
+    "name": "cli-convention",
+    "title": "CLI Convention",
+    "type": "conventions",
+    "description": "CLI conventions for Tertium tools: commands, short and long flags, one- and two-dash meaning, errors and output",
+    "language": "Markdown",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/cli-convention",
+    "readme": true,
+    "releases": [],
+    "licenseText": true,
+    "languageIcon": "assets/icons/languages/markdown.svg"
+  },
+  {
+    "name": "tertium-prisma-codegen",
+    "title": "@tertium/prisma-codegen",
+    "type": "code-generator",
+    "description": "Code generation library for Prisma schemas: REST handlers, GraphQL resolvers, and TypeScript types. In development.",
+    "language": "TypeScript",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-prisma-codegen",
     "readme": true,
     "releases": [],
     "version": {
-      "tag": "v0.1.2",
-      "date": "2026-10-19"
+      "tag": "v0.11.2",
+      "date": "2026-10-13"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
+    "name": "entity-driven-architecture--example",
+    "title": "Blog Platform - Entity-Driven Architecture",
+    "type": "web-app",
+    "description": "Blog platform built with entity-driven architecture: Bun and Elysia backend, SolidJS frontend.",
+    "language": "TypeScript",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/entity-driven-architecture--example",
+    "readme": true,
+    "releases": [],
+    "licenseText": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
+    "name": "tertium-js-markdown-wiki",
+    "title": "@tertium/js-markdown-wiki",
+    "type": "web-app",
+    "description": "Simple Bun web server that displays and manages markdown files over HTTP.",
+    "language": "TypeScript",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-js-markdown-wiki",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.6.0",
+      "date": "2026-10-01"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
+    "name": "tertium-js-snippets",
+    "title": "Tertium JS Snippets",
+    "type": "vscode-extension",
+    "description": "Collection of JavaScript snippets for Visual Studio Code.",
+    "language": "JavaScript",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-js-snippets",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v3.0.10",
+      "date": "2025-05-31"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/javascript.svg"
+  },
+  {
+    "name": "tertium-cheatsheets",
+    "title": "@tertium/cheatsheets",
+    "type": "cheatsheets",
+    "description": "Cheatsheets for programmers",
+    "language": "Markdown",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-cheatsheets",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v2.3.1",
+      "date": "2026-07-19"
     },
     "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
+  },
+  {
+    "name": "intel-arc-b60-local-llm-cookbook",
+    "title": "Intel Arc B60 Local LLM Cookbook",
+    "type": "cookbook",
+    "description": "Running local LLMs on a 24 GB Intel Arc B60 with Llama.cpp, Strata, and OpenVINO.",
+    "language": "TypeScript",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook",
+    "readme": true,
+    "releases": [],
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "portal-commander-file-manager-community",
@@ -253,7 +231,7 @@
       "Tauri 2",
       "Angular"
     ],
-    "image": "https://raw.githubusercontent.com/Tertiumnon/portal-commander-file-manager-community/HEAD/assets/logo/logo.svg",
+    "image": "https://raw.githubusercontent.com/Tertiumnon/portal-commander-file-manager-community/HEAD/assets/logo/logo.png",
     "screenshots": [
       "https://raw.githubusercontent.com/Tertiumnon/portal-commander-file-manager-community/HEAD/docs/screenshots/01-main.png",
       "https://raw.githubusercontent.com/Tertiumnon/portal-commander-file-manager-community/HEAD/docs/screenshots/02-editor.png"
@@ -303,175 +281,130 @@
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
-    "name": "intel-arc-b60-local-llm-cookbook",
-    "title": "Intel Arc B60 Local LLM Cookbook",
-    "type": "cookbook",
-    "description": "Running local LLMs on a 24 GB Intel Arc B60 with Llama.cpp, Strata, and OpenVINO.",
+    "name": "tertium-countries",
+    "title": "@tertium/countries",
+    "type": "npm-package",
+    "description": "Country names in 20 languages with lookup helpers, as an ESM package.",
     "language": "TypeScript",
     "screenshots": [],
     "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook",
-    "readme": true,
-    "releases": [],
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "tertium-cheatsheets",
-    "title": "@tertium/cheatsheets",
-    "type": "cheatsheets",
-    "description": "Cheatsheets for programmers",
-    "language": "Markdown",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-cheatsheets",
+    "url": "https://github.com/Tertiumnon/tertium-countries",
     "readme": true,
     "releases": [],
     "version": {
-      "tag": "v2.3.1",
-      "date": "2026-07-19"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/markdown.svg"
-  },
-  {
-    "name": "tertium-js-snippets",
-    "title": "JavaScript Snippets for Visual Studio Code",
-    "type": "vscode-extension",
-    "description": "Collection of JavaScript snippets for Visual Studio Code.",
-    "language": "JavaScript",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-js-snippets",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v3.0.10",
-      "date": "2025-05-31"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/javascript.svg"
-  },
-  {
-    "name": "tertium-js-markdown-wiki",
-    "title": "@tertium/js-markdown-wiki",
-    "type": "web-app",
-    "description": "Simple Bun web server that displays and manages markdown files over HTTP.",
-    "language": "TypeScript",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-js-markdown-wiki",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.6.0",
-      "date": "2026-10-01"
+      "tag": "v0.6.1",
+      "date": "2026-10-08"
     },
     "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
-    "name": "entity-driven-architecture--example",
-    "title": "Blog Platform - Entity-Driven Architecture",
-    "type": "web-app",
-    "description": "Blog platform built with entity-driven architecture: Bun and Elysia backend, SolidJS frontend.",
+    "name": "tertium-js",
+    "title": "@tertium/js",
+    "type": "library",
+    "description": "Reusable TypeScript library of shared core utilities, entity models, and release scripts for JavaScript projects. In development.",
     "language": "TypeScript",
     "screenshots": [],
     "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/entity-driven-architecture--example",
-    "readme": true,
-    "releases": [],
-    "licenseText": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "tertium-prisma-codegen",
-    "title": "@tertium/prisma-codegen",
-    "type": "code-generator",
-    "description": "Code generation library for Prisma schemas: REST handlers, GraphQL resolvers, and TypeScript types. In development.",
-    "language": "TypeScript",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-prisma-codegen",
+    "url": "https://github.com/Tertiumnon/tertium-js",
     "readme": true,
     "releases": [],
     "version": {
-      "tag": "v0.11.2",
-      "date": "2026-10-13"
+      "tag": "v4.3.0",
+      "date": "2026-10-17"
     },
     "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
-    "name": "cli-convention",
-    "title": "CLI Convention",
+    "name": "tertium-gith",
+    "title": "@tertium/gith",
+    "type": "cli",
+    "description": "gf: git-only branch flow CLI (goal branches, release/hotfix containers, synced merges)",
+    "language": "TypeScript",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-gith",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.3.2",
+      "date": "2026-10-19"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
+    "name": "tertium-icons",
+    "title": "tertium-icons",
+    "type": "icon-set",
+    "description": "Free svg and font icons",
+    "language": "HTML",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-icons",
+    "readme": true,
+    "releases": [],
+    "licenseText": true,
+    "languageIcon": "assets/icons/languages/html.svg"
+  },
+  {
+    "name": "project-structure-convention",
+    "title": "Project Structure Convention",
     "type": "conventions",
-    "description": "CLI conventions for Tertium tools: commands, short and long flags, one- and two-dash meaning, errors and output",
-    "language": "Markdown",
+    "description": "Standard layout, files and GitHub metadata for Tertium projects: README, changelog, release notes, screenshots, logo, topics.",
+    "language": "TypeScript",
     "screenshots": [],
     "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/cli-convention",
+    "url": "https://github.com/Tertiumnon/project-structure-convention",
     "readme": true,
     "releases": [],
+    "version": {
+      "tag": "v0.1.0",
+      "date": "2026-10-20"
+    },
     "licenseText": true,
-    "languageIcon": "assets/icons/languages/markdown.svg"
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
-    "name": "git-convention",
-    "title": "Git Convention",
+    "name": "npm-convention",
+    "title": "NPM commands convention",
     "type": "conventions",
-    "description": "Git branch and commit conventions: goal-based branches, containers for release and hotfix, conventional commits",
-    "language": "Markdown",
+    "description": "One npm script name for the same task in every project.",
     "screenshots": [],
     "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/git-convention",
+    "url": "https://github.com/Tertiumnon/npm-convention",
     "readme": true,
     "releases": [],
+    "version": {
+      "tag": "v0.1.2",
+      "date": "2026-10-19"
+    },
     "licenseText": true,
+    "changelog": true,
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
-    "name": "entity-driven-architecture",
-    "title": "Entity-Driven Architecture",
-    "type": "style-guide",
-    "description": "Guide to entity-driven development principles, naming conventions, and architectural patterns.",
-    "language": "Markdown",
+    "name": "tertium-hlpr",
+    "title": "@tertium/hlpr",
+    "type": "cli",
+    "description": "Command-line helper for everyday tasks on Windows, macOS, and Linux, run as hlpr <domain> <command>.",
+    "language": "TypeScript",
     "screenshots": [],
     "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/entity-driven-architecture",
+    "url": "https://github.com/Tertiumnon/tertium-hlpr",
     "readme": true,
     "releases": [],
+    "version": {
+      "tag": "v0.25.4",
+      "date": "2026-10-20"
+    },
     "licenseText": true,
-    "languageIcon": "assets/icons/languages/markdown.svg"
-  },
-  {
-    "name": "release-convention",
-    "title": "Release Convention",
-    "type": "guide",
-    "description": "Guide to release workflows with Git branches (release, hotfix), CI/CD notes, and a release metadata JSON schema.",
-    "language": "Markdown",
-    "screenshots": [],
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/release-convention",
-    "readme": true,
-    "releases": [],
-    "licenseText": true,
-    "languageIcon": "assets/icons/languages/markdown.svg"
-  },
-  {
-    "name": "software-gentelman-agreement",
-    "title": "Software Gentleman's Agreement",
-    "type": "agreement",
-    "description": "A gentlemen's agreement for software projects between people working together, including volunteers.",
-    "screenshots": [],
-    "url": "https://github.com/Tertiumnon/software-gentelman-agreement",
-    "readme": true,
-    "releases": [],
-    "languageIcon": "assets/icons/languages/markdown.svg"
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
   }
 ]

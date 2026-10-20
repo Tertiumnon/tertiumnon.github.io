@@ -1,4 +1,4 @@
-# JavaScript Snippets for Visual Studio Code
+# Tertium JS Snippets
 
 Collection of JavaScript snippets for your productivity.
 

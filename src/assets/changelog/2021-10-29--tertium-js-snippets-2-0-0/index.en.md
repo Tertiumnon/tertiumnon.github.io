@@ -1,4 +1,4 @@
-## JavaScript Snippets for Visual Studio Code 2.0.0
+## Tertium JS Snippets 2.0.0
 
 ##### New Features
 

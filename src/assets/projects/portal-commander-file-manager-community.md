@@ -13,7 +13,6 @@ Portal is free for personal use — not a trial, not "freemium":
 
 - **No ads.**
 - **No tracking or telemetry.** The app does not collect or send your usage data, files or folder names anywhere.
-- **Works offline.** Fonts, icons and everything else ship with the app; it makes no network requests of its own. It only goes online when you open a network share or a link.
 - **No account or sign-in.**
 - **No subscriptions, paid tiers or locked features.** Everything described below is included.
 - **No admin rights needed** to install it.
