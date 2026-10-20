@@ -1,5 +1,43 @@
 [
   {
+    "name": "json-to-sql-script",
+    "title": "JSON to SQL Script",
+    "type": "cli",
+    "description": "Convert your JSON-file to SQL-script for inserting to database.",
+    "language": "JavaScript",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/json-to-sql-script",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.2.0",
+      "date": "2020-05-29"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/javascript.svg"
+  },
+  {
+    "name": "tertium-css",
+    "title": "@tertium/css",
+    "type": "css-library",
+    "description": "Minimalistic set of CSS classes.",
+    "language": "CSS",
+    "screenshots": [],
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-css",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v1.6.2",
+      "date": "2026-10-19"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/css.svg"
+  },
+  {
     "name": "youtube-full-window-ext",
     "title": "Full Windowed Youtube",
     "type": "firefox-extension",
