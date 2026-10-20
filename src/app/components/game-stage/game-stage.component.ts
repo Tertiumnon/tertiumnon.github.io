@@ -1,9 +1,9 @@
 import {
-	type AfterViewInit,
+	AfterViewInit,
 	Component,
-	type ElementRef,
+	ElementRef,
 	inject,
-	type OnDestroy,
+	OnDestroy,
 	viewChild,
 } from "@angular/core";
 import { ArcadeScreenService } from "./game-screen.service";

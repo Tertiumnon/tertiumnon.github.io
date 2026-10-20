@@ -3,7 +3,7 @@ import { toSignal } from "@angular/core/rxjs-interop";
 import { RouterLink } from "@angular/router";
 import { catchError, of } from "rxjs";
 import { PostService } from "../../entities/post/post.service";
-import type { Post } from "../../entities/post/post.types";
+import { Post } from "../../entities/post/post.types";
 import PROJECT_ITEMS from "../../entities/project/project.mock";
 import { TextFieldComponent } from "../form/text-field.component";
 

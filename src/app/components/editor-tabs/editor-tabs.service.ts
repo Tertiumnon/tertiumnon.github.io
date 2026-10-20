@@ -5,11 +5,11 @@ import {
 	NavigationError,
 	NavigationStart,
 	Router,
-	type Event as RouterEvent,
+	Event as RouterEvent,
 } from "@angular/router";
 import { filter } from "rxjs";
 import { PostService } from "../../entities/post/post.service";
-import type { Post } from "../../entities/post/post.types";
+import { Post } from "../../entities/post/post.types";
 import PROJECT_ITEMS from "../../entities/project/project.mock";
 
 export type NavLevel = 1 | 2 | 3;

@@ -12,7 +12,7 @@ import {
 } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { interval, type Subscription } from "rxjs";
+import { interval, Subscription } from "rxjs";
 import { TextFieldComponent } from "../../components/form/text-field.component";
 import { PageHeaderComponent } from "../../components/page-header/page-header.component";
 import { TimeService } from "../../components/time/time.service";

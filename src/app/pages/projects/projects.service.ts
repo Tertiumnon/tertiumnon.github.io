@@ -4,7 +4,7 @@ import { BehaviorSubject } from "rxjs";
 import { ProjectControlPanelService } from "../../components/project-control-panel/project-control-panel.service";
 import { ProjectStatus } from "../../entities/project/project.constants";
 import PROJECT_ITEMS from "../../entities/project/project.mock";
-import type { IProject, IState } from "../../entities/project/project.types";
+import { IProject, IState } from "../../entities/project/project.types";
 
 @Injectable({
 	providedIn: "root",

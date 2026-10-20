@@ -1,15 +1,15 @@
 import { CommonModule } from "@angular/common";
 import {
-	type ChangeDetectorRef,
+	ChangeDetectorRef,
 	Component,
 	HostListener,
 	OnDestroy,
 } from "@angular/core";
 import { GameOverComponent } from "../game-over/game-over.component";
-import type { ArcadeScreenService } from "../game-stage/game-screen.service";
-import type { SoundService } from "../sound/sound.service";
-import type { HelloWorldGameService } from "./hello-world-game.service";
-import type { CellData } from "./hello-world-game.types";
+import { ArcadeScreenService } from "../game-stage/game-screen.service";
+import { SoundService } from "../sound/sound.service";
+import { HelloWorldGameService } from "./hello-world-game.service";
+import { CellData } from "./hello-world-game.types";
 import { TANK_HEIGHT, TANK_WIDTH } from "./hello-world-game.utils";
 
 interface PlayerRecord {

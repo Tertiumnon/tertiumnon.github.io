@@ -1,11 +1,11 @@
 import {
-	type AfterViewInit,
+	AfterViewInit,
 	Component,
 	ElementRef,
 	effect,
 	inject,
 	input,
-	type OnDestroy,
+	OnDestroy,
 	output,
 } from "@angular/core";
 

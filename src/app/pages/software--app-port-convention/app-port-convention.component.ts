@@ -12,8 +12,8 @@ import { TextFieldComponent } from "../../components/form/text-field.component";
 import { PageHeaderComponent } from "../../components/page-header/page-header.component";
 import {
 	FRAMEWORKS,
-	type IFramework,
-	type IStack,
+	IFramework,
+	IStack,
 	PROJECT_SLOTS,
 	ROLES,
 	STACKS,

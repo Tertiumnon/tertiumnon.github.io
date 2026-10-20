@@ -4,7 +4,7 @@ import {
 	ChangeDetectionStrategy,
 	Component,
 	inject,
-	type Signal,
+	Signal,
 	signal,
 } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
@@ -12,7 +12,7 @@ import { ActivatedRoute, RouterLink, RouterLinkActive } from "@angular/router";
 import { catchError, of } from "rxjs";
 import { MdContentComponent } from "../../components/md-content/md-content.component";
 import PROJECT_ITEMS from "../../entities/project/project.mock";
-import type { IProject } from "../../entities/project/project.types";
+import { IProject } from "../../entities/project/project.types";
 
 // Sub pages of a project: /projects/<name>/<view>, for example /projects/<name>/readme.
 export type ProjectView =

@@ -1,6 +1,6 @@
 import { NgFor } from "@angular/common";
 import { Component, Input } from "@angular/core";
-import type { IProject } from "../../entities/project/project.types";
+import { IProject } from "../../entities/project/project.types";
 import { ProjectCardComponent } from "../project-card/project-card.component";
 
 @Component({

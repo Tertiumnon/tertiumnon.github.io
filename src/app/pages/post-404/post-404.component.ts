@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { Component, computed, inject, signal } from "@angular/core";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { PostService } from "../../entities/post/post.service";
-import type { Post } from "../../entities/post/post.types";
+import { Post } from "../../entities/post/post.types";
 
 @Component({
 	selector: "app-post-404",

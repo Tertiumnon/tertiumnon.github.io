@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import type { CellData } from "./hello-world-game.types";
+import { CellData } from "./hello-world-game.types";
 import { HelloWorldGameUtils } from "./hello-world-game.utils";
 
 @Injectable({ providedIn: "root" })

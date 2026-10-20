@@ -3,7 +3,7 @@ import {
 	ProjectLicense,
 	ProjectStatus,
 } from "../../entities/project/project.constants";
-import type { IProject } from "../../entities/project/project.types";
+import { IProject } from "../../entities/project/project.types";
 import { ProjectControlPanelService } from "./project-control-panel.service";
 
 const makeProject = (overrides: Partial<IProject> = {}): IProject => ({

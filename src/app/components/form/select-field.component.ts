@@ -1,5 +1,5 @@
 import { Component, forwardRef, input, model, signal } from "@angular/core";
-import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { FIELD_STYLES } from "./field.styles";
 
 export interface SelectOption {

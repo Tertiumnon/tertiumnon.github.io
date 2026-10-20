@@ -1,6 +1,6 @@
 import { DatePipe } from "@angular/common";
 import { Component, Input } from "@angular/core";
-import type { IProject } from "../../entities/project/project.types";
+import { IProject } from "../../entities/project/project.types";
 
 @Component({
 	selector: "app-project-card",

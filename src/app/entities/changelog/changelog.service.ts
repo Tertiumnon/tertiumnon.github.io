@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { catchError, type Observable, shareReplay, throwError } from "rxjs";
+import { catchError, Observable, shareReplay, throwError } from "rxjs";
 import { switchMap } from "rxjs/operators";
-import type { Changelog, ChangelogGetParams } from "./changelog.types";
+import { Changelog, ChangelogGetParams } from "./changelog.types";
 
 @Injectable({
 	providedIn: "root",

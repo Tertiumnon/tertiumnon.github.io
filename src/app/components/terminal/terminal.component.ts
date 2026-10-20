@@ -1,7 +1,7 @@
 import {
 	Component,
 	computed,
-	type ElementRef,
+	ElementRef,
 	HostListener,
 	inject,
 	signal,
@@ -13,10 +13,10 @@ import javascript from "highlight.js/lib/languages/javascript";
 import typescript from "highlight.js/lib/languages/typescript";
 import {
 	SelectFieldComponent,
-	type SelectOption,
+	SelectOption,
 } from "../form/select-field.component";
 import { TextareaFieldComponent } from "../form/textarea-field.component";
-import { runInSandbox, type SandboxEvent } from "./sandbox-runner";
+import { runInSandbox, SandboxEvent } from "./sandbox-runner";
 import { TerminalService } from "./terminal.service";
 
 hljs.registerLanguage("javascript", javascript);

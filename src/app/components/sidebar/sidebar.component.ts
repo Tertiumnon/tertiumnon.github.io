@@ -5,7 +5,7 @@ import { filter } from "rxjs";
 import { EditorTabsService } from "../editor-tabs/editor-tabs.service";
 import { LayoutService } from "../workbench/layout.service";
 import {
-	type SearchScope,
+	SearchScope,
 	SidebarSearchComponent,
 } from "./sidebar-search.component";
 

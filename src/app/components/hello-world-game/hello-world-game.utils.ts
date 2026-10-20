@@ -1,4 +1,4 @@
-import type { CellData } from "./hello-world-game.types";
+import { CellData } from "./hello-world-game.types";
 
 export const TANK_WIDTH = 3;
 export const TANK_HEIGHT = 3;

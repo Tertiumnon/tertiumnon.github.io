@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MdContentComponent } from "../../components/md-content/md-content.component";
 import { PostService } from "../../entities/post/post.service";
-import type { Post, PostGetParams } from "../../entities/post/post.types";
+import { Post, PostGetParams } from "../../entities/post/post.types";
 
 @Component({
 	selector: "app-post",

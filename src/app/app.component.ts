@@ -2,10 +2,10 @@ import { AsyncPipe, CommonModule } from "@angular/common";
 import {
 	Component,
 	DestroyRef,
-	type ElementRef,
+	ElementRef,
 	HostListener,
 	inject,
-	type OnInit,
+	OnInit,
 	viewChild,
 } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";

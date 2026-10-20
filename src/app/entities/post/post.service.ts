@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { catchError, type Observable, throwError } from "rxjs";
+import { catchError, Observable, throwError } from "rxjs";
 import { switchMap } from "rxjs/operators";
-import type { Post, PostGetParams } from "./post.types";
+import { Post, PostGetParams } from "./post.types";
 
 @Injectable({
 	providedIn: "root",

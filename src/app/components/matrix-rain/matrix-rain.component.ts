@@ -1,9 +1,9 @@
 import {
-	type AfterViewInit,
+	AfterViewInit,
 	Component,
 	ElementRef,
 	inject,
-	type OnDestroy,
+	OnDestroy,
 	viewChild,
 } from "@angular/core";
 

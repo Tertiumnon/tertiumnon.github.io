@@ -1,10 +1,10 @@
 import {
 	Component,
 	computed,
-	type ElementRef,
+	ElementRef,
 	inject,
-	type OnDestroy,
-	type OnInit,
+	OnDestroy,
+	OnInit,
 	signal,
 	viewChild,
 } from "@angular/core";

@@ -1,5 +1,5 @@
 import { Component, HostListener, Input, inject } from "@angular/core";
-import { DomSanitizer, type SafeHtml } from "@angular/platform-browser";
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import hljs from "highlight.js/lib/core";
 import css from "highlight.js/lib/languages/css";
 // register common languages (add more as needed)

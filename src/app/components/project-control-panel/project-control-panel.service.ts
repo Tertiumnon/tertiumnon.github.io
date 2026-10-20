@@ -1,4 +1,4 @@
-import type { IProject } from "../../entities/project/project.types";
+import { IProject } from "../../entities/project/project.types";
 import { ProjectControlPanelUtils } from "./project-control-panel.utils";
 
 export const ProjectControlPanelService = {

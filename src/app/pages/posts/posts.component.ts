@@ -15,7 +15,7 @@ import { PageHeaderComponent } from "../../components/page-header/page-header.co
 import { PostFilterService } from "../../components/sidebar/post-filter.service";
 import { SidebarPageFiltersComponent } from "../../components/sidebar/sidebar-page-filters.component";
 import { PostService } from "../../entities/post/post.service";
-import type { Post } from "../../entities/post/post.types";
+import { Post } from "../../entities/post/post.types";
 
 const POSTS_PER_BATCH = 10;
 

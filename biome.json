@@ -15,6 +15,9 @@
       "recommended": true,
       "correctness": {
         "noUnknownPseudoElement": "off"
+      },
+      "style": {
+        "useImportType": "off"
       }
     }
   },

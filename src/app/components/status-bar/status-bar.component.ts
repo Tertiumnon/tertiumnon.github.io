@@ -1,10 +1,10 @@
 import { Component, DestroyRef, inject } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { FONT_OPTIONS, type FontKey, FontService } from "../font/font.service";
+import { FONT_OPTIONS, FontKey, FontService } from "../font/font.service";
 import { SelectFieldComponent } from "../form/select-field.component";
 import { TerminalService } from "../terminal/terminal.service";
-import { THEME_LABELS, type Theme } from "../theme/theme";
+import { THEME_LABELS, Theme } from "../theme/theme";
 import { ThemeService } from "../theme/theme.service";
 
 @Component({

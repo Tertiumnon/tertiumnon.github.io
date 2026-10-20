@@ -1,4 +1,4 @@
-import type { IProject } from "../../entities/project/project.types";
+import { IProject } from "../../entities/project/project.types";
 
 export const ProjectControlPanelUtils = {
 	orderBy<T extends Record<string, unknown>>(
