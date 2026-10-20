@@ -62,7 +62,7 @@ async function deploy(): Promise<void> {
       run('git commit -m "docs: regenerate article list"');
     }
 
-    // Update project dates (cached, see scripts/project/dates--create)
+    // Update project dates (latest release dates, see scripts/project/dates--create)
     console.log("📅 Updating project dates...");
     run("bun run project:dates:create");
 

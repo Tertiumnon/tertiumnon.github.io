@@ -30,6 +30,12 @@ describe("ProjectControlPanelService.orderBy", () => {
 		expect(result.map((p) => p.year)).toEqual([2019, 2021, 2023]);
 	});
 
+	it("places items without a value last in both directions", () => {
+		const list = [makeProject({ updatedAt: undefined }), makeProject({ updatedAt: "2025-01-01" }), makeProject({ updatedAt: "2026-01-01" })];
+		expect(ProjectControlPanelService.orderBy(list, "updatedAt").map((p) => p.updatedAt)).toEqual(["2026-01-01", "2025-01-01", undefined]);
+		expect(ProjectControlPanelService.orderBy(list, "-updatedAt").map((p) => p.updatedAt)).toEqual(["2025-01-01", "2026-01-01", undefined]);
+	});
+
 	it("does not mutate the original list", () => {
 		const list = [makeProject({ year: 2022 }), makeProject({ year: 2020 })];
 		ProjectControlPanelService.orderBy(list, "year");

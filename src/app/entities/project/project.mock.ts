@@ -31,8 +31,9 @@ const activeSince = new Date();
 activeSince.setFullYear(activeSince.getFullYear() - ACTIVE_YEARS);
 const ACTIVE_SINCE = activeSince.toISOString().slice(0, 10);
 
+// A project without a release has no date to judge it by, so it stays listed (after the dated ones) instead of hidden as inactive.
 const isActive = (updatedAt?: string): boolean =>
-	updatedAt !== undefined && updatedAt >= ACTIVE_SINCE;
+	updatedAt === undefined || updatedAt >= ACTIVE_SINCE;
 
 // Licence category of a repository: MIT is open source; other licences (personal-use or CC BY content) are free.
 const licenseOf = (repoLicense?: string): ProjectLicense | undefined =>
