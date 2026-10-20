@@ -1,6 +1,6 @@
 # @tertium/js-markdown-wiki
 
-A simple web server for displaying and managing markdown files with an HTTP interface.
+Simple Bun web server that displays and manages markdown files over HTTP.
 
 ## Features
 
@@ -143,15 +143,6 @@ Use a **root-relative** path (`/static/...`), not a relative one (`images/...`),
 - Subfolders are traversed recursively, so you can organize a larger wiki into nested folders.
 - Start the server from the project root (as `bun run start` does) so the `test/` directory resolves correctly.
 - Prefer **absolute URLs** for images; the server does not serve local files by default.
-
-## Documentation
-
-- [Install](https://github.com/Tertiumnon/tertium-js-markdown-wiki/blob/HEAD/docs/INSTALL.md)
-- [Development](https://github.com/Tertiumnon/tertium-js-markdown-wiki/blob/HEAD/docs/DEVELOPMENT.md)
-
-## License
-
-MIT
 
 ## Author
 

@@ -1,5 +1,7 @@
 # @tertium/prisma-codegen
 
+Code generation library for Prisma schemas: REST handlers, GraphQL resolvers, and TypeScript types. In development.
+
 > ⚠️ **In development.** This package is pre-1.0 and not a final/stable API — breaking changes may land in minor/patch releases without notice. Pin an exact version and review changes before upgrading.
 
 Universal code generation library for Prisma schemas. Reads schema metadata during generation and produces:
@@ -332,15 +334,6 @@ import type { ClientTypesConfig, ClientSchemaConfig, GraphQLClientConfig,
 | `ClientBarrelConfig` | Config for `generateClientBarrelContent()` |
 | `TypesBarrelConfig` | Config for `generateTypesBarrelContent()` |
 | `SchemasBarrelConfig` | Config for `generateSchemasBarrelContent()` |
-
-## Documentation
-
-- [Install](https://github.com/Tertiumnon/tertium-prisma-codegen/blob/HEAD/docs/INSTALL.md)
-- [Development](https://github.com/Tertiumnon/tertium-prisma-codegen/blob/HEAD/docs/DEVELOPMENT.md)
-
-## License
-
-ISC
 
 ## Support
 

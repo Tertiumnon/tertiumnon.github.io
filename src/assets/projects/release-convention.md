@@ -1,6 +1,6 @@
 # Release Convention
 
-Repository for the "maining releases" article, examples and schemas.
+Guide to release workflows with Git branches (release, hotfix), CI/CD notes, and a release metadata JSON schema.
 
 See `docs/release-management.md` for the full article and `schemas/release-metadata.schema.json` for a sample release metadata schema.
 

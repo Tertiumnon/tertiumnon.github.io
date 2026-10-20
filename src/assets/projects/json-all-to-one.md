@@ -1,6 +1,6 @@
 # JSON All to One
 
-Merge a directory of JSON files into one.
+CLI that concatenates several JSON files from a directory into one file, optionally wrapped under a key.
 
 ```text
 dir/
@@ -48,11 +48,6 @@ import { concatenate } from 'json-all-to-one';
 
 await concatenate('./dir-with-json-files', './out.json');
 ```
-
-## Documentation
-
-- [Install](https://github.com/Tertiumnon/json-all-to-one/blob/HEAD/docs/INSTALL.md)
-- [Development](https://github.com/Tertiumnon/json-all-to-one/blob/HEAD/docs/DEVELOPMENT.md)
 
 ## Support
 

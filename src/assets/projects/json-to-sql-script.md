@@ -1,6 +1,6 @@
 # JSON to SQL Script
 
-This package creates SQL script from JSON-file.
+Convert your JSON-file to SQL-script for inserting to database.
 
 ## Arguments
 
@@ -66,10 +66,6 @@ Script adds rows with ref_{{table_name}}_name:
 ```sql
 INSERT IGNORE INTO items_components (name,ref_item_name) VALUES ("Salt","Rye bread.");
 ```
-
-## Documentation
-
-- [Install](https://github.com/Tertiumnon/json-to-sql-script/blob/HEAD/docs/INSTALL.md)
 
 ## Support
 

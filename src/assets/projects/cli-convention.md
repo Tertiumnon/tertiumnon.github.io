@@ -1,11 +1,13 @@
 # CLI Convention
 
-Conventions for command-line tools in the Tertium projects, as used by [gf](https://github.com/Tertiumnon/gf). This repo is documentation only.
+CLI conventions for Tertium tools: commands, short and long flags, one- and two-dash meaning, errors and output.
+
+Conventions for command-line tools in the Tertium projects, as used by [gith](https://github.com/Tertiumnon/tertium-gith). This repo is documentation only.
 
 ## Commands
 
 - A command is one lowercase word: `create`, `merge`, `release`.
-- Commands take flags, not positional options: `gf create -r 1.2.0`, not `gf create release 1.2.0`.
+- Commands take flags, not positional options: `gith create -r 1.2.0`, not `gith create release 1.2.0`.
 - `help` and `--help` show usage. `-h` is never help, because it is often a flag.
 
 ## Flags
@@ -26,13 +28,13 @@ The dash count sets how the flag takes its value:
 
 Flags that always need a value (such as a branch name) take one in both forms.
 
-Examples from gf:
+Examples from gith:
 
 ```bash
-gf create -r 1.2.0       # explicit version
-gf create --release      # version picked from the latest tag
-gf create -b login       # branch name, same as -branch login or --branch login
-gf release --patch       # switch; -patch is the same
+gith create -r 1.2.0       # explicit version
+gith create --release      # version picked from the latest tag
+gith create -b login       # branch name, same as -branch login or --branch login
+gith release --patch       # switch; -patch is the same
 ```
 
 Each command takes one of a set of mutually exclusive flags. Giving two is an error.

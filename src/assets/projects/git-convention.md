@@ -1,6 +1,6 @@
 # Git Convention
 
-A small set of rules for branches and commits.
+Git branch and commit conventions: goal-based branches, containers for release and hotfix, conventional commits.
 
 ## Branches
 

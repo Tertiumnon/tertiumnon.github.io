@@ -1,5 +1,7 @@
 # @tertium/hlpr
 
+Command-line helper for everyday tasks on Windows, macOS, and Linux, run as hlpr <domain> <command>.
+
 ```text
     |==|   |==|
     |  |   |  |
@@ -99,7 +101,3 @@ hlpr file rename -dir ./src -style kebab -r -d -f --dry
 [Support the project](https://ko-fi.com/tertiumnon)
 
 License: MIT.
-
-## Documentation
-
-- [Install](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/docs/INSTALL.md)

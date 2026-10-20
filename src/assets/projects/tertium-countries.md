@@ -1,5 +1,7 @@
 # @tertium/countries
 
+Country names in 20 languages with lookup helpers, as an ESM package.
+
 Country names are available in 20 languages: `en` (default), `zh`, `hi`, `es`, `fr`, `ar`, `bn`, `pt`, `ru`, `ur`, `id`, `de`, `ja`, `mr`, `te`, `tr`, `ko`, `vi`, `it`, `fa`.
 
 ESM package:

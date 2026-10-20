@@ -1,6 +1,6 @@
 # MediaWiki Template Deploy
 
-MediaWiki Template Deploy is a tool for deploying MediaWiki-pages to remote server with MediaWiki.
+Node.js CLI to stream, update, and delete MediaWiki pages on a remote server from local article files.
 
 You can:
 
@@ -51,10 +51,6 @@ Delete-process removes wiki-pages on target-server.
 ```Bash
 npm run delete -- --dev {{Summary}}
 ```
-
-## Documentation
-
-- [Install](https://github.com/Tertiumnon/mw-deploy/blob/HEAD/docs/INSTALL.md)
 
 ## Support
 

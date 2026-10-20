@@ -1,5 +1,7 @@
 # @tertium/js
 
+Reusable TypeScript library of shared core utilities, entity models, and release scripts for JavaScript projects. In development.
+
 > **⚠️ IN DEVELOPMENT** — APIs, scripts, and configuration formats in this package are still changing and may break between versions without notice. Pin an exact version rather than a range, and review the changelog/diff before upgrading.
 
 A reusable TypeScript library providing shared core utilities, entity models, and release automation scripts for JavaScript projects. Includes abstractions for APIs, authentication, filtering, logging, repositories, and domain entities (users, posts, comments).
@@ -17,7 +19,6 @@ Because modules are consumed via subpath imports straight from source (no bundli
 
 ## Table of contents
 
-- [Install](https://github.com/Tertiumnon/tertium-js/blob/HEAD/docs/INSTALL.md)
 - Usage
   - Importing modules
   - Scripts
@@ -259,10 +260,6 @@ The scripts were removed from this package, so a project that still calls them f
 ## Contributing
 
 Contributions, issues and pull requests are welcome. If you add features that change the exported types or scripts, please update the documentation here.
-
-## Documentation
-
-- [Install](https://github.com/Tertiumnon/tertium-js/blob/HEAD/docs/INSTALL.md)
 
 ## Support
 

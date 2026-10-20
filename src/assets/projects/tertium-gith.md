@@ -1,5 +1,7 @@
 # @tertium/gith
 
+gith: git-only branch flow CLI (goal branches, release/hotfix containers, synced merges).
+
 ```
           o
          /
@@ -196,11 +198,6 @@ Both need a clean working tree and a `package.json` with a version, because they
 ## Errors
 
 Each failure exits with code 1 and a message. Conflicts leave you on the work branch with the merge aborted, so you can resolve and retry.
-
-## Documentation
-
-- [Install](https://github.com/Tertiumnon/tertium-gith/blob/HEAD/docs/INSTALL.md)
-- [Development](https://github.com/Tertiumnon/tertium-gith/blob/HEAD/docs/DEVELOPMENT.md)
 
 ## Support
 

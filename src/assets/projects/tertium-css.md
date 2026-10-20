@@ -1,5 +1,7 @@
 # @tertium/css
 
+Universal design system with tokens, themes, components, and utilities.
+
 A framework-agnostic, universal CSS design system with composable tokens, themes, components, and utilities. Use what you need, nothing more.
 
 Includes design tokens, five switchable themes, layout utilities, and reusable components.
@@ -439,17 +441,6 @@ initMultiSelect(document.querySelector(".multi-select"));
 
 See [COMPONENTS.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/COMPONENTS.md) for detailed component API reference.
 
-## Documentation
-
-- [DESIGN_SYSTEM_OVERVIEW.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/DESIGN_SYSTEM_OVERVIEW.md) - Principles and architecture
-- [INSTALLATION.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/INSTALLATION.md) - Detailed setup guide
-- [THEMES.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/THEMES.md) - Theme switching and customization
-- [TOKENS.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/TOKENS.md) - Design token reference (TODO)
-- [COMPONENTS.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/COMPONENTS.md) - Component catalog (TODO)
-- [UTILITIES.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/UTILITIES.md) - Utility class reference (TODO)
-- [STRUCTURE.md](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/STRUCTURE.md) - Directory organization
-- [Development](https://github.com/Tertiumnon/tertium-css/blob/HEAD/docs/DEVELOPMENT.md)
-
 ## Why Tertium CSS?
 
 ✅ **Universal** - Works with any framework (vanilla HTML, React, Angular, Vue)
@@ -484,12 +475,6 @@ CSS custom properties (CSS variables) are supported in all modern browsers.
   }
 }
 ```
-
-## License
-
-MIT
-
----
 
 **Built for universality.** Use Tertium CSS in any project, any framework, any context. It's your design system, simplified.
 
