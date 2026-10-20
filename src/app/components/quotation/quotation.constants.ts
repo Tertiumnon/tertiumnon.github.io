@@ -1,4 +1,4 @@
-import { IQuotation } from "./quotation.types";
+import type { IQuotation } from "./quotation.types";
 
 export const QUOTATIONS: IQuotation[] = [
 	{

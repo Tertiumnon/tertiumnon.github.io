@@ -1,13 +1,16 @@
 import { CommonModule, DOCUMENT } from "@angular/common";
-import { Component, DestroyRef, inject, OnInit } from "@angular/core";
+import { Component, DestroyRef, inject, type OnInit } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import {
-
 	ProjectLicense,
 	ProjectStatus,
 } from "../../entities/project/project.constants";
 import { ProjectsService } from "../../pages/projects/projects.service";
-import { SelectFieldComponent, SelectOption, selectOptions } from "../form/select-field.component";
+import {
+	SelectFieldComponent,
+	type SelectOption,
+	selectOptions,
+} from "../form/select-field.component";
 
 const STATUS_KEY = "status";
 const RELEASE_KEY = "release";

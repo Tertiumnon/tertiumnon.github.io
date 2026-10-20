@@ -42,7 +42,8 @@ import { SoundService } from "../sound/sound.service";
 			<span class="caption">Power</span>
 		</div>
 	`,
-	styles: [`
+	styles: [
+		`
 		:host {
 			--ctl-light: color-mix(in srgb, var(--tv-text) 70%, #fff);
 			--ctl-mid: color-mix(in srgb, var(--tv-text) 35%, var(--tv-glass));
@@ -197,7 +198,8 @@ import { SoundService } from "../sound/sound.service";
 			background: var(--tv-glow);
 			box-shadow: 0 0 8px var(--tv-glow);
 		}
-	`],
+	`,
+	],
 })
 export class TvControlsComponent {
 	readonly powered = input.required<boolean>();

@@ -1,4 +1,4 @@
-import { IProject } from "../../entities/project/project.types";
+import type { IProject } from "../../entities/project/project.types";
 
 export const ProjectControlPanelUtils = {
 	orderBy<T extends Record<string, unknown>>(
@@ -9,8 +9,14 @@ export const ProjectControlPanelUtils = {
 		const column = direction === "-" ? args[0].slice(1) : args[0];
 		const newList = [...list];
 		newList.sort((a: T, b: T) => {
-			const aVal = a[column as keyof T] as unknown as string | number | undefined;
-			const bVal = b[column as keyof T] as unknown as string | number | undefined;
+			const aVal = a[column as keyof T] as unknown as
+				| string
+				| number
+				| undefined;
+			const bVal = b[column as keyof T] as unknown as
+				| string
+				| number
+				| undefined;
 			// Items without a value (a project without a release date) go last in both directions.
 			if (aVal === undefined || bVal === undefined) {
 				return Number(aVal === undefined) - Number(bVal === undefined);

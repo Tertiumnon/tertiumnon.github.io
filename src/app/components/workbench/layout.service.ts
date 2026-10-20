@@ -17,9 +17,18 @@ const clampWidth = (width: number): number =>
 function readStoredLayout(): StoredLayout | undefined {
 	if (typeof localStorage === "undefined") return undefined;
 	try {
-		const parsed = JSON.parse(localStorage.getItem(LAYOUT_STORAGE_KEY) ?? "null") as Partial<StoredLayout> | null;
-		if (parsed && typeof parsed.sidebarOpen === "boolean" && typeof parsed.sidebarWidth === "number") {
-			return { sidebarOpen: parsed.sidebarOpen, sidebarWidth: clampWidth(parsed.sidebarWidth) };
+		const parsed = JSON.parse(
+			localStorage.getItem(LAYOUT_STORAGE_KEY) ?? "null",
+		) as Partial<StoredLayout> | null;
+		if (
+			parsed &&
+			typeof parsed.sidebarOpen === "boolean" &&
+			typeof parsed.sidebarWidth === "number"
+		) {
+			return {
+				sidebarOpen: parsed.sidebarOpen,
+				sidebarWidth: clampWidth(parsed.sidebarWidth),
+			};
 		}
 	} catch {
 		// Storage access denied or the stored value is not valid JSON
@@ -43,21 +52,30 @@ export class LayoutService {
 	private readonly stored = readStoredLayout();
 	// A saved choice wins; otherwise the sidebar is expanded on wide screens and collapsed on narrow ones.
 	readonly sidebarOpen = signal(
-		this.stored?.sidebarOpen ?? (typeof window === "undefined" || !window.matchMedia(NARROW_SCREEN_QUERY).matches),
+		this.stored?.sidebarOpen ??
+			(typeof window === "undefined" ||
+				!window.matchMedia(NARROW_SCREEN_QUERY).matches),
 	);
-	readonly sidebarWidth = signal(this.stored?.sidebarWidth ?? DEFAULT_SIDEBAR_WIDTH);
+	readonly sidebarWidth = signal(
+		this.stored?.sidebarWidth ?? DEFAULT_SIDEBAR_WIDTH,
+	);
 	// True while the user drags the sidebar edge, so the width follows the pointer without animation.
 	readonly resizing = signal(false);
 
 	constructor() {
 		effect(() => {
-			writeStoredLayout({ sidebarOpen: this.sidebarOpen(), sidebarWidth: this.sidebarWidth() });
+			writeStoredLayout({
+				sidebarOpen: this.sidebarOpen(),
+				sidebarWidth: this.sidebarWidth(),
+			});
 		});
 
 		if (typeof window !== "undefined") {
-			window.matchMedia(NARROW_SCREEN_QUERY).addEventListener("change", (event) => {
-				this.sidebarOpen.set(!event.matches);
-			});
+			window
+				.matchMedia(NARROW_SCREEN_QUERY)
+				.addEventListener("change", (event) => {
+					this.sidebarOpen.set(!event.matches);
+				});
 		}
 	}
 

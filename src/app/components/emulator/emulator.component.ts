@@ -1,5 +1,10 @@
 import { CommonModule } from "@angular/common";
-import { Component, DestroyRef, inject, ViewEncapsulation } from "@angular/core";
+import {
+	Component,
+	DestroyRef,
+	inject,
+	ViewEncapsulation,
+} from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FormsModule } from "@angular/forms";
 import { EmulatorService } from "./emulator.service";

@@ -1,4 +1,13 @@
-import { Component, ElementRef, OnDestroy, OnInit, computed, inject, signal, viewChild } from "@angular/core";
+import {
+	Component,
+	computed,
+	type ElementRef,
+	inject,
+	type OnDestroy,
+	type OnInit,
+	signal,
+	viewChild,
+} from "@angular/core";
 import { GameOverComponent } from "../game-over/game-over.component";
 import { SoundService } from "../sound/sound.service";
 
@@ -50,7 +59,8 @@ const HEART_INTERVAL_MS = 30000;
 			</div>
 		</section>
 	`,
-	styles: [`
+	styles: [
+		`
 		:host {
 			display: block;
 			height: 100%;
@@ -166,7 +176,8 @@ const HEART_INTERVAL_MS = 30000;
 			font-size: 2rem;
 			background-color: color-mix(in srgb, var(--theme-bg) 60%, transparent);
 		}
-	`],
+	`,
+	],
 	host: {
 		"(document:keydown)": "onKeyDown($event)",
 		"(document:keyup)": "onKeyUp($event)",
@@ -214,10 +225,12 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 
 	onKeyDown(event: KeyboardEvent): void {
 		if (this.over()) {
-			if (event.key.toLowerCase() === "a" || event.key === "Enter") this.start();
+			if (event.key.toLowerCase() === "a" || event.key === "Enter")
+				this.start();
 			return;
 		}
-		if (!this.running() || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+		if (!this.running() || !["ArrowLeft", "ArrowRight"].includes(event.key))
+			return;
 		event.preventDefault();
 		this.keys.add(event.key);
 	}
@@ -238,8 +251,12 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 		this.girlX.set(x);
 
 		const field = this.field().nativeElement;
-		const girlTop = 100 - ((field.clientWidth * GIRL_WIDTH * GIRL_RATIO) / field.clientHeight) * 100;
-		const pieSize = ((field.clientWidth * PIE_WIDTH) / field.clientHeight) * 100;
+		const girlTop =
+			100 -
+			((field.clientWidth * GIRL_WIDTH * GIRL_RATIO) / field.clientHeight) *
+				100;
+		const pieSize =
+			((field.clientWidth * PIE_WIDTH) / field.clientHeight) * 100;
 		const fall = Math.min(0.8 + this.score() * 0.04, 2.2);
 		const kept: Pie[] = [];
 		let caught = 0;
@@ -265,12 +282,15 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 			if (heart) this.nextHeartMs += HEART_INTERVAL_MS;
 			kept.push({ id: this.nextId++, x: 8 + Math.random() * 84, y: 0, heart });
 			// Pies come a little more often as the game goes on.
-			this.nextSpawnTick = this.ticks + Math.max(18, Math.round(SPAWN_EVERY_TICKS - elapsedMs / 10000));
+			this.nextSpawnTick =
+				this.ticks +
+				Math.max(18, Math.round(SPAWN_EVERY_TICKS - elapsedMs / 10000));
 		}
 		this.pies.set(kept);
 
 		if (caught) this.score.update((score) => score + caught);
-		if (restored) this.lives.update((lives) => Math.min(LIVES, lives + restored));
+		if (restored)
+			this.lives.update((lives) => Math.min(LIVES, lives + restored));
 		if (missed) this.lives.update((lives) => Math.max(0, lives - missed));
 		if (caught) this.sound.play("catch");
 		if (restored) this.sound.play("heart");
@@ -294,9 +314,11 @@ export class HoneyCatchComponent implements OnInit, OnDestroy {
 	// Game over: a pyramid of pies drops onto the lying girl, widest row at the bottom.
 	private buildFinale(): Pie[] {
 		const field = this.field().nativeElement;
-		const pieSize = ((field.clientWidth * PIE_WIDTH) / field.clientHeight) * 100;
+		const pieSize =
+			((field.clientWidth * PIE_WIDTH) / field.clientHeight) * 100;
 		// Lying down, the figure is about half the picture's width tall; the pyramid stands on her.
-		const base = 100 - ((field.clientWidth * GIRL_WIDTH * 0.5) / field.clientHeight) * 100;
+		const base =
+			100 - ((field.clientWidth * GIRL_WIDTH * 0.5) / field.clientHeight) * 100;
 		const x = this.girlX();
 		const pies: Pie[] = [];
 		for (let row = 0; row < PYRAMID_ROWS; row++) {

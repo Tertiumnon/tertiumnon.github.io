@@ -1,16 +1,16 @@
+import { CommonModule } from "@angular/common";
 import {
-	ChangeDetectorRef,
+	type ChangeDetectorRef,
 	Component,
 	HostListener,
 	OnDestroy,
 } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { HelloWorldGameService } from "./hello-world-game.service";
-import { CellData } from "./hello-world-game.types";
-import { TANK_HEIGHT, TANK_WIDTH } from "./hello-world-game.utils";
 import { GameOverComponent } from "../game-over/game-over.component";
-import { ArcadeScreenService } from "../game-stage/game-screen.service";
-import { SoundService } from "../sound/sound.service";
+import type { ArcadeScreenService } from "../game-stage/game-screen.service";
+import type { SoundService } from "../sound/sound.service";
+import type { HelloWorldGameService } from "./hello-world-game.service";
+import type { CellData } from "./hello-world-game.types";
+import { TANK_HEIGHT, TANK_WIDTH } from "./hello-world-game.utils";
 
 interface PlayerRecord {
 	name: string;
@@ -27,7 +27,11 @@ const recordScore = (blocks: number, seconds: number): number =>
 
 // New key: records from the old scoring (100 per block, time not counted) are not comparable.
 const RECORDS_KEY = "hello-world-arcade-records-v2";
-const seedRecord = (name: string, blocks: number, timeSeconds: number): PlayerRecord => ({
+const seedRecord = (
+	name: string,
+	blocks: number,
+	timeSeconds: number,
+): PlayerRecord => ({
 	name,
 	score: recordScore(blocks, timeSeconds),
 	blocks,
@@ -135,7 +139,9 @@ export class HelloWorldGameComponent {
 
 	get elapsedSeconds(): number {
 		if (this.gameOver) return this.survivalSeconds;
-		return this.runStartedAt ? Math.floor((Date.now() - this.runStartedAt) / 1000) : 0;
+		return this.runStartedAt
+			? Math.floor((Date.now() - this.runStartedAt) / 1000)
+			: 0;
 	}
 
 	get score(): number {
@@ -143,7 +149,9 @@ export class HelloWorldGameComponent {
 	}
 
 	formatTime(seconds: number): string {
-		const minutes = Math.floor(seconds / 60).toString().padStart(2, "0");
+		const minutes = Math.floor(seconds / 60)
+			.toString()
+			.padStart(2, "0");
 		const remainingSeconds = (seconds % 60).toString().padStart(2, "0");
 		return `${minutes}:${remainingSeconds}`;
 	}
@@ -164,17 +172,23 @@ export class HelloWorldGameComponent {
 	private loadRecords(): PlayerRecord[] {
 		if (typeof window === "undefined") return [...SEED_RECORDS];
 		try {
-			const saved: unknown = JSON.parse(window.localStorage.getItem(RECORDS_KEY) ?? "null");
+			const saved: unknown = JSON.parse(
+				window.localStorage.getItem(RECORDS_KEY) ?? "null",
+			);
 			if (Array.isArray(saved)) {
 				const valid = saved.filter((entry): entry is PlayerRecord => {
 					if (!entry || typeof entry !== "object") return false;
 					const record = entry as Partial<PlayerRecord>;
-					return typeof record.name === "string" &&
+					return (
+						typeof record.name === "string" &&
 						Number.isFinite(record.score) &&
 						Number.isFinite(record.blocks) &&
-						Number.isFinite(record.timeSeconds);
+						Number.isFinite(record.timeSeconds)
+					);
 				});
-				return valid.length ? this.sortRecords(valid).slice(0, 10) : [...SEED_RECORDS];
+				return valid.length
+					? this.sortRecords(valid).slice(0, 10)
+					: [...SEED_RECORDS];
 			}
 		} catch {
 			// Use the built-in arcade table when browser storage is unavailable or invalid.
@@ -183,8 +197,11 @@ export class HelloWorldGameComponent {
 	}
 
 	private sortRecords(records: PlayerRecord[]): PlayerRecord[] {
-		return [...records].sort((a, b) =>
-			b.score - a.score || b.blocks - a.blocks || b.timeSeconds - a.timeSeconds,
+		return [...records].sort(
+			(a, b) =>
+				b.score - a.score ||
+				b.blocks - a.blocks ||
+				b.timeSeconds - a.timeSeconds,
 		);
 	}
 
@@ -339,12 +356,11 @@ export class HelloWorldGameComponent {
 			}
 
 			if (
-				this.isTankHittingPhrase(this.svc.tankCellsAt(
-					this.tank.col,
-					this.tank.row,
-					this.tank.color,
-				)) ||
-				this.startRow + this.targetOffsetY + this.usedRows >= this.getContainerRows()
+				this.isTankHittingPhrase(
+					this.svc.tankCellsAt(this.tank.col, this.tank.row, this.tank.color),
+				) ||
+				this.startRow + this.targetOffsetY + this.usedRows >=
+					this.getContainerRows()
 			) {
 				this.endGame();
 			}
@@ -361,7 +377,10 @@ export class HelloWorldGameComponent {
 	}
 
 	private isTankHittingPhrase(tankCells: CellData[]): boolean {
-		return this.svc.isTankOverlappingPhrase(this.getMovingPhraseCells(), tankCells);
+		return this.svc.isTankOverlappingPhrase(
+			this.getMovingPhraseCells(),
+			tankCells,
+		);
 	}
 
 	private endGame(won = false) {
@@ -384,18 +403,25 @@ export class HelloWorldGameComponent {
 	private moveInDirection(direction: "left" | "right") {
 		if (this.gameOver) return;
 		switch (direction) {
-			case "left": this.moveLeft(); break;
-			case "right": this.moveRight(); break;
+			case "left":
+				this.moveLeft();
+				break;
+			case "right":
+				this.moveRight();
+				break;
 		}
 	}
 
 	private directionForKey(key: string): "left" | "right" | undefined {
 		switch (key.toLowerCase()) {
 			case "arrowleft":
-			case "a": return "left";
+			case "a":
+				return "left";
 			case "arrowright":
-			case "d": return "right";
-			default: return undefined;
+			case "d":
+				return "right";
+			default:
+				return undefined;
 		}
 	}
 
@@ -495,7 +521,12 @@ export class HelloWorldGameComponent {
 		}
 
 		// Space or S => shoot.
-		if (event.code === "Space" || k === " " || k === "Spacebar" || k.toLowerCase() === "s") {
+		if (
+			event.code === "Space" ||
+			k === " " ||
+			k === "Spacebar" ||
+			k.toLowerCase() === "s"
+		) {
 			event.preventDefault();
 			if (!event.repeat) this.shoot();
 			return;

@@ -12,7 +12,8 @@ import { LightboxService } from "./lightbox.service";
 		</div>
 		}
 	`,
-	styles: [`
+	styles: [
+		`
 		.lightbox {
 			position: fixed;
 			inset: 0;
@@ -33,7 +34,8 @@ import { LightboxService } from "./lightbox.service";
 			background: var(--theme-panel);
 			box-shadow: var(--box-shadow--hover);
 		}
-	`],
+	`,
+	],
 })
 export class LightboxComponent {
 	readonly lightbox = inject(LightboxService);

@@ -1,13 +1,20 @@
-import { Component, DestroyRef, HostListener, computed, inject, signal } from "@angular/core";
-import { MatrixRainComponent } from "../../components/matrix-rain/matrix-rain.component";
+import {
+	Component,
+	computed,
+	DestroyRef,
+	HostListener,
+	inject,
+	signal,
+} from "@angular/core";
 import { Router } from "@angular/router";
+import { ArcadeCabinetComponent } from "../../components/arcade-cabinet/arcade-cabinet.component";
+import { GameStageComponent } from "../../components/game-stage/game-stage.component";
 import { HelloWorldGameComponent } from "../../components/hello-world-game/hello-world-game.component";
 import { HoneyCatchComponent } from "../../components/honey-catch/honey-catch.component";
-import { GameStageComponent } from "../../components/game-stage/game-stage.component";
-import { ArcadeCabinetComponent } from "../../components/arcade-cabinet/arcade-cabinet.component";
+import { MatrixRainComponent } from "../../components/matrix-rain/matrix-rain.component";
+import { SoundService } from "../../components/sound/sound.service";
 import { Theme } from "../../components/theme/theme.constants";
 import { ThemeService } from "../../components/theme/theme.service";
-import { SoundService } from "../../components/sound/sound.service";
 
 type GameKey = "catch" | "hello";
 // main: the start menu; games: the game menu under "Just want to play a game"; game: a game is running.
@@ -21,12 +28,32 @@ interface MenuItem {
 }
 
 const MAIN_ITEMS: MenuItem[] = [
-	{ label: "Projects", route: "projects", description: "My software projects (cli utils, apps, app extensions, libs, conventions, docs, etc)" },
-	{ label: "Lines", route: "lines", description: "Short message from my social networks." },
-	{ label: "Posts", route: "posts", description: "Articles and notes on what I build." },
+	{
+		label: "Projects",
+		route: "projects",
+		description:
+			"My software projects (cli utils, apps, app extensions, libs, conventions, docs, etc)",
+	},
+	{
+		label: "Lines",
+		route: "lines",
+		description: "Short message from my social networks.",
+	},
+	{
+		label: "Posts",
+		route: "posts",
+		description: "Articles and notes on what I build.",
+	},
 	{ label: "Tools", route: "tools", description: "Small web tools." },
-	{ label: "About me", route: "about-me", description: "Who makes these projects." },
-	{ label: "Play a game", description: "Honey Catch and Hellowordian, for a short break." },
+	{
+		label: "About me",
+		route: "about-me",
+		description: "Who makes these projects.",
+	},
+	{
+		label: "Play a game",
+		description: "Honey Catch and Hellowordian, for a short break.",
+	},
 ];
 
 const IDLE_MS = 30_000;
@@ -41,7 +68,13 @@ const GAMES: (MenuItem & { key: GameKey })[] = [
 	templateUrl: "./home.component.html",
 	styleUrl: "./home.component.css",
 	standalone: true,
-	imports: [HelloWorldGameComponent, HoneyCatchComponent, GameStageComponent, ArcadeCabinetComponent, MatrixRainComponent],
+	imports: [
+		HelloWorldGameComponent,
+		HoneyCatchComponent,
+		GameStageComponent,
+		ArcadeCabinetComponent,
+		MatrixRainComponent,
+	],
 })
 export class HomeComponent {
 	private readonly themeService = inject(ThemeService);
@@ -60,13 +93,31 @@ export class HomeComponent {
 	private lastActivity = Date.now();
 
 	// The menu on the TV: the start menu, or the games.
-	readonly menu = computed<MenuItem[]>(() => (this.view() === "main" ? MAIN_ITEMS : GAMES));
-	readonly menuCursor = computed(() => (this.view() === "main" ? this.mainCursor() : this.gameCursor()));
-	readonly menuTitle = computed(() => (this.view() === "main" ? "Main menu" : "Select game"));
-	readonly description = computed(() => (this.view() === "main" ? MAIN_ITEMS[this.mainCursor()].description : undefined));
+	readonly menu = computed<MenuItem[]>(() =>
+		this.view() === "main" ? MAIN_ITEMS : GAMES,
+	);
+	readonly menuCursor = computed(() =>
+		this.view() === "main" ? this.mainCursor() : this.gameCursor(),
+	);
+	readonly menuTitle = computed(() =>
+		this.view() === "main" ? "Main menu" : "Select game",
+	);
+	readonly description = computed(() =>
+		this.view() === "main"
+			? MAIN_ITEMS[this.mainCursor()].description
+			: undefined,
+	);
 
 	constructor() {
-		const timer = setInterval(() => this.idle.set(this.view() !== "game" && this.tvOn() && Date.now() - this.lastActivity > IDLE_MS), 1000);
+		const timer = setInterval(
+			() =>
+				this.idle.set(
+					this.view() !== "game" &&
+						this.tvOn() &&
+						Date.now() - this.lastActivity > IDLE_MS,
+				),
+			1000,
+		);
 		inject(DestroyRef).onDestroy(() => clearInterval(timer));
 	}
 

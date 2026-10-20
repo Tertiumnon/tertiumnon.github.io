@@ -1,20 +1,28 @@
 import { AsyncPipe, CommonModule } from "@angular/common";
-import { Component, DestroyRef, ElementRef, HostListener, inject, OnInit, viewChild } from "@angular/core";
+import {
+	Component,
+	DestroyRef,
+	type ElementRef,
+	HostListener,
+	inject,
+	type OnInit,
+	viewChild,
+} from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { NavigationEnd, Router, RouterOutlet } from "@angular/router";
 import { BehaviorSubject } from "rxjs";
 import { EditorTabsComponent } from "./components/editor-tabs/editor-tabs.component";
 import { EmulatorComponent } from "./components/emulator/emulator.component";
-import { LayoutService } from "./components/workbench/layout.service";
+import { FontService } from "./components/font/font.service";
 import { LightboxComponent } from "./components/lightbox/lightbox.component";
 import { LightboxService } from "./components/lightbox/lightbox.service";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { StatusBarComponent } from "./components/status-bar/status-bar.component";
 import { TerminalComponent } from "./components/terminal/terminal.component";
 import { TerminalService } from "./components/terminal/terminal.service";
-import { FontService } from "./components/font/font.service";
-import { ThemeService } from "./components/theme/theme.service";
 import { Theme } from "./components/theme/theme.constants";
+import { ThemeService } from "./components/theme/theme.service";
+import { LayoutService } from "./components/workbench/layout.service";
 
 @Component({
 	selector: "app-root",
@@ -47,14 +55,21 @@ export class AppComponent implements OnInit {
 
 	// Expanded: the dragged width. Collapsed: the icon rail.
 	sidebarColumn(): string {
-		return this.layout.sidebarOpen() ? `${this.layout.sidebarWidth()}px` : "48px";
+		return this.layout.sidebarOpen()
+			? `${this.layout.sidebarWidth()}px`
+			: "48px";
 	}
 
 	// Pictures in content (screenshots, README images) open full size in the popup.
 	@HostListener("document:click", ["$event"])
 	onImageClick(event: MouseEvent): void {
 		const target = event.target;
-		if (!(target instanceof HTMLImageElement) || target.closest("a") || !target.closest(".content, .screenshots")) return;
+		if (
+			!(target instanceof HTMLImageElement) ||
+			target.closest("a") ||
+			!target.closest(".content, .screenshots")
+		)
+			return;
 		this.lightbox.open(target.src);
 	}
 
@@ -73,10 +88,25 @@ export class AppComponent implements OnInit {
 		this.bgLayer()?.nativeElement.animate(
 			// A damped wobble: each swing is smaller than the last, so the picture settles without a stop.
 			[
-				{ transform: "scale(1.03) translate(0, 0)", easing: "cubic-bezier(0.33, 0, 0.67, 1)" },
-				{ transform: "scale(1.03) translate(-8px, 5px)", offset: 0.3, easing: "cubic-bezier(0.33, 0, 0.67, 1)" },
-				{ transform: "scale(1.03) translate(3px, -2px)", offset: 0.6, easing: "cubic-bezier(0.33, 0, 0.67, 1)" },
-				{ transform: "scale(1.03) translate(-1px, 1px)", offset: 0.82, easing: "cubic-bezier(0.33, 0, 0.67, 1)" },
+				{
+					transform: "scale(1.03) translate(0, 0)",
+					easing: "cubic-bezier(0.33, 0, 0.67, 1)",
+				},
+				{
+					transform: "scale(1.03) translate(-8px, 5px)",
+					offset: 0.3,
+					easing: "cubic-bezier(0.33, 0, 0.67, 1)",
+				},
+				{
+					transform: "scale(1.03) translate(3px, -2px)",
+					offset: 0.6,
+					easing: "cubic-bezier(0.33, 0, 0.67, 1)",
+				},
+				{
+					transform: "scale(1.03) translate(-1px, 1px)",
+					offset: 0.82,
+					easing: "cubic-bezier(0.33, 0, 0.67, 1)",
+				},
 				{ transform: "scale(1.03) translate(0, 0)" },
 			],
 			{ duration: 1200 },

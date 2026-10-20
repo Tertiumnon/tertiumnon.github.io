@@ -1,46 +1,46 @@
 /* Filters live in the sidebar under the menu, stacked one under another. */
 :host {
-  display: block;
+	display: block;
 }
 
 .project-control-panel {
-  display: flex;
-  width: 100%;
-  font-size: 0.9rem;
+	display: flex;
+	width: 100%;
+	font-size: 0.9rem;
 }
 
 .project-control-panel .container-fluid {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
+	width: 100%;
+	max-width: none;
+	margin: 0;
+	padding: 0;
 }
 
 .project-control-panel .filters {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
 }
 
 .project-control-panel .filters select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  color: var(--text-color);
-  font: inherit;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	cursor: pointer;
+	color: var(--text-color);
+	font: inherit;
 }
 
 .panel-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
 }
 
 .filters {
-  display: flex;
-  gap: 1rem;
+	display: flex;
+	gap: 1rem;
 }

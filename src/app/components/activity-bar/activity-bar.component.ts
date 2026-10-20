@@ -1,6 +1,11 @@
 import { Component, DestroyRef, inject, signal } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { NavigationEnd, Router, RouterLink, RouterLinkActive } from "@angular/router";
+import {
+	NavigationEnd,
+	Router,
+	RouterLink,
+	RouterLinkActive,
+} from "@angular/router";
 
 const ANIMATION_DURATION_MS = 1000;
 const CLICK_ANIMATION_DURATION_MS = 2000;
@@ -37,7 +42,8 @@ export class ActivityBarComponent {
 		this.router.events
 			.pipe(takeUntilDestroyed(this.destroyRef))
 			.subscribe((event) => {
-				if (event instanceof NavigationEnd) this.animateLogo(ANIMATION_DURATION_MS);
+				if (event instanceof NavigationEnd)
+					this.animateLogo(ANIMATION_DURATION_MS);
 			});
 	}
 

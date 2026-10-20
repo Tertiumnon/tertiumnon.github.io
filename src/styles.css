@@ -9,739 +9,763 @@
 
 /* Local fonts */
 @font-face {
-  font-family: "Ubuntu Nerd Font";
-  src: url("/assets/fonts/Ubuntu/UbuntuNerdFont-Regular.ttf") format("truetype");
-  font-weight: normal;
+	font-family: "Ubuntu Nerd Font";
+	src: url("/assets/fonts/Ubuntu/UbuntuNerdFont-Regular.ttf") format("truetype");
+	font-weight: normal;
 }
 
 @font-face {
-  font-family: "Ubuntu Nerd Font";
-  src: url("/assets/fonts/Ubuntu/UbuntuNerdFont-Bold.ttf") format("truetype");
-  font-weight: bold;
+	font-family: "Ubuntu Nerd Font";
+	src: url("/assets/fonts/Ubuntu/UbuntuNerdFont-Bold.ttf") format("truetype");
+	font-weight: bold;
 }
 
 @font-face {
-  font-family: "Science Gothic";
-  src: url("/assets/fonts/Science_Gothic/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf")
-    format("truetype-variations");
-  font-weight: 100 900;
-  font-stretch: 75% 100%;
+	font-family: "Science Gothic";
+	src: url("/assets/fonts/Science_Gothic/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf")
+		format("truetype-variations");
+	font-weight: 100 900;
+	font-stretch: 75% 100%;
 }
 
 :root {
-  --header-height: 0rem;
-  --control-panel-height: 2.4rem;
-  --container-margin-top: 1rem;
-  --content-mt: 1em;
-  --text-color: #f6edff;
-  --box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  --box-shadow--hover: 0 0 10px rgba(0, 0, 0, 0.8);
+	--header-height: 0rem;
+	--control-panel-height: 2.4rem;
+	--container-margin-top: 1rem;
+	--content-mt: 1em;
+	--text-color: #f6edff;
+	--box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	--box-shadow--hover: 0 0 10px rgba(0, 0, 0, 0.8);
 
-  /* Typography: one UI font, one code font, one size scale. */
-  --font-ui: "JetBrains Mono", monospace;
-  --font-heading: "Science Gothic", var(--font-ui);
-  --font-code: "JetBrains Mono", "Roboto Mono", ui-monospace, monospace;
-  --font-size-base: 16px;
-  --font-size-content: 1rem;
-  --line-height-base: 1.6;
-  --editor-radius: 6px;
-  --page-max-width: 960px;
+	/* Typography: one UI font, one code font, one size scale. */
+	--font-ui: "JetBrains Mono", monospace;
+	--font-heading: "Science Gothic", var(--font-ui);
+	--font-code: "JetBrains Mono", "Roboto Mono", ui-monospace, monospace;
+	--font-size-base: 16px;
+	--font-size-content: 1rem;
+	--line-height-base: 1.6;
+	--editor-radius: 6px;
+	--page-max-width: 960px;
 }
 
 html,
 body {
-  height: 100%;
+	height: 100%;
 }
 
 body {
-  margin: 0;
-  font-family: var(--font-ui);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
+	margin: 0;
+	font-family: var(--font-ui);
+	font-size: var(--font-size-base);
+	line-height: var(--line-height-base);
 }
 
 h1,
 h2,
 h3,
 h4 {
-  margin-top: 1.2em;
-  margin-bottom: 0.8em;
-  font-weight: bold;
-  line-height: 1.2;
-  font-family: "Science Gothic", sans-serif;
+	margin-top: 1.2em;
+	margin-bottom: 0.8em;
+	font-weight: bold;
+	line-height: 1.2;
+	font-family: "Science Gothic", sans-serif;
 }
 
 h1 {
-  margin-top: 0.2em;
-  font-size: 1.8em;
-  font-family: "Science Gothic", sans-serif;
+	margin-top: 0.2em;
+	font-size: 1.8em;
+	font-family: "Science Gothic", sans-serif;
 }
 
 h2 {
-  margin-top: 1em;
-  font-size: 1.5em;
+	margin-top: 1em;
+	font-size: 1.5em;
 }
 
 h3 {
-  margin-top: 0.8em;
-  font-size: 1.2em;
+	margin-top: 0.8em;
+	font-size: 1.2em;
 }
 
 p {
-  margin: 0.8rem 0;
-  line-height: var(--line-height-base);
+	margin: 0.8rem 0;
+	line-height: var(--line-height-base);
 }
 
 blockquote {
-  margin: 1em 0;
-  padding: 0.2em 1em;
-  border-left: 3px solid var(--theme-accent);
-  background-color: var(--theme-panel);
-  border-radius: 0 var(--editor-radius) var(--editor-radius) 0;
+	margin: 1em 0;
+	padding: 0.2em 1em;
+	border-left: 3px solid var(--theme-accent);
+	background-color: var(--theme-panel);
+	border-radius: 0 var(--editor-radius) var(--editor-radius) 0;
 }
 
 ul {
-  margin: 1em 0;
-  padding-left: 2em;
-  list-style: disc;
+	margin: 1em 0;
+	padding-left: 2em;
+	list-style: disc;
 }
 
 ol {
-  margin: 1em 0;
-  padding-left: 2em;
-  list-style: decimal;
+	margin: 1em 0;
+	padding-left: 2em;
+	list-style: decimal;
 }
 
 li {
-  margin: 0.5em 0;
-  line-height: 1.5;
+	margin: 0.5em 0;
+	line-height: 1.5;
 }
 
 /* Links keep the text colour unless a rule gives them an accent (Tailwind used to reset this). */
 a {
-  color: inherit;
-  text-decoration: inherit;
+	color: inherit;
+	text-decoration: inherit;
 }
 
 .text-link {
-  color: var(--theme-accent);
-  text-decoration: underline;
+	color: var(--theme-accent);
+	text-decoration: underline;
 }
 
 nav,
 app-nav {
-  font-family: inherit;
+	font-family: inherit;
 }
 
 input,
 select {
-  color: black;
-  padding: 0.2em 0.4em;
-  border-radius: 8px;
+	color: black;
+	padding: 0.2em 0.4em;
+	border-radius: 8px;
 }
 
 .btn {
-  border: 1px solid white;
-  border-radius: 8px;
-  padding: 0 0.6em;
+	border: 1px solid white;
+	border-radius: 8px;
+	padding: 0 0.6em;
 }
 
 .theme-switch select {
-  font-family: "VT323", monospace;
-  background: none;
-  color: black;
+	font-family: "VT323", monospace;
+	background: none;
+	color: black;
 }
 
 /* Containers */
 
 code {
-  font-family: var(--font-code);
-  font-size: 0.85em;
-  padding: 0.05em 0.35em;
-  border: 1px solid var(--theme-border);
-  border-radius: 4px;
-  background-color: var(--theme-panel);
-  color: var(--theme-accent);
+	font-family: var(--font-code);
+	font-size: 0.85em;
+	padding: 0.05em 0.35em;
+	border: 1px solid var(--theme-border);
+	border-radius: 4px;
+	background-color: var(--theme-panel);
+	color: var(--theme-accent);
 }
 
 .bg {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  z-index: -1;
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	background-size: cover;
+	background-position: center;
+	z-index: -1;
 }
 
 main {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .container-fluid {
-  margin: 0 auto;
-  padding: 0 1%;
-  width: 96%;
-  max-width: var(--page-max-width);
+	margin: 0 auto;
+	padding: 0 1%;
+	width: 96%;
+	max-width: var(--page-max-width);
 }
 
 .content {
-  margin: var(--content-mt) auto;
-  padding: 1em 3%;
-  border-radius: 12px;
-  box-shadow: var(--box-shadow);
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
-  font-size: var(--font-size-content);
-  border: 1px solid var(--theme-border);
-  border-top: 2px solid var(--theme-accent);
-  border-radius: var(--editor-radius);
+	margin: var(--content-mt) auto;
+	padding: 1em 3%;
+	box-shadow: var(--box-shadow);
+	font-optical-sizing: auto;
+	font-weight: normal;
+	font-style: normal;
+	font-variation-settings: "wdth" 100;
+	font-size: var(--font-size-content);
+	border: 1px solid var(--theme-border);
+	border-top: 2px solid var(--theme-accent);
+	border-radius: var(--editor-radius);
 }
 
 .content a {
-  color: var(--theme-accent);
+	color: var(--theme-accent);
 }
-
 
 .content h1::before,
 .content h2::before,
 .content h3::before {
-  content: "# ";
-  color: var(--theme-accent);
-  font-family: var(--font-code);
-  opacity: 0.7;
+	content: "# ";
+	color: var(--theme-accent);
+	font-family: var(--font-code);
+	opacity: 0.7;
 }
 
 .content h2::before {
-  content: "## ";
+	content: "## ";
 }
 
 .content h3::before {
-  content: "### ";
+	content: "### ";
 }
 
 /* Code palettes: data-code-theme follows the app theme, so each theme gets its own code block colours. */
 .workbench {
-  --code-bg: var(--theme-panel);
-  --code-text: var(--theme-text);
-  --code-keyword: var(--theme-accent);
-  --code-string: #9ccc65;
-  --code-number: #ff9e64;
-  --code-comment: #7f8c8d;
-  --code-title: #82aaff;
-  --code-attr: #ffcb6b;
-  --code-builtin: #c3e88d;
-  --code-variable: var(--theme-text);
+	--code-bg: var(--theme-panel);
+	--code-text: var(--theme-text);
+	--code-keyword: var(--theme-accent);
+	--code-string: #9ccc65;
+	--code-number: #ff9e64;
+	--code-comment: #7f8c8d;
+	--code-title: #82aaff;
+	--code-attr: #ffcb6b;
+	--code-builtin: #c3e88d;
+	--code-variable: var(--theme-text);
 }
 
 .workbench[data-code-theme="github-dark"] {
-  --code-bg: #010409;
-  --code-text: #e6edf3;
-  --code-keyword: #ff7b72;
-  --code-string: #a5d6ff;
-  --code-number: #79c0ff;
-  --code-comment: #8b949e;
-  --code-title: #d2a8ff;
-  --code-attr: #79c0ff;
-  --code-builtin: #ffa657;
-  --code-variable: #ffa657;
+	--code-bg: #010409;
+	--code-text: #e6edf3;
+	--code-keyword: #ff7b72;
+	--code-string: #a5d6ff;
+	--code-number: #79c0ff;
+	--code-comment: #8b949e;
+	--code-title: #d2a8ff;
+	--code-attr: #79c0ff;
+	--code-builtin: #ffa657;
+	--code-variable: #ffa657;
 }
 
 .workbench[data-code-theme="catppuccin"] {
-  --code-bg: #181825;
-  --code-text: #cdd6f4;
-  --code-keyword: #cba6f7;
-  --code-string: #a6e3a1;
-  --code-number: #fab387;
-  --code-comment: #6c7086;
-  --code-title: #89b4fa;
-  --code-attr: #f9e2af;
-  --code-builtin: #f38ba8;
-  --code-variable: #f5c2e7;
+	--code-bg: #181825;
+	--code-text: #cdd6f4;
+	--code-keyword: #cba6f7;
+	--code-string: #a6e3a1;
+	--code-number: #fab387;
+	--code-comment: #6c7086;
+	--code-title: #89b4fa;
+	--code-attr: #f9e2af;
+	--code-builtin: #f38ba8;
+	--code-variable: #f5c2e7;
 }
 
 .workbench[data-code-theme="atom-one-dark"] {
-  --code-bg: #21252b;
-  --code-text: #abb2bf;
-  --code-keyword: #c678dd;
-  --code-string: #98c379;
-  --code-number: #d19a66;
-  --code-comment: #5c6370;
-  --code-title: #61afef;
-  --code-attr: #d19a66;
-  --code-builtin: #e6c07b;
-  --code-variable: #e06c75;
+	--code-bg: #21252b;
+	--code-text: #abb2bf;
+	--code-keyword: #c678dd;
+	--code-string: #98c379;
+	--code-number: #d19a66;
+	--code-comment: #5c6370;
+	--code-title: #61afef;
+	--code-attr: #d19a66;
+	--code-builtin: #e6c07b;
+	--code-variable: #e06c75;
 }
 
 .workbench[data-code-theme="honey-pie"] {
-  --code-bg: var(--theme-panel);
-  --code-text: #ffffff;
-  --code-keyword: #ffb3d9;
-  --code-string: #ffe6f2;
-  --code-number: #ffd166;
-  --code-comment: #d9a3c2;
-  --code-title: #ffffff;
-  --code-attr: #ffd166;
-  --code-builtin: #ffb3d9;
-  --code-variable: #ffffff;
+	--code-bg: var(--theme-panel);
+	--code-text: #ffffff;
+	--code-keyword: #ffb3d9;
+	--code-string: #ffe6f2;
+	--code-number: #ffd166;
+	--code-comment: #d9a3c2;
+	--code-title: #ffffff;
+	--code-attr: #ffd166;
+	--code-builtin: #ffb3d9;
+	--code-variable: #ffffff;
 }
 
 .workbench[data-code-theme="matrix"] {
-  --code-bg: #020c04;
-  --code-text: #00ff41;
-  --code-keyword: #b6ffc8;
-  --code-string: #7dff9e;
-  --code-number: #39ff14;
-  --code-comment: #2e7d3e;
-  --code-title: #00ff41;
-  --code-attr: #7dff5c;
-  --code-builtin: #b6ffc8;
-  --code-variable: #00ff41;
+	--code-bg: #020c04;
+	--code-text: #00ff41;
+	--code-keyword: #b6ffc8;
+	--code-string: #7dff9e;
+	--code-number: #39ff14;
+	--code-comment: #2e7d3e;
+	--code-title: #00ff41;
+	--code-attr: #7dff5c;
+	--code-builtin: #b6ffc8;
+	--code-variable: #00ff41;
 }
 
 .workbench[data-code-theme="fallout"] {
-  --code-bg: #0a1209;
-  --code-text: #b8f5a8;
-  --code-keyword: #7dff5c;
-  --code-string: #d6ffc4;
-  --code-number: #e6ff8a;
-  --code-comment: #5a7f4a;
-  --code-title: #9dff7a;
-  --code-attr: #c5ff9a;
-  --code-builtin: #7dff5c;
-  --code-variable: #b8f5a8;
+	--code-bg: #0a1209;
+	--code-text: #b8f5a8;
+	--code-keyword: #7dff5c;
+	--code-string: #d6ffc4;
+	--code-number: #e6ff8a;
+	--code-comment: #5a7f4a;
+	--code-title: #9dff7a;
+	--code-attr: #c5ff9a;
+	--code-builtin: #7dff5c;
+	--code-variable: #b8f5a8;
 }
 
 .hljs-keyword,
 .hljs-selector-tag,
-.hljs-meta { color: var(--code-keyword); }
+.hljs-meta {
+	color: var(--code-keyword);
+}
 .hljs-string,
-.hljs-regexp { color: var(--code-string); }
+.hljs-regexp {
+	color: var(--code-string);
+}
 .hljs-number,
-.hljs-literal { color: var(--code-number); }
+.hljs-literal {
+	color: var(--code-number);
+}
 .hljs-comment,
-.hljs-quote { color: var(--code-comment); font-style: italic; }
+.hljs-quote {
+	color: var(--code-comment);
+	font-style: italic;
+}
 .hljs-title,
 .hljs-function,
 .hljs-type,
-.hljs-section { color: var(--code-title); }
+.hljs-section {
+	color: var(--code-title);
+}
 .hljs-attr,
 .hljs-property,
-.hljs-attribute { color: var(--code-attr); }
+.hljs-attribute {
+	color: var(--code-attr);
+}
 .hljs-built_in,
-.hljs-symbol { color: var(--code-builtin); }
+.hljs-symbol {
+	color: var(--code-builtin);
+}
 .hljs-variable,
-.hljs-template-variable { color: var(--code-variable); }
+.hljs-template-variable {
+	color: var(--code-variable);
+}
 
 pre {
-  position: relative;
-  overflow-x: auto;
-  color: var(--code-text);
-  background-color: var(--code-bg);
-  border: 1px solid var(--theme-border);
-  border-left: 3px solid var(--theme-accent);
-  border-radius: var(--editor-radius);
-  padding: 0.9rem 1.1rem;
-  margin: 0.6em 0;
-  line-height: 1.6;
-  font-family: var(--font-code);
-  font-size: 0.85em;
-  box-shadow: var(--box-shadow);
+	position: relative;
+	overflow-x: auto;
+	color: var(--code-text);
+	background-color: var(--code-bg);
+	border: 1px solid var(--theme-border);
+	border-left: 3px solid var(--theme-accent);
+	border-radius: var(--editor-radius);
+	padding: 0.9rem 1.1rem;
+	margin: 0.6em 0;
+	line-height: 1.6;
+	font-family: var(--font-code);
+	font-size: 0.85em;
+	box-shadow: var(--box-shadow);
 }
 
 pre.numbered {
-  display: flex;
-  gap: 1.2em;
+	display: flex;
+	gap: 1.2em;
 }
 
 pre .gutter {
-  flex: none;
-  white-space: pre;
-  text-align: right;
-  color: var(--theme-text);
-  opacity: 0.4;
-  user-select: none;
+	flex: none;
+	white-space: pre;
+	text-align: right;
+	color: var(--theme-text);
+	opacity: 0.4;
+	user-select: none;
 }
 
 pre code {
-  font-family: var(--font-code);
-  font-size: 1em;
-  padding: 0;
-  border: none;
-  background: none;
-  color: inherit;
+	font-family: var(--font-code);
+	font-size: 1em;
+	padding: 0;
+	border: none;
+	background: none;
+	color: inherit;
 }
 
 /* highlight.js paints .hljs with its own background; the block frame is the only one. */
 pre code.hljs {
-  background: none;
-  padding: 0;
+	background: none;
+	padding: 0;
 }
 
 .copy-code {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  border: 1px solid var(--theme-border);
-  border-radius: 4px;
-  background-color: var(--code-bg);
-  color: var(--code-text);
-  opacity: 0.6;
-  cursor: pointer;
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	display: grid;
+	place-items: center;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	border: 1px solid var(--theme-border);
+	border-radius: 4px;
+	background-color: var(--code-bg);
+	color: var(--code-text);
+	opacity: 0.6;
+	cursor: pointer;
 }
 
 .copy-code:hover,
 .copy-code:focus-visible {
-  opacity: 1;
+	opacity: 1;
 }
 
 .copy-code.copied {
-  color: var(--theme-accent);
-  opacity: 1;
+	color: var(--theme-accent);
+	opacity: 1;
 }
 
 /* Tooltip shown to the left of the button after a copy; the class is removed after 1.5s. */
 .copy-code.copied::after {
-  content: "Copied";
-  position: absolute;
-  top: 50%;
-  right: calc(100% + 6px);
-  transform: translateY(-50%);
-  padding: 2px 8px;
-  border: 1px solid var(--theme-border);
-  border-radius: 4px;
-  background-color: var(--theme-panel);
-  color: var(--theme-text);
-  font-family: var(--font-ui);
-  font-size: 0.75rem;
-  white-space: nowrap;
+	content: "Copied";
+	position: absolute;
+	top: 50%;
+	right: calc(100% + 6px);
+	transform: translateY(-50%);
+	padding: 2px 8px;
+	border: 1px solid var(--theme-border);
+	border-radius: 4px;
+	background-color: var(--theme-panel);
+	color: var(--theme-text);
+	font-family: var(--font-ui);
+	font-size: 0.75rem;
+	white-space: nowrap;
 }
 
 /* Tables */
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1em 0;
-  font-size: 0.95em;
+	width: 100%;
+	border-collapse: collapse;
+	margin: 1em 0;
+	font-size: 0.95em;
 }
 
 th,
 td {
-  padding: 0.6em 0.8em;
-  text-align: left;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+	padding: 0.6em 0.8em;
+	text-align: left;
+	border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 th {
-  background-color: rgba(0, 0, 0, 0.3);
-  font-weight: bold;
-  font-family: "VT323", monospace;
+	background-color: rgba(0, 0, 0, 0.3);
+	font-weight: bold;
+	font-family: "VT323", monospace;
 }
 
 tr:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.1);
+	background-color: rgba(0, 0, 0, 0.1);
 }
 
 tr:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+	background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Themes */
 
 /* Themes: each theme only sets tokens; the rules below read them. */
 .app-theme {
-  color: var(--theme-text);
+	color: var(--theme-text);
 }
 
 .theme-coder {
-  --theme-bg: #2f365e;
-  --theme-panel: #1e3255b2;
-  --theme-surface: #444175;
-  --theme-border: #444175;
-  --theme-text: #ffffff;
-  --theme-bg-image: none;
-  --theme-bg-blur: none;
-  --theme-accent: #ffd166;
+	--theme-bg: #2f365e;
+	--theme-panel: #1e3255b2;
+	--theme-surface: #444175;
+	--theme-border: #444175;
+	--theme-text: #ffffff;
+	--theme-bg-image: none;
+	--theme-bg-blur: none;
+	--theme-accent: #ffd166;
 }
 
 .theme-honey-pie {
-  --theme-bg: #642e4db5;
-  --theme-panel: #642e4db5;
-  --theme-surface: #8e396b;
-  --theme-border: #8e396b;
-  --theme-text: #ffffff;
-  /* Acrylic: the picture is heavily blurred and tinted, so only its colour and light show through. */
-  /* Sticky bars (page header, pager) are see-through glass over the blurred picture. */
-  --theme-sticky: rgba(100, 46, 77, 0.35);
-  --theme-sticky-blur: blur(16px) saturate(1.3);
-  --theme-bg-image: linear-gradient(rgba(100, 46, 77, 0.55), rgba(100, 46, 77, 0.55)), url("/assets/images/honey-pie.png");
-  --theme-bg-blur: blur(28px) saturate(1.3);
-  --theme-accent: #ffb3d9;
+	--theme-bg: #642e4db5;
+	--theme-panel: #642e4db5;
+	--theme-surface: #8e396b;
+	--theme-border: #8e396b;
+	--theme-text: #ffffff;
+	/* Acrylic: the picture is heavily blurred and tinted, so only its colour and light show through. */
+	/* Sticky bars (page header, pager) are see-through glass over the blurred picture. */
+	--theme-sticky: rgba(100, 46, 77, 0.35);
+	--theme-sticky-blur: blur(16px) saturate(1.3);
+	--theme-bg-image:
+		linear-gradient(rgba(100, 46, 77, 0.55), rgba(100, 46, 77, 0.55)),
+		url("/assets/images/honey-pie.png");
+	--theme-bg-blur: blur(28px) saturate(1.3);
+	--theme-accent: #ffb3d9;
 }
 
 .theme-github-dark {
-  --theme-bg: #0d1117;
-  --theme-panel: #010409;
-  --theme-surface: #161b22;
-  --theme-border: #30363d;
-  --theme-text: #e6edf3;
-  --theme-bg-image: none;
-  --theme-bg-blur: none;
-  --theme-accent: #58a6ff;
+	--theme-bg: #0d1117;
+	--theme-panel: #010409;
+	--theme-surface: #161b22;
+	--theme-border: #30363d;
+	--theme-text: #e6edf3;
+	--theme-bg-image: none;
+	--theme-bg-blur: none;
+	--theme-accent: #58a6ff;
 }
 
 .theme-catppuccin {
-  --theme-bg: #1e1e2e;
-  --theme-panel: #181825;
-  --theme-surface: #313244;
-  --theme-border: #45475a;
-  --theme-text: #cdd6f4;
-  --theme-bg-image: none;
-  --theme-bg-blur: none;
-  --theme-accent: #cba6f7;
+	--theme-bg: #1e1e2e;
+	--theme-panel: #181825;
+	--theme-surface: #313244;
+	--theme-border: #45475a;
+	--theme-text: #cdd6f4;
+	--theme-bg-image: none;
+	--theme-bg-blur: none;
+	--theme-accent: #cba6f7;
 }
 
 .theme-atom-one-dark {
-  --theme-bg: #282c34;
-  --theme-panel: #21252b;
-  --theme-surface: #2c313a;
-  --theme-border: #3e4451;
-  --theme-text: #abb2bf;
-  --theme-bg-image: none;
-  --theme-bg-blur: none;
-  --theme-accent: #61afef;
+	--theme-bg: #282c34;
+	--theme-panel: #21252b;
+	--theme-surface: #2c313a;
+	--theme-border: #3e4451;
+	--theme-text: #abb2bf;
+	--theme-bg-image: none;
+	--theme-bg-blur: none;
+	--theme-accent: #61afef;
 }
 
 .theme-matrix {
-  --theme-bg: #000000;
-  --theme-panel: #020c04;
-  --theme-surface: #052410;
-  --theme-border: #0d5a20;
-  --theme-text: #00ff41;
-  --theme-bg-image: none;
-  --theme-bg-blur: none;
-  --theme-accent: #00ff41;
+	--theme-bg: #000000;
+	--theme-panel: #020c04;
+	--theme-surface: #052410;
+	--theme-border: #0d5a20;
+	--theme-text: #00ff41;
+	--theme-bg-image: none;
+	--theme-bg-blur: none;
+	--theme-accent: #00ff41;
 }
 
 .theme-fallout {
-  --theme-bg: #101a0e;
-  --theme-panel: #0a1209;
-  --theme-surface: #1c2e17;
-  --theme-border: #3d5a2c;
-  --theme-text: #b8f5a8;
-  --theme-bg-image: none;
-  --theme-bg-blur: none;
-  --theme-accent: #7dff5c;
+	--theme-bg: #101a0e;
+	--theme-panel: #0a1209;
+	--theme-surface: #1c2e17;
+	--theme-border: #3d5a2c;
+	--theme-text: #b8f5a8;
+	--theme-bg-image: none;
+	--theme-bg-blur: none;
+	--theme-accent: #7dff5c;
 }
 
 /* TV display: the arcade cabinet and its menu screen take their colours from the theme. */
 .theme-coder {
-  --tv-case: linear-gradient(180deg, #2f365e, #1e2442);
-  --tv-bezel: linear-gradient(180deg, #444175, #2a2750);
-  --tv-glass: #000;
-  --tv-text: #ffffff;
-  --tv-title: #ffd166;
-  --tv-glow: #ffd166;
-  --tv-select-bg: #ffd166;
-  --tv-select-text: #2f365e;
+	--tv-case: linear-gradient(180deg, #2f365e, #1e2442);
+	--tv-bezel: linear-gradient(180deg, #444175, #2a2750);
+	--tv-glass: #000;
+	--tv-text: #ffffff;
+	--tv-title: #ffd166;
+	--tv-glow: #ffd166;
+	--tv-select-bg: #ffd166;
+	--tv-select-text: #2f365e;
 }
 
 .theme-honey-pie {
-  --tv-case: linear-gradient(180deg, #2a0f3a 0%, #120620 100%);
-  --tv-bezel: linear-gradient(180deg, #3b3346, #221c2b);
-  --tv-glass: #000;
-  --tv-text: #36f9f6;
-  --tv-title: #ff2e9a;
-  --tv-glow: #ff6ec7;
-  --tv-select-bg: #ff2e9a;
-  --tv-select-text: #fff7b0;
+	--tv-case: linear-gradient(180deg, #2a0f3a 0%, #120620 100%);
+	--tv-bezel: linear-gradient(180deg, #3b3346, #221c2b);
+	--tv-glass: #000;
+	--tv-text: #36f9f6;
+	--tv-title: #ff2e9a;
+	--tv-glow: #ff6ec7;
+	--tv-select-bg: #ff2e9a;
+	--tv-select-text: #fff7b0;
 }
 
 .theme-github-dark {
-  --tv-case: linear-gradient(180deg, #161b22, #010409);
-  --tv-bezel: linear-gradient(180deg, #30363d, #161b22);
-  --tv-glass: #010409;
-  --tv-text: #58a6ff;
-  --tv-title: #e6edf3;
-  --tv-glow: #58a6ff;
-  --tv-select-bg: #58a6ff;
-  --tv-select-text: #0d1117;
+	--tv-case: linear-gradient(180deg, #161b22, #010409);
+	--tv-bezel: linear-gradient(180deg, #30363d, #161b22);
+	--tv-glass: #010409;
+	--tv-text: #58a6ff;
+	--tv-title: #e6edf3;
+	--tv-glow: #58a6ff;
+	--tv-select-bg: #58a6ff;
+	--tv-select-text: #0d1117;
 }
 
 .theme-catppuccin {
-  --tv-case: linear-gradient(180deg, #313244, #181825);
-  --tv-bezel: linear-gradient(180deg, #45475a, #1e1e2e);
-  --tv-glass: #11111b;
-  --tv-text: #cdd6f4;
-  --tv-title: #cba6f7;
-  --tv-glow: #cba6f7;
-  --tv-select-bg: #cba6f7;
-  --tv-select-text: #1e1e2e;
+	--tv-case: linear-gradient(180deg, #313244, #181825);
+	--tv-bezel: linear-gradient(180deg, #45475a, #1e1e2e);
+	--tv-glass: #11111b;
+	--tv-text: #cdd6f4;
+	--tv-title: #cba6f7;
+	--tv-glow: #cba6f7;
+	--tv-select-bg: #cba6f7;
+	--tv-select-text: #1e1e2e;
 }
 
 .theme-atom-one-dark {
-  --tv-case: linear-gradient(180deg, #2c313a, #21252b);
-  --tv-bezel: linear-gradient(180deg, #3e4451, #282c34);
-  --tv-glass: #181a1f;
-  --tv-text: #abb2bf;
-  --tv-title: #61afef;
-  --tv-glow: #61afef;
-  --tv-select-bg: #61afef;
-  --tv-select-text: #282c34;
+	--tv-case: linear-gradient(180deg, #2c313a, #21252b);
+	--tv-bezel: linear-gradient(180deg, #3e4451, #282c34);
+	--tv-glass: #181a1f;
+	--tv-text: #abb2bf;
+	--tv-title: #61afef;
+	--tv-glow: #61afef;
+	--tv-select-bg: #61afef;
+	--tv-select-text: #282c34;
 }
 
 .theme-matrix {
-  --tv-case: linear-gradient(180deg, #03250a, #000);
-  --tv-bezel: linear-gradient(180deg, #0b3d14, #031a07);
-  --tv-glass: #000;
-  --tv-text: #00ff41;
-  --tv-title: #b6ffc8;
-  --tv-glow: #00ff41;
-  --tv-select-bg: #00ff41;
-  --tv-select-text: #000;
+	--tv-case: linear-gradient(180deg, #03250a, #000);
+	--tv-bezel: linear-gradient(180deg, #0b3d14, #031a07);
+	--tv-glass: #000;
+	--tv-text: #00ff41;
+	--tv-title: #b6ffc8;
+	--tv-glow: #00ff41;
+	--tv-select-bg: #00ff41;
+	--tv-select-text: #000;
 }
 
 .theme-fallout {
-  --tv-case: linear-gradient(180deg, #1c2a16, #0a1009);
-  --tv-bezel: linear-gradient(180deg, #2e4226, #131d0f);
-  --tv-glass: #040904;
-  --tv-text: #7dff5c;
-  --tv-title: #d6ffc4;
-  --tv-glow: #7dff5c;
-  --tv-select-bg: #7dff5c;
-  --tv-select-text: #0a1209;
+	--tv-case: linear-gradient(180deg, #1c2a16, #0a1009);
+	--tv-bezel: linear-gradient(180deg, #2e4226, #131d0f);
+	--tv-glass: #040904;
+	--tv-text: #7dff5c;
+	--tv-title: #d6ffc4;
+	--tv-glow: #7dff5c;
+	--tv-select-bg: #7dff5c;
+	--tv-select-text: #0a1209;
 }
 
 /* HC Wonderland Wood: a dark wood-violet palette from the Bearded Theme (hc.ts). */
 .theme-hc-wonderland-wood {
-  --theme-bg: #1f1d36;
-  --theme-panel: #1b192f;
-  --theme-surface: #24213e;
-  --theme-border: #141222;
-  --theme-text: #d3d2e6;
-  --theme-bg-image: none;
-  --theme-bg-blur: none;
-  --theme-accent: #fbe7c3;
+	--theme-bg: #1f1d36;
+	--theme-panel: #1b192f;
+	--theme-surface: #24213e;
+	--theme-border: #141222;
+	--theme-text: #d3d2e6;
+	--theme-bg-image: none;
+	--theme-bg-blur: none;
+	--theme-accent: #fbe7c3;
 }
 
 .workbench[data-code-theme="hc-wonderland-wood"] {
-  --code-bg: #1b192f;
-  --code-text: #d3d2e6;
-  --code-keyword: #de98ae;
-  --code-string: #91d6a7;
-  --code-number: #e4a792;
-  --code-comment: #8f8ab8;
-  --code-title: #92b4ff;
-  --code-attr: #fbe7c3;
-  --code-builtin: #ed98cb;
-  --code-variable: #d3d2e6;
+	--code-bg: #1b192f;
+	--code-text: #d3d2e6;
+	--code-keyword: #de98ae;
+	--code-string: #91d6a7;
+	--code-number: #e4a792;
+	--code-comment: #8f8ab8;
+	--code-title: #92b4ff;
+	--code-attr: #fbe7c3;
+	--code-builtin: #ed98cb;
+	--code-variable: #d3d2e6;
 }
 
 .theme-hc-wonderland-wood {
-  --tv-case: linear-gradient(180deg, #1b192f, #1f1d36);
-  --tv-bezel: linear-gradient(180deg, #52426a, #1f1d36);
-  --tv-glass: #141222;
-  --tv-text: #d3d2e6;
-  --tv-title: #fbe7c3;
-  --tv-glow: #9a94e9;
-  --tv-select-bg: #fbe7c3;
-  --tv-select-text: #1f1d36;
+	--tv-case: linear-gradient(180deg, #1b192f, #1f1d36);
+	--tv-bezel: linear-gradient(180deg, #52426a, #1f1d36);
+	--tv-glass: #141222;
+	--tv-text: #d3d2e6;
+	--tv-title: #fbe7c3;
+	--tv-glow: #9a94e9;
+	--tv-select-bg: #fbe7c3;
+	--tv-select-text: #1f1d36;
 }
 
 .bg {
-  background-color: var(--theme-bg);
-  background-image: var(--theme-bg-image);
+	background-color: var(--theme-bg);
+	background-image: var(--theme-bg-image);
 }
 
 .bg.bg-blur {
-  filter: var(--theme-bg-blur);
+	filter: var(--theme-bg-blur);
 }
 
 /* Resting size of the Honey Pie picture; the navigation drift starts and ends here, so there is no snap back. */
 .theme-honey-pie .bg {
-  transform: scale(1.03);
+	transform: scale(1.03);
 }
 
-
 .post-control-panel {
-  background: linear-gradient(180deg, var(--theme-bg) 0%, var(--theme-panel) 100%);
-  border-bottom: 1px solid var(--theme-border);
+	background: linear-gradient(
+		180deg,
+		var(--theme-bg) 0%,
+		var(--theme-panel) 100%
+	);
+	border-bottom: 1px solid var(--theme-border);
 }
 
 .project-card .description,
 .content {
-  background-color: var(--theme-surface);
+	background-color: var(--theme-surface);
 }
 
 .changelog-bubble {
-  background: linear-gradient(135deg, var(--theme-surface) 0%, var(--theme-bg) 100%);
-  border-color: var(--theme-surface);
+	background: linear-gradient(
+		135deg,
+		var(--theme-surface) 0%,
+		var(--theme-bg) 100%
+	);
+	border-color: var(--theme-surface);
 }
 
 .changelog-bubble:hover {
-  border-color: var(--theme-surface);
+	border-color: var(--theme-surface);
 }
 
 .changelog-badge,
 .changelog-project {
-  background: var(--theme-surface);
+	background: var(--theme-surface);
 }
 
 @media screen and (min-width: 768px) {
-  .content {
-    padding: 1em 5%;
-  }
+	.content {
+		padding: 1em 5%;
+	}
 }
 
 /* Level-1 title of a list page, with the same top spacing as the other pages. */
 .page-title {
-  margin-top: 0.5rem;
+	margin-top: 0.5rem;
 }
 
 /* The page's own top margin is the only gap under the header: the first list item adds none. */
 app-page-header + * > ol > li:first-child {
-  margin-top: 0;
+	margin-top: 0;
 }
 
 /* Atom One Light: the most installed light theme in the VS Code Marketplace (palette from its theme file). */
 .theme-atom-one-light {
-  --theme-bg: #fafafa;
-  --theme-panel: #eaeaeb;
-  --theme-surface: #ffffff;
-  --theme-border: #dbdbdc;
-  --theme-text: #383a42;
-  --theme-bg-image: none;
-  --theme-bg-blur: none;
-  --theme-accent: #4078f2;
+	--theme-bg: #fafafa;
+	--theme-panel: #eaeaeb;
+	--theme-surface: #ffffff;
+	--theme-border: #dbdbdc;
+	--theme-text: #383a42;
+	--theme-bg-image: none;
+	--theme-bg-blur: none;
+	--theme-accent: #4078f2;
 }
 
 .workbench[data-code-theme="atom-one-light"] {
-  --code-bg: #fafafa;
-  --code-text: #383a42;
-  --code-keyword: #a626a4;
-  --code-string: #50a14f;
-  --code-number: #986801;
-  --code-comment: #a0a1a7;
-  --code-title: #4078f2;
-  --code-attr: #c18401;
-  --code-builtin: #0184bc;
-  --code-variable: #e45649;
+	--code-bg: #fafafa;
+	--code-text: #383a42;
+	--code-keyword: #a626a4;
+	--code-string: #50a14f;
+	--code-number: #986801;
+	--code-comment: #a0a1a7;
+	--code-title: #4078f2;
+	--code-attr: #c18401;
+	--code-builtin: #0184bc;
+	--code-variable: #e45649;
 }
 
 .theme-atom-one-light {
-  --tv-case: linear-gradient(180deg, #eaeaeb, #fafafa);
-  --tv-bezel: linear-gradient(180deg, #dbdbdc, #eaeaeb);
-  --tv-glass: #ffffff;
-  --tv-text: #383a42;
-  --tv-title: #4078f2;
-  --tv-glow: #4078f2;
-  --tv-select-bg: #4078f2;
-  --tv-select-text: #ffffff;
+	--tv-case: linear-gradient(180deg, #eaeaeb, #fafafa);
+	--tv-bezel: linear-gradient(180deg, #dbdbdc, #eaeaeb);
+	--tv-glass: #ffffff;
+	--tv-text: #383a42;
+	--tv-title: #4078f2;
+	--tv-glow: #4078f2;
+	--tv-select-bg: #4078f2;
+	--tv-select-text: #ffffff;
 }

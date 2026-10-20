@@ -1,6 +1,6 @@
-import { PageHeaderComponent } from "../../components/page-header/page-header.component";
-import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
+import { PageHeaderComponent } from "../../components/page-header/page-header.component";
 import { ProjectListComponent } from "../../components/project-list/project-list.component";
 import { TOOL_ITEMS } from "../../entities/project/project.mock";
 

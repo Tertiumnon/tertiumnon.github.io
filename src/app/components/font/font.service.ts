@@ -2,10 +2,19 @@ import { computed, Injectable, signal } from "@angular/core";
 
 // Font families for the page text; the fonts are loaded in index.html or bundled in assets.
 export const FONT_OPTIONS = {
-	ubuntu: { label: "Ubuntu", family: `"Ubuntu Nerd Font", system-ui, sans-serif` },
+	ubuntu: {
+		label: "Ubuntu",
+		family: `"Ubuntu Nerd Font", system-ui, sans-serif`,
+	},
 	openSans: { label: "Open Sans", family: `"Open Sans", sans-serif` },
-	robotoCondensed: { label: "Roboto Condensed", family: `"Roboto Condensed", sans-serif` },
-	jetBrainsMono: { label: "JetBrains Mono", family: `"JetBrains Mono", monospace` },
+	robotoCondensed: {
+		label: "Roboto Condensed",
+		family: `"Roboto Condensed", sans-serif`,
+	},
+	jetBrainsMono: {
+		label: "JetBrains Mono",
+		family: `"JetBrains Mono", monospace`,
+	},
 } as const;
 
 export type FontKey = keyof typeof FONT_OPTIONS;

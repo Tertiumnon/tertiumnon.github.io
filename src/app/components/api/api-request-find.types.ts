@@ -1,4 +1,4 @@
-import { IFilter } from "../filter/filter.types";
+import type { IFilter } from "../filter/filter.types";
 
 export interface IApiRequestFindParams {
 	filters: IFilter[];

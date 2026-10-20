@@ -1,7 +1,7 @@
-import { Injectable, DestroyRef, inject } from "@angular/core";
+import { DestroyRef, Injectable, inject } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { NavigationEnd, Router } from "@angular/router";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, type Observable } from "rxjs";
 
 @Injectable({
 	providedIn: "root",

@@ -3,26 +3,32 @@ import {
 	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
+	DestroyRef,
 	ElementRef,
 	HostListener,
 	inject,
 	input,
 	signal,
-	DestroyRef,
 } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { interval, Subscription } from "rxjs";
-import { TimeService } from "../../components/time/time.service";
+import { interval, type Subscription } from "rxjs";
 import { TextFieldComponent } from "../../components/form/text-field.component";
 import { PageHeaderComponent } from "../../components/page-header/page-header.component";
+import { TimeService } from "../../components/time/time.service";
 
 const INTERVAL_MS = 1000;
 const MAX_DROPDOWN_ITEMS = 50;
 
 @Component({
 	selector: "app-what-time",
-	imports: [CommonModule, ReactiveFormsModule, DatePipe, TextFieldComponent, PageHeaderComponent],
+	imports: [
+		CommonModule,
+		ReactiveFormsModule,
+		DatePipe,
+		TextFieldComponent,
+		PageHeaderComponent,
+	],
 	templateUrl: "./what-time.component.html",
 	styleUrl: "./what-time.component.css",
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -162,7 +168,9 @@ export class WhatTimeComponent {
 	onInitTimeZoneSearch(searchTerm: string | null): void {
 		this.selectedInitIndex.set(-1);
 		if (!searchTerm) {
-			this.filteredInitTimeZones.set(TimeService.timeZones().slice(0, MAX_DROPDOWN_ITEMS));
+			this.filteredInitTimeZones.set(
+				TimeService.timeZones().slice(0, MAX_DROPDOWN_ITEMS),
+			);
 			this.cdr.markForCheck();
 			return;
 		}
@@ -178,7 +186,9 @@ export class WhatTimeComponent {
 	onConvertedTimeZoneSearch(searchTerm: string | null): void {
 		this.selectedConvertedIndex.set(-1);
 		if (!searchTerm) {
-			this.filteredConvertedTimeZones.set(TimeService.timeZones().slice(0, MAX_DROPDOWN_ITEMS));
+			this.filteredConvertedTimeZones.set(
+				TimeService.timeZones().slice(0, MAX_DROPDOWN_ITEMS),
+			);
 			this.cdr.markForCheck();
 			return;
 		}
@@ -211,7 +221,9 @@ export class WhatTimeComponent {
 		this.showInitTimeZoneDropdown.set(true);
 		this.selectedInitIndex.set(-1);
 		this.initTimeZoneSearchCtrl.setValue("");
-		this.filteredInitTimeZones.set(TimeService.timeZones().slice(0, MAX_DROPDOWN_ITEMS));
+		this.filteredInitTimeZones.set(
+			TimeService.timeZones().slice(0, MAX_DROPDOWN_ITEMS),
+		);
 		this.cdr.markForCheck();
 	}
 
@@ -219,7 +231,9 @@ export class WhatTimeComponent {
 		this.showConvertedTimeZoneDropdown.set(true);
 		this.selectedConvertedIndex.set(-1);
 		this.convertedTimeZoneSearchCtrl.setValue("");
-		this.filteredConvertedTimeZones.set(TimeService.timeZones().slice(0, MAX_DROPDOWN_ITEMS));
+		this.filteredConvertedTimeZones.set(
+			TimeService.timeZones().slice(0, MAX_DROPDOWN_ITEMS),
+		);
 		this.cdr.markForCheck();
 	}
 

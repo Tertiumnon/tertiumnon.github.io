@@ -1,4 +1,11 @@
-export type StackId = "js" | "python" | "native" | "jvm" | "web-other" | "dotnet" | "mobile";
+export type StackId =
+	| "js"
+	| "python"
+	| "native"
+	| "jvm"
+	| "web-other"
+	| "dotnet"
+	| "mobile";
 
 export interface IStack {
 	id: StackId;
@@ -100,7 +107,11 @@ export const FRAMEWORKS: IFramework[] = [
 	// JavaScript / TypeScript: frontends
 	{ name: "React (Create React App)", stack: "js", defaultPort: 3000 },
 	{ name: "Vue CLI", stack: "js", defaultPort: 8080 },
-	{ name: "Vite (React, Vue, Svelte, Solid, Qwik)", stack: "js", defaultPort: 5173 },
+	{
+		name: "Vite (React, Vue, Svelte, Solid, Qwik)",
+		stack: "js",
+		defaultPort: 5173,
+	},
 	{ name: "Angular", stack: "js", defaultPort: 4200 },
 	{ name: "Ember", stack: "js", defaultPort: 4200 },
 	{ name: "Astro", stack: "js", defaultPort: 4321 },
@@ -185,7 +196,12 @@ export const FRAMEWORKS: IFramework[] = [
 	{ name: "Grails", stack: "jvm", defaultPort: 8080, debugPort: 5005 },
 	{ name: "Akka HTTP", stack: "jvm", defaultPort: 8080, debugPort: 5005 },
 	{ name: "Javalin", stack: "jvm", defaultPort: 7000, debugPort: 5005 },
-	{ name: "Play Framework (Scala)", stack: "jvm", defaultPort: 9000, debugPort: 5005 },
+	{
+		name: "Play Framework (Scala)",
+		stack: "jvm",
+		defaultPort: 9000,
+		debugPort: 5005,
+	},
 
 	// Ruby, PHP, Elixir, Dart
 	{ name: "Rails", stack: "web-other", defaultPort: 3000, debugPort: 12345 },
@@ -194,7 +210,12 @@ export const FRAMEWORKS: IFramework[] = [
 	{ name: "Jekyll", stack: "web-other", defaultPort: 4000 },
 	{ name: "Laravel", stack: "web-other", defaultPort: 8000, debugPort: 9003 },
 	{ name: "Symfony", stack: "web-other", defaultPort: 8000, debugPort: 9003 },
-	{ name: "PHP built-in server", stack: "web-other", defaultPort: 8000, debugPort: 9003 },
+	{
+		name: "PHP built-in server",
+		stack: "web-other",
+		defaultPort: 8000,
+		debugPort: 9003,
+	},
 	{ name: "Phoenix", stack: "web-other", defaultPort: 4000 },
 	{ name: "Dart shelf", stack: "web-other", defaultPort: 8080 },
 	{ name: "Flutter web", stack: "web-other" },

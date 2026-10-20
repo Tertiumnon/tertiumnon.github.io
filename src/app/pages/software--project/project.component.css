@@ -1,151 +1,151 @@
 /* Just the README: no boxes around the page or the README. */
 .project-page {
-  padding-bottom: 1.5rem;
+	padding-bottom: 1.5rem;
 }
 
 .project-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 1.25rem;
-  margin-bottom: 1rem;
-  font-size: 0.9em;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 1.25rem;
+	margin-bottom: 1rem;
+	font-size: 0.9em;
 }
 
 .download {
-  display: inline;
+	display: inline;
 }
 
 .download summary {
-  display: inline;
-  cursor: pointer;
-  color: var(--theme-accent);
-  text-decoration: underline;
+	display: inline;
+	cursor: pointer;
+	color: var(--theme-accent);
+	text-decoration: underline;
 }
 
 .download ul {
-  margin: 0.4rem 0 0;
-  padding-left: 1.25rem;
+	margin: 0.4rem 0 0;
+	padding-left: 1.25rem;
 }
 
 .asset {
-  display: block;
-  margin-left: 1.25rem;
+	display: block;
+	margin-left: 1.25rem;
 }
 
 /* The README pane from the shared markdown component is flattened here, so it sits on the page itself. */
 app-md-content ::ng-deep .content {
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  background-color: transparent;
-  font-size: inherit;
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	background-color: transparent;
+	font-size: inherit;
 }
 
 /* Screenshots from docs/screenshots, shown above the README. */
 .screenshots {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 1.25rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-bottom: 1.25rem;
 }
 
 .screenshots img {
-  max-height: 240px;
-  max-width: 100%;
-  border: 1px solid var(--theme-border);
-  border-radius: var(--editor-radius);
+	max-height: 240px;
+	max-width: 100%;
+	border: 1px solid var(--theme-border);
+	border-radius: var(--editor-radius);
 }
 
 /* Licence of the repository, as set on GitHub. */
 .project-license {
-  margin: 0 0 0.75rem;
-  font-size: 0.9em;
-  opacity: 0.75;
+	margin: 0 0 0.75rem;
+	font-size: 0.9em;
+	opacity: 0.75;
 }
 
 /* README / CHANGELOG sub pages: two links under the page's top edge. */
 .project-tabs {
-  display: flex;
-  gap: 0.5em;
-  margin-bottom: 1em;
-  border-bottom: 1px solid var(--theme-border);
+	display: flex;
+	gap: 0.5em;
+	margin-bottom: 1em;
+	border-bottom: 1px solid var(--theme-border);
 }
 
 .project-tab {
-  padding: 0.4em 0.9em;
-  border-bottom: 2px solid transparent;
-  color: var(--theme-text);
-  text-decoration: none;
-  opacity: 0.7;
+	padding: 0.4em 0.9em;
+	border-bottom: 2px solid transparent;
+	color: var(--theme-text);
+	text-decoration: none;
+	opacity: 0.7;
 }
 
 .project-tab:hover {
-  opacity: 1;
+	opacity: 1;
 }
 
 .project-tab.active {
-  border-bottom-color: var(--theme-accent);
-  opacity: 1;
-  font-weight: 600;
+	border-bottom-color: var(--theme-accent);
+	opacity: 1;
+	font-weight: 600;
 }
 
 .project-empty {
-  color: var(--theme-text);
-  opacity: 0.7;
+	color: var(--theme-text);
+	opacity: 0.7;
 }
 
 .project-list {
-  margin: 0;
-  padding-left: 1.25rem;
-  line-height: 1.8;
+	margin: 0;
+	padding-left: 1.25rem;
+	line-height: 1.8;
 }
 
 /* Tab titles give way to icons when the tab row is too narrow for them. */
 .project-tabs {
-  container-type: inline-size;
+	container-type: inline-size;
 }
 
 .project-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
 }
 
 .project-tab-icon {
-  width: 16px;
-  height: 16px;
-  flex: none;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+	width: 16px;
+	height: 16px;
+	flex: none;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
 }
 
 @container (max-width: 780px) {
-  .project-tab-title {
-    display: none;
-  }
+	.project-tab-title {
+		display: none;
+	}
 
-  .project-tab {
-    padding: 0.4em 0.6em;
-  }
+	.project-tab {
+		padding: 0.4em 0.6em;
+	}
 }
 
 .project-license-text {
-  padding: 1em;
-  border: 1px solid var(--theme-border);
-  border-radius: var(--editor-radius);
-  background-color: var(--theme-panel);
-  white-space: pre-wrap;
-  font-size: 0.9em;
-  line-height: 1.5;
+	padding: 1em;
+	border: 1px solid var(--theme-border);
+	border-radius: var(--editor-radius);
+	background-color: var(--theme-panel);
+	white-space: pre-wrap;
+	font-size: 0.9em;
+	line-height: 1.5;
 }
 
 /* Download and asset links are underlined, so they read as links. */
 .project-list a {
-  text-decoration: underline;
+	text-decoration: underline;
 }

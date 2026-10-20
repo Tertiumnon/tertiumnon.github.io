@@ -1,12 +1,25 @@
-import { Component, forwardRef, input, model, output, signal } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import {
+	Component,
+	forwardRef,
+	input,
+	model,
+	output,
+	signal,
+} from "@angular/core";
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { FIELD_STYLES } from "./field.styles";
 
 // Text, search, date and time input. Works with [(value)], [value] and reactive forms.
 @Component({
 	selector: "app-text-field",
 	standalone: true,
-	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => TextFieldComponent), multi: true }],
+	providers: [
+		{
+			provide: NG_VALUE_ACCESSOR,
+			useExisting: forwardRef(() => TextFieldComponent),
+			multi: true,
+		},
+	],
 	template: `
 		<input
 			class="field"

@@ -1,8 +1,8 @@
-import { Component, inject, signal, computed } from "@angular/core";
-import { ActivatedRoute, RouterLink } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { Post } from "../../entities/post/post.types";
+import { Component, computed, inject, signal } from "@angular/core";
+import { ActivatedRoute, RouterLink } from "@angular/router";
 import { PostService } from "../../entities/post/post.service";
+import type { Post } from "../../entities/post/post.types";
 
 @Component({
 	selector: "app-post-404",
@@ -31,14 +31,14 @@ export class Post404Component {
 
 		return posts
 			.filter((p) => this.calculateSimilarity(dirname, p.title) > 0)
-			.sort((a, b) =>
-				this.calculateSimilarity(dirname, b.title) -
-				this.calculateSimilarity(dirname, a.title)
+			.sort(
+				(a, b) =>
+					this.calculateSimilarity(dirname, b.title) -
+					this.calculateSimilarity(dirname, a.title),
 			)
 			.sort(
 				(a, b) =>
-					new Date(b.publishedAt).getTime() -
-					new Date(a.publishedAt).getTime()
+					new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
 			)
 			.slice(0, 10);
 	});
@@ -57,7 +57,9 @@ export class Post404Component {
 
 		this.activatedRoute.queryParams.subscribe((queryParams) => {
 			const dirname = queryParams["search"] ?? "";
-			const postName = dirname.includes("--") ? dirname.split("--")[1] : dirname;
+			const postName = dirname.includes("--")
+				? dirname.split("--")[1]
+				: dirname;
 			this.requestedPostDirname.set(postName);
 		});
 	}
@@ -70,15 +72,13 @@ export class Post404Component {
 
 		if (title.includes(search)) return 90;
 
-		const searchWords = search
-			.split(/\s+/)
-			.filter((w) => w.length >= 3);
+		const searchWords = search.split(/\s+/).filter((w) => w.length >= 3);
 
 		if (searchWords.length === 0) return 0;
 
 		const titleWords = title.split(/\W+/).filter((w) => w.length > 0);
 		const matchCount = searchWords.filter((word) =>
-			titleWords.some((titleWord) => titleWord === word)
+			titleWords.some((titleWord) => titleWord === word),
 		).length;
 
 		if (matchCount === 0) return 0;

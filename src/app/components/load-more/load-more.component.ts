@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, effect, inject, input, output } from "@angular/core";
+import {
+	type AfterViewInit,
+	Component,
+	ElementRef,
+	effect,
+	inject,
+	input,
+	type OnDestroy,
+	output,
+} from "@angular/core";
 
 // Marks the end of a lazy list. When it scrolls into the editor, the list asks for the next batch.
 @Component({
@@ -29,7 +38,10 @@ export class LoadMoreComponent implements AfterViewInit, OnDestroy {
 				this.inView = entries.some((entry) => entry.isIntersecting);
 				if (this.hasMore() && this.inView) this.reached.emit();
 			},
-			{ root: this.host.nativeElement.closest(".editor-content"), rootMargin: "200px 0px" },
+			{
+				root: this.host.nativeElement.closest(".editor-content"),
+				rootMargin: "200px 0px",
+			},
 		);
 		this.observer.observe(this.host.nativeElement);
 	}

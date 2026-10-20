@@ -1,12 +1,23 @@
-import { Component, computed, ElementRef, HostListener, inject, signal, viewChild } from "@angular/core";
+import {
+	Component,
+	computed,
+	type ElementRef,
+	HostListener,
+	inject,
+	signal,
+	viewChild,
+} from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { SelectFieldComponent, SelectOption } from "../form/select-field.component";
-import { TextareaFieldComponent } from "../form/textarea-field.component";
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
 import typescript from "highlight.js/lib/languages/typescript";
+import {
+	SelectFieldComponent,
+	type SelectOption,
+} from "../form/select-field.component";
+import { TextareaFieldComponent } from "../form/textarea-field.component";
+import { runInSandbox, type SandboxEvent } from "./sandbox-runner";
 import { TerminalService } from "./terminal.service";
-import { runInSandbox, SandboxEvent } from "./sandbox-runner";
 
 hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("typescript", typescript);
@@ -43,12 +54,14 @@ export class TerminalComponent {
 	readonly script = signal(DEFAULT_SCRIPT);
 	readonly output = signal<OutputLine[]>([]);
 	readonly running = signal(false);
-	private readonly highlightPre = viewChild<ElementRef<HTMLElement>>("highlight");
+	private readonly highlightPre =
+		viewChild<ElementRef<HTMLElement>>("highlight");
 	private cancelRun: (() => void) | undefined;
 
 	// The highlighted copy sits behind the transparent textarea; a trailing newline keeps the last line's height.
-	readonly highlighted = computed(() =>
-		hljs.highlight(this.script() + "\n", { language: this.language() }).value,
+	readonly highlighted = computed(
+		() =>
+			hljs.highlight(this.script() + "\n", { language: this.language() }).value,
 	);
 
 	syncScroll(event: Event): void {
@@ -78,7 +91,11 @@ export class TerminalComponent {
 			}
 		}
 
-		this.cancelRun = runInSandbox(code, (event) => this.onEvent(event), TIMEOUT_MS);
+		this.cancelRun = runInSandbox(
+			code,
+			(event) => this.onEvent(event),
+			TIMEOUT_MS,
+		);
 	}
 
 	stop(): void {
@@ -110,7 +127,10 @@ export class TerminalComponent {
 				this.running.set(false);
 				break;
 			case "timeout":
-				this.append({ level: "error", text: `Stopped: the script ran longer than ${TIMEOUT_MS / 1000} s.` });
+				this.append({
+					level: "error",
+					text: `Stopped: the script ran longer than ${TIMEOUT_MS / 1000} s.`,
+				});
 				this.cancelRun = undefined;
 				this.running.set(false);
 				break;

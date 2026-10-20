@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, inject, viewChild } from "@angular/core";
+import {
+	type AfterViewInit,
+	Component,
+	type ElementRef,
+	inject,
+	type OnDestroy,
+	viewChild,
+} from "@angular/core";
 import { ArcadeScreenService } from "./game-screen.service";
 
 // The TV screen area. The game fills it, and its size is published for the game to use.
@@ -6,7 +13,8 @@ import { ArcadeScreenService } from "./game-screen.service";
 	selector: "app-game-stage",
 	standalone: true,
 	template: `<div class="play" #play><ng-content></ng-content></div>`,
-	styles: [`
+	styles: [
+		`
 		:host {
 			display: block;
 			width: 100%;
@@ -18,7 +26,8 @@ import { ArcadeScreenService } from "./game-screen.service";
 			width: 100%;
 			height: 100%;
 		}
-	`],
+	`,
+	],
 })
 export class GameStageComponent implements AfterViewInit, OnDestroy {
 	private readonly screen = inject(ArcadeScreenService);

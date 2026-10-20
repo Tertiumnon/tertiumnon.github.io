@@ -16,7 +16,8 @@ import { Component, input } from "@angular/core";
 			</section>
 		</div>
 	`,
-	styles: [`
+	styles: [
+		`
 		.game-over-overlay {
 			position: absolute;
 			inset: 0;
@@ -86,7 +87,8 @@ import { Component, input } from "@angular/core";
 		@keyframes blink {
 			to { visibility: hidden; }
 		}
-	`],
+	`,
+	],
 })
 export class GameOverComponent {
 	readonly score = input.required<number>();

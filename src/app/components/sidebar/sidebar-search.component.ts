@@ -1,11 +1,11 @@
 import { Component, computed, inject, input, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { RouterLink } from "@angular/router";
-import { TextFieldComponent } from "../form/text-field.component";
 import { catchError, of } from "rxjs";
-import PROJECT_ITEMS from "../../entities/project/project.mock";
 import { PostService } from "../../entities/post/post.service";
-import { Post } from "../../entities/post/post.types";
+import type { Post } from "../../entities/post/post.types";
+import PROJECT_ITEMS from "../../entities/project/project.mock";
+import { TextFieldComponent } from "../form/text-field.component";
 
 interface SearchResult {
 	kind: "project" | "post";
@@ -41,8 +41,8 @@ export class SidebarSearchComponent {
 
 		if (this.scope() === "project") {
 			return PROJECT_ITEMS.filter((project) =>
-				[project.title, project.name, project.type, project.description].some((value) =>
-					value?.toLowerCase().includes(needle),
+				[project.title, project.name, project.type, project.description].some(
+					(value) => value?.toLowerCase().includes(needle),
 				),
 			)
 				.slice(0, MAX_RESULTS)
@@ -55,8 +55,18 @@ export class SidebarSearchComponent {
 		}
 
 		return this.posts()
-			.filter((post) => post.language === "en" && !post.isHidden && post.title.toLowerCase().includes(needle))
+			.filter(
+				(post) =>
+					post.language === "en" &&
+					!post.isHidden &&
+					post.title.toLowerCase().includes(needle),
+			)
 			.slice(0, MAX_RESULTS)
-			.map((post) => ({ kind: "post" as const, title: post.title, detail: post.category, link: post.link }));
+			.map((post) => ({
+				kind: "post" as const,
+				title: post.title,
+				detail: post.category,
+				link: post.link,
+			}));
 	});
 }

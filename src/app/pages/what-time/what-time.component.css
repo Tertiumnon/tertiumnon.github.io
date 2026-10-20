@@ -1,189 +1,189 @@
 /* What Time: a "now" card and a From / To converter. Stacks on narrow windows. */
 .what-time {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: var(--page-max-width);
-  margin: 0 auto;
-  padding: 0 12px 24px;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: var(--page-max-width);
+	margin: 0 auto;
+	padding: 0 12px 24px;
 }
 
 .what-time h2 {
-  margin-top: 1.5rem;
+	margin-top: 1.5rem;
 }
 
 /* Current time. */
 .now-card {
-  position: relative;
-  overflow: hidden;
-  padding: 18px 20px;
-  border: 1px solid var(--theme-border);
-  border-left: 4px solid var(--theme-accent);
-  border-radius: var(--editor-radius);
-  background: linear-gradient(135deg, var(--theme-surface), var(--theme-panel));
-  box-shadow: var(--box-shadow);
+	position: relative;
+	overflow: hidden;
+	padding: 18px 20px;
+	border: 1px solid var(--theme-border);
+	border-left: 4px solid var(--theme-accent);
+	border-radius: var(--editor-radius);
+	background: linear-gradient(135deg, var(--theme-surface), var(--theme-panel));
+	box-shadow: var(--box-shadow);
 }
 
 .now-date {
-  margin: 0;
-  font-size: 0.85em;
-  opacity: 0.75;
+	margin: 0;
+	font-size: 0.85em;
+	opacity: 0.75;
 }
 
 .now-clock {
-  margin: 2px 0;
-  font-family: var(--font-code);
-  font-size: clamp(2.2rem, 9vw, 3.6rem);
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--theme-accent);
-  font-variant-numeric: tabular-nums;
+	margin: 2px 0;
+	font-family: var(--font-code);
+	font-size: clamp(2.2rem, 9vw, 3.6rem);
+	font-weight: 700;
+	line-height: 1.1;
+	color: var(--theme-accent);
+	font-variant-numeric: tabular-nums;
 }
 
 .now-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
-  margin: 0;
-  font-size: 0.85em;
-  opacity: 0.8;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 14px;
+	margin: 0;
+	font-size: 0.85em;
+	opacity: 0.8;
 }
 
 .now-iso {
-  font-family: var(--font-code);
-  font-size: 0.9em;
-  opacity: 0.7;
+	font-family: var(--font-code);
+	font-size: 0.9em;
+	opacity: 0.7;
 }
 
 /* Converter: From | arrow | To. */
 .converter {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: start;
-  gap: 12px;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+	align-items: start;
+	gap: 12px;
 }
 
 .side {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-width: 0;
-  padding: 16px;
-  border: 1px solid var(--theme-border);
-  border-radius: var(--editor-radius);
-  background-color: var(--theme-surface);
-  box-shadow: var(--box-shadow);
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	min-width: 0;
+	padding: 16px;
+	border: 1px solid var(--theme-border);
+	border-radius: var(--editor-radius);
+	background-color: var(--theme-surface);
+	box-shadow: var(--box-shadow);
 }
 
 .side.to {
-  border-top: 3px solid var(--theme-accent);
+	border-top: 3px solid var(--theme-accent);
 }
 
 .side.from {
-  border-top: 3px solid var(--theme-border);
+	border-top: 3px solid var(--theme-border);
 }
 
 .side-label {
-  margin: 0;
-  font-size: 0.75em;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.7;
+	margin: 0;
+	font-size: 0.75em;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	opacity: 0.7;
 }
 
 /* Date and time side by side; they wrap when the side is narrow. */
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
 }
 
 .row > * {
-  flex: 1 1 140px;
-  min-width: 0;
+	flex: 1 1 140px;
+	min-width: 0;
 }
 
 .now-button {
-  align-self: flex-start;
-  min-height: 36px;
-  padding: 0 18px;
-  border: 1px solid var(--theme-accent);
-  border-radius: var(--editor-radius);
-  background-color: var(--theme-accent);
-  color: var(--theme-bg);
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.15s ease;
+	align-self: flex-start;
+	min-height: 36px;
+	padding: 0 18px;
+	border: 1px solid var(--theme-accent);
+	border-radius: var(--editor-radius);
+	background-color: var(--theme-accent);
+	color: var(--theme-bg);
+	font: inherit;
+	font-weight: 700;
+	cursor: pointer;
+	transition: transform 0.15s ease;
 }
 
 .now-button:hover {
-  transform: translateY(-1px);
+	transform: translateY(-1px);
 }
 
 .now-button:active {
-  transform: translateY(1px);
+	transform: translateY(1px);
 }
 
 .converter-arrow {
-  align-self: center;
-  font-size: 1.8em;
-  color: var(--theme-accent);
-  line-height: 1;
+	align-self: center;
+	font-size: 1.8em;
+	color: var(--theme-accent);
+	line-height: 1;
 }
 
 /* Timezone search and its dropdown. */
 .timezone-search-container {
-  position: relative;
+	position: relative;
 }
 
 .timezone-dropdown {
-  position: absolute;
-  top: calc(100% + 4px);
-  left: 0;
-  right: 0;
-  z-index: 20;
-  max-height: 260px;
-  overflow-y: auto;
-  border: 1px solid var(--theme-border);
-  border-radius: var(--editor-radius);
-  background-color: var(--theme-panel);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+	position: absolute;
+	top: calc(100% + 4px);
+	left: 0;
+	right: 0;
+	z-index: 20;
+	max-height: 260px;
+	overflow-y: auto;
+	border: 1px solid var(--theme-border);
+	border-radius: var(--editor-radius);
+	background-color: var(--theme-panel);
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
 .timezone-option,
 .timezone-option-empty {
-  padding: 8px 12px;
-  font-size: 0.9em;
+	padding: 8px 12px;
+	font-size: 0.9em;
 }
 
 .timezone-option {
-  cursor: pointer;
-  transition: background-color 0.12s ease;
+	cursor: pointer;
+	transition: background-color 0.12s ease;
 }
 
 .timezone-option:hover {
-  background-color: color-mix(in srgb, var(--theme-accent) 14%, transparent);
+	background-color: color-mix(in srgb, var(--theme-accent) 14%, transparent);
 }
 
 .timezone-option.active {
-  background-color: color-mix(in srgb, var(--theme-accent) 28%, transparent);
-  box-shadow: inset 3px 0 0 var(--theme-accent);
+	background-color: color-mix(in srgb, var(--theme-accent) 28%, transparent);
+	box-shadow: inset 3px 0 0 var(--theme-accent);
 }
 
 .timezone-option-empty {
-  opacity: 0.7;
-  font-style: italic;
+	opacity: 0.7;
+	font-style: italic;
 }
 
 /* Narrow windows: From on top, the arrow turns downward, To below. */
 @media (max-width: 720px) {
-  .converter {
-    grid-template-columns: minmax(0, 1fr);
-  }
+	.converter {
+		grid-template-columns: minmax(0, 1fr);
+	}
 
-  .converter-arrow {
-    justify-self: center;
-    transform: rotate(90deg);
-  }
+	.converter-arrow {
+		justify-self: center;
+		transform: rotate(90deg);
+	}
 }

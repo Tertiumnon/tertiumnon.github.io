@@ -1,12 +1,12 @@
 import { Component, HostListener, Input, inject } from "@angular/core";
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import { marked, Renderer } from "marked";
+import { DomSanitizer, type SafeHtml } from "@angular/platform-browser";
 import hljs from "highlight.js/lib/core";
+import css from "highlight.js/lib/languages/css";
 // register common languages (add more as needed)
 import javascript from "highlight.js/lib/languages/javascript";
-import typescript from "highlight.js/lib/languages/typescript";
-import css from "highlight.js/lib/languages/css";
 import json from "highlight.js/lib/languages/json";
+import typescript from "highlight.js/lib/languages/typescript";
+import { marked, Renderer } from "marked";
 
 hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("typescript", typescript);
@@ -42,19 +42,24 @@ export class MdContentComponent {
 			const language = (infostring || "").trim().split(/\s+/)[0];
 			let highlighted: string;
 			try {
-				highlighted = language && hljs.getLanguage(language)
-					? hljs.highlight(code, { language }).value
-					: hljs.highlightAuto(code).value;
+				highlighted =
+					language && hljs.getLanguage(language)
+						? hljs.highlight(code, { language }).value
+						: hljs.highlightAuto(code).value;
 			} catch (e) {
 				highlighted = escapeHtml(code);
 			}
 			const langClass = language ? ` language-${language}` : "";
 			const codeHtml = `<code class="hljs${langClass}">${highlighted}</code>`;
-				const copyButton = `<button type="button" class="copy-code" aria-label="Copy code" title="Copy code"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>`;
-				if (!this.lineNumbers) return `<pre>${copyButton}${codeHtml}</pre>\n`;
-				// Gutter is a separate column, so the highlighted markup stays intact.
-				const numbers = code.replace(/\n$/, "").split("\n").map((_, i) => i + 1).join("\n");
-				return `<pre class="numbered">${copyButton}<span class="gutter" aria-hidden="true">${numbers}</span>${codeHtml}</pre>\n`;
+			const copyButton = `<button type="button" class="copy-code" aria-label="Copy code" title="Copy code"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>`;
+			if (!this.lineNumbers) return `<pre>${copyButton}${codeHtml}</pre>\n`;
+			// Gutter is a separate column, so the highlighted markup stays intact.
+			const numbers = code
+				.replace(/\n$/, "")
+				.split("\n")
+				.map((_, i) => i + 1)
+				.join("\n");
+			return `<pre class="numbered">${copyButton}<span class="gutter" aria-hidden="true">${numbers}</span>${codeHtml}</pre>\n`;
 		};
 	}
 
@@ -67,7 +72,8 @@ export class MdContentComponent {
 	onContentClick(event: MouseEvent): void {
 		const copyButton = (event.target as HTMLElement)?.closest?.(".copy-code");
 		if (copyButton) {
-			const code = copyButton.closest("pre")?.querySelector("code")?.textContent ?? "";
+			const code =
+				copyButton.closest("pre")?.querySelector("code")?.textContent ?? "";
 			void navigator.clipboard?.writeText(code);
 			copyButton.classList.add("copied");
 			setTimeout(() => copyButton.classList.remove("copied"), 1500);
@@ -111,8 +117,10 @@ export class MdContentComponent {
 
 			// Fix image paths post-processing
 			if (this.category && this.postDirname) {
-				raw = raw.replace(/<img\s+src="(?!(?:https?:|\/))([^"]+)"/g,
-					`<img src="/assets/posts/${this.postDirname}/$1"`);
+				raw = raw.replace(
+					/<img\s+src="(?!(?:https?:|\/))([^"]+)"/g,
+					`<img src="/assets/posts/${this.postDirname}/$1"`,
+				);
 			}
 
 			if (this.postDate) {

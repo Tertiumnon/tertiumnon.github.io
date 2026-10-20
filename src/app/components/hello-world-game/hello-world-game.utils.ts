@@ -1,4 +1,4 @@
-import { CellData } from "./hello-world-game.types";
+import type { CellData } from "./hello-world-game.types";
 
 export const TANK_WIDTH = 3;
 export const TANK_HEIGHT = 3;
@@ -50,7 +50,7 @@ export class HelloWorldGameUtils {
 	static layout(
 		phrase: string,
 		containerCols: number,
-		containerRows: number
+		containerRows: number,
 	): {
 		cells: CellData[];
 		startCol: number;
@@ -59,8 +59,14 @@ export class HelloWorldGameUtils {
 		usedRows: number;
 	} {
 		const cells = this.generate(phrase);
-		const usedCols = cells.reduce((width, cell) => Math.max(width, cell.col + 1), 0);
-		const usedRows = cells.reduce((height, cell) => Math.max(height, cell.row + 1), 0);
+		const usedCols = cells.reduce(
+			(width, cell) => Math.max(width, cell.col + 1),
+			0,
+		);
+		const usedRows = cells.reduce(
+			(height, cell) => Math.max(height, cell.row + 1),
+			0,
+		);
 		const startCol = Math.floor((containerCols - usedCols) / 2);
 		const startRow = Math.floor((containerRows - usedRows) / 2);
 
@@ -94,14 +100,14 @@ export class HelloWorldGameUtils {
 
 	static isTankOverlappingPhrase(
 		cells: CellData[],
-		tankCells: CellData[]
+		tankCells: CellData[],
 	): boolean {
 		for (const tankCell of tankCells) {
 			const overlappingCell = cells.find(
 				(cell) =>
 					cell.col === tankCell.col &&
 					cell.row === tankCell.row &&
-					cell.isEnabled
+					cell.isEnabled,
 			);
 			if (overlappingCell) {
 				return true;
@@ -118,7 +124,7 @@ export class HelloWorldGameUtils {
 		usedCols: number,
 		usedRows: number,
 		color = "#ff3b30",
-		mode: "bottom-center" | "inside-used" = "bottom-center"
+		mode: "bottom-center" | "inside-used" = "bottom-center",
 	): { col: number; row: number; color: string } {
 		if (mode === "bottom-center") {
 			const col = Math.max(

@@ -1,5 +1,12 @@
-import { Component, forwardRef, input, model, output, signal } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import {
+	Component,
+	forwardRef,
+	input,
+	model,
+	output,
+	signal,
+} from "@angular/core";
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { FIELD_STYLES } from "./field.styles";
 
 // Multi-line text. Works with [(value)], [value] and reactive forms.
@@ -7,7 +14,13 @@ import { FIELD_STYLES } from "./field.styles";
 @Component({
 	selector: "app-textarea-field",
 	standalone: true,
-	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => TextareaFieldComponent), multi: true }],
+	providers: [
+		{
+			provide: NG_VALUE_ACCESSOR,
+			useExisting: forwardRef(() => TextareaFieldComponent),
+			multi: true,
+		},
+	],
 	template: `
 		<textarea
 			class="field"

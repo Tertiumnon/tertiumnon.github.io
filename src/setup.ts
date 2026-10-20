@@ -8,7 +8,8 @@ const localStorageMock = {
 	get length() {
 		return storage.size;
 	},
-	key: (index: number) => (index < storage.size ? [...storage.keys()][index] : null),
+	key: (index: number) =>
+		index < storage.size ? [...storage.keys()][index] : null,
 };
 Object.defineProperty(window, "localStorage", {
 	value: localStorageMock,

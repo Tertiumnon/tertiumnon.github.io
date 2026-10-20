@@ -5,6 +5,10 @@ import {
 	platformBrowserTesting,
 } from "@angular/platform-browser/testing";
 
-getTestBed().initTestEnvironment(BrowserTestingModule, platformBrowserTesting(), {
-	teardown: { destroyAfterEach: true },
-});
+getTestBed().initTestEnvironment(
+	BrowserTestingModule,
+	platformBrowserTesting(),
+	{
+		teardown: { destroyAfterEach: true },
+	},
+);

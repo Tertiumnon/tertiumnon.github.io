@@ -1,4 +1,4 @@
-import { Injectable, computed, signal } from "@angular/core";
+import { computed, Injectable, signal } from "@angular/core";
 import { Theme } from "./theme.constants";
 
 const THEME_STORAGE_KEY = "theme";

@@ -1,6 +1,17 @@
 import { Injectable, signal } from "@angular/core";
 
-export type SoundName = "move" | "select" | "back" | "power" | "modem" | "catch" | "heart" | "miss" | "hit" | "over" | "win";
+export type SoundName =
+	| "move"
+	| "select"
+	| "back"
+	| "power"
+	| "modem"
+	| "catch"
+	| "heart"
+	| "miss"
+	| "hit"
+	| "over"
+	| "win";
 
 // One tone: frequency in Hz, length in ms, waveform, and when it starts relative to the sound's start.
 type Tone = { freq: number; ms: number; wave?: OscillatorType; at?: number };

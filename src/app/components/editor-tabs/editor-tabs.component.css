@@ -1,137 +1,136 @@
 :host {
-  display: block;
-  position: relative;
+	display: block;
+	position: relative;
 }
 
 .tab-bar {
-  display: flex;
-  align-items: stretch;
-  min-height: 35px;
-  overflow-x: auto;
-  background-color: var(--theme-panel);
-  border-bottom: 1px solid var(--theme-border);
+	display: flex;
+	align-items: stretch;
+	min-height: 35px;
+	overflow-x: auto;
+	background-color: var(--theme-panel);
+	border-bottom: 1px solid var(--theme-border);
 }
 
 .tab {
-  display: flex;
-  align-items: center;
-  gap: 0.25em;
-  flex: none;
-  max-width: 240px;
-  height: 35px;
-  padding: 0 6px 0 0;
-  border-right: 1px solid var(--theme-border);
-  border-top: 2px solid transparent;
-  opacity: 0.7;
-  font-size: 0.95em;
+	display: flex;
+	align-items: center;
+	gap: 0.25em;
+	flex: none;
+	max-width: 240px;
+	height: 35px;
+	padding: 0 6px 0 0;
+	border-right: 1px solid var(--theme-border);
+	border-top: 2px solid transparent;
+	opacity: 0.7;
+	font-size: 0.95em;
 }
 
 .tab:hover {
-  opacity: 1;
+	opacity: 1;
 }
 
 .tab.active {
-  opacity: 1;
-  background-color: var(--theme-surface);
-  border-top-color: var(--theme-accent);
+	opacity: 1;
+	background-color: var(--theme-surface);
+	border-top-color: var(--theme-accent);
 }
 
 .tab-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  min-width: 0;
-  height: 100%;
-  padding: 0 4px 0 14px;
-  border: none;
-  background: none;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+	min-width: 0;
+	height: 100%;
+	padding: 0 4px 0 14px;
+	border: none;
+	background: none;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
 }
 
 .tab-dot {
-  width: 8px;
-  height: 8px;
-  flex: none;
-  border-radius: 50%;
-  background-color: var(--theme-accent);
+	width: 8px;
+	height: 8px;
+	flex: none;
+	border-radius: 50%;
+	background-color: var(--theme-accent);
 }
 
 .tab-title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .tab-close {
-  flex: none;
-  width: 22px;
-  height: 22px;
-  padding: 0;
-  border: none;
-  border-radius: 4px;
-  background: none;
-  color: inherit;
-  font-size: 1.1em;
-  line-height: 1;
-  opacity: 0.6;
-  cursor: pointer;
+	flex: none;
+	width: 22px;
+	height: 22px;
+	padding: 0;
+	border: none;
+	border-radius: 4px;
+	background: none;
+	color: inherit;
+	font-size: 1.1em;
+	line-height: 1;
+	opacity: 0.6;
+	cursor: pointer;
 }
 
 .tab-close:hover {
-  opacity: 1;
-  background-color: var(--theme-border);
+	opacity: 1;
+	background-color: var(--theme-border);
 }
 
 .tab.pinned {
-  padding-right: 8px;
+	padding-right: 8px;
 }
 
 .tab.pinned .tab-dot {
-  box-shadow: 0 0 0 2px var(--theme-border);
+	box-shadow: 0 0 0 2px var(--theme-border);
 }
-
 
 /* Section icon at the start of each tab; the pinned tab shows a pin. */
 .tab-icon {
-  display: flex;
-  flex: none;
+	display: flex;
+	flex: none;
 }
 
 .tab-icon svg {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+	width: 14px;
+	height: 14px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
 }
 
 /* The bar is a size container, so the tabs can react to its width. */
 .tab-bar {
-  container-type: inline-size;
+	container-type: inline-size;
 }
 
 /* The project tab (second slot) is as wide as its title, up to the tab limit; longer titles are cut with an ellipsis. */
 .tab:nth-child(2) {
-  flex: 0 1 auto;
-  min-width: 0;
-  max-width: 320px;
+	flex: 0 1 auto;
+	min-width: 0;
+	max-width: 320px;
 }
 
 .tab:nth-child(2) .tab-label {
-  min-width: 0;
+	min-width: 0;
 }
 
 /* No room for titles: the first tab shows only its section icon. */
 @container (max-width: 560px) {
-  .tab.pinned .tab-title {
-    display: none;
-  }
+	.tab.pinned .tab-title {
+		display: none;
+	}
 
-  .tab.pinned .tab-label {
-    padding: 0 10px;
-  }
+	.tab.pinned .tab-label {
+		padding: 0 10px;
+	}
 }

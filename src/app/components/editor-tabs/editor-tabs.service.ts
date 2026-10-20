@@ -1,9 +1,16 @@
 import { Injectable, inject, signal } from "@angular/core";
-import { Event as RouterEvent, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from "@angular/router";
+import {
+	NavigationCancel,
+	NavigationEnd,
+	NavigationError,
+	NavigationStart,
+	Router,
+	type Event as RouterEvent,
+} from "@angular/router";
 import { filter } from "rxjs";
-import PROJECT_ITEMS from "../../entities/project/project.mock";
 import { PostService } from "../../entities/post/post.service";
-import { Post } from "../../entities/post/post.types";
+import type { Post } from "../../entities/post/post.types";
+import PROJECT_ITEMS from "../../entities/project/project.mock";
 
 export type NavLevel = 1 | 2 | 3;
 
@@ -29,7 +36,8 @@ const SECTION_TITLES: Record<string, string> = {
 // A leading language segment (/en/changelog) does not count.
 export function levelForUrl(url: string): NavLevel {
 	const segments = url.split("/").filter((segment) => segment.length > 0);
-	if (segments.length > 0 && LANGUAGE_SEGMENTS.includes(segments[0])) segments.shift();
+	if (segments.length > 0 && LANGUAGE_SEGMENTS.includes(segments[0]))
+		segments.shift();
 	// Sub pages of a project (README, screenshots, ...) stay in the project's own tab.
 	if (segments[0] === "projects" && segments.length > 2) return 2;
 	return Math.min(3, Math.max(1, segments.length)) as NavLevel;
@@ -59,7 +67,12 @@ export class EditorTabsService {
 		this.postService.getAll().subscribe({
 			next: (posts) => {
 				this.posts = posts;
-				this.tabs.update((tabs) => tabs.map((tab) => ({ ...tab, title: this.titleFor(tab.url, tab.title) })));
+				this.tabs.update((tabs) =>
+					tabs.map((tab) => ({
+						...tab,
+						title: this.titleFor(tab.url, tab.title),
+					})),
+				);
 			},
 			error: () => {
 				this.posts = [];
@@ -90,7 +103,9 @@ export class EditorTabsService {
 	private titleFor(url: string, routeTitle: string): string {
 		const projectMatch = /^\/projects\/([^/]+)(?:\/[^/]+)?$/.exec(url);
 		if (projectMatch) {
-			const project = PROJECT_ITEMS.find((item) => item.name === projectMatch[1]);
+			const project = PROJECT_ITEMS.find(
+				(item) => item.name === projectMatch[1],
+			);
 			if (project) return project.title;
 		}
 		if (/^\/(en|ru)\/posts\/[^/]+$/.test(url)) {
@@ -104,7 +119,11 @@ export class EditorTabsService {
 		if (event instanceof NavigationStart) {
 			this.loading.set(true);
 			this.navigatingUrl.set(event.url.split(/[?#]/)[0]);
-		} else if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
+		} else if (
+			event instanceof NavigationEnd ||
+			event instanceof NavigationCancel ||
+			event instanceof NavigationError
+		) {
 			this.loading.set(false);
 			this.navigatingUrl.set("");
 		}
@@ -113,14 +132,18 @@ export class EditorTabsService {
 	// Puts a tab in its slot: a tab already open keeps its place and takes the new title.
 	private place(tabs: EditorTab[], tab: EditorTab): EditorTab[] {
 		if (tabs.some((existing) => existing.url === tab.url)) {
-			return tabs.map((existing) => (existing.url === tab.url ? { ...existing, title: tab.title } : existing));
+			return tabs.map((existing) =>
+				existing.url === tab.url ? { ...existing, title: tab.title } : existing,
+			);
 		}
 		const slot = tabs.find((existing) => existing.level === tab.level);
 		if (slot) {
 			return tabs.map((existing) => (existing === slot ? tab : existing));
 		}
 		const next = tabs.findIndex((existing) => existing.level > tab.level);
-		return next < 0 ? [...tabs, tab] : [...tabs.slice(0, next), tab, ...tabs.slice(next)];
+		return next < 0
+			? [...tabs, tab]
+			: [...tabs.slice(0, next), tab, ...tabs.slice(next)];
 	}
 
 	private track(): void {
@@ -132,16 +155,30 @@ export class EditorTabsService {
 
 		// Parent pages of a deeper page, one per lower level: /en/posts/x has parent /en/posts.
 		const segments = url.split("/").filter((segment) => segment.length > 0);
-		const lang = LANGUAGE_SEGMENTS.includes(segments[0]) ? segments.shift() : undefined;
+		const lang = LANGUAGE_SEGMENTS.includes(segments[0])
+			? segments.shift()
+			: undefined;
 		const prefix = lang ? [lang] : [];
 		const parents: EditorTab[] = [];
 		for (let parentLevel = 1; parentLevel < level; parentLevel++) {
 			const parentUrl = `/${[...prefix, ...segments.slice(0, parentLevel)].join("/")}`;
-			const parentTitle = this.titleFor(parentUrl, parentLevel === 1 ? SECTION_TITLES[segments[0]] ?? "" : "");
-			parents.push({ url: parentUrl, title: parentTitle, level: parentLevel as NavLevel });
+			const parentTitle = this.titleFor(
+				parentUrl,
+				parentLevel === 1 ? (SECTION_TITLES[segments[0]] ?? "") : "",
+			);
+			parents.push({
+				url: parentUrl,
+				title: parentTitle,
+				level: parentLevel as NavLevel,
+			});
 		}
 
 		this.activeUrl.set(url);
-		this.tabs.update((tabs) => [...parents, { url, title, level }].reduce((result, tab) => this.place(result, tab), tabs));
+		this.tabs.update((tabs) =>
+			[...parents, { url, title, level }].reduce(
+				(result, tab) => this.place(result, tab),
+				tabs,
+			),
+		);
 	}
 }

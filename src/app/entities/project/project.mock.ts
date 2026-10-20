@@ -1,7 +1,11 @@
-import { IProject, IProjectRelease, IProjectVersion } from "./project.types";
-import { ProjectLicense, ProjectStatus } from "./project.constants";
-import githubProjects from "../../../assets/projects/github-projects.json";
 import projectDates from "../../../assets/project-dates.json";
+import githubProjects from "../../../assets/projects/github-projects.json";
+import { ProjectLicense, ProjectStatus } from "./project.constants";
+import type {
+	IProject,
+	IProjectRelease,
+	IProjectVersion,
+} from "./project.types";
 
 const PROJECT_DATES: Record<string, string> = projectDates;
 
@@ -37,11 +41,17 @@ const isActive = (updatedAt?: string): boolean =>
 
 // Licence category of a repository: MIT is open source; other licences (personal-use or CC BY content) are free.
 const licenseOf = (repoLicense?: string): ProjectLicense | undefined =>
-	repoLicense === undefined ? undefined : repoLicense === "MIT License" ? ProjectLicense.OpenSource : ProjectLicense.Free;
+	repoLicense === undefined
+		? undefined
+		: repoLicense === "MIT License"
+			? ProjectLicense.OpenSource
+			: ProjectLicense.Free;
 
 // Generated at build time by scripts/project/github-projects--create (renamed or removed repos are already dropped).
 // Status and licence are derived here, from the update date and the repository licence, because the JSON does not carry them.
-const GITHUB_PROJECT_ITEMS: IProject[] = (githubProjects as GithubProjectJson[]).map((repo) => {
+const GITHUB_PROJECT_ITEMS: IProject[] = (
+	githubProjects as GithubProjectJson[]
+).map((repo) => {
 	const updatedAt = PROJECT_DATES[`github:${repo.name}`];
 	return {
 		name: repo.name,

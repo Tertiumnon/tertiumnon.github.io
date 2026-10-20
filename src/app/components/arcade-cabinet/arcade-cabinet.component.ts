@@ -1,4 +1,12 @@
-import { Component, ElementRef, HostListener, inject, output, signal, viewChild } from "@angular/core";
+import {
+	Component,
+	ElementRef,
+	HostListener,
+	inject,
+	output,
+	signal,
+	viewChild,
+} from "@angular/core";
 import { SoundService } from "../sound/sound.service";
 import { TvControlsComponent } from "./tv-controls.component";
 
@@ -26,7 +34,8 @@ import { TvControlsComponent } from "./tv-controls.component";
 			></app-tv-controls>
 		</section>
 	`,
-	styles: [`
+	styles: [
+		`
 		:host {
 			display: block;
 			height: 100%;
@@ -133,7 +142,8 @@ import { TvControlsComponent } from "./tv-controls.component";
 			100% { opacity: 0; transform: scale(60, 0.02); }
 		}
 
-	`],
+	`,
+	],
 })
 export class ArcadeCabinetComponent {
 	readonly powered = signal(true);
@@ -143,7 +153,8 @@ export class ArcadeCabinetComponent {
 	readonly powerChange = output<boolean>();
 	private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
 	private readonly sound = inject(SoundService);
-	private readonly screen = viewChild.required<ElementRef<HTMLElement>>("screen");
+	private readonly screen =
+		viewChild.required<ElementRef<HTMLElement>>("screen");
 
 	toggleFullWindow(): void {
 		this.fullWindow.update((on) => !on);
@@ -152,7 +163,8 @@ export class ArcadeCabinetComponent {
 	// The browser's own full-screen mode; Escape leaves it, which the fullscreenchange event reports back.
 	toggleFullscreen(): void {
 		if (document.fullscreenElement) void document.exitFullscreen();
-		else void this.host.nativeElement.requestFullscreen().catch(() => undefined);
+		else
+			void this.host.nativeElement.requestFullscreen().catch(() => undefined);
 	}
 
 	@HostListener("document:fullscreenchange")
@@ -169,7 +181,11 @@ export class ArcadeCabinetComponent {
 			this.screen().nativeElement.animate(
 				[
 					{ transform: "scale(1, 0.01)", filter: "brightness(4)" },
-					{ transform: "scale(1, 1.03)", filter: "brightness(1.3)", offset: 0.5 },
+					{
+						transform: "scale(1, 1.03)",
+						filter: "brightness(1.3)",
+						offset: 0.5,
+					},
 					{ transform: "scale(1, 1)", filter: "none" },
 				],
 				{ duration: 600, easing: "ease-out" },

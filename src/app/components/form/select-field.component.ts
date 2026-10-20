@@ -1,5 +1,5 @@
 import { Component, forwardRef, input, model, signal } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { FIELD_STYLES } from "./field.styles";
 
 export interface SelectOption {
@@ -15,7 +15,13 @@ export const selectOptions = (values: readonly string[]): SelectOption[] =>
 @Component({
 	selector: "app-select-field",
 	standalone: true,
-	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => SelectFieldComponent), multi: true }],
+	providers: [
+		{
+			provide: NG_VALUE_ACCESSOR,
+			useExisting: forwardRef(() => SelectFieldComponent),
+			multi: true,
+		},
+	],
 	template: `
 		<select
 			class="field"

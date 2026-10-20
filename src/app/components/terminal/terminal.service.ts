@@ -22,7 +22,10 @@ export class TerminalService {
 		effect(() => {
 			if (typeof localStorage === "undefined") return;
 			try {
-				localStorage.setItem(TERMINAL_STORAGE_KEY, this.open() ? "open" : "closed");
+				localStorage.setItem(
+					TERMINAL_STORAGE_KEY,
+					this.open() ? "open" : "closed",
+				);
 			} catch {
 				// Storage access denied or unavailable
 			}

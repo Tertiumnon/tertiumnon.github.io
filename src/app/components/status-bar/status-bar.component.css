@@ -1,43 +1,43 @@
 :host {
-  display: block;
+	display: block;
 }
 
 .status-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 36px;
-  padding: 0 10px;
-  background-color: var(--theme-surface);
-  color: var(--theme-text);
-  font-family: var(--font-code);
-  font-size: 13px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 36px;
+	padding: 0 10px;
+	background-color: var(--theme-surface);
+	color: var(--theme-text);
+	font-family: var(--font-code);
+	font-size: 13px;
 }
 
 .terminal-toggle {
-  padding: 0 6px;
-  border: none;
-  background: none;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
+	padding: 0 6px;
+	border: none;
+	background: none;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
 }
 
 .terminal-toggle[aria-pressed="true"] {
-  font-weight: bold;
-  text-decoration: underline;
+	font-weight: bold;
+	text-decoration: underline;
 }
 
 .status-controls {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
 }
 
 .visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
 }

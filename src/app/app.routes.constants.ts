@@ -1,4 +1,4 @@
-import { Routes } from "@angular/router";
+import type { Routes } from "@angular/router";
 
 export const APP_ROUTES: Routes = [
 	{
@@ -42,9 +42,7 @@ export const APP_ROUTES: Routes = [
 		path: ":lang/posts",
 		title: "Posts",
 		loadComponent: () =>
-			import("./pages/posts/posts.component").then(
-				(m) => m.PostsComponent,
-			),
+			import("./pages/posts/posts.component").then((m) => m.PostsComponent),
 	},
 	{
 		path: "projects",
@@ -64,9 +62,9 @@ export const APP_ROUTES: Routes = [
 		path: "projects/app-port-convention",
 		title: "App Port Convention",
 		loadComponent: () =>
-			import("./pages/software--app-port-convention/app-port-convention.component").then(
-				(m) => m.AppPortConventionComponent,
-			),
+			import(
+				"./pages/software--app-port-convention/app-port-convention.component"
+			).then((m) => m.AppPortConventionComponent),
 	},
 	{
 		path: "projects/:name",
@@ -82,7 +80,9 @@ export const APP_ROUTES: Routes = [
 				(m) => m.ProjectPageComponent,
 			),
 	},
-	...(["changelog", "screenshots", "downloads", "license", "links"] as const).map((view) => ({
+	...(
+		["changelog", "screenshots", "downloads", "license", "links"] as const
+	).map((view) => ({
 		path: `projects/:name/${view}`,
 		title: "Projects",
 		data: { view },
@@ -103,9 +103,7 @@ export const APP_ROUTES: Routes = [
 		path: ":lang/posts/:name",
 		title: "Post",
 		loadComponent: () =>
-			import("./pages/post/post.component").then(
-				(m) => m.PostComponent,
-			),
+			import("./pages/post/post.component").then((m) => m.PostComponent),
 	},
 	{
 		path: "tools/what-time",

@@ -1,10 +1,10 @@
+import { CommonModule } from "@angular/common";
 import { Component, DestroyRef, inject, signal } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute, Router } from "@angular/router";
-import { CommonModule } from "@angular/common";
 import { MdContentComponent } from "../../components/md-content/md-content.component";
-import { Post, PostGetParams } from "../../entities/post/post.types";
 import { PostService } from "../../entities/post/post.service";
+import type { Post, PostGetParams } from "../../entities/post/post.types";
 
 @Component({
 	selector: "app-post",
@@ -39,7 +39,7 @@ export class PostComponent {
 				this.postService.getAll().subscribe({
 					next: (posts) => {
 						const post = posts.find(
-							(a: Post) => a.dirname === params["name"] && a.language === lang
+							(a: Post) => a.dirname === params["name"] && a.language === lang,
 						);
 
 						if (post) {
@@ -59,13 +59,16 @@ export class PostComponent {
 										this.isLoading.set(false);
 									},
 									error: (error: unknown) => {
-										console.error(`Failed to load post ${params["name"]}:`, error);
+										console.error(
+											`Failed to load post ${params["name"]}:`,
+											error,
+										);
 										this.isLoading.set(false);
 									},
 								});
 						} else {
 							this.router.navigate([`/${lang}/posts/404`], {
-								queryParams: { search: params["name"] }
+								queryParams: { search: params["name"] },
 							});
 						}
 					},

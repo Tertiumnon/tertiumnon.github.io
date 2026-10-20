@@ -1,19 +1,19 @@
+import { CommonModule } from "@angular/common";
 import {
 	ChangeDetectionStrategy,
 	Component,
+	computed,
 	ElementRef,
 	HostListener,
-	computed,
 	inject,
 	signal,
 } from "@angular/core";
-import { CommonModule } from "@angular/common";
 import { TextFieldComponent } from "../../components/form/text-field.component";
 import { PageHeaderComponent } from "../../components/page-header/page-header.component";
 import {
 	FRAMEWORKS,
-	IFramework,
-	IStack,
+	type IFramework,
+	type IStack,
 	PROJECT_SLOTS,
 	ROLES,
 	STACKS,
@@ -56,7 +56,10 @@ export class AppPortConventionComponent {
 		const base = stack.base + this.slot() * 100;
 		return {
 			stack,
-			roles: ROLES.map((role) => ({ name: role.name, port: base + role.offset })),
+			roles: ROLES.map((role) => ({
+				name: role.name,
+				port: base + role.offset,
+			})),
 			defaultPort: framework.defaultPort,
 			debugPort: framework.debugPort,
 		};
@@ -91,11 +94,19 @@ export class AppPortConventionComponent {
 			const last = items.length - 1;
 			const next =
 				event.key === "ArrowDown"
-					? this.activeIndex() < last ? this.activeIndex() + 1 : 0
-					: this.activeIndex() > 0 ? this.activeIndex() - 1 : last;
+					? this.activeIndex() < last
+						? this.activeIndex() + 1
+						: 0
+					: this.activeIndex() > 0
+						? this.activeIndex() - 1
+						: last;
 			this.activeIndex.set(next);
 			this.scrollActiveIntoView();
-		} else if (event.key === "Enter" && this.isOpen() && items[this.activeIndex()]) {
+		} else if (
+			event.key === "Enter" &&
+			this.isOpen() &&
+			items[this.activeIndex()]
+		) {
 			event.preventDefault();
 			this.select(items[this.activeIndex()]);
 		} else if (event.key === "Escape") {

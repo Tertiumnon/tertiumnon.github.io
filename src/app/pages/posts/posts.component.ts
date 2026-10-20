@@ -1,25 +1,41 @@
-import { SidebarPageFiltersComponent } from "../../components/sidebar/sidebar-page-filters.component";
-import { PageHeaderComponent } from "../../components/page-header/page-header.component";
-import { LoadMoreComponent } from "../../components/load-more/load-more.component";
-import { Component, DestroyRef, effect, inject, signal, computed, untracked } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import {
+	Component,
+	computed,
+	DestroyRef,
+	effect,
+	inject,
+	signal,
+	untracked,
+} from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute, RouterLink } from "@angular/router";
-import { CommonModule } from "@angular/common";
-import { Post } from "../../entities/post/post.types";
-import { PostService } from "../../entities/post/post.service";
+import { LoadMoreComponent } from "../../components/load-more/load-more.component";
+import { PageHeaderComponent } from "../../components/page-header/page-header.component";
 import { PostFilterService } from "../../components/sidebar/post-filter.service";
+import { SidebarPageFiltersComponent } from "../../components/sidebar/sidebar-page-filters.component";
+import { PostService } from "../../entities/post/post.service";
+import type { Post } from "../../entities/post/post.types";
 
 const POSTS_PER_BATCH = 10;
 
-const time = (date: string | undefined): number => new Date(date ?? 0).getTime();
+const time = (date: string | undefined): number =>
+	new Date(date ?? 0).getTime();
 
 // When a post last changed: the later of its publish and update dates.
-const lastActivity = (post: Post): number => Math.max(time(post.publishedAt), time(post.updatedAt));
+const lastActivity = (post: Post): number =>
+	Math.max(time(post.publishedAt), time(post.updatedAt));
 
 @Component({
 	selector: "app-posts",
 	standalone: true,
-	imports: [CommonModule, RouterLink, SidebarPageFiltersComponent, PageHeaderComponent, LoadMoreComponent],
+	imports: [
+		CommonModule,
+		RouterLink,
+		SidebarPageFiltersComponent,
+		PageHeaderComponent,
+		LoadMoreComponent,
+	],
 	templateUrl: "./posts.component.html",
 	styleUrl: "./posts.component.css",
 })
@@ -45,7 +61,9 @@ export class PostsComponent {
 
 		const tag = this.filters.selectedTag();
 		if (tag !== "All") {
-			filtered = filtered.filter((a) => (Array.isArray(a.tags) ? a.tags.includes(tag) : false));
+			filtered = filtered.filter((a) =>
+				Array.isArray(a.tags) ? a.tags.includes(tag) : false,
+			);
 		}
 
 		const sort = this.filters.selectedSort();
@@ -53,15 +71,23 @@ export class PostsComponent {
 			return filtered.sort((a, b) => a.title.localeCompare(b.title));
 		}
 		if (sort === "Recently updated") {
-			return filtered.sort((a, b) => lastActivity(b) - lastActivity(a) || time(b.publishedAt) - time(a.publishedAt));
+			return filtered.sort(
+				(a, b) =>
+					lastActivity(b) - lastActivity(a) ||
+					time(b.publishedAt) - time(a.publishedAt),
+			);
 		}
 		const newestFirst = sort === "Newest created" ? 1 : -1;
 		return filtered.sort(
-			(a, b) => newestFirst * (new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+			(a, b) =>
+				newestFirst *
+				(new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()),
 		);
 	});
 
-	visiblePosts = computed(() => this.sortedPosts().slice(0, this.visibleCount()));
+	visiblePosts = computed(() =>
+		this.sortedPosts().slice(0, this.visibleCount()),
+	);
 
 	loadMore(): void {
 		this.visibleCount.update((count) => count + POSTS_PER_BATCH);
@@ -86,19 +112,26 @@ export class PostsComponent {
 				this.postService.getAll().subscribe({
 					next: (response) => {
 						const filtered = response.filter(
-							(a: Post) => a.language === lang && !a.isHidden
+							(a: Post) => a.language === lang && !a.isHidden,
 						);
 						const sorted = filtered.sort(
 							(a: Post, b: Post) =>
 								new Date(b.publishedAt).getTime() -
-								new Date(a.publishedAt).getTime()
+								new Date(a.publishedAt).getTime(),
 						);
 						this.allPosts.set(sorted);
 
-						const categories = new Set(sorted.filter((a) => a.category).map((a) => a.category));
-						this.filters.categories.set(["All", ...Array.from(categories).sort()]);
+						const categories = new Set(
+							sorted.filter((a) => a.category).map((a) => a.category),
+						);
+						this.filters.categories.set([
+							"All",
+							...Array.from(categories).sort(),
+						]);
 						const tags = new Set<string>();
-						sorted.forEach((a) => a.tags?.forEach((tag) => tags.add(tag)));
+						for (const item of sorted) {
+							for (const tag of item.tags ?? []) tags.add(tag);
+						}
 						this.filters.tags.set(["All", ...Array.from(tags).sort()]);
 
 						this.isLoading.set(false);
@@ -112,19 +145,19 @@ export class PostsComponent {
 	}
 
 	getPostLink(link: string): (string | number)[] {
-		const segments = link.split('/').filter((s): s is string => s.length > 0);
-		return ['/', ...segments];
+		const segments = link.split("/").filter((s): s is string => s.length > 0);
+		return ["/", ...segments];
 	}
 
 	getCategoryDisplay(category: string): string {
 		const categoryMap: { [key: string]: string } = {
-			'Dev Tools': 'Dev Tools',
-			'OS': 'OS',
-			'Programming': 'Programming',
-			'Databases': 'Databases',
-			'Browsers': 'Browsers',
-			'Career': 'Career',
-			'Design': 'Design'
+			"Dev Tools": "Dev Tools",
+			OS: "OS",
+			Programming: "Programming",
+			Databases: "Databases",
+			Browsers: "Browsers",
+			Career: "Career",
+			Design: "Design",
 		};
 		return categoryMap[category] || category;
 	}

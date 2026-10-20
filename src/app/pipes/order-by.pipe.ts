@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, type PipeTransform } from "@angular/core";
 import { orderBy } from "./order-by.utils";
 
 @Pipe({
