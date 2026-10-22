@@ -52,7 +52,7 @@ type ProjectFile = {
 	type?: string;
 	language?: string;
 	frameworks?: string[];
-	publish_on?: string[];
+	listed_on?: string[];
 	icon?: string;
 	screenshots?: string[];
 };
@@ -185,7 +185,7 @@ const main = async (only?: string): Promise<void> => {
 	if (only) await fs.cp(OUT_DIR, STAGE_DIR, { recursive: true });
 	else await fs.mkdir(STAGE_DIR, { recursive: true });
 
-	// Projects are the non-fork repositories whose project.yml publish_on lists the site, except the excluded ones.
+	// Projects are the non-fork repositories whose project.yml listed_on lists the site, except the excluded ones.
 	// Type is the first GitHub topic and description is the GitHub description; a missing value stays missing.
 	const repos = fetchRepos().filter(
 		(repo) => !repo.isFork && !repo.isEmpty && !isExcluded(repo.name) && (!only || repo.name === only),
@@ -201,7 +201,7 @@ const main = async (only?: string): Promise<void> => {
 		const files = fetchRootFiles(repo.name);
 		if (!files.includes("project.yml")) continue;
 		const attributes = Bun.YAML.parse(fetchFile(repo.name, "project.yml")) as ProjectFile;
-		if (!attributes.publish_on?.includes(SITE_URL)) continue;
+		if (!attributes.listed_on?.includes(SITE_URL)) continue;
 		const language = attributes.language ?? repo.primaryLanguage?.name;
 		const project: GithubProject = {
 			name: repo.name,
