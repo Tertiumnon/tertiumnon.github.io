@@ -1,5 +1,16 @@
 [
   {
+    "uri": "at://did:plc:y4hzjlfk7q6da5d4bkxef26c/app.bsky.feed.post/3mygxoshf522s",
+    "url": "https://bsky.app/profile/tertiumnon.bsky.social/post/3mygxoshf522s",
+    "text": "My unreleased Chrome/Firefox #extension that transforms #YouTube into a fun #Halloween-themed experience is currently under review. It's interesting because my previous add-on was reviewed by a single person, but this time I can already see six reviewers at once!))",
+    "createdAt": "2026-10-22T05:48:25.340Z",
+    "author": {
+      "handle": "tertiumnon.bsky.social",
+      "displayName": "",
+      "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:y4hzjlfk7q6da5d4bkxef26c/bafkreie5vtszdxutppir2ac3sqiwivffa3jmbgu6ra5xim23j3h7dqdj34"
+    }
+  },
+  {
     "uri": "at://did:plc:y4hzjlfk7q6da5d4bkxef26c/app.bsky.feed.post/3myeidpmkqc2s",
     "url": "https://bsky.app/profile/tertiumnon.bsky.social/post/3myeidpmkqc2s",
     "text": "🎃 I just launched #Halloweentine!\n\nCreate a personalized Halloween card, copy the generated link, and send it to someone. The card message is stored directly in the URL. 👻\n\n🔗 halloweentine.tiii.dev",

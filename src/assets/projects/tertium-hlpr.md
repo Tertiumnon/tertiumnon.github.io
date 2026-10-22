@@ -49,7 +49,8 @@ hlpr file rename -dir ./src -style kebab -r -d -f --dry
 | [file find](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/file/find/find.md) (`search`) | Find files by name |
 | [file read](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/file/read/read.md) | Print a remote file over SSH |
 | [file edit](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/file/edit/edit.md) | Edit a remote file in your editor over SSH |
-| [image resize](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/image/resize/resize.md) | Create resized copies of an image (`-size <px>`, `--all` popular widths, or `--favicon` single `.ico`) |
+| [image crop](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/image/crop/crop.md) | Create a copy cropped to an exact size (`-size <w>x<h>`, `-align left|center|right`) |
+| [image resize](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/image/resize/resize.md) | Create resized copies of an image (`-size <px>`, `-size <w>x<h>` with black bars and `-align`, `--all` popular widths, or `--favicon` single `.ico`) |
 | git commands | Moved to [@tertium/gith](https://www.npmjs.com/package/@tertium/gith) (`gith setup -n npm` writes the pre-commit hook); see the changelog |
 | [npm scripts](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/npm/scripts/scripts.md) | Add missing start and dev npm scripts |
 | [gh setup](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/gh/setup/setup.md) | Write GitHub workflows: npm publish (trusted publishing) and SSH deploy |
@@ -68,7 +69,7 @@ hlpr file rename -dir ./src -style kebab -r -d -f --dry
 | [process kill](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/process/kill/kill.md) | Kill a process by ID, port, folder, or file |
 | [app list](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/app/list/list.md) | List installed apps |
 | [app search](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/app/search/search.md) (`find`) | Find installed apps or remote packages by name |
-| [app install](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/app/install/install.md) | Find an app by name in package managers and install the one you select |
+| [app install](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/app/install/install.md) | Find and install an app with a supported package manager |
 | [app remove](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/app/remove/remove.md) (`delete`, `uninstall`) | Find and uninstall an app |
 | [tool install](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/tool/install/install.md) | Install Docker, htop, fastfetch, Starship, Claude CLI, Codex CLI, Copilot CLI, or another supported tool |
 | [runtime install](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/runtime/install/install.md) | Install Node.js, Python, Bun, Rust, or Go |
