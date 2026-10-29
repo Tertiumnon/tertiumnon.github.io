@@ -1,5 +1,28 @@
 [
   {
+    "name": "halloween-youtube-theme-ext",
+    "title": "Halloween YouTube Theme",
+    "type": "firefox-extension",
+    "description": "Halloween theme for YouTube as a Firefox extension.",
+    "language": "CSS",
+    "image": "assets/projects/halloween-youtube-theme-ext/assets/logo/logo.svg",
+    "screenshots": [
+      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/01-player-window.png",
+      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/02-search-window.png",
+      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/03-description-and-comments-window.png"
+    ],
+    "repoLicense": "MIT License",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.2.2",
+      "date": "2026-10-28"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/css.svg"
+  },
+  {
     "name": "tertium-cheatsheets",
     "title": "@tertium/cheatsheets",
     "type": "guide",
@@ -120,7 +143,7 @@
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
-    "name": "portal-commander-file-manager-community",
+    "name": "portal-commander-community",
     "title": "Portal Commander",
     "type": "desktop-app",
     "description": "Fast, free two-panel file manager for Windows with in-panel file preview and editing.",
@@ -128,44 +151,44 @@
       "Tauri 2",
       "Angular"
     ],
-    "image": "https://raw.githubusercontent.com/Tertiumnon/portal-commander-file-manager-community/HEAD/assets/logo/logo.png",
+    "image": "https://raw.githubusercontent.com/Tertiumnon/portal-commander-community/HEAD/assets/logo/logo.png",
     "screenshots": [
-      "https://raw.githubusercontent.com/Tertiumnon/portal-commander-file-manager-community/HEAD/docs/screenshots/01-main.png",
-      "https://raw.githubusercontent.com/Tertiumnon/portal-commander-file-manager-community/HEAD/docs/screenshots/02-editor.png"
+      "https://raw.githubusercontent.com/Tertiumnon/portal-commander-community/HEAD/docs/screenshots/01-main.png",
+      "https://raw.githubusercontent.com/Tertiumnon/portal-commander-community/HEAD/docs/screenshots/02-editor.png"
     ],
     "repoLicense": "Other",
-    "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community",
+    "url": "https://github.com/Tertiumnon/portal-commander-community",
     "readme": true,
     "releases": [
       {
         "name": "Portal File Manager 0.2.0",
         "tag": "v0.2.0",
-        "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/tag/untagged-dd851096db0023b55cc3",
+        "url": "https://github.com/Tertiumnon/portal-commander-community/releases/tag/untagged-dd851096db0023b55cc3",
         "publishedAt": "",
         "assets": [
           {
             "name": "Portal.File.Manager_0.2.0_x64-setup.exe",
-            "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/download/untagged-dd851096db0023b55cc3/Portal.File.Manager_0.2.0_x64-setup.exe"
+            "url": "https://github.com/Tertiumnon/portal-commander-community/releases/download/untagged-dd851096db0023b55cc3/Portal.File.Manager_0.2.0_x64-setup.exe"
           },
           {
             "name": "Portal.File.Manager_0.2.0_x64_en-US.msi",
-            "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/download/untagged-dd851096db0023b55cc3/Portal.File.Manager_0.2.0_x64_en-US.msi"
+            "url": "https://github.com/Tertiumnon/portal-commander-community/releases/download/untagged-dd851096db0023b55cc3/Portal.File.Manager_0.2.0_x64_en-US.msi"
           }
         ]
       },
       {
         "name": "Portal Commander 0.3.0",
         "tag": "v0.3.0",
-        "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/tag/v0.3.0",
+        "url": "https://github.com/Tertiumnon/portal-commander-community/releases/tag/v0.3.0",
         "publishedAt": "2026-10-17",
         "assets": [
           {
             "name": "Portal.Commander_0.3.0_x64-setup.exe",
-            "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/download/v0.3.0/Portal.Commander_0.3.0_x64-setup.exe"
+            "url": "https://github.com/Tertiumnon/portal-commander-community/releases/download/v0.3.0/Portal.Commander_0.3.0_x64-setup.exe"
           },
           {
             "name": "Portal.Commander_0.3.0_x64_en-US.msi",
-            "url": "https://github.com/Tertiumnon/portal-commander-file-manager-community/releases/download/v0.3.0/Portal.Commander_0.3.0_x64_en-US.msi"
+            "url": "https://github.com/Tertiumnon/portal-commander-community/releases/download/v0.3.0/Portal.Commander_0.3.0_x64_en-US.msi"
           }
         ]
       }
@@ -375,24 +398,6 @@
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
-    "name": "tertium-gith",
-    "title": "@tertium/gith",
-    "type": "cli",
-    "description": "gith: git-only branch flow CLI (goal branches, release/hotfix containers, synced merges).",
-    "language": "TypeScript",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-gith",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.3.3",
-      "date": "2026-10-21"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
     "name": "tertium-countries",
     "title": "@tertium/countries",
     "type": "npm-package",
@@ -441,29 +446,6 @@
     "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "halloween-youtube-theme-ext",
-    "title": "Halloween YouTube Theme",
-    "type": "firefox-extension",
-    "description": "Halloween theme for YouTube as a Firefox extension.",
-    "language": "CSS",
-    "image": "assets/projects/halloween-youtube-theme-ext/assets/logo/logo.svg",
-    "screenshots": [
-      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/01-player-window.png",
-      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/02-search-window.png",
-      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/03-description-and-comments-window.png"
-    ],
-    "repoLicense": "MIT License",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.2.0",
-      "date": "2026-10-21"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/css.svg"
   },
   {
     "name": "entity-driven-architecture",

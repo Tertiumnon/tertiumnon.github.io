@@ -73,6 +73,81 @@
     "content": "---\npublishedAt: 2017-07-20\ncategory: Programming\ntags: [\"Tips\"]\n---\n\n# Sticker Pack for Telegram: FavoriteSerials\n\nMy sticker pack for Telegram:\n\n[FavoriteSerials](https://t.me/addstickers/FavoriteSerials)\n"
   },
   {
+    "title": "Halloween YouTube Theme 0.2.2",
+    "link": "/en/changelog/2026-10-28--halloween-youtube-theme-ext-0-2-2",
+    "language": "en",
+    "category": "Releases",
+    "project": "Halloween YouTube Theme",
+    "tags": [
+      "halloween-youtube-theme-ext"
+    ],
+    "publishedAt": "2026-10-28",
+    "filename": "index.en.md",
+    "dirname": "2026-10-28--halloween-youtube-theme-ext-0-2-2",
+    "generated": true,
+    "content": "## Halloween YouTube Theme 0.2.2\n\n- docs: prepare 0.2.2 release notes and Chrome store artwork\n- fix: refine menu surfaces and video control styling\n- fix: unify theme borders and refine Chrome styling\n- docs(release): add release notes for 0.1.0 to 0.2.1\n- fix(dev): wait for the watch page before scrolling to comments\n"
+  },
+  {
+    "title": "Halloween YouTube Theme 0.2.1",
+    "link": "/en/changelog/2026-10-23--halloween-youtube-theme-ext-0-2-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "Halloween YouTube Theme",
+    "tags": [
+      "halloween-youtube-theme-ext"
+    ],
+    "publishedAt": "2026-10-23",
+    "filename": "index.en.md",
+    "dirname": "2026-10-23--halloween-youtube-theme-ext-0-2-1",
+    "generated": true,
+    "content": "## Halloween YouTube Theme 0.2.1\n\n- chore(release): take screenshots after each release build\n- feat(dev): add a script that screenshots YouTube with the theme loaded\n- style(ghost): give the ghost a curled tail like a genie's\n- fix(ghost): haunt every 10 to 20 minutes instead of every 1 to 3\n- feat(spider): keep the web until it is clicked\n- style(feed): add space below the Show more buttons\n- feat(description): add a faint pumpkin in the corner of the description\n- style(header): round the profile button and color the notification badge\n- fix(shorts): make the comments panel nearly opaque\n- fix(shorts): hide the ambient glow and the strip under the header\n- fix(theme): switch YouTube to its dark theme so text stays readable\n- chore(project): update project.yml to the project convention\n- style(menu): keep hovered and selected menu item highlights visible\n- fix(comments): dress only changed avatar nodes instead of the whole page\n"
+  },
+  {
+    "title": "Halloween YouTube Theme 0.2.0",
+    "link": "/en/changelog/2026-10-21--halloween-youtube-theme-ext-0-2-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "Halloween YouTube Theme",
+    "tags": [
+      "halloween-youtube-theme-ext"
+    ],
+    "publishedAt": "2026-10-21",
+    "filename": "index.en.md",
+    "dirname": "2026-10-21--halloween-youtube-theme-ext-0-2-0",
+    "generated": true,
+    "content": "## Halloween YouTube Theme 0.2.0\n\n- fix(witch): bring her back only after the logo returns\n- style(witch): lighten the witch so she is visible on the dark page\n- style(header): remove the header blur\n- fix(witch): fly across without taking the logo when there is no logo\n- feat(theme): add a witch, spider, skeleton, bats and pumpkin interactions\n- docs: update project.yml\n- docs: add screenshots different resolutions\n- feat(dev): run Firefox and Chrome with one dev command\n- build: write the source zip into dist/chrome as well\n- build: write the Firefox source zip into dist/firefox\n- refactor(build): keep both manifests in src/manifests\n- refactor(build): give each browser a firefox/ or chrome/ manifest and dist folder\n- feat(chrome): build a Chrome MV3 package from the same source\n- chore(release): sync manifest.json version on npm version\n"
+  },
+  {
+    "title": "Halloween YouTube Theme 0.1.1",
+    "link": "/en/changelog/2026-10-21--halloween-youtube-theme-ext-0-1-1",
+    "language": "en",
+    "category": "Releases",
+    "project": "Halloween YouTube Theme",
+    "tags": [
+      "halloween-youtube-theme-ext"
+    ],
+    "publishedAt": "2026-10-21",
+    "filename": "index.en.md",
+    "dirname": "2026-10-21--halloween-youtube-theme-ext-0-1-1",
+    "generated": true,
+    "content": "## Halloween YouTube Theme 0.1.1\n\n- docs(readme): drop sections that only point to other files\n- docs(readme): mark the screenshot block so listings can replace it with their gallery\n- docs: move install and development notes from the README to docs/\n- chore(project): publish on site\n\nAll notable changes to this project are documented in this file.\n"
+  },
+  {
+    "title": "Halloween YouTube Theme 0.1.0",
+    "link": "/en/changelog/2026-10-20--halloween-youtube-theme-ext-0-1-0",
+    "language": "en",
+    "category": "Releases",
+    "project": "Halloween YouTube Theme",
+    "tags": [
+      "halloween-youtube-theme-ext"
+    ],
+    "publishedAt": "2026-10-20",
+    "filename": "index.en.md",
+    "dirname": "2026-10-20--halloween-youtube-theme-ext-0-1-0",
+    "generated": true,
+    "content": "## Halloween YouTube Theme 0.1.0\n\n### Added\n\n- Halloween theme for YouTube: pumpkin progress scrubber, pumpkins, a flying witch, a skeleton, drifting ghosts and a night-sky background.\n"
+  },
+  {
     "title": "@tertium/cheatsheets 2.3.1",
     "link": "/en/changelog/2026-07-19--tertium-cheatsheets-2-3-1",
     "language": "en",
@@ -852,101 +927,6 @@
     }
   },
   {
-    "title": "@tertium/gith 0.3.3",
-    "link": "/en/changelog/2026-10-21--tertium-gith-0-3-3",
-    "language": "en",
-    "category": "Releases",
-    "project": "@tertium/gith",
-    "tags": [
-      "tertium-gith"
-    ],
-    "publishedAt": "2026-10-21",
-    "filename": "index.en.md",
-    "dirname": "2026-10-21--tertium-gith-0-3-3",
-    "generated": true,
-    "content": "## @tertium/gith 0.3.3\n\n- feat(save): commit locally, ask before amend and push; feat(sync): sync current branch\n- docs(readme): summary line from the repository description\n- docs(readme): drop sections that only point to other files\n- docs: move install and development notes from the README to docs/\n- fix(project): write project.yml in block style\n- chore(project): publish on site\n",
-    "source": {
-      "name": "GitHub",
-      "url": "https://github.com/Tertiumnon/tertium-gith/releases/tag/v0.3.3"
-    }
-  },
-  {
-    "title": "@tertium/gith 0.3.2",
-    "link": "/en/changelog/2026-10-19--tertium-gith-0-3-2",
-    "language": "en",
-    "category": "Releases",
-    "project": "@tertium/gith",
-    "tags": [
-      "tertium-gith"
-    ],
-    "publishedAt": "2026-10-19",
-    "filename": "index.en.md",
-    "dirname": "2026-10-19--tertium-gith-0-3-2",
-    "generated": true,
-    "content": "## @tertium/gith 0.3.2\n\n- feat(sync): two-way sync of one branch with origin\n- docs: add support link\n- docs: remove project.json, replaced by project.yml\n- docs: project attributes in project.yml\n- docs: add project.json attributes\n- docs: use the scoped package name as the project title\n- docs: license under MIT (was ISC)\n",
-    "source": {
-      "name": "GitHub",
-      "url": "https://github.com/Tertiumnon/tertium-gith/releases/tag/v0.3.2"
-    }
-  },
-  {
-    "title": "@tertium/gith 0.3.1",
-    "link": "/en/changelog/2026-10-18--tertium-gith-0-3-1",
-    "language": "en",
-    "category": "Releases",
-    "project": "@tertium/gith",
-    "tags": [
-      "tertium-gith"
-    ],
-    "publishedAt": "2026-10-18",
-    "filename": "index.en.md",
-    "dirname": "2026-10-18--tertium-gith-0-3-1",
-    "generated": true,
-    "content": "## @tertium/gith 0.3.1\n\n- chore(hooks): run typecheck, format check and lint before each commit\n- feat(flow): name work branches develop--<goal>, merge --main, merge -r/-h picker\n- feat: switch -r/-h to newest container, save --all stages first\n",
-    "source": {
-      "name": "GitHub",
-      "url": "https://github.com/Tertiumnon/tertium-gith/releases/tag/v0.3.1"
-    }
-  },
-  {
-    "title": "@tertium/gith 0.3.0",
-    "link": "/en/changelog/2026-10-17--tertium-gith-0-3-0",
-    "language": "en",
-    "category": "Releases",
-    "project": "@tertium/gith",
-    "tags": [
-      "tertium-gith"
-    ],
-    "publishedAt": "2026-10-17",
-    "filename": "index.en.md",
-    "dirname": "2026-10-17--tertium-gith-0-3-0",
-    "generated": true,
-    "content": "## @tertium/gith 0.3.0\n\n- feat(merge): --develop merges this branch into develop\n- fix(remove): print the branch list before asking to remove them\n- feat(finish): gith finish --current-release and --current-hotfix\n- feat(merge): pick the branch and the target; delete the merged work branch\n- feat(remove): gith remove without -b opens the branch list\n- feat(picker): arrow keys replace number entry; empty pockets says so\n- feat(switch): gith switch lists local and origin branches to pick from\n- feat(switch): --release and --hotfix switch to the newest release or hotfix\n",
-    "source": {
-      "name": "GitHub",
-      "url": "https://github.com/Tertiumnon/tertium-gith/releases/tag/v0.3.0"
-    }
-  },
-  {
-    "title": "@tertium/gith 0.2.0",
-    "link": "/en/changelog/2026-10-17--tertium-gith-0-2-0",
-    "language": "en",
-    "category": "Releases",
-    "project": "@tertium/gith",
-    "tags": [
-      "tertium-gith"
-    ],
-    "publishedAt": "2026-10-17",
-    "filename": "index.en.md",
-    "dirname": "2026-10-17--tertium-gith-0-2-0",
-    "generated": true,
-    "content": "## @tertium/gith 0.2.0\n\n- feat(changelog): write CHANGELOG.md as its own commit\n- feat(changelog): gith changelog writes a release entry from commits\n",
-    "source": {
-      "name": "GitHub",
-      "url": "https://github.com/Tertiumnon/tertium-gith/releases/tag/v0.2.0"
-    }
-  },
-  {
     "title": "@tertium/countries 0.6.1",
     "link": "/en/changelog/2026-10-08--tertium-countries-0-6-1",
     "language": "en",
@@ -983,50 +963,5 @@
       "name": "GitHub",
       "url": "https://github.com/Tertiumnon/tertium-countries/releases/tag/v0.1.2"
     }
-  },
-  {
-    "title": "Halloween YouTube Theme 0.2.0",
-    "link": "/en/changelog/2026-10-21--halloween-youtube-theme-ext-0-2-0",
-    "language": "en",
-    "category": "Releases",
-    "project": "Halloween YouTube Theme",
-    "tags": [
-      "halloween-youtube-theme-ext"
-    ],
-    "publishedAt": "2026-10-21",
-    "filename": "index.en.md",
-    "dirname": "2026-10-21--halloween-youtube-theme-ext-0-2-0",
-    "generated": true,
-    "content": "## Halloween YouTube Theme 0.2.0\n\n- fix(witch): bring her back only after the logo returns\n- style(witch): lighten the witch so she is visible on the dark page\n- style(header): remove the header blur\n- fix(witch): fly across without taking the logo when there is no logo\n- feat(theme): add a witch, spider, skeleton, bats and pumpkin interactions\n- docs: update project.yml\n- docs: add screenshots different resolutions\n- feat(dev): run Firefox and Chrome with one dev command\n- build: write the source zip into dist/chrome as well\n- build: write the Firefox source zip into dist/firefox\n- refactor(build): keep both manifests in src/manifests\n- refactor(build): give each browser a firefox/ or chrome/ manifest and dist folder\n- feat(chrome): build a Chrome MV3 package from the same source\n- chore(release): sync manifest.json version on npm version\n"
-  },
-  {
-    "title": "Halloween YouTube Theme 0.1.1",
-    "link": "/en/changelog/2026-10-21--halloween-youtube-theme-ext-0-1-1",
-    "language": "en",
-    "category": "Releases",
-    "project": "Halloween YouTube Theme",
-    "tags": [
-      "halloween-youtube-theme-ext"
-    ],
-    "publishedAt": "2026-10-21",
-    "filename": "index.en.md",
-    "dirname": "2026-10-21--halloween-youtube-theme-ext-0-1-1",
-    "generated": true,
-    "content": "## Halloween YouTube Theme 0.1.1\n\n- docs(readme): drop sections that only point to other files\n- docs(readme): mark the screenshot block so listings can replace it with their gallery\n- docs: move install and development notes from the README to docs/\n- chore(project): publish on site\n\nAll notable changes to this project are documented in this file.\n"
-  },
-  {
-    "title": "Halloween YouTube Theme 0.1.0",
-    "link": "/en/changelog/2026-10-20--halloween-youtube-theme-ext-0-1-0",
-    "language": "en",
-    "category": "Releases",
-    "project": "Halloween YouTube Theme",
-    "tags": [
-      "halloween-youtube-theme-ext"
-    ],
-    "publishedAt": "2026-10-20",
-    "filename": "index.en.md",
-    "dirname": "2026-10-20--halloween-youtube-theme-ext-0-1-0",
-    "generated": true,
-    "content": "## Halloween YouTube Theme 0.1.0\n\n### Added\n\n- Halloween theme for YouTube: pumpkin progress scrubber, pumpkins, a flying witch, a skeleton, drifting ghosts and a night-sky background.\n"
   }
 ]
