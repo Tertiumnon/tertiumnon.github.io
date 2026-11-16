@@ -25,8 +25,8 @@ This thinking naturally leads to clean, scalable, maintainable architecture.
 
 **New to these concepts?** Start here:
 
-1. [What is an Entity?](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/01-introduction/what-is-entity.md) — 5 min read
-2. [5-Minute Quick Reference](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/01-introduction/quick-start.md) — Essential rules at a glance
+1. [What is an Entity?](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/01-introduction/what-is-entity.md) — 5 min read
+2. [5-Minute Quick Reference](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/01-introduction/quick-start.md) — Essential rules at a glance
 3. [See working code examples](https://github.com/Tertiumnon/entity-driven-architecture--example) — Practical implementations
 
 **Need a specific answer?** Use the table of contents below.
@@ -35,112 +35,130 @@ This thinking naturally leads to clean, scalable, maintainable architecture.
 
 ## Documentation Structure
 
-### [1. Introduction](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/01-introduction/)
+### [1. Introduction](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/01-introduction/)
 
 Foundational concepts and philosophy.
 
-- **[What is an Entity?](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/01-introduction/what-is-entity.md)** — Definition and why entities matter
-- **[Philosophy](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/01-introduction/philosophy.md)** — Entity thinking in programming and real life
-- **[Quick Start](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/01-introduction/quick-start.md)** — Essential rules and checklist
+- **[What is an Entity?](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/01-introduction/what-is-entity.md)** — Definition and why entities matter
+- **[Philosophy](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/01-introduction/philosophy.md)** — Entity thinking in programming and real life
+- **[Quick Start](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/01-introduction/quick-start.md)** — Essential rules and checklist
 
-### [2. Naming Conventions](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/02-naming-conventions/)
+### [2. Naming Conventions](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/02-naming-conventions/)
 
 Detailed naming guides for variables, functions, classes, and files.
 
-- **[Overview](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/02-naming-conventions/overview.md)** — General principles
-- **[Variables](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/02-naming-conventions/variables.md)** — Primitives, objects, arrays
-- **[Functions & Methods](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/02-naming-conventions/functions-methods.md)** — Verbs (get, find, fetch, create, etc.)
-- **[Classes & Interfaces](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/02-naming-conventions/classes-interfaces.md)** — PascalCase, suffixes (Service, Controller, Repository)
-- **[Files & Folders](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/02-naming-conventions/files-folders.md)** — kebab-case, consistency, alignment
-- **[File Type Suffixes](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/02-naming-conventions/file-type-suffixes.md)** — Be specific: .repo.ts, .validator.ts, .mapper.ts, not just .service.ts
-- **[Barrel Exports](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/02-naming-conventions/barrel-exports.md)** — Why central index files are an antipattern
-- **[Anti-Patterns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/02-naming-conventions/anti-patterns.md)** — Common mistakes and how to fix them
+- **[Overview](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/02-naming-conventions/overview.md)** — General principles
+- **[Variables](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/02-naming-conventions/variables.md)** — Primitives, objects, arrays
+- **[Functions & Methods](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/02-naming-conventions/functions-methods.md)** — Verbs (get, find, fetch, create, etc.)
+- **[Classes & Interfaces](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/02-naming-conventions/classes-interfaces.md)** — PascalCase, suffixes (Service, Controller, Repository)
+- **[Files & Folders](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/02-naming-conventions/files-folders.md)** — kebab-case, consistency, alignment
+- **[File Type Suffixes](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/02-naming-conventions/file-type-suffixes.md)** — Be specific: .repo.ts, .validator.ts, .mapper.ts, not just .service.ts
+- **[Barrel Exports](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/02-naming-conventions/barrel-exports.md)** — Why central index files are an antipattern
+- **[Anti-Patterns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/02-naming-conventions/anti-patterns.md)** — Common mistakes and how to fix them
 
-### [3. Entity Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/03-entity-structure/)
+### [3. Entity Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/03-entity-structure/)
 
 Principles for designing entities, DTOs, and relationships.
 
-- **[Flat Entities](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/03-entity-structure/flat-entities.md)** — Core principle: keep domain models flat
-- **[DTO vs Domain Model](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/03-entity-structure/dto-vs-domain.md)** — When nesting is acceptable
-- **[Common Interfaces](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/03-entity-structure/common-interfaces.md)** — Shared interfaces (Timestamps, Identifiable, etc.)
-- **[Relationships & References](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/03-entity-structure/relationships.md)** — Foreign keys vs embedded objects
-- **[Denormalization](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/03-entity-structure/denormalization.md)** — When and why to denormalize
-- **[Examples](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/03-entity-structure/examples.md)** — Real entity examples (User, Product, Order)
+- **[Flat Entities](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/03-entity-structure/flat-entities.md)** — Core principle: keep domain models flat
+- **[DTO vs Domain Model](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/03-entity-structure/dto-vs-domain.md)** — When nesting is acceptable
+- **[Common Interfaces](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/03-entity-structure/common-interfaces.md)** — Shared interfaces (Timestamps, Identifiable, etc.)
+- **[Relationships & References](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/03-entity-structure/relationships.md)** — Foreign keys vs embedded objects
+- **[Denormalization](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/03-entity-structure/denormalization.md)** — When and why to denormalize
+- **[Examples](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/entity-structure.md)** — Real entity examples (User, Product, Order)
 
-### [4. Backend Patterns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/04-backend-patterns/)
+### [4. Backend Patterns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/04-backend-patterns/)
 
 REST API design, service layers, and backend conventions.
 
-- **[REST API Design](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/04-backend-patterns/rest-api-design.md)** — CRUD endpoints, HTTP verbs, URI conventions
-- **[Request & Response](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/04-backend-patterns/request-response.md)** — DTO patterns, status codes, error responses
-- **[Error Handling](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/04-backend-patterns/error-handling.md)** — Standardized error formats
-- **[Service Layer](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/04-backend-patterns/service-layer.md)** — Service patterns (find, get, create, update, delete)
-- **[Examples](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/04-backend-patterns/examples.md)** — Complete API endpoint examples
+- **[REST API Design](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/04-backend-patterns/rest-api-design.md)** — CRUD endpoints, HTTP verbs, URI conventions
+- **[Request & Response](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/04-backend-patterns/request-response.md)** — DTO patterns, status codes, error responses
+- **[Error Handling](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/04-backend-patterns/error-handling.md)** — Standardized error formats
+- **[Service Layer](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/04-backend-patterns/service-layer.md)** — Service patterns (find, get, create, update, delete)
+- **[Examples](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/backend-patterns.md)** — Complete API endpoint examples
 
-### [5. Frontend Patterns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/05-frontend-patterns/)
+### [5. Frontend Patterns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/05-frontend-patterns/)
 
 HTML, CSS, JavaScript, and component conventions.
 
-- **[HTML Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/05-frontend-patterns/html-structure.md)** — Semantic HTML, accessibility
-- **[CSS Naming](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/05-frontend-patterns/css-naming.md)** — BEM-like conventions, modifiers, scoping
-- **[Component Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/05-frontend-patterns/component-structure.md)** — Component organization, collocation
-- **[State Management](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/05-frontend-patterns/state-management.md)** — Entity-driven state patterns
-- **[Examples](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/05-frontend-patterns/examples.md)** — Component implementation examples
+- **[HTML Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/05-frontend-patterns/html-structure.md)** — Semantic HTML, accessibility
+- **[CSS Naming](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/05-frontend-patterns/css-naming.md)** — BEM-like conventions, modifiers, scoping
+- **[Component Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/05-frontend-patterns/component-structure.md)** — Component organization, collocation
+- **[State Management](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/05-frontend-patterns/state-management.md)** — Entity-driven state patterns
+- **[Examples](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/frontend-patterns.md)** — Component implementation examples
 
-### [6. Architecture](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/06-architecture/)
+### [6. Architecture](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/06-architecture/)
 
 Project structure, folder organization, and no-nesting rules.
 
-- **[Folder Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/06-architecture/folder-structure.md)** — 4-level structure: core, entities, components/libs, pages/routes
-- **[Module Organization](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/06-architecture/module-organization.md)** — Entity folders with consistent file naming patterns
-- **[No Nesting Rule](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/06-architecture/no-nesting-rule.md)** — Maximum 3 levels explanation and enforcement
-- **[Component Collocation](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/06-architecture/component-collocation.md)** — Keeping related files together
-- **[Separation of Concerns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/06-architecture/separation-of-concerns.md)** — How core, entities, components, pages differ
-- **[Migration Guide](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/06-architecture/migration-guide.md)** — Refactoring existing projects
+- **[Folder Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/06-architecture/folder-structure.md)** — 4-level structure: core, entities, components/libs, pages/routes
+- **[Module Organization](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/06-architecture/module-organization.md)** — Entity folders with consistent file naming patterns
+- **[No Nesting Rule](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/06-architecture/no-nesting-rule.md)** — Maximum 3 levels explanation and enforcement
+- **[Component Collocation](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/06-architecture/component-collocation.md)** — Keeping related files together
+- **[Separation of Concerns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/06-architecture/separation-of-concerns.md)** — How core, entities, components, pages differ
+- **[Migration Guide](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/06-architecture/migration-guide.md)** — Refactoring existing projects
 
-### [7. Advanced Topics](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/07-advanced-topics/)
+### [7. Advanced Topics](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/07-advanced-topics/)
 
 Nuanced decisions, testing strategies, and edge cases.
 
-- **[Error Handling Strategies](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/07-advanced-topics/error-handling-strategies.md)** — Throwing errors vs returning null
-- **[Method Naming Context](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/07-advanced-topics/method-naming-context.md)** — Class methods vs standalone functions
-- **[When Nesting is OK](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/07-advanced-topics/nested-methods.md)** — DTOs, views, projections (2 levels max)
-- **[DTO Patterns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/07-advanced-topics/dto-patterns.md)** — CreateDto, UpdateDto, ResponseDto
-- **[Testing Strategies](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/07-advanced-topics/testing-strategies.md)** — Testing entity-driven code
+- **[Error Handling Strategies](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/07-advanced-topics/error-handling-strategies.md)** — Throwing errors vs returning null
+- **[Method Naming Context](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/07-advanced-topics/method-naming-context.md)** — Class methods vs standalone functions
+- **[When Nesting is OK](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/07-advanced-topics/nested-methods.md)** — DTOs, views, projections (2 levels max)
+- **[DTO Patterns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/07-advanced-topics/dto-patterns.md)** — CreateDto, UpdateDto, ResponseDto
+- **[Testing Strategies](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/07-advanced-topics/testing-strategies.md)** — Testing entity-driven code
 
-### [8. Real-World Examples](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/08-real-world-examples/)
+### [8. Real-World Examples](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/real-world-examples/)
 
 Practical domain examples showing entity-driven design in action.
 
 #### E-Commerce
 
-- **[Entities](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/08-real-world-examples/e-commerce/entities.md)** — User, Product, Order, Cart, Category
-- **[API Design](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/08-real-world-examples/e-commerce/api-design.md)** — Complete REST endpoints
-- **[Frontend Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/08-real-world-examples/e-commerce/frontend-structure.md)** — Pages and components
+- **[Entities](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/real-world-examples/e-commerce/entities.md)** — User, Product, Order, Cart, Category
+- **[API Design](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/real-world-examples/e-commerce/api-design.md)** — Complete REST endpoints
+- **[Frontend Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/real-world-examples/e-commerce/frontend-structure.md)** — Pages and components
 
 #### Blog Platform
 
-- **[Entities](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/08-real-world-examples/blog-platform/entities.md)** — User, Post, Comment, Tag
-- **[API Design](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/08-real-world-examples/blog-platform/api-design.md)**
-- **[Frontend Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/08-real-world-examples/blog-platform/frontend-structure.md)**
+- **[Entities](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/real-world-examples/blog-platform/entities.md)** — User, Post, Comment, Tag
+- **[API Design](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/real-world-examples/blog-platform/api-design.md)**
+- **[Frontend Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/real-world-examples/blog-platform/frontend-structure.md)**
 
 #### Task Management
 
-- **[Entities](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/08-real-world-examples/task-management/entities.md)** — User, Project, Task, Label, Workspace
-- **[API Design](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/08-real-world-examples/task-management/api-design.md)**
-- **[Frontend Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/08-real-world-examples/task-management/frontend-structure.md)**
+- **[Entities](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/real-world-examples/task-management/entities.md)** — User, Project, Task, Label, Workspace
+- **[API Design](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/real-world-examples/task-management/api-design.md)**
+- **[Frontend Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/real-world-examples/task-management/frontend-structure.md)**
 
 See **working implementations** in [entity-driven-architecture--example](https://github.com/Tertiumnon/entity-driven-architecture--example).
 
-### [9. Reference](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/09-reference/)
+### [Game Engines](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/game-engines/)
+
+Entity patterns for Unity (C#) and Godot: folders, naming, config data, systems and views.
+
+- **[Overview](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/game-engines/overview.md)** — Shared principles and choosing an approach
+- **[Unity](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/game-engines/unity/overview.md)** — Entities, config assets, systems, views, tests
+- **[Folders and Naming (Unity)](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/game-engines/unity/structure.md)** — Entity folders, PascalCase file names, suffixes
+- **[Unity ECS](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/game-engines/unity-ecs/overview.md)** — The Entities runtime, chosen at kickoff for thousands of simulated entities
+- **[Godot](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/game-engines/godot/overview.md)** — Scenes, resources, components, signals
+
+### [Web Engines](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/web-engines/)
+
+Entity patterns for frameworks: frontend (React, SolidJS, Angular) and backend (Express, Elysia, Hono, NestJS).
+
+- **[Overview](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/web-engines/overview.md)** — Shared layers and suffix mapping
+- **[React](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/web-engines/react/overview.md)** · **[SolidJS](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/web-engines/solidjs/overview.md)** · **[Angular](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/web-engines/angular/overview.md)**
+- **[Express](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/web-engines/express/overview.md)** · **[Elysia](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/web-engines/elysia/overview.md)** · **[Hono](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/web-engines/hono/overview.md)** · **[NestJS](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/web-engines/nestjs/overview.md)**
+
+### [9. Reference](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/09-reference/)
 
 Quick lookups, checklists, and glossary.
 
-- **[Naming Checklist](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/09-reference/checklists.md)** — Validate your naming
-- **[Architecture Checklist](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/09-reference/checklists.md)** — Validate your structure
-- **[Glossary](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/09-reference/glossary.md)** — Term definitions
-- **[FAQ](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/09-reference/faq.md)** — Common questions
-- **[External Resources](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/09-reference/resources.md)** — Links to referenced tools and standards
+- **[Naming Checklist](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/09-reference/checklists.md)** — Validate your naming
+- **[Architecture Checklist](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/09-reference/checklists.md)** — Validate your structure
+- **[Glossary](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/09-reference/glossary.md)** — Term definitions
+- **[FAQ](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/09-reference/faq.md)** — Common questions
+- **[External Resources](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/09-reference/resources.md)** — Links to referenced tools and standards
 
 ---
 
@@ -202,6 +220,7 @@ This guide covers:
 - Separation of concerns and architecture
 - Frontend component and CSS conventions
 - Backend service and API patterns
+- Game engine and web engine patterns (see Examples above)
 - Real-world examples and case studies
 
 This guide **does not** cover:
@@ -217,23 +236,24 @@ This guide **does not** cover:
 
 ### By Role
 
-- **Backend Developer**: Read [Backend Patterns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/04-backend-patterns/) → [Entity Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/03-entity-structure/)
-- **Frontend Developer**: Read [Frontend Patterns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/05-frontend-patterns/) → [Architecture](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/06-architecture/)
-- **Full Stack**: Start with [Introduction](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/01-introduction/) → read all
-- **Team Lead**: Use checklists in [Reference](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/09-reference/), share examples with team
+- **Backend Developer**: Read [Backend Patterns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/04-backend-patterns/) → [Entity Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/03-entity-structure/)
+- **Frontend Developer**: Read [Frontend Patterns](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/05-frontend-patterns/) → [Architecture](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/06-architecture/)
+- **Game Developer**: Read [Game Engines](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/examples/game-engines/) → [Entity Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/03-entity-structure/)
+- **Full Stack**: Start with [Introduction](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/01-introduction/) → read all
+- **Team Lead**: Use checklists in [Reference](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/09-reference/), share examples with team
 
 ### By Question Type
 
-- "How should I name this function?" → [Functions & Methods](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/02-naming-conventions/functions-methods.md)
-- "How do I structure my entities?" → [Flat Entities](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/03-entity-structure/flat-entities.md)
-- "How should my API endpoints look?" → [REST API Design](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/04-backend-patterns/rest-api-design.md)
-- "Is my file organization correct?" → [Folder Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/06-architecture/folder-structure.md)
-- "How do I handle errors?" → [Error Handling](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/07-advanced-topics/error-handling-strategies.md)
+- "How should I name this function?" → [Functions & Methods](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/02-naming-conventions/functions-methods.md)
+- "How do I structure my entities?" → [Flat Entities](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/03-entity-structure/flat-entities.md)
+- "How should my API endpoints look?" → [REST API Design](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/04-backend-patterns/rest-api-design.md)
+- "Is my file organization correct?" → [Folder Structure](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/06-architecture/folder-structure.md)
+- "How do I handle errors?" → [Error Handling](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/07-advanced-topics/error-handling-strategies.md)
 
 ### By Depth
 
-- **Quick answer** (2 min): [Quick Start](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/01-introduction/quick-start.md)
-- **Detailed answer** (15 min): Topic's main guide (e.g., [Naming Conventions](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/02-naming-conventions/overview.md))
+- **Quick answer** (2 min): [Quick Start](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/01-introduction/quick-start.md)
+- **Detailed answer** (15 min): Topic's main guide (e.g., [Naming Conventions](https://github.com/Tertiumnon/entity-driven-architecture/blob/HEAD/docs/core/02-naming-conventions/overview.md))
 - **Deep dive** (30+ min): Topic + Examples + Anti-Patterns
 - **Hands-on learning**: [Working code examples](https://github.com/Tertiumnon/entity-driven-architecture--example)
 
@@ -243,6 +263,7 @@ This guide **does not** cover:
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 2.1 | 2026-11-12 | Added game engine and web engine patterns as examples |
 | 2.0 | 2026-06-29 | Complete restructure: reorganized into 9 sections, expanded examples, added real-world case studies, fixed JSON typos |
 | 1.0 | 2024-12-20 | Initial documentation |
 

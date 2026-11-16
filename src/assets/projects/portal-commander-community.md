@@ -26,7 +26,7 @@ If Portal saves you time and you'd like to support its development, you can [buy
 - **Fast on big folders.** File names appear first; sizes, dates and previews fill in afterwards in the background, so you can start working immediately. When something changes on disk, only the changed items are updated, not the whole list.
 - **Look inside files without leaving the app.** Press Enter to view text, code, PDFs and images right in the panel, or F4 to edit text files. Russian, Chinese, Japanese and other legacy-encoded files open correctly too.
 - **Works the way you already work.** Pick the keyboard layout you know: Windows Explorer, Total Commander, Far Manager, macOS or the Portal default.
-- **Looks good in every theme.** Nine themes, including Dracula, Nord, Tokyo Night, GitHub and Catppuccin.
+- **Looks good in every theme.** Choose Portal, Windows, macOS, Dracula, Nord, Tokyo Night, GitHub and Catppuccin themes.
 
 ## Features
 
@@ -34,6 +34,7 @@ If Portal saves you time and you'd like to support its development, you can [buy
 
 - Two folders side by side; Tab switches between them, and the right panel can be hidden when you need one wide view.
 - Copy (F5) and move (F6) between panels, or drag files from one panel to the other.
+- Queue another transfer while one is running. Restarting a folder move merges into the destination and keeps files already there.
 - Copy one panel's folder to the other with Ctrl+Alt+→ / ←, or the arrows between the panels.
 - Each panel has its own back/forward history, sorting, view and filter, and both panels reopen where you left them.
 
@@ -76,7 +77,7 @@ If Portal saves you time and you'd like to support its development, you can [buy
 ### Top bar
 
 - Your disks with free space at a glance, and the Trash with its size.
-- Favorites: pin any folder, give it a name and an icon, drag to reorder, and jump to the first ten with Ctrl+1 … Ctrl+0.
+- Favorites: pin any folder, choose a theme-colored monochrome icon, drag to reorder, and jump to the first ten with Ctrl+1 … Ctrl+0.
 
 ### Comfortable to use
 

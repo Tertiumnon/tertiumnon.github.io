@@ -66,6 +66,8 @@ hlpr file rename -dir ./src -style kebab -r -d -f --dry
 | [memory info](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/memory/info/info.md) (`status`) | Show total, used, and free memory |
 | [disk info](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/disk/info/info.md) (`status`) | Show disk usage and available space |
 | [process list](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/process/list/list.md) | List running processes |
+| [process find](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/process/find/find.md) | Find running processes by name or ID |
+| [process status](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/process/status/status.md) | Summarize CPU and memory for a process tree |
 | [process kill](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/process/kill/kill.md) | Kill a process by ID, port, folder, or file |
 | [app list](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/app/list/list.md) | List installed apps |
 | [app search](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/app/search/search.md) (`find`) | Find installed apps or remote packages by name |
@@ -74,7 +76,7 @@ hlpr file rename -dir ./src -style kebab -r -d -f --dry
 | [tool install](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/tool/install/install.md) | Install Docker, htop, fastfetch, Starship, Claude CLI, Codex CLI, Copilot CLI, or another supported tool |
 | [runtime install](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/runtime/install/install.md) | Install Node.js, Python, Bun, Rust, or Go |
 | [ssh mkcon](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/ssh/mkcon/mkcon.md) | Create a key, authorize it on a host, and save the connection |
-| [ssh mkkey](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/ssh/mkkey/mkkey.md) | Create a key pair and save the connection locally |
+| [ssh mkkey](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/ssh/mkkey/mkkey.md) | Create an Ed25519 or RSA key pair and save the connection locally |
 | [zsh fix --bun](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/zsh/zsh.md) | Add bun to PATH in ~/.zshrc |
 | [ssh setup](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/ssh/ssh.md#setup) | Create ~/.ssh with the permissions SSH requires |
 | [ssh fix --permissions](https://github.com/Tertiumnon/tertium-hlpr/blob/HEAD/src/commands/ssh/ssh.md#fix) | Fix permissions of ~/.ssh and its files |

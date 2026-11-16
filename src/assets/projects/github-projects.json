@@ -1,26 +1,136 @@
 [
   {
-    "name": "halloween-youtube-theme-ext",
-    "title": "Halloween YouTube Theme",
-    "type": "firefox-extension",
-    "description": "Halloween theme for YouTube as a Firefox extension.",
-    "language": "CSS",
-    "image": "assets/projects/halloween-youtube-theme-ext/assets/logo/logo.svg",
-    "screenshots": [
-      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/01-player-window.png",
-      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/02-search-window.png",
-      "assets/projects/halloween-youtube-theme-ext/docs/screenshots/03-description-and-comments-window.png"
-    ],
+    "name": "intel-arc-b60-local-llm-cookbook",
+    "title": "Intel Arc B60 Local LLM Cookbook",
+    "type": "cookbook",
+    "description": "Running local LLMs on a 24 GB Intel Arc B60 with Llama.cpp, Strata, and OpenVINO.",
+    "language": "TypeScript",
     "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook",
+    "readme": true,
+    "releases": [],
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
+  },
+  {
+    "name": "entity-driven-architecture",
+    "title": "Entity-Driven Architecture",
+    "type": "style-guide",
+    "description": "Guide to entity-driven development principles, naming conventions, and architectural patterns.",
+    "language": "Markdown",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/entity-driven-architecture",
+    "readme": true,
+    "releases": [
+      {
+        "name": "v0.1.0",
+        "tag": "v0.1.0",
+        "url": "https://github.com/Tertiumnon/entity-driven-architecture/releases/tag/v0.1.0",
+        "publishedAt": "2026-11-12",
+        "assets": []
+      }
+    ],
+    "version": {
+      "tag": "v0.1.0",
+      "date": "2026-11-12"
+    },
+    "licenseText": true,
+    "languageIcon": "assets/icons/languages/markdown.svg"
+  },
+  {
+    "name": "tertium-css",
+    "title": "@tertium/css",
+    "type": "css-library",
+    "description": "Universal design system with tokens, themes, components, and utilities.",
+    "language": "CSS",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-css",
     "readme": true,
     "releases": [],
     "version": {
-      "tag": "v0.2.2",
-      "date": "2026-10-28"
+      "tag": "v1.7.0",
+      "date": "2026-11-11"
     },
     "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/css.svg"
+  },
+  {
+    "name": "portal-commander-community",
+    "title": "Portal Commander",
+    "type": "desktop-app",
+    "description": "Fast, free two-panel file manager for Windows with in-panel file preview and editing.",
+    "frameworks": [
+      "Tauri 2",
+      "Angular"
+    ],
+    "image": "https://raw.githubusercontent.com/Tertiumnon/portal-commander-community/HEAD/assets/logo/logo.png",
+    "screenshots": [
+      "https://raw.githubusercontent.com/Tertiumnon/portal-commander-community/HEAD/docs/screenshots/01-main.png",
+      "https://raw.githubusercontent.com/Tertiumnon/portal-commander-community/HEAD/docs/screenshots/02-editor.png"
+    ],
+    "repoLicense": "Other",
+    "url": "https://github.com/Tertiumnon/portal-commander-community",
+    "readme": true,
+    "releases": [
+      {
+        "name": "Portal Commander 0.3.1",
+        "tag": "v0.3.1",
+        "url": "https://github.com/Tertiumnon/portal-commander-community/releases/tag/v0.3.1",
+        "publishedAt": "2026-11-09",
+        "assets": [
+          {
+            "name": "Portal_Commander.exe",
+            "url": "https://github.com/Tertiumnon/portal-commander-community/releases/download/v0.3.1/Portal_Commander.exe"
+          },
+          {
+            "name": "Portal_Commander_0.3.1_x64-setup.exe",
+            "url": "https://github.com/Tertiumnon/portal-commander-community/releases/download/v0.3.1/Portal_Commander_0.3.1_x64-setup.exe"
+          }
+        ]
+      },
+      {
+        "name": "Portal Commander 0.3.0",
+        "tag": "v0.3.0",
+        "url": "https://github.com/Tertiumnon/portal-commander-community/releases/tag/v0.3.0",
+        "publishedAt": "2026-10-17",
+        "assets": [
+          {
+            "name": "Portal.Commander_0.3.0_x64-setup.exe",
+            "url": "https://github.com/Tertiumnon/portal-commander-community/releases/download/v0.3.0/Portal.Commander_0.3.0_x64-setup.exe"
+          },
+          {
+            "name": "Portal.Commander_0.3.0_x64_en-US.msi",
+            "url": "https://github.com/Tertiumnon/portal-commander-community/releases/download/v0.3.0/Portal.Commander_0.3.0_x64_en-US.msi"
+          }
+        ]
+      }
+    ],
+    "version": {
+      "tag": "v0.3.1",
+      "date": "2026-11-09"
+    },
+    "licenseText": true,
+    "languageIcon": "assets/icons/languages/markdown.svg"
+  },
+  {
+    "name": "tertium-hlpr",
+    "title": "@tertium/hlpr",
+    "type": "cli",
+    "description": "Command-line helper for everyday tasks on Windows, macOS, and Linux, run as hlpr <domain> <command>.",
+    "language": "TypeScript",
+    "repoLicense": "MIT License",
+    "url": "https://github.com/Tertiumnon/tertium-hlpr",
+    "readme": true,
+    "releases": [],
+    "version": {
+      "tag": "v0.25.7",
+      "date": "2026-11-08"
+    },
+    "licenseText": true,
+    "changelog": true,
+    "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
     "name": "tertium-cheatsheets",
@@ -143,64 +253,6 @@
     "languageIcon": "assets/icons/languages/markdown.svg"
   },
   {
-    "name": "portal-commander-community",
-    "title": "Portal Commander",
-    "type": "desktop-app",
-    "description": "Fast, free two-panel file manager for Windows with in-panel file preview and editing.",
-    "frameworks": [
-      "Tauri 2",
-      "Angular"
-    ],
-    "image": "https://raw.githubusercontent.com/Tertiumnon/portal-commander-community/HEAD/assets/logo/logo.png",
-    "screenshots": [
-      "https://raw.githubusercontent.com/Tertiumnon/portal-commander-community/HEAD/docs/screenshots/01-main.png",
-      "https://raw.githubusercontent.com/Tertiumnon/portal-commander-community/HEAD/docs/screenshots/02-editor.png"
-    ],
-    "repoLicense": "Other",
-    "url": "https://github.com/Tertiumnon/portal-commander-community",
-    "readme": true,
-    "releases": [
-      {
-        "name": "Portal File Manager 0.2.0",
-        "tag": "v0.2.0",
-        "url": "https://github.com/Tertiumnon/portal-commander-community/releases/tag/untagged-dd851096db0023b55cc3",
-        "publishedAt": "",
-        "assets": [
-          {
-            "name": "Portal.File.Manager_0.2.0_x64-setup.exe",
-            "url": "https://github.com/Tertiumnon/portal-commander-community/releases/download/untagged-dd851096db0023b55cc3/Portal.File.Manager_0.2.0_x64-setup.exe"
-          },
-          {
-            "name": "Portal.File.Manager_0.2.0_x64_en-US.msi",
-            "url": "https://github.com/Tertiumnon/portal-commander-community/releases/download/untagged-dd851096db0023b55cc3/Portal.File.Manager_0.2.0_x64_en-US.msi"
-          }
-        ]
-      },
-      {
-        "name": "Portal Commander 0.3.0",
-        "tag": "v0.3.0",
-        "url": "https://github.com/Tertiumnon/portal-commander-community/releases/tag/v0.3.0",
-        "publishedAt": "2026-10-17",
-        "assets": [
-          {
-            "name": "Portal.Commander_0.3.0_x64-setup.exe",
-            "url": "https://github.com/Tertiumnon/portal-commander-community/releases/download/v0.3.0/Portal.Commander_0.3.0_x64-setup.exe"
-          },
-          {
-            "name": "Portal.Commander_0.3.0_x64_en-US.msi",
-            "url": "https://github.com/Tertiumnon/portal-commander-community/releases/download/v0.3.0/Portal.Commander_0.3.0_x64_en-US.msi"
-          }
-        ]
-      }
-    ],
-    "version": {
-      "tag": "v0.3.0",
-      "date": "2026-10-17"
-    },
-    "licenseText": true,
-    "languageIcon": "assets/icons/languages/markdown.svg"
-  },
-  {
     "name": "release-convention",
     "title": "Release Convention",
     "type": "guide",
@@ -274,24 +326,6 @@
     "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "tertium-css",
-    "title": "@tertium/css",
-    "type": "css-library",
-    "description": "Universal design system with tokens, themes, components, and utilities.",
-    "language": "CSS",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-css",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v1.6.2",
-      "date": "2026-10-19"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/css.svg"
   },
   {
     "name": "youtube-full-window-ext",
@@ -380,24 +414,6 @@
     "languageIcon": "assets/icons/languages/typescript.svg"
   },
   {
-    "name": "tertium-hlpr",
-    "title": "@tertium/hlpr",
-    "type": "cli",
-    "description": "Command-line helper for everyday tasks on Windows, macOS, and Linux, run as hlpr <domain> <command>.",
-    "language": "TypeScript",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/tertium-hlpr",
-    "readme": true,
-    "releases": [],
-    "version": {
-      "tag": "v0.25.6",
-      "date": "2026-10-22"
-    },
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
     "name": "tertium-countries",
     "title": "@tertium/countries",
     "type": "npm-package",
@@ -432,32 +448,5 @@
     "licenseText": true,
     "changelog": true,
     "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "intel-arc-b60-local-llm-cookbook",
-    "title": "Intel Arc B60 Local LLM Cookbook",
-    "type": "cookbook",
-    "description": "Running local LLMs on a 24 GB Intel Arc B60 with Llama.cpp, Strata, and OpenVINO.",
-    "language": "TypeScript",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/intel-arc-b60-local-llm-cookbook",
-    "readme": true,
-    "releases": [],
-    "licenseText": true,
-    "changelog": true,
-    "languageIcon": "assets/icons/languages/typescript.svg"
-  },
-  {
-    "name": "entity-driven-architecture",
-    "title": "Entity-Driven Architecture",
-    "type": "style-guide",
-    "description": "Guide to entity-driven development principles, naming conventions, and architectural patterns.",
-    "language": "Markdown",
-    "repoLicense": "MIT License",
-    "url": "https://github.com/Tertiumnon/entity-driven-architecture",
-    "readme": true,
-    "releases": [],
-    "licenseText": true,
-    "languageIcon": "assets/icons/languages/markdown.svg"
   }
 ]

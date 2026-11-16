@@ -68,7 +68,7 @@ Choose what you need. All bundles include design tokens.
 
 Includes:
 - ✅ Design tokens (CSS variables)
-- ✅ All five themes
+- ✅ All theme presets
 - ✅ Base styles (reset)
 - ✅ Skeleton layout utilities (flex, grid, spacing, positioning)
 - ✅ All utility classes
@@ -194,7 +194,7 @@ Combine bundles to get exactly what you need:
 
 ## Theme System
 
-Five built-in themes with runtime switching. Without `data-theme`, the light theme is used.
+Seven built-in themes with runtime switching. Without `data-theme`, the light theme is used.
 
 Every theme defines the same variables (`src/themes/*.theme.ts` generates them), so a component written with these variables works under any theme. The theme contract test (`bun test`) checks this, and that the theme names follow `darkness--primary--accent`, for example `dark--indigo--gold`.
 
@@ -218,6 +218,12 @@ Every theme defines the same variables (`src/themes/*.theme.ts` generates them),
 
 ```html
 <html data-theme="dark--blue--white">
+```
+
+### TIII
+
+```html
+<html data-theme="dark--slate--blue">
 ```
 
 ### Light White Red
@@ -481,3 +487,5 @@ CSS custom properties (CSS variables) are supported in all modern browsers.
 ## Support
 
 If this project is useful to you, you can support its development on [Ko-fi](https://ko-fi.com/tertiumnon).
+
+The `light--white--blue` workspace theme uses neutral white surfaces, slate text and blue actions. Import `@tertium/css/light.white--blue.theme` after the component and utility bundles, then set `data-theme="light--white--blue"` on the root element. The default theme stays White & Red.
